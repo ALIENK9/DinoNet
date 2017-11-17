@@ -3,7 +3,7 @@
 <head>
 	<title>TecWeb</title>
 	<meta name="description" content="Descrizione">
-	<meta name="author" content="Alessandro Zingari, Cristiano Tessarolo, Matteo Rizzo">
+	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
