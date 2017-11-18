@@ -120,7 +120,8 @@ a {
 
 	height: 100%;
 	width: 10%;
-	max-width: 150px;
+	max-width: 160px;
+	min-width: 120px;
 
 	background-color: transparent;
 
