@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xml:lang="it-IT" lang="it-IT">
 <head>
 	<title>TecWeb</title>
 	<meta name="description" content="Descrizione">
