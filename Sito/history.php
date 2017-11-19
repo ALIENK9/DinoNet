@@ -50,7 +50,7 @@
 
 <div id="chi-sono-i-dino" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
-		<h1 class="w3-text-white"> Chi sono i dinosauri? </h1>
+		<h1> Chi sono i dinosauri? </h1>
 		<hr>
 		<p>
 			La parola dinosauro deriva dal greco <em lang="el" xml:lang="el">deinos</em>, <strong>terribile</strong>, e <em lang="el" xml:lang="el">sauros</em>,
@@ -72,7 +72,7 @@
 	<div class="w3-half padding-12"></div>
 	<div class="w3-half">
 		<div class="w3-white wrap-padding">
-			<h1 class="w3-center"> La grande scoperta e <br> la corsa ai fossili</h1>
+			<h1 class="w3-center text-green-sea"> La grande scoperta e <br> la corsa ai fossili</h1>
 			<br>
 			<p class="w3-container">
 				<strong>All'inizio del secolo scorso</strong>, con il francese <strong>Georges Cuvier</strong> (1769-1832), nasceva la <strong>paleontologia</strong>, 
@@ -81,7 +81,7 @@
 				il dinosauro.
 			</p>
 				
-			<div class="w3-flat-green-sea w3-panel margin-3">
+			<div class="w3-flat-green-sea w3-panel padding-2 margin-3">
 				<p>
 					La <em>"febbre della caccia al dinosauro"</em> scoppiò nella <strong>seconda metà dell'Ottocento</strong>,
 					quando tutti i musei di storia naturale erano particolarmente desiderosi di possedere degli scheletri
@@ -109,7 +109,7 @@
 
 <div id="dino-unici" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
-		<h1 class="w3-text-white"> Perché i dinosauri sono unici? </h1>
+		<h1> Perché i dinosauri sono unici? </h1>
 		<hr>
 		<p>
 			I dinosauri si differenziano da qualsiasi altro rettile per un aspetto fondamentale: gli arti sono collocati in 
@@ -131,7 +131,7 @@
 <div id="bipedi-quadrupedi" class="w3-row parallax" style="background-image:url('img/dino-3.jpg')">
 	<div class="w3-half">
 		<div class="w3-white wrap-padding">
-			<h1 class="w3-center"> Bipedi e quadrupedi, <br> erbivori e carnivori </h1>
+			<h1 class="w3-center text-green-sea"> Bipedi e quadrupedi, <br> erbivori e carnivori </h1>
 			<br>
 			<p class="w3-container">
 				I dinosauri si suddividono in <strong>bipedi e quadrupedi</strong>, in <strong>erbivori</strong> (ossia quelli che si
@@ -142,7 +142,7 @@
 				di crescere (anche se in età adulta il processo si rallentava)!
 			</p>	
 			
-			<div class="w3-flat-green-sea w3-panel margin-3">
+			<div class="w3-flat-green-sea w3-panel padding-2 margin-3">
 				<p>
 					Il <strong>brontosauro</strong>, vissuto nel Giurassico, poteva essere lungo più di venti metri e pesare circa 
 					quaranta tonnellate (ossia l'equivalente del peso di 600 uomini!). 
@@ -164,7 +164,7 @@
 
 <div id="estinzione" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
-		<h1 class="w3-text-white"> L'estinzione </h1>
+		<h1> L'estinzione </h1>
 		<hr>
 		<p>
 			<strong>L'estinzione dei dinosauri</strong> è un mistero che da sempre interessa <strong>paleontologi</strong> (coloro che studiano gli animali vissuti
@@ -242,6 +242,19 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
+
+<script>
+// Script to open and close sidebar
+function open_menu() {
+    document.getElementById("sidebar").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+ 
+function close_menu() {
+    document.getElementById("sidebar").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
 
 </body>
 
