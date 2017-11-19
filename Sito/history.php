@@ -31,6 +31,15 @@
 		<br>
 		<h4>scopri l'affascinante storia di creature vissute milioni di anni fa</h4>
 	</div>
+	<div id="history-index" class="w3-content w3-card w3-flat-green-sea wrap-padding">
+		<ul class="index">
+			<li><a href="#chi-sono-i-dino"><p>1. Chi sono i dinosauri?</p></a></li>
+			<li><a href="#scoperta"><p>2. La scoperta</p></a></li>
+			<li><a href="#dino-unici"><p>3. Perché i dinosauri sono unici?</p></a></li>
+			<li><a href="#bipedi-quadrupedi"><p>4. Bipedi e quadrupedi, erbivori e carnivori</p></a></li>
+			<li><a href="#estinzione"><p>5. L'estinzione</p></a></li>
+		</ul>
+	</div>
 </header>
 
 <!-- /Header -->
@@ -39,7 +48,7 @@
 
 <!-- Chi sono i dinosauri -->
 
-<div class="w3-flat-green-sea padding-6">
+<div id="chi-sono-i-dino" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
 		<h1 class="w3-text-white"> Chi sono i dinosauri? </h1>
 		<hr>
@@ -57,9 +66,9 @@
 	</div>
 </div>
 
-<!-- La grande scoperta -->
+<!-- La scoperta -->
 
-<div class="w3-row parallax" style="background-image:url('img/dino-1.jpg')">
+<div id="scoperta" class="w3-row parallax" style="background-image:url('img/dino-1.jpg')">
 	<div class="w3-half padding-12"></div>
 	<div class="w3-half">
 		<div class="w3-white wrap-padding">
@@ -98,7 +107,7 @@
 
 <!-- Perché i dinosauri sono unici? -->
 
-<div class="w3-flat-green-sea padding-6">
+<div id="dino-unici" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
 		<h1 class="w3-text-white"> Perché i dinosauri sono unici? </h1>
 		<hr>
@@ -119,7 +128,7 @@
 
 <!-- Bipedi e quadrupedi -->
 
-<div class="w3-row parallax" style="background-image:url('img/dino-3.jpg')">
+<div id="bipedi-quadrupedi" class="w3-row parallax" style="background-image:url('img/dino-3.jpg')">
 	<div class="w3-half">
 		<div class="w3-white wrap-padding">
 			<h1 class="w3-center"> Bipedi e quadrupedi, <br> erbivori e carnivori </h1>
@@ -151,9 +160,9 @@
 	<div class="w3-half padding-12"></div>
 </div>
 
-<!-- L'estensione -->
+<!-- L'estinzione -->
 
-<div class="w3-flat-green-sea padding-6">
+<div id="estinzione" class="w3-flat-green-sea padding-6">
 	<div class="w3-content w3-padding-large">
 		<h1 class="w3-text-white"> L'estinzione </h1>
 		<hr>
