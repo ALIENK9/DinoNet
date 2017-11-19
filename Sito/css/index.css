@@ -105,6 +105,7 @@ a {
 .aiuti_nascosti {
 	position: absolute;
 	height: 0;
+	width: 0;
 	overflow: hidden;
 }
 
