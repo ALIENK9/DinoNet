@@ -21,7 +21,7 @@
 
 <?php include_once('menu.php') ?>
 
-<div id="main" class="main w3-card">
+<div id="main" class="main">
 
 <!-- Header -->
 
