@@ -29,7 +29,7 @@
 	<div id="title-card" class="w3-content w3-card">
 		<h1 class="w3-wide title"> DINO SWAG </h1>
 		<br>
-		<h3>un divertente portale sui dinosauri</h3>
+		<h4>un divertente portale sui dinosauri</h4>
 		<br><br>
 		<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> impara qualcosa sui dinosauri </p></a>
 	</div>
@@ -42,7 +42,7 @@
 <!-- About -->
 
 <div id="about" class="w3-content w3-container padding-6">
-	<h1 class="w3-center"> COS'E' <span class="w3-wide"> DINOSWAG </span> </h1>
+	<h1 class="w3-center text-green-sea"> COS'E' <span class="w3-wide"> DINOSWAG </span> </h1>
 	<br>
 	<p>
 		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -72,7 +72,7 @@
 
 <div class="w3-card w3-flat-green-sea padding-3">
 	<div class="w3-center w3-content w3-container ">
-		<label> <h1 class="w3-text-white"> CERCA UN DINOSAURO! </h1> </label>
+		<label> <h1> CERCA UN DINOSAURO! </h1> </label>
 		<input class="w3-input w3-round margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
 	</div>
 </div>
@@ -86,7 +86,7 @@
 		<div class="w3-half">
 			<div class="w3-card-2 w3-white">
 				<div class="w3-padding-large w3-flat-green-sea">
-					<h1 class="w3-text-white w3-center"> Il dinosauro del giorno </h1>
+					<h1 class="w3-center"> Il dinosauro del giorno </h1>
 				</div>
 				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo" style="width:100%; margin-bottom:2em">
 				<div class="w3-padding-large">
@@ -110,7 +110,7 @@
 		<div class="w3-half">
 			<div class="w3-card-2 w3-white">
 				<div class="w3-padding-large w3-flat-green-sea">
-					<h1 class="w3-text-white w3-center"> L'articolo del giorno </h1>
+					<h1 class="w3-center"> L'articolo del giorno </h1>
 				</div>
 				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro" style="width:100%; margin-bottom:2em">
 				<div class="w3-padding-large">
@@ -138,6 +138,19 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
+
+<script>
+// Script to open and close sidebar
+function open_menu() {
+    document.getElementById("sidebar").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+ 
+function close_menu() {
+    document.getElementById("sidebar").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
 
 </body>
 
