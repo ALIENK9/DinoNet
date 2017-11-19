@@ -28,15 +28,76 @@ a {
 	line-height: 0.25;
 }
 
+h1 {
+	color: #16a085;
+	font-weight: 900;
+	font-transform: uppercase;
+}
+
+h3 {
+	font-weight: 900;
+}
+
 /*
 ======================================================================
 							COSE DI MATTEO
 ======================================================================
 */
+.main {
+	margin-left:160px;
+}
 
-.padding-3 {
+#title-card {
+	padding: 3em;
+	background-color: white;
+}
+
+#title-card h1 {
+	font-size: 4em;
+	display: inline-block;
+}
+
+#title-card h3 {
+	display: inline-block;
+}
+
+.margin-2 {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+
+.margin-3 {
+	margin-top:3em;
+	margin-bottom:3em;
+}
+
+.padding-2 {
 	padding-top: 2em;
 	padding-bottom: 2em;
+}
+
+.padding-3 {
+	padding-top: 3em;
+	padding-bottom: 3em;
+}
+
+.padding-6 {
+	padding-top: 6em;
+	padding-bottom: 6em;
+}
+
+.padding-12 {
+	padding-top:12em;
+	padding-bottom:12em;
+}
+
+.padding-15 {
+	padding-top:15em;
+	padding-bottom:15em;
+}
+
+.wrap-padding {
+	padding: 2em;
 }
 
 /* Loading */
@@ -104,6 +165,39 @@ a {
 
 /* fine - To the top btn */
 
+/* Parallax */
+
+.parallax {
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+ 
+/* fine - Parallax */
+
+header {
+	background-image: url('../img/dino-pattern.jpg');
+}
+
+.index {
+	margin-left:20%;
+}
+
+.index p {
+	font-size: 1.2em;
+}
 
 /*
 ======================================================================
@@ -115,7 +209,6 @@ a {
 .aiuti_nascosti {
 	position: absolute;
 	height: 0;
-	width: 0;
 	overflow: hidden;
 }
 
