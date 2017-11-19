@@ -88,7 +88,7 @@
 				<div class="w3-padding-large w3-flat-green-sea">
 					<h1 class="w3-text-white w3-center"> Il dinosauro del giorno </h1>
 				</div>
-				<img src="img/dailydino-test.png" style="width:100%; margin-bottom:2em">
+				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo" style="width:100%; margin-bottom:2em">
 				<div class="w3-padding-large">
 					<ul>
 						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
@@ -102,6 +102,9 @@
 						consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 					</p>
 				</div>
+				<div class="w3-center padding-2">
+					<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> Visualizza la scheda del dinosauro </p></a>
+				</div>
 			</div>
 		</div>
 		<div class="w3-half">
@@ -109,7 +112,7 @@
 				<div class="w3-padding-large w3-flat-green-sea">
 					<h1 class="w3-text-white w3-center"> L'articolo del giorno </h1>
 				</div>
-				<img src="img/dailyarticle-test.jpg" style="width:100%; margin-bottom:2em">
+				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro" style="width:100%; margin-bottom:2em">
 				<div class="w3-padding-large">
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -119,7 +122,7 @@
 					</p>
 				</div>
 				<div class="w3-center padding-2">
-					<a class="w3-btn w3-flat-green-sea w3-round"><p> Leggi l'articolo </p></a>
+					<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> Leggi l'articolo </p></a>
 				</div>
 			</div>
 		</div>
