@@ -1,5 +1,5 @@
 <!-- Sidebar/menu -->
-<nav id="sidebar" class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:160px">
+<nav id="sidebar" class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top w3-card" style="z-index:3;width:160px">
   <div class="w3-hide-large w3-container w3-center padding-3">
     <i onclick="close_menu()" class="w3-btn w3-round">&times;</i>
   </div>
