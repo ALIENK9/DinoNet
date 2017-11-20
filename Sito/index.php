@@ -88,6 +88,8 @@
 				</div>
 				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
 				<div class="padding-large">
+					<h3 class="text-green-sea center"> Nome del dinosauro </h3>
+					<br>
 					<ul>
 						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
 						<li><strong>Alimentazione:</strong> Carnivoro</li>
@@ -112,6 +114,8 @@
 				</div>
 				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 				<div class="padding-large">
+					<h3 class="text-green-sea center"> Titolo dell'articolo </h3>
+					<br>
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
