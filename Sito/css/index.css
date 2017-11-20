@@ -508,12 +508,8 @@ header {
 	/**#16a085; #21685a;*/
 }
 
-.menu_entry img {
-	height: 70px;
-}
-
 .menu_entry p {
-	margin: 0.5em;
+	margin: 0.2em;
 }
 
 .menu_entry:hover {
@@ -521,8 +517,42 @@ header {
 	background-color: #16a085;
 }
 
-.menu_entry:hover img {
+/****************
+*  ICONE MENU'	*
+*****************/
+
+.menu_icon:hover {
 	filter: invert(100%);
+}
+
+.menu_icon { /*proprietà comuni a tutte le icone*/
+	height: 80px;
+    width: 80px;
+    display: inline-block;
+    background-color: none;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#icon_home {
+    background-image: url('../img/icons/menu_home.svg');
+}
+
+#icon_storia {
+	background-image: url('../img/icons/menu_storia.png');
+}
+
+#icon_specie {
+	background-image: url('../img/icons/menu_specie.svg');
+}
+
+#icon_articoli {
+	background-image: url('../img/icons/menu_articoli.svg');
+}
+
+#icon_accedi {
+	background-image: url('../img/icons/menu_accedi.png');
 }
  
 
