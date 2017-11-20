@@ -14,17 +14,17 @@
 		<!--img id="icon" src="img/icons/menu_storia.png"-->
 		<p>Storia</p>
 	</a>
-	<a href="specie.html" class="menu_entry">
+	<a href="species.php" class="menu_entry">
 		<span id="icon_specie" class="menu_icon"></span>
 		<!--img id="icon" src="img/icons/menu_specie.svg"-->
 		<p>Specie</p>
 	</a>
-	<a href="articoli.html" class="menu_entry">
+	<a href="articles.php" class="menu_entry">
 		<span id="icon_articoli" class="menu_icon"></span>
 		<!--img id="icon" src="img/icons/menu_articoli.svg"-->
 		<p>Articoli</p>
 	</a>
-	<a href="accedi.html" class="menu_entry">
+	<a href="login.php" class="menu_entry">
 		<span id="icon_accedi" class="menu_icon"></span>
 		<!--img id="icon" src="img/icons/menu_accedi.png"-->
 		<p>Accedi</p>
@@ -39,7 +39,7 @@
 </div>
 
 <!-- Overlay effect when opening sidebar on small screens -->
-<div class="hide-large overlay" onclick="close_menu()" style="cursor:pointer" title="chiudi menù laterale" id="overlay"></div>
+<div class="hide-large overlay" onclick="close_menu()" title="chiudi menù laterale" id="overlay"></div>
 
 <!-- Push down content on small screens -->
-<div class="hide-large" style="margin-top:83px"></div>
+<div class="hide-large" class="push-down"></div>
