@@ -26,12 +26,12 @@
 <!-- Header -->
 
 <header class="parallax padding-6">
-	<div id="title-card" class="w3-content w3-card w3-center">
+	<div id="title-card" class="content card">
 		<h1 class="w3-wide title"> La storia dei dinosauri </h1>
 		<br>
 		<h4>scopri l'affascinante storia di creature vissute milioni di anni fa</h4>
 	</div>
-	<div id="history-index" class="w3-content w3-card w3-flat-green-sea wrap-padding">
+	<div id="history-index" class="content card green-sea wrap-padding">
 		<ul class="index">
 			<li><a href="#chi-sono-i-dino"><p>1. Chi sono i dinosauri?</p></a></li>
 			<li><a href="#scoperta"><p>2. La scoperta</p></a></li>
@@ -48,8 +48,8 @@
 
 <!-- Chi sono i dinosauri -->
 
-<div id="chi-sono-i-dino" class="w3-flat-green-sea padding-6">
-	<div class="w3-content w3-padding-large">
+<div id="chi-sono-i-dino" class="green-sea padding-6">
+	<div class="content padding-large">
 		<h1> Chi sono i dinosauri? </h1>
 		<hr>
 		<p>
@@ -68,20 +68,20 @@
 
 <!-- La scoperta -->
 
-<div id="scoperta" class="w3-row parallax" style="background-image:url('img/dino-1.jpg')">
-	<div class="w3-half padding-12"></div>
-	<div class="w3-half">
-		<div class="w3-white wrap-padding">
-			<h1 class="w3-center text-green-sea"> La grande scoperta e <br> la corsa ai fossili</h1>
+<div id="scoperta" class="row parallax">
+	<div class="half ghost-half"><img class="hide-large" src="img/dino-1.jpg"></div>
+	<div class="half">
+		<div class="white wrap-padding">
+			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
 			<br>
-			<p class="w3-container">
+			<p>
 				<strong>All'inizio del secolo scorso</strong>, con il francese <strong>Georges Cuvier</strong> (1769-1832), nasceva la <strong>paleontologia</strong>, 
 				la scienza che studia le forme di vita più antiche basandosi sui ritrovamenti fossili, e cominciava a delinearsi 
 				davanti agli occhi dei ricercatori la figura di uno tra i più straordinari protagonisti della storia del vertebrato, 
 				il dinosauro.
 			</p>
 				
-			<div class="w3-flat-green-sea w3-panel padding-2 margin-3">
+			<div class="green-sea panel padding-2 margin-3">
 				<p>
 					La <em>"febbre della caccia al dinosauro"</em> scoppiò nella <strong>seconda metà dell'Ottocento</strong>,
 					quando tutti i musei di storia naturale erano particolarmente desiderosi di possedere degli scheletri
@@ -90,7 +90,7 @@
 				</p>
 			</div>
 			
-			<p class="w3-container">	
+			<p>	
 				In questa competizione si distinsero soprattutto gli americani <strong>Edward Drinker Cope</strong> (1840-1897) e
 				<strong>Othniel Charles Marsh</strong> (1831-1899), dapprima amici, poi accanitissimi rivali. Dei loro emissari, 
 				nel più stretto segreto, percorrevano instancabilmente gli Stati Uniti alla ricerca di un indizio che lasciasse
@@ -107,8 +107,8 @@
 
 <!-- Perché i dinosauri sono unici? -->
 
-<div id="dino-unici" class="w3-flat-green-sea padding-6">
-	<div class="w3-content w3-padding-large">
+<div id="dino-unici" class="green-sea padding-6">
+	<div class="content padding-large">
 		<h1> Perché i dinosauri sono unici? </h1>
 		<hr>
 		<p>
@@ -128,12 +128,12 @@
 
 <!-- Bipedi e quadrupedi -->
 
-<div id="bipedi-quadrupedi" class="w3-row parallax" style="background-image:url('img/dino-3.jpg')">
-	<div class="w3-half">
-		<div class="w3-white wrap-padding">
-			<h1 class="w3-center text-green-sea"> Bipedi e quadrupedi, <br> erbivori e carnivori </h1>
+<div id="bipedi-quadrupedi" class="row parallax">
+	<div class="half">
+		<div class="white wrap-padding">
+			<h1> Bipedi e quadrupedi, <br> erbivori e carnivori </h1>
 			<br>
-			<p class="w3-container">
+			<p>
 				I dinosauri si suddividono in <strong>bipedi e quadrupedi</strong>, in <strong>erbivori</strong> (ossia quelli che si
 				nutrono di vegetali) e <strong>carnivori</strong> (ossia quelli che mangiano carne). Gli erbivori erano caratterizzati
 				da un <strong>collo molto lungo</strong>, necessario per arrivare alle foglie degli alberi più alti. I carnivori erano
@@ -142,14 +142,14 @@
 				di crescere (anche se in età adulta il processo si rallentava)!
 			</p>	
 			
-			<div class="w3-flat-green-sea w3-panel padding-2 margin-3">
+			<div class="green-sea panel padding-2 margin-3">
 				<p>
 					Il <strong>brontosauro</strong>, vissuto nel Giurassico, poteva essere lungo più di venti metri e pesare circa 
 					quaranta tonnellate (ossia l'equivalente del peso di 600 uomini!). 
 				</p>
 			</div>
 			
-			<p class="w3-container">	
+			<p>	
 				Il <strong>brontosauro</strong> aveva un collo lunghissimo per poter nutrirsi delle foglie più tenere che crescevano in cima agli alberi
 				Ancora più mastodontico era l'<strong>ultrasauro</strong>: alto 16 metri (come una palazzina di 5 piani), lungo 30 (come tre autobus messi in fila) e pesante ben 130 tonnellate (di più di 100 auto!) .
 				Anche il <strong>tirannosauro</strong> (T-rex), il più grande carnivoro estinto, non era da meno: con i suoi 15 metri di lunghezza e il suo peso di 10
@@ -157,13 +157,13 @@
 			</p>
 		</div>
 	</div>
-	<div class="w3-half padding-12"></div>
+	<div class="half ghost-half"><img class="hide-large" src="img/dino-3.jpg"></div>
 </div>
 
 <!-- L'estinzione -->
 
-<div id="estinzione" class="w3-flat-green-sea padding-6">
-	<div class="w3-content w3-padding-large">
+<div id="estinzione" class="green-sea padding-6">
+	<div class="content padding-large">
 		<h1> L'estinzione </h1>
 		<hr>
 		<p>
@@ -233,7 +233,7 @@
 	</div>
 </div>
 
-<div class="padding-12 parallax" style="background-image:url('img/volcano.jpg'); background-position:bottom"></div>
+<div id="volcano-divider" class="padding-12 parallax"></div>
 
 <!-- /Content -->
 
