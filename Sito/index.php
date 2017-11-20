@@ -25,13 +25,13 @@
 
 <!-- Header -->
 
-<header id="header-home" class="w3-center parallax padding-15">
-	<div id="title-card" class="w3-content w3-card">
-		<h1 class="w3-wide title"> DINO SWAG </h1>
+<header id="header-home" class="parallax padding-15">
+	<div id="title-card" class="content card">
+		<h1 class="title wide"> DINO SWAG </h1>
 		<br>
 		<h4>un divertente portale sui dinosauri</h4>
 		<br><br>
-		<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> impara qualcosa sui dinosauri </p></a>
+		<a href="" class="btn green-sea"><p> impara qualcosa sui dinosauri </p></a>
 	</div>
 </header>
 
@@ -41,8 +41,8 @@
 
 <!-- About -->
 
-<div id="about" class="w3-content w3-container padding-6">
-	<h1 class="w3-center text-green-sea"> COS'E' <span class="w3-wide"> DINOSWAG </span> </h1>
+<div id="about" class="content padding-6">
+	<h1> COS'E' <span class="wide"> DINOSWAG </span> </h1>
 	<br>
 	<p>
 		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -50,18 +50,18 @@
 		sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
 		consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 	</p>
-	<div class="w3-row-padding">
-		<div class="w3-third w3-padding-large">
-			<img src="img/dino-shape-1.svg" style="width:100%">
-			<p class="w3-center w3-large"> Scopri un sacco di dinosauri misteriosi </p>
+	<div class="row-padding">
+		<div class="third padding-large">
+			<img src="img/dino-shape-1.svg">
+			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
 		</div>
-		<div class="w3-third w3-padding-large">
-			<img src="img/dino-shape-2.svg" style="width:100%">
-			<p class="w3-center w3-large"> Approfondisci la loro storia e il loro habitat </p>
+		<div class="third padding-large">
+			<img src="img/dino-shape-2.svg">
+			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
 		</div>
-		<div class="w3-third w3-padding-large">
-			<img src="img/dino-shape-3.svg" style="width:100%">
-			<p class="w3-center w3-large"> Leggi le ultime scoperte degli archeologi  </p>
+		<div class="third padding-large">
+			<img src="img/dino-shape-3.svg">
+			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
 		</div>
 	</div>
 </div>
@@ -70,10 +70,10 @@
 
 <!-- Cerca un dinosauro -->
 
-<div class="w3-card w3-flat-green-sea padding-3">
-	<div class="w3-center w3-content w3-container ">
+<div id="dino-search" class="card green-sea padding-3">
+	<div class="content">
 		<label> <h1> CERCA UN DINOSAURO! </h1> </label>
-		<input class="w3-input w3-round margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
+		<input class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
 	</div>
 </div>
 
@@ -81,15 +81,15 @@
 
 <!-- Materiale del giorno -->
 
-<div class="w3-content w3-container padding-6">
-	<div class="w3-row-padding">
-		<div class="w3-half">
-			<div class="w3-card-2 w3-white">
-				<div class="w3-padding-large w3-flat-green-sea">
-					<h1 class="w3-center"> Il dinosauro del giorno </h1>
+<div id="daily-stuff" class="content padding-6">
+	<div class="row-padding">
+		<div class="half">
+			<div id="daily-dino" class="card">
+				<div class="padding-large green-sea">
+					<h1> Il dinosauro del giorno </h1>
 				</div>
-				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo" style="width:100%; margin-bottom:2em">
-				<div class="w3-padding-large">
+				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
+				<div class="padding-large">
 					<ul>
 						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
 						<li><strong>Alimentazione:</strong> Carnivoro</li>
@@ -102,18 +102,18 @@
 						consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 					</p>
 				</div>
-				<div class="w3-center padding-2">
-					<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> Visualizza la scheda del dinosauro </p></a>
+				<div class="center padding-2">
+					<a href="" class="btn green-sea"><p> Visualizza la scheda del dinosauro </p></a>
 				</div>
 			</div>
 		</div>
-		<div class="w3-half">
-			<div class="w3-card-2 w3-white">
-				<div class="w3-padding-large w3-flat-green-sea">
-					<h1 class="w3-center"> L'articolo del giorno </h1>
+		<div class="half">
+			<div id="daily-article" class="card">
+				<div class="padding-large green-sea">
+					<h1> L'articolo del giorno </h1>
 				</div>
-				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro" style="width:100%; margin-bottom:2em">
-				<div class="w3-padding-large">
+				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
+				<div class="padding-large">
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
@@ -121,8 +121,8 @@
 						consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 					</p>
 				</div>
-				<div class="w3-center padding-2">
-					<a href="" class="w3-btn w3-flat-green-sea w3-round"><p> Leggi l'articolo </p></a>
+				<div class="center padding-2">
+					<a href="" class="btn green-sea"><p> Leggi l'articolo </p></a>
 				</div>
 			</div>
 		</div>
