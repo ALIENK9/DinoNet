@@ -28,12 +28,34 @@ a {
 }
 
 h1 {
+	font-size: 2em; 
 	font-weight: 900;
 	font-transform: uppercase;
 }
 
 h3 {
 	font-weight: 900;
+}
+
+input {
+	padding:8px;
+	display:block;
+	border:none;
+	border-bottom:1px solid #ccc;
+	width:100%;
+	border-radius:4px;
+}
+
+header {
+	background-image: url('../img/dino-pattern.jpg');
+}
+
+.index {
+	margin-left:20%;
+}
+
+.index p {
+	font-size: 1.2em;
 }
 
 /*
@@ -43,6 +65,12 @@ h3 {
 */
 .main {
 	margin-left:160px;
+}
+
+/* Home */
+
+#header-home {
+	text-align: center;
 }
 
 #title-card {
@@ -60,9 +88,245 @@ h3 {
 	display: inline-block;
 }
 
+#title-card h1, #title-card h3, #title-card h4 {
+	text-align: center;
+}
+
+/* /Home */
+
+/* About */
+
+#about h1 {
+	text-align: center;
+	color: #16a085;
+}
+
+#about img {
+	width: 100%;
+}
+
+/* /About */
+
+/* Dino search */
+
+#dino-search {
+	text-align: center;
+}
+
+/* /Dino search */
+
+/* Daily stuff */
+
+#daily-dino h1, #daily-article h1 {
+	text-align: center;
+}
+
+#daily-dino img, #daily-article img {
+	width:100%; 
+	margin-bottom:2em;
+}
+
+/* /Daily stuff */
+
+/* History */
+
+#scoperta {
+	background-image:url('../img/dino-1.jpg');
+}
+
+#bipedi-quadrupedi {
+	background-image:url('../img/dino-3.jpg');
+}
+
+#volcano-divider {
+	background-image:url('../img/volcano.jpg');
+	background-position:bottom;
+}
+
+/* /History */
+
+/* Layout */
+
+.content{
+	max-width:980px;
+	margin:auto;
+	padding:0.01em 16px;
+}
+
+.card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+
+.wide{letter-spacing:4px}
+
+.center{
+	text-align: center;
+}
+
+.right{
+	float: right !important;
+}
+
+.btn{
+	border:none;
+	display:inline-block;
+	outline:0;
+	padding:8px 16px;
+	vertical-align:middle;
+	overflow:hidden;
+	text-decoration:none;
+	text-align:center;
+	cursor:pointer;
+	white-space:nowrap;
+	border-radius:4px;
+}
+.btn:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+
+.row:after,.row:before,.row-padding:after,.row-padding:before {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+.row-padding,.row-padding>.half,.row-padding>.third,.row-padding>.twothird,.row-padding>.threequarter,.row-padding>.quarter{
+	padding:0 8px;
+}
+
+.ghost-half {
+	padding-top: 12em;
+	padding-bottom: 12em;
+}
+
+.ghost-half img{
+	width: 100%;
+}
+
+.half,.third,.twothird,.threequarter,.quarter{
+	float:left;
+	width:100%;
+}
+
+.bar .bar-item {
+    float: left;
+    width: auto;
+    border: none;
+    outline: none;
+    display: block;
+}
+
+.bar {
+    width: 100%;
+    overflow: hidden;
+	position:fixed;
+	z-index:1;
+	top:0;
+}
+
+.bar:before,.bar:after{
+	content:"";
+	display:table;
+	clear:both;
+}
+
+.panel{
+	padding:0.01em 16px;
+	margin-top:16px;
+	margin-bottom:16px
+}
+
+.caption {
+	font-size:18px!;
+	text-align: center;
+}
+
+.white {
+	color: black !important;
+	background-color:#fff !important;
+}
+
+.white h1 {
+	color: #16a085 !important;
+	text-align: center;
+}
+
+.white p {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.green-sea{
+	color:#fff !important;
+	background-color:#16a085 !important;
+}
+
 .text-green-sea {
 	color: #16a085;
 }
+
+.overlay{
+	position:fixed;
+	display:none;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:rgba(0,0,0,0.5);
+	z-index:2;
+}
+
+
+.sidebar{
+	height:100%;
+	width:160px;
+	background-color:#fff;
+	position:fixed!important;
+	z-index:3;
+	overflow:auto;
+}
+
+/* /Layout */
+
+/* Responsiveness */
+
+@media (min-width:601px){
+	.quarter{width:24.99999%;}
+	.third{width:33.33333%;}
+	.half{width:49.99999%;}
+	.twothird{width:66.66666%;}
+}
+
+@media (max-width:600px){
+	.hide-small{display:none!important}
+	#scoperta, #bipedi-quadrupedi {background-image: none;}
+	.ghost-half {
+		padding:0px;
+	}
+}
+
+
+@media (max-width: 992px){
+	.main {
+		margin-left: 0!important;
+		margin-right: 0!important;
+	}
+	
+	.sidebar.collapse{display:none}
+}
+
+@media (min-width:993px){
+	.hide-large{display:none!important}
+	.sidebar.collapse{display:block!important}
+}
+
+@media only screen and (max-device-width: 1024px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+/* /Responsiveness */
+
+/* Margin e padding */
 
 .margin-2 {
 	margin-top:2em;
@@ -73,6 +337,13 @@ h3 {
 	margin-top:3em;
 	margin-bottom:3em;
 }
+
+.side-padding {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.padding-large{padding:12px 24px!important}
 
 .padding-2 {
 	padding-top: 2em;
@@ -102,6 +373,8 @@ h3 {
 .wrap-padding {
 	padding: 2em;
 }
+
+/* /Margin e padding */
 
 /* Loading */
 
@@ -157,7 +430,7 @@ h3 {
   position: fixed;
   bottom: 20px;
   right: 30px;
-  z-index: 2;
+  z-index: 1;
   border: none;
   outline: none;
   color: white;
@@ -180,27 +453,8 @@ h3 {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
-@media only screen and (max-device-width: 1024px) {
-    .parallax {
-        background-attachment: scroll;
-    }
-}
  
 /* fine - Parallax */
-
-header {
-	background-image: url('../img/dino-pattern.jpg');
-}
-
-.index {
-	margin-left:20%;
-}
-
-.index p {
-	font-size: 1.2em;
-}
 
 /*
 ======================================================================
@@ -230,7 +484,7 @@ header {
 	max-width: 160px;
 	min-width: 120px;
 
-	background-color: transparent;
+	background-color: white;
 
 	font-size: 1.5em;
 	text-align: center;
@@ -241,14 +495,14 @@ header {
 
 .menu_entry {
 	width: 100%;
-	padding: 0.4em 0.4em;
+	padding: 1em;
 	/*border:none;*/
 	/*outline:none;*/
 	display:block;
 
 	white-space: normal;
 
-	background-color: #71e8d0;
+	background-color: white;
 	color: black;
 	/**#16a085; #21685a;*/
 }
@@ -264,6 +518,10 @@ header {
 .menu_entry:hover {
 	color: #fff;
 	background-color: #16a085;
+}
+
+.menu_entry:hover img {
+	filter: invert(100%);
 }
  
 
