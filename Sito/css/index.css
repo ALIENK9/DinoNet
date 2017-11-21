@@ -651,3 +651,27 @@ header {
 .tilecontent {
 	padding: 1em;
 }
+
+
+/*
+======================================================================
+								ARTICOLI
+======================================================================
+*/
+
+#petrified_wood {
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+#meteor_crater {
+	float: left;
+	/*width: 50%;
+	margin: 0 0.5em 0.5em 0;*/
+}
+
+#carboniferous_forest {
+	float: right;
+	/*width: 50%;
+	margin: 0 0 0.5em 0.5em;*/
+}
