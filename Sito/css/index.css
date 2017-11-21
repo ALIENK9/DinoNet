@@ -53,7 +53,7 @@ a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:
 h1,h2,h3,h4,h5,h6{
 	font-family:"Segoe UI",Arial,sans-serif;
 	font-weight:400;
-	margin:10px 0
+	margin:10px 0;
 }
 
 p {
@@ -73,11 +73,11 @@ h3 {
 	font-weight: 900;
 }
 
-h4{font-size:1.3em}
+h4{font-size:1.3em;}
 
-h5{font-size:1.1em}
+h5{font-size:1.1em;}
 
-h6{font-size:1em}
+h6{font-size:1em;}
 
 input {
 	padding:8px;
@@ -212,9 +212,9 @@ header {
 	padding:0.01em 16px;
 }
 
-.card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
+.card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
 
-.wide{letter-spacing:4px}
+.wide{letter-spacing:4px;}
 
 .center{
 	text-align: center;
@@ -288,7 +288,7 @@ header {
 .panel{
 	padding:0.01em 16px;
 	margin-top:16px;
-	margin-bottom:16px
+	margin-bottom:16px;
 }
 
 .caption {
@@ -374,7 +374,7 @@ header {
 		margin-right: 0!important;
 	}
 	
-	.sidebar.collapse{display:none}
+	.sidebar.collapse{display:none;}
 }
 
 @media (min-width:993px){
