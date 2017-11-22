@@ -39,46 +39,6 @@
 
 <!-- Content -->
 
-<!-- About -->
-
-<div id="about" class="content padding-6">
-	<h1> COS'E' <span class="wide"> DINOSWAG </span> </h1>
-	<br>
-	<p>
-		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>, e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
-	</p>
-	<div class="row-padding hide-small">
-		<div class="third padding-large center">
-			<!--img src="img/dino-shape-1.svg"-->
-			<span id="shape1" class="small-shape"></span> <!-- icone -->
-			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
-		</div>
-		<div class="third padding-large center">
-			<!--img src="img/dino-shape-2.svg"-->
-			<span id="shape2" class="small-shape"></span>
-			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
-		</div>
-		<div class="third padding-large center">
-			<!--img src="img/dino-shape-3.svg"-->
-			<span id="shape3" class="small-shape"></span>
-			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
-		</div>
-	</div>
-</div>
-
-<!-- /About -->
-
-<!-- Cerca un dinosauro -->
-
-<!--div id="dino-search" class="card green-sea padding-3">
-	<div class="content">
-		<h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
-		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
-	</div>
-</div-->
-
-<!-- /Cerca un dinosauro -->
-
 <!-- Materiale del giorno -->
 
 <div id="daily-stuff" class="content-large padding-6">
@@ -134,6 +94,47 @@
 </div>
 
 <!-- /Materiale del giorno -->
+
+<!-- Cerca un dinosauro -->
+
+<!--div id="dino-search" class="card green-sea padding-3">
+	<div class="content">
+		<h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
+		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
+	</div>
+</div-->
+
+<!-- /Cerca un dinosauro -->
+
+
+<!-- About -->
+
+<div id="about" class="content padding-6">
+	<h1> COS'E' <span class="wide"> DINOSWAG </span> </h1>
+	<br>
+	<p>
+		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>, e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
+	</p>
+	<div class="row-padding hide-small">
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-1.svg"-->
+			<span id="shape1" class="small-shape"></span> <!-- icone -->
+			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
+		</div>
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-2.svg"-->
+			<span id="shape2" class="small-shape"></span>
+			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
+		</div>
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-3.svg"-->
+			<span id="shape3" class="small-shape"></span>
+			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
+		</div>
+	</div>
+</div>
+
+<!-- /About -->
 
 <!-- /Content -->
 
