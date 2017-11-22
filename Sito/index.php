@@ -29,7 +29,9 @@
 		<br>
 		<h4>un divertente portale sui dinosauri</h4>
 		<br><br>
-		<a href="" class="btn green-sea"><p> impara qualcosa sui dinosauri </p></a>
+		<a href="species.php" class="btn green-sea"><p> Cerca un dinosauro </p></a>
+		<a href="articles.php" class="btn green-sea"><p> Cerca un articolo  </p></a>
+		<a href="#about" class="btn green-sea"><p>      Chi siamo     </p></a>
 	</div>
 </header>
 
@@ -43,12 +45,9 @@
 	<h1> COS'E' <span class="wide"> DINOSWAG </span> </h1>
 	<br>
 	<p>
-		Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-		totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-		sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-		consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>, e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
 	</p>
-	<div class="row-padding">
+	<div class="row-padding hide-small">
 		<div class="third padding-large center">
 			<!--img src="img/dino-shape-1.svg"-->
 			<span id="shape1" class="small-shape"></span> <!-- icone -->
@@ -71,18 +70,18 @@
 
 <!-- Cerca un dinosauro -->
 
-<div id="dino-search" class="card green-sea padding-3">
+<!--div id="dino-search" class="card green-sea padding-3">
 	<div class="content">
 		<h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
 		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
 	</div>
-</div>
+</div-->
 
 <!-- /Cerca un dinosauro -->
 
 <!-- Materiale del giorno -->
 
-<div id="daily-stuff" class="content padding-6">
+<div id="daily-stuff" class="content-large padding-6">
 	<div class="row-padding">
 		<div class="half">
 			<div id="daily-dino" class="card">
