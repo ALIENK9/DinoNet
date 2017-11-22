@@ -138,6 +138,29 @@ header {
 
 /* /Home */
 
+.small-shape {
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#shape1 {
+	background-image: url('../img/dino-shape-1.svg');
+}
+
+#shape2 {
+	background-image: url('../img/dino-shape-2.svg');
+}
+
+#shape3 {
+	background-image: url('../img/dino-shape-3.svg');
+}
+
+
+
 /* About */
 
 #about h1 {
@@ -469,6 +492,7 @@ header {
  -webkit-animation: bounce 2s infinite;
  -moz-animation: bounce 2s infinite;
  -o-animation: bounce 2s infinite;
+ filter: invert(100%);
 }
  
 @-webkit-keyframes bounce {
@@ -616,7 +640,7 @@ header {
 ======================================================================
 */
 
-.container {
+/*.container {
 	max-width: 90%;
 	margin: auto;
 }
@@ -650,7 +674,7 @@ header {
 
 .tilecontent {
 	padding: 1em;
-}
+}*/
 
 
 /*

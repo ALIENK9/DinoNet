@@ -44,7 +44,7 @@
 		<div class="padding-large green-sea">
 			<h1> L'articolo del giorno </h1>
 		</div>
-		<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
+		<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
 		<div class="padding-large">
 			<h3 class="text-green-sea center"> Titolo dell'articolo </h3>
 			<br>
@@ -74,7 +74,7 @@
 					<div class="padding-large green-sea">
 						<h1> Titolo dell\'articolo </h1>
 					</div>
-					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
+					<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
 					<div class="padding-large">
 						<p>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,

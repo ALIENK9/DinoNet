@@ -54,7 +54,7 @@
 			<div class="padding-large green-sea">
 				<h1> Nome del dinosauro </h1>
 			</div>
-			<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
+			<img src="img/dailydino-test.png" alt="Triceratopo">
 			<div class="padding-large">
 				<ul>
 					<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
@@ -85,7 +85,7 @@
 			<div class="padding-large green-sea">
 				<h1> Titolo dell'articolo </h1>
 			</div>
-			<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
+			<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
 			<div class="padding-large">
 				<p>
 					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -115,7 +115,7 @@
 					<div class="padding-large green-sea">
 						<h1> Nome del dinosauro </h1>
 					</div>
-					<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
+					<img src="img/dailydino-test.png" alt="Triceratopo">
 					<div class="padding-large">
 						<ul>
 							<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>

@@ -49,16 +49,19 @@
 		consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
 	</p>
 	<div class="row-padding">
-		<div class="third padding-large">
-			<img src="img/dino-shape-1.svg">
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-1.svg"-->
+			<span id="shape1" class="small-shape"></span> <!-- icone -->
 			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
 		</div>
-		<div class="third padding-large">
-			<img src="img/dino-shape-2.svg">
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-2.svg"-->
+			<span id="shape2" class="small-shape"></span>
 			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
 		</div>
-		<div class="third padding-large">
-			<img src="img/dino-shape-3.svg">
+		<div class="third padding-large center">
+			<!--img src="img/dino-shape-3.svg"-->
+			<span id="shape3" class="small-shape"></span>
 			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
 		</div>
 	</div>
@@ -70,8 +73,8 @@
 
 <div id="dino-search" class="card green-sea padding-3">
 	<div class="content">
-		<label> <h1> CERCA UN DINOSAURO! </h1> </label>
-		<input class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
+		<h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
+		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
 	</div>
 </div>
 
