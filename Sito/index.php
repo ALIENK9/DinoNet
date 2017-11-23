@@ -30,8 +30,8 @@
 		<h4> Scopri i giganti della preistoria! </h4>
 		<br><br>
 		<a href="#about" class="btn green-sea"><p> Informazioni sul sito </p></a>
-		<a href="#search" class="btn green-sea"><p> Ricerca contenuti </p></a>
-		<a href="#daily-stuff" class="btn green-sea"> Contenuti del giorno </a>		
+		<a href="#search-label" class="btn green-sea"><p> Ricerca contenuti </p></a>
+		<a href="#daily-stuff" class="btn green-sea"><p> Contenuti del giorno </p></a>		
 	</div>
 </header>
 
@@ -48,17 +48,17 @@
 		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>, e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
 	</p>
 	<div class="row-padding hide-small">
-		<div class="padding-large center floating-element wrap-margin">
+		<div class="padding-large center floating-element">
 			<!--img src="img/dino-shape-1.svg"-->
 			<span id="shape1" class="small-shape"></span> <!-- icone -->
 			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
 		</div>
-		<div class="padding-large center floating-element wrap-margin">
+		<div class="padding-large center floating-element">
 			<!--img src="img/dino-shape-2.svg"-->
 			<span id="shape2" class="small-shape"></span>
 			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
 		</div>
-		<div class="padding-large center floating-element wrap-margin">
+		<div class="padding-large center floating-element">
 			<!--img src="img/dino-shape-3.svg"-->
 			<span id="shape3" class="small-shape"></span>
 			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
@@ -72,7 +72,7 @@
 
 <div class="card green-sea padding-3 center">
 	<div class="content">
-		<h1> <label for="search"> Cerchi qualcosa? </label> </h1>
+		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
 		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
 	</div>
 </div>
