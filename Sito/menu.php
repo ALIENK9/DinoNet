@@ -38,4 +38,4 @@
 <div class="hide-large overlay" onclick="close_menu()" title="chiudi menù laterale" id="overlay"></div>
 
 <!-- Push down content on small screens -->
-<div class="hide-large" class="push-down"></div>
+<div class="hide-large push-down"></div>

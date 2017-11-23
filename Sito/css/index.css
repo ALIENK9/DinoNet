@@ -499,11 +499,12 @@ header {
 /* Bouncing Animation */
  
 .bounce {
- animation: bounce 2s infinite;
- -webkit-animation: bounce 2s infinite;
- -moz-animation: bounce 2s infinite;
- -o-animation: bounce 2s infinite;
- filter: invert(100%);
+	animation: bounce 2s infinite;
+	-webkit-animation: bounce 2s infinite;
+	-moz-animation: bounce 2s infinite;
+	-o-animation: bounce 2s infinite;
+	filter: invert(100%);
+  	width: 300px; 
 }
  
 @-webkit-keyframes bounce {
