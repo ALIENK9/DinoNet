@@ -31,8 +31,8 @@
 	</div>
 	<div class="content card green-sea wrap-padding">
 		<div class="content">
-			<label> <h1> CERCA UN ARTICOLO! </h1> </label>
-			<input class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
+			<h1> <label for="search"> CERCA UN ARTICOLO! </label> </h1>
+			<input id="search" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
 		</div>
 	</div>
 </header>

@@ -33,8 +33,8 @@
 	</div>
 	<div class="content card green-sea wrap-padding">
 		<div class="content">
-			<label> <h1> CERCA UN DINOSAURO! </h1> </label>
-			<input class="margin-2" type="text" placeholder="e.g. Brontosauro">
+			 <h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
+			<input id="search" class="margin-2" type="text" placeholder="e.g. Brontosauro">
 		</div>
 	</div>
 </header>
