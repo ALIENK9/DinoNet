@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{geometry}
+%\usepackage{makeidx}
+%\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+%\makeindex
+
+\renewcommand*\contentsname{Sommario}
+
+\title{\textbf{Dino Jaws}\\\large Relazione del progetto di Tecnologie Web a.a. 2017-18}
+\author{Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\clearpage
+	
+	\section{Descrizione dei requisiti}
+	Lo scopo di questa attività di progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textbf{schede descrittive}, una per ciascun dinosauro, e gli \textbf{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è particolarmente rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti e valutare ogni articolo.
+	\subsection{Frontend}
+	
+	\subsubsection{Parte pubblica}
+	Descriviamo brevemente le diverse sezioni, ciascuna corrisposta da un'apposita voce del menù:
+	\begin{itemize}
+		\item Home: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare fra i contenuti del sito ed un sezione con i contenuti del giorno, articoli o schede descrittive;
+		\item Storia: una sezione introduttiva che ripercorre la storia dei dinosauri durante ciascun periodo geologico in cui sono vissuti;
+		\item Specie: sezione dedicata alla descrizione di ogni dinosauro, che contiene un immagine e qualche curiosità.
+		\item Articoli: contiene tutti gli articoli ciascuno con la sua sezione di commenti e le valutazioni degli utenti.
+		\item Accedi: da questa area ogni utente può registrarsi o accedere al proprio account per scrivere o modificare i propri commenti, o valutare articoli.
+		Anche gli amministratori effettuano l'accesso da questa pagina.
+	\end{itemize}
+
+	\subsubsection{Parte privata}
+	È la sezione ccessibile solamente agli utenti amministratori. Questi utenti, possono aggiungere contenuti (articoli o schede dinosauro), e rimuovere commenti degli utenti. Naturalmente possono anch'essi inserire commenti.
+	
+	\subsection{Backend}
+	...
+	
+	
+	
+	\section{Usabilità}
+	Considerato l'aspettativa di utenza, abbiamo ritenuto opportuno focalizzarci sulla semplicità dei contenuti e di utilizzo del sito, ma cercando di ottenere un risultato grafico accattivante. Abbiamo fatto largo uso di immagini, perché efficaci ad attirare l'attenzione ed a intrattenere il nostro tipo di pubblico.\\
+	Abbiamo tenuto in considerazione il fatto che spesso i ragazzi usufruiscono di contenuti web da tablet, più che da desktop. Per questo abbiamo scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
+	La presenza di molte immagini e il layout grafico "a piastrelle" che abbiamo scelto, ha anche imposto l'utilizzo dello scroll, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Si veda ad esempio le schede degli store di applicazioni di Apple e Google. Pertanto, in particolare gli utenti giovani, sono abituati all'utilizzo di scroll verticale. \\
+	Per quanto riguarda l'utilizzo da cellulare, abbiamo tenuto in considerazione vari aspetti. La navigazione da smartphone, ancora più che quella da tablet, avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, abbiamo scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, visto che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, si elimina anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.
+	
+	\section{Accessibilità}
+	...	
+	
+\end{document}
