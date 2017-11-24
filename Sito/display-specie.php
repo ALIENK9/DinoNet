@@ -75,7 +75,7 @@
 		</div>
 	</div>
 	<div class="half wrap-padding">
-		<div id="daily-dino" class="card">
+		<div class="daily-dino card">
 			<img src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
 		</div>
 	</div>

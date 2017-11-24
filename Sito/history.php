@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head xml:lang="it-IT" lang="it-IT">
+<html xml:lang="it-IT" lang="it-IT">
+<head>
 	<title>La storia dei dinosauri</title>
 	<meta name="description" content="La storia dei dinosauri, spiegata semplicemente">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
@@ -67,7 +67,7 @@
 <!-- La scoperta -->
 
 <div id="scoperta" class="row parallax">
-	<div class="half ghost-half"><img class="hide-large" src="img/dino-1.jpg"></div>
+	<div class="half ghost-half"><img class="hide-large" src="img/dino-1.jpg" alt="Cranio fossile di un grande dinosauro carnivoro"></div>
 	<div class="half">
 		<div class="white wrap-padding">
 			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
@@ -155,7 +155,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="half ghost-half"><img class="hide-large" src="img/dino-3.jpg"></div>
+	<div class="half ghost-half"><img class="hide-large" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri"></div>
 </div>
 
 <!-- L'estinzione -->

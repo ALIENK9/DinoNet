@@ -189,11 +189,11 @@ header {
 
 /* Daily stuff */
 
-#daily-dino h1, #daily-article h1 {
+.daily-dino h1, .daily-article h1 {
 	text-align: center;
 }
 
-#daily-dino img, #daily-article img {
+.daily-dino img, .daily-article img {
 	width:100%; 
 	margin-bottom:2em;
 }

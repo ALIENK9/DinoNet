@@ -50,7 +50,7 @@
 				<p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 			</div>
 		</div>
-		<div id="daily-dino" class="card">
+		<div class="daily-dino card">
 			<div class="padding-large green-sea">
 				<h1> Nome del dinosauro </h1>
 			</div>
@@ -81,7 +81,7 @@
 				<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
 			</div>
 		</div>
-		<div id="daily-article" class="card">
+		<div class="daily-article card">
 			<div class="padding-large green-sea">
 				<h1> Titolo dell'articolo </h1>
 			</div>
@@ -111,7 +111,7 @@
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div id="daily-dino" class="card wrap-margin">
+				<div class="daily-dino card wrap-margin">
 					<div class="padding-large green-sea">
 						<h1> Nome del dinosauro </h1>
 					</div>

@@ -32,7 +32,7 @@
 <!-- Articoli -->
 
 <div class="padding-6 content">
-	<div id="daily-article" class="card">
+	<div class="daily-article card">
 		<div class="padding-large green-sea">
 			<h1> Estinzione: diverse teorie</h1>
 		</div>
@@ -80,7 +80,7 @@
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div id="daily-article" class="card wrap-margin">
+				<div class="daily-article card wrap-margin">
 					<div class="padding-large green-sea">
 						<h1> L\'articolo del giorno </h1>
 					</div>
