@@ -108,6 +108,8 @@
 
 <?php include_once('tothetop.php') ?>
 
+</div>
+	
 <script>
 // Script to open and close sidebar
 function open_menu() {
@@ -120,8 +122,6 @@ function close_menu() {
     document.getElementById("overlay").style.display = "none";
 }
 </script>
-	
-</div>
 	
 </body>
 
