@@ -2,7 +2,7 @@
 
 <div class="loading green-sea">
 	<div class="display-middle center">
-		<img class="bounce" src="img/dino-loading.png" alt="Caricamento"/> <!--style="filter: invert(100%)"-->
+		<img class="bounce" src="img/dino-loading.png" alt="Caricamento"/>
     </div>
 </div>
 
