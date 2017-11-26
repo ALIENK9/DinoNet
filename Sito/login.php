@@ -28,30 +28,29 @@
 		<br>
 		<h4>entra nel mondo dei dinosauri!</h4>
 	</div>
+	
+	<!-- Login -->
+
+	<div id="login" class="content padding-6">
+		<div class="card green-sea wrap-padding">
+			<h1 xml:lang="en-EN" lang="en-EN">Login</h1>
+			<hr>
+			<form>
+				<label xml:lang="en-EN" lang="en-EN"><p>email</p></label>
+				<input type="text" placeholder="email">
+				<label xml:lang="en-EN" lang="en-EN"><p>password</p></label>
+				<input type="password" placeholder="password">
+				<br><br>
+				<input type="submit" value="ACCEDI" class="card btn wide text-green-sea white">
+			</form>
+		</div>
+	</div>
+
+	<!-- /Login -->
+
 </header>
 
 <!-- /Header -->
-
-<!-- Content -->
-
-<!-- Login -->
-
-<div id="login" class="content padding-12">
-	<div class="card green-sea wrap-padding">
-		<h1 xml:lang="en-EN" lang="en-EN">Login</h1>
-		<hr>
-		<form>
-			<label xml:lang="en-EN" lang="en-EN"><p>email</p></label>
-			<input type="text" placeholder="email">
-			<label xml:lang="en-EN" lang="en-EN"><p>password</p></label>
-			<input type="password" placeholder="password">
-		</form>
-	</div>
-</div>
-
-<!-- /Login -->
-
-<!-- /Content -->
 
 <?php include_once('footer.php') ?>
 
