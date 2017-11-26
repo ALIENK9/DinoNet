@@ -109,7 +109,7 @@ header {
 ======================================================================
 */
 .main {
-	margin-left:160px;
+	margin-left:10%;
 }
 
 /* Home */
@@ -368,7 +368,7 @@ header {
 .sidebar{
 	height:100%;
 	max-width:160px;
-	width: 160px;
+	width: 10%;
 	background-color:#fff;
 	position:fixed!important;
 	z-index:3;
@@ -410,12 +410,17 @@ header {
 		margin-right: 0!important;
 	}
 	
-	.sidebar.collapse{display:none;}
+	.sidebar.collapse{
+		display:none;
+		width:100%;
+	}
 }
 
 @media (min-width:993px){
 	.hide-large{display:none!important}
-	.sidebar.collapse{display:block!important}
+	.sidebar.collapse{
+		display:block;
+	}
 }
 
 @media only screen and (max-device-width: 1024px) {
@@ -544,11 +549,11 @@ header {
 	z-index: 1;
 	border: none;
 	outline: none;
-	color: white;
+	color: black;
 	cursor: pointer;
 	padding: 15px;
 	border-radius: 10px;
-	background-color: orange;
+	background-color: white;
 }
 
 /* fine - To the top btn */
@@ -606,27 +611,22 @@ header {
 	margin: 0.2em;
 }
 
-.menu_entry:hover, .menu_entry:active {
+.menu_entry:hover, .menu_entry:active, .sidebar .active {
 	color: #fff;
 	background-color: #16a085;
 }
-
 
 /****************
 *  ICONE MENU'	*
 *****************/
 
-.menu_entry:hover > .menu_icon {
-	filter: invert(100%);
-}
-
-.menu_entry:active > .menu_icon {
+.menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
 	filter: invert(100%);
 }
 
 .menu_icon { /*proprietà comuni a tutte le icone*/
-	height: 80px;
-    width: 80px;
+	height: 60px;
+    width: 60px;
     display: inline-block;
     background-color: none;
     background-image: none;
