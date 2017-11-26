@@ -347,7 +347,7 @@ header {
 }
 
 .text-green-sea {
-	color: #16a085;
+	color: #16a085 !important;
 }
 
 .overlay{
