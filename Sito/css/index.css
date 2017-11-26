@@ -118,6 +118,10 @@ header {
 	text-align: center;
 }
 
+#header-home label {
+	text-align: left;
+}
+
 #title-card {
 	padding: 3em;
 	background-color: white;
