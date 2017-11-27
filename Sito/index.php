@@ -29,9 +29,9 @@
 		<br>
 		<h4> Scopri i giganti della preistoria! </h4>
 		<br><br>
-		<a href="#about" class="btn green-sea"><p> Informazioni sul sito </p></a>
-		<a href="#search-label" class="btn green-sea"><p> Ricerca contenuti </p></a>
-		<a href="#daily-stuff" class="btn green-sea"><p> Contenuti del giorno </p></a>		
+		<a href="#about" class="btn green-sea wrap-margin"><p> Informazioni sul sito </p></a>
+		<a href="#search-label" class="btn green-sea wrap-margin"><p> Ricerca contenuti </p></a>
+		<a href="#daily-stuff" class="btn green-sea wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
 </header>
 

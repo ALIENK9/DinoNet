@@ -112,7 +112,7 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-	
+
 <script>
 // Script to open and close sidebar
 function open_menu() {
