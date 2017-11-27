@@ -71,6 +71,9 @@
 	</div>
 </div>
 
+<?php include_once('commentboard.php') ?>
+
+
 <div class="padding-6 content-large">
 	<div class="green-sea center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
