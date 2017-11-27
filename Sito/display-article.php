@@ -7,7 +7,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
-	<link rel="stylesheet" href="css/index.css"> 
+	<link rel="stylesheet" href="css/w3.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -25,82 +27,66 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Titolo dell'articolo </h1>
+		<h1 class="title wide"> Il triceratopo </h1>
 	</div>
 </header>
 
-<!-- Articoli -->
 
-<div class="padding-6 content">
-	<div class="daily-article card">
-		<div class="padding-large green-sea">
-			<h1> Estinzione: diverse teorie</h1>
-		</div>
-		<img id="petrified_wood" src="img/petrified_wood.jpg" alt="Sezione pietrificata di tronco fossile nel parco nazionale della Foresta Pietrificata in Arizona">
-		<div class="wrap-padding">
-			<p>
-				Dopo aver domiato la Terra per 170 milioni di anni, impedendo a tutte le altre forme (pesci, uccelli e soprattutto mammiferi) di affermarsi, i grandi rettili di colpo scomparvero. Sessantacinque milioni di anni fa, sulla Terra si produce un'immensa catastrofe che elimina tutti i dinosauri in ogni angolo del pianeta.<br>
-				Non solo: ma anche gran parte della vita si estingue, oltre che sulla terraferma, anche nei mari e nei cieli. Secondo alcune stime il 50-70% delle specie viventi scomparvero. In particolare si estinsero tutti gli animali di una certa taglia, ma anche moltissimi animali microscopici, e buona parte del plancton. Sulla scomparsa dei dinosauri sono state formulate più di 60 ipotesi. Troppe. Alcune del tutto bizzarre, ma altre più probabili.
-			</p>
-			<img id="meteor_crater" src="img/meteor_crater.jpg" alt="Immagine del Meteor Crater in Arizona">
-			<p>
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-				sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-				consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			</p>
-			<p>
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-				sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-				consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			</p>
-			<h2>Estinzione: e dopo?</h2>
-			<p>
-				L'era Cenozoica (che comprende l'attuale periodo Quaternario e il precedente Terziario) fece seguito all'estizione di massa della fine del Cretacico, che determinò la scomparsa dei dinosauri, degli pterosauri, dialcuni uccelli e mammiferi e di molte specie marine.
-			</p>
-			<p>
-				Nel corso del Terziario inferiore, i mammiferi e gli uccelli sopravissuti si diversificarono rapidamente, occupando le nicchie ecologiche
-				lasciate libere dai dinosauri. Nel Terziario superiore, durante le epoche del Miocene e Pliocene, la diffusione delle praterie condusse all'evoluzione di forme moderne di mammiferi erbivori.
-			</p>
-			<img id="carboniferous_forest" src="img/carboniferous_forest.jpg" alt="Uno scorcio di foresta del periodo Carbonifero">
-			<p>
-				A partire dal Quaternario (le cui epoche sono Pleistocene e Olocene), la vita animale e vegetale rassomigliava genericamente alle specie moderne, sebbene alcune, che si erano adattate alla sopravvivenza nel corso dei periodi glaciali, non siano sopravvissute fino ai giorni nostri. Alcune famiglie invece, sono giunte fino ai nostri giorni: per esempio le pteridofite, la grande famiglia delle felci, che fecero la loro apparizione durante il periodo Carbonifero, più di 300 milioni di anni fa.
-			</p>
-		</div>
-	</div>
-</div>
+<!-- Dinosauro -->
 
-<div class="padding-6 content-large">
-	<div class="green-sea center wrap-padding">
-		<h1 class="title">Le ultime pubblicazioni</h1>
-	</div>
-	<div class="row-padding">
-	<?php
-		for($i = 0; $i < 3; $i++) {
-		echo'
-			<div class="third wrap-padding">
-				<div class="daily-article card wrap-margin">
-					<div class="padding-large green-sea">
-						<h1> L\'articolo del giorno </h1>
-					</div>
-					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
-					<div class="padding-large">
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="" class="btn green-sea"><p> Leggi l\'articolo </p></a>
-					</div>
-				</div>
+<div class="content-large padding-3">
+	<div class="card">
+		<div class="green-sea center wrap-padding">
+			<h1 class="title" xml:lang="en" lang="en">Coelopysis</h1>
+		</div>
+		<div class="wrap-padding w3-row-padding">
+		<div class="half wrap-padding">
+			<div class="white wrap-padding">
+				<h3>Caratteristiche</h3>
+				<br>
+				<ul>
+					<li><strong>Descritto da:</strong> Edward Drinker Cope, 1889</li>
+					<li><strong>Età:</strong> 208-200 milioni</li>
+					<li><strong>Habitat:</strong> Pianure desertiche</li>
+					<li><strong>Lunghezza:</strong> 2.8 m</li>
+					<li><strong>Peso:</strong> 46 kg</li>
+					<li><strong>Alimentazione:</strong> Rettili, pesci</li>
+				</ul>
 			</div>
-		';
-		}
-	?>
+		</div>
+		<div class="half wrap-padding">
+			<div class="daily-dino">
+				<img src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
+			</div>
+		</div>
+		</div>
+		<div class="wrap-padding white">
+			<h3>Descrizione</h3>
+			<br>
+			<p>
+				Stando ai ritrovamenti effettuati fin’ora, uno dei primi dinosauri a popolare la regione sudoccidentale degli Stati Uniti verso la fine del Triassico (circa 215 milioni di anni fa) è il <span xml:lang="en" lang="en"><em>Coelophysis</em></span> (nome completo "<span xml:lang="en" lang="en"><em>Coelophysis Bauri</em></span>"). Il suo nome deriva dal greco e significa "forma cava" in riferimento alle sue ossa cave, in particolare a quelle del cranio, che sono dotate di piccole cavità per ridurre il peso dell’animale. Questa caratteristica lo distingue da altre specie di dinosauri più primitive come gli herrerasauridi vissuti  metà del Triassico. Una specializzazione molto particolare del <span xml:lang="en" lang="en"><em>Coelophysis</em></span> riguarda la coda, le cui vertebre erano stranamente dotate di strutture allungate che probabilmente limitavano molto il movimento verticale. Infatti si ritiene che servisse per controbilanciare il peso corporeo. Questa semirigidità può essere paragonata a quella dei successivi tetanuri, nei quali la coda è irrigidita dai tendini ossificati.
+			</p>
+			<br>
+			<p>
+				Lungo fino a tre metri e alto in media poco più di un metro, il <span xml:lang="en" lang="en"><em>Coelophysis</em></span> aveva una struttura leggera e agile, che gli consentiva di catturare lucertole, anfibi e insetti alati per cibarsene.
+				Per individuare e catturare la preda, si ritiene che il <span xml:lang="en" lang="en"><em>Coelophysis</em></span> si servisse dei grandi occhi e del collo lungo e serpentiforme, sufficientemente flessibile per girarsi con rapidità; la testa era lunga e stretta e le mascelle contenevano denti piccoli, aguzzi e aghiformi, dai bordi seghettati.
+				<br>
+				L’analisi dello scheletro suggerisce che il <span xml:lang="en" lang="en"><em>Coelophysis</em></span> si spostasse velocemente sulle due agili e magre zampe posteriori. Ciascuno degli arti anteriori, piuttosto corti (misuravano un terzo degli arti posteriori), terminava con quattro dita, tre delle quali funzionali e artigliate. Sono state rinvenute due forme di <span xml:lang="en" lang="en"><em>Coelophysis</em></span>: una più gracile, l'altra più robusta, e si ritiene che queste differenze rappresentano un caso di dimorfismo sessuale nella stessa specie.
+			</p>
+			
+			<br>
+			
+			<h3>Una curiosità</h3>
+			<br>
+			<p>
+				<strong> Lo sapevi che... </strong> nel 1947 una spedizione nel Nuovo Messico (<abbr xml:lang="en" lang="en" title="United States of America">USA</abbr>), capitanata da <span xml:lang="en" lang="en">Edwin Colbert</span>, fece una sensazionale scoperta. In una proprietà nota col nome di <span xml:lang="en" lang="en">Ghost Ranch</span> (“ranch fantasma”) vennero trovati centinaia di scheletri di <span xml:lang="en" lang="en"><em>Coelophysis</em></span>, che giacevano gli uni sugli altri. La scoperta era particolarmente eccitante, perché riguardava <span xml:lang="en" lang="en"><em>Coelophysis</em></span> di età e dimensioni differenti. Sembra che l'intero branco fosse andato incontro alla morte nel medesimo tempo. Ciò fa supporre che il decesso sia stato causato da un'improvvisa calamità, per esempio da una violenta inondazione che fece annegare gli animali, sommergendoli.
+			</p>
+			<br>
+			<p>
+				Nella cassa toracica di alcuni adulti si sono ritrovati resti di piccoli della stessa specie: all'inizio gli esperti pensarono che si trattasse di figli vicini alla nascita, ma non ancora venuti alla luce. Ma i dinosauri deponevano uova e non erano vivipari, perciò forse si trattava piuttosto degli avanzi di un ultimo pasto. Quegli scheletri, inoltre, erano davvero troppo grandi per poter essere contenuti in un uovo o per passare attraverso le ossa del bacino. Per quanto possa essere stata sorprendente, l'ipotesi che i <span xml:lang="en" lang="en"><em>Coelophysis</em></span> non si nutrissero solo di piccole lucertole ma anche dei membri giovanissimi della loro stessa specie sembrò decisamente realistica.<br>
+				Tuttavia, nonostante questa teoria sia stata più volte acclamata dalla maggior parte dei paleontologi, di recente è stata messa in discussione. L'accatastarsi delle ossa le une sulle altre, infatti, potrebbe aver portato <span xml:lang="en" lang="en">Edwin Colbert</span> e i suoi colleghi a ritenere di aver individuato resti di giovani esemplari nella cavità addominale degli adulti, quando essi potevano semplicemente essere stati "schiacciati" sotto un individuo più grande. In particolare, nel 2005 sono state rinvenute ulteriori prove che derivano dai contenuti dello stomaco fossilizzati in alcuni esemplari di <span xml:lang="en" lang="en"><em>Coelophysis</em></span>: i resti dei presunti "giovani" sarebbero da attribuire ad un’altro rettile, il crocodilomorfo Dromomeron.
+			</p>
+		</div>
 	</div>
 </div>
 
