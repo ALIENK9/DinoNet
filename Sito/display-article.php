@@ -71,7 +71,7 @@
 	</div>
 </div>
 
-<?php include_once('commentboard.php') ?>
+<?php include_once('commentboard.php') ?>   
 
 
 <div class="padding-6 content-large">
