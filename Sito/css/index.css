@@ -64,6 +64,7 @@ h1 {
 	font-size: 2em; 
 	font-weight: 900;
 	font-transform: uppercase;
+	text-align: center;
 }
 
 h2{font-size:1.7em;}
