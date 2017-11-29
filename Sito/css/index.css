@@ -126,6 +126,17 @@ header {
 	text-align: left;
 }
 
+.down-arrow {
+	margin-top:3.5em;
+	width: 50px;
+	height: 50px;
+	background-image: url('../img/icons/down-arrow.png');
+    background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+	background-color:#16a085;
+}
+
 #title-card {
 	padding: 3em;
 	background-color: white;
@@ -296,7 +307,7 @@ header {
 	width: 100%;
 }
 
-.half,.third,.twothird,.threequarter,.quarter{
+.half,.third,.twothird,.quarter{
 	float:left;
 	width:100%;
 }
@@ -422,11 +433,10 @@ header {
 	.sidebar.collapse{
 		display:block;
 	}
-}
-
-@media only screen and (max-device-width: 1024px) {
-    .parallax {
+	
+	.parallax {
         background-attachment: scroll;
+		background-size:auto 100%;
     }
 }
 
@@ -435,7 +445,11 @@ header {
 /* Margin e padding */
 
 .wrap-margin {
-	margin:2em 0.5em;
+	margin:0.5em 0.5em;
+}
+
+.margin-top {
+	margin-top: 2em;
 }
 
 .side-margin {
@@ -502,6 +516,10 @@ header {
 	z-index: 9999;
 }
 
+.loading img {
+  	width: 300px; 
+}
+
 /* fine - Loading */
  
 /* Bouncing Animation */
@@ -511,8 +529,6 @@ header {
 	-webkit-animation: bounce 2s infinite;
 	-moz-animation: bounce 2s infinite;
 	-o-animation: bounce 2s infinite;
-	filter: invert(100%);
-  	width: 300px; 
 }
  
 @-webkit-keyframes bounce {
@@ -731,21 +747,4 @@ header {
 	float: right;
 	/*width: 50%;
 	margin: 0 0 0.5em 0.5em;*/
-}
-
-
-/*
-======================================================================
-								COMMENTI
-======================================================================
-*/
-
-.comment {
-	padding: 1em;
-	margin-top: 1em;
-	margin-left: 0.5em;
-	border: none;
-	border-radius: 4px;
-	background-color: #FFF;
-	color: #000;
 }

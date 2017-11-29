@@ -9,6 +9,26 @@
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css"> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+	<!-- Favicon -->
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
 <!-- Body -->
@@ -31,20 +51,22 @@
 	</div>
 	<div class="content card green-sea wrap-padding">
 		<div class="content">
-			<h1> <label for="search"> CERCA UN ARTICOLO! </label> </h1>
-			<input id="search" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
+			<label> <h1> CERCA UN ARTICOLO! </h1> </label>
+			<input class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
+			<input type="submit" value="CERCA" class="card btn wide text-green-sea white">
 		</div>
 	</div>
+	<a href="#daily-article" class="down-arrow btn bounce"></a>
 </header>
 
 <!-- Articoli -->
 
 <div class="padding-6 content">
-	<div class="daily-article card">
+	<div id="daily-article" class="card">
 		<div class="padding-large green-sea">
 			<h1> L'articolo del giorno </h1>
 		</div>
-		<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
+		<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 		<div class="padding-large">
 			<h3 class="text-green-sea center"> Titolo dell'articolo </h3>
 			<br>
@@ -61,20 +83,20 @@
 	</div>
 </div>
 
-<div class="padding-6 content-large">
+<div class="padding-6">
 	<div class="green-sea center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>
-	<div class="row-padding">
+	<div class="row-padding content-large margin-top">
 	<?php
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div class="daily-article card wrap-margin">
+				<div id="daily-article" class="card wrap-margin">
 					<div class="padding-large green-sea">
 						<h1> Titolo dell\'articolo </h1>
 					</div>
-					<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
+					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 					<div class="padding-large">
 						<p>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -99,20 +121,7 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-	
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
-	
+
 </body>
 
 <!-- /Body -->
