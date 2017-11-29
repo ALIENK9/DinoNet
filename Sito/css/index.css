@@ -440,6 +440,18 @@ header {
     }
 }
 
+/*Specifico per tutti i modelli di iPad*/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+	#scoperta, #bipedi-quadrupedi {background-image: none;}
+	/*.parallax {
+		background-attachment: scroll;
+		background-size: 2650px 1440px;
+	}*/
+
+}
+
 /* /Responsiveness */
 
 /* Margin e padding */

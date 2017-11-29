@@ -175,7 +175,9 @@
 			</p>
 		</div>
 	</div>
-	<div class="half ghost-half"><img class="hide-large" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri"></div>
+	<div class="half ghost-half">
+		<img class="hide-large" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri">
+	</div>
 </div>
 
 <!-- L'estinzione -->
