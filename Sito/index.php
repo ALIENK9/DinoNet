@@ -49,9 +49,9 @@
 		<br>
 		<h4> Scopri i giganti della preistoria! </h4>
 		<br><br>
-		<a href="#about" class="btn green-sea wrap-margin"><p> Informazioni sul sito </p></a>
-		<a href="#search-label" class="btn green-sea wrap-margin"><p> Ricerca contenuti </p></a>
-		<a href="#daily-stuff" class="btn green-sea wrap-margin"><p> Contenuti del giorno </p></a>		
+		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
+		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
+		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
 	<a href="#about" class="down-arrow btn bounce"></a>
 </header>
@@ -91,11 +91,11 @@
 
 <!-- Ricerca -->
 
-<div class="card green-sea padding-3 center">
+<div class="card colored padding-3 center">
 	<div class="content">
 		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
 		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
-		<input type="submit" value="CERCA" class="card btn wide text-green-sea white">
+		<input type="submit" value="CERCA" class="card btn wide text-colored white">
 	</div>
 </div>
 
@@ -107,12 +107,12 @@
 	<div class="row-padding">
 		<div class="half">
 			<div id="daily-dino" class="card">
-				<div class="padding-large green-sea">
+				<div class="padding-large colored">
 					<h1> Il dinosauro del giorno </h1>
 				</div>
 				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
 				<div class="padding-large">
-					<h3 class="text-green-sea center"> Nome del dinosauro </h3>
+					<h3 class="text-colored center"> Nome del dinosauro </h3>
 					<br>
 					<ul>
 						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
@@ -127,18 +127,18 @@
 					</p>
 				</div>
 				<div class="center padding-2">
-					<a href="" class="btn green-sea"><p> Visualizza la scheda del dinosauro </p></a>
+					<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
 				</div>
 			</div>
 		</div>
 		<div class="half">
 			<div id="daily-article" class="card">
-				<div class="padding-large green-sea">
+				<div class="padding-large colored">
 					<h1> L'articolo del giorno </h1>
 				</div>
 				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 				<div class="padding-large">
-					<h3 class="text-green-sea center"> Titolo dell'articolo </h3>
+					<h3 class="text-colored center"> Titolo dell'articolo </h3>
 					<br>
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -148,7 +148,7 @@
 					</p>
 				</div>
 				<div class="center padding-2">
-					<a href="" class="btn green-sea"><p> Leggi l'articolo </p></a>
+					<a href="" class="btn colored"><p> Leggi l'articolo </p></a>
 				</div>
 			</div>
 		</div>

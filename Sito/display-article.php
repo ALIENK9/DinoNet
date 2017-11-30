@@ -53,7 +53,7 @@
 
 <div class="padding-6 content">
 	<div class="daily-article card">
-		<div class="padding-large green-sea">
+		<div class="padding-large colored">
 			<h1> Estinzione: diverse teorie</h1>
 		</div>
 		<img id="petrified_wood" src="img/petrified_wood.jpg" alt="Sezione pietrificata di tronco fossile nel parco nazionale della Foresta Pietrificata in Arizona">
@@ -92,7 +92,7 @@
 </div>
 
 <div class="padding-6 content-large">
-	<div class="green-sea center wrap-padding">
+	<div class="colored center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>
 	<div class="row-padding">
@@ -101,7 +101,7 @@
 		echo'
 			<div class="third wrap-padding">
 				<div class="daily-article card wrap-margin">
-					<div class="padding-large green-sea">
+					<div class="padding-large colored">
 						<h1> L\'articolo del giorno </h1>
 					</div>
 					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
@@ -114,7 +114,7 @@
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="" class="btn green-sea"><p> Leggi l\'articolo </p></a>
+						<a href="" class="btn colored"><p> Leggi l\'articolo </p></a>
 					</div>
 				</div>
 			</div>

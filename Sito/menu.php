@@ -41,7 +41,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </nav>
 
 <!-- Top menu on small screens -->
-<div class="hide-large bar green-sea card">
+<div class="hide-large bar colored card">
   <div class="bar-item padding-large wide"><h1>DINOSWAG</h1></div>
   <a href="javascript:void(0)" class="bar-item btn wrap-padding right" onclick="open_menu()">&#9776;</a>
 </div>

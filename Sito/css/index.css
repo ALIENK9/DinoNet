@@ -360,12 +360,12 @@ header {
 	padding-right: 16px;
 }
 
-.green-sea{
+.colored{
 	color:#fff !important;
 	background-color:#16a085 !important;
 }
 
-.text-green-sea {
+.text-colored {
 	color: #16a085 !important;
 }
 
@@ -412,8 +412,19 @@ header {
 	.main {
 		min-width: 100%;
 	}
+	.parallax {
+        background-attachment: scroll !important;
+		background-size:auto 100%;
+    }
 }
 
+@media (max-width:992px) and (min-width:601px){
+	.hide-medium{display:none!important}
+	.parallax {
+        background-attachment: scroll !important;
+		background-size:auto 100%;
+    }
+}
 
 @media (max-width: 992px){
 	.main {
@@ -433,23 +444,6 @@ header {
 	.sidebar.collapse{
 		display:block;
 	}
-	
-	.parallax {
-        background-attachment: scroll;
-		background-size:auto 100%;
-    }
-}
-
-/*Specifico per tutti i modelli di iPad*/
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-	#scoperta, #bipedi-quadrupedi {background-image: none;}
-	/*.parallax {
-		background-attachment: scroll;
-		background-size: 2650px 1440px;
-	}*/
-
 }
 
 /* /Responsiveness */

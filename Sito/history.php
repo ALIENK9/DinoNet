@@ -49,7 +49,7 @@
 		<br>
 		<h4>scopri l'affascinante storia di creature vissute milioni di anni fa</h4>
 	</div>
-	<div id="history-index" class="content card green-sea wrap-padding">
+	<div id="history-index" class="content card colored wrap-padding">
 		<ul class="index">
 			<li><a href="#chi-sono-i-dino"><p>1. Chi sono i dinosauri?</p></a></li>
 			<li><a href="#scoperta"><p>2. La scoperta</p></a></li>
@@ -66,7 +66,7 @@
 
 <!-- Chi sono i dinosauri -->
 
-<div id="chi-sono-i-dino" class="green-sea padding-6">
+<div id="chi-sono-i-dino" class="colored padding-6">
 	<div class="content padding-large">
 		<h1> Chi sono i dinosauri? </h1>
 		<hr>
@@ -87,7 +87,7 @@
 <!-- La scoperta -->
 
 <div id="scoperta" class="row parallax">
-	<div class="half ghost-half"><img class="hide-large" src="img/dino-1.jpg" alt="Cranio fossile di un grande dinosauro carnivoro"></div>
+	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-1.jpg" alt="Cranio fossile di un grande dinosauro carnivoro"></div>
 	<div class="half">
 		<div class="white wrap-padding">
 			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
@@ -99,7 +99,7 @@
 				il dinosauro.
 			</p>
 				
-			<div class="green-sea panel padding-2 margin-3">
+			<div class="colored panel padding-2 margin-3">
 				<p>
 					La <em>"febbre della caccia al dinosauro"</em> scoppiò nella <strong>seconda metà dell'Ottocento</strong>,
 					quando tutti i musei di storia naturale erano particolarmente desiderosi di possedere degli scheletri
@@ -125,7 +125,7 @@
 
 <!-- Perché i dinosauri sono unici? -->
 
-<div id="dino-unici" class="green-sea padding-6">
+<div id="dino-unici" class="colored padding-6">
 	<div class="content padding-large">
 		<h1> Perché i dinosauri sono unici? </h1>
 		<hr>
@@ -160,7 +160,7 @@
 				di crescere (anche se in età adulta il processo si rallentava)!
 			</p>	
 			
-			<div class="green-sea panel padding-2 margin-3">
+			<div class="colored panel padding-2 margin-3">
 				<p>
 					Il <strong>brontosauro</strong>, vissuto nel Giurassico, poteva essere lungo più di venti metri e pesare circa 
 					quaranta tonnellate (ossia l'equivalente del peso di 600 uomini!). 
@@ -175,14 +175,12 @@
 			</p>
 		</div>
 	</div>
-	<div class="half ghost-half">
-		<img class="hide-large" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri">
-	</div>
+	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri"></div>
 </div>
 
 <!-- L'estinzione -->
 
-<div id="estinzione" class="green-sea padding-6">
+<div id="estinzione" class="colored padding-6">
 	<div class="content padding-large">
 		<h1> L'estinzione </h1>
 		<hr>

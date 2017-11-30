@@ -49,11 +49,11 @@
 		<br>
 		<h4>scopri tutte le novità sul mondo dei dinosauri</h4>
 	</div>
-	<div class="content card green-sea wrap-padding">
+	<div class="content card colored wrap-padding">
 		<div class="content">
 			<label> <h1> CERCA UN ARTICOLO! </h1> </label>
 			<input class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
-			<input type="submit" value="CERCA" class="card btn wide text-green-sea white">
+			<input type="submit" value="CERCA" class="card btn wide text-colored white">
 		</div>
 	</div>
 	<a href="#daily-article" class="down-arrow btn bounce"></a>
@@ -63,12 +63,12 @@
 
 <div class="padding-6 content">
 	<div id="daily-article" class="card">
-		<div class="padding-large green-sea">
+		<div class="padding-large colored">
 			<h1> L'articolo del giorno </h1>
 		</div>
 		<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 		<div class="padding-large">
-			<h3 class="text-green-sea center"> Titolo dell'articolo </h3>
+			<h3 class="text-colored center"> Titolo dell'articolo </h3>
 			<br>
 			<p>
 				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -78,13 +78,13 @@
 			</p>
 		</div>
 		<div class="center padding-2">
-			<a href="display-article.php" class="btn green-sea"><p> Leggi l'articolo </p></a>
+			<a href="display-article.php" class="btn colored"><p> Leggi l'articolo </p></a>
 		</div>
 	</div>
 </div>
 
 <div class="padding-6">
-	<div class="green-sea center wrap-padding">
+	<div class="colored center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>
 	<div class="row-padding content-large margin-top">
@@ -93,7 +93,7 @@
 		echo'
 			<div class="third wrap-padding">
 				<div id="daily-article" class="card wrap-margin">
-					<div class="padding-large green-sea">
+					<div class="padding-large colored">
 						<h1> Titolo dell\'articolo </h1>
 					</div>
 					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
@@ -106,7 +106,7 @@
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="display-article.php" class="btn green-sea"><p> Leggi l\'articolo </p></a>
+						<a href="display-article.php" class="btn colored"><p> Leggi l\'articolo </p></a>
 					</div>
 				</div>
 			</div>

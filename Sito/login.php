@@ -52,7 +52,7 @@
 	<!-- Login -->
 
 	<div id="login" class="content padding-6">
-		<div class="card green-sea wrap-padding">
+		<div class="card colored wrap-padding">
 			<h1 xml:lang="en-EN" lang="en-EN">Login</h1>
 			<hr>
 			<form>
@@ -61,7 +61,7 @@
 				<label xml:lang="en-EN" lang="en-EN"><p>password</p></label>
 				<input type="password" placeholder="password">
 				<br><br>
-				<input type="submit" value="ACCEDI" class="card btn wide text-green-sea white">
+				<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
 			</form>
 		</div>
 	</div>

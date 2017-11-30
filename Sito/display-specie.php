@@ -56,7 +56,7 @@
 
 <div class="content-large padding-3">
 	<div class="card">
-		<div class="green-sea center wrap-padding">
+		<div class="colored center wrap-padding">
 			<h1 class="title" xml:lang="en" lang="en">Coelopysis</h1>
 		</div>
 		<div class="wrap-padding w3-row-padding">
