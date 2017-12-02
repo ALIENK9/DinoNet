@@ -51,9 +51,9 @@
 	</div>
 	<div class="content card colored wrap-padding">
 		<div class="content">
-			<label> <h1> CERCA UN ARTICOLO! </h1> </label>
-			<input class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
-			<input type="submit" value="CERCA" class="card btn wide text-colored white">
+            <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
+            <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
+			<input type="submit" value="CERCA" class="btn wide text-colored white">
 		</div>
 	</div>
 	<a href="#daily-article" class="down-arrow btn bounce"></a>
@@ -61,14 +61,21 @@
 
 <!-- Articoli -->
 
-<div class="padding-6 content">
-	<div id="daily-article" class="card">
+<div class="padding-6 side-padding content">
+
+    <div class="card margin-half colored center wrap-padding">
+        <h1 class="title">L'articolo del giorno</h1>
+        <hr>
+        <p>Giornalmente selezioniamo un articolo per te. Buona lettura!</p>
+    </div>
+
+	<div id="daily-article" class="card daily-article">
 		<div class="padding-large colored">
-			<h1> L'articolo del giorno </h1>
+			<h1> Quando gli insetti dominavano la terra </h1>
 		</div>
-		<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
+		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante"/>
 		<div class="padding-large">
-			<h3 class="text-colored center"> Titolo dell'articolo </h3>
+			<h3 class="text-colored center"> Sottotitolo </h3>
 			<br>
 			<p>
 				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -92,7 +99,7 @@
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div id="daily-article" class="card wrap-margin">
+				<div class="daily-article card wrap-margin">
 					<div class="padding-large colored">
 						<h1> Titolo dell\'articolo </h1>
 					</div>

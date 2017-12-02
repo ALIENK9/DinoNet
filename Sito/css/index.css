@@ -47,7 +47,7 @@ a {
 	color:inherit;
 }
 
-a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}
+a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none; text-decoration:underline dotted}
 
 
 h1,h2,h3,h4,h5,h6{
@@ -94,6 +94,24 @@ input {
 
 header {
 	background-image: url('../img/dino-pattern.jpg');
+}
+
+
+figure {
+	padding: 0.6em;
+	border: 1px solid #979797;
+	border-radius: 6px;
+	display: inline-block;
+	text-align: left;
+}
+
+figcaption {
+	font-size: small;
+}
+
+figure > img {
+	width: 100%;
+	display: block;
 }
 
 .index {
@@ -159,16 +177,19 @@ header {
 
 .floating-element {
 	float: left;
-	width: 33%;
+	width: 33.33333%;
+	height: 20vw;
 }
 
-.small-shape {
+.small-shape { /*propietà comuni immagini*/
 	display: inline-block;
-    width: 240px;
-    height: 240px;
+	max-width: 250px;
+	width: 80%;
+	height: 80%;
 	background-image: none;
 	background-repeat: no-repeat;
 	background-size: contain;
+	background-position: center;
 }
 
 #shape1 {
@@ -261,7 +282,7 @@ header {
 
 .card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
 
-.card img {width:100%;}
+/*.card img {width:100%;}*/
 
 .wide{letter-spacing:4px;}
 
@@ -285,8 +306,13 @@ header {
 	cursor:pointer;
 	white-space:nowrap;
 	border-radius:4px;
+	font-weight: bold;
 }
 .btn:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+
+.small-btn {
+	max-width: 250px;
+}
 
 .row:after,.row:before,.row-padding:after,.row-padding:before {
 	content:"";
@@ -341,7 +367,7 @@ header {
 }
 
 .caption {
-	font-size:18px!;
+	font-size:1.1em;
 	text-align: center;
 }
 
@@ -407,7 +433,7 @@ header {
 	.hide-small{display:none!important}
 	#scoperta, #bipedi-quadrupedi {background-image: none;}
 	.ghost-half {
-		padding:0px;
+		padding:0;
 	}
 	.main {
 		min-width: 100%;
@@ -437,6 +463,17 @@ header {
 		display:none;
 		width:100%;
 	}
+
+	.article-image-left, .article-image-right {
+		width: 100%!important;
+		float: none!important;
+		margin: 0!important;
+	}
+
+	.content, .content-large {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 @media (min-width:993px){
@@ -452,6 +489,11 @@ header {
 
 .wrap-margin {
 	margin:0.5em 0.5em;
+}
+
+.margin-half {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 .margin-top {
@@ -474,8 +516,8 @@ header {
 }
 
 .side-padding {
-	padding-left: 16px;
-	padding-right: 16px;
+	padding-left: 1em;
+	padding-right: 1em;
 }
 
 .padding-large{padding:12px 24px!important}
@@ -507,6 +549,15 @@ header {
 
 .wrap-padding {
 	padding: 2em;
+}
+
+.text-area-padding {   /*usato nei commenti*/
+	padding: 1em;
+}
+
+.fancy-border { 		/*usato nei commenti*/
+	border: 2px solid #16a085;
+	border-radius: 3px;
 }
 
 /* /Margin e padding */
@@ -663,7 +714,7 @@ header {
 	height: 60px;
     width: 60px;
     display: inline-block;
-    background-color: none;
+	background-color: transparent;
     background-image: none;
     background-repeat: no-repeat;
     background-size: contain;
@@ -738,19 +789,23 @@ header {
 ======================================================================
 */
 
-#petrified_wood {
+.article-content {
+	overflow: hidden; /*Per non far uscire le immagini*/
+}
+
+.article-image-head {
 	width: 100%;
 	margin-bottom: 1em;
 }
 
-#meteor_crater {
+.article-image-left {
 	float: left;
-	/*width: 50%;
-	margin: 0 0.5em 0.5em 0;*/
+	width: 50%;
+	margin: 0 0.6em 0.6em 0;
 }
 
-#carboniferous_forest {
+.article-image-right {
 	float: right;
-	/*width: 50%;
-	margin: 0 0 0.5em 0.5em;*/
+	width: 50%;
+	margin: 0 0 0.6em 0.6em;
 }

@@ -53,8 +53,8 @@
 	</div>
 	<div class="content card colored wrap-padding">
 		<div class="content">
-			<h1> <label for="search"> CERCA UN DINOSAURO! </label> </h1>
-			<input id="search" class="margin-2" type="text" placeholder="e.g. Brontosauro">
+			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
+			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
 			<input type="submit" value="CERCA" class="card btn wide text-colored white">
 		</div>
 	</div>
@@ -65,13 +65,13 @@
 
 <div class="padding-6 content-large row-padding">
 	<div id="daily-dino" class="half wrap-padding">
-		<div class="card wrap-margin">
-			<div class="colored center wrap-padding">
-				<h1 class="title">Il dinosauro del giorno</h1>
-				<hr>
-				<p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
-			</div>
+
+		<div class="card wrap-margin colored center wrap-padding">
+			<h1 class="title">Il dinosauro del giorno</h1>
+			<hr>
+            <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 		</div>
+
 		<div class="daily-dino card wrap-margin">
 			<div class="padding-large colored">
 				<h1> Nome del dinosauro </h1>
@@ -96,13 +96,13 @@
 		</div>
 	</div>
 	<div class="half wrap-padding">
-		<div class="card wrap-margin">
-			<div class="colored center wrap-padding">
-				<h1 class="title">L'articolo correlato</h1>
-				<hr>
-				<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
-			</div>
+
+		<div class="card wrap-margin colored center wrap-padding">
+			<h1 class="title">L'articolo correlato</h1>
+			<hr>
+			<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
 		</div>
+
 		<div class="daily-article card wrap-margin">
 			<div class="padding-large colored">
 				<h1> Titolo dell'articolo </h1>

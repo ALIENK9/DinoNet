@@ -53,13 +53,13 @@
 
 	<div id="login" class="content padding-6">
 		<div class="card colored wrap-padding">
-			<h1 xml:lang="en-EN" lang="en-EN">Login</h1>
+			<h1 xml:lang="en" lang="en">Login</h1>
 			<hr>
 			<form>
-				<label xml:lang="en-EN" lang="en-EN"><p>email</p></label>
-				<input type="text" placeholder="email">
-				<label xml:lang="en-EN" lang="en-EN"><p>password</p></label>
-				<input type="password" placeholder="password">
+                <p><label for="input-email" xml:lang="en" lang="en">email</label></p>
+				<input id="input-email" type="text" placeholder="email">
+                <p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
+				<input id="input-passw" type="password" placeholder="password">
 				<br><br>
 				<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
 			</form>

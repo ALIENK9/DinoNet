@@ -74,7 +74,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="half wrap-padding">
+		<div class="half margin-half">
 			<div class="daily-dino">
 				<img src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
 			</div>

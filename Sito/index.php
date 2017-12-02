@@ -45,7 +45,7 @@
 
 <header id="header-home" class="parallax padding-12">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> DINO SWAG </h1>
+		<h1 class="title wide"> DINOSAURIA </h1>
 		<br>
 		<h4> Scopri i giganti della preistoria! </h4>
 		<br><br>
@@ -63,24 +63,25 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1> COS'E' <span class="wide"> DINOSWAG </span> </h1>
+	<h1> COS'E' <span class="wide"> DINOSAURIA </span> </h1>
 	<br>
-	<p>
-		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>, e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
+	<p class="side-padding">
+		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del
+        Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro
+        sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
+        e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da
+        <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
 	</p>
 	<div class="row-padding hide-small">
 		<div class="padding-large center floating-element">
-			<!--img src="img/dino-shape-1.svg"-->
-			<span id="shape1" class="small-shape"></span> <!-- icone -->
+			<span id="shape1" class="small-shape"></span> <!-- icona -->
 			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>
 		</div>
 		<div class="padding-large center floating-element">
-			<!--img src="img/dino-shape-2.svg"-->
 			<span id="shape2" class="small-shape"></span>
 			<p class="caption"> Approfondisci la loro storia e il loro habitat </p>
 		</div>
 		<div class="padding-large center floating-element">
-			<!--img src="img/dino-shape-3.svg"-->
 			<span id="shape3" class="small-shape"></span>
 			<p class="caption"> Leggi le ultime scoperte degli archeologi  </p>
 		</div>
@@ -91,7 +92,7 @@
 
 <!-- Ricerca -->
 
-<div class="card colored padding-3 center">
+<div class="card colored wrap-padding center">
 	<div class="content">
 		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
 		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
@@ -106,7 +107,7 @@
 <div id="daily-stuff" class="content-large padding-6">
 	<div class="row-padding">
 		<div class="half">
-			<div id="daily-dino" class="card">
+			<div id="daily-dino" class="card daily-dino">
 				<div class="padding-large colored">
 					<h1> Il dinosauro del giorno </h1>
 				</div>
@@ -132,7 +133,7 @@
 			</div>
 		</div>
 		<div class="half">
-			<div id="daily-article" class="card">
+			<div id="daily-article" class="card daily-article">
 				<div class="padding-large colored">
 					<h1> L'articolo del giorno </h1>
 				</div>
