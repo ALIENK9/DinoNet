@@ -1,0 +1,10 @@
+# IGNORA I FILE LISTATI
+
+#LATEX FILES
+*.aux
+*.log
+*.out
+
+#INTELLIJ FILES
+*.iml
+.idea
