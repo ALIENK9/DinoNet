@@ -99,7 +99,7 @@
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div class="daily-article card wrap-margin">
+				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
 					<div class="padding-large colored">
 						<h1> Titolo dell\'articolo </h1>
 					</div>

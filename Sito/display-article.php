@@ -145,12 +145,12 @@
 	<div class="colored center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>
-	<div class="row-padding">
+	<div class="row-padding content-large margin-top">
 	<?php
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div class="daily-article card wrap-margin">
+				<div class="daily-article card"><!--tolto wrap-margin-->
 					<div class="padding-large colored">
 						<h1> L\'articolo del giorno </h1>
 					</div>
