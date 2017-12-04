@@ -1,5 +1,6 @@
-<div class="card colored text-area-padding content panel">
+<div class="card colored wrap-padding-small content panel">
     <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
+
     <div class="comment">
         <p class="text-italic">
             Marius
