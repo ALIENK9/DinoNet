@@ -63,11 +63,11 @@ p {
 h1 {
 	font-size: 2em; 
 	font-weight: 900;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	text-align: center;
 }
 
-h2{font-size:1.7em;}
+h2 {font-size:1.7em;}
 
 h3 {
 	font-size: 1.5em;
@@ -522,6 +522,11 @@ form p {
 
 .padding-large{padding:12px 24px!important}
 
+.padding-1 {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
 .padding-2 {
 	padding-top: 2em;
 	padding-bottom: 2em;
@@ -556,11 +561,25 @@ form p {
 }
 
 .fancy-border { 		/*usato nei commenti*/
-	border: 2px solid #16a085;
+	border: 1px solid white;
 	border-radius: 3px;
 }
 
+.text-italic { /*username nei commenti*/
+	font-style: italic;
+}
+
 /* /Margin e padding */
+
+
+/* Commento */
+
+.comment {
+	margin-bottom: 2em;
+	font-weight: 500;
+}
+
+/* /Commento */
 
 /* Loading */
 

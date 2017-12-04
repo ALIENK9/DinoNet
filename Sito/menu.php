@@ -6,6 +6,8 @@ $pages["species"] = "species.php";
 $pages["all-species"] = "all-species.php";
 $pages["display-specie"] = "display-specie.php";
 $pages["articles"] = "articles.php";
+$pages["all-articles"] = "all-articles.php";
+$pages["display-article"] = "display-article.php";
 $pages["login"] = "login.php";
 
 $currentPage = basename($_SERVER['PHP_SELF']);

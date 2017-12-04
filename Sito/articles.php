@@ -55,7 +55,7 @@
             <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
 			<input type="submit" value="CERCA" class="btn wide text-colored white">
             <br/><br/>
-            <a href="all-species.php"><p>&GreaterGreater; Vai alla lista completa degli articoli &LessLess;</p></a>
+            <a href="all-articles.php"><p>&GreaterGreater; Vai alla lista completa degli articoli &LessLess;</p></a>
 		</div>
 	</div>
 	<a href="#daily-article" class="down-arrow btn bounce"></a>

@@ -47,17 +47,17 @@
 
     <header id="header-home" class="parallax padding-6">
         <div id="title-card" class="content card">
-            <h1 class="title wide"> Tutte le specie </h1>
+            <h1 class="title wide"> Archivio degli articoli </h1>
             <br>
             <h4> scopri informazioni dettagliate su innumerevoli dinosauri</h4>
         </div>
         <div class="content card colored wrap-padding">
             <div class="content">
-                <h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
+                <h1> <label for="search-dino"> CERCA UN ARTICOLO! </label> </h1>
                 <input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
                 <br/><br/>
-                <a href="species.php"><p>&GreaterGreater; Torna alle specie &LessLess;</p></a>
+                <a href="articles.php"><p>&GreaterGreater; Torna agli articoli &LessLess;</p></a>
             </div>
         </div>
         <a href="#daily-dino" class="down-arrow btn bounce"></a>
@@ -67,24 +67,19 @@
 
     <div class="padding-6">
         <div class="colored center wrap-padding">
-            <h1 class="title">Qui trovi l'lenco completo di dinosauri</h1>
+            <h1 class="title"> Qui trovi l'elenco completo degli articoli </h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php
-            for($i = 0; $i < 9; $i++) {
+            for($i = 0; $i < 10; $i++) {
                 echo'
 			<div class="third wrap-padding">
-				<div class="daily-dino card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">	
-					    <h1> Nome del dinosauro </h1>
+				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
+					<div class="padding-large colored">
+						<h1> Titolo dell\'articolo </h1>
 					</div>
-					<img src="img/dailydino-test.png" alt="Triceratopo">
+					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 					<div class="padding-large">
-						<ul>
-							<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
-							<li><strong>Alimentazione:</strong> Carnivoro</li>
-							<li><strong>Peso:</strong> 100q</li>
-						</ul>
 						<p>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
@@ -93,7 +88,7 @@
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+						<a href="display-article.php" class="btn colored"><p> Leggi l\'articolo </p></a>
 					</div>
 				</div>
 			</div>

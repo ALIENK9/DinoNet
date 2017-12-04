@@ -1,13 +1,38 @@
 <div class="card colored text-area-padding content panel">
     <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
-	<p class="text-area-padding">
-		Questo è un commento!!
-	</p>
-	<br/>
-	<h3 class="center">Commenta</h3>
-	<form class="center">
-		<p><label for="casella-commento">Lascia un commento</label></p>
-		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border text-area-padding"/>
+    <div class="comment">
+        <p class="text-italic">
+            Marius
+        </p>
+        <p class="fancy-border wrap-padding-small">
+            Questo è un commento!!
+        </p>
+	</div>
+
+    <div class="comment">
+        <p class="text-italic">
+            Ciccio97
+        </p>
+        <p class="fancy-border wrap-padding-small">
+            Fantastico!!!!
+        </p>
+    </div>
+
+    <div class="comment">
+        <p class="text-italic">
+            MrSaputello
+        </p>
+        <p class="fancy-border wrap-padding-small">
+            fkdjfkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk ksllsl sadfascasfda
+            sdadsadsadsad
+            sadasdsadsadsada fjsadsajdj jk jsdjjl jlkj ljl jk jslkjlj òjljòjòjòjòakjdòawkdowk òkòokò kòok ò kòk
+            waljlkwajkaj kj kjjw lakjlwjl. <<>>
+        </p>
+    </div>
+
+	<form class="center padding-1">
+		<h3><p><label for="casella-commento">Commenta</label></p></h3>
+		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"/>
 		<br/>
 		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white"/>
 	</form>
