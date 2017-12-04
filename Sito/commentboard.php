@@ -27,12 +27,12 @@
             fkdjfkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk ksllsl sadfascasfda
             sdadsadsadsad
             sadasdsadsadsada fjsadsajdj jk jsdjjl jlkj ljl jk jslkjlj òjljòjòjòjòakjdòawkdowk òkòokò kòok ò kòk
-            waljlkwajkaj kj kjjw lakjlwjl. <<>>
+            waljlkwajkaj kj kjjw lakjlwjl.---
         </p>
     </div>
 
 	<form class="center padding-1">
-		<h3><p><label for="casella-commento">Commenta</label></p></h3>
+		<h3><label for="casella-commento">Commenta</label></h3>
 		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"/>
 		<br/>
 		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white"/>
