@@ -31,6 +31,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		<span id="icon_specie" class="menu_icon"></span>
 		<p>Specie</p>
 	</a>
+      <!-- espande il menù con la sottosezione all-species -->
 	<?php 
 	if($currentPage == $pages["all-species"])
 	echo'
@@ -47,7 +48,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	</a>
 	';
 	?>
-	<a href="articles.php" class="menu_entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["article"]) echo 'active disabled'; ?>">
+	<a href="articles.php" class="menu_entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["articles"]) echo 'active disabled'; ?>">
 		<span id="icon_articoli" class="menu_icon"></span>
 		<p>Articoli</p>
 	</a>
