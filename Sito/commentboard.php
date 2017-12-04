@@ -1,14 +1,15 @@
-<div class="card text-area-padding content panel">
+<div class="card colored text-area-padding content panel">
     <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
-	<p class="fancy-border text-area-padding">
+	<p class="text-area-padding">
 		Questo è un commento!!
 	</p>
 	<br/>
+	<h3 class="center">Commenta</h3>
 	<form class="center">
-		<label for="casella-commento">Lascia un commento</label>
+		<p><label for="casella-commento">Lascia un commento</label></p>
 		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border text-area-padding"/>
 		<br/>
-		<input type="submit" value="PUBBLICA" class="btn small-btn colored wide"/>
+		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white"/>
 	</form>
 </div>
 

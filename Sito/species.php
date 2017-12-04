@@ -56,7 +56,7 @@
 			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
 			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
 			<input type="submit" value="CERCA" class="card btn wide text-colored white">
-            <br/>
+            <br/><br/>
             <a href="all-species.php"><p>&GreaterGreater; Vai alla lista completa delle specie &LessLess;</p></a>
 		</div>
 	</div>

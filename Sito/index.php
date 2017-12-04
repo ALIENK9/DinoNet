@@ -63,7 +63,7 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1> COS'E' <span class="wide"> DINOSAURIA </span> </h1>
+	<h1> COS'è <span class="wide"> DINOSAURIA </span> </h1>
 	<br>
 	<p class="side-padding">
 		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del

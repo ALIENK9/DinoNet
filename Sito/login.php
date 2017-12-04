@@ -43,30 +43,32 @@
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
-	<div id="title-card" class="content card">
-		<h1 class="title wide"> Accedi al tuo account </h1>
-		<br>
-		<h4>entra nel mondo dei dinosauri!</h4>
-	</div>
-	
-	<!-- Login -->
-
-	<div id="login" class="content padding-6">
-		<div class="card colored wrap-padding">
-			<h1 xml:lang="en" lang="en">Login</h1>
-			<hr>
-			<form>
-                <p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-				<input id="input-email" type="text" placeholder="email">
-                <p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
-				<input id="input-passw" type="password" placeholder="password">
-				<br><br>
-				<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
-			</form>
+	<div class="content">
+		<div id="title-card" class="card">
+			<h1 class="title wide"> Accedi al tuo account </h1>
+			<br>
+			<h4>entra nel mondo dei dinosauri!</h4>
 		</div>
-	</div>
+		
+		<!-- Login -->
 
-	<!-- /Login -->
+		<div id="login">
+			<div class="card colored wrap-padding">
+				<h1 xml:lang="en" lang="en">Login</h1>
+				<hr>
+				<form>
+					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
+					<input id="input-email" type="text" placeholder="email">
+					<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
+					<input id="input-passw" type="password" placeholder="password">
+					<br><br>
+					<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
+				</form>
+			</div>
+		</div>
+		
+		<!-- /Login -->
+	</div>
 
 </header>
 

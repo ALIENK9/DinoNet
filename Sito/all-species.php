@@ -1,10 +1,3 @@
-/**
-* Created by IntelliJ IDEA.
-* User: alessandro
-* Date: 03/12/17
-* Time: 18.50
-*/
-
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
@@ -54,7 +47,7 @@
 
     <header id="header-home" class="parallax padding-6">
         <div id="title-card" class="content card">
-            <h1 class="title wide"> Le specie </h1>
+            <h1 class="title wide"> Tutte le specie </h1>
             <br>
             <h4> scopri informazioni dettagliate su innumerevoli dinosauri</h4>
         </div>
@@ -63,7 +56,7 @@
                 <h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
                 <input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
-                <br/>
+                <br/><br/>
                 <a href="species.php"><p>&GreaterGreater; Torna alle specie &LessLess;</p></a>
             </div>
         </div>
