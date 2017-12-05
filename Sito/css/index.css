@@ -60,6 +60,10 @@ p {
 	margin:10px 0;
 }
 
+p a {
+    text-decoration: underline;
+}
+
 h1 {
 	font-size: 2em; 
 	font-weight: 900;
@@ -259,8 +263,8 @@ form p {
 }
 
 #volcano-divider {
-	background-image:url('../img/volcano.jpg');
-	background-position:bottom;
+	background-image: url('../img/volcano.jpg');
+	background-position: bottom;
 }
 
 /* /History */
@@ -292,7 +296,7 @@ form p {
 
 /*.card img {width:100%;}*/
 
-.wide{letter-spacing:4px;}
+.wide{letter-spacing: 0.25em;}
 
 .center{
 	text-align: center;
@@ -425,51 +429,37 @@ form p {
 
 /* Responsiveness */
 
-@media (min-width: 1301px) {
-	.third{width:33.33333%;}
-	.half{width:49.99999%;}
+@media (min-width: 1025px) {			                /*dimensione grande >= 1024 px*/
+    .hide-large {display: none!important;}
+    .sidebar.collapse {display: block;}
 }
 
-@media (min-width:601px) and (max-width: 1300px){
-	.quarter{width:24.99999%;}
-	.third{width:49.99999%;}
-	.half{width:49.99999%;}
-	.twothird{width:66.66666%;}
+@media (max-width: 600px) { 					    /*dimensione piccola 480 - 600 px*/
+	.hide-small {display: none!important}
+    #scoperta, #bipedi-quadrupedi {background-image: none;}
+	.ghost-half {padding: 0;}
+	.main {min-width: 100%;}
 }
 
-@media (max-width:600px){
-	.hide-small{display:none!important}
-	#scoperta, #bipedi-quadrupedi {background-image: none;}
-	.ghost-half {
-		padding:0;
-	}
-	.main {
-		min-width: 100%;
-	}
-	.parallax {
-        background-attachment: scroll !important;
-		background-size:auto 100%;
-    }
+@media (min-width: 601px) and (max-width: 1023px) { /*dimensione media 601 - 1023 px*/ /*c'era max-width: 992*/
+	.hide-medium {display: none!important;}
 }
 
-@media (max-width:992px) and (min-width:601px){
-	.hide-medium{display:none!important}
-	.parallax {
-        background-attachment: scroll !important;
-		background-size:auto 100%;
-    }
-}
-
-@media (max-width: 992px){
+@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px e iPad*/
 	.main {
 		margin-left: 0!important;
 		margin-right: 0!important;
 		min-width: 100%;
 	}
+
+    .parallax {
+        background-attachment: scroll !important;
+        background-size: auto 100%;
+    }
 	
-	.sidebar.collapse{
-		display:none;
-		width:100%;
+	.sidebar.collapse {
+		display: none;
+		width: 100%;
 	}
 
 	.article-image-left, .article-image-right {
@@ -484,11 +474,23 @@ form p {
 	}
 }
 
-@media (min-width:993px){
-	.hide-large{display:none!important}
-	.sidebar.collapse{
-		display:block;
-	}
+/*@media only screen and (min-width: 767px) and (max-width: 1024px) { non dovrebbe servire
+    .parallax {
+        background-attachment: scroll !important;
+        background-size: auto 100%;
+    }
+}*/
+                                                       /*responsiveness delle colonne*/
+@media (min-width: 1301px) {
+    .third {width: 33.33333%;}
+    .half {width: 49.99999%;}
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+    .quarter {width: 24.99999%;}
+    .third {width: 49.99999%;}
+    .half {width: 49.99999%;}
+    .twothird {width: 66.66666%;}
 }
 
 /* /Responsiveness */
@@ -587,10 +589,6 @@ form p {
 	font-weight: 500;
 }
 
-.menu_entry hr, .menu-entry-small hr {
-	margin: 0;
-}
-
 /* /Commento */
 
 /* Loading */
@@ -670,7 +668,7 @@ form p {
     /* Full height */
     height: 100%; 
 
-    /* Create the parallax scrolling effect */
+    /* Effetto scroll*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -733,6 +731,11 @@ form p {
 	background-color: white;
 	color: black;
 	border: 0 !important;
+}
+
+
+.menu_entry hr, .menu-entry-small hr {
+	margin: 0;
 }
 
 .menu_entry p {

@@ -38,7 +38,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	if($currentPage == $pages["all-species"])
 	echo'
 	<a href="all-species.php" class="menu-entry-small active disabled">
-		<hr>
+		<hr/>
 		<p>Tutte le specie</p>
 	</a>
 	';
@@ -79,7 +79,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <!-- Top menu on small screens -->
 <div id="top-menu" class="hide-large bar colored card">
-  <div class="bar-item padding-large wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINOSAURIA</a></h1></div>
+  <div class="bar-item padding-large wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINO</a></h1></div>
   <a href="javascript:void(0)" class="bar-item btn wrap-padding right" onclick="open_menu()">&#9776;</a>
 </div>
 

@@ -45,10 +45,10 @@
 
 <header id="header-home" class="parallax padding-12">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> DINOSAURIA </h1>
-		<br>
-		<h4> Scopri i giganti della preistoria! </h4>
-		<br><br>
+		<h1 class="title wide"> DINO NET </h1>
+		<br/>
+		<h4> Scopri i giganti della preistoria! E compratene uno! </h4>
+		<br/><br/>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
 		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
@@ -63,14 +63,14 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1> COS'è <span class="wide"> DINOSAURIA </span> </h1>
+	<h1> COS'È <span class="wide"> DINO NET </span> </h1>
 	<br>
 	<p class="side-padding">
 		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del
         Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro
         sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
         e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da
-        <a href="www.wikipedia.org/it">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
+        <a href="http://it.wikipedia.org/wiki/">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
 	</p>
 	<div class="row-padding hide-small">
 		<div class="padding-large center floating-element">
@@ -128,7 +128,7 @@
 					</p>
 				</div>
 				<div class="center padding-2">
-					<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+					<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
 				</div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 					</p>
 				</div>
 				<div class="center padding-2">
-					<a href="" class="btn colored"><p> Leggi l'articolo </p></a>
+					<a href="display-article.php" class="btn colored"><p> Leggi l'articolo </p></a>
 				</div>
 			</div>
 		</div>

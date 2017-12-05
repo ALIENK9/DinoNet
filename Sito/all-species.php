@@ -60,12 +60,12 @@
                 <a href="species.php"><p>&GreaterGreater; Torna alle specie &LessLess;</p></a>
             </div>
         </div>
-        <a href="#daily-dino" class="down-arrow btn bounce"></a>
+        <a href="#content" class="down-arrow btn bounce"></a>
     </header>
 
     <!-- Dinosauri -->
 
-    <div class="padding-6">
+    <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
             <h1 class="title">Qui trovi l'lenco completo di dinosauri</h1>
         </div>

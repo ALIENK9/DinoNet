@@ -49,7 +49,7 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> Le specie </h1>
 		<br>
-		<h4> scopri informazioni dettagliate su innumerevoli dinosauri</h4>
+		<h4> Scopri informazioni dettagliate su innumerevoli dinosauri </h4>
 	</div>
 	<div class="content card colored wrap-padding">
 		<div class="content center">
