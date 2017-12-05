@@ -58,7 +58,7 @@
             <a href="all-articles.php"><p>&GreaterGreater; Vai alla lista completa degli articoli &LessLess;</p></a>
 		</div>
 	</div>
-	<a href="#daily-article" class="down-arrow btn bounce"></a>
+	<a href="#daily-article" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- Articoli -->
@@ -130,6 +130,20 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
+
+<script>
+    // Script to open and close sidebar
+    function open_menu() {
+        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function close_menu() {
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+
 
 </body>
 

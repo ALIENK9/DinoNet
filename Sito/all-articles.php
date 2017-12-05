@@ -98,4 +98,20 @@
         </div>
     </div>
 </div> <!-- main-->
+
+<script>
+    // Script to open and close sidebar
+    function open_menu() {
+        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function close_menu() {
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+
+
 </body>
+</html>

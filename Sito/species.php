@@ -60,7 +60,7 @@
             <a href="all-species.php"><p>&GreaterGreater; Vai alla lista completa delle specie &LessLess;</p></a>
 		</div>
 	</div>
-	<a href="#daily-dino" class="down-arrow btn bounce"></a>
+	<a href="#daily-dino" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- Dinosauri -->

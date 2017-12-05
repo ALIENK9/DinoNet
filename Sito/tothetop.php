@@ -1,6 +1,6 @@
 <!-- To the top btn -->
 
-<button onclick="topFunction()" id="toTheTop" title="Torna su" class="btn card">Top</button>
+<button onclick="topFunction()" id="toTheTop" title="Torna su" class="up-arrow arrow btn card"></button>
 
 <script>
 // When the user scrolls down 200px from the top of the document, show the button

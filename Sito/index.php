@@ -53,7 +53,7 @@
 		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
-	<a href="#about" class="down-arrow btn bounce"></a>
+	<a href="#about" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- /Header -->

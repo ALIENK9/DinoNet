@@ -1,11 +1,11 @@
-<div class="card colored wrap-padding-small content panel">
+<div class="card colored wrap-padding content panel">
     <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
 
     <div class="comment">
         <p class="text-italic">
             Marius
         </p>
-        <p class="fancy-border wrap-padding-small">
+        <p class="card wrap-padding-small">
             Questo è un commento!!
         </p>
 	</div>
@@ -14,7 +14,7 @@
         <p class="text-italic">
             Ciccio97
         </p>
-        <p class="fancy-border wrap-padding-small">
+        <p class="card wrap-padding-small">
             Fantastico!!!!
         </p>
     </div>
@@ -23,7 +23,7 @@
         <p class="text-italic">
             MrSaputello
         </p>
-        <p class="fancy-border wrap-padding-small">
+        <p class="card wrap-padding-small">
             fkdjfkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk ksllsl sadfascasfda
             sdadsadsadsad
             sadasdsadsadsada fjsadsajdj jk jsdjjl jlkj ljl jk jslkjlj òjljòjòjòjòakjdòawkdowk òkòokò kòok ò kòk
