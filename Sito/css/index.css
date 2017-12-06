@@ -429,19 +429,24 @@ form p {
 
 /* Responsiveness */
 
-@media (min-width: 1025px) {			                /*dimensione grande >= 1024 px*/
+@media (min-width: 1025px) {			                /*dimensione grande > 1024 px*/
     .hide-large {display: none!important;}
     .sidebar.collapse {display: block;}
 }
 
-@media (max-width: 600px) { 					    /*dimensione piccola 480 - 600 px*/
+@media (max-width: 600px) {							    /*dimensione piccola 480 - 600 px*/
 	.hide-small {display: none!important}
     #scoperta, #bipedi-quadrupedi {background-image: none;}
 	.ghost-half {padding: 0;}
 	.main {min-width: 100%;}
+	/*.wide {letter-spacing: 0;}*/
+    #header-menu {font-size: 80%;}
+    #title-card {padding: 1em;}
+    #title-card h1 {font-size: 3em;}
+    .wrap-padding {padding: 0.5em!important;}
 }
 
-@media (min-width: 601px) and (max-width: 1023px) { /*dimensione media 601 - 1023 px*/ /*c'era max-width: 992*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) { /*dimensione media 601 - 1023 px*/
 	.hide-medium {display: none!important;}
 }
 
@@ -755,6 +760,8 @@ form p {
 /****************
 *  ICONE MENU'	*
 *****************/
+
+#mobile-menu-icon {size: 30px 30px;}
 
 .menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
 	filter: invert(100%);
