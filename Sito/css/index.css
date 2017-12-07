@@ -24,7 +24,7 @@ html {
 
 html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}
 
-*,*:before,*:after{box-sizing:inherit}
+*,*::before,*::after{box-sizing:inherit}
 
 ul {
 	list-style:none;
@@ -292,11 +292,11 @@ form p {
 	padding:0.01em 16px;
 }
 
-.card{box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
+.card {box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
 
 /*.card img {width:100%;}*/
 
-.wide{letter-spacing: 0.25em;}
+.wide {letter-spacing: 0.25em;}
 
 .center{
 	text-align: center;
@@ -326,7 +326,7 @@ form p {
 	max-width: 250px;
 }
 
-.row:after,.row:before,.row-padding:after,.row-padding:before {
+.row::after,.row::before,.row-padding::after,.row-padding::before {
 	content:"";
 	display:table;
 	clear:both;
@@ -366,7 +366,7 @@ form p {
 	top:0;
 }
 
-.bar:before,.bar:after{
+.bar::before,.bar::after{
 	content:"";
 	display:table;
 	clear:both;
@@ -405,6 +405,7 @@ form p {
 
 .text-colored {
 	color: #16a085 !important;
+	background-color: #fff;
 }
 
 .overlay{
@@ -435,15 +436,25 @@ form p {
 }
 
 @media (max-width: 600px) {							    /*dimensione piccola 480 - 600 px*/
-	.hide-small {display: none!important}
+	.hide-small {display: none!important;}
     #scoperta, #bipedi-quadrupedi {background-image: none;}
 	.ghost-half {padding: 0;}
 	.main {min-width: 100%;}
-	/*.wide {letter-spacing: 0;}*/
-    #header-menu {font-size: 80%;}
+
+    #header-menu {
+        width: 70%;
+        float: left;
+    }
+
+	#header-menu h1 {font-size: 1em;}
+	#mobile-menu-icon {width: 30%;}
     #title-card {padding: 1em;}
     #title-card h1 {font-size: 3em;}
     .wrap-padding {padding: 0.5em!important;}
+}
+
+#header-menu {
+	vertical-align: middle;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) { /*dimensione media 601 - 1023 px*/
@@ -761,7 +772,7 @@ form p {
 *  ICONE MENU'	*
 *****************/
 
-#mobile-menu-icon {size: 30px 30px;}
+#mobile-menu-icon {padding: 2em!important;}
 
 .menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
 	filter: invert(100%);

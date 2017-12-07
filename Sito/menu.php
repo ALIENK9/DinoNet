@@ -79,8 +79,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 <!-- Top menu on small screens -->
 <div id="top-menu" class="hide-large bar colored card">
-  <div class="bar-item padding-large wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINO</a></h1></div>
-  <a href="javascript:void(0)" class="bar-item btn wrap-padding right" onclick="open_menu()">&#9776;</a>
+  <div id="header-menu" class="bar-item padding-large title wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINONET</a></h1></div>
+  <a id="mobile-menu-icon" href="javascript:void(0)" class="bar-item btn right" onclick="open_menu()">&#9776;</a>
 </div>
 
 <!-- Overlay effect when opening sidebar on small screens -->

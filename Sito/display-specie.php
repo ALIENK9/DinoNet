@@ -47,7 +47,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Il triceratopo </h1>
+		<h1 class="title wide"> Il Coelophysis </h1>
 	</div>
 </header>
 

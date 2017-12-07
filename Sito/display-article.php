@@ -150,7 +150,7 @@
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
-				<div class="daily-article card"><!--tolto wrap-margin-->
+				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
 					<div class="padding-large colored">
 						<h1> L\'articolo del giorno </h1>
 					</div>
