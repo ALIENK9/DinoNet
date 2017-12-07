@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<!-- Favicon -->
@@ -63,7 +64,7 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1> COS'È <span class="wide"> DINO NET </span> </h1>
+	<h1 class="text-colored"> COS'È <span class="wide"> DINO NET </span> </h1>
 	<br>
 	<p class="side-padding">
 		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del
@@ -92,7 +93,7 @@
 
 <!-- Ricerca -->
 
-<div class="card colored wrap-padding center">
+<div id="input-area" class="card colored wrap-padding center">
 	<div class="content">
 		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
 		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
@@ -104,7 +105,7 @@
 
 <!-- Materiale del giorno -->
 
-<div id="daily-stuff" class="content-large padding-6">
+<div id="daily-stuff" class="content-large padding-6 no-print">
 	<div class="row-padding">
 		<div class="half">
 			<div id="daily-dino" class="card daily-dino">

@@ -7,7 +7,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
-	<link rel="stylesheet" href="css/index.css"> 
+	<link rel="stylesheet" href="css/index.css">
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -49,7 +50,7 @@
 		<br>
 		<h4>scopri tutte le novità sul mondo dei dinosauri</h4>
 	</div>
-	<div class="content card colored wrap-padding">
+	<div id="input-area" class="content card colored wrap-padding">
 		<div class="content">
             <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
             <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">

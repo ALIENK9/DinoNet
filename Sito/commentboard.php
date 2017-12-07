@@ -1,4 +1,4 @@
-<div class="card colored wrap-padding content panel">
+<div id="commentboard" class="card colored wrap-padding content panel">
     <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
 
     <div class="comment">

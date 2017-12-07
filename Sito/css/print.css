@@ -1,0 +1,103 @@
+html {
+    background-image: none;
+    text-align: justify;
+    color: #000000;
+    background-color: #fff;
+}
+
+button, input, form, hr {display: none;}
+
+h1 {font-size: 1.7em!important;}
+h2 {font-size: 1.5em!important;}
+h3 {font-size: 1.3em!important;}
+
+.sidebar, .bar, .btn {display: none;}
+
+.colored, .text-colored {
+    color: #000000!important;
+    background-color: #ffffff!important;
+}
+
+.card {
+    box-shadow: none;
+}
+
+#title-card h1 {
+    font-size: 1.5em;
+    color: unset;
+}
+
+.white h1, .white h3 {
+    color: #000000!important;
+    background-color: #ffffff;
+}
+
+#input-area, #login {
+    display: none;
+}
+
+.no-print {display: none;}
+
+
+.daily-dino img, .daily-article img {display: none;}
+
+/*#dino-card img {}*/
+
+.hide-large, .hide-medium {display: none;}
+
+#commentboard {display: none;}
+
+.article-image-head {display: none;}
+
+.loading {display: none;}
+
+/**
+ *  PADDING E VARIE
+ */
+
+.content, .content-large {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.wide {letter-spacing: 0;}
+
+.wrap-margin {
+    margin:0.5em 0.5em;
+}
+
+.margin-half {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.margin-top, .margin-2, .margin-3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.side-margin {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.padding-large{padding: 0;}
+
+.side-padding {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.padding-15, .padding-12 {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.padding-6, .padding-3, .padding-2, .padding-1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.wrap-padding, .wrap-padding-small {
+    padding: 0.5em;
+}

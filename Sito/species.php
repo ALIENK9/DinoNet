@@ -9,6 +9,7 @@
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" href="css/index.css">
+    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
@@ -51,7 +52,7 @@
 		<br>
 		<h4> Scopri informazioni dettagliate su innumerevoli dinosauri </h4>
 	</div>
-	<div class="content card colored wrap-padding">
+	<div id="input-area" class="content card colored wrap-padding">
 		<div class="content center">
 			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
 			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
