@@ -173,7 +173,7 @@ form p {
 }
 
 #title-card h1 {
-	font-size: 4em;
+	font-size: 6vh;
 	color: #16a085;
 }
 
@@ -427,7 +427,7 @@ form p {
 	#header-menu h1 {font-size: 1em;}
 	#mobile-menu-icon {width: 30%;}
     #title-card {padding: 1em;}
-    #title-card h1 {font-size: 3em;}
+    #title-card h1 {font-size: 5vh;}
     .wrap-padding {padding: 0.5em!important;}
 }
 
@@ -750,7 +750,7 @@ form p {
 *  ICONE MENU'	*
 *****************/
 
-#mobile-menu-icon {padding: 2em!important;}
+#mobile-menu-icon {padding: 1em!important;}
 
 .menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
 	filter: invert(100%);

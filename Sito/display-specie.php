@@ -107,6 +107,9 @@
 			</p>
 		</div>
 	</div>
+	<div class="center wrap-padding">
+		<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa dei dinosauri </p></a>	
+	</div>
 </div>
 
 <?php include_once('footer.php') ?>

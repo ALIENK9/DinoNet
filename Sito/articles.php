@@ -55,8 +55,9 @@
             <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
             <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
 			<input type="submit" value="CERCA" class="btn wide text-colored white">
-            <br/><br/>
-            <a href="all-articles.php"><p>&GreaterGreater; Vai alla lista completa degli articoli &LessLess;</p></a>
+			<br><br>
+			<h1> OPPURE </h1>
+			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 		</div>
 	</div>
 	<a href="#daily-article" class="down-arrow arrow btn bounce"></a>
@@ -144,7 +145,6 @@
         document.getElementById("overlay").style.display = "none";
     }
 </script>
-
 
 </body>
 
