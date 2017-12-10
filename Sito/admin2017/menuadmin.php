@@ -45,8 +45,8 @@
 <?php
 	}
 	else{
-		header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
-		exit();
+	//	header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
+	//	exit();
 	}
 
 ?>

@@ -1,5 +1,5 @@
 <?php 
-include_once ("../connect.php");
+include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
 
 class User {
     
@@ -9,11 +9,11 @@ class User {
     private $datanascita;
     private $password;
     private $tipologia;
-    protected $connect;
-    
+    //protected $connect;
+    private $prova;
     //costruttore
     public function __construct($username)
-    {
+    {        
         $this->setEmail($username);
         $connect = startConnect();
         if($connect != null){
@@ -21,20 +21,20 @@ class User {
             $result=$connect->query($sqlQuery);
             if($result->num_rows > 0){
                 if($row = $result->fetch_assoc()) {
-                    $nome = $row['nome'];
-                    $cognome = $row['cognome'];
-                    $datanascita = $row['datanascita'];
-                    $password = $row['password'];
-                    $tipologia = $row['tipologia'];
+                    $this->nome = $row['nome'];
+                    $this->cognome = $row['cognome'];
+                    $this->datanascita = $row['datanascita'];
+                    $this->password = $row['password'];
+                    $this->tipologia = $row['tipologia'];
                 }
             }
         }
-    }   
-    public function __destruct()
-    {
         closeConnect($connect);
-        $connect = null;        
-    }  
+    }   
+    /*public function __destruct()
+    {
+        closeConnect($this->connect);     
+    } */ 
             
     //metodi
     public function getEmail() {
@@ -86,14 +86,16 @@ class User {
 
     public static function login($user, $pass, $tipologia){
         $connect = startConnect();
+        $status = false;
         if($connect != null){
-            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia='.$tipologia.'";
+            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia='".$tipologia."'";
             $result=$connect->query($sqlQuery);
             if($result->num_rows > 0){
-                return true;
+                $status = true;
             }
         }
-        return false;
+        $connect->close();
+        return $status;
     }
         
 }

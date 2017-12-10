@@ -1,25 +1,11 @@
 <?php
+	
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/UserAdmin.php");	
+
 	session_start();
-	
-	include_once ("../classi/UserAdmin.php");
-	include_once ("../connect.php");	
-	
-	if(!isset($_SESSION['user']) && isset($_POST['email'])){
-		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'1')){
-			//$_SESSION['login']=$_POST['email'];	
-			$_SESSION['user']=new  UserAdmin($_POST['email']);	
-			$error=false;
-		}
-		else{
-			$error=true;
-			echo "errore";
-			//redirect alla pagina di login
-		}
-		echo $error;	
-	}
-	
-	if(isset($_SESSION['user']) && $_SESSION['user']!=null){
+
+	if(isset($_SESSION['user'])){
 ?>
 
 	<!DOCTYPE html>
@@ -112,5 +98,4 @@
 		header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
 		exit();
 	}
-//include("closeconnect.php");
 ?>

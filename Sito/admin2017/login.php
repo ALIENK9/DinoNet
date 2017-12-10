@@ -1,3 +1,23 @@
+<?php
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/UserAdmin.php");	
+
+	session_start();
+	
+	if(isset($_SESSION['user'])){	
+		session_unset();
+	}
+
+	if(isset($_POST['email']) && isset($_POST["password"])){
+		session_unset();
+		if(User::login($_POST["email"],$_POST["password"],'1')){
+			$_SESSION['user'] = new UserAdmin($_POST['email']);
+			header("Location: panel.php");
+		}	
+	}
+
+?>
+
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
@@ -20,29 +40,31 @@
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
-	<div id="title-card" class="content card">
-		<h1 class="title wide"> Accesso al pannello di amministrazione </h1>
-	</div>
-	
-	<!-- Login -->
 
-	<div id="login" class="content padding-6">
-		<div class="card green-sea wrap-padding">
-			<h1 xml:lang="en-EN" lang="en-EN">Login</h1>
-			<hr>
-			<form action="panel.php" method="POST">
-				<label xml:lang="en-EN" lang="en-EN"><p>email</p></label>
-				<input type="text" placeholder="email" name="email">
-				<label xml:lang="en-EN" lang="en-EN"><p>password</p></label>
-				<input type="password" placeholder="password"  name="password">
-				<br><br>
-				<input type="submit" value="ACCEDI" class="card btn wide text-green-sea white">
-			</form>
+	<div class="content">
+
+		<div id="title-card" class="content card">
+			<h1 class="title wide"> Accesso al pannello di amministrazione </h1>
 		</div>
+		
+		<!-- Login -->
+
+		<div id="login">
+				<div class="card colored wrap-padding">
+					<h1 xml:lang="en" lang="en">Login</h1>
+					<hr>
+					<form action="#" method="POST">
+						<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
+						<input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+						<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
+						<input id="input-passw" type="password" placeholder="password" name="password" >
+						<br><br>
+						<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
+					</form>
+				</div>
+			</div>
+		<!-- /Login -->
 	</div>
-
-	<!-- /Login -->
-
 </header>
 
 <!-- /Header -->

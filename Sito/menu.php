@@ -9,6 +9,7 @@ $pages["articles"] = "articles.php";
 $pages["all-articles"] = "all-articles.php";
 $pages["display-article"] = "display-article.php";
 $pages["login"] = "login.php";
+$pages["logout"] = "logout.php";
 
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
@@ -69,11 +70,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		<p>Scheda articolo</p>
 	</a>
 	';
+	if(isset($_SESSION['user'])){		
 	?>
-	<a href="login.php" class="menu_entry <?php if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
-		<span id="icon_accedi" class="menu_icon"></span>
-		<p>Accedi</p>
-	</a>
+		<a href="logout.php" class="menu_entry <?php if($currentPage == $pages["logout"]) echo 'active disabled'; ?>">
+			<span id="icon_accedi" class="menu_icon"></span>
+			<p>Esci</p>
+		</a>
+	<?php
+	}
+	else{
+		?>
+		<a href="login.php" class="menu_entry <?php if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
+				<span id="icon_accedi" class="menu_icon"></span>
+				<p>Accedi</p>
+			</a>
+		<?php
+	}
+	?>
   </div>
 </nav>
 
