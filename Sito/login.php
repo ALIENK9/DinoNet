@@ -64,8 +64,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1 class="title wide"> Accedi al tuo account </h1>
-			<br>
+			<h1 class="title"> Accedi al tuo account </h1>
 			<h4>entra nel mondo dei dinosauri!</h4>
 		</div>
 		
@@ -73,8 +72,6 @@
 
 		<div id="login">
 			<div class="card colored wrap-padding">
-				<h1 xml:lang="en" lang="en">Login</h1>
-				<hr>
 				<form action="#" method="POST">
 					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
 					<input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
@@ -83,6 +80,11 @@
 					<br><br>
 					<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
 				</form>
+			</div>
+			<div class="card white wrap-padding">
+				<h1>Non hai ancora un account?</h1>
+				<br>
+				<a href="register.php" class="btn card colored wrap-margin"><p> Registrati </p></a>
 			</div>
 		</div>
 		

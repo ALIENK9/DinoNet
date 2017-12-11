@@ -10,6 +10,10 @@ $pages["all-articles"] = "all-articles.php";
 $pages["display-article"] = "display-article.php";
 $pages["login"] = "login.php";
 $pages["logout"] = "logout.php";
+$pages["register"] = "register.php";
+$pages["view-account"] = "view-account.php";
+$pages["edit-account"] = "edit-account.php";
+$pages["delete-account"] = "delete-account.php";
 
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
@@ -34,7 +38,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		<span id="icon_specie" class="menu_icon"></span>
 		<p>Specie</p>
 	</a>
-      <!-- espande il menù con la sottosezione all-species -->
+      <!-- espande il menù con le sottosezioni all-species e display-specie -->
 	<?php 
 	if($currentPage == $pages["all-species"])
 	echo'
@@ -55,6 +59,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		<span id="icon_articoli" class="menu_icon"></span>
 		<p>Articoli</p>
 	</a>
+      <!-- espande il menù con le sottosezioni all-articles e display-article -->
 	<?php 
 	if($currentPage == $pages["all-articles"])
 	echo'
@@ -72,18 +77,38 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	';
 	if(isset($_SESSION['user'])){		
 	?>
-		<a href="logout.php" class="menu_entry <?php if($currentPage == $pages["logout"]) echo 'active disabled'; ?>">
+		<a href="view-account.php" class="menu_entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
 			<span id="icon_accedi" class="menu_icon"></span>
-			<p>Esci</p>
+			<p>Account</p>
 		</a>
+		  <!-- espande il menù con la sottosezione edit-account -->
+		<?php 
+		if($currentPage == $pages["edit-account"])
+		echo'
+		<a href="edit-account.php" class="menu-entry-small active disabled">
+			<hr/>
+			<p>Modifica account</p>
+		</a>
+		';
+		?>
 	<?php
 	}
 	else{
 		?>
-		<a href="login.php" class="menu_entry <?php if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
-				<span id="icon_accedi" class="menu_icon"></span>
-				<p>Accedi</p>
-			</a>
+		<a href="login.php" class="menu_entry <?php if($currentPage == $pages["register"]) echo 'active'; else if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
+			<span id="icon_accedi" class="menu_icon"></span>
+			<p>Accedi</p>
+		</a>
+		  <!-- espande il menù con la sottosezione register -->
+		<?php 
+		if($currentPage == $pages["register"])
+		echo'
+		<a href="register.php" class="menu-entry-small active disabled">
+			<hr/>
+			<p>Registrati</p>
+		</a>
+		';
+		?>
 		<?php
 	}
 	?>
