@@ -97,6 +97,70 @@ class User {
         $connect->close();
         return $status;
     }
+    
+    public function formUpdateMyUser($url){
         
+        $echoString ='
+        <form action="'.$url.'?id=myuser&sez=update" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
+            
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="'.$this->getNome().'">
+            
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
+            
+            <label for="datanascita">Data di nascita:</label>
+            <input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
+            
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" value="'.$this->getPassword().'">
+            
+            <label for="passwordconf">Conferma password:</label>
+            <input type="text" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
+
+            <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
+        </form>
+        ';
+
+        return $echoString;
+    } 
+    
+    public function updateMyUser($nome, $cognome, $datanascita, $password, $confermaPassword){
+     
+        $echoString ="";
+        $connect = startConnect();   
+
+        if(
+            isset($nome) &&
+            isset($cognome) &&
+            isset($datanascita) &&
+            isset($password) &&
+            isset($confermaPassword) &&
+            $password==$confermaPassword /*&&
+            bisogna controllare che la data si effettivamente una data
+            */
+        ){
+            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' WHERE email='".$this->getEmail()."'";
+            if( $connect->query($sqlQuery) ){                
+                $this->setNome($nome);
+                $this->setCognome($cognome);
+                $this->setDataNascita($datanascita);
+                $this->setPassword($password);
+                echo "Elemento Modificato";
+            } 
+            else {
+                echo "Elemento NON Modificato";
+            }
+        }
+        else{
+            $echoString = "Errore campi";
+        }    
+
+        closeConnect($connect);
+        return $echoString;
+    } 
+    
 }
 ?>

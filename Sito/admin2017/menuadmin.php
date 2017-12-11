@@ -12,6 +12,10 @@
 		<!--<span id="icon_home" class="menu_icon"></span>-->
 		<p>Home</p>
 	</a>
+	<a href="panel.php?id=myuser" class="menu_entry">
+		<!--<span id="icon_home" class="menu_icon"></span>-->
+		<p>Impostazione Utente</p>
+	</a>
 	<a href="panel.php?id=user" class="menu_entry">
 		<!--<span id="icon_home" class="menu_icon"></span>-->
 		<p>Utenti</p>

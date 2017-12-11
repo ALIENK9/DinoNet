@@ -43,15 +43,26 @@
 				case 'home':
 					include_once('home.php');
 					break;
+
 				case 'user':
 					include_once('user/user.php');
+					break;	
+
+				case 'myuser':
+						if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
+							echo $_SESSION['user']->UpdateMyUser($_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+						else
+							echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]);
 					break;
+
 				case 'dino':
 					include_once('dinosaur/dinosaur.php');
 					break;
+
 				case 'article':
 					include_once('article/article.php');
-					break;					
+					break;	
+
 				case 'logout': default:
 					include_once('logout.php');
 					break;

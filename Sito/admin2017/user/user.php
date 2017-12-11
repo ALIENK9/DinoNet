@@ -43,7 +43,7 @@ if(isset($_SESSION['user'])){
 		case 'delete':
 			if(isset($_GET["user"]))
 				echo $_SESSION['user']->deleteUser($_GET["user"]);
-			break;
+			break;	
 		
 		default:
 			header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
