@@ -15,9 +15,24 @@ $pages["view-account"] = "view-account.php";
 $pages["edit-account"] = "edit-account.php";
 $pages["delete-account"] = "delete-account.php";
 
+$pageName = array();
+$pageName["index.php"] = "Home";
+$pageName["history.php"] = "Storia";
+$pageName["species"] = "Specie";
+$pageName["all-species.php"] = "Tutte le specie";
+$pageName["display-specie.php"] = "Scheda dinosauro";
+$pageName["articles.php"] = "Articoli";
+$pageName["all-articles.php"] = "Archivio articoli";
+$pageName["display-article.php"] = "Articolo";
+$pageName["login.php"] = "Accesso";
+$pageName["logout.php"] = "Logout";
+$pageName["register.php"] = "Registrazione";
+$pageName["view-account.php"] = "Pagina personale";
+$pageName["edit-account.php"] = "Modifica dati";
+$pageName["delete-account.php"] = "Cancellazione";
+
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
-
 
 <!-- Sidebar/menu -->
 <nav id="sidebar" class="sidebar bar collapse card">
@@ -39,7 +54,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		<p>Specie</p>
 	</a>
       <!-- espande il menù con le sottosezioni all-species e display-specie -->
-	<?php 
+	<?php
 	if($currentPage == $pages["all-species"])
 	echo'
 	<a href="all-species.php" class="menu-entry-small active disabled">
@@ -49,6 +64,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	';
 	else if($currentPage == $pages["display-specie"])
 	echo'
+    <a href="all-species.php" class="menu-entry-small active">
+		<hr/>
+		<p>Tutte le specie</p>
+	</a>
 	<a href="display-specie.php" class="menu-entry-small active disabled">
 		<hr/>
 		<p>Scheda dinosauro</p>

@@ -60,9 +60,20 @@
 		<div class="padding-large colored">
 			<h1> Estinzione: diverse teorie</h1>
 		</div>
-		<img id="petrified_wood" src="img/petrified_wood.jpg" class="article-image-head"
-             alt="Sezione pietrificata di tronco fossile nel parco nazionale della Foresta Pietrificata in Arizona">
-		<div class="wrap-padding article-content">
+
+        <div class="wrap-padding article-content">
+
+            <figure class="article-image-right">
+                <img id="petrified_wood" src="img/petrified_wood.jpg"
+                     alt="Sezione pietrificata di tronco fossile nel parco nazionale della Foresta Pietrificata in Arizona">
+                <figcaption>
+                    <p>
+                        Vista aerea del Meteor Crater in Arizona. Questo cratere con diametro di circa 1200 metri è
+                        stato generato circa 50000 anni fa dall'impatto di un meteorite largo 46 metri.
+                    </p>
+                </figcaption>
+            </figure>
+
 			<p>
 				Dopo aver domiato la Terra per 170 milioni di anni, impedendo a tutte le altre forme (pesci, uccelli e soprattutto mammiferi) di affermarsi, i grandi rettili di colpo scomparvero. Sessantacinque milioni di anni fa, sulla Terra si produce un'immensa catastrofe che elimina tutti i dinosauri in ogni angolo del pianeta.<br>
 				Non solo: ma anche gran parte della vita si estingue, oltre che sulla terraferma, anche nei mari e nei cieli. Secondo alcune stime il 50-70% delle specie viventi scomparvero. In particolare si estinsero tutti gli animali di una certa taglia, ma anche moltissimi animali microscopici, e buona parte del plancton. Sulla scomparsa dei dinosauri sono state formulate più di 60 ipotesi. Troppe. Alcune del tutto bizzarre, ma altre più probabili.
@@ -71,7 +82,7 @@
                 <img id="meteor_crater" src="img/meteor_crater.jpg" alt="Il Meteor Crater in Arizona">
                 <figcaption>
                     <p>
-                        Vista aerea del Meteor Crater in Arizona. Qeusto cratere con diametro di circa 1200 metri è
+                        Vista aerea del Meteor Crater in Arizona. Questo cratere con diametro di circa 1200 metri è
                         stato generato circa 50000 anni fa dall'impatto di un meteorite largo 46 metri.
                     </p>
                 </figcaption>
