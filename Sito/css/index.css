@@ -468,9 +468,8 @@ form p {
 	}
 }
 
-@media only screen and (max-width: 768px) and (orientation: portrait) {
-	#dino-immagine {
-		float: none!important;
+@media only screen and (max-width: 768px) and (orientation: portrait) { /*target: iPad normali (non il Pro) in Portrait*/
+	#dino-immagine, #caratteristiche {
 		width: 100%!important;
 	}
 }
@@ -820,14 +819,19 @@ form p {
 	margin: 0 0 0.6em 0.6em;
 }
 
+#dino-card-head {
+	text-align: center;
+}
 
 #dino-immagine {
-	float: right;
-	width: 75%;
-	display: inline;
+	display: inline-block;
+	width: 65%;
 }
 
 #caratteristiche {
-	display: inline;
+	display: inline-block;
+	width: 33%;
 	overflow: hidden;
+	vertical-align: bottom;
+	text-align: left;
 }

@@ -37,7 +37,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <!-- Sidebar/menu -->
 <nav id="sidebar" class="sidebar bar collapse card">
   <div class="hide-large center wrap-padding">
-    <i onclick="close_menu()" class="btn">x</i>
+    <span onclick="close_menu()" class="btn">x</span>
   </div>
   <div class="center">
 	<a class="aiuti_nascosti" href="#main">Salta il menù</a>
@@ -58,18 +58,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	if($currentPage == $pages["all-species"])
 	echo'
 	<a href="all-species.php" class="menu-entry-small active disabled">
-		<hr/>
+		<hr>
 		<p>Tutte le specie</p>
 	</a>
 	';
 	else if($currentPage == $pages["display-specie"])
 	echo'
     <a href="all-species.php" class="menu-entry-small active">
-		<hr/>
+		<hr>
 		<p>Tutte le specie</p>
 	</a>
 	<a href="display-specie.php" class="menu-entry-small active disabled">
-		<hr/>
+		<hr>
 		<p>Scheda dinosauro</p>
 	</a>
 	';
@@ -83,14 +83,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	if($currentPage == $pages["all-articles"])
 	echo'
 	<a href="all-articles.php" class="menu-entry-small active disabled">
-		<hr/>
+		<hr>
 		<p>Tutti gli articoli</p>
 	</a>
 	';
 	else if($currentPage == $pages["display-article"])
 	echo'
 	<a href="display-article.php" class="menu-entry-small active disabled">
-		<hr/>
+		<hr>
 		<p>Scheda articolo</p>
 	</a>
 	';
@@ -105,7 +105,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		if($currentPage == $pages["edit-account"])
 		echo'
 		<a href="edit-account.php" class="menu-entry-small active disabled">
-			<hr/>
+			<hr>
 			<p>Modifica account</p>
 		</a>
 		';
@@ -123,7 +123,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		if($currentPage == $pages["register"])
 		echo'
 		<a href="register.php" class="menu-entry-small active disabled">
-			<hr/>
+			<hr>
 			<p>Registrati</p>
 		</a>
 		';

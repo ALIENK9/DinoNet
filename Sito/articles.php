@@ -95,7 +95,7 @@
 		<div class="padding-large colored">
 			<h1> Quando gli insetti dominavano la terra </h1>
 		</div>
-		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante"/>
+		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante">
 		<div class="padding-large">
 			<h3 class="text-colored center"> Sottotitolo </h3>
 			<br>
