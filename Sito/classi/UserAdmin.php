@@ -217,10 +217,10 @@ class UserAdmin extends User {
         ){
             $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' WHERE email='".$email."'";
             if( $connect->query($sqlQuery) ){
-                echo "Elemento Modificato";
+                $echoString = "Elemento Modificato";
             } 
             else {
-                echo "Elemento NON Modificato";
+                $echoString = "Elemento NON Modificato";
             }
         }
         else{
