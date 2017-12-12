@@ -1,6 +1,6 @@
 <?php
 
-include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Dinosaur.php");
+include_once ("../classi/Dinosaur.php");
 if(isset($_SESSION['user'])){
 
 	if(isset($_GET["sez"]))

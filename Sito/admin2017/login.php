@@ -1,6 +1,7 @@
 <?php
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/UserAdmin.php");	
+	include_once ("../connect.php");
+	include_once ("../classi/UserAdmin.php");
+
 
 	session_start();
 	

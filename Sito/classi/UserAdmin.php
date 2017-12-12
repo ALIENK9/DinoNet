@@ -1,7 +1,7 @@
 <?php 
 
-include_once ( $_SERVER['DOCUMENT_ROOT'] ."/connect.php");
-include_once ( $_SERVER['DOCUMENT_ROOT'] ."/classi/User.php");
+include_once ("../connect.php");
+include_once ("User.php");
 
 class UserAdmin extends User {
     

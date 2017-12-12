@@ -63,24 +63,25 @@
 		<div class="colored center wrap-padding">
 			<h1 class="title" xml:lang="en" lang="en">Coelopysis</h1>
 		</div>
-		<div class="wrap-padding w3-row-padding">
-		<div class="half wrap-padding">
-			<div class="white wrap-padding">
-				<h3>Caratteristiche</h3>
-				<br>
-				<ul>
-					<li><strong>Descritto da:</strong> Edward Drinker Cope, 1889</li>
-					<li><strong>Età:</strong> 208-200 milioni</li>
-					<li><strong>Habitat:</strong> Pianure desertiche</li>
-					<li><strong>Lunghezza:</strong> 2.8 m</li>
-					<li><strong>Peso:</strong> 46 kg</li>
-					<li><strong>Alimentazione:</strong> Rettili, pesci</li>
-				</ul>
-			</div>
-		</div>
-		<div id="dino-card" class="half margin-half daily-dino">
-            <img src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
-		</div>
+		<div id="dino-card-head" class="wrap-padding w3-row-padding">
+
+            <img id="dino-immagine" src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
+
+            <div id="caratteristiche" class="wrap-padding">
+                <div class="wrap-padding">
+                    <h3>Caratteristiche</h3>
+                    <br>
+                    <ul>
+                        <li><strong>Descritto da:</strong> Edward Drinker Cope, 1889</li>
+                        <li><strong>Età:</strong> 208-200 milioni di milioni di milioni di secoli</li>
+                        <li><strong>Habitat:</strong> Pianure desertiche</li>
+                        <li><strong>Lunghezza:</strong> 2.8 m</li>
+                        <li><strong>Peso:</strong> 46 kg</li>
+                        <li><strong>Alimentazione:</strong> Rettili, pesci</li>
+                    </ul>
+                </div>
+            </div>
+
 		</div>
 		<div class="wrap-padding white">
 			<h3>Descrizione</h3>
