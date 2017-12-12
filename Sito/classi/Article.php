@@ -1,6 +1,6 @@
 <?php
 
-include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
+include_once ("../connect.php");
 
 class Article{
 
