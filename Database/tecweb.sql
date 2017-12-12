@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 10, 2017 alle 01:21
+-- Creato il: Dic 12, 2017 alle 18:03
 -- Versione del server: 10.1.21-MariaDB
 -- Versione PHP: 7.0.15
 
@@ -31,7 +31,7 @@ CREATE TABLE `articolo` (
   `titolo` varchar(255) NOT NULL,
   `sottotitolo` varchar(255) NOT NULL,
   `descrizione` text NOT NULL,
-  `immagine` varchar(255) NOT NULL,
+  `immagine` varchar(255) DEFAULT NULL,
   `eta` int(11) NOT NULL,
   `descrizioneimg` text NOT NULL,
   `datains` date NOT NULL,
@@ -45,7 +45,9 @@ CREATE TABLE `articolo` (
 
 INSERT INTO `articolo` (`id`, `titolo`, `sottotitolo`, `descrizione`, `immagine`, `eta`, `descrizioneimg`, `datains`, `idautore`, `iddinosauro`) VALUES
 (13, 'aaa', 'bbb', 'ccc', '', 111, 'ddd', '2017-11-26', 'dino@dinosauro.it', NULL),
-(14, '121', '232', '343', '', 454, '565', '2017-12-10', 'admin@admin.it', NULL);
+(14, '121', '232', '343', '', 454, '565', '2017-12-10', 'admin@admin.it', NULL),
+(15, '1', '1', '2', '', 3, '4', '2017-12-12', 'admin@admin.it', NULL),
+(16, 'asd', 'sdfas', 'asdfas', '', 213, 'asdf', '2017-12-12', 'admin@admin.it', NULL);
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,7 @@ CREATE TABLE `dinosauro` (
   `habitat` text,
   `alimentazione` text,
   `tipologiaalimentazione` enum('carnivoro','onnivoro','erbivoro','') NOT NULL DEFAULT 'onnivoro',
-  `descrizioneautore` varchar(255) DEFAULT NULL,
+  `descrizionebreve` varchar(255) DEFAULT NULL,
   `descrizione` text,
   `curiosita` text,
   `immagine` varchar(255) DEFAULT NULL,
@@ -75,9 +77,32 @@ CREATE TABLE `dinosauro` (
 -- Dump dei dati per la tabella `dinosauro`
 --
 
-INSERT INTO `dinosauro` (`nome`, `peso`, `altezza`, `lunghezza`, `periodomin`, `periodomax`, `habitat`, `alimentazione`, `tipologiaalimentazione`, `descrizioneautore`, `descrizione`, `curiosita`, `immagine`, `datains`, `idautore`) VALUES
+INSERT INTO `dinosauro` (`nome`, `peso`, `altezza`, `lunghezza`, `periodomin`, `periodomax`, `habitat`, `alimentazione`, `tipologiaalimentazione`, `descrizionebreve`, `descrizione`, `curiosita`, `immagine`, `datains`, `idautore`) VALUES
 ('1', 21, 32, 43, 54, 65, '76', '87', 'erbivoro', '98', '109', '1110', NULL, '2017-12-09', 'admin@admin.it'),
+('ciao', 123, 2134, 2435, 54, 5644, '57863', 'rtdfgs', 'carnivoro', 'sdfgsdfg', 'sdfg', 'xdfg', NULL, '2017-12-12', 'admin@admin.it'),
+('dfstr', 563423, 4532, 4567, 5678, 678, 'ghjk', 'brytui', 'carnivoro', 'ytuij', 'yji', 'yuh', NULL, '2017-12-12', 'admin@admin.it'),
+('fgbjhknl', 346, 789, 6568798, 4756879, 4756879, '68579', 'ery', 'onnivoro', 'tryuh', 'trfyu', 'trfgyu', NULL, '2017-12-12', 'admin@admin.it'),
 ('prova', 12, 123, 1234, 2345, 3456, 'aaa', 'asdf', 'onnivoro', 'zcvbn', 'sdgwer', 'sdgdfgndf', NULL, '2017-11-26', 'dino@dinosauro.it');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `impostazioni`
+--
+
+CREATE TABLE `impostazioni` (
+  `id` varchar(50) NOT NULL,
+  `lastupdate` date NOT NULL,
+  `info` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `impostazioni`
+--
+
+INSERT INTO `impostazioni` (`id`, `lastupdate`, `info`) VALUES
+('ArticoloDelGiorno', '2017-12-11', '14'),
+('DinosauroDelGiorno', '2017-12-12', 'dfstr');
 
 -- --------------------------------------------------------
 
@@ -99,7 +124,7 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`email`, `nome`, `cognome`, `datanascita`, `password`, `tipologia`) VALUES
-('aaa', 'bbb1', 'ccc', '2000-01-01', 'ddd', 0),
+('aaa', 'bbb1', 'ccc', '2000-01-01', 'aaa', 0),
 ('aaaw', 'aaa', 'aaa', '1992-11-11', 'aaaw', 0),
 ('admin@admin.it', 'admin', 'gianni', '1993-10-03', 'admin', 1),
 ('biancocomeilvino@hotmail.com', 'bianco', 'vino', '1937-01-08', 'bianco', 0),
@@ -128,6 +153,12 @@ ALTER TABLE `dinosauro`
   ADD KEY `idautore` (`idautore`);
 
 --
+-- Indici per le tabelle `impostazioni`
+--
+ALTER TABLE `impostazioni`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
@@ -143,7 +174,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Limiti per le tabelle scaricate
 --
