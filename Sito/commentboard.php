@@ -33,9 +33,9 @@
 
 	<form class="center padding-1">
 		<h3><label for="casella-commento">Commenta</label></h3>
-		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"/>
-		<br/>
-		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white"/>
+		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small">
+		<br>
+		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
 	</form>
 </div>
 

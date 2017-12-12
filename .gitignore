@@ -9,3 +9,6 @@
 #INTELLIJ FILES
 *.iml
 .idea
+
+#FILES
+connect.php

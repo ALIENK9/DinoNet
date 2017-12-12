@@ -4,7 +4,7 @@
 <!-- Sidebar/menu -->
 <nav id="sidebar" class="sidebar bar collapse card">
   <div class="hide-large center wrap-padding">
-    <i onclick="close_menu()" class="btn">&times;</i>
+    <span onclick="close_menu()" class="btn">&times;</span>
   </div>
   <div class="center">
 	<a class="aiuti_nascosti" href="#content">Salta il menù</a>
