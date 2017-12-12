@@ -7,6 +7,17 @@ class UserAdmin extends User {
     
     public static function printListUser($filter){
         $connect = startConnect();     
+        
+        $sqlQuery = "SELECT count(email) as ntot FROM utente";
+		$result = $connect->query($sqlQuery);
+        $row = $result->fetch_assoc();
+        closeConnect($connect);
+
+        return UserAdmin::printListUserLimit($filter,0,$row["ntot"]);        
+    }
+
+    public static function printListUserLimit($filter, $startNumView, $numView){
+        $connect = startConnect();     
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -19,7 +30,7 @@ class UserAdmin extends User {
             }
             
             $sqlFilter .= "ORDER BY email, nome, cognome";
-            $sqlQuery = "SELECT email, nome, cognome FROM utente ".$sqlFilter;
+            $sqlQuery = "SELECT email, nome, cognome FROM utente ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
@@ -51,8 +62,7 @@ class UserAdmin extends User {
         }
         
         closeConnect($connect);
-        return $echoString;
-        
+        return $echoString;        
     }
     
     public function deleteUser($id){

@@ -6,6 +6,17 @@ class Article{
 
     public static function printListArticle($filter){
         $connect = startConnect();     
+        
+        $sqlQuery = "SELECT count(id) as ntot FROM articolo";
+		$result = $connect->query($sqlQuery);
+        $row = $result->fetch_assoc();
+        closeConnect($connect);
+
+        return Article::printListArticleLimit($filter,0,$row["ntot"]);
+    }
+
+    public static function printListArticleLimit($filter, $startNumView, $numView){
+        $connect = startConnect();     
         $echoString="";
         $sqlFilter = "";
 
@@ -18,7 +29,7 @@ class Article{
 		}
 		
 		$sqlFilter .= "ORDER BY id, titolo, sottotitolo, eta";
-		$sqlQuery = "SELECT id, titolo, sottotitolo, eta FROM articolo ".$sqlFilter;
+		$sqlQuery = "SELECT id, titolo, sottotitolo, eta FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
 		if ($result->num_rows > 0) {
@@ -52,6 +63,7 @@ class Article{
         closeConnect($connect);
         return $echoString;
     }
+
     public static function deleteArticle($id){   
         $connect = startConnect();     
         $echoString="";

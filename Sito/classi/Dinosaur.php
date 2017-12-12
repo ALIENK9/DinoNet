@@ -6,6 +6,16 @@ class Dinosaur {
     //metodi
     public static function printListDinosaur($filter){
         $connect = startConnect();     
+        
+        $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
+		$result = $connect->query($sqlQuery);
+        $row = $result->fetch_assoc();
+        closeConnect($connect);
+
+        return Dinosaur::printListDinosaurLimit($filter,0,$row["ntot"]);
+    }
+    public static function printListDinosaurLimit($filter, $startNumView, $numView){
+        $connect = startConnect();     
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -20,7 +30,7 @@ class Dinosaur {
             }
             
             $sqlFilter .= "ORDER BY nome";
-            $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione FROM dinosauro ".$sqlFilter;
+            $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
             
             if ($result->num_rows > 0) {
@@ -56,6 +66,7 @@ class Dinosaur {
         closeConnect($connect);
         return $echoString;
     }
+
     public function deleteDinosaur($id){
         $echoString = "";
         $connect = startConnect(); 
