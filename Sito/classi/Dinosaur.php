@@ -1,5 +1,8 @@
 <?php 
-include_once ("../connect.php");
+$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+//$homepath = $_SERVER["DOCUMENT_ROOT"];
+
+include_once ($homepath . "/connect.php");
 
 class Dinosaur {    
                 
@@ -121,8 +124,8 @@ class Dinosaur {
                 <label for="alimentazione">Alimentazione:</label>
                 <input type="text" id="alimentazione" name="alimentazione" value="">
                 
-                <label for="descrizioneautore">Descrizione Autore:</label>
-                <input type="text" id="descrizioneautore" name="descrizioneautore" value="">
+                <label for="descrizionebreve">Descrizione Breve:</label>
+                <input type="text" id="descrizionebreve" name="descrizionebreve" value="">
                 
                 <label for="descrizione">Descrizione:</label>
                 <input type="text" id="descrizione" name="descrizione" value="">
@@ -138,7 +141,7 @@ class Dinosaur {
     }
 
     //sarei quasi indeciso se istanziare il dinosauro e passarlo a questo metodo per il salvataggio nel DB
-    public static function addDinosaur($idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizioneautore, $descrizione, $curiosita){
+    public static function addDinosaur($idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita){
         $echoString ="";
         $connect = startConnect(); 
         $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
@@ -154,15 +157,15 @@ class Dinosaur {
             isset($habitat) &&
             isset($alimentazione)  &&
             isset($tipologiaalimentazione) &&
-            isset($descrizioneautore) &&
+            isset($descrizionebreve) &&
             isset($descrizione) &&
             isset($curiosita)  /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
             $sqlQuery = "INSERT INTO dinosauro (
-                nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizioneautore, descrizione, curiosita, datains, idautore)
-                VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".$descrizioneautore."', '".$descrizione."', '".$curiosita."', '".date('Y-m-j')."', '".$idautore."') ";
+                nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore)
+                VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".$descrizionebreve."', '".$descrizione."', '".$curiosita."', '".date('Y-m-j')."', '".$idautore."') ";
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Aggiunto";
             } 
@@ -231,8 +234,8 @@ class Dinosaur {
                     <label for="alimentazione">Alimentazione:</label>
                     <input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
                     
-                    <label for="descrizioneautore">Descrizione Autore:</label>
-                    <input type="text" id="descrizioneautore" name="descrizioneautore" value="'.$row["descrizioneautore"].'">
+                    <label for="descrizionebreve">Descrizione breve:</label>
+                    <input type="text" id="descrizionebreve" name="descrizionebreve" value="'.$row["descrizionebreve"].'">
                     
                     <label for="descrizione">Descrizione:</label>
                     <input type="text" id="descrizione" name="descrizione" value="'.$row["descrizione"].'">
@@ -252,7 +255,7 @@ class Dinosaur {
 
     }
 
-    public static function updateDinosaur($nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizioneautore, $descrizione, $curiosita){
+    public static function updateDinosaur($nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita){
     
         $echoString ="";
         $connect = startConnect(); 
@@ -267,14 +270,14 @@ class Dinosaur {
             isset($habitat) &&
             isset($alimentazione) &&
             isset($tipologiaalimentazione) &&
-            isset($descrizioneautore) &&
+            isset($descrizionebreve) &&
             isset($descrizione) &&
             isset($curiosita)/*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
             $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
-            periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizioneautore='".$descrizioneautore."',
+            periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".$descrizionebreve."',
             descrizione='".$descrizione."', curiosita='".$curiosita."' WHERE nome='".$nome."'";
             if( $connect->query($sqlQuery) ){                
                 $echoString = "Elemento Modificato";
@@ -301,11 +304,11 @@ class Dinosaur {
         if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
             $id = $row['info']; 
             if($row['lastupdate']!=date('Y-m-j')){
-                $sqlQuery2 = "SELECT nome FROM dinosauro ORDER BY rand() LIMIT 1";
+                $sqlQuery2 = "SELECT nome FROM dinosauro WHERE nome != '$id' ORDER BY rand() LIMIT 1";
                 $result2 = $connect->query($sqlQuery2);
                 if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                     $id = $row2['nome'];
-                    $sqlQuery3 = "UPDATE impostazioni SET lastupdate='".date('Y-m-j')."', info='".$id."' WHERE  id='DinosauroDelGiorno'";
+                    $sqlQuery3 = "UPDATE impostazioni SET lastupdate='".date('Y-m-j')."', info='$id' WHERE  id='DinosauroDelGiorno'";
                     if( !$connect->query($sqlQuery3) ){                
                         $echoString = "Errore: Aggiornamento impostazioni";
                     } 
@@ -316,7 +319,36 @@ class Dinosaur {
                 
             }
             if($echoString == ""){
-                $echoString = "";//tile del dinosauro
+                
+                $sqlQuery4 = "SELECT * FROM dinosauro WHERE nome = '$id'"; 
+                $result4 = $connect->query($sqlQuery4);
+                
+                if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
+                    $echoString = "
+                        <div class=\"daily-dino card\"> <!--tolto wrap-margin-->
+                            <div class=\"padding-large colored\">
+                                <h1> $row4[nome] </h1>
+                            </div>
+                            <img src=\"img/dailydino-test.png\" alt=\"Triceratopo\">
+                            <div class=\"padding-large\">
+                                <ul>
+                                    <li><strong>Alimentazione:</strong> $row4[tipologiaalimentazione]</li>
+                                    <li><strong>Habitat:</strong>$row4[habitat]</li>
+                                    <li><strong>Peso:</strong> $row4[peso]</li>
+                                </ul>
+                                <p>
+                                    $row4[descrizionebreve]
+                                </p>
+                            </div>
+                            <div class=\"center padding-2\">
+                                <a href=\"display-specie.php\" class=\"btn colored\"><p> Visualizza la scheda del dinosauro </p></a>
+                            </div>
+                        </div>                    
+                    ";
+                }
+                else{
+                    $echoString = "Errore: Non ci sono dinosauri";
+                }
             }
 
         }

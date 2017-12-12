@@ -1,7 +1,11 @@
 <?php
+	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	//$homepath = $_SERVER["DOCUMENT_ROOT"];
+
+	include_once ($homepath . "/classi/Article.php");
+
 	session_start();
 	
-	include_once ("classi/Article.php");
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">

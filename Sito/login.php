@@ -1,6 +1,9 @@
 <?php
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/User.php");	
+	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	//$homepath = $_SERVER["DOCUMENT_ROOT"];
+
+	include_once ($homepath . "/connect.php");
+	include_once ($homepath . "/classi/User.php");
 
 	session_start();
 	

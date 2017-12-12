@@ -1,6 +1,10 @@
 <?php
+	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	//$homepath = $_SERVER["DOCUMENT_ROOT"];
+
+	include_once ($homepath . "/classi/Dinosaur.php");
+	
 	session_start();
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Dinosaur.php");
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -72,10 +76,7 @@
 <!-- Dinosauri -->
 
 <div class="padding-6 content-large row-padding">
-	<?php
-	
-		echo Dinosaur::getDinosaurDay();
-	?>
+
 	<div id="daily-dino" class="half wrap-padding">
 
 		<div class="card margin-half colored center wrap-padding">
@@ -83,7 +84,11 @@
 			<hr>
             <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 		</div>
-
+		<?php
+		
+			echo Dinosaur::getDinosaurDay();
+		/*
+		?>		
 		<div class="daily-dino card"> <!--tolto wrap-margin-->
 			<div class="padding-large colored">
 				<h1> Nome del dinosauro </h1>
@@ -106,6 +111,7 @@
 				<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
 			</div>
 		</div>
+		<?php */ ?>
 	</div>
 	<div class="half wrap-padding">
 

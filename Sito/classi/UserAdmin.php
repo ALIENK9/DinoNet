@@ -1,7 +1,9 @@
 <?php 
+	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-include_once ("../connect.php");
-include_once ("User.php");
+	include_once ($homepath . "/connect.php");
+	include_once ($homepath . "/classi/User.php");
 
 class UserAdmin extends User {
     

@@ -1,6 +1,9 @@
 <?php
+	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-include_once ("../classi/Dinosaur.php");
+	include_once ($homepath . "/classi/Dinosaur.php");
+
 if(isset($_SESSION['user'])){
 
 	if(isset($_GET["sez"]))
@@ -32,13 +35,13 @@ if(isset($_SESSION['user'])){
 				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Dinosaur::addDinosaur($_SESSION['user']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizioneautore"], $_POST["descrizione"], $_POST["curiosita"]);
+			echo Dinosaur::addDinosaur($_SESSION['user']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"]);
 			break;			
 		case 'formupdate':
 			echo Dinosaur::formUpdateDinosaur($_SERVER["PHP_SELF"],$_GET['nome']);
 			break;
 		case 'update':
-			echo Dinosaur::updateDinosaur($_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizioneautore"], $_POST["descrizione"], $_POST["curiosita"]);
+			echo Dinosaur::updateDinosaur($_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"]);
 			break;	
 		case 'delete':
 			if(isset($_GET["nome"]))

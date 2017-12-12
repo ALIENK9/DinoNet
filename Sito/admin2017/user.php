@@ -1,6 +1,9 @@
 <?php
 
-include_once ("../classi/UserAdmin.php");
+$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+//$homepath = $_SERVER["DOCUMENT_ROOT"];
+
+include_once ($homepath . "/classi/UserAdmin.php");
 
 if(isset($_SESSION['user'])){
 
