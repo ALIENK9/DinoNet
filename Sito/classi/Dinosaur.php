@@ -290,6 +290,43 @@ class Dinosaur {
         closeConnect($connect);
         return $echoString;
     }
+    public static function getDinosaurDay(){
+        
+        $echoString ="";
+        $connect = startConnect(); 
+
+        $sqlQuery = "SELECT lastupdate, info FROM impostazioni WHERE id='DinosauroDelGiorno'";
+        $result = $connect->query($sqlQuery);
+        
+        if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+            $id = $row['info']; 
+            if($row['lastupdate']!=date('Y-m-j')){
+                $sqlQuery2 = "SELECT nome FROM dinosauro ORDER BY rand() LIMIT 1";
+                $result2 = $connect->query($sqlQuery2);
+                if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
+                    $id = $row2['nome'];
+                    $sqlQuery3 = "UPDATE impostazioni SET lastupdate='".date('Y-m-j')."', info='".$id."' WHERE  id='DinosauroDelGiorno'";
+                    if( !$connect->query($sqlQuery3) ){                
+                        $echoString = "Errore: Aggiornamento impostazioni";
+                    } 
+                }
+                else{
+                    $echoString = "Errore: Non ci sono dinosauri";
+                }
+                
+            }
+            if($echoString == ""){
+                $echoString = "";//tile del dinosauro
+            }
+
+        }
+        else{
+            $echoString = "Errore: impostazioni non trovate";
+        }
+
+        closeConnect($connect);
+        return $echoString;
+    }
      
 }
 ?>

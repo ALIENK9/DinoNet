@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Article.php");
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -103,6 +105,8 @@
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
+		echo Article::printListArticleLimit("",0,3);
+		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
@@ -126,6 +130,7 @@
 			</div>
 		';
 		}
+		*/
 	?>
 	</div>
 </div>

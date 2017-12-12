@@ -38,6 +38,7 @@
 	<!-- inclusione pagina da visualizzare -->
 
 	<?php 
+	echo $_SERVER['HTTP_HOST'];
 		if(isset($_GET["id"])){
 			switch ($_GET["id"]) {
 				case 'home':

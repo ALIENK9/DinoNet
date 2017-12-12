@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Dinosaur.php");
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -71,6 +72,10 @@
 <!-- Dinosauri -->
 
 <div class="padding-6 content-large row-padding">
+	<?php
+	
+		echo Dinosaur::getDinosaurDay();
+	?>
 	<div id="daily-dino" class="half wrap-padding">
 
 		<div class="card margin-half colored center wrap-padding">
@@ -137,6 +142,9 @@
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
+	
+		echo Dinosaur::printListDinosaurLimit("",0,3);
+		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'
 			<div class="third wrap-padding">
@@ -165,6 +173,7 @@
 			</div>
 		';
 		}
+		*/
 	?>
 	</div>
 </div>
