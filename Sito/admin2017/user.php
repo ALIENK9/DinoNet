@@ -1,6 +1,6 @@
 <?php
 
-include_once ("../../classi/UserAdmin.php");
+include_once ("../classi/UserAdmin.php");
 
 if(isset($_SESSION['user'])){
 

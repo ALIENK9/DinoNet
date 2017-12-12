@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Article.php");
+	include_once ("classi/Article.php");
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">

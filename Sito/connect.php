@@ -1,6 +1,7 @@
 <?php
 function startConnect(){
-	$connect=new mysqli("http://alessandrozangari.altervista.org","alessandrozangari","","my_alessandrozangari");
+	//$connect=new mysqli("http://alessandrozangari.altervista.org","alessandrozangari","","my_alessandrozangari");//DB di Alessandro
+	$connect=new mysqli("127.0.0.1","root","","tecweb");//DB di cristiano
 	if($connect->connect_error){
 		echo "Errore di connessione: " . $connect->connect_error;
 		$connect = null;

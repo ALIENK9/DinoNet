@@ -38,7 +38,6 @@
 	<!-- inclusione pagina da visualizzare -->
 
 	<?php 
-	echo $_SERVER['HTTP_HOST'];
 		if(isset($_GET["id"])){
 			switch ($_GET["id"]) {
 				case 'home':
@@ -46,7 +45,7 @@
 					break;
 
 				case 'user':
-					include_once('user/user.php');
+					include_once('user.php');
 					break;	
 
 				case 'myuser':
@@ -57,11 +56,11 @@
 					break;
 
 				case 'dino':
-					include_once('dinosaur/dinosaur.php');
+					include_once('dinosaur.php');
 					break;
 
 				case 'article':
-					include_once('article/article.php');
+					include_once('article.php');
 					break;	
 
 				case 'logout': default:
