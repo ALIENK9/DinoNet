@@ -1,6 +1,7 @@
 <?php
 
-include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/UserAdmin.php");
+include_once ("../../classi/UserAdmin.php");
+
 if(isset($_SESSION['user'])){
 
 	if(isset($_GET["sez"]))

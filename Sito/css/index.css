@@ -468,6 +468,13 @@ form p {
 	}
 }
 
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+	#dino-immagine {
+		float: none!important;
+		width: 100%!important;
+	}
+}
+
 /*@media only screen and (min-width: 767px) and (max-width: 1024px) { non dovrebbe servire
     .parallax {
         background-attachment: scroll !important;
@@ -811,4 +818,16 @@ form p {
 	float: right;
 	width: 50%;
 	margin: 0 0 0.6em 0.6em;
+}
+
+
+#dino-immagine {
+	float: right;
+	width: 75%;
+	display: inline;
+}
+
+#caratteristiche {
+	display: inline;
+	overflow: hidden;
 }

@@ -1,6 +1,6 @@
 <?php
 
-include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/Article.php");
+include_once ("../classi/Article.php");
 if(isset($_SESSION['user'])){
 	
 	if(isset($_GET["sez"]))

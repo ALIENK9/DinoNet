@@ -1,6 +1,6 @@
 <?php
 function startConnect(){
-	$connect=new mysqli("127.0.0.1","root","","tecweb");
+	$connect=new mysqli("http://alessandrozangari.altervista.org","alessandrozangari","","my_alessandrozangari");
 	if($connect->connect_error){
 		echo "Errore di connessione: " . $connect->connect_error;
 		$connect = null;
