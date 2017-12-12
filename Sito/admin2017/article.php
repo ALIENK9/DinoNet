@@ -1,6 +1,9 @@
 <?php
 
 $homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+	$homepath .= "/TecWeb";
+}
 //$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 include_once ($homepath . "/classi/Article.php");
@@ -30,9 +33,9 @@ if(isset($_SESSION['user'])){
 		</a>
 		<?php
 			if(isset($_GET["filter"]))
-				echo Article::printListArticle($_GET["filter"]);
+				echo Article::printListArticle($_GET["filter"], true);
 			else
-				echo Article::printListArticle("");
+				echo Article::printListArticle("", true);
 			break;
 		case 'formadd':
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);

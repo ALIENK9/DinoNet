@@ -1,5 +1,8 @@
 <?php 
 $homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+    $homepath .= "/TecWeb";
+}
 //$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 include_once ($homepath . "/connect.php");
@@ -7,7 +10,7 @@ include_once ($homepath . "/connect.php");
 class Dinosaur {    
                 
     //metodi
-    public static function printListDinosaur($filter){
+    public static function printListDinosaur($filter, $editable = false){
         $connect = startConnect();     
         
         $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
@@ -15,9 +18,9 @@ class Dinosaur {
         $row = $result->fetch_assoc();
         closeConnect($connect);
 
-        return Dinosaur::printListDinosaurLimit($filter,0,$row["ntot"]);
+        return Dinosaur::printListDinosaurLimit($filter, 0, $row["ntot"], $editable);
     }
-    public static function printListDinosaurLimit($filter, $startNumView, $numView){
+    public static function printListDinosaurLimit($filter, $startNumView, $numView, $editable = false){
         $connect = startConnect();     
         $echoString="";
         if(isset($connect)){
@@ -53,9 +56,17 @@ class Dinosaur {
                                     Tipologia di alimentazione: '.$row["tipologiaalimentazione"].'
                                 </p>
                             </div>
-                            <div class="center padding-2">
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=formupdate&nome='.$row["nome"].'" class="btn green-sea"><p> Modifica</p></a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=delete&nome='.$row["nome"].'" class="btn green-sea"><p> Elimina </p></a>
+                            <div class="center padding-2">';
+                            if($editable){
+                                $echoString .='
+                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=formupdate&nome='.$row["nome"].'" class="btn green-sea"><p> Modifica</p></a>
+                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=delete&nome='.$row["nome"].'" class="btn green-sea"><p> Elimina </p></a>
+                                ';
+                            }
+                            else{
+                                $echoString .='<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>';
+                            }
+                            $echoString .='    
                             </div>
                         </div>
                     </div>

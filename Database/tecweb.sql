@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 12, 2017 alle 18:03
+-- Creato il: Dic 12, 2017 alle 21:56
 -- Versione del server: 10.1.21-MariaDB
 -- Versione PHP: 7.0.15
 
@@ -101,7 +101,7 @@ CREATE TABLE `impostazioni` (
 --
 
 INSERT INTO `impostazioni` (`id`, `lastupdate`, `info`) VALUES
-('ArticoloDelGiorno', '2017-12-11', '14'),
+('ArticoloDelGiorno', '2017-12-12', '14'),
 ('DinosauroDelGiorno', '2017-12-12', 'dfstr');
 
 -- --------------------------------------------------------

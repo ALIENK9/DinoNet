@@ -1,5 +1,9 @@
 <?php
 	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+		$homepath .= "/TecWeb";
+	}
+
 	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 	include_once ($homepath . "/classi/Article.php");
@@ -82,6 +86,11 @@
         <p>Giornalmente selezioniamo un articolo per te. Buona lettura!</p>
     </div>
 
+	<?php
+		
+			echo Article::getArticleDay();
+		/*
+		?>
 	<div id="daily-article" class="card daily-article">
 		<div class="padding-large colored">
 			<h1> Quando gli insetti dominavano la terra </h1>
@@ -101,6 +110,8 @@
 			<a href="display-article.php" class="btn colored"><p> Leggi l'articolo </p></a>
 		</div>
 	</div>
+	*/
+	?>
 </div>
 
 <div class="padding-6">
@@ -109,7 +120,7 @@
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
-		echo Article::printListArticleLimit("",0,3);
+		echo Article::printListArticleLimit("", 0, 3, false);
 		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'

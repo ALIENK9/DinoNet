@@ -1,5 +1,8 @@
 <?php
 	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+		$homepath .= "/TecWeb";
+	}
 	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 	include_once ($homepath . "/connect.php");

@@ -1,5 +1,8 @@
 <?php
 	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+		$homepath .= "/TecWeb";
+	}
 	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 	include_once ($homepath . "/classi/Dinosaur.php");
@@ -149,7 +152,7 @@
 	<div class="row-padding content-large margin-top">
 	<?php
 	
-		echo Dinosaur::printListDinosaurLimit("",0,3);
+		echo Dinosaur::printListDinosaurLimit("", 0, 3, false);
 		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'

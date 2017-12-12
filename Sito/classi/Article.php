@@ -1,13 +1,16 @@
 <?php
 
 $homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
+    $homepath .= "/TecWeb";
+}
 //$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 include_once ($homepath . "/connect.php");
 
 class Article{
 
-    public static function printListArticle($filter){
+    public static function printListArticle($filter, $editable = false){
         $connect = startConnect();     
         
         $sqlQuery = "SELECT count(id) as ntot FROM articolo";
@@ -15,10 +18,10 @@ class Article{
         $row = $result->fetch_assoc();
         closeConnect($connect);
 
-        return Article::printListArticleLimit($filter,0,$row["ntot"]);
+        return Article::printListArticleLimit($filter, 0, $row["ntot"], $editable);
     }
 
-    public static function printListArticleLimit($filter, $startNumView, $numView){
+    public static function printListArticleLimit($filter, $startNumView, $numView, $editable = false){
         $connect = startConnect();     
         $echoString="";
         $sqlFilter = "";
@@ -51,9 +54,17 @@ class Article{
                                 Età: '.$row["eta"].'
                             </p>
                         </div>
-                        <div class="center padding-2">
-                            <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=formupdate&article='.$row["id"].'" class="btn green-sea"><p> Modifica</p></a>
-                            <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=delete&article='.$row["id"].'" class="btn green-sea"><p> Elimina </p></a>
+                        <div class="center padding-2">';
+                            if($editable){
+                                $echoString .='
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=formupdate&article='.$row["id"].'" class="btn green-sea"><p> Modifica</p></a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=delete&article='.$row["id"].'" class="btn green-sea"><p> Elimina </p></a>
+                                ';
+                            }
+                            else{
+                                $echoString .='<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>';
+                            }
+                            $echoString .='
                         </div>
                     </div>
                 </div>
@@ -195,6 +206,69 @@ class Article{
         else{
             $echoString = "Errore campi";
         }
+        closeConnect($connect);
+        return $echoString;
+    }
+    public static function getArticleDay(){
+        
+        $echoString ="";
+        $connect = startConnect(); 
+
+        $sqlQuery = "SELECT lastupdate, info FROM impostazioni WHERE id='ArticoloDelGiorno'";
+        $result = $connect->query($sqlQuery);
+        
+        if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
+            $id = $row['info']; 
+            if($row['lastupdate']!=date('Y-m-j')){
+                $sqlQuery2 = "SELECT id FROM articolo WHERE id != '$id' ORDER BY rand() LIMIT 1";
+                $result2 = $connect->query($sqlQuery2);
+                if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
+                    $id = $row2['nome'];
+                    $sqlQuery3 = "UPDATE impostazioni SET lastupdate='".date('Y-m-j')."', info='$id' WHERE  id='ArticoloDelGiorno'";
+                    if( !$connect->query($sqlQuery3) ){                
+                        $echoString = "Errore: Aggiornamento impostazioni";
+                    } 
+                }
+                else{
+                    $echoString = "Errore: Non ci sono articoli";
+                }
+                
+            }
+            if($echoString == ""){
+                
+                $sqlQuery4 = "SELECT * FROM articolo WHERE id = '$id'"; 
+                $result4 = $connect->query($sqlQuery4);
+                
+                if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
+                    $echoString = "
+                        <div id=\"daily-article\" class=\"card daily-article\">
+                            <div class=\"padding-large colored\">
+                                <h1> $row4[titolo] </h1>
+                            </div>
+                            <img src=\"img/meganeura.jpg\" alt=\"$row4[descrizioneimg]\"/>
+                            <div class=\"padding-large\">
+                                <h3 class=\"text-colored center\"> $row4[sottotitolo] </h3>
+                                <br>
+                                <p>
+                                    $row4[descrizione]
+                                </p>
+                            </div>
+                            <div class=\"center padding-2\">
+                                <a href=\"display-article.php\" class=\"btn colored\"><p> Leggi l'articolo </p></a>
+                            </div>
+                        </div>                   
+                    ";
+                }
+                else{
+                    $echoString = "Errore: Non ci sono articoli";
+                }
+            }
+
+        }
+        else{
+            $echoString = "Errore: impostazioni non trovate";
+        }
+
         closeConnect($connect);
         return $echoString;
     }
