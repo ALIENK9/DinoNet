@@ -1,4 +1,6 @@
-html {
+html, body {
+    font-family: Times, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 100%;
     background-image: none;
     text-align: justify;
     color: #000000;

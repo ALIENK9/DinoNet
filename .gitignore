@@ -5,6 +5,7 @@
 *.log
 *.out
 *.synctex.gz
+*.toc
 
 #INTELLIJ FILES
 *.iml
@@ -13,3 +14,4 @@
 #FILES
 connect.php
 Sito/connect.php
+*.pdf
