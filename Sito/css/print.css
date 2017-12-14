@@ -1,15 +1,33 @@
-html {
-    background-image: none;
+html, body {
     text-align: justify;
+    font-family: Times, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 100%;
     color: #000000;
+    background-image: none;
     background-color: #fff;
+    padding: 0!important;
+    margin: auto!important;
 }
 
 button, input, form, hr {display: none;}
 
-h1 {font-size: 1.7em!important;}
-h2 {font-size: 1.5em!important;}
-h3 {font-size: 1.3em!important;}
+h1 {
+    font-size: 1.7em!important;
+    color: #000000!important;
+    background-color: #ffffff!important;
+}
+
+h2 {
+    font-size: 1.5em!important;
+    color: #000000!important;
+    background-color: #ffffff!important;
+}
+
+h3 {
+    font-size: 1.3em!important;
+    color: #000000!important;
+    background-color: #ffffff!important;
+}
 
 .sidebar, .bar, .btn {display: none;}
 
@@ -27,11 +45,6 @@ h3 {font-size: 1.3em!important;}
     color: unset;
 }
 
-.white h1, .white h3 {
-    color: #000000!important;
-    background-color: #ffffff;
-}
-
 #input-area, #login {
     display: none;
 }
@@ -40,8 +53,6 @@ h3 {font-size: 1.3em!important;}
 
 
 .daily-dino img, .daily-article img {display: none;}
-
-/*#dino-card img {}*/
 
 .hide-large, .hide-medium {display: none;}
 
@@ -55,49 +66,16 @@ h3 {font-size: 1.3em!important;}
  *  PADDING E VARIE
  */
 
-.content, .content-large {
-    padding-left: 0;
-    padding-right: 0;
-}
-
 .wide {letter-spacing: 0;}
 
-.wrap-margin {
-    margin:0.5em 0.5em;
+.margin-top, .margin-2, .margin-3, .margin-half, .margin-half, .wrap-margin, .side-margin {
+    margin: 0;
 }
 
-.margin-half {
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-}
-
-.margin-top, .margin-2, .margin-3 {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.side-margin {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.padding-large{padding: 0;}
-
-.side-padding {
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-.padding-15, .padding-12 {
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.padding-6, .padding-3, .padding-2, .padding-1 {
-    padding-top: 1em;
-    padding-bottom: 1em;
+.padding-15, .padding-12, .padding-6, .padding-3, .padding-2, .padding-1, .side-padding, .content, .content-large, .padding-large {
+    padding: 0;
 }
 
 .wrap-padding, .wrap-padding-small {
-    padding: 0.5em;
+    padding: 0.5em!important;
 }
