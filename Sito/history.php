@@ -91,8 +91,8 @@
 <!-- La scoperta -->
 
 <div id="scoperta" class="row parallax">
-	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-1.jpg" alt="Cranio fossile di un grande dinosauro carnivoro"></div>
-	<div class="half">
+	<!--div id="history-1" class="hide-large hide-medium history-img"></div-->
+	<div class="half right">
 		<div class="white wrap-padding">
 			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
 			<br>
@@ -179,7 +179,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri"></div>
+	<!--div id="history-2" class="hide-large hide-medium history-img"></div-->
 </div>
 
 <!-- L'estinzione -->

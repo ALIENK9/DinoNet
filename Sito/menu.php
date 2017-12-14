@@ -15,22 +15,6 @@ $pages["view-account"] = "view-account.php";
 $pages["edit-account"] = "edit-account.php";
 $pages["delete-account"] = "delete-account.php";
 
-$pageName = array();
-$pageName["index.php"] = "Home";
-$pageName["history.php"] = "Storia";
-$pageName["species"] = "Specie";
-$pageName["all-species.php"] = "Tutte le specie";
-$pageName["display-specie.php"] = "Scheda dinosauro";
-$pageName["articles.php"] = "Articoli";
-$pageName["all-articles.php"] = "Archivio articoli";
-$pageName["display-article.php"] = "Articolo";
-$pageName["login.php"] = "Accesso";
-$pageName["logout.php"] = "Logout";
-$pageName["register.php"] = "Registrazione";
-$pageName["view-account.php"] = "Pagina personale";
-$pageName["edit-account.php"] = "Modifica dati";
-$pageName["delete-account.php"] = "Cancellazione";
-
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 

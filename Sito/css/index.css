@@ -197,7 +197,11 @@ form p {
 	text-align: center;
 }
 
-/* /Home */
+/*
+======================================================================
+								HOME
+======================================================================
+*/
 
 .floating-element {
 	float: left;
@@ -242,7 +246,36 @@ form p {
 
 /* /Daily stuff */
 
-/* History */
+/*
+======================================================================
+								STORIA
+======================================================================
+*/
+
+/*.history-img {
+    width: 100%;
+    height: 90vw;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#history-1 {
+    background-image: url("../img/dino-1.jpg");
+}
+
+#history-2 {
+    background-image: url("../img/dino-3.jpg");
+}
+
+/*.ghost-half {
+    padding-top: 12em;
+    padding-bottom: 12em;
+}
+
+.ghost-half img{
+    width: 100%;
+}*/
 
 #scoperta {
 	background-image:url('../img/dino-1.jpg');
@@ -329,14 +362,6 @@ form p {
 	padding:0 8px;
 }
 
-.ghost-half {
-	padding-top: 12em;
-	padding-bottom: 12em;
-}
-
-.ghost-half img{
-	width: 100%;
-}
 
 .half,.third,.twothird,.quarter{
 	float:left;
@@ -423,15 +448,13 @@ form p {
 
 /* Responsiveness */
 
-@media (min-width: 1025px) {			                /*dimensione grande > 1024 px*/
+@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
     .hide-large {display: none!important;}
     .sidebar.collapse {display: block;}
 }
 
-@media (max-width: 600px) {							    /*dimensione piccola 480 - 600 px*/
+@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
 	.hide-small {display: none!important;}
-    #scoperta, #bipedi-quadrupedi {background-image: none;}
-	.ghost-half {padding: 0;}
 	.main {min-width: 100%;}
 
     #header-menu {
@@ -444,27 +467,30 @@ form p {
     #title-card {padding: 1em;}
     #title-card h1 {font-size: 5vh;}
     .wrap-padding {padding: 0.5em!important;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
 }
 
-#header-menu {
-	vertical-align: middle;
-}
-
-@media only screen and (min-width: 601px) and (max-width: 1024px) { /*dimensione media 601 - 1023 px*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {         /*dimensione media 601 - 1024 px*/
 	.hide-medium {display: none!important;}
 }
 
-@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px e iPad*/
+@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px, anche iPad*/
 	.main {
 		margin-left: 0!important;
 		margin-right: 0!important;
 		min-width: 100%;
 	}
-
-    .parallax {
-        background-attachment: scroll !important;
-        background-size: auto 100%;
-    }
 	
 	.sidebar.collapse {
 		display: none;
@@ -483,20 +509,38 @@ form p {
 	}
 }
 
+@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+}
+
 @media only screen and (max-width: 768px) and (orientation: portrait) { /*target: iPad normali (non il Pro) in Portrait*/
 	#dino-immagine, #caratteristiche {
 		width: 100%!important;
 	}
+
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
 }
 
-/*@media only screen and (min-width: 767px) and (max-width: 1024px) { non dovrebbe servire
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
     .parallax {
         background-attachment: scroll !important;
         background-size: auto 100%;
     }
-}*/
-                                                       /*responsiveness delle colonne*/
-@media (min-width: 1301px) {
+}
+
+@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
     .third {width: 33.33333%;}
     .half {width: 49.99999%;}
 }
@@ -858,3 +902,6 @@ form p {
 	vertical-align: bottom;
 	text-align: left;
 }
+
+
+
