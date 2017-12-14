@@ -107,27 +107,39 @@ class User {
     public function formUpdateMyUser($url){
         
         $echoString ='
-        <form action="'.$url.'?id=myuser&sez=update" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
-            
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="'.$this->getNome().'">
-            
-            <label for="cognome">Cognome:</label>
-            <input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
-            
-            <label for="datanascita">Data di nascita:</label>
-            <input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
-            
-            <label for="password">Password:</label>
-            <input type="text" id="password" name="password" value="'.$this->getPassword().'">
-            
-            <label for="passwordconf">Conferma password:</label>
-            <input type="text" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
-
-            <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
-        </form>
+		
+		<header id="header-home" class="full-screen parallax">
+			<div class="padding-12 content">						
+				<div class="card white wrap-padding">
+					<h1>Modifica i tuoi dati utente</h1>
+				</div>
+				<div class="card colored wrap-padding">
+					<form action="'.$url.'?id=myuser&sez=update" method="POST">
+						<p><label for="email">Email:</label></p>
+						<input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
+						
+						<p><label for="nome">Nome:</label></p>
+						<input type="text" id="nome" name="nome" value="'.$this->getNome().'">
+						
+						<p><label for="cognome">Cognome:</label></p>
+						<input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
+						
+						<p><label for="datanascita">Data di nascita:</label></p>
+						<input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
+						
+						<p><label for="password">Password:</label></p>
+						<input type="text" id="password" name="password" value="'.$this->getPassword().'">
+						
+						<p><label for="passwordconf">Conferma password:</label></p>
+						<input type="text" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
+						
+						<br><br>
+						
+						<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+					</form>
+				</div>
+			</div>
+		</header>
         ';
 
         return $echoString;

@@ -9,6 +9,10 @@
 	margin: 0;
 }
 
+body {
+	min-height: 100%;
+}
+
 html, body {
   	font-family: Verdana, sans-serif; /*priorita' decrescente*/
 	font-size:100%;
@@ -16,6 +20,7 @@ html, body {
 }
 
 html {
+	height: 100%;
 	box-sizing:border-box;
 	overflow-x:hidden;
 	-ms-text-size-adjust:100%;
@@ -23,6 +28,13 @@ html {
 }
 
 html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}
+
+html [type=radio] {
+	width: 1.5em;
+	height: 1.5em;
+	margin: 1em;
+	display: inline-block;
+}
 
 *,*::before,*::after{box-sizing:inherit}
 
@@ -249,6 +261,9 @@ form p {
 
 /* Layout */
 
+.full-screen{
+	min-height: 100vh;
+}
 
 .display-middle{
 	position:absolute;
@@ -790,6 +805,14 @@ form p {
 
 #icon_accedi {
 	background-image: url('../img/icons/menu_accedi.png');
+}
+
+#icon_account {
+	background-image: url('../img/icons/menu_account.png');
+}
+
+#icon_accounts {
+	background-image: url('../img/icons/menu_accounts.svg');
 }
 
 /*
