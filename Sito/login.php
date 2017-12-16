@@ -71,7 +71,7 @@
 	<div class="content">
 		<div id="title-card" class="card">
 			<h1 class="title"> Accedi al tuo account </h1>
-			<h4>entra nel mondo dei dinosauri!</h4>
+			<h2>Entra nel mondo dei dinosauri!</h2>
 		</div>
 		
 		<!-- Login -->

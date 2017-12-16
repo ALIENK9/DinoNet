@@ -61,7 +61,7 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> Gli articoli </h1>
 		<br>
-		<h4>scopri tutte le novità sul mondo dei dinosauri</h4>
+		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding">
 		<div class="content">

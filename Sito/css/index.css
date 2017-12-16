@@ -59,7 +59,9 @@ a {
 	color:inherit;
 }
 
-a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none; text-decoration:underline dotted}
+a:active,a:hover{outline-width:0;}
+
+abbr[title]{border-bottom:none; text-decoration:underline dotted;}
 
 
 h1,h2,h3,h4,h5,h6{
@@ -83,14 +85,14 @@ h1 {
 	text-align: center;
 }
 
-h2 {font-size:1.7em;}
+h2 {font-size:1.6em;}
 
 h3 {
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 900;
 }
 
-h4{font-size:1.3em;}
+h4{font-size:1.2em;}
 
 h5{font-size:1.1em;}
 
@@ -859,6 +861,10 @@ form p {
 	background-image: url('../img/icons/menu_accounts.svg');
 }
 
+#icon_sitemap {
+    background-image: url("../img/icons/menu_sitemap.svg");
+}
+
 /*
 ======================================================================
 								ARTICOLI
@@ -903,5 +909,8 @@ form p {
 	text-align: left;
 }
 
+.no-js {
+    display: none;
+}
 
 
