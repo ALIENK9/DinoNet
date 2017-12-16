@@ -52,13 +52,13 @@
 
         <div class="content-large padding-3 card center">
             <noscript>
-                <div class="card colored wrap-padding">
+                <div class="card colored wrap-padding hide-large">
                     <h2>Hai disabilitato JavaScript :(</h2>
                     <p>Per visualizzare il menù ad hamburger devi attivarlo, o in alternativa al posto del menù visualizzerai la seguente pagina</p>
                 </div>
             </noscript>
 
-            <div class="wrap-padding">
+            <div id="sitemap" class="wrap-padding">
                 <ul>
                     <li><p><a xml:lang="en" lang="en" href="index.php">Homepage</a></p></li>
                     <li><p><a href="history.php">Storia</a></p></li>

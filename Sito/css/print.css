@@ -29,11 +29,19 @@ h3 {
     background-color: #ffffff!important;
 }
 
+a {
+    text-decoration: underline;
+}
+
 .sidebar, .bar, .btn {display: none;}
 
 .colored, .text-colored {
     color: #000000!important;
     background-color: #ffffff!important;
+}
+
+.colored a, .text-colored a {
+    border-bottom: none;
 }
 
 .card {

@@ -1,18 +1,15 @@
 <!-- Loading -->
 
-<div id="loading" class="loading colored no-js">
+<div id="loading" class="loading colored require-js">
 	<div class="display-middle center">
-		<img class="bounce" src="img/dino-loading.png" alt="Caricamento">
+        <span id="loading-image" class="bounce margin-2"></span>
+        <p>Caricamento</p>
     </div>
 </div>
 
 <!-- Loading - script -->
 <script>
-    function addJS() {
-        var str = document.getElementById("loading").innerHTML;
-        var txt = str.replace(/no-js/i,"js");
-        document.getElementById("loading").innerHTML = txt;
-    }
+    document.getElementById("loading").classList.remove("require-js"); //rende visibile l'animazione di loading
 
 	$(document).ready(function() {
 		$(window).load(function() {

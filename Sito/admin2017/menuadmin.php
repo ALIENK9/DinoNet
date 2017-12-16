@@ -16,28 +16,28 @@
   </div>
   <div class="center">
 	<a class="aiuti_nascosti" href="#content">Salta il menù</a>
-	<a href="panel.php?id=home" class=" <?php if($currentPage == $pages["home"]) echo 'active'; ?> menu_entry">
-		<span id="icon_home" class="menu_icon"></span>
+	<a href="panel.php?id=home" class=" <?php if($currentPage == $pages["home"]) echo 'active'; ?> menu-entry">
+		<span id="(#)?icon-([a-z])*" class="menu-icon"></span>
 		<p>Home admin</p>
 	</a>
-	<a href="panel.php?id=myuser" class="menu_entry">
-		<span id="icon_account" class="menu_icon"></span>
+	<a href="panel.php?id=myuser" class="menu-entry">
+		<span id="icon-account" class="menu-icon"></span>
 		<p>Dati admin</p>
 	</a>
-	<a href="panel.php?id=user" class="menu_entry">
-		<span id="icon_accounts" class="menu_icon"></span>
+	<a href="panel.php?id=user" class="menu-entry">
+		<span id="icon-accounts" class="menu-icon"></span>
 		<p>Utenti</p>
 	</a>
-	<a href="panel.php?id=dino" class="menu_entry">
-		<span id="icon_specie" class="menu_icon"></span>
+	<a href="panel.php?id=dino" class="menu-entry">
+		<span id="icon-specie" class="menu-icon"></span>
 		<p>Dinosauri</p>
 	</a>
-	<a href="panel.php?id=article" class="menu_entry">
-		<span id="icon_articoli" class="menu_icon"></span>
+	<a href="panel.php?id=article" class="menu-entry">
+		<span id="icon-articoli" class="menu-icon"></span>
 		<p>Articoli</p>
 	</a>
-	<a href="panel.php?id=logout" class="menu_entry">
-		<span id="icon_accedi" class="menu_icon"></span>
+	<a href="panel.php?id=logout" class="menu-entry">
+		<span id="icon-accedi" class="menu-icon"></span>
 		<p xml:lang="en">Logout</p>
 	</a>
   </div>

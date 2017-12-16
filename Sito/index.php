@@ -51,7 +51,7 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> DINO NET </h1>
 		<br>
-		<h2> Scopri i giganti della preistoria! E compratene uno! </h2>
+		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
 		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>

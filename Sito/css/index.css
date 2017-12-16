@@ -53,8 +53,8 @@ hr {border:0;border-top:1px solid #eee;margin:20px 0;   }
 a {
 	background-color:transparent;
 	-webkit-text-decoration-skip:objects;
-	text-decoration: none;
-	border-bottom: 2px solid white;
+	text-decoration: underline;
+	/*border-bottom: 2px solid black;*/
 	display: inline-block;
 	color:inherit;
 }
@@ -74,9 +74,9 @@ p {
 	margin:10px 0;
 }
 
-p a {
+/*p a {
     text-decoration: underline;
-}
+}*/
 
 h1 {
 	font-size: 2em; 
@@ -191,11 +191,7 @@ form p {
 	color: #16a085;
 }
 
-#title-card h3 {
-	display: inline-block;
-}
-
-#title-card h1, #title-card h3, #title-card h4 {
+#title-card h1, #title-card h2, #title-card h3, #title-card h4 {
 	text-align: center;
 }
 
@@ -296,11 +292,11 @@ form p {
 
 /* Layout */
 
-.full-screen{
+.full-screen {
 	min-height: 100vh;
 }
 
-.display-middle{
+.display-middle {
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -314,7 +310,7 @@ form p {
 	padding:0.01em 16px;
 }
 
-.content-large{
+.content-large {
 	max-width:1500px;
 	margin:auto;
 	padding:0.01em 16px;
@@ -326,15 +322,15 @@ form p {
 
 .wide {letter-spacing: 0.25em;}
 
-.center{
+.center {
 	text-align: center;
 }
 
-.right{
+.right {
 	float: right !important;
 }
 
-.btn{
+.btn {
 	border:none;
 	display:inline-block;
 	outline:0;
@@ -348,7 +344,7 @@ form p {
 	border-radius:4px;
 	font-weight: bold;
 }
-.btn:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+.btn:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
 
 .small-btn {
 	max-width: 250px;
@@ -360,12 +356,12 @@ form p {
 	clear:both;
 }
 
-.row-padding,.row-padding>.half,.row-padding>.third,.row-padding>.twothird,.row-padding>.threequarter,.row-padding>.quarter{
+.row-padding,.row-padding>.half,.row-padding>.third,.row-padding>.twothird,.row-padding>.threequarter,.row-padding>.quarter {
 	padding:0 8px;
 }
 
 
-.half,.third,.twothird,.quarter{
+.half,.third,.twothird,.quarter {
 	float:left;
 	width:100%;
 }
@@ -386,13 +382,13 @@ form p {
 	top:0;
 }
 
-.bar::before,.bar::after{
+.bar::before,.bar::after {
 	content:"";
 	display:table;
 	clear:both;
 }
 
-.panel{
+.panel {
 	padding:0.01em 16px;
 	margin-top:16px;
 	margin-bottom:16px;
@@ -408,7 +404,7 @@ form p {
     background-color: #fff;
 }
 
-.white h1, .white h3 {
+.white h1, .white h2, .white h3 {
 	color: #16a085;
 	text-align: center;
 }
@@ -418,14 +414,14 @@ form p {
 	padding-right: 16px;
 }
 
-.colored{
-	color:#fff;
-	background-color:#16a085;
+.colored {
+	color: white;
+	background-color: #16a085;
 }
 
 .text-colored {
 	color: #16a085;
-	background-color: #fff;
+	background-color: white;
 }
 
 .overlay{
@@ -652,7 +648,11 @@ form p {
 
 /* /Commento */
 
-/* Loading */
+/*
+======================================================================
+								AIUTI
+======================================================================
+*/
 
 .loading {
 	position:fixed;
@@ -661,15 +661,24 @@ form p {
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
+    font-size: 1.2em;
 }
 
-.loading img {
-  	width: 300px; 
+#loading-image {
+    display: block;
+    width: 300px;
+    height: 269px;
+    background: url("../img/dino-loading.png") no-repeat;
+    background-size: contain;
 }
 
 /* fine - Loading */
- 
-/* Bouncing Animation */
+
+/*
+======================================================================
+						BOUNCING ANIMATION
+======================================================================
+*/
  
 .bounce {
 	animation: bounce 2s infinite;
@@ -759,7 +768,7 @@ form p {
 */
 
 #top-menu a {
-	font-size: 1.5em !important;
+	font-size: 1.5em!important;
 }
 
 .sidebar{
@@ -781,10 +790,10 @@ form p {
 	white-space: normal;
 	background-color: white;
 	color: black;
-	border: 0 !important;
+	border: 0!important;
 }
 
-.menu_entry {
+.menu-entry {
 	width: 100%;
 	padding: 1em;
 	display:block;
@@ -795,15 +804,19 @@ form p {
 }
 
 
-.menu_entry hr, .menu-entry-small hr {
+.menu-entry hr, .menu-entry-small hr {
 	margin: 0;
 }
 
-.menu_entry p {
+a.menu-entry, a.menu-entry-small {
+    text-decoration: none;
+}
+
+.menu-entry p {
 	margin: 0.2em;
 }
 
-.menu_entry:hover, .menu_entry:active, .sidebar .active {
+.menu-entry:hover, .menu-entry:active, .sidebar .active {
 	color: #fff;
 	background-color: #16a085;
 }
@@ -813,17 +826,23 @@ form p {
     cursor: default;
 }
 
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
+
 /****************
 *  ICONE MENU'	*
 *****************/
 
 #mobile-menu-icon {padding: 2em;}
 
-.menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
 	filter: invert(100%);
 }
 
-.menu_icon { /*proprietà comuni a tutte le icone*/
+.menu-icon { /*proprietà comuni a tutte le icone*/
 	height: 60px;
     width: 60px;
     display: inline-block;
@@ -833,35 +852,35 @@ form p {
     background-size: contain;
 }
 
-#icon_home {
+#icon-home {
     background-image: url('../img/icons/menu_home.svg');
 }
 
-#icon_storia {
+#icon-storia {
 	background-image: url('../img/icons/menu_storia.png');
 }
 
-#icon_specie {
+#icon-specie {
 	background-image: url('../img/icons/menu_specie.svg');
 }
 
-#icon_articoli {
+#icon-articoli {
 	background-image: url('../img/icons/menu_articoli.svg');
 }
 
-#icon_accedi {
+#icon-accedi {
 	background-image: url('../img/icons/menu_accedi.png');
 }
 
-#icon_account {
+#icon-account {
 	background-image: url('../img/icons/menu_account.png');
 }
 
-#icon_accounts {
+#icon-accounts {
 	background-image: url('../img/icons/menu_accounts.svg');
 }
 
-#icon_sitemap {
+#icon-sitemap {
     background-image: url("../img/icons/menu_sitemap.svg");
 }
 
@@ -909,7 +928,23 @@ form p {
 	text-align: left;
 }
 
-.no-js {
+/*
+======================================================================
+							MAPPA DEL SITO
+======================================================================
+*/
+
+/*#sitemap ul {
+    list-style: circle;
+}*/
+
+/*
+======================================================================
+							JAVASCRIPT
+======================================================================
+*/
+
+.require-js {
     display: none;
 }
 

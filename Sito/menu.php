@@ -26,16 +26,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </div>
   <div class="center">
 	<a class="aiuti_nascosti" href="#main">Salta il menù</a>
-	<a href="index.php" class="menu_entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
-		<span id="icon_home" class="menu_icon"></span>
+	<a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
+		<span id="icon-home" class="menu-icon"></span>
 		<p xml:lang="en" lang="en">Home</p>
 	</a>
-	<a href="history.php" class="menu_entry <?php if($currentPage == $pages["history"]) echo 'active disabled'; ?>">
-		<span id="icon_storia" class="menu_icon"></span>
+	<a href="history.php" class="menu-entry <?php if($currentPage == $pages["history"]) echo 'active disabled'; ?>">
+		<span id="icon-storia" class="menu-icon"></span>
 		<p>Storia</p>
 	</a>
-	<a href="species.php" class="menu_entry <?php if($currentPage == $pages["all-species"] || $currentPage == $pages["display-specie"]) echo 'active'; else if($currentPage == $pages["species"]) echo 'active disabled'; ?>">
-		<span id="icon_specie" class="menu_icon"></span>
+	<a href="species.php" class="menu-entry <?php if($currentPage == $pages["all-species"] || $currentPage == $pages["display-specie"]) echo 'active'; else if($currentPage == $pages["species"]) echo 'active disabled'; ?>">
+		<span id="icon-specie" class="menu-icon"></span>
 		<p>Specie</p>
 	</a>
       <!-- espande il menù con le sottosezioni all-species e display-specie -->
@@ -59,8 +59,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </a>
         ';
 	?>
-	<a href="articles.php" class="menu_entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["articles"]) echo 'active disabled'; ?>">
-		<span id="icon_articoli" class="menu_icon"></span>
+	<a href="articles.php" class="menu-entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["articles"]) echo 'active disabled'; ?>">
+		<span id="icon-articoli" class="menu-icon"></span>
 		<p>Articoli</p>
 	</a>
       <!-- espande il menù con le sottosezioni all-articles e display-article -->
@@ -81,8 +81,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         ';
 	if(isset($_SESSION['user'])) {
 	?>
-		<a href="view-account.php" class="menu_entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
-			<span id="icon_accedi" class="menu_icon"></span>
+		<a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
+			<span id="icon-accedi" class="menu-icon"></span>
 			<p>Account</p>
 		</a>
 		  <!-- espande il menù con la sottosezione edit-account -->
@@ -99,8 +99,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	}
 	else {
 		?>
-		<a href="login.php" class="menu_entry <?php if($currentPage == $pages["register"]) echo 'active'; else if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
-			<span id="icon_accedi" class="menu_icon"></span>
+		<a href="login.php" class="menu-entry <?php if($currentPage == $pages["register"]) echo 'active'; else if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
+			<span id="icon-accedi" class="menu-icon"></span>
 			<p>Accedi</p>
 		</a>
 		  <!-- espande il menù con la sottosezione register -->
@@ -120,19 +120,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       if($currentPage == $pages["sitemap"])
           echo'
             <a href="sitemap.php" class="menu-entry active disabled">
-                <span id="icon_sitemap" class="menu_icon"></span>
+                <span id="icon-sitemap" class="menu-icon"></span>
                 <p>Mappa del sito</p>
             </a>
             ';
       ?>
-
   </div>
 </nav>
 
 <!-- Top menu on small screens -->
 <div id="top-menu" class="hide-large bar colored card">
-  <div id="header-menu" class="bar-item padding-large title wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINONET</a></h1></div>
-  <a id="mobile-menu-icon" href="sitemap.php" class="bar-item btn right" onclick="">&#9776;</a>
+    <div id="header-menu" class="bar-item padding-large title wide"><h1><a href="index.php" <?php if($currentPage == $pages["index"]) echo 'class="disabled"'; ?>>DINONET</a></h1></div>
+    <a id="mobile-menu-icon" href="sitemap.php" class="bar-item btn right" onclick="">&#9776;</a>
 </div>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -143,10 +142,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 
 <script>
-    function addJS() {
-        var str = document.getElementById("mobile-menu-icon").innerHTML;
-        var txt = str.replace(/href="javascript:void(0)"/i,"href=\"javascript:void(0)\"");
-        txt = str.replace(/onclick=""/i, "onclick=\"open_menu()\"");
-        document.getElementById("mobile-menu-icon").innerHTML = txt;
+    function addJS() { //rende visibile il menù laterale
+        document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
+        document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
+    }
+    addJS();
+
+    // Script per aprire il menù
+    function open_menu() {
+        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    //Script per chiudere il menù
+    function close_menu() {
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
     }
 </script>
