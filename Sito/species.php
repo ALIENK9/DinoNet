@@ -73,7 +73,7 @@
 			<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
 		</div>
 	</div>
-	<a href="#daily-dino" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- Dinosauri -->
