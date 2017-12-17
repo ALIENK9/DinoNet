@@ -16,7 +16,7 @@
   </div>
   <div class="center">
 	<a class="aiuti_nascosti" href="#content">Salta il menù</a>
-	<a href="panel.php?id=home" class=" <?php if($currentPage == $pages["home"]) echo 'active'; ?> menu-entry">
+	<a href="panel.php?id=home" class=" <?php if($currentPage == $pages["home"]) echo "active"; ?> menu-entry">
 		<span id="(#)?icon-([a-z])*" class="menu-icon"></span>
 		<p>Home admin</p>
 	</a>
@@ -45,7 +45,7 @@
 
 <!-- Top menu on small screens -->
 <div id="top-menu" class="hide-large bar colored card">
-  <div id="header-menu" class="bar-item padding-large title wide"><h1><a <?php if($currentPage == $pages["index"]) echo 'href="index.php"'; ?>>DINONET</a></h1></div>
+  <div id="header-menu" class="bar-item padding-large title wide"><h1><a <?php if($currentPage == $pages["index"]) echo "href=\"index.php\""; ?>>DINONET</a></h1></div>
   <a id="mobile-menu-icon" href="javascript:void(0)" class="bar-item btn right" onclick="open_menu()">&#9776;</a>
 </div>
 

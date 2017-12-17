@@ -9,9 +9,9 @@
 	include_once ($homepath . "/connect.php");
 	include_once ($homepath . "/classi/UserAdmin.php");
 
-	session_start();
-
+	session_start();	
 	if(isset($_SESSION['user'])){
+
 ?>
 
 	<!DOCTYPE html>
@@ -51,9 +51,6 @@
 
 	<body>
 
-	<?php include_once('../loading.php') ?>
-
-	<?php include_once('menuadmin.php') ?>
 
 	<div id="main" class="main">
 
@@ -89,7 +86,7 @@
 					include_once('article.php');
 					break;	
 
-				case 'logout': default:
+				case 'logout': default:		
 					include_once('logout.php');
 					break;
 			}
@@ -105,21 +102,26 @@
 	<!-- /Content -->
 
 
-	<?php include_once('../tothetop.php') ?>
+	<?php include_once('../tothetop.php'); ?>
 
 	</div>
 
-	<script>
-	// Script to open and close sidebar
-	function open_menu() {
-		document.getElementById("sidebar").style.display = "block";
-		document.getElementById("overlay").style.display = "block";
-	}
+	<?php include_once('../loading.php'); ?>
+
+	<?php include_once('menuadmin.php'); ?>
+
 	
-	function close_menu() {
-		document.getElementById("sidebar").style.display = "none";
-		document.getElementById("overlay").style.display = "none";
-	}
+	<script>
+		// Script to open and close sidebar
+		function open_menu() {
+			document.getElementById("sidebar").style.display = "block";
+			document.getElementById("overlay").style.display = "block";
+		}
+		
+		function close_menu() {
+			document.getElementById("sidebar").style.display = "none";
+			document.getElementById("overlay").style.display = "none";
+		}
 	</script>
 
 	</body>
