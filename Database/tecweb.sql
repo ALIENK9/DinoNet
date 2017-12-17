@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 12, 2017 alle 21:56
+-- Creato il: Dic 13, 2017 alle 10:03
 -- Versione del server: 10.1.21-MariaDB
 -- Versione PHP: 7.0.15
 
@@ -116,22 +116,24 @@ CREATE TABLE `utente` (
   `cognome` varchar(150) NOT NULL,
   `datanascita` date DEFAULT NULL,
   `password` char(32) NOT NULL,
-  `tipologia` int(11) NOT NULL DEFAULT '0'
+  `tipologia` int(11) NOT NULL DEFAULT '0',
+  `immagine` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`email`, `nome`, `cognome`, `datanascita`, `password`, `tipologia`) VALUES
-('aaa', 'bbb1', 'ccc', '2000-01-01', 'aaa', 0),
-('aaaw', 'aaa', 'aaa', '1992-11-11', 'aaaw', 0),
-('admin@admin.it', 'admin', 'gianni', '1993-10-03', 'admin', 1),
-('biancocomeilvino@hotmail.com', 'bianco', 'vino', '1937-01-08', 'bianco', 0),
-('ciccio@gmail.it', 'andrea', 'rossi', '1997-06-25', 'andrea', 0),
-('dino@dinosauro.it', 'dino', 'rex', '1986-03-25', 'dino', 0),
-('prova@prova.it', 'prova1', 'cosa2', '2003-11-01', 'prova4', 0),
-('provas@provas.com', 'provas1', 'dino2', '2003-03-03', 'provas4', 0);
+INSERT INTO `utente` (`email`, `nome`, `cognome`, `datanascita`, `password`, `tipologia`, `immagine`) VALUES
+('aaa', 'bbb1', 'ccc', '2000-01-01', 'aaa', 0, NULL),
+('aaaw', 'aaa', 'aaa', '1992-11-11', 'aaaw', 0, NULL),
+('admin@admin.it', 'admin', 'gianni', '1993-10-03', 'admin', 1, NULL),
+('biancocomeilvino@hotmail.com', 'bianco', 'vino', '1937-01-08', 'bianco', 0, NULL),
+('ciccio@gmail.it', 'andrea', 'rossi', '1997-06-25', 'andrea', 0, NULL),
+('dino@dinosauro.it', 'dino', 'rex', '1986-03-25', 'dino', 0, NULL),
+('dino@killer.org', 'Dino', 'Kill', '1900-01-01', 'dino', 0, '/img/userimg/immagine-profilo-whatsapp-2.jpg'),
+('prova@prova.it', 'prova1', 'cosa2', '2003-11-01', 'prova4', 0, NULL),
+('provas@provas.com', 'provas1', 'dino2', '2003-03-03', 'provas4', 0, NULL);
 
 --
 -- Indici per le tabelle scaricate

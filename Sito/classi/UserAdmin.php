@@ -1,12 +1,14 @@
 <?php 
 	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+    $percorsoHome = "";
 	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
+        $homepath .= "/TecWeb";
+        $percorsoHome = "/TecWeb";
 	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
+    //$homepath = $_SERVER["DOCUMENT_ROOT"];
 	include_once ($homepath . "/connect.php");
 	include_once ($homepath . "/classi/User.php");
+	include_once ($homepath . "/loadFile.php");
 
 class UserAdmin extends User {
     
@@ -35,7 +37,7 @@ class UserAdmin extends User {
             }
             
             $sqlFilter .= "ORDER BY email, nome, cognome";
-            $sqlQuery = "SELECT email, nome, cognome FROM utente ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+            $sqlQuery = "SELECT email, nome, cognome, immagine FROM utente ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
@@ -45,7 +47,12 @@ class UserAdmin extends User {
                             <div class="padding-large colored">
                                 <h1>'.$row["email"].'</h1>
                             </div>
-                            <!--<img src="img/immagineprofilo.jpg" alt="immagine profilo utente">-->
+                            ';
+                            if(isset($row["immagine"])){
+                                global $percorsoHome;
+                                $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="immagine profilo utente">';
+                            }
+                            $echoString .='
                             <div class="padding-medium">
                                 <p>
                                     Nome:'.$row["nome"].'<br>
@@ -76,12 +83,23 @@ class UserAdmin extends User {
         if($this->getEmail()!=$id){
             if(isset($connect)){
                 if(isset($id)){
-                    $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
-                    if( $connect->query($sqlQuery) ){
-                        $echoString = "Elemento eliminato";
-                    } 
-                    else {
-                        $echoString = "Elemento NON eliminato";
+                    
+                    $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
+                    $result = $connect->query($sqlQuery);
+                    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
+                        global $homepath;
+                        delImage($homepath.$row["immagine"]);                   
+
+                        $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
+                        if( $connect->query($sqlQuery) ){
+                            $echoString = "Elemento eliminato";
+                        } 
+                        else {
+                            $echoString = "Elemento NON eliminato";
+                        }
+                    }
+                    else{
+                        $echoString = "Elemento NON eliminabile";
                     }
                 }
             }
@@ -99,13 +117,23 @@ class UserAdmin extends User {
         $echoString = "";
         $connect = startConnect();  
         if(isset($connect)){
-            if(isset($id)){
-                $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
-                if( $connect->query($sqlQuery) ){
-                    $echoString = "Elemento eliminato";
-                } 
-                else {
-                    $echoString = "Elemento NON eliminato";
+            if(isset($id)){ 
+                $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
+                $result = $connect->query($sqlQuery);
+                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
+                    global $homepath;
+                    delImage($homepath.$row["immagine"]);                   
+
+                    $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
+                    if( $connect->query($sqlQuery) ){
+                        $echoString = "Elemento eliminato";
+                    } 
+                    else {
+                        $echoString = "Elemento NON eliminato";
+                    }
+                }
+                else{
+                    $echoString = "Elemento NON eliminabile";
                 }
             }
         }
@@ -116,7 +144,7 @@ class UserAdmin extends User {
 
     public static function formAddUser($url){
         $echoString ='
-        <form action="'.$url.'?id=user&sez=add" method="POST">
+        <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="">
             
@@ -134,6 +162,9 @@ class UserAdmin extends User {
             
             <label for="passwordconf">Conferma password:</label>
             <input type="text" id="passwordconf" name="passwordconf" value="">
+            
+            <label for="imgaccount">Immagine profilo:</label>
+            <input type="file" id="imgaccount" name="imgaccount" value="">
 
             <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
         </form>
@@ -141,7 +172,7 @@ class UserAdmin extends User {
     return $echoString;
     } 
     
-    public static function addUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword){
+    public static function addUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine){
      
         $echoString ="";
         $connect = startConnect();   
@@ -159,13 +190,28 @@ class UserAdmin extends User {
             $password==$confermaPassword /*&&
             bisogna controllare che la data si effettivamente una data
             */
-        ){
-            $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."') ";
+        ){	
+            
+            $destinazioneFileDB = NULL;
+            if($immagine['error'] == 0){
+                $destinazioneFileDB = loadImage("userimg", $email, $immagine);
+            }
+
+            $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
+            if( $destinazioneFileDB != NULL)
+                $sqlQuery .="'".$destinazioneFileDB."'";
+            else{
+                $sqlQuery .= "NULL";
+            }
+            $sqlQuery .=") ";
             if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Aggiunto";
+                $echoString .= "Elemento Aggiunto";
             } 
             else {
                 $echoString = "Elemento NON Aggiunto";
+                if( $destinazioneFileDB != NULL){
+                    //ELIMINARE IMMAGINE CARICATA
+                }
             }
         }
         else{
@@ -184,7 +230,7 @@ class UserAdmin extends User {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $echoString ='
-            <form action="'.$url.'?id=user&sez=update" method="POST">
+            <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
                 
@@ -202,8 +248,14 @@ class UserAdmin extends User {
                 
                 <label for="passwordconf">Conferma password:</label>
                 <input type="text" id="passwordconf" name="passwordconf" value="'.$row["password"].'">
+                
+                <label for="imgaccount">Immagine profilo:</label>
+                <input type="file" id="imgaccount" name="imgaccount" value="">
 
-                <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
+                <label for="imgaccountremove">Rimuovi immagine:</label>
+                <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                
+                <input type="submit" value="Modifica" title="Avvia l\'operazione" />
             </form>
             ';
         }  
@@ -214,7 +266,7 @@ class UserAdmin extends User {
         return $echoString;
     } 
     
-    public static function updateUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword){
+    public static function updateUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $removeImage){
      
         $echoString ="";
         $connect = startConnect();   
@@ -230,7 +282,31 @@ class UserAdmin extends User {
             bisogna controllare che la data si effettivamente una data
             */
         ){
-            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' WHERE email='".$email."'";
+            if($removeImage){  
+                $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
+                $result = $connect->query($sqlQuery);
+                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
+                    if($row["immagine"]!="" && $row["immagine"]!=NULL){        
+                        global $homepath;
+                        delImage($homepath.$row["immagine"]);
+                    }
+                }
+            }
+
+            $destinazioneFileDB = NULL;
+            if(!$removeImage && $immagine['error'] == 0){
+                $destinazioneFileDB = loadImage("userimg", $email, $immagine);
+            }
+
+            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
+            if( $destinazioneFileDB != NULL){
+                $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+            }
+            if($removeImage){
+                $sqlQuery .= ", immagine=NULL ";
+            }
+            $sqlQuery .= "WHERE email='".$email."'";
+            
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Modificato";
             } 

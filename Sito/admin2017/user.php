@@ -39,13 +39,17 @@ if(isset($_SESSION['user'])){
 			echo $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo $_SESSION['user']->addUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+			echo $_SESSION['user']->addUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
 			break;		
 		case 'formupdate':
 			echo $_SESSION['user']->formUpdateUser($_SERVER["PHP_SELF"],$_GET['user']);
 			break;
-		case 'update':
-			echo $_SESSION['user']->updateUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+		case 'update':		
+			$removeimg=false;
+			if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
+				$removeimg=true;			}
+
+			echo $_SESSION['user']->updateUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
 			break;		
 		case 'delete':
 			if(isset($_GET["user"]))

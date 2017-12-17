@@ -41,13 +41,17 @@ if(isset($_SESSION['user'])){
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Article::addArticle($_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"]);
+			echo Article::addArticle($_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
 			break;			
 		case 'formupdate':
 			echo Article::formUpdateArticle($_SERVER["PHP_SELF"],$_GET["article"]);
 			break;
-		case 'update':
-			echo Article::updateArticle($_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"]);
+		case 'update':		
+			$removeimg=false;
+			if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
+				$removeimg=true;
+			}
+			echo Article::updateArticle($_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
 			break;	
 		case 'delete':
 			if(isset($_GET["article"]))

@@ -1,12 +1,15 @@
 <?php
 
 $homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
+$percorsoHome = "";
 if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
     $homepath .= "/TecWeb";
+    $percorsoHome = "/TecWeb";
 }
 //$homepath = $_SERVER["DOCUMENT_ROOT"];
 
 include_once ($homepath . "/connect.php");
+include_once ($homepath . "/loadFile.php");
 
 class Article{
 
@@ -35,7 +38,7 @@ class Article{
 		}
 		
 		$sqlFilter .= "ORDER BY id, titolo, sottotitolo, eta";
-		$sqlQuery = "SELECT id, titolo, sottotitolo, eta FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
 		if ($result->num_rows > 0) {
@@ -46,7 +49,12 @@ class Article{
                         <div class="padding-large colored">
                             <h1> '.$row["id"].' </h1>
                         </div>
-                        <!--<img src="img/immagineprofilo.jpg" alt="immagine profilo utente">-->
+                        ';
+                        if(isset($row["immagine"])){
+                            global $percorsoHome;
+                            $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                        }
+                        $echoString .='
                         <div class="padding-medium">
                             <p>
                                 Titolo: '.$row["titolo"].'<br>
@@ -81,13 +89,23 @@ class Article{
     public static function deleteArticle($id){   
         $connect = startConnect();     
         $echoString="";
-        if(isset($id)){
-            $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
-            if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento eliminato";
-            } 
-            else {
-                $echoString = "Elemento NON eliminato";
+        if(isset($id)){                    
+            $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$id."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
+                global $homepath;
+                delImage($homepath.$row["immagine"]);  
+
+                $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
+                if( $connect->query($sqlQuery) ){
+                    $echoString = "Elemento eliminato";
+                } 
+                else {
+                    $echoString = "Elemento NON eliminato";
+                }
+            }
+            else{
+                $echoString = "Elemento NON eliminabile";
             }
         }
         closeConnect($connect);
@@ -95,7 +113,7 @@ class Article{
     }             
     public static function formAddArticle($url){
         $echoString ='
-            <form action="'.$url.'?id=article&sez=add" method="POST">
+            <form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data">
                 <label for="titolo">Titolo:</label>
                 <input type="text" id="titolo" name="titolo" value="">
                 
@@ -110,13 +128,16 @@ class Article{
                 
                 <label for="descrizioneimg">Descrizione della immagine:</label>
                 <input type="text" id="descrizioneimg" name="descrizioneimg" value="">
-
+                
+                <label for="imgarticle">Immagine:</label>
+                <input type="file" id="imgarticle" name="imgarticle" value="">
+    
                 <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
             </form>
         ';
         return $echoString;
     }
-    public static function addArticle($idautore, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg){
+    public static function addArticle($idautore, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine){
         $connect = startConnect();     
         $echoString="";
         if(
@@ -128,10 +149,24 @@ class Article{
             bisogna controllare che la data si effettivamente una data
             */
         ){
+            
             $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, eta, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".$descrizione."', '".$eta."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
             
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Aggiunto";
+                $destinazioneFileDB = NULL;
+                if($immagine['error'] == 0){
+                    $idInserito = $connect->insert_id;
+                    $destinazioneFileDB = loadImage("articleimg", $idInserito, $immagine);
+                    
+                    $sqlQuery2 = "UPDATE articolo SET immagine='".$destinazioneFileDB."'WHERE id='".$idInserito."'";
+                    if($destinazioneFileDB != NULL && $connect->query($sqlQuery2) ){
+                        $echoString .= "<br> Immagine caricata";
+                    }
+                    else{                        
+                        $echoString .= "<br> Immagine non caricata";
+                    }
+                }
             } 
             else {
                 $echoString = "Elemento NON Aggiunto";
@@ -151,7 +186,7 @@ class Article{
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $echoString ='
-                <form action="'.$url.'?id=article&sez=update" method="POST">
+                <form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data">
                     <label for="article">Identificativo articolo:</label>
                     <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
                     
@@ -170,6 +205,12 @@ class Article{
                     <label for="descrizioneimg">Descrizione immagine:</label>
                     <input type="text" id="descrizioneimg" name="descrizioneimg" value="'.$row["descrizioneimg"].'">
                     
+                    <label for="imgarticle">Immagine:</label>
+                    <input type="file" id="imgarticle" name="imgarticle" value="">
+        
+                    <label for="imgarticleremove">Rimuovi immagine:</label>
+                    <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
+ 
                     <input type="submit" value="Modifica" title="Avvia la modifica" />
                 </form>
                 ';
@@ -182,7 +223,7 @@ class Article{
         return $echoString;
     }
 
-    public static function updateArticle($idarticolo, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg){
+    public static function updateArticle($idarticolo, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine, $removeImage){
         $connect = startConnect();     
         $echoString="";
         if(
@@ -194,8 +235,31 @@ class Article{
             bisogna controllare che la data si effettivamente una data
             */
         ){
-            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".$descrizione."', eta='".$eta."', descrizioneimg='".$descrizioneimg."' WHERE id='".$idarticolo."'";
-        
+            if($removeImage){  
+                $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$idarticolo."' ";
+                $result = $connect->query($sqlQuery);
+                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
+                    if($row["immagine"]!="" && $row["immagine"]!=NULL){        
+                        global $homepath;
+                        delImage($homepath.$row["immagine"]);
+                    }
+                }
+            }
+
+            $destinazioneFileDB = NULL;
+            if(!$removeImage && $immagine['error'] == 0){
+                $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine);
+            }
+
+            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".$descrizione."', eta='".$eta."', descrizioneimg='".$descrizioneimg."'";
+            if( $destinazioneFileDB != NULL){
+                $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+            }
+            if($removeImage){
+                $sqlQuery .= ", immagine=NULL ";
+            }
+            $sqlQuery .= "WHERE id='".$idarticolo."'";
+
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Modificato";
             } 
@@ -214,59 +278,65 @@ class Article{
         $echoString ="";
         $connect = startConnect(); 
 
-        $sqlQuery = "SELECT lastupdate, info FROM impostazioni WHERE id='ArticoloDelGiorno'";
+        $sqlQuery = "SELECT idarticolo, data FROM articolodelgiorno ORDER BY data DESC LIMIT 1";
         $result = $connect->query($sqlQuery);
         
+        $id = "";
+        $data = "";
         if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
-            $id = $row['info']; 
-            if($row['lastupdate']!=date('Y-m-j')){
-                $sqlQuery2 = "SELECT id FROM articolo WHERE id != '$id' ORDER BY rand() LIMIT 1";
-                $result2 = $connect->query($sqlQuery2);
-                if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
-                    $id = $row2['nome'];
-                    $sqlQuery3 = "UPDATE impostazioni SET lastupdate='".date('Y-m-j')."', info='$id' WHERE  id='ArticoloDelGiorno'";
-                    if( !$connect->query($sqlQuery3) ){                
-                        $echoString = "Errore: Aggiornamento impostazioni";
-                    } 
-                }
-                else{
-                    $echoString = "Errore: Non ci sono articoli";
-                }
-                
-            }
-            if($echoString == ""){
-                
-                $sqlQuery4 = "SELECT * FROM articolo WHERE id = '$id'"; 
-                $result4 = $connect->query($sqlQuery4);
-                
-                if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
-                    $echoString = "
-                        <div id=\"daily-article\" class=\"card daily-article\">
-                            <div class=\"padding-large colored\">
-                                <h1> $row4[titolo] </h1>
-                            </div>
-                            <img src=\"img/meganeura.jpg\" alt=\"$row4[descrizioneimg]\"/>
-                            <div class=\"padding-large\">
-                                <h3 class=\"text-colored center\"> $row4[sottotitolo] </h3>
-                                <br>
-                                <p>
-                                    $row4[descrizione]
-                                </p>
-                            </div>
-                            <div class=\"center padding-2\">
-                                <a href=\"display-article.php\" class=\"btn colored\"><p> Leggi l'articolo </p></a>
-                            </div>
-                        </div>                   
-                    ";
-                }
-                else{
-                    $echoString = "Errore: Non ci sono articoli";
-                }
-            }
-
+            $id = $row['idarticolo']; 
+            $data = $row['data'];
         }
-        else{
-            $echoString = "Errore: impostazioni non trovate";
+
+        if($result->num_rows == 0 || $data != date('Y-m-j')){
+            $sqlQuery2 = "SELECT id FROM articolo WHERE id != '$id' ORDER BY rand() LIMIT 1";
+            $result2 = $connect->query($sqlQuery2);
+            if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
+                $id = $row2['id'];
+                $sqlQuery3 = "INSERT INTO articolodelgiorno  (idarticolo,data) values ('$id', '".date('Y-m-j')."') ";
+                if( !$connect->query($sqlQuery3) ){                
+                    $echoString = "Errore: Aggiornamento Articolo del giorno";
+                } 
+            }
+            else{
+                $echoString = "Errore: Non ci sono articoli";
+            }
+            
+        }
+
+        if($echoString == ""){
+            
+            $sqlQuery4 = "SELECT * FROM articolo WHERE id = '$id'"; 
+            $result4 = $connect->query($sqlQuery4);
+            
+            if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
+                $echoString = "
+                    <div id=\"daily-article\" class=\"card daily-article\">
+                        <div class=\"padding-large colored\">
+                            <h1> $row4[titolo] </h1>
+                        </div>
+                        ";
+                        if(isset($row4["immagine"])){
+                            global $percorsoHome;
+                            $echoString .=' <img src="'.$percorsoHome.$row4["immagine"].'" alt="'.$row4["descrizioneimg"].'"/>';
+                        }
+                        $echoString .="
+                        <div class=\"padding-large\">
+                            <h3 class=\"text-colored center\"> $row4[sottotitolo] </h3>
+                            <br>
+                            <p>
+                                $row4[descrizione]
+                            </p>
+                        </div>
+                        <div class=\"center padding-2\">
+                            <a href=\"display-article.php\" class=\"btn colored\"><p> Leggi l'articolo </p></a>
+                        </div>
+                    </div>                   
+                ";
+            }
+            else{
+                $echoString = "Errore: Non ci sono articoli";
+            }
         }
 
         closeConnect($connect);
