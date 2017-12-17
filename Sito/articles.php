@@ -61,7 +61,7 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> Gli articoli </h1>
 		<br>
-		<h4>scopri tutte le novità sul mondo dei dinosauri</h4>
+		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding">
 		<div class="content">
@@ -73,14 +73,14 @@
 			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 		</div>
 	</div>
-	<a href="#daily-article" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- Articoli -->
 
 <div class="padding-6 side-padding content">
 
-    <div class="card margin-half colored center wrap-padding">
+    <div id="daily-article" class="card margin-half colored center wrap-padding">
         <h1 class="title">L'articolo del giorno</h1>
         <hr>
         <p>Giornalmente selezioniamo un articolo per te. Buona lettura!</p>

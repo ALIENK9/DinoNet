@@ -9,6 +9,10 @@
 	margin: 0;
 }
 
+body {
+	min-height: 100%;
+}
+
 html, body {
   	font-family: Verdana, sans-serif; /*priorita' decrescente*/
 	font-size:100%;
@@ -16,6 +20,7 @@ html, body {
 }
 
 html {
+	height: 100%;
 	box-sizing:border-box;
 	overflow-x:hidden;
 	-ms-text-size-adjust:100%;
@@ -23,6 +28,13 @@ html {
 }
 
 html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}
+
+html [type=radio] {
+	width: 1.5em;
+	height: 1.5em;
+	margin: 1em;
+	display: inline-block;
+}
 
 *,*::before,*::after{box-sizing:inherit}
 
@@ -41,13 +53,15 @@ hr {border:0;border-top:1px solid #eee;margin:20px 0;   }
 a {
 	background-color:transparent;
 	-webkit-text-decoration-skip:objects;
-	text-decoration: none;
-	border-bottom: 2px solid white;
+	text-decoration: underline;
+	/*border-bottom: 2px solid black;*/
 	display: inline-block;
 	color:inherit;
 }
 
-a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none; text-decoration:underline dotted}
+a:active,a:hover{outline-width:0;}
+
+abbr[title]{border-bottom:none; text-decoration:underline dotted;}
 
 
 h1,h2,h3,h4,h5,h6{
@@ -60,9 +74,9 @@ p {
 	margin:10px 0;
 }
 
-p a {
+/*p a {
     text-decoration: underline;
-}
+}*/
 
 h1 {
 	font-size: 2em; 
@@ -71,14 +85,14 @@ h1 {
 	text-align: center;
 }
 
-h2 {font-size:1.7em;}
+h2 {font-size:1.6em;}
 
 h3 {
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 900;
 }
 
-h4{font-size:1.3em;}
+h4{font-size:1.2em;}
 
 h5{font-size:1.1em;}
 
@@ -177,15 +191,15 @@ form p {
 	color: #16a085;
 }
 
-#title-card h3 {
-	display: inline-block;
-}
-
-#title-card h1, #title-card h3, #title-card h4 {
+#title-card h1, #title-card h2, #title-card h3, #title-card h4 {
 	text-align: center;
 }
 
-/* /Home */
+/*
+======================================================================
+								HOME
+======================================================================
+*/
 
 .floating-element {
 	float: left;
@@ -230,7 +244,36 @@ form p {
 
 /* /Daily stuff */
 
-/* History */
+/*
+======================================================================
+								STORIA
+======================================================================
+*/
+
+/*.history-img {
+    width: 100%;
+    height: 90vw;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#history-1 {
+    background-image: url("../img/dino-1.jpg");
+}
+
+#history-2 {
+    background-image: url("../img/dino-3.jpg");
+}
+
+/*.ghost-half {
+    padding-top: 12em;
+    padding-bottom: 12em;
+}
+
+.ghost-half img{
+    width: 100%;
+}*/
 
 #scoperta {
 	background-image:url('../img/dino-1.jpg');
@@ -249,8 +292,11 @@ form p {
 
 /* Layout */
 
+.full-screen {
+	min-height: 100vh;
+}
 
-.display-middle{
+.display-middle {
 	position:absolute;
 	top:50%;
 	left:50%;
@@ -264,7 +310,7 @@ form p {
 	padding:0.01em 16px;
 }
 
-.content-large{
+.content-large {
 	max-width:1500px;
 	margin:auto;
 	padding:0.01em 16px;
@@ -276,15 +322,15 @@ form p {
 
 .wide {letter-spacing: 0.25em;}
 
-.center{
+.center {
 	text-align: center;
 }
 
-.right{
+.right {
 	float: right !important;
 }
 
-.btn{
+.btn {
 	border:none;
 	display:inline-block;
 	outline:0;
@@ -298,7 +344,7 @@ form p {
 	border-radius:4px;
 	font-weight: bold;
 }
-.btn:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+.btn:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
 
 .small-btn {
 	max-width: 250px;
@@ -310,20 +356,12 @@ form p {
 	clear:both;
 }
 
-.row-padding,.row-padding>.half,.row-padding>.third,.row-padding>.twothird,.row-padding>.threequarter,.row-padding>.quarter{
+.row-padding,.row-padding>.half,.row-padding>.third,.row-padding>.twothird,.row-padding>.threequarter,.row-padding>.quarter {
 	padding:0 8px;
 }
 
-.ghost-half {
-	padding-top: 12em;
-	padding-bottom: 12em;
-}
 
-.ghost-half img{
-	width: 100%;
-}
-
-.half,.third,.twothird,.quarter{
+.half,.third,.twothird,.quarter {
 	float:left;
 	width:100%;
 }
@@ -344,13 +382,13 @@ form p {
 	top:0;
 }
 
-.bar::before,.bar::after{
+.bar::before,.bar::after {
 	content:"";
 	display:table;
 	clear:both;
 }
 
-.panel{
+.panel {
 	padding:0.01em 16px;
 	margin-top:16px;
 	margin-bottom:16px;
@@ -366,7 +404,7 @@ form p {
     background-color: #fff;
 }
 
-.white h1, .white h3 {
+.white h1, .white h2, .white h3 {
 	color: #16a085;
 	text-align: center;
 }
@@ -376,14 +414,14 @@ form p {
 	padding-right: 16px;
 }
 
-.colored{
-	color:#fff;
-	background-color:#16a085;
+.colored {
+	color: white;
+	background-color: #16a085;
 }
 
 .text-colored {
 	color: #16a085;
-	background-color: #fff;
+	background-color: white;
 }
 
 .overlay{
@@ -408,15 +446,13 @@ form p {
 
 /* Responsiveness */
 
-@media (min-width: 1025px) {			                /*dimensione grande > 1024 px*/
+@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
     .hide-large {display: none!important;}
     .sidebar.collapse {display: block;}
 }
 
-@media (max-width: 600px) {							    /*dimensione piccola 480 - 600 px*/
+@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
 	.hide-small {display: none!important;}
-    #scoperta, #bipedi-quadrupedi {background-image: none;}
-	.ghost-half {padding: 0;}
 	.main {min-width: 100%;}
 
     #header-menu {
@@ -429,27 +465,30 @@ form p {
     #title-card {padding: 1em;}
     #title-card h1 {font-size: 5vh;}
     .wrap-padding {padding: 0.5em!important;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
 }
 
-#header-menu {
-	vertical-align: middle;
-}
-
-@media only screen and (min-width: 601px) and (max-width: 1024px) { /*dimensione media 601 - 1023 px*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {         /*dimensione media 601 - 1024 px*/
 	.hide-medium {display: none!important;}
 }
 
-@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px e iPad*/
+@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px, anche iPad*/
 	.main {
 		margin-left: 0!important;
 		margin-right: 0!important;
 		min-width: 100%;
 	}
-
-    .parallax {
-        background-attachment: scroll !important;
-        background-size: auto 100%;
-    }
 	
 	.sidebar.collapse {
 		display: none;
@@ -468,20 +507,38 @@ form p {
 	}
 }
 
+@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+}
+
 @media only screen and (max-width: 768px) and (orientation: portrait) { /*target: iPad normali (non il Pro) in Portrait*/
 	#dino-immagine, #caratteristiche {
 		width: 100%!important;
 	}
+
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
 }
 
-/*@media only screen and (min-width: 767px) and (max-width: 1024px) { non dovrebbe servire
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
     .parallax {
         background-attachment: scroll !important;
         background-size: auto 100%;
     }
-}*/
-                                                       /*responsiveness delle colonne*/
-@media (min-width: 1301px) {
+}
+
+@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
     .third {width: 33.33333%;}
     .half {width: 49.99999%;}
 }
@@ -591,7 +648,11 @@ form p {
 
 /* /Commento */
 
-/* Loading */
+/*
+======================================================================
+								AIUTI
+======================================================================
+*/
 
 .loading {
 	position:fixed;
@@ -600,15 +661,24 @@ form p {
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
+    font-size: 1.2em;
 }
 
-.loading img {
-  	width: 300px; 
+#loading-image {
+    display: block;
+    width: 300px;
+    height: 269px;
+    background: url("../img/dino-loading.png") no-repeat;
+    background-size: contain;
 }
 
 /* fine - Loading */
- 
-/* Bouncing Animation */
+
+/*
+======================================================================
+						BOUNCING ANIMATION
+======================================================================
+*/
  
 .bounce {
 	animation: bounce 2s infinite;
@@ -698,7 +768,7 @@ form p {
 */
 
 #top-menu a {
-	font-size: 1.5em !important;
+	font-size: 1.5em!important;
 }
 
 .sidebar{
@@ -720,10 +790,10 @@ form p {
 	white-space: normal;
 	background-color: white;
 	color: black;
-	border: 0 !important;
+	border: 0!important;
 }
 
-.menu_entry {
+.menu-entry {
 	width: 100%;
 	padding: 1em;
 	display:block;
@@ -734,15 +804,19 @@ form p {
 }
 
 
-.menu_entry hr, .menu-entry-small hr {
+.menu-entry hr, .menu-entry-small hr {
 	margin: 0;
 }
 
-.menu_entry p {
+a.menu-entry, a.menu-entry-small {
+    text-decoration: none;
+}
+
+.menu-entry p {
 	margin: 0.2em;
 }
 
-.menu_entry:hover, .menu_entry:active, .sidebar .active {
+.menu-entry:hover, .menu-entry:active, .sidebar .active {
 	color: #fff;
 	background-color: #16a085;
 }
@@ -752,17 +826,23 @@ form p {
     cursor: default;
 }
 
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
+
 /****************
 *  ICONE MENU'	*
 *****************/
 
 #mobile-menu-icon {padding: 2em;}
 
-.menu_entry:hover > .menu_icon, .menu_entry:active > .menu_icon, .sidebar .active > .menu_icon {
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
 	filter: invert(100%);
 }
 
-.menu_icon { /*proprietà comuni a tutte le icone*/
+.menu-icon { /*proprietà comuni a tutte le icone*/
 	height: 60px;
     width: 60px;
     display: inline-block;
@@ -772,24 +852,36 @@ form p {
     background-size: contain;
 }
 
-#icon_home {
+#icon-home {
     background-image: url('../img/icons/menu_home.svg');
 }
 
-#icon_storia {
+#icon-storia {
 	background-image: url('../img/icons/menu_storia.png');
 }
 
-#icon_specie {
+#icon-specie {
 	background-image: url('../img/icons/menu_specie.svg');
 }
 
-#icon_articoli {
+#icon-articoli {
 	background-image: url('../img/icons/menu_articoli.svg');
 }
 
-#icon_accedi {
+#icon-accedi {
 	background-image: url('../img/icons/menu_accedi.png');
+}
+
+#icon-account {
+	background-image: url('../img/icons/menu_account.png');
+}
+
+#icon-accounts {
+	background-image: url('../img/icons/menu_accounts.svg');
+}
+
+#icon-sitemap {
+    background-image: url("../img/icons/menu_sitemap.svg");
 }
 
 /*
@@ -835,3 +927,25 @@ form p {
 	vertical-align: bottom;
 	text-align: left;
 }
+
+/*
+======================================================================
+							MAPPA DEL SITO
+======================================================================
+*/
+
+/*#sitemap ul {
+    list-style: circle;
+}*/
+
+/*
+======================================================================
+							JAVASCRIPT
+======================================================================
+*/
+
+.require-js {
+    display: none;
+}
+
+

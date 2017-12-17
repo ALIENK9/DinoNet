@@ -51,13 +51,13 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> DINO NET </h1>
 		<br>
-		<h4> Scopri i giganti della preistoria! E compratene uno! </h4>
+		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
 		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
-	<a href="#about" title="Vai a informazioni sul sito" class="down-arrow arrow btn bounce"></a>
+	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn bounce"></a>
 </header>
 
 <!-- /Header -->
@@ -117,7 +117,7 @@
 				</div>
 				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
 				<div class="padding-large">
-					<h3 class="text-colored center"> Nome del dinosauro </h3>
+					<h2 class="text-colored center"> Nome del dinosauro </h2>
 					<br>
 					<ul>
 						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
@@ -143,7 +143,7 @@
 				</div>
 				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
 				<div class="padding-large">
-					<h3 class="text-colored center"> Titolo dell'articolo </h3>
+					<h2 class="text-colored center"> Titolo dell'articolo </h2>
 					<br>
 					<p>
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -172,6 +172,7 @@
 </div>
 
 <script>
+
 // Script to open and close sidebar
 function open_menu() {
     document.getElementById("sidebar").style.display = "block";

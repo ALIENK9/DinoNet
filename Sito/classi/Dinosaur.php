@@ -56,19 +56,19 @@ class Dinosaur {
                                 $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
                             }
                             $echoString .='
-                            <div class="padding-medium">
+                            <div class="center padding-2">
                                 <p>
-                                    Peso: '.$row["peso"].'<br>
-                                    Altezza: '.$row["altezza"].'<br>
-                                    Lunghezza: '.$row["lunghezza"].'<br>
-                                    Tipologia di alimentazione: '.$row["tipologiaalimentazione"].'
+                                    <strong>Peso: </strong> '.$row["nome"].'<br>
+                                    <strong>Altezza: </strong> '.$row["altezza"].'<br>
+                                    <strong>Lunghezza: </strong> '.$row["lunghezza"].'<br>
+                                    <strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'
                                 </p>
                             </div>
                             <div class="center padding-2">';
                             if($editable){
                                 $echoString .='
-                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=formupdate&nome='.$row["nome"].'" class="btn green-sea"><p> Modifica</p></a>
-                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=delete&nome='.$row["nome"].'" class="btn green-sea"><p> Elimina </p></a>
+                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=formupdate&nome='.$row["nome"].'" class="btn colored"><p> Modifica</p></a>
+                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=delete&nome='.$row["nome"].'" class="btn colored"><p> Elimina </p></a>
                                 ';
                             }
                             else{
@@ -120,54 +120,68 @@ class Dinosaur {
 
     public static function formAddDinosaur($url){
         $echoString ='
-            <form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" value="">
-                
-                <label for="peso">Peso in Kg:</label>
-                <input type="number" id="peso" name="peso" value="">
+		
+		<header id="header-home" class="full-screen parallax">
+			<div class="padding-12 content">						
+				<div class="card white wrap-padding">
+					<h1>Aggiungi un dinosauro</h1>
+				</div>
+				<div class="card colored wrap-padding">
+					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data">
+						<p><label for="nome">Nome:</label></p>
+						<input type="text" id="nome" name="nome" value="">
+						
+						<p><label for="peso">Peso in Kg:</label></p>
+						<input type="number" id="peso" name="peso" value="">
 
-                <label for="altezza">Altezza in cm:</label>
-                <input type="number" id="altezza" name="altezza" value="">
-                
-                <label for="lunghezza">Lunghezza in cm:</label>
-                <input type="number" id="lunghezza" name="lunghezza" value="">
-                
-                <label for="periodomin">Periodo minimo in milioni di anni:</label>
-                <input type="number" id="periodomin" name="periodomin" value="">
-                
-                <label for="periodomax">Periodo massimo in milioni di anni:</label>
-                <input type="number" id="periodomax" name="periodomax" value="">
-                
-                <label for="habitat">Habitat:</label>
-                <input type="text" id="habitat" name="habitat" value="">
-                
-                <label for="tipologiaalimentazione1">Carnivoro:</label>
-                <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
-                
-                <label for="tipologiaalimentazione2">Onnivoro:</label>
-                <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
-                
-                <label for="tipologiaalimentazione3">Erbivoro:</label>
-                <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
-                
-                <label for="alimentazione">Alimentazione:</label>
-                <input type="text" id="alimentazione" name="alimentazione" value="">
-                
-                <label for="descrizionebreve">Descrizione Breve:</label>
-                <input type="text" id="descrizionebreve" name="descrizionebreve" value="">
-                
-                <label for="descrizione">Descrizione:</label>
-                <input type="text" id="descrizione" name="descrizione" value="">
-                
-                <label for="curiosita">Curiosità:</label>
-                <input type="text" id="curiosita" name="curiosita" value="">
+						<p><label for="altezza">Altezza in cm:</label></p>
+						<input type="number" id="altezza" name="altezza" value="">
+						
+						<p><label for="lunghezza">Lunghezza in cm:</label></p>
+						<input type="number" id="lunghezza" name="lunghezza" value="">
+						
+						<p><label for="periodomin">Periodo minimo in milioni di anni:</label></p>
+						<input type="number" id="periodomin" name="periodomin" value="">
+						
+						<p><label for="periodomax">Periodo massimo in milioni di anni:</label></p>
+						<input type="number" id="periodomax" name="periodomax" value="">
+						
+						<p><label for="habitat">Habitat:</label></p>
+						<input type="text" id="habitat" name="habitat" value="">
+						
+						<br>
+						
+						<label for="tipologiaalimentazione1">Carnivoro:</label>
+						<input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
+						
+						<label for="tipologiaalimentazione2">Onnivoro:</label>
+						<input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
+						
+						<label for="tipologiaalimentazione3">Erbivoro:</label>
+						<input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
+						
+						<p><label for="alimentazione">Alimentazione:</label></p>
+						<input type="text" id="alimentazione" name="alimentazione" value="">
+						
+						<p><label for="descrizionebreve">Descrizione Breve:</label></p>
+						<input type="text" id="descrizionebreve" name="descrizionebreve" value="">
+						
+						<p><label for="descrizione">Descrizione:</label></p>
+						<input type="text" id="descrizione" name="descrizione" value="">
+						
+						<p><label for="curiosita">Curiosità:</label></p>
+                        <input type="text" id="curiosita" name="curiosita" value="">                        
                
-                <label for="imgdinosaur">Immagine dinosauro:</label>
-                <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
-    
-                <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
-            </form>
+                        <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
+                        <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+
+						<br>
+						
+						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
+					</form>
+				</div>
+			</div>
+		</header>
         ';
         return $echoString;
 
@@ -248,57 +262,71 @@ class Dinosaur {
             }
             
             $echoString ='
-                <form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="'.$row["nome"].'" readonly>
-                    
-                    <label for="peso">Peso in Kg:</label>
-                    <input type="number" id="peso" name="peso" value="'.$row["peso"].'">
+			
+			<header id="header-home" class="full-screen parallax">
+				<div class="padding-12 content">						
+					<div class="card white wrap-padding">
+						<h1>Modifica un dinosauro</h1>
+					</div>
+					<div class="card colored wrap-padding">
+						<form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data">
+							<p><label for="nome">Nome:</label></p>
+							<input type="text" id="nome" name="nome" value="'.$row["nome"].'" readonly>
+							
+							<p><label for="peso">Peso in Kg:</label></p>
+							<input type="number" id="peso" name="peso" value="'.$row["peso"].'">
 
-                    <label for="altezza">Altezza in cm:</label>
-                    <input type="number" id="altezza" name="altezza" value="'.$row["altezza"].'">
-                    
-                    <label for="lunghezza">Lunghezza in cm:</label>
-                    <input type="number" id="lunghezza" name="lunghezza" value="'.$row["lunghezza"].'">
-                    
-                    <label for="periodomin">Periodo minimo in milioni di anni:</label>
-                    <input type="number" id="periodomin" name="periodomin" value="'.$row["periodomin"].'">
-                    
-                    <label for="periodomax">Periodo massimo in milioni di anni:</label>
-                    <input type="number" id="periodomax" name="periodomax" value="'.$row["periodomax"].'">
-                    
-                    <label for="habitat">Habitat:</label>
-                    <input type="text" id="habitat" name="habitat" value="'.$row["habitat"].'">
-                    
-                    <label for="tipologiaalimentazione1">Carnivoro:</label>
-                    <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
-                    
-                    <label for="tipologiaalimentazione2">Onnivoro:</label>
-                    <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
-                    
-                    <label for="tipologiaalimentazione3">Erbivoro:</label>
-                    <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
-                    
-                    <label for="alimentazione">Alimentazione:</label>
-                    <input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
-                    
-                    <label for="descrizionebreve">Descrizione breve:</label>
-                    <input type="text" id="descrizionebreve" name="descrizionebreve" value="'.$row["descrizionebreve"].'">
-                    
-                    <label for="descrizione">Descrizione:</label>
-                    <input type="text" id="descrizione" name="descrizione" value="'.$row["descrizione"].'">
-                    
-                    <label for="curiosita">Curiosità:</label>
-                    <input type="text" id="curiosita" name="curiosita" value="'.$row["curiosita"].'">
-                    
-                    <label for="imgdinosaur">Immagine dinosauro:</label>
-                    <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
-        
-                    <label for="imgdinosaurremove">Rimuovi immagine:</label>
-                    <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
-     
-                    <input type="submit" value="Modifica" title="Avvia l\'operazione" />
-                </form>
+							<p><label for="altezza">Altezza in cm:</label></p>
+							<input type="number" id="altezza" name="altezza" value="'.$row["altezza"].'">
+							
+							<p><label for="lunghezza">Lunghezza in cm:</label></p>
+							<input type="number" id="lunghezza" name="lunghezza" value="'.$row["lunghezza"].'">
+							
+							<p><label for="periodomin">Periodo minimo in milioni di anni:</label></p>
+							<input type="number" id="periodomin" name="periodomin" value="'.$row["periodomin"].'">
+							
+							<p><label for="periodomax">Periodo massimo in milioni di anni:</label></p>
+							<input type="number" id="periodomax" name="periodomax" value="'.$row["periodomax"].'">
+							
+							<p><label for="habitat">Habitat:</label></p>
+							<input type="text" id="habitat" name="habitat" value="'.$row["habitat"].'">
+							
+							<br>
+							
+							<label for="tipologiaalimentazione1">Carnivoro:</label>
+							<input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+							
+							<label for="tipologiaalimentazione2">Onnivoro:</label>
+							<input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+							
+							<label for="tipologiaalimentazione3">Erbivoro:</label>
+							<input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+							
+							<p><label for="alimentazione">Alimentazione:</label></p>
+							<input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
+							
+							<p><label for="descrizionebreve">Descrizione breve:</label></p>
+							<input type="text" id="descrizionebreve" name="descrizionebreve" value="'.$row["descrizionebreve"].'">
+							
+							<p><label for="descrizione">Descrizione:</label></p>
+							<input type="text" id="descrizione" name="descrizione" value="'.$row["descrizione"].'">
+							
+							<p><label for="curiosita">Curiosità:</label></p>
+							<input type="text" id="curiosita" name="curiosita" value="'.$row["curiosita"].'">
+                            
+                            <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+                
+                            <p><label for="imgdinosaurremove">Rimuovi immagine:</label></p>
+                            <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
+
+							<br>
+							
+							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+						</form>
+					</div>
+				</div>
+			</header>
             ';
         }
         else{

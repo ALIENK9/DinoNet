@@ -68,7 +68,7 @@
             <img id="dino-immagine" src="img/tiles/Coelophysis.jpg" alt="Ricostruzione di un Coelophysis">
 
             <div id="caratteristiche" class="wrap-padding white">
-                <h3>Caratteristiche</h3>
+                <h2>Caratteristiche</h2>
                 <br>
                 <ul>
                     <li><strong>Descritto da:</strong> Edward Drinker Cope, 1889</li>
@@ -82,7 +82,7 @@
 
 		</div>
 		<div class="wrap-padding white">
-			<h3>Descrizione</h3>
+			<h2>Descrizione</h2>
 			<br>
 			<p>
 				Stando ai ritrovamenti effettuati fin’ora, uno dei primi dinosauri a popolare la regione sudoccidentale degli Stati Uniti verso la fine del Triassico (circa 215 milioni di anni fa) è il <span xml:lang="en" lang="en"><em>Coelophysis</em></span> (nome completo "<span xml:lang="en" lang="en"><em>Coelophysis Bauri</em></span>"). Il suo nome deriva dal greco e significa "forma cava" in riferimento alle sue ossa cave, in particolare a quelle del cranio, che sono dotate di piccole cavità per ridurre il peso dell’animale. Questa caratteristica lo distingue da altre specie di dinosauri più primitive come gli herrerasauridi vissuti  metà del Triassico. Una specializzazione molto particolare del <span xml:lang="en" lang="en"><em>Coelophysis</em></span> riguarda la coda, le cui vertebre erano stranamente dotate di strutture allungate che probabilmente limitavano molto il movimento verticale. Infatti si ritiene che servisse per controbilanciare il peso corporeo. Questa semirigidità può essere paragonata a quella dei successivi tetanuri, nei quali la coda è irrigidita dai tendini ossificati.
@@ -97,7 +97,7 @@
 			
 			<br>
 			
-			<h3>Una curiosità</h3>
+			<h2>Una curiosità</h2>
 			<br>
 			<p>
 				<strong> Lo sapevi che... </strong> nel 1947 una spedizione nel Nuovo Messico (<abbr xml:lang="en" lang="en" title="United States of America">USA</abbr>), capitanata da <span xml:lang="en" lang="en">Edwin Colbert</span>, fece una sensazionale scoperta. In una proprietà nota col nome di <span xml:lang="en" lang="en">Ghost Ranch</span> (“ranch fantasma”) vennero trovati centinaia di scheletri di <span xml:lang="en" lang="en"><em>Coelophysis</em></span>, che giacevano gli uni sugli altri. La scoperta era particolarmente eccitante, perché riguardava <span xml:lang="en" lang="en"><em>Coelophysis</em></span> di età e dimensioni differenti. Sembra che l'intero branco fosse andato incontro alla morte nel medesimo tempo. Ciò fa supporre che il decesso sia stato causato da un'improvvisa calamità, per esempio da una violenta inondazione che fece annegare gli animali, sommergendoli.

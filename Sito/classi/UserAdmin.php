@@ -53,15 +53,15 @@ class UserAdmin extends User {
                                 $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="immagine profilo utente">';
                             }
                             $echoString .='
-                            <div class="padding-medium">
+                            <div class="center padding-2">
                                 <p>
-                                    Nome:'.$row["nome"].'<br>
-                                    Cognome:'.$row["cognome"].'
+                                    <strong>Nome: </strong>'.$row["nome"].'<br>
+                                    <strong>Cognome: </strong>'.$row["cognome"].'
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn green-sea"><p> Modifica</p></a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn green-sea"><p> Elimina </p></a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn colored"><p> Modifica</p></a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn colored"><p> Elimina </p></a>
                             </div>
                         </div>
                     </div>
@@ -144,30 +144,42 @@ class UserAdmin extends User {
 
     public static function formAddUser($url){
         $echoString ='
-        <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="">
-            
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="">
-            
-            <label for="cognome">Cognome:</label>
-            <input type="text" id="cognome" name="cognome" value="">
-            
-            <label for="datanascita">Data di nascita:</label>
-            <input type="date" id="datanascita" name="datanascita" value="">
-            
-            <label for="password">Password:</label>
-            <input type="text" id="password" name="password" value="">
-            
-            <label for="passwordconf">Conferma password:</label>
-            <input type="text" id="passwordconf" name="passwordconf" value="">
-            
-            <label for="imgaccount">Immagine profilo:</label>
-            <input type="file" id="imgaccount" name="imgaccount" value="">
+		
+		<header id="header-home" class="full-screen parallax" enctype="multipart/form-data">
+			<div class="padding-12 content">						
+				<div class="card white wrap-padding">
+					<h1>Aggiungi un nuovo utente</h1>
+				</div>
+				<div class="card colored wrap-padding">
+					<form action="'.$url.'?id=user&sez=add" method="POST">
+						<p><label for="email">Email:</label></p>
+						<input type="email" id="email" name="email" value="">
+						
+						<p><label for="nome">Nome:</label></p>
+						<input type="text" id="nome" name="nome" value="">
+						
+						<p><label for="cognome">Cognome:</label></p>
+						<input type="text" id="cognome" name="cognome" value="">
+						
+						<p><label for="datanascita">Data di nascita:</label></p>
+						<input type="date" id="datanascita" name="datanascita" value="">
+						
+						<p><label for="password">Password:</label></p>
+						<input type="text" id="password" name="password" value="">
+						
+						<p><label for="passwordconf">Conferma password:</label></p>
+                        <input type="text" id="passwordconf" name="passwordconf" value="">
+                        
+                        <p><label for="imgaccount">Immagine profilo:</label></p>
+                        <input type="file" id="imgaccount" name="imgaccount" value="">
 
-            <input type="submit" value="Aggiungi" title="Avvia l\'operazione" />
-        </form>
+						<br>
+						
+						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+					</form>
+				</div>
+			</div>
+		</header>
     ';
     return $echoString;
     } 
@@ -230,33 +242,44 @@ class UserAdmin extends User {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $echoString ='
-            <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
-                
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" value="'.$row["nome"].'">
-                
-                <label for="cognome">Cognome:</label>
-                <input type="text" id="cognome" name="cognome" value="'.$row["cognome"].'">
-                
-                <label for="datanascita">Data di nascita:</label>
-                <input type="date" id="datanascita" name="datanascita" value="'.$row["datanascita"].'">
-                
-                <label for="password">Password:</label>
-                <input type="text" id="password" name="password" value="'.$row["password"].'">
-                
-                <label for="passwordconf">Conferma password:</label>
-                <input type="text" id="passwordconf" name="passwordconf" value="'.$row["password"].'">
-                
-                <label for="imgaccount">Immagine profilo:</label>
-                <input type="file" id="imgaccount" name="imgaccount" value="">
-
-                <label for="imgaccountremove">Rimuovi immagine:</label>
-                <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-                
-                <input type="submit" value="Modifica" title="Avvia l\'operazione" />
-            </form>
+			<header id="header-home" class="full-screen parallax">
+				<div class="padding-12 content">						
+					<div class="card white wrap-padding">
+						<h1>Modifica i dati utente</h1>
+					</div>
+					<div class="card colored wrap-padding">
+						<form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data">
+							<p><label for="email">Email:</label></p>
+							<input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
+							
+							<p><label for="nome">Nome:</label></p>
+							<input type="text" id="nome" name="nome" value="'.$row["nome"].'">
+							
+							<p><label for="cognome">Cognome:</label></p>
+							<input type="text" id="cognome" name="cognome" value="'.$row["cognome"].'">
+							
+							<p><label for="datanascita">Data di nascita:</label></p>
+							<input type="date" id="datanascita" name="datanascita" value="'.$row["datanascita"].'">
+							
+							<p><label for="password">Password:</label></p>
+							<input type="text" id="password" name="password" value="'.$row["password"].'">
+							
+							<p><label for="passwordconf">Conferma password:</label></p>
+                            <input type="text" id="passwordconf" name="passwordconf" value="'.$row["password"].'">
+                            
+                            <p><label for="imgaccount">Immagine profilo:</label>></p>
+                            <input type="file" id="imgaccount" name="imgaccount" value="">
+            
+                            <p><label for="imgaccountremove">Rimuovi immagine:</label>></p>
+                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+								
+							<br>
+								
+							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+						</form>
+					</div>
+				</div>
+			</header>
             ';
         }  
         else{

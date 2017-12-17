@@ -51,7 +51,7 @@
 	<div id="title-card" class="content card">
 		<h1 class="w3-wide title"> La storia dei dinosauri </h1>
 		<br>
-		<h4>scopri l'affascinante storia di creature vissute milioni di anni fa</h4>
+		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
 		<ul class="index">
@@ -91,8 +91,8 @@
 <!-- La scoperta -->
 
 <div id="scoperta" class="row parallax">
-	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-1.jpg" alt="Cranio fossile di un grande dinosauro carnivoro"></div>
-	<div class="half">
+	<!--div id="history-1" class="hide-large hide-medium history-img"></div-->
+	<div class="half right">
 		<div class="white wrap-padding">
 			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
 			<br>
@@ -179,7 +179,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="half ghost-half"><img class="hide-large hide-medium" src="img/dino-3.jpg" alt="Dinosauri erbivori pascolano in una area pianeggiante. Si vedeono i lunghi colli di Brontosauri e le spesse corazze degli Anchilosauri"></div>
+	<!--div id="history-2" class="hide-large hide-medium history-img"></div-->
 </div>
 
 <!-- L'estinzione -->
@@ -194,7 +194,7 @@
 		</p>
 		<ul>
 			<li>
-				<h3>La teoria del meteorite</h3>
+				<h2>La teoria del meteorite</h2>
 				<p>
 					Ogni giorno sulla Terra cadono  fino a 500 meteoriti  della grandezza di una pallina da tennis, eppure non ce ne
 					accorgiamo. Come ne cadono di piccoli tutti giorni, così ne cadono di immensi,  molto raramente.
@@ -208,7 +208,7 @@
 				</p>
 			</li>
 			<li>
-				<h3>Le eruzioni vulcaniche</h3>
+				<h2>Le eruzioni vulcaniche</h2>
 				<p>
 					Recentemente, però, la teoria del meteorite è stata messa in discussione. Infatti, ricerche recenti affermano che
 					in realtà il meteorite si schiantò sul nostro pianeta ben 300 mila anni prima dell'estinzione dei dinosauri, dunque
@@ -221,7 +221,7 @@
 				</p>
 			</li>
 			<li>
-				<h3>Un disastro...combinato?</h3>
+				<h2>Un disastro...combinato?</h2>
 				<p>
 					Una recente teoria <strong>metterebbe in relazione la prima teoria (meteorite) con l'ipotesi delle eruzioni</strong>.
 					Alcuni ricercatori hanno infatti riscontrato importanti variazioni di 
@@ -231,7 +231,7 @@
 				</p>
 			</li>
 			<li>
-				<h3>Le malattie e la crisi esistenziale</h3>
+				<h2>Le malattie e la crisi esistenziale</h2>
 				<p>
 					Alcuni studiosi sostengono che un'<strong>epidemia virale o batterica</strong> avrebbe portato all'estinzione di questi animali 
 					giganteschi. Un gruppetto di altri studiosi sostiene invece che la colpa dell'estinzione più famosa della storia
@@ -239,7 +239,7 @@
 				</p>
 			</li>
 			<li>
-				<h3>Il normale corso della natura</h3>
+				<h2>Il normale corso della natura</h2>
 				<p>
 					Quella chiamata <strong>"del normale corso della Natura"</strong> è l'ultima teoria che avanzata nel corso degli
 					anni. Essa afferma che l'estinzione dei dinosauri non è da ascrivere a nessun fattore in particolare ma al

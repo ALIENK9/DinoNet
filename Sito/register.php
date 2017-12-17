@@ -65,7 +65,7 @@
 	<div class="content">
 		<div id="title-card" class="card">
 			<h1 class="title"> Crea un account </h1>
-			<h4>entra a far parte del mondo dei dinosauri!</h4>
+			<h2>entra a far parte del mondo dei dinosauri!</h2>
 		</div>
 		
 		<!-- Registrazione -->

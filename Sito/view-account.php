@@ -66,7 +66,7 @@
 		<div id="title-card" class="card">
 			<h1 class="title wide"> Ciao, [Nome utente] </h1>
 			<br>
-			<h4>qui puoi visualizzare i dati del tuo account</h4>
+			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
 		
 		<!-- Dati account -->
