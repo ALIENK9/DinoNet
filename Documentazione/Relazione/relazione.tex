@@ -1,9 +1,11 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{url}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 %\usepackage{geometry}
 %\usepackage{makeidx}
 %\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
@@ -65,14 +67,27 @@
 	La presenza di molte immagini e il layout grafico "a piastrelle" che abbiamo scelto, ha anche imposto l'utilizzo dello scroll, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
 	Per quanto riguarda l'utilizzo da smartphone, abbiamo tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, abbiamo scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, visto che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, si elimina anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
 	
-	\section{Media queries}
+	\subsection{Media queries}
 	Abbiamo fatto uso di media queries per garantire la compatibilità con tutti i dispositivi. Alcuni problemi sono sorti con i dispositivi Apple, che non visualizzavano correttamente l'effetto parallasse inserito nella sezione \textit{Storia}. Per questo abbiamo deciso di disabilitare questo effetto su ogni dispositivo mobile di tale marca, indipendentemente dalla dimensione.\\
-	Mediante il foglio di stile \textit{print.css} abbiamo adeguato la pagina per la stampa, togliendo le immagini puramente decorative, e rimuovendo completamente i colori. Il font viene inoltre impostato su \textit{Times}.
+	Il foglio di stile \textit{print.css} definisce un layout adatto per la stampa. Tutte le immagini decorative sono rimosse, il font viene inoltre impostato su \textit{Times} e quello colorato ritorna di colore nero.\\
+	Il contenuto del giorno e la sezione \textit{Ultime aggiunte} non vengono mostrati nel layout di stampa, questo perché supponiamo che l'utente sia interessato alla stampa del solo contenuto principale della pagina, quindi il testo degli articoli o delle schede. Tuttavia, nel caso in cui si voglia stampare la pagina \textit{Home} oppure la pagina principale delle sezioni \textit{Articoli} o \textit{Specie}, che sono delle raccolte di contenuti che introducono le relative sezioni, allora i contenuti suggeriti saranno stampati, uno sotto l'altro.
 	
 		
 	\section{Accessibilità}
-	...	
-	
-	
+	\subsection{Introduzione}
+	...
+	\subsection{Test}
+	Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
+	\begin{itemize}
+		\item \textbf{Total Validator}: utilizzato anche per la validazione delle pagine e dei fogli di stile, e disponibile in versione gratuita al sito: 
+		\url{http://www.totalvalidator.com/validator/Validator};
+		\item \textbf{FireFox Web Developer Toolbar}: un plugin per il browser Firefox;
+		\item \textbf{Fangs - Screen Reader Emulator}: disponibile al sito: \url{http://sourceforge.net/projects/fangs};
+		\item \textbf{IE Accessibility Toolbar}: compatibile solo con internet Explorer ed installabile al sito\\ \url{http://webaccessibile.org/articoli/la-barra-dellaccessibilita-versione-20};
+		\item \textbf{Cynthia Says}: disponibile al sito \url{http://www.contentquality.com}.
+	\end{itemize}
+
+	\subsection{Risultati dei test}
+	...
 	
 \end{document}
