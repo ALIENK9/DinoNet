@@ -72,7 +72,7 @@
 			<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
 		</div>
 	</div>
-	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
 
 <!-- Dinosauri -->
@@ -191,19 +191,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

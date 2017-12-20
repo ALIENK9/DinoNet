@@ -8,7 +8,7 @@
 
 	include_once ($homepath . "/classi/Article.php");
 
-	session_start();
+session_start();
 	
 ?>
 <!DOCTYPE html>
@@ -72,7 +72,7 @@
 			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 		</div>
 	</div>
-	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
 
 <!-- Articoli -->

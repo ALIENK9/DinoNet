@@ -56,7 +56,7 @@
 		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn bounce"></a>
+	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce"></a>
 </header>
 
 <!-- /Header -->
@@ -69,11 +69,15 @@
 	<h1 class="text-colored"> COS'È <span class="wide"> DINO NET </span> </h1>
 	<br>
 	<p class="side-padding">
-		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del
-        Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro
-        sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
-        e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da
-        <a href="http://it.wikipedia.org/wiki/">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
+		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
+        Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
+        pari alla massa di 13 pianoforti e ... ma calma, non vorremmo rovinarti tutte le sorprese :D. <br>
+        Se vuoi scoprire dettagli e curiosità su questi fantastici animali morti, puoi sfogliare la sezione
+        <span class="text-italic">Specie</span>, oppure se ti interessano gli articoli sulle più recenti scoperte e
+        teorie riguardanti il mondo preistorico, ti consigliamo la sezione <span class="text-italic">Articoli</span>.
+        Se vuoi leggere un'introduzione sulla storia dei dinosauri, dalla comparsa all'estinzione, fai un salto alla
+        pagina <span class="text-italic">Storia</span>. Invece nel caso tu stia solo curiosando, potresti cominciare dai
+        <a href="#daily-stuff">contenuti del giorno</a>. Buona lettura!
 	</p>
 	<div class="row-padding hide-small">
 		<div class="padding-large center floating-element">
@@ -169,20 +173,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

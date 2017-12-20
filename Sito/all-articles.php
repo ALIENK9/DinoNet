@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="HTML, CSS, XML, JavaScript">
-    <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
@@ -105,20 +104,6 @@
 <?php include_once('tothetop.php') ?>
 	
 </div> <!-- main-->
-
-<script>
-    // Script to open and close sidebar
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script>
-
 
 </body>
 </html>

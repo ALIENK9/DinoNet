@@ -74,14 +74,9 @@ p {
 	margin:10px 0;
 }
 
-/*p a {
-    text-decoration: underline;
-}*/
-
 h1 {
 	font-size: 2em; 
 	font-weight: 900;
-	/*text-transform: uppercase;*/
 	text-align: center;
 }
 
@@ -243,7 +238,11 @@ form p {
 	margin-bottom:2em;
 }
 
-/* /Daily stuff */
+.waytoobigtext {
+	font-size: large;
+	font-weight: bold;
+	text-transform: uppercase;
+}
 
 /*
 ======================================================================
@@ -306,15 +305,15 @@ form p {
 }
 
 .content{
-	max-width:980px;
-	margin:auto;
-	padding:0.01em 16px;
+	max-width: 980px;
+	margin: auto;
+	padding: 0.01em 16px;
 }
 
 .content-large {
-	max-width:1500px;
-	margin:auto;
-	padding:0.01em 16px;
+	max-width: 1500px;
+	margin: auto;
+	padding: 0.01em 16px;
 }
 
 .card {box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
@@ -332,8 +331,6 @@ form p {
 }
 
 .btn {
-	background-color: #037971 !important;
-	color: white !important;
 	border:none;
 	display:inline-block;
 	outline:0;
@@ -347,6 +344,12 @@ form p {
 	border-radius:4px;
 	font-weight: bold;
 }
+
+a.btn {
+    background-color: #037971;
+    color: white;
+}
+
 .btn:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
 
 .btn p {
@@ -389,7 +392,7 @@ form p {
 	top:0;
 }
 
-.bar::before,.bar::after {
+.bar::before, .bar::after {
 	content:"";
 	display:table;
 	clear:both;
@@ -460,114 +463,6 @@ form p {
 }
 
 /* /Layout */
-
-/* Responsiveness */
-
-@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
-    .hide-large {display: none!important;}
-    .sidebar.collapse {display: block;}
-}
-
-@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
-	.hide-small {display: none!important;}
-	.main {min-width: 100%;}
-
-    #header-menu {
-        width: 70%;
-        float: left;
-    }
-
-	#header-menu h1 {font-size: 1em;}
-	#mobile-menu-icon {width: 30%; padding: 1em!important;}
-    #title-card {padding: 1em;}
-    #title-card h1 {font-size: 5vh;}
-    .wrap-padding {padding: 0.5em!important;}
-
-    #scoperta {
-        padding-bottom: 85vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-
-    #bipedi-quadrupedi {
-        padding-bottom: 65vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-}
-
-@media only screen and (min-width: 601px) and (max-width: 1024px) {         /*dimensione media 601 - 1024 px*/
-	.hide-medium {display: none!important;}
-}
-
-@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px, anche iPad*/
-	.main {
-		margin-left: 0!important;
-		margin-right: 0!important;
-		min-width: 100%;
-	}
-	
-	.sidebar.collapse {
-		display: none;
-		width: 100%;
-	}
-
-	.article-image-left, .article-image-right {
-		width: 100%!important;
-		float: none!important;
-		margin: 0!important;
-	}
-
-	.content, .content-large {
-		padding-left: 0;
-		padding-right: 0;
-	}
-}
-
-@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
-    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
-}
-
-@media only screen and (max-width: 768px) and (orientation: portrait) { /*target: iPad normali (non il Pro) in Portrait*/
-	#dino-immagine, #caratteristiche {
-		width: 100%!important;
-	}
-
-    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
-
-    #scoperta {
-        padding-bottom: 85vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-
-    #bipedi-quadrupedi {
-        padding-bottom: 65vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-}
-
-@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
-    .parallax {
-        background-attachment: scroll !important;
-        background-size: auto 100%;
-    }
-}
-
-@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
-    .third {width: 33.33333%;}
-    .half {width: 49.99999%;}
-}
-
-@media (min-width: 768px) and (max-width: 1300px) {
-    .quarter {width: 24.99999%;}
-    .third {width: 49.99999%;}
-    .half {width: 49.99999%;}
-    .twothird {width: 66.66666%;}
-}
-
-/* /Responsiveness */
 
 /* Margin e padding */
 
@@ -745,7 +640,7 @@ form p {
 /* To the top btn */
 
 #toTheTop {
-	display: none;
+	display: block;
 	position: fixed;
 	bottom: 20px;
 	right: 30px;
@@ -754,10 +649,8 @@ form p {
 	outline: none;
 	color: white;
 	background-color: black;
-	cursor: pointer;
 	padding: 15px;
 	border-radius: 10px;
-	font-weight: bolder;
 }
 
 /* fine - To the top btn */
@@ -815,22 +708,24 @@ form p {
 
 .menu-entry-small {
 	width: 100%;
-	padding: .3em 1em;
-	display:block;
+	padding: 0.3em 1em;
+	display: inline-block;
 	white-space: normal;
 	background-color: white;
-	color: black;
-	border: 0!important;
+	color: white;
+	border: 0;
+    vertical-align: middle;
 }
 
 .menu-entry {
 	width: 100%;
 	padding: 1em;
-	display:block;
+	display: inline-block;
 	white-space: normal;
 	background-color: white;
 	color: black;
-	border: 0 !important;
+	border: 0;
+    vertical-align: middle;
 }
 
 
@@ -838,18 +733,25 @@ form p {
 	margin: 0;
 }
 
-a.menu-entry, a.menu-entry-small {
+/*a.menu-entry, a.menu-entry-small {
     text-decoration: none;
-}
+}*/
 
 .menu-entry p {
 	margin: 0.2em;
 }
 
-.menu-entry:hover, .menu-entry:active, .sidebar .active {
-	color: #fff;
-	background-color: #16a085;
+
+.menu-entry:hover, .sidebar .active {
+	background-color:  #16a085;
+    color: white;
 }
+
+
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
+    filter: invert(100%);
+}
+
 
 .sidebar .disabled {
 	pointer-events: none;
@@ -868,13 +770,8 @@ a.disabled {
 
 #mobile-menu-icon {padding: 2em;}
 
-.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
-	filter: invert(100%);
-}
-
 .menu-icon { /*proprietà comuni a tutte le icone*/
-	height: 60px;
-    width: 60px;
+    padding: 30%;
     display: inline-block;
 	background-color: transparent;
     background-image: none;
@@ -960,13 +857,13 @@ a.disabled {
 
 /*
 ======================================================================
-							MAPPA DEL SITO
+							FOOTER
 ======================================================================
 */
 
-/*#sitemap ul {
-    list-style: circle;
-}*/
+sitemap a {
+    display: inline-block;
+}
 
 /*
 ======================================================================
@@ -977,5 +874,162 @@ a.disabled {
 .require-js {
     display: none;
 }
+
+/*#nojs-menu {
+    width: 100%;
+    height: 100vh;
+}
+
+#nojs-menu .menu-entry {
+    height: 20%;
+}
+
+#nojs-menu .active > .menu-icon {
+    filter: invert(100%);
+}
+
+#nojs-menu .active {
+    color: #fff;
+    background-color: #16a085;
+}*/
+
+/*
+======================================================================
+							MEDIA QUERIES
+======================================================================
+*/
+
+@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
+    .hide-small {display: none;}
+    .main {min-width: 100%;}
+
+    #header-menu {
+        width: 70%;
+        float: left;
+    }
+
+    #header-menu h1 {font-size: 1em;}
+    #mobile-menu-icon {width: 30%; padding: 1em;}
+    #title-card {padding: 1em;}
+    #title-card h1 {font-size: 5vh;}
+    .wrap-padding {padding: 0.5em;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    .menu-icon {padding: 14%;}
+    .menu-entry {
+        padding: 0.3em;
+    }
+}
+
+@media only screen and (max-width: 812px) and (orientation: landscape) {            /*smartphone in landscape*/
+    .sidebar {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .menu-entry, .menu-entry-small {
+        width: 35%;
+    }
+
+    .menu-entry-small {
+        display: none;
+    }
+}
+
+@media only screen and (max-device-width: 320px) and (max-device-height: 480px) {     /*dimensione schermo molto piccola 320px-480px*/
+    .menu-icon {
+        padding: 0;
+        background-image: none;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {                  /*dimensione media 601 - 1024 px*/
+    .hide-medium {display: none;}
+}
+
+@media only screen and (max-width: 1024px) {                                        /*dimensione media e piccola 480 - 1024 px, anche iPad*/
+    .main {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 100%;
+    }
+
+    .sidebar.collapse {
+        display: none;
+        width: 100%;
+    }
+
+    .article-image-left, .article-image-right {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    .content, .content-large {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {     /*target: iPad normali (non il Pro) in Portrait*/
+    #dino-immagine, #caratteristiche {
+        width: 100%;
+    }
+
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+}
+
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
+    .parallax {
+        background-attachment: scroll;
+        background-size: auto 100%;
+    }
+}
+
+@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
+    .hide-large {display: none;}
+    .sidebar.collapse {display: block;}
+}
+
+@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
+    .third {width: 33.33333%;}
+    .half {width: 49.99999%;}
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+    .quarter {width: 24.99999%;}
+    .third {width: 49.99999%;}
+    .half {width: 49.99999%;}
+    .twothird {width: 66.66666%;}
+}
+
+/* /Responsiveness */
 
 
