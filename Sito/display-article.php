@@ -156,7 +156,7 @@
 
 <?php include_once 'commentboard.php'?>
 
-<div class="padding-6 content-large no-print">
+<div class="padding-6 no-print">
 	<div class="colored center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>

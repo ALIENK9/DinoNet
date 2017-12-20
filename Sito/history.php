@@ -50,7 +50,6 @@
 <header class="parallax padding-6">
 	<div id="title-card" class="content card">
 		<h1 class="w3-wide title"> La storia dei dinosauri </h1>
-		<br>
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">

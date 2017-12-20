@@ -47,10 +47,9 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-12">
+<header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> DINO NET </h1>
-		<br>
 		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
@@ -99,8 +98,8 @@
 <div id="input-area" class="card colored wrap-padding center">
 	<div class="content">
 		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
-		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
-		<input type="submit" value="CERCA" class="card btn wide text-colored white">
+		<input id="search" class="margin" type="text" placeholder="e.g. Tirannosaurus Rex">
+		<input type="submit" value="CERCA" class="card btn wide text-colored white margin">
 	</div>
 </div>
 

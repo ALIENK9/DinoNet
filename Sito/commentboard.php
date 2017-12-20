@@ -1,42 +1,46 @@
-<div id="commentboard" class="card colored wrap-padding content panel">
-    <a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
+<div id="commentboard" class="content panel">
+	<div class="card wrap-padding">
+		<a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
 
-    <div class="comment">
-        <p class="text-italic">
-            Marius
-        </p>
-        <p class="card wrap-padding-small">
-            Questo è un commento!!
-        </p>
+		<div class="comment">
+			<p>
+				Marius
+			</p>
+			<p class="card wrap-padding-small">
+				Questo è un commento!!
+			</p>
+		</div>
+
+		<div class="comment">
+			<p>
+				Ciccio97
+			</p>
+			<p class="card wrap-padding-small">
+				Fantastico!!!!
+			</p>
+		</div>
+
+		<div class="comment">
+			<p>
+				MrSaputello
+			</p>
+			<p class="card wrap-padding-small">
+				fkdjfkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk ksllsl sadfascasfda
+				sdadsadsadsad
+				sadasdsadsadsada fjsadsajdj jk jsdjjl jlkj ljl jk jslkjlj òjljòjòjòjòakjdòawkdowk òkòokò kòok ò kòk
+				waljlkwajkaj kj kjjw lakjlwjl.---
+			</p>
+		</div>
+    </div>
+
+	<div class="card center wrap-padding colored">
+		<form>
+			<h3><label for="casella-commento">Commenta</label></h3>
+			<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small">
+			<br>
+			<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
+		</form>
 	</div>
-
-    <div class="comment">
-        <p class="text-italic">
-            Ciccio97
-        </p>
-        <p class="card wrap-padding-small">
-            Fantastico!!!!
-        </p>
-    </div>
-
-    <div class="comment">
-        <p class="text-italic">
-            MrSaputello
-        </p>
-        <p class="card wrap-padding-small">
-            fkdjfkkkk kkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkk kkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkk ksllsl sadfascasfda
-            sdadsadsadsad
-            sadasdsadsadsada fjsadsajdj jk jsdjjl jlkj ljl jk jslkjlj òjljòjòjòjòakjdòawkdowk òkòokò kòok ò kòk
-            waljlkwajkaj kj kjjw lakjlwjl.---
-        </p>
-    </div>
-
-	<form class="center padding-1">
-		<h3><label for="casella-commento">Commenta</label></h3>
-		<input type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small">
-		<br>
-		<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
-	</form>
 </div>
 
 

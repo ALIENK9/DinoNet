@@ -112,6 +112,7 @@ input {
 
 header {
 	background-image: url('../img/dino-pattern.jpg');
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 
@@ -182,7 +183,7 @@ form p {
 }
 
 #title-card {
-	padding: 3em;
+	padding: 1.5em;
 	background-color: white;
 }
 
@@ -331,6 +332,8 @@ form p {
 }
 
 .btn {
+	background-color: #037971 !important;
+	color: white !important;
 	border:none;
 	display:inline-block;
 	outline:0;
@@ -345,6 +348,10 @@ form p {
 	font-weight: bold;
 }
 .btn:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+
+.btn p {
+	text-decoration: underline;
+}
 
 .small-btn {
 	max-width: 250px;
@@ -419,8 +426,18 @@ form p {
 	background-color: #16a085;
 }
 
+.accent {
+	color:white;
+	background-color: #446DF6;
+}
+
 .text-colored {
 	color: #16a085;
+	background-color: white;
+}
+
+.text-accent {
+	color: #446DF6;
 	background-color: white;
 }
 
@@ -572,6 +589,11 @@ form p {
 	margin-right: 6em;
 }
 
+.margin {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
 .margin-2 {
 	margin-top:2em;
 	margin-bottom:2em;
@@ -620,11 +642,11 @@ form p {
 }
 
 .wrap-padding {
-	padding: 2em;
+	padding: 1em;
 }
 
 .wrap-padding-small {
-	padding: 1em;
+	padding: 0.5em;
 }
 
 .fancy-border { 		/*usato nei commenti*/
@@ -644,6 +666,14 @@ form p {
 .comment {
 	margin-bottom: 2em;
 	font-weight: 500;
+}
+
+.comment p:first-child {
+	color:#16a085;
+}
+
+.comment p:nth-child(2) {
+	border-radius:4px;
 }
 
 /* /Commento */
