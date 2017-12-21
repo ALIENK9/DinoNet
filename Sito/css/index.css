@@ -807,10 +807,6 @@ a.disabled {
 	background-image: url('../img/icons/menu_accounts.svg');
 }
 
-#icon-sitemap {
-    background-image: url("../img/icons/menu_sitemap.svg");
-}
-
 /*
 ======================================================================
 								ARTICOLI
@@ -861,9 +857,13 @@ a.disabled {
 ======================================================================
 */
 
-sitemap a {
-    display: inline-block;
+#sitemap {
+	font-size: large;
 }
+
+/*#sitemap a {
+    display: block;
+}*/
 
 /*
 ======================================================================
@@ -1009,7 +1009,7 @@ sitemap a {
 @media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
     .parallax {
         background-attachment: scroll;
-        background-size: auto 100%;
+        background-size: auto;
     }
 }
 
