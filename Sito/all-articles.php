@@ -44,7 +44,13 @@
 
 <?php include_once('menu.php') ?>
 
-<div id="main" class="main">
+<div id="main" class="main"
+
+<!-- Topbar -->
+
+<?php include_once('topbar.php') ?>
+
+<!-- /Topbar -->
 
     <!-- Header -->
 
@@ -54,14 +60,14 @@
             <br>
             <h2> Scopri informazioni dettagliate su innumerevoli dinosauri</h2>
         </div>
-        <div id="input-area" class="content card colored wrap-padding">
+        <!--div id="input-area" class="content card colored wrap-padding">
             <div class="content">
                 <h1> <label for="search-dino"> CERCA UN ARTICOLO! </label> </h1>
                 <input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
             </div>
-        </div>
-        <a href="#content" class="down-arrow btn bounce"></a>
+        </div-->
+        <a href="#content" class="down-arrow arrow btn card bounce"></a>
     </header>
 
     <!-- Dinosauri -->

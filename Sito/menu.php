@@ -19,9 +19,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!-- Sidebar/menu -->
-<nav id="sidebar" class="sidebar bar collapse card center">
-    <a class="aiuti_nascosti" href="#main">Salta il menù</a>
-    <div class="hide-large center menu-entry">
+<nav id="sidebar" class="sidebar bar card center">
+    <a class="hidden" href="#main">Salta il menù</a>
+    <div id="close-button" class="hide-large center menu-entry">
         <span onclick="close_menu()" class="btn">x</span>
     </div>
 	<a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
@@ -106,19 +106,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </nav>
 
 <!-- Menù mobile per schermi piccoli: top bar -->
-<div id="top-menu" class="hide-large bar colored card">
-    <div id="header-menu" class="bar-item padding-large title wide"><h1><a href="index.php" <?php if($currentPage == $pages["index"]) echo 'class="disabled"'; ?>>DINONET</a></h1></div>
-    <a id="mobile-menu-icon" href="#sitemap" class="bar-item btn right" onclick="">&#9776;</a>
-</div>
+<!--div id="top-menu" class="hide-large bar colored card">
+    <div id="header-menu" class="bar-item padding-large title wide">
+        <h1><a href="index.php" <!--?php if($currentPage == $pages["index"]) echo 'class="disabled"'; ?>>DINONET</a></h1>
+    </div>
+    <a id="mobile-menu-icon" href="#nojs-avviso" class="bar-item btn right" onclick="">&#9776;</a>
+</div-->
 
 <!-- Menù mobile per schermi piccoli: overlay -->
 <div id="overlay" class="hide-large overlay" onclick="close_menu()" title="Chiudi menù laterale"></div>
 
 <!-- Push down content on small screens -->
-<div class="hide-large push-down"></div>
+<!--div class="hide-large push-down"></div-->
 
 
-<script>
+<!--script>
     function addJS() { //rende visibile il menù laterale
         document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
         document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
@@ -136,4 +138,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         document.getElementById("sidebar").style.display = "none";
         document.getElementById("overlay").style.display = "none";
     }
-</script>
+</script-->

@@ -18,7 +18,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
-	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
@@ -55,22 +54,29 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-3">
+<header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
 	</div>
-	<div id="input-area" class="content card colored wrap-padding">
-		<div class="content center">
+	<div id="input-area" class="content card colored wrap-padding center">
+		<!--div class="content center">
 			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
 			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
 			<input type="submit" value="CERCA" class="card btn wide text-colored white">
 			<br><br>
 			<h1> OPPURE </h1>
-			<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
-		</div>
+			...
+		</div-->
+		<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
 	</div>
 	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>

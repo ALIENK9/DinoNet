@@ -55,6 +55,12 @@ session_start();
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
@@ -62,15 +68,16 @@ session_start();
 		<h1 class="title wide"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
-	<div id="input-area" class="content card colored wrap-padding">
-		<div class="content">
+	<div id="input-area" class="content card colored wrap-padding center">
+		<!--div class="content">
             <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
             <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
 			<input type="submit" value="CERCA" class="btn wide text-colored white">
 			<br><br>
 			<h1> OPPURE </h1>
 			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
-		</div>
+		</div-->
+        <a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 	</div>
 	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
@@ -154,19 +161,6 @@ session_start();
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-    // Script to open and close sidebar
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script>
 
 </body>
 

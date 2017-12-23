@@ -45,6 +45,12 @@
 
 <div id="main" class="main">
 
+<!-- Topbar -->
+
+<?php include_once('topbar.php') ?>
+
+<!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
@@ -53,7 +59,7 @@
 		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
-		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
+		<!--a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a-->
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
 	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce"></a>
@@ -66,12 +72,12 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1 class="text-colored"> COS'È <span class="wide"> DINO NET </span> </h1>
+	<h1 class="text-colored"> COS'È <span class="wide"> DINONET </span> </h1>
 	<br>
 	<p class="side-padding">
 		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
         Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
-        pari alla massa di 13 pianoforti e ... ma calma, non vorremmo rovinarti tutte le sorprese :D. <br>
+        pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese :D. <br>
         Se vuoi scoprire dettagli e curiosità su questi fantastici animali morti, puoi sfogliare la sezione
         <span class="text-italic">Specie</span>, oppure se ti interessano gli articoli sulle più recenti scoperte e
         teorie riguardanti il mondo preistorico, ti consigliamo la sezione <span class="text-italic">Articoli</span>.
@@ -99,13 +105,13 @@
 
 <!-- Ricerca -->
 
-<div id="input-area" class="card colored wrap-padding center">
+<!--div id="input-area" class="card colored wrap-padding center">
 	<div class="content">
 		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
 		<input id="search" class="margin" type="text" placeholder="e.g. Tirannosaurus Rex">
 		<input type="submit" value="CERCA" class="card btn wide text-colored white margin">
 	</div>
-</div>
+</div-->
 
 <!-- /Ricerca -->
 

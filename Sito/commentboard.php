@@ -1,6 +1,6 @@
 <div id="commentboard" class="content panel">
 	<div class="card wrap-padding">
-		<a class="aiuti_nascosti" href="#casella-commento">Salta a inserisci un commento</a>
+		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
 
 		<div class="comment">
 			<p>

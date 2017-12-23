@@ -10,29 +10,29 @@
 ?>
 		
 <!-- Sidebar/menu -->
-<nav id="sidebar" class="sidebar bar collapse card">
+<nav id="sidebar" class="sidebar bar card">
   <div class="hide-large center wrap-padding">
     <span onclick="close_menu()" class="btn">x</span>
   </div>
   <div class="center">
-	<a class="aiuti_nascosti" href="#content">Salta il menù</a>
-	<a href="panel.php?id=home" class=" <?php if($currentPage == $pages["home"]) echo "active"; ?> menu-entry">
-		<span id="(#)?icon-([a-z])*" class="menu-icon"></span>
+	<a class="hidden" href="#content">Salta il menù</a>
+	<a href="panel.php?id=home" class="<?php if($currentPage == $pages["home"]) echo "active disabled"; ?> menu-entry">
+		<span id="icon-home" class="menu-icon"></span>
 		<p>Home admin</p>
 	</a>
-	<a href="panel.php?id=myuser" class="menu-entry">
+	<a href="panel.php?id=myuser" class="menu-entry <?php if($currentPage == $pages["dati-admin"]) echo "active disabled"; ?>">
 		<span id="icon-account" class="menu-icon"></span>
 		<p>Dati admin</p>
 	</a>
-	<a href="panel.php?id=user" class="menu-entry">
+	<a href="panel.php?id=user" class="menu-entry <?php if($currentPage == $pages["account"]) echo "active disabled"; ?>">
 		<span id="icon-accounts" class="menu-icon"></span>
 		<p>Utenti</p>
 	</a>
-	<a href="panel.php?id=dino" class="menu-entry">
+	<a href="panel.php?id=dino" class="menu-entry <?php if($currentPage == $pages["dino"]) echo "active disabled"; ?>">
 		<span id="icon-specie" class="menu-icon"></span>
 		<p>Dinosauri</p>
 	</a>
-	<a href="panel.php?id=article" class="menu-entry">
+	<a href="panel.php?id=article" class="menu-entry <?php if($currentPage == $pages["articoli"]) echo "active disabled"; ?>">
 		<span id="icon-articoli" class="menu-icon"></span>
 		<p>Articoli</p>
 	</a>
@@ -54,6 +54,19 @@
 
 <!-- Push down content on small screens -->
 <div class="hide-large push-down"></div>
+
+<script>
+// Script to open and close sidebar
+    function open_menu() {
+        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+        }
+        function close_menu() {
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+
 <?php
 	}
 	else{

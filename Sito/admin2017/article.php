@@ -73,7 +73,7 @@ if(isset($_SESSION['user'])){
 			break;
 		
 		default:
-			header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
+			header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
 			exit(); 
 			break;
 	}

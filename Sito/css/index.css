@@ -117,6 +117,7 @@ figure {
 	border-radius: 6px;
 	display: inline-block;
 	text-align: left;
+    overflow: hidden;
 }
 
 figcaption {
@@ -304,7 +305,7 @@ form p {
 	-ms-transform:translate(-50%,-50%);
 }
 
-.content{
+.content {
 	max-width: 980px;
 	margin: auto;
 	padding: 0.01em 16px;
@@ -444,7 +445,7 @@ a.btn {
 	background-color: white;
 }
 
-.overlay{
+.overlay {
 	position:fixed;
 	display:none;
 	width:100%;
@@ -677,11 +678,11 @@ a.btn {
 */
 
 
-.aiuti_nascosti {
-	position: absolute;
-	height: 0;
-	width: 0;
-	overflow: hidden;
+.hidden {
+	position: absolute!important;
+	height: 0!important;
+	width: 0!important;
+	overflow: hidden!important;
 }
 
 /*
@@ -694,7 +695,7 @@ a.btn {
 	font-size: 1.5em!important;
 }
 
-.sidebar{
+.sidebar {
 	height: 100%;
 	min-width: 110px;
 	width: 10%;
@@ -708,7 +709,7 @@ a.btn {
 
 .menu-entry-small {
 	width: 100%;
-	padding: 0.3em 1em;
+	padding: 1% 1em;
 	display: inline-block;
 	white-space: normal;
 	background-color: white;
@@ -719,7 +720,9 @@ a.btn {
 
 .menu-entry {
 	width: 100%;
-	padding: 1em;
+	height: 15%;
+    max-height: 150px; /*su schermi grandi altrimenti si allungano troppo*/
+	padding: 5% 1em;
 	display: inline-block;
 	white-space: normal;
 	background-color: white;
@@ -764,19 +767,29 @@ a.disabled {
     text-decoration: none;
 }
 
+#close-button {
+    max-height: 50px;
+}
+
 /****************
 *  ICONE MENU'	*
 *****************/
 
-#mobile-menu-icon {padding: 2em;}
+#mobile-menu-icon {
+    display: block;
+    padding: 1.7em 2em;
+    border-radius: 50%;
+}
 
 .menu-icon { /*proprietà comuni a tutte le icone*/
-    padding: 30%;
+    height: 55%;
+    width: 55%;
     display: inline-block;
 	background-color: transparent;
     background-image: none;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 #icon-home {
@@ -853,6 +866,60 @@ a.disabled {
 
 /*
 ======================================================================
+			     BARRA DI RICERCA E PULSANTE MENU
+======================================================================
+*/
+
+#topbar {
+    background-color: transparent;
+    color: black;
+    display: block;
+    position: fixed;
+    width: 100%;
+    padding: 1%;
+    vertical-align: middle;
+}
+
+#searchbar {
+    position: relative;
+    margin-top: 1%;
+    display: inline-block;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 30px;
+    border: 1px solid #16a085;
+    width: 40%;
+    height: 40px;
+    max-width: 400px;
+}
+
+#searchbar #wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+#searchbar #search-input {
+    height: 40px;
+    width: calc(100% - 50px)    ;
+    background-color: transparent;
+    float: right;
+    border: 0;
+}
+
+#searchbar #conferma {
+    float: left;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    background-color: transparent;
+    background-image: url("../img/icons/search-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*
+======================================================================
 							FOOTER
 ======================================================================
 */
@@ -861,13 +928,9 @@ a.disabled {
 	font-size: large;
 }
 
-/*#sitemap a {
-    display: block;
-}*/
-
 /*
 ======================================================================
-							JAVASCRIPT
+						JAVASCRIPT e MENU
 ======================================================================
 */
 
@@ -875,23 +938,34 @@ a.disabled {
     display: none;
 }
 
-/*#nojs-menu {
+#nojs-menu {
     width: 100%;
-    height: 100vh;
+    overflow: hidden;
+    border: 3px solid #16a085;
 }
 
 #nojs-menu .menu-entry {
-    height: 20%;
+    width: 19%;
+    min-width: 194px;
+    max-height: 194px;
 }
 
-#nojs-menu .active > .menu-icon {
-    filter: invert(100%);
+#nojs-menu .menu-icon {
+    padding: 16%;
 }
 
-#nojs-menu .active {
-    color: #fff;
-    background-color: #16a085;
-}*/
+#nojs-menu.sidebar .active {
+    background-color: white;
+    color: black;
+}
+
+#nojs-menu.sidebar .active > .menu-icon {
+    filter: invert(0%);
+}
+
+#nojs-menu .menu-entry-small {
+    display: none;
+}
 
 /*
 ======================================================================
@@ -909,7 +983,7 @@ a.disabled {
     }
 
     #header-menu h1 {font-size: 1em;}
-    #mobile-menu-icon {width: 30%; padding: 1em;}
+    /*#mobile-menu-icon {width: 30%; padding: 1em;}*/
     #title-card {padding: 1em;}
     #title-card h1 {font-size: 5vh;}
     .wrap-padding {padding: 0.5em;}
@@ -926,46 +1000,43 @@ a.disabled {
         background-position: bottom;
     }
 
-    .menu-icon {padding: 14%;}
+    /*.menu-icon {padding: 14%;}
     .menu-entry {
         padding: 0.3em;
-    }
+    }*/
 }
 
 @media only screen and (max-width: 812px) and (orientation: landscape) {            /*smartphone in landscape*/
-    .sidebar {
-        max-width: 100%;
-        width: 100%;
-    }
 
-    .menu-entry, .menu-entry-small {
+
+    /*.menu-entry, .menu-entry-small {
         width: 35%;
     }
 
     .menu-entry-small {
         display: none;
-    }
+    }*/
 }
 
-@media only screen and (max-device-width: 320px) and (max-device-height: 480px) {     /*dimensione schermo molto piccola 320px-480px*/
-    .menu-icon {
+@media only screen and (max-device-width: 320px) and (max-device-height: 480px) {     /*dimensione schermo molto piccoli 320px-480px*/
+    /*menu-icon {
         padding: 0;
         background-image: none;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {                  /*dimensione media 601 - 1024 px*/
     .hide-medium {display: none;}
 }
 
-@media only screen and (max-width: 1024px) {                                        /*dimensione media e piccola 480 - 1024 px, anche iPad*/
+@media only screen and (max-width: 1023px) {                                        /*dimensione media e piccola 480 - 1024 px, anche iPad*/
     .main {
         margin-left: 0;
         margin-right: 0;
         min-width: 100%;
     }
 
-    .sidebar.collapse {
+    .sidebar { /*.sidebar.collapse*/
         display: none;
         width: 100%;
     }
@@ -980,15 +1051,44 @@ a.disabled {
         padding-left: 0;
         padding-right: 0;
     }
+
+    #topbar {text-align: left;}
+
+    #searchbar {
+        margin-top: 2%;
+        width: 70%;
+    }
 }
 
-@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
-    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+@media only screen and (max-width: 812px) and (orientation: landscape) {     /*solo SMARTPHONE in landscape + iPhone X
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;} /*per visualizzare correttamente la pagina Storia su iPhone X*/
+	.sidebar {
+		max-width: 100%;
+		width: 100%;
+	}
+
+    .menu-entry {
+        width: 33.33333%;
+        height: 33.33333%;
+    }
+
+    .sidebar .active {
+        background-color: white;
+        color: black;
+    }
+
+    .sidebar .active > .menu-icon {
+        filter: invert(0%);
+    }
+
+	.menu-entry-small {
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 768px) and (orientation: portrait) {     /*target: iPad normali (non il Pro) in Portrait*/
     #dino-immagine, #caratteristiche {
-        width: 100%;
+        width: 100%
     }
 
     #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
@@ -1009,13 +1109,12 @@ a.disabled {
 @media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
     .parallax {
         background-attachment: scroll;
-        background-size: auto;
     }
 }
 
-@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
+@media (min-width: 1024px) {			                                    /*dimensione grande > 1024 px*/
     .hide-large {display: none;}
-    .sidebar.collapse {display: block;}
+    .sidebar {display: block;}
 }
 
 @media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
