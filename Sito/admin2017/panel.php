@@ -51,6 +51,9 @@
 
 	<body>
 
+    <?php include_once('../loading.php'); ?>
+
+    <?php include_once('menuadmin.php'); ?>
 
 	<div id="main" class="main">
 
@@ -59,10 +62,9 @@
 
     <!-- Topbar -->
 
-    <?php include_once('topbar.php') ?>
+    <?php include_once('../topbar.php') ?>
 
     <!-- /Topbar -->
-
 
 	<!-- inclusione pagina da visualizzare -->
 
@@ -71,11 +73,12 @@
 			switch ($_GET["id"]) {
 				case 'home':
 					include_once('home.php');
+					echo '<div class="content-large padding-6 no-print">';
 					break;
 
 				case 'user':
 					include_once('user.php');
-					break;	
+					break;
 
 				case 'myuser':
 						if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
@@ -104,18 +107,14 @@
 
 	<!-- /inclusione pagina da visualizzare -->
 
-
+    </div>
 	<!-- /Content -->
 
+    <?php include_once('../footer.php') ?>
 
-	<?php include_once('../tothetop.php'); ?>
+	<?php include_once('../tothetop.php') ?>
 
 	</div>
-
-	<?php include_once('../loading.php'); ?>
-
-	<?php include_once('menuadmin.php'); ?>
-
 
 	</body>
 

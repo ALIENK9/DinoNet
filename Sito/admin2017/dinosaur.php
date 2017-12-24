@@ -30,7 +30,7 @@ if(isset($_SESSION['user'])){
 							<p><label for="filtra">Filtro:</label></p>
 							<input type="text" id="filtra" name="filter" value="<?php if(isset($_GET["filter"])) echo $_GET["filter"]; ?>" placeholder="ex: T-Rex">
 							<br>
-							<input type="submit" value="Cerca" title="Avvia la ricerca" class="card btn wide text-colored white"/>
+							<input type="submit" value="Cerca" title="Avvia la ricerca" class="card btn wide text-colored white">
 						</form>
 					</div>
 					<br>

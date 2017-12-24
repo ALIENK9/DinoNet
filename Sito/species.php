@@ -83,9 +83,9 @@
 
 <!-- Dinosauri -->
 
-<div class="padding-6 content-large row-padding">
+<div class="padding-6 content side-padding"> <!-- side-padding era row-padding e content era content-large -->
 
-	<div id="daily-dino" class="half wrap-padding">
+	<!--div id="daily-dino" class="half wrap-padding"-->
 
 		<div class="card margin-half colored center wrap-padding">
 			<h1 class="title">Il dinosauro del giorno</h1>
@@ -120,7 +120,7 @@
 			</div>
 		</div>
 		<?php */ ?>
-	</div>
+	<!--/div>
 	<div class="half wrap-padding">
 
 		<div class="card margin-half colored center wrap-padding">
@@ -129,7 +129,7 @@
 			<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
 		</div>
 
-		<div class="daily-article card"><!--tolto wrap-margin-->
+		<div class="daily-article card">
 			<div class="padding-large colored">
 				<h1> Titolo dell'articolo </h1>
 			</div>
@@ -146,7 +146,7 @@
 				<a href="" class="btn colored"><p> Leggi l'articolo </p></a>
 			</div>
 		</div>
-	</div>
+	</div-->
 </div>
 
 <div class="padding-6">

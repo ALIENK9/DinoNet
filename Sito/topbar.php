@@ -38,7 +38,7 @@
     var lastScrollTop = 0;
     window.addEventListener("scroll", function(){
         var st = window.pageYOffset || document.documentElement.scrollTop;
-        if (st > lastScrollTop && (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0)) {
+        if (st > lastScrollTop && (document.documentElement.scrollTop > 150 || document.body.scrollTop > 150)) {
             document.getElementById("searchbar").classList.add("hidden");
         }
         else {
