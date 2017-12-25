@@ -73,7 +73,6 @@
 			switch ($_GET["id"]) {
 				case 'home':
 					include_once('home.php');
-					echo '<div class="content-large padding-6 no-print">';
 					break;
 
 				case 'user':
@@ -113,8 +112,6 @@
     <?php include_once('../footer.php') ?>
 
 	<?php include_once('../tothetop.php') ?>
-
-	</div>
 
 	</body>
 

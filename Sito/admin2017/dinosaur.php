@@ -42,8 +42,8 @@ if(isset($_SESSION['user'])){
 					</div>
 				</div>
 			</header>
-		
-			<?php
+
+        <?php
 			if(isset($_GET["filter"]))
 				echo Dinosaur::printListDinosaur($_GET["filter"], true);
 			else
