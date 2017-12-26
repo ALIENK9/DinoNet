@@ -3,10 +3,10 @@
         <label for="search-input" class="hidden">Ricerca nel sito</label>
         <div id="wrapper">
             <input id="search-input" type="search" placeholder=
-                <?php if($currentPage == $pages["index"]) echo '"Ricerca"';
-                 else if($currentPage == $pages["articles"] or $currentPage == $pages["all-articles"]) echo '"Cerca un articolo"';
-                 else if($currentPage == $pages["species"] or $currentPage == $pages["all-species"]) echo '"Cerca un dinosauro"';
-                 else echo '"Ricerca contenuti"'?>>
+                <?php 
+                if($currentPage == $pages["articles"] or $currentPage == $pages["all-articles"]) echo '"Cerca un articolo (ex: la grande scoperta)"';
+                else if($currentPage == $pages["species"] or $currentPage == $pages["all-species"]) echo '"Cerca un dinosauro (ex: T-Rex)"';
+                else echo '"Cerca una specie o un articolo"'?>>
             <input id="conferma" type="submit" title="Avvia la ricerca" value="">
         </div>
     </form>

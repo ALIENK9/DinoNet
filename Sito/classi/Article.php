@@ -78,6 +78,7 @@ class Article{
                 </div>
                 ';
 			}
+			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
 		else {
             $echoString = "0 risultati";
@@ -158,7 +159,7 @@ class Article{
             isset($descrizione) &&
             isset($eta) &&
             isset($descrizioneimg) /*&&
-            bisogna controllare che la data si effettivamente una data
+            bisogna controllare che la data sia effettivamente una data
             */
         ){
             

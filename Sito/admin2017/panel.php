@@ -106,10 +106,11 @@
 
 	<!-- /inclusione pagina da visualizzare -->
 
-    </div>
-	<!-- /Content -->
-
     <?php include_once('../footer.php') ?>
+	
+    </div>
+	
+	<!-- /Content -->
 
 	<?php include_once('../tothetop.php') ?>
 
