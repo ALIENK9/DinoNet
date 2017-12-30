@@ -19,8 +19,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Account | Dino Net</title>
+	<meta name="description" content="Pagina di visualizzazione del tuo account Dino Net">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,8 +70,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1 class="title wide"> Ciao, [Nome utente] </h1>
-			<br>
+			<h1> Ciao, [Nome utente] </h1>
 			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
 		
@@ -79,7 +78,6 @@
 
 		<div class="card colored wrap-padding">
 			<h1>Dati account</h1>
-			<hr>
 			<p><strong>Nome:</strong> Mario</p>
 			<p><strong>Cognome:</strong> Rossi</p>
 			<p><strong>Email:</strong> ciaociao@gmail.com</p>
@@ -95,6 +93,8 @@
 </header>
 
 <!-- /Header -->
+
+<?php include_once('breadcrumb.php') ?>
 
 <?php include_once('footer.php') ?>
 

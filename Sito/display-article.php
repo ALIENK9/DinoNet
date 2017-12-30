@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Scheda articolo | Dino Net</title>
+	<meta name="description" content="Pagina di visualizzazione dell'articolo">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,9 +55,15 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Titolo dell'articolo </h1>
+		<h1> Titolo dell'articolo </h1>
 	</div>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Articoli -->
 

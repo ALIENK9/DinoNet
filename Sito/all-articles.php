@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-    <title>TecWeb</title>
-    <meta name="description" content="Descrizione">
+    <title>Tutti gli articoli | Dino Net</title>
+    <meta name="description" content="L'archivio completo degli articoli informativi sui dinosauri Dino Net">
     <meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,8 +56,7 @@
 
     <header id="header-home" class="parallax padding-6">
         <div id="title-card" class="content card">
-            <h1 class="title wide"> Archivio degli articoli </h1>
-            <br>
+            <h1> Archivio degli articoli </h1>
             <h2> Scopri informazioni dettagliate su innumerevoli dinosauri</h2>
         </div>
         <!--div id="input-area" class="content card colored wrap-padding">
@@ -70,11 +69,17 @@
         <a href="#content" class="down-arrow arrow btn card bounce"></a>
     </header>
 
+	<!-- Breadcrumb -->
+
+	<?php include_once('breadcrumb.php') ?>
+
+	<!-- /Breadcrumb -->
+
     <!-- Dinosauri -->
 
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1 class="title"> Qui trovi l'elenco completo degli articoli </h1>
+            <h1> Qui trovi l'elenco completo degli articoli </h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php

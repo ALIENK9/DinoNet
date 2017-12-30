@@ -12,8 +12,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+    <title>Specie | Dino Net</title>
+    <meta name="description" content="Una moltitudine di schede informative sui dinosauri!">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,7 +64,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Le specie </h1>
+		<h1> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding center">
@@ -80,6 +80,12 @@
 	</div>
 	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Dinosauri -->
 

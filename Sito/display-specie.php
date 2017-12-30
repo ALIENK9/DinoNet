@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Scheda dinosauro | Dino Net</title>
+	<meta name="description" content="Pagina di visualizzazione del dinosauro">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,9 +56,15 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Il Coelophysis </h1>
+		<h1> Il Coelophysis </h1>
 	</div>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 
 <!-- Dinosauro -->
@@ -66,7 +72,7 @@
 <div class="content-large padding-3">
 	<div class="card">
 		<div class="colored center wrap-padding">
-			<h1 class="title" xml:lang="en" lang="en">Coelopysis</h1>
+			<h1 xml:lang="la" lang="la">Coelopysis</h1>
 		</div>
 		<div id="dino-card-head" class="wrap-padding w3-row-padding">
 

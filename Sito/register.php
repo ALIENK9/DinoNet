@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
+	<title>Registrazione | Dino Net</title>
 	<meta name="description" content="Descrizione">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -70,7 +70,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1 class="title"> Crea un account </h1>
+			<h1> Crea un account </h1>
 			<h2>entra a far parte del mondo dei dinosauri!</h2>
 		</div>
 		
@@ -101,6 +101,8 @@
 </header>
 
 <!-- /Header -->
+
+<?php include_once('breadcrumb.php') ?>
 
 <?php include_once('footer.php') ?>
 

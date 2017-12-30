@@ -165,6 +165,15 @@ figure > img {
 	text-align: center;
 }
 
+#breadcrumb {
+	text-align: center;
+	position: relative;
+}
+
+#breadcrumb > p {
+	display: inline;
+}
+
 form p {
 	text-align: left;
 }
@@ -186,6 +195,11 @@ form p {
 
 .up-arrow {
 	background-image: url('../img/icons/up-arrow.png');
+}
+
+.title {
+	font-family: 'Chelsea Market', cursive;	
+	font-size: 5em !important;
 }
 
 #title-card {
@@ -935,6 +949,11 @@ a.disabled {
 							FOOTER
 ======================================================================
 */
+
+footer h2 {
+	font-family: 'Chelsea Market', cursive;	
+	font-size: 2em !important;	
+}
 
 #sitemap {
 	font-size: large;

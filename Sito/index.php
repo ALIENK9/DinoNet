@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Home | Dino Net</title>
+	<meta name="description" content="Uno strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
-    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<!-- Favicon -->
@@ -53,7 +54,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6" >
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
@@ -66,6 +67,12 @@
 </header>
 
 <!-- /Header -->
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Content -->
 

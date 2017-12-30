@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>La storia dei dinosauri</title>
+	<title>La storia dei dinosauri | Dino Net</title>
 	<meta name="description" content="La storia dei dinosauri, spiegata semplicemente">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -55,7 +55,7 @@
 
 <header class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="wide title"> La storia dei dinosauri </h1>
+		<h1> La storia dei dinosauri </h1>
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
@@ -70,6 +70,12 @@
 </header>
 
 <!-- /Header -->
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Content -->
 

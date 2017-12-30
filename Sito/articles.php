@@ -14,8 +14,8 @@ session_start();
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Articoli | Dino Net</title>
+	<meta name="description" content="Una moltitudine di articoli informativi sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +65,7 @@ session_start();
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Gli articoli </h1>
+		<h1> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding center">
@@ -81,6 +81,12 @@ session_start();
 	</div>
 	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Articoli -->
 
