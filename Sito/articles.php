@@ -93,7 +93,7 @@ session_start();
 <div class="padding-6 side-padding content">
 
     <div id="daily-article" class="card margin-half colored center wrap-padding">
-        <h1 class="title">L'articolo del giorno</h1>
+        <h1>L'articolo del giorno</h1>
         <hr>
         <p>Giornalmente selezioniamo un articolo per te. Buona lettura!</p>
     </div>
@@ -128,7 +128,7 @@ session_start();
 
 <div class="padding-6">
 	<div class="colored center wrap-padding">
-		<h1 class="title">Le ultime pubblicazioni</h1>
+		<h1>Le ultime pubblicazioni</h1>
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php

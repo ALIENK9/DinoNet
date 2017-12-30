@@ -18,7 +18,7 @@ $pages["delete-account"] = "delete-account.php";
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
-<div id="breadcrumb" class="wrap-padding colored card">
+<div id="breadcrumb" class="wrap-padding margin colored card">
 	<p>Ti trovi in: </p>
 	
 <?php

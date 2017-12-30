@@ -94,7 +94,7 @@
 	<!--div id="daily-dino" class="half wrap-padding"-->
 
 		<div class="card margin-half colored center wrap-padding">
-			<h1 class="title">Il dinosauro del giorno</h1>
+			<h1>Il dinosauro del giorno</h1>
 			<hr>
             <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 		</div>
@@ -157,7 +157,7 @@
 
 <div class="padding-6">
 	<div class="colored center wrap-padding">
-		<h1 class="title">Le ultime aggiunte</h1>
+		<h1>Le ultime aggiunte</h1>
 		<p>Gli ultimi dinosauri aggiunti al nostro archivio!</p>
 	</div>
 	<div class="row-padding content-large margin-top">
