@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>La storia dei dinosauri</title>
+	<title>La storia dei dinosauri | Dino Net</title>
 	<meta name="description" content="La storia dei dinosauri, spiegata semplicemente">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -12,6 +12,7 @@
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link type="text/css" rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -45,12 +46,17 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="w3-wide title"> La storia dei dinosauri </h1>
-		<br>
+		<h1> La storia dei dinosauri </h1>
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
@@ -65,6 +71,12 @@
 </header>
 
 <!-- /Header -->
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Content -->
 
@@ -264,19 +276,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

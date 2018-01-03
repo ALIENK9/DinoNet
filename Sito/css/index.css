@@ -74,14 +74,9 @@ p {
 	margin:10px 0;
 }
 
-/*p a {
-    text-decoration: underline;
-}*/
-
 h1 {
 	font-size: 2em; 
 	font-weight: 900;
-	/*text-transform: uppercase;*/
 	text-align: center;
 }
 
@@ -98,6 +93,16 @@ h5{font-size:1.1em;}
 
 h6{font-size:1em;}
 
+textarea {
+	width: 100%;
+	height: 4em;
+	transition: height .3s ease-out;
+}
+
+textarea:focus {
+	height: 8em;
+}
+
 input {
 	padding:8px;
 	display:block;
@@ -112,6 +117,7 @@ input {
 
 header {
 	background-image: url('../img/dino-pattern.jpg');
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 
@@ -121,6 +127,7 @@ figure {
 	border-radius: 6px;
 	display: inline-block;
 	text-align: left;
+    overflow: hidden;
 }
 
 figcaption {
@@ -158,6 +165,15 @@ figure > img {
 	text-align: center;
 }
 
+#breadcrumb {
+	text-align: center;
+	position: relative;
+}
+
+#breadcrumb > p {
+	display: inline;
+}
+
 form p {
 	text-align: left;
 }
@@ -181,8 +197,13 @@ form p {
 	background-image: url('../img/icons/up-arrow.png');
 }
 
+.title {
+	font-family: 'Chelsea Market', cursive;	
+	font-size: 5em !important;
+}
+
 #title-card {
-	padding: 3em;
+	padding: 1.5em;
 	background-color: white;
 }
 
@@ -242,7 +263,11 @@ form p {
 	margin-bottom:2em;
 }
 
-/* /Daily stuff */
+.waytoobigtext {
+	font-size: large;
+	font-weight: bold;
+	text-transform: uppercase;
+}
 
 /*
 ======================================================================
@@ -304,16 +329,18 @@ form p {
 	-ms-transform:translate(-50%,-50%);
 }
 
-.content{
-	max-width:980px;
-	margin:auto;
-	padding:0.01em 16px;
+.content {
+	max-width: 980px;
+	margin: auto;
+	padding: 0.01em 16px;
+	overflow: hidden; /*contiene i float*/
 }
 
 .content-large {
-	max-width:1500px;
-	margin:auto;
-	padding:0.01em 16px;
+	max-width: 1500px;
+	margin: auto;
+	padding: 0.01em 16px;
+	overflow: hidden;
 }
 
 .card {box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
@@ -344,7 +371,17 @@ form p {
 	border-radius:4px;
 	font-weight: bold;
 }
+
+a.btn {
+    background-color: #037971;
+    color: white;
+}
+
 .btn:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)}
+
+.btn p {
+	text-decoration: underline;
+}
 
 .small-btn {
 	max-width: 250px;
@@ -382,7 +419,7 @@ form p {
 	top:0;
 }
 
-.bar::before,.bar::after {
+.bar::before, .bar::after {
 	content:"";
 	display:table;
 	clear:both;
@@ -419,12 +456,22 @@ form p {
 	background-color: #16a085;
 }
 
+.accent {
+	color:white;
+	background-color: #446DF6;
+}
+
 .text-colored {
 	color: #16a085;
 	background-color: white;
 }
 
-.overlay{
+.text-accent {
+	color: #446DF6;
+	background-color: white;
+}
+
+.overlay {
 	position:fixed;
 	display:none;
 	width:100%;
@@ -444,114 +491,6 @@ form p {
 
 /* /Layout */
 
-/* Responsiveness */
-
-@media (min-width: 1025px) {			                                    /*dimensione grande > 1024 px*/
-    .hide-large {display: none!important;}
-    .sidebar.collapse {display: block;}
-}
-
-@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
-	.hide-small {display: none!important;}
-	.main {min-width: 100%;}
-
-    #header-menu {
-        width: 70%;
-        float: left;
-    }
-
-	#header-menu h1 {font-size: 1em;}
-	#mobile-menu-icon {width: 30%; padding: 1em!important;}
-    #title-card {padding: 1em;}
-    #title-card h1 {font-size: 5vh;}
-    .wrap-padding {padding: 0.5em!important;}
-
-    #scoperta {
-        padding-bottom: 85vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-
-    #bipedi-quadrupedi {
-        padding-bottom: 65vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-}
-
-@media only screen and (min-width: 601px) and (max-width: 1024px) {         /*dimensione media 601 - 1024 px*/
-	.hide-medium {display: none!important;}
-}
-
-@media only screen and (max-width: 1024px) {                     /*dimensione media e piccola 480 - 1024 px, anche iPad*/
-	.main {
-		margin-left: 0!important;
-		margin-right: 0!important;
-		min-width: 100%;
-	}
-	
-	.sidebar.collapse {
-		display: none;
-		width: 100%;
-	}
-
-	.article-image-left, .article-image-right {
-		width: 100%!important;
-		float: none!important;
-		margin: 0!important;
-	}
-
-	.content, .content-large {
-		padding-left: 0;
-		padding-right: 0;
-	}
-}
-
-@media only screen and (max-width: 812px) and (orientation: landscape) {     /*Serve per l'iPhone X, per visualizzare correttamente la pagina Storia*/
-    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
-}
-
-@media only screen and (max-width: 768px) and (orientation: portrait) { /*target: iPad normali (non il Pro) in Portrait*/
-	#dino-immagine, #caratteristiche {
-		width: 100%!important;
-	}
-
-    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
-
-    #scoperta {
-        padding-bottom: 85vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-
-    #bipedi-quadrupedi {
-        padding-bottom: 65vw;
-        background-size: contain;
-        background-position: bottom;
-    }
-}
-
-@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
-    .parallax {
-        background-attachment: scroll !important;
-        background-size: auto 100%;
-    }
-}
-
-@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
-    .third {width: 33.33333%;}
-    .half {width: 49.99999%;}
-}
-
-@media (min-width: 768px) and (max-width: 1300px) {
-    .quarter {width: 24.99999%;}
-    .third {width: 49.99999%;}
-    .half {width: 49.99999%;}
-    .twothird {width: 66.66666%;}
-}
-
-/* /Responsiveness */
-
 /* Margin e padding */
 
 .wrap-margin {
@@ -570,6 +509,11 @@ form p {
 .side-margin {
 	margin-left: 6em;
 	margin-right: 6em;
+}
+
+.margin {
+	margin-top:1em;
+	margin-bottom:1em;
 }
 
 .margin-2 {
@@ -620,11 +564,11 @@ form p {
 }
 
 .wrap-padding {
-	padding: 2em;
+	padding: 1em;
 }
 
 .wrap-padding-small {
-	padding: 1em;
+	padding: 0.5em;
 }
 
 .fancy-border { 		/*usato nei commenti*/
@@ -644,6 +588,14 @@ form p {
 .comment {
 	margin-bottom: 2em;
 	font-weight: 500;
+}
+
+.comment p:first-child {
+	color:#16a085;
+}
+
+.comment p:nth-child(2) {
+	border-radius:4px;
 }
 
 /* /Commento */
@@ -715,7 +667,7 @@ form p {
 /* To the top btn */
 
 #toTheTop {
-	display: none;
+	display: block;
 	position: fixed;
 	bottom: 20px;
 	right: 30px;
@@ -724,10 +676,8 @@ form p {
 	outline: none;
 	color: white;
 	background-color: black;
-	cursor: pointer;
 	padding: 15px;
 	border-radius: 10px;
-	font-weight: bolder;
 }
 
 /* fine - To the top btn */
@@ -754,11 +704,11 @@ form p {
 */
 
 
-.aiuti_nascosti {
-	position: absolute;
-	height: 0;
-	width: 0;
-	overflow: hidden;
+.hidden {
+	position: absolute!important;
+	height: 0!important;
+	width: 0!important;
+	overflow: hidden!important;
 }
 
 /*
@@ -771,7 +721,7 @@ form p {
 	font-size: 1.5em!important;
 }
 
-.sidebar{
+.sidebar {
 	height: 100%;
 	min-width: 110px;
 	width: 10%;
@@ -785,22 +735,26 @@ form p {
 
 .menu-entry-small {
 	width: 100%;
-	padding: .3em 1em;
-	display:block;
+	padding: 1% 1em;
+	display: inline-block;
 	white-space: normal;
 	background-color: white;
-	color: black;
-	border: 0!important;
+	color: white;
+	border: 0;
+    vertical-align: middle;
 }
 
 .menu-entry {
 	width: 100%;
-	padding: 1em;
-	display:block;
+	height: 15%;
+    max-height: 150px; /*su schermi grandi altrimenti si allungano troppo*/
+	padding: 5% 1em;
+	display: inline-block;
 	white-space: normal;
 	background-color: white;
 	color: black;
-	border: 0 !important;
+	border: 0;
+    vertical-align: middle;
 }
 
 
@@ -808,18 +762,25 @@ form p {
 	margin: 0;
 }
 
-a.menu-entry, a.menu-entry-small {
+/*a.menu-entry, a.menu-entry-small {
     text-decoration: none;
-}
+}*/
 
 .menu-entry p {
 	margin: 0.2em;
 }
 
-.menu-entry:hover, .menu-entry:active, .sidebar .active {
-	color: #fff;
-	background-color: #16a085;
+
+.menu-entry:hover, .sidebar .active {
+	background-color:  #16a085;
+    color: white;
 }
+
+
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
+    filter: invert(100%);
+}
+
 
 .sidebar .disabled {
 	pointer-events: none;
@@ -832,56 +793,59 @@ a.disabled {
     text-decoration: none;
 }
 
+#close-button {
+    max-height: 50px;
+}
+
 /****************
 *  ICONE MENU'	*
 *****************/
 
-#mobile-menu-icon {padding: 2em;}
-
-.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
-	filter: invert(100%);
+#mobile-menu-icon {
+	margin-top:2%;
+    display: block;
+    margin-right: 15px;
+	padding: 15px 20px;
+    border-radius: 10px;
 }
 
 .menu-icon { /*proprietà comuni a tutte le icone*/
-	height: 60px;
-    width: 60px;
+    height: 55%;
+    width: 55%;
     display: inline-block;
 	background-color: transparent;
     background-image: none;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
-#icon-home {
+.icon-home {
     background-image: url('../img/icons/menu_home.svg');
 }
 
-#icon-storia {
+.icon-storia {
 	background-image: url('../img/icons/menu_storia.png');
 }
 
-#icon-specie {
+.icon-specie {
 	background-image: url('../img/icons/menu_specie.svg');
 }
 
-#icon-articoli {
+.icon-articoli {
 	background-image: url('../img/icons/menu_articoli.svg');
 }
 
-#icon-accedi {
+.icon-accedi {
 	background-image: url('../img/icons/menu_accedi.png');
 }
 
-#icon-account {
+.icon-account {
 	background-image: url('../img/icons/menu_account.png');
 }
 
-#icon-accounts {
+.icon-accounts {
 	background-image: url('../img/icons/menu_accounts.svg');
-}
-
-#icon-sitemap {
-    background-image: url("../img/icons/menu_sitemap.svg");
 }
 
 /*
@@ -930,22 +894,275 @@ a.disabled {
 
 /*
 ======================================================================
-							MAPPA DEL SITO
+			     BARRA DI RICERCA E PULSANTE MENU
 ======================================================================
 */
 
-/*#sitemap ul {
-    list-style: circle;
-}*/
+#topbar {
+    background-color: transparent;
+    color: black;
+    display: block;
+    position: fixed;
+	z-index: 1;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#searchbar {
+	margin-left: 15px;
+    margin-top: 4%;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    width: 40%;
+    height: 40px;
+    max-width: 400px;
+}
+
+#searchbar #wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+#searchbar #search-input {
+    height: 40px;
+    width: calc(100% - 50px)    ;
+    background-color: transparent;
+    float: right;
+    border: 0;
+}
+
+#searchbar #conferma {
+    float: left;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    background-color: transparent;
+    background-image: url("../img/icons/search-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 /*
 ======================================================================
-							JAVASCRIPT
+							FOOTER
+======================================================================
+*/
+
+footer h2 {
+	font-family: 'Chelsea Market', cursive;	
+	font-size: 2em !important;	
+}
+
+#sitemap {
+	font-size: large;
+}
+
+/*
+======================================================================
+						JAVASCRIPT e MENU
 ======================================================================
 */
 
 .require-js {
     display: none;
 }
+
+#nojs-menu {
+    width: 100%;
+    overflow: hidden;
+    border: 3px solid #16a085;
+}
+
+#nojs-menu .menu-entry {
+    width: 19%;
+    min-width: 194px;
+    max-height: 194px;
+}
+
+#nojs-menu .menu-icon {
+    padding: 16%;
+}
+
+#nojs-menu.sidebar .active {
+    background-color: white;
+    color: black;
+}
+
+#nojs-menu.sidebar .active > .menu-icon {
+    filter: invert(0%);
+}
+
+#nojs-menu .menu-entry-small {
+    display: none;
+}
+
+/*
+======================================================================
+							MEDIA QUERIES
+======================================================================
+*/
+
+@media (max-width: 600px), (max-width: 812px) and (orientation: landscape) { /*dimensione piccola 480 - 600 px, oppure smartphone in landscape*/
+    .hide-small {display: none;}
+    .main {min-width: 100%;}
+
+    #header-menu {
+        width: 70%;
+        float: left;
+    }
+
+    #header-menu h1 {font-size: 1em;}
+    /*#mobile-menu-icon {width: 30%; padding: 1em;}*/
+    #title-card {padding: 1em;}
+    #title-card h1 {font-size: 5vh;}
+    .wrap-padding {padding: 0.5em;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    /*.menu-icon {padding: 14%;}
+    .menu-entry {
+        padding: 0.3em;
+    }*/
+}
+
+@media only screen and (max-width: 812px) and (orientation: landscape) {            /*smartphone in landscape*/
+
+
+    /*.menu-entry, .menu-entry-small {
+        width: 35%;
+    }
+
+    .menu-entry-small {
+        display: none;
+    }*/
+}
+
+@media only screen and (max-device-width: 320px) and (max-device-height: 480px) {     /*dimensione schermo molto piccoli 320px-480px*/
+    /*menu-icon {
+        padding: 0;
+        background-image: none;
+    }*/
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {                  /*dimensione media 601 - 1024 px*/
+    .hide-medium {display: none;}
+}
+
+@media only screen and (max-width: 1023px) {                                        /*dimensione media e piccola 480 - 1024 px, anche iPad*/
+    .main {
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 100%;
+    }
+
+    .sidebar { /*.sidebar.collapse*/
+        display: none;
+        width: 100%;
+    }
+
+    .article-image-left, .article-image-right {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    .content, .content-large {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #topbar {text-align: left;}
+
+    #searchbar {
+        margin-top: 2%;
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 812px) and (orientation: landscape) {     /*solo SMARTPHONE in landscape + iPhone X
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;} /*per visualizzare correttamente la pagina Storia su iPhone X*/
+	.sidebar {
+		max-width: 100%;
+		width: 100%;
+	}
+
+    .menu-entry {
+        width: 33.33333%;
+        height: 33.33333%;
+    }
+
+    .sidebar .active {
+        background-color: white;
+        color: black;
+    }
+
+    .sidebar .active > .menu-icon {
+        filter: invert(0%);
+    }
+
+	.menu-entry-small {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {     /*target: iPad normali (non il Pro) in Portrait*/
+    #dino-immagine, #caratteristiche {
+        width: 100%
+    }
+
+    #scoperta .half, #bipedi-quadrupedi .half {width: 100%;}
+
+    #scoperta {
+        padding-bottom: 85vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+
+    #bipedi-quadrupedi {
+        padding-bottom: 65vw;
+        background-size: contain;
+        background-position: bottom;
+    }
+}
+
+@media only screen and (max-device-width: 1024px) and (max-device-height: 1366px) { /*target: tutti i dispositivi mobile Apple*/
+    .parallax {
+        background-attachment: scroll;
+    }
+}
+
+@media (min-width: 1024px) {			                                    /*dimensione grande > 1024 px*/
+    .hide-large {display: none;}
+    .sidebar {display: block;}
+}
+
+@media (min-width: 1301px) {                                                         /*responsiveness delle colonne*/
+    .third {width: 33.33333%;}
+    .half {width: 49.99999%;}
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+    .quarter {width: 24.99999%;}
+    .third {width: 49.99999%;}
+    .half {width: 49.99999%;}
+    .twothird {width: 66.66666%;}
+}
+
+/* /Responsiveness */
 
 

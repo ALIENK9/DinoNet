@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Home | Dino Net</title>
+	<meta name="description" content="Uno strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
-    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<!-- Favicon -->
@@ -45,36 +46,51 @@
 
 <div id="main" class="main">
 
+<!-- Topbar -->
+
+<?php include_once('topbar.php') ?>
+
+<!-- /Topbar -->
+
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-12">
+<header id="header-home" class="parallax padding-6" >
 	<div id="title-card" class="content card">
 		<h1 class="title wide"> DINO NET </h1>
-		<br>
 		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
-		<a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a>
+		<!--a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a-->
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn bounce"></a>
+	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce"></a>
 </header>
 
 <!-- /Header -->
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Content -->
 
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1 class="text-colored"> COS'È <span class="wide"> DINO NET </span> </h1>
+	<h1 class="text-colored"> COS'È <span class="wide"> DINONET </span> </h1>
 	<br>
 	<p class="side-padding">
-		Questo sito è un stato realizzato per un progetto del corso di Tecnologie <span xml:lang="en" lang="en">Web</span> del
-        Corso di Laurea in Informatica dell'Università di Padova, durante l'anno accademico 2017-2018. I testi descrittvi di ciascun dinosauro
-        sono stati presi prevalentemente dai libri <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
-        e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati fatti con informazioni prese da
-        <a href="http://it.wikipedia.org/wiki/">Wikipedia</a>. Per un elenco dettagliato delle fonti delle immagini si prega di contattarci.
+		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
+        Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
+        pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese :D. <br>
+        Se vuoi scoprire dettagli e curiosità su questi fantastici animali morti, puoi sfogliare la sezione
+        <span class="text-italic">Specie</span>, oppure se ti interessano gli articoli sulle più recenti scoperte e
+        teorie riguardanti il mondo preistorico, ti consigliamo la sezione <span class="text-italic">Articoli</span>.
+        Se vuoi leggere un'introduzione sulla storia dei dinosauri, dalla comparsa all'estinzione, fai un salto alla
+        pagina <span class="text-italic">Storia</span>. Invece nel caso tu stia solo curiosando, potresti cominciare dai
+        <a href="#daily-stuff">contenuti del giorno</a>. Buona lettura!
 	</p>
 	<div class="row-padding hide-small">
 		<div class="padding-large center floating-element">
@@ -93,18 +109,6 @@
 </div>
 
 <!-- /About -->
-
-<!-- Ricerca -->
-
-<div id="input-area" class="card colored wrap-padding center">
-	<div class="content">
-		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
-		<input id="search" class="margin-2" type="text" placeholder="e.g. Tirannosaurus Rex">
-		<input type="submit" value="CERCA" class="card btn wide text-colored white">
-	</div>
-</div>
-
-<!-- /Ricerca -->
 
 <!-- Materiale del giorno -->
 
@@ -170,20 +174,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

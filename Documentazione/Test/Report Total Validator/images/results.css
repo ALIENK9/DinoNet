@@ -1,0 +1,37 @@
+body {
+  min-width: 780px;
+}
+
+span.addword {
+  color: blue; cursor: pointer
+}
+
+span.hoverparent span.hoverblock {
+  display:none;
+}
+span.hoverparent:hover span.hoverblock {
+  position: relative;
+  display:block;
+  border:1px solid;
+  left: 8em;
+  width: 54em;
+  padding: 5px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+span.collBlock {
+  display:block;
+}
+
+li.issue {
+  list-style: none;
+}
+
+#initial {
+  display:initial;
+}
+
+div.topnavbar li {
+  display:inline-block;
+}

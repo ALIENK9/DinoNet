@@ -67,6 +67,7 @@ class UserAdmin extends User {
                     </div>
                     ';
                 }
+				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
             else {
                 $echoString = "0 risultati";

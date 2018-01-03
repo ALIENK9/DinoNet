@@ -12,16 +12,15 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+    <title>Specie | Dino Net</title>
+    <meta name="description" content="Una moltitudine di schede informative sui dinosauri!">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
-	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -55,35 +54,47 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Le specie </h1>
-		<br>
+		<h1> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
 	</div>
-	<div id="input-area" class="content card colored wrap-padding">
-		<div class="content center">
+	<div id="input-area" class="content card colored wrap-padding center">
+		<!--div class="content center">
 			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
 			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
 			<input type="submit" value="CERCA" class="card btn wide text-colored white">
 			<br><br>
 			<h1> OPPURE </h1>
-			<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
-		</div>
+			...
+		</div-->
+		<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
 	</div>
-	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Dinosauri -->
 
-<div class="padding-6 content-large row-padding">
+<div class="padding-6 content side-padding"> <!-- side-padding era row-padding e content era content-large -->
 
-	<div id="daily-dino" class="half wrap-padding">
+	<!--div id="daily-dino" class="half wrap-padding"-->
 
 		<div class="card margin-half colored center wrap-padding">
-			<h1 class="title">Il dinosauro del giorno</h1>
+			<h1>Il dinosauro del giorno</h1>
 			<hr>
             <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 		</div>
@@ -115,7 +126,7 @@
 			</div>
 		</div>
 		<?php */ ?>
-	</div>
+	<!--/div>
 	<div class="half wrap-padding">
 
 		<div class="card margin-half colored center wrap-padding">
@@ -124,7 +135,7 @@
 			<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
 		</div>
 
-		<div class="daily-article card"><!--tolto wrap-margin-->
+		<div class="daily-article card">
 			<div class="padding-large colored">
 				<h1> Titolo dell'articolo </h1>
 			</div>
@@ -141,12 +152,12 @@
 				<a href="" class="btn colored"><p> Leggi l'articolo </p></a>
 			</div>
 		</div>
-	</div>
+	</div-->
 </div>
 
 <div class="padding-6">
 	<div class="colored center wrap-padding">
-		<h1 class="title">Le ultime aggiunte</h1>
+		<h1>Le ultime aggiunte</h1>
 		<p>Gli ultimi dinosauri aggiunti al nostro archivio!</p>
 	</div>
 	<div class="row-padding content-large margin-top">
@@ -192,19 +203,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

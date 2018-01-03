@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Scheda articolo | Dino Net</title>
+	<meta name="description" content="Pagina di visualizzazione dell'articolo">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -45,13 +46,25 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Titolo dell'articolo </h1>
+		<h1> Titolo dell'articolo </h1>
 	</div>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Articoli -->
 
@@ -156,7 +169,7 @@
 
 <?php include_once 'commentboard.php'?>
 
-<div class="padding-6 content-large no-print">
+<div class="padding-6 no-print">
 	<div class="colored center wrap-padding">
 		<h1 class="title">Le ultime pubblicazioni</h1>
 	</div>
@@ -194,19 +207,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 	
 </body>
 

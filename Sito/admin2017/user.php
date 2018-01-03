@@ -30,7 +30,7 @@ if(isset($_SESSION['user'])){
 							<p><label for="filtra">Filtro:</label></p>
 							<input type="text" id="filtra" name="filter" value="<?php if(isset($_GET["filter"])) echo $_GET["filter"]; ?>" placeholder="ex: prova@gmail.com">
 							<br>
-							<input type="submit" value="Cerca" title="Avvia la ricerca" / class="card btn wide text-colored white">
+							<input type="submit" value="Cerca" title="Avvia la ricerca" class="card btn wide text-colored white">
 						</form>
 					</div>
 					<br>
@@ -43,20 +43,24 @@ if(isset($_SESSION['user'])){
 				</div>
 			</header>
 
-			<?php
+
+            <?php
 			if(isset($_GET["filter"]))
-				echo $_SESSION['user']->printListUser($_GET["filter"]);
+				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($_GET["filter"]);
 			else
-				echo $_SESSION['user']->printListUser("");
+				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser("");
+			echo '</div>';
 			break;
 		case 'formadd':			
-			echo $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]);
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]);
+            echo '</div>';
 			break;
 		case 'add':
 			echo $_SESSION['user']->addUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
-			break;		
+			break;
 		case 'formupdate':
-			echo $_SESSION['user']->formUpdateUser($_SERVER["PHP_SELF"],$_GET['user']);
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($_SERVER["PHP_SELF"],$_GET['user']);
+            echo '</div>';
 			break;
 		case 'update':		
 			$removeimg=false;
@@ -71,7 +75,7 @@ if(isset($_SESSION['user'])){
 			break;	
 		
 		default:
-			header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
+			header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
 			exit();
 			break;
 	}
@@ -79,8 +83,4 @@ if(isset($_SESSION['user'])){
 }
 else{
 	
-	header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
-	exit();
-}
- ?>
-
+	header("Locati

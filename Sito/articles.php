@@ -8,20 +8,21 @@
 
 	include_once ($homepath . "/classi/Article.php");
 
-	session_start();
+session_start();
 	
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Articoli | Dino Net</title>
+	<meta name="description" content="Una moltitudine di articoli informativi sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -55,33 +56,45 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Gli articoli </h1>
-		<br>
+		<h1> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
-	<div id="input-area" class="content card colored wrap-padding">
-		<div class="content">
+	<div id="input-area" class="content card colored wrap-padding center">
+		<!--div class="content">
             <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
             <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
 			<input type="submit" value="CERCA" class="btn wide text-colored white">
 			<br><br>
 			<h1> OPPURE </h1>
 			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
-		</div>
+		</div-->
+        <a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 	</div>
-	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn bounce"></a>
+	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce"></a>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 <!-- Articoli -->
 
 <div class="padding-6 side-padding content">
 
     <div id="daily-article" class="card margin-half colored center wrap-padding">
-        <h1 class="title">L'articolo del giorno</h1>
+        <h1>L'articolo del giorno</h1>
         <hr>
         <p>Giornalmente selezioniamo un articolo per te. Buona lettura!</p>
     </div>
@@ -116,7 +129,7 @@
 
 <div class="padding-6">
 	<div class="colored center wrap-padding">
-		<h1 class="title">Le ultime pubblicazioni</h1>
+		<h1>Le ultime pubblicazioni</h1>
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
@@ -155,19 +168,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-    // Script to open and close sidebar
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script>
 
 </body>
 

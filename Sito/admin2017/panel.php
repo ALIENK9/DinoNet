@@ -24,6 +24,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 		<link rel="stylesheet" href="../css/index.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		
 		<!-- Favicon -->
@@ -51,12 +52,20 @@
 
 	<body>
 
+    <?php include_once('../loading.php'); ?>
+
+    <?php include_once('menuadmin.php'); ?>
 
 	<div id="main" class="main">
 
 
 	<!-- Content -->
 
+    <!-- Topbar -->
+
+    <?php include_once('../topbar.php') ?>
+
+    <!-- /Topbar -->
 
 	<!-- inclusione pagina da visualizzare -->
 
@@ -69,7 +78,7 @@
 
 				case 'user':
 					include_once('user.php');
-					break;	
+					break;
 
 				case 'myuser':
 						if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
@@ -98,31 +107,13 @@
 
 	<!-- /inclusione pagina da visualizzare -->
 
-
+    <?php include_once('../footer.php') ?>
+	
+    </div>
+	
 	<!-- /Content -->
 
-
-	<?php include_once('../tothetop.php'); ?>
-
-	</div>
-
-	<?php include_once('../loading.php'); ?>
-
-	<?php include_once('menuadmin.php'); ?>
-
-	
-	<script>
-		// Script to open and close sidebar
-		function open_menu() {
-			document.getElementById("sidebar").style.display = "block";
-			document.getElementById("overlay").style.display = "block";
-		}
-		
-		function close_menu() {
-			document.getElementById("sidebar").style.display = "none";
-			document.getElementById("overlay").style.display = "none";
-		}
-	</script>
+	<?php include_once('../tothetop.php') ?>
 
 	</body>
 

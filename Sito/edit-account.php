@@ -19,13 +19,14 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Modifica account | Dino Net</title>
+	<meta name="description" content="Pagina di modifica del tuo account Dino Net">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -59,12 +60,18 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1 class="title"> Modifica il tuo account </h1>
+			<h1> Modifica il tuo account </h1>
 		</div>
 		
 		<!-- Modifica -->
@@ -95,24 +102,13 @@
 
 <!-- /Header -->
 
+<?php include_once('breadcrumb.php') ?>
+
 <?php include_once('footer.php') ?>
 
 <?php include_once('tothetop.php') ?>
 
 </div>
-
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 
 </body>
 

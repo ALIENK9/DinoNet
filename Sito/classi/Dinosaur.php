@@ -79,6 +79,7 @@ class Dinosaur {
                     </div>
                     ';                
                 }
+				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
             else {
                 $echoString = "0 risultati";

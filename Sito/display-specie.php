@@ -4,16 +4,15 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Scheda dinosauro | Dino Net</title>
+	<meta name="description" content="Pagina di visualizzazione del dinosauro">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
-	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->
@@ -47,13 +46,25 @@
 
 <div id="main" class="main">
 
+    <!-- Topbar -->
+
+    <?php include_once('topbar.php') ?>
+
+    <!-- /Topbar -->
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> Il Coelophysis </h1>
+		<h1> Il Coelophysis </h1>
 	</div>
 </header>
+
+<!-- Breadcrumb -->
+
+<?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
 
 
 <!-- Dinosauro -->
@@ -61,7 +72,7 @@
 <div class="content-large padding-3">
 	<div class="card">
 		<div class="colored center wrap-padding">
-			<h1 class="title" xml:lang="en" lang="en">Coelopysis</h1>
+			<h1 xml:lang="la" lang="la">Coelopysis</h1>
 		</div>
 		<div id="dino-card-head" class="wrap-padding w3-row-padding">
 
@@ -119,19 +130,6 @@
 <?php include_once('tothetop.php') ?>
 
 </div>
-	
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 	
 </body>
 

@@ -1,0 +1,20 @@
+--------------------------
+||- - COMPATIBILITA' - -||
+--------------------------
+
+FRONTED
+
+- IE (10+)		OK!
+	Testato con https://www.ieonchrome.com/
+- Firefox		OK!
+- Firefox Mobile	OK!
+- Chrome		OK!
+- Chrome mobile 	OK!
+
+BACKEND
+
+- IE (10+)
+- Firefox
+- Firefox Mobile
+- Chrome
+- Chrome mobile 
