@@ -170,7 +170,7 @@ class UserAdmin extends User {
 						<p><label for="passwordconf">Conferma password:</label></p>
                         <input type="text" id="passwordconf" name="passwordconf" value="">
                         
-                        <p><label for="imgaccount">Immagine profilo:</label></p>
+                        <p><label for="imgaccount">Nessuna immagine profilo:</label></p>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
 
 						<br>

@@ -227,7 +227,7 @@ class Article{
                             <p><label for="imgarticle">Immagine:</label></p>
                             <input type="file" id="imgarticle" name="imgarticle" value="">
                 
-                            <p><label for="imgarticleremove">Rimuovi immagine:</label></p>
+                            <p><label for="imgarticleremove">Nessuna immagine:</label></p>
                             <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
 
 							<br>

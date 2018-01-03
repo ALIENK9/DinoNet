@@ -34,14 +34,13 @@ class Dinosaur {
                 foreach($words as $value){
                     $sqlFilter .= "nome LIKE '%".$value."%' OR peso LIKE '%".$value."%' OR altezza LIKE '%".$value."%' OR lunghezza LIKE '%".$value."%'
                     OR periodomin LIKE '%".$value."%' OR periodomax LIKE '%".$value."%' OR habitat LIKE '%".$value."%' OR alimentazione LIKE '%".$value."%' OR tipologiaalimentazione LIKE '%".$value."%'
-                    OR descrizioneautore LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR curiosita LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
+                    OR descrizionebreve LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR curiosita LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
                 }
             }
             
             $sqlFilter .= "ORDER BY nome";
             $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione, immagine FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
-            
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
@@ -317,7 +316,7 @@ class Dinosaur {
                             <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
                 
-                            <p><label for="imgdinosaurremove">Rimuovi immagine:</label></p>
+                            <p><label for="imgdinosaurremove">Nessuna immagine:</label></p>
                             <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
 
 							<br>
