@@ -83,8 +83,4 @@ if(isset($_SESSION['user'])){
 }
 else{
 	
-	header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
-	exit();
-}
- ?>
-
+	header("Locati
