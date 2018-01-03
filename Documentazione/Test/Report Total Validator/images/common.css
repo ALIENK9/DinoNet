@@ -1,0 +1,247 @@
+/* Overall */
+* {
+  box-sizing:border-box;
+}
+body, html {
+  margin:auto;
+  padding:0px 5px 0px 5px;
+  border:0;
+  width:100%;
+}
+body {
+  line-height:1.2;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Skip navigation */
+#skip a, #skip a:hover, #skip a:visited {
+  position:absolute;
+  left:0px;
+  top:-500px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+#skip a:active, #skip a:focus  {
+  position:static;
+  width:auto;
+  height:auto;
+}
+
+/* Main web page */
+div.main {
+  margin:0 auto;
+  width:100%;
+}
+
+/* Page header */
+div.pagehead {
+  background-color:#666699;
+  text-align:center;
+  padding:7px;
+}
+div.pagehead img {
+  border:none;
+  vertical-align:text-bottom;
+}
+div.pagehead a:link { text-decoration:none; color:white }
+div.pagehead a:visited { text-decoration:none; color:white }
+div.pagehead a:hover { color:#c70000 }
+h1 {
+  color:white;
+  font-weight:normal;
+  font-size:90%;
+  display:inline;
+}
+.hidden {
+  position:absolute;
+  left:0px;
+  top:-500px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/* Nav bar */
+div.topnavbar {
+  text-align:center;
+  background-color:#dfdfff;
+  font-weight:bold;
+}
+div.topnavbar p {
+  display:inline;
+}
+div.topnavbar ul {
+  margin:0;
+  padding:2px;
+}
+div.topnavbar li {
+  list-style-type:none;
+  margin:0;
+  padding:5px 0px 5px 0px;
+}
+.dropdown:hover  {
+  color:white;
+  background-color:#666699
+}
+.dropdown-text2 {
+  margin:0px 6px 0px 6px;
+}
+.dropdown:hover .dropdown-text2 {
+  color:white;
+}
+
+/* Headings */
+h2 {
+  background-color:#666699;
+  color:white;
+  padding-left:5px;
+  font-weight:normal;
+  font-size:130%;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+h3 {
+  background-color:#dfdfff;
+  padding-left:5px;
+  font-weight:bold;
+  font-size:110%;
+}
+
+/* column container */
+div.content {
+  position:relative;  /* This fixes the IE7 overflow hidden bug */
+  clear:both;
+  float:left;
+  width:100%;
+  overflow:hidden;    /* This chops off any overhanging divs */
+  background:white;   /* right column background colour */
+}
+
+/* Footer */
+div.footer {
+  clear:both;
+}
+div.footer a:link { text-decoration:none; color:white }
+div.footer a:visited { text-decoration:none; color:white }
+div.footer a:hover { color:#c70000; background-color:#dfdfff}
+p.footer {
+  background-color:#666699;
+  color:white;
+  font-weight:normal;
+  font-size:70%;
+  text-align:center;
+  padding-top:4px;
+  padding-bottom:4px;
+}
+div.footer a {
+  padding:2px;
+}
+
+/* Issues */
+span.error {
+  color:#c70000;
+  font-weight:bold;
+}
+span.problem {
+  background-color:#ff9f9f;
+  color:black;
+  font-weight:bold;
+}
+span.possible {
+  background-color:#ffcf9f;
+  color:black;
+  font-weight:bold;
+}
+span.warning {
+  background-color:#ffff9f;
+  color:black;
+  font-weight:bold;
+}
+span.info {
+  background-color:#9fff9f;
+  color:black;
+  font-weight:bold;
+}
+
+/* Div Tables */
+.dtable {
+  display:table;
+  width:100%;
+  text-align:left;
+  border-spacing:2px;
+}
+.dthead {
+	display: table-header-group;
+	background-color:#dfdfff;
+  font-weight: bold;
+}
+.dtbody {
+  display:table-row-group;
+}
+.dtr {
+  display:table-row;
+}
+.dtd, .dth {
+  display:table-cell;
+  border-spacing:2px;
+  padding:4px;
+  vertical-align:top;
+  text-align:left;
+}
+.dtr .right {
+  text-align:right;
+}
+.dtr .nowrap {
+  text-align:right;
+  white-space:nowrap;
+}
+.dtr .nowrapl {
+  white-space:nowrap;
+}
+.dtr .rhs {
+  width:80%;
+}
+.dtr .bottom {
+  vertical-align:bottom;
+  width:80%;
+}
+.dtr .bottoml {
+  vertical-align:bottom;
+  white-space:nowrap;
+  width:80%;
+}
+div.border {
+ border:1px solid black;
+ border-collapse:collapse;
+}
+div.border .dtd, div.border .dth {
+ border:1px solid black;
+}
+div.border .dtr:hover {background-color: #dfdfff}
+
+/* General */
+a img {
+  border:none;
+}
+img.updown {
+  border:none;
+  padding-right:5px;
+}
+span.strong {
+  font-weight:bold;
+}
+span.success {
+  font-weight:bold;
+  color:#00e000;
+}
+span.em {
+  font-style:italic;
+}
+a:link { text-decoration:none; color:blue }
+a:visited { text-decoration:none; color:blue }
+a:hover { color:#c70000 }
+div.options {
+  margin-left:7%;
+  margin-right:7%
+}
