@@ -18,7 +18,7 @@
 	\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
 	\fancyhf{}
 	\fancyhead[L]{\nouppercase{\leftmark}}
-	\fancyhead[R]{breakingbug@gmail.com}
+	\fancyhead[R]{Dino Net}
 	\fancyfoot[L]{#1}
 	\fancyfoot[R]{Pagina \thepage\ di \pageref{LastPage}}
 	\setlength{\headheight}{13.6pt} % come chiede fancyhdr
@@ -27,7 +27,7 @@
 
 \renewcommand*\contentsname{Sommario}
 
-\title{\textbf{Dino Jaws}\\\large Relazione del progetto di Tecnologie Web a.a. 2017-18}
+\title{\textbf{Dino Net}\\\large Relazione del progetto di Tecnologie Web a.a. 2017-18}
 \author{Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo}
 \date{\today}
 
@@ -37,6 +37,20 @@
 	\clearpage
 	\cornice{Relazione del progetto di Tecnologie Web}
 	
+	\section{Introduzione}
+	
+	\begin{itemize}
+		\item Il sito è accessibile al seguente link:	\url{www.ciaociao.it};
+		\item La parte amministratore del sito è invece accessibile al seguente link: \url{www.ciaoadmin.it}
+		
+		Tramite le seguenti credenziali:
+		
+		\begin{itemize}
+			\item \textbf{Username:} admin@admin.it;
+			\item \textbf{Password:} admin.
+		\end{itemize}
+	\end{itemize}
+	
 	\section{Descrizione dei requisiti}
 	Lo scopo di questa attività di progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textbf{schede descrittive}, una per ciascun dinosauro, e gli \textbf{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è particolarmente rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
 	
@@ -45,8 +59,8 @@
 	\subsubsection{Parte pubblica}
 	Descriviamo brevemente le diverse sezioni, ciascuna corrisposta da un'apposita voce del menù:
 	\begin{itemize}
-		\item \textbf{Home}: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare fra i contenuti del sito ed un sezione con i contenuti del giorno, articoli o schede descrittive;
-		\item \textbf{Storia}: una sezione introduttiva che ripercorre la storia dei dinosauri durante ciascun periodo geologico in cui sono vissuti;
+		\item \textbf{Home}: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare tra i contenuti del sito ed un sezione con i contenuti del giorno (articoli o schede descrittive);
+		\item \textbf{Storia}: una sezione introduttiva che ripercorre a grandi linee la storia dei dinosauri;
 		\item \textbf{Specie}: qui vengono messi in evidenza i contenuti giornalieri (una scheda ed un articolo), ed i link alle schede degli ultimi dinosauri aggiunti al database. È anche possibile visualizzare la lista completa delle schede descrittive di dinosauro, tramite il link sotto la barra di ricerca. Ogni scheda descrive un solo dinosauro e contiene un'immagine, la descrizione dell'animale e talvolta qualche curiosità;
 		\item \textbf{Articoli}: accedendo a questa pagina viene visualizzato immediatamente l'articolo del giorno, e sotto la raccolta degli ultimi articoli aggiunti. Analogamente alla sezione \textit{Specie}, è possibile accedere alla lista completa degli articoli. Ogni articolo ha la sua sezione di commenti lasciati dagli utenti registrati al sito;
 		\item \textbf{Accedi}: da questa area ogni utente può registrarsi o accedere al proprio account per scrivere o modificare i propri commenti agli articoli.
@@ -57,8 +71,8 @@
 	È la sezione accessibile solamente agli utenti amministratori. Questi utenti, possono aggiungere contenuti (articoli o schede dinosauro), e rimuovere commenti degli utenti. Naturalmente possono anch'essi inserire commenti.
 	
 	\subsection{Backend}
-	...
 	
+	Di seguito, una breve descrizione delle sezioni a cui ha accesso un amministratore del sito.
 	
 	
 	\section{Usabilità}

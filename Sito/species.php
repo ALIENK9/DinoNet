@@ -20,7 +20,7 @@
 	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
-	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	
 	<!-- Favicon -->

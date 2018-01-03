@@ -18,7 +18,7 @@ $pages["delete-account"] = "delete-account.php";
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
-<div id="breadcrumb" class="wrap-padding margin colored card">
+<div id="breadcrumb" class="wrap-padding <?php if($currentPage != 'history.php' && $currentPage != 'register.php' && $currentPage != 'login.php' && $currentPage != 'view-account.php' && $currentPage != 'edit-account.php') echo 'colored'; else echo 'text-colored'; ?> card">
 	<p>Ti trovi in: </p>
 	
 <?php
