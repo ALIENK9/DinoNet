@@ -802,9 +802,11 @@ a.disabled {
 *****************/
 
 #mobile-menu-icon {
+	margin-top:2%;
     display: block;
-    padding: 1.7em 2em;
-    border-radius: 50%;
+    margin-right: 15px;
+	padding: 15px 20px;
+    border-radius: 10px;
 }
 
 .menu-icon { /*proprietà comuni a tutte le icone*/
@@ -818,31 +820,31 @@ a.disabled {
     background-position: center;
 }
 
-#icon-home {
+.icon-home {
     background-image: url('../img/icons/menu_home.svg');
 }
 
-#icon-storia {
+.icon-storia {
 	background-image: url('../img/icons/menu_storia.png');
 }
 
-#icon-specie {
+.icon-specie {
 	background-image: url('../img/icons/menu_specie.svg');
 }
 
-#icon-articoli {
+.icon-articoli {
 	background-image: url('../img/icons/menu_articoli.svg');
 }
 
-#icon-accedi {
+.icon-accedi {
 	background-image: url('../img/icons/menu_accedi.png');
 }
 
-#icon-account {
+.icon-account {
 	background-image: url('../img/icons/menu_account.png');
 }
 
-#icon-accounts {
+.icon-accounts {
 	background-image: url('../img/icons/menu_accounts.svg');
 }
 
@@ -901,14 +903,15 @@ a.disabled {
     color: black;
     display: block;
     position: fixed;
+	z-index: 1;
     width: 100%;
-    padding: 1%;
     vertical-align: middle;
 }
 
 #searchbar {
+	margin-left: 15px;
+    margin-top: 4%;
     position: relative;
-    margin-top: 1%;
     display: inline-block;
     background-color: white;
     color: black;

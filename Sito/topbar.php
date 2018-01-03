@@ -11,7 +11,7 @@
         </div>
     </form>
 
-    <a id="mobile-menu-icon" href="#nojs-avviso" class="hide-large bar-item btn right" onclick="">&#9776;</a>
+    <a id="mobile-menu-icon" href="#nojs-avviso" class="hide-large bar-item btn round card right" onclick="">&#9776;</a>
 </div>
 
 

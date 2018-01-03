@@ -110,18 +110,6 @@
 
 <!-- /About -->
 
-<!-- Ricerca -->
-
-<!--div id="input-area" class="card colored wrap-padding center">
-	<div class="content">
-		<h1> <label id="search-label" for="search"> Cerchi qualcosa? </label> </h1>
-		<input id="search" class="margin" type="text" placeholder="e.g. Tirannosaurus Rex">
-		<input type="submit" value="CERCA" class="card btn wide text-colored white margin">
-	</div>
-</div-->
-
-<!-- /Ricerca -->
-
 <!-- Materiale del giorno -->
 
 <div id="daily-stuff" class="content-large padding-6 no-print">
