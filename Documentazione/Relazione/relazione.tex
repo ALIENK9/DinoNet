@@ -33,6 +33,7 @@
 
 \begin{document}
 	\maketitle
+	\newpage
 	\tableofcontents
 	\clearpage
 	\cornice{Relazione del progetto di Tecnologie Web}
@@ -102,6 +103,15 @@
 	\section{Accessibilità}
 	\subsection{Introduzione}
 	...
+	
+	\subsection{Accorgimenti}
+	I potenziali problemi di accessibilità sono di seguito listati:
+	\begin{itemize}
+		\item JavaScript: i browser utilizzati dagli screen reader non eseguono gli script, pertanto  JavaScript è utilizzato nel sito solo per rendere più accattivante l'interfaccia, ma senza compromettere l'accessibilità;
+		\item Link: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
+		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \textit{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
+	\end{itemize}
+	
 	\subsection{Test}
 	Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
 	\begin{itemize}
