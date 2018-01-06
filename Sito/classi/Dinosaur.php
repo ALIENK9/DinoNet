@@ -1,30 +1,19 @@
 <?php 
-$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-$percorsoHome = "";
-if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-    $homepath .= "/TecWeb";
-    $percorsoHome = "/TecWeb";
-}
-//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-include_once ($homepath . "/connect.php");
-include_once ($homepath . "/loadFile.php");
+include_once (__DIR__."/../loadFile.php");
 
 class Dinosaur {    
                 
     //metodi
-    public static function printListDinosaur($filter, $editable = false){
-        $connect = startConnect();     
+    public static function printListDinosaur($connect, $filter, $basePathImg, $editable = false){
         
         $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
-        closeConnect($connect);
-
-        return Dinosaur::printListDinosaurLimit($filter, 0, $row["ntot"], $editable);
+       
+        return Dinosaur::printListDinosaurLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $editable);
     }
-    public static function printListDinosaurLimit($filter, $startNumView, $numView, $editable = false){
-        $connect = startConnect();     
+    public static function printListDinosaurLimit($connect, $filter, $startNumView, $numView, $basePathImg, $editable = false){
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -52,7 +41,7 @@ class Dinosaur {
                             ';
                             if(isset($row["immagine"])){
                                 global $percorsoHome;
-                                $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
                             }
                             $echoString .='
                             <div class="center padding-2">
@@ -85,21 +74,19 @@ class Dinosaur {
                 $echoString = "0 risultati";
             }
         }
-        closeConnect($connect);
         return $echoString;
     }
 
-    public function deleteDinosaur($id){
+    public function deleteDinosaur($connect, $id){
         $echoString = "";
-        $connect = startConnect(); 
         if(isset($connect)){
             if(isset($id)){
 
                 $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$id."' ";
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
-                    global $homepath;
-                    delImage($homepath.$row["immagine"]);                   
+                    
+                    delImage(__DIR__."/../".$row["immagine"]);                   
 
                     $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$id."' ";
                     if( $connect->query($sqlQuery) ){
@@ -114,7 +101,6 @@ class Dinosaur {
                 }
             }
         }        
-        closeConnect($connect);
         return $echoString;
     }
 
@@ -188,9 +174,8 @@ class Dinosaur {
     }
 
     //sarei quasi indeciso se istanziare il dinosauro e passarlo a questo metodo per il salvataggio nel DB
-    public static function addDinosaur($idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine){
+    public static function addDinosaur($connect, $idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine){
         $echoString ="";
-        $connect = startConnect(); 
         $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
         $result = $connect->query($sqlQuery);
         if(
@@ -238,12 +223,10 @@ class Dinosaur {
         else{
             $echoString = "Errore campi";
         }           
-        closeConnect($connect);
         return $echoString;
     }
-    public static function formUpdateDinosaur($url, $id){
+    public static function formUpdateDinosaur($connect, $url, $id){
         $echoString ="";
-        $connect = startConnect(); 
         $sqlQuery = "SELECT * FROM dinosauro WHERE nome = '".$id."' ";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
@@ -332,16 +315,14 @@ class Dinosaur {
         else{
             echo "Errore: Dinosauro non presente";
         }
-        closeConnect($connect);
         return $echoString;
 
     }
 
-    public static function updateDinosaur($nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $removeImage){
+    public static function updateDinosaur($connect, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $removeImage){
     
         $echoString ="";
-        $connect = startConnect(); 
-
+        
         if(
             isset($nome) &&
             isset($peso) &&
@@ -398,14 +379,12 @@ class Dinosaur {
             $echoString = "Errore campi";
         }
 
-        closeConnect($connect);
         return $echoString;
     }
-    public static function getDinosaurDay(){
+    public static function getDinosaurDay($connect){
         
         $echoString ="";
-        $connect = startConnect(); 
-
+        
         $sqlQuery = "SELECT nome, data FROM dinosaurodelgiorno ORDER BY data DESC LIMIT 1";
         $result = $connect->query($sqlQuery);
         
@@ -470,7 +449,6 @@ class Dinosaur {
             }
         }
 
-        closeConnect($connect);
         return $echoString;
     }
      

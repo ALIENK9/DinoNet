@@ -1,15 +1,11 @@
 <?php
 
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
-	include_once ($homepath . "/connect.php");
-	include_once ($homepath . "/classi/UserAdmin.php");
+	include_once (__DIR__."/../classi/UserAdmin.php");
 
 	session_start();
+
+	include_once (__DIR__."/../connect.php");
+	$connectLogin = startConnect();
 	
 	if(isset($_SESSION['user'])){	
 		session_unset();
@@ -17,8 +13,8 @@
 
 	if(isset($_POST['email']) && isset($_POST["password"])){
 		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'1')){
-			$_SESSION['user'] = new UserAdmin($_POST['email']);
+		if(User::login($connectLogin, $_POST["email"], $_POST["password"],'1')){
+			$_SESSION['user'] = new UserAdmin($connectLogin, $_POST['email']);
 			header("Location: panel.php");
 		}	
 	}
@@ -95,3 +91,9 @@
 <!-- /Body -->
 
 </html>
+
+<?php
+	
+	closeConnect($connectLogin);
+	
+?>

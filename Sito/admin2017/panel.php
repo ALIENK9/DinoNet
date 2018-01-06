@@ -1,17 +1,18 @@
 <?php
 	
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
-	
-	include_once ($homepath . "/connect.php");
-	include_once ($homepath . "/classi/UserAdmin.php");
+	include_once (__DIR__."/../classi/UserAdmin.php");
 
 	session_start();	
 	if(isset($_SESSION['user'])){
+		
+		if(isset($_GET["id"]) && $_GET["id"]=='logout'){ // se effettuo il controllo dopo l'inclusione del menù mi da errore
+				include_once ("logout.php");
+		}
+	
 
+		include_once (__DIR__."/../connect.php");
+		$connectPanel = startConnect();
+		
 ?>
 
 	<!DOCTYPE html>
@@ -52,9 +53,9 @@
 
 	<body>
 
-    <?php include_once('../loading.php'); ?>
-
-    <?php include_once('menuadmin.php'); ?>
+    <?php include_once ('../loading.php'); ?>
+	
+    <?php include_once ('menuadmin.php'); ?>
 
 	<div id="main" class="main">
 
@@ -63,51 +64,52 @@
 
     <!-- Topbar -->
 
-    <?php include_once('../topbar.php') ?>
+    <?php //include_once('../topbar.php') ?>
 
     <!-- /Topbar -->
 
 	<!-- inclusione pagina da visualizzare -->
 
 	<?php 
-		if(isset($_GET["id"])){
-			switch ($_GET["id"]) {
-				case 'home':
-					include_once('home.php');
-					break;
 
-				case 'user':
-					include_once('user.php');
-					break;
+		if(isset($_GET["id"]))
+			$idPage=$_GET["id"];
+		else
+			$idPage = "home";
 
-				case 'myuser':
-						if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
-							echo $_SESSION['user']->UpdateMyUser($_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
-						else
-							echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]);
-					break;
+		switch ($idPage) {
+			case 'home':
+				include_once('home.php');
+				break;
 
-				case 'dino':
-					include_once('dinosaur.php');
-					break;
+			case 'user':
+				include_once('user.php');
+				break;
 
-				case 'article':
-					include_once('article.php');
-					break;	
+			case 'myuser':
+					if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
+						echo $_SESSION['user']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+					else
+						echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]);
+				break;
 
-				case 'logout': default:		
-					include_once('logout.php');
-					break;
-			}
-		}
-		else{
-			include_once('home.php');
+			case 'dino':
+				include_once('dinosaur.php');
+				break;
+
+			case 'article':
+				include_once('article.php');
+				break;	
+
+			case 'logout': default:		
+				include_once('logout.php');
+				break;
 		}
 	?>
 
 	<!-- /inclusione pagina da visualizzare -->
 
-    <?php include_once('../footer.php') ?>
+    <?php //include_once('../footer.php') ?>
 	
     </div>
 	
@@ -122,10 +124,15 @@
 	</html>
 
 <?php
+	
+	
+		closeConnect($connectPanel);
+	
+
 	}
 	else{
 		
-		header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
+		header("Location: ../error.php");
 		exit();
 	}
 ?>

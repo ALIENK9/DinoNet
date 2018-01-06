@@ -1,14 +1,11 @@
 <?php
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-	include_once ($homepath . "/classi/Dinosaur.php");
+include_once (__DIR__."/../classi/Dinosaur.php");
 
 if(isset($_SESSION['user'])){
-
+	include_once (__DIR__."/../connect.php");
+	$connectDinosaur = startConnect();
+	
 	if(isset($_GET["sez"]))
 		$sezione=$_GET["sez"];
 	else
@@ -45,40 +42,43 @@ if(isset($_SESSION['user'])){
 
         <?php
 			if(isset($_GET["filter"]))
-				echo Dinosaur::printListDinosaur($_GET["filter"], true);
+				echo Dinosaur::printListDinosaur($connectDinosaur, $_GET["filter"], "..", true);
 			else
-				echo Dinosaur::printListDinosaur("", true);
+				echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", true);
 			break;
 		case 'formadd':
 				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Dinosaur::addDinosaur($_SESSION['user']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"]);
+			echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['user']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"]);
 			break;			
 		case 'formupdate':
-			echo Dinosaur::formUpdateDinosaur($_SERVER["PHP_SELF"],$_GET['nome']);
+			echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"],$_GET['nome']);
 			break;
 		case 'update':
 			$removeimg=false;
 			if(isset($_POST['imgdinosaurremove']) && $_POST['imgdinosaurremove']=="true"){
 				$removeimg=true;
 			}
-			echo Dinosaur::updateDinosaur($_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg);
+			echo Dinosaur::updateDinosaur($connectDinosaur, $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg);
 			break;	
 		case 'delete':
 			if(isset($_GET["nome"]))
-				echo Dinosaur::deleteDinosaur($_GET["nome"]);
+				echo Dinosaur::deleteDinosaur($connectDinosaur, $_GET["nome"]);
 			break;
 		
 		default:
-			header("Location: http://". $_SERVER['HTTP_HOST']."/error.php");
+			header("Location: ../error.php");
 			exit();
 			break;
 	}
+	
+	closeConnect($connectDinosaur);
+	
 }
 else{
 	
-	header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
+	header("Location: ../error.php");
 	exit();
 }
  ?>

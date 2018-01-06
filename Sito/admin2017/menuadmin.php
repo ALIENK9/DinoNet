@@ -1,13 +1,5 @@
 <?php
-	if(isset($_SESSION['user']) && $_SESSION['user']!=null) {
-
-        $pages = array();
-        $pages["home"] = "panel.php?id=home";
-        $pages["dati-admin"] = "panel.php?id=myuser";
-        $pages["account"] = "panel.php?id=user";
-        $pages["dino"] = "panel.php?id=dino";
-        $pages["articoli"] = "panel.php?id=article";
-    }
+	if(isset($_SESSION['user']) && $_SESSION['user']!=null) {	
 ?>
 		
 <!-- Sidebar/menu -->
@@ -16,23 +8,23 @@
         <span onclick="close_menu()" class="btn">x</span>
     </div>
     <a class="hidden" href="#content">Salta il menù</a>
-	<a href="panel.php?id=home" class="menu-entry <?php if($currentPage == $pages["home"]) echo "active disabled"; ?>">
+	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active"; ?>">
 		<span id="icon-home" class="menu-icon"></span>
 		<p xml:lang="en" lang="en">Home admin</p>
 	</a>
-	<a href="panel.php?id=myuser" class="menu-entry <?php if($currentPage == $pages["dati-admin"]) echo "active disabled"; ?>">
+	<a href="panel.php?id=myuser" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active"; ?>">
 		<span id="icon-account" class="menu-icon"></span>
 		<p>Dati admin</p>
 	</a>
-	<a href="panel.php?id=user" class="menu-entry <?php if($currentPage == $pages["account"]) echo "active disabled"; ?>">
+	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active"; ?>">
 		<span id="icon-accounts" class="menu-icon"></span>
 		<p>Utenti</p>
 	</a>
-	<a href="panel.php?id=dino" class="menu-entry <?php if($currentPage == $pages["dino"]) echo "active disabled"; ?>">
+	<a href="panel.php?id=dino" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active"; ?>">
 		<span id="icon-specie" class="menu-icon"></span>
 		<p>Dinosauri</p>
 	</a>
-	<a href="panel.php?id=article" class="menu-entry <?php if($currentPage == $pages["articoli"]) echo "active disabled"; ?>">
+	<a href="panel.php?id=article" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "article") echo "active"; ?>">
 		<span id="icon-articoli" class="menu-icon"></span>
 		<p>Articoli</p>
 	</a>
@@ -65,3 +57,8 @@
         document.getElementById("overlay").style.display = "none";
     }
 </script-->
+
+<?php
+
+	}
+?>

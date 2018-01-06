@@ -1,14 +1,11 @@
 <?php
 
-$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-	$homepath .= "/TecWeb";
-}
-//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
-include_once ($homepath . "/classi/Article.php");
+include_once (__DIR__."/../classi/Article.php");
 
 if(isset($_SESSION['user'])){
+
+	include_once (__DIR__."/../connect.php");
+	$connectArticle = startConnect();
 	
 	if(isset($_GET["sez"]))
 		$sezione=$_GET["sez"];
@@ -47,37 +44,44 @@ if(isset($_SESSION['user'])){
 	
 		<?php
 			if(isset($_GET["filter"]))
-				echo Article::printListArticle($_GET["filter"], true);
+				echo Article::printListArticle($connectArticle, $_GET["filter"], "..", true);
 			else
-				echo Article::printListArticle("", true);
+				echo Article::printListArticle($connectArticle, "", "..", true);
 			break;
 		case 'formadd':
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Article::addArticle($_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
+			echo Article::addArticle($connectArticle, $_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
 			break;			
 		case 'formupdate':
-			echo Article::formUpdateArticle($_SERVER["PHP_SELF"],$_GET["article"]);
+			echo Article::formUpdateArticle($coconnectArticlennect, $_SERVER["PHP_SELF"],$_GET["article"]);
 			break;
 		case 'update':		
 			$removeimg=false;
 			if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
 				$removeimg=true;
 			}
-			echo Article::updateArticle($_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
+			echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
 			break;	
 		case 'delete':
 			if(isset($_GET["article"]))
-				echo Article::deleteArticle($_GET["article"]);
+				echo Article::deleteArticle($connectArticle, $_GET["article"]);
 			break;
 		
 		default:
-			header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
-			exit(); 
+			header("Location: ../error.php");
+			exit();
 			break;
 	}
 	
+	closeConnect($connectArticle);
+	
+}
+else{
+	
+	header("Location: ../error.php");
+	exit();
 }
  ?>
 

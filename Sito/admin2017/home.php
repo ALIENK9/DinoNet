@@ -15,7 +15,7 @@
 	}
 	else{
 		
-		header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
+		header("Location: ../error.php");
 		exit();
 	}
 

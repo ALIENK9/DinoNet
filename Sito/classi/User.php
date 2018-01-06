@@ -1,11 +1,4 @@
 <?php 
-$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-    $homepath .= "/TecWeb";
-}
-//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
-include_once ($homepath . "/connect.php");
 
 class User {
     
@@ -18,10 +11,9 @@ class User {
     //protected $connect;
     private $prova;
     //costruttore
-    public function __construct($username)
+    public function __construct($connect, $username)
     {        
         $this->setEmail($username);
-        $connect = startConnect();
         if($connect != null){
             $sqlQuery="SELECT * FROM utente WHERE email='".$username."'";
             $result=$connect->query($sqlQuery);
@@ -35,7 +27,7 @@ class User {
                 }
             }
         }
-        closeConnect($connect);
+        
     }   
     /*public function __destruct()
     {
@@ -90,8 +82,7 @@ class User {
 
     }
 
-    public static function login($user, $pass, $tipologia){
-        $connect = startConnect();
+    public static function login($connect, $user, $pass, $tipologia){
         $status = false;
         if($connect != null){
             $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia='".$tipologia."'";
@@ -100,7 +91,6 @@ class User {
                 $status = true;
             }
         }
-        $connect->close();
         return $status;
     }
     
@@ -145,10 +135,10 @@ class User {
         return $echoString;
     } 
     
-    public function updateMyUser($nome, $cognome, $datanascita, $password, $confermaPassword){
+    public function updateMyUser($connect, $nome, $cognome, $datanascita, $password, $confermaPassword){
      
         $echoString ="";
-        $connect = startConnect();   
+          
 
         if(
             isset($nome) &&
@@ -176,7 +166,7 @@ class User {
             $echoString = "Errore campi";
         }    
 
-        closeConnect($connect);
+        
         return $echoString;
     } 
     

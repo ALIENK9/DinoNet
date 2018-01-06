@@ -1,14 +1,13 @@
 <?php
 
-$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-	$homepath .= "/TecWeb";
-}
-//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-include_once ($homepath . "/classi/UserAdmin.php");
+include_once (__DIR__."/../classi/UserAdmin.php");
 
 if(isset($_SESSION['user'])){
+
+	include_once (__DIR__."/../connect.php");
+	$connectUser = startConnect();
+	
 
 	if(isset($_GET["sez"]))
 		$sezione=$_GET["sez"];
@@ -46,9 +45,9 @@ if(isset($_SESSION['user'])){
 
             <?php
 			if(isset($_GET["filter"]))
-				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($_GET["filter"]);
+				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, $_GET["filter"], "..");
 			else
-				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser("");
+				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, "", "..");
 			echo '</div>';
 			break;
 		case 'formadd':			
@@ -56,10 +55,10 @@ if(isset($_SESSION['user'])){
             echo '</div>';
 			break;
 		case 'add':
-			echo $_SESSION['user']->addUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
+			echo $_SESSION['user']->addUser($conconnectUsernect, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
 			break;
 		case 'formupdate':
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($_SERVER["PHP_SELF"],$_GET['user']);
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
             echo '</div>';
 			break;
 		case 'update':		
@@ -67,20 +66,25 @@ if(isset($_SESSION['user'])){
 			if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 				$removeimg=true;			}
 
-			echo $_SESSION['user']->updateUser($_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
+			echo $_SESSION['user']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
 			break;		
 		case 'delete':
 			if(isset($_GET["user"]))
-				echo $_SESSION['user']->deleteUser($_GET["user"]);
+				echo $_SESSION['user']->deleteUser($connectUser, $_GET["user"]);
 			break;	
 		
 		default:
-			header("Location: http://". $_SERVER['HTTP_HOST']."/TecWeb/error.php");
+			header("Location: ../error.php");
 			exit();
 			break;
 	}
-	
+
+	closeConnect($connectUser);
+		
 }
-else{
-	
-	header("Locati
+else{	
+	header("Location: ../error.php");
+	exit();
+}
+
+?>

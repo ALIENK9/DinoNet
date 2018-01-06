@@ -1,30 +1,23 @@
 <?php 
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-    $percorsoHome = "";
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-        $homepath .= "/TecWeb";
-        $percorsoHome = "/TecWeb";
-	}
-    //$homepath = $_SERVER["DOCUMENT_ROOT"];
-	include_once ($homepath . "/connect.php");
-	include_once ($homepath . "/classi/User.php");
-	include_once ($homepath . "/loadFile.php");
+
+include_once (__DIR__."/User.php");
+include_once (__DIR__."/../loadFile.php");
 
 class UserAdmin extends User {
     
-    public static function printListUser($filter){
-        $connect = startConnect();     
+    public static function printListUser($connect, $filter, $basePathImg){
+            
         
         $sqlQuery = "SELECT count(email) as ntot FROM utente";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
-        closeConnect($connect);
+        
 
-        return UserAdmin::printListUserLimit($filter,0,$row["ntot"]);        
+        return UserAdmin::printListUserLimit($connect, $filter,0,$row["ntot"], $basePathImg);        
     }
 
-    public static function printListUserLimit($filter, $startNumView, $numView){
-        $connect = startConnect();     
+    public static function printListUserLimit($connect, $filter, $startNumView, $numView, $basePathImg){
+            
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -49,8 +42,7 @@ class UserAdmin extends User {
                             </div>
                             ';
                             if(isset($row["immagine"])){
-                                global $percorsoHome;
-                                $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="immagine profilo utente">';
+                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="immagine profilo utente">';
                             }
                             $echoString .='
                             <div class="center padding-2">
@@ -74,26 +66,25 @@ class UserAdmin extends User {
             }
         }
         
-        closeConnect($connect);
+        
         return $echoString;        
     }
     
-    public function deleteUser($id){
+    public function deleteUser($connect, $id){
         $echoString = "";
-        $connect = startConnect();    
+           
         if($this->getEmail()!=$id){
             if(isset($connect)){
                 if(isset($id)){
                     
                     $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
                     $result = $connect->query($sqlQuery);
-                    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
-                        global $homepath;
-                        delImage($homepath.$row["immagine"]);                   
+                    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {       
+                        delImage(__DIR__."/../".$row["immagine"]);                   
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
-                            $echoString = "Elemento eliminato";
+                            $echoString = "Element o eliminato";
                         } 
                         else {
                             $echoString = "Elemento NON eliminato";
@@ -109,21 +100,20 @@ class UserAdmin extends User {
             $echoString = "Non ti puoi eliminare";
         }
         
-        closeConnect($connect);
+        
         return $echoString;
     }
     
     //bisogna creare un trigger o dei controlli per le chiavi esterne
-    public static function deleteUserForce($id){
+    public static function deleteUserForce($connect, $id){
         $echoString = "";
-        $connect = startConnect();  
+         
         if(isset($connect)){
             if(isset($id)){ 
                 $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
                 $result = $connect->query($sqlQuery);
-                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
-                    global $homepath;
-                    delImage($homepath.$row["immagine"]);                   
+                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {       
+                    delImage(__DIR__."/../".$row["immagine"]);                   
 
                     $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                     if( $connect->query($sqlQuery) ){
@@ -139,20 +129,20 @@ class UserAdmin extends User {
             }
         }
         
-        closeConnect($connect);
+        
         return $echoString;
     }
 
     public static function formAddUser($url){
         $echoString ='
 		
-		<header id="header-home" class="full-screen parallax" enctype="multipart/form-data">
+		<header id="header-home" class="full-screen parallax">
 			<div class="padding-12 content">						
 				<div class="card white wrap-padding">
 					<h1>Aggiungi un nuovo utente</h1>
 				</div>
 				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=user&sez=add" method="POST">
+					<form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data">
 						<p><label for="email">Email:</label></p>
 						<input type="email" id="email" name="email" value="">
 						
@@ -185,10 +175,10 @@ class UserAdmin extends User {
     return $echoString;
     } 
     
-    public static function addUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine){
+    public static function addUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine){
      
         $echoString ="";
-        $connect = startConnect();   
+          
         $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
         $result = $connect->query($sqlQuery);
 
@@ -231,13 +221,13 @@ class UserAdmin extends User {
             $echoString = "Errore campi";
         }    
 
-        closeConnect($connect);
+        
         return $echoString;
     } 
     
-    public static function formUpdateUser($url, $id){
+    public static function formUpdateUser($connect, $url, $id){
         $echoString ="";
-        $connect = startConnect(); 
+        
         $sqlQuery = "SELECT * FROM utente WHERE email = '".$id."' ";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
@@ -286,14 +276,14 @@ class UserAdmin extends User {
         else{
             $echoString ="Errore: Utente non presente";
         }  
-        closeConnect($connect);
+        
         return $echoString;
     } 
     
-    public static function updateUser($email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $removeImage){
+    public static function updateUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $removeImage){
      
         $echoString ="";
-        $connect = startConnect();   
+          
 
         if(
             isset($email) &&
@@ -342,7 +332,7 @@ class UserAdmin extends User {
             $echoString = "Errore campi";
         }    
 
-        closeConnect($connect);
+        
         return $echoString;
     } 
 }

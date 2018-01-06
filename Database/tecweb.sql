@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 17, 2017 alle 16:33
--- Versione del server: 10.1.21-MariaDB
--- Versione PHP: 7.0.15
+-- Creato il: Gen 05, 2018 alle 18:29
+-- Versione del server: 10.1.29-MariaDB
+-- Versione PHP: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -69,7 +71,8 @@ CREATE TABLE `articolodelgiorno` (
 INSERT INTO `articolodelgiorno` (`id`, `idarticolo`, `data`) VALUES
 (1, 13, '2017-12-12'),
 (2, 15, '2017-12-16'),
-(3, 16, '2017-12-17');
+(3, 16, '2017-12-17'),
+(4, 13, '2017-12-19');
 
 -- --------------------------------------------------------
 
@@ -106,7 +109,8 @@ INSERT INTO `dinosauro` (`nome`, `peso`, `altezza`, `lunghezza`, `periodomin`, `
 ('eee', 123, 123, 12312, 12345, 3456, '3efghe', 'ewfgdf', 'erbivoro', 'sdfg', 'sdfg', 'sdfg', '/img/dinosaurimg/eee.jpg', '2017-12-17', 'admin@admin.it'),
 ('fgbjhknl', 346, 789, 6568798, 4756879, 4756879, '68579', 'ery', 'onnivoro', 'tryuh', 'trfyu', 'trfgyu', NULL, '2017-12-12', 'admin@admin.it'),
 ('n', 345, 3456, 3456, 345, 3456, '34dfgndfg', 'dfh', 'onnivoro', 'dfgh', 'hdfgh', 'dfgh', NULL, '2017-12-17', 'admin@admin.it'),
-('prova', 12, 123, 1234, 2345, 3456, 'aaa', 'asdf', 'onnivoro', 'zcvbn', 'sdgwer', 'sdgdfgndf', '/img/dinosaurimg/prova.png', '2017-11-26', 'dino@dinosauro.it');
+('prova', 12, 123, 1234, 2345, 3456, 'aaa', 'asdf', 'onnivoro', 'zcvbn', 'sdgwer', 'sdgdfgndf', '/img/dinosaurimg/prova.png', '2017-11-26', 'dino@dinosauro.it'),
+('Stegosaurus', 6000, 350, 700, 120, 100, 'Foreste umide', 'Felci', 'erbivoro', 'Un bel diosauro', 'bla bla jjdjdj djshfskdjhfsjfhsdjkfsdkj', 'Le placche misuravano piÃ¹ di mezzo metro', '/img/dinosaurimg/Stegosaurus.jpg', '2017-12-19', 'admin@admin.it');
 
 -- --------------------------------------------------------
 
@@ -127,7 +131,10 @@ CREATE TABLE `dinosaurodelgiorno` (
 INSERT INTO `dinosaurodelgiorno` (`id`, `nome`, `data`) VALUES
 (1, 'ciao', '2017-12-15'),
 (2, 'prova', '2017-12-16'),
-(3, '1', '2017-12-17');
+(3, '1', '2017-12-17'),
+(4, 'prova', '2017-12-19'),
+(5, 'ciao', '2018-01-03'),
+(6, 'eee', '2018-01-03');
 
 -- --------------------------------------------------------
 
@@ -151,7 +158,7 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`email`, `nome`, `cognome`, `datanascita`, `password`, `tipologia`, `immagine`) VALUES
 ('112@asdf.it', 'qqq', 'www', '2222-02-22', '333', 0, '/img/userimg/112@asdf.it.png'),
-('aaa', 'bbb1', 'ccc', '2000-01-01', 'aaa', 0, NULL),
+('aaa', 'bbb1', 'ccc', '2000-01-01', 'aaa', 0, '/img/userimg/aaa.png'),
 ('aaa232@asf.it', 'aaa23', 'aaa23', '1111-11-11', 'aaa', 0, '/img/userimg/aaa232@asf.it.png'),
 ('aaaw', 'aaa', 'aaa', '1992-11-11', 'aaaw', 0, NULL),
 ('admin@admin.it', 'admin', 'gianni', '1993-10-03', 'admin', 1, NULL),
@@ -166,7 +173,7 @@ INSERT INTO `utente` (`email`, `nome`, `cognome`, `datanascita`, `password`, `ti
 ('provas@provas.com', 'provas1', 'dino2', '2003-03-03', 'provas4', 0, NULL),
 ('sserts@sss.it', 'aaa1', 'ss2', '2003-03-31', '3334', 0, '/img/userimg/sserts@sss.it.jpg'),
 ('xxx@xxx.it', 'xxx', 'xxx', '1111-11-11', 'xxx', 0, '/img/userimg/xxx@xxx.it.png'),
-('zzzzz@zz.it', 'zzz', 'zzz', '2222-02-22', 'zz', 0, '/img/userimg/zzzzz@zz.it.png');
+('zzzzz@zz.it', 'zzz', 'zzz', '2222-02-22', 'zz', 0, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -217,16 +224,19 @@ ALTER TABLE `utente`
 --
 ALTER TABLE `articolo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT per la tabella `articolodelgiorno`
 --
 ALTER TABLE `articolodelgiorno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT per la tabella `dinosaurodelgiorno`
 --
 ALTER TABLE `dinosaurodelgiorno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- Limiti per le tabelle scaricate
 --
@@ -254,6 +264,7 @@ ALTER TABLE `dinosauro`
 --
 ALTER TABLE `dinosaurodelgiorno`
   ADD CONSTRAINT `presenza` FOREIGN KEY (`nome`) REFERENCES `dinosauro` (`nome`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

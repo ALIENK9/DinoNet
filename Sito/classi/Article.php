@@ -1,31 +1,18 @@
 <?php
 
-$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-$percorsoHome = "";
-if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-    $homepath .= "/TecWeb";
-    $percorsoHome = "/TecWeb";
-}
-//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
-include_once ($homepath . "/connect.php");
-include_once ($homepath . "/loadFile.php");
-
+include_once (__DIR__."/../loadFile.php");
+    
 class Article{
 
-    public static function printListArticle($filter, $editable = false){
-        $connect = startConnect();     
-        
+    public static function printListArticle($connect, $filter, $basePathImg, $editable = false){
         $sqlQuery = "SELECT count(id) as ntot FROM articolo";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
-        closeConnect($connect);
-
-        return Article::printListArticleLimit($filter, 0, $row["ntot"], $editable);
+        
+        return Article::printListArticleLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $editable);
     }
 
-    public static function printListArticleLimit($filter, $startNumView, $numView, $editable = false){
-        $connect = startConnect();     
+    public static function printListArticleLimit($connect, $filter, $startNumView, $numView, $basePathImg, $editable = false){
         $echoString="";
         $sqlFilter = "";
 
@@ -51,8 +38,7 @@ class Article{
                         </div>
                         ';
                         if(isset($row["immagine"])){
-                            global $percorsoHome;
-                            $echoString .=' <img src="'.$percorsoHome.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                            $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
                         }
                         $echoString .='
                         <div class="center padding-2">
@@ -83,19 +69,16 @@ class Article{
 		else {
             $echoString = "0 risultati";
 		}
-        closeConnect($connect);
         return $echoString;
     }
 
-    public static function deleteArticle($id){   
-        $connect = startConnect();     
+    public static function deleteArticle($connect, $id){   
         $echoString="";
         if(isset($id)){                    
             $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$id."' ";
             $result = $connect->query($sqlQuery);
-            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
-                global $homepath;
-                delImage($homepath.$row["immagine"]);  
+            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {  
+                delImage(__DIR__."/../".$row["immagine"]);  
 
                 $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
                 if( $connect->query($sqlQuery) ){
@@ -109,7 +92,6 @@ class Article{
                 $echoString = "Elemento NON eliminabile";
             }
         }
-        closeConnect($connect);
         return $echoString;
     }             
     public static function formAddArticle($url){
@@ -150,8 +132,7 @@ class Article{
         ';
         return $echoString;
     }
-    public static function addArticle($idautore, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine){
-        $connect = startConnect();     
+    public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine){
         $echoString="";
         if(
             isset($titolo) &&
@@ -188,11 +169,9 @@ class Article{
         else{
             $echoString = "Errore campi";
         }
-        closeConnect($connect);
         return $echoString;
     }
-    public static function formUpdateArticle($url, $id){
-        $connect = startConnect();     
+    public static function formUpdateArticle($connect, $url, $id){
         $echoString="";
         $sqlQuery = "SELECT * FROM articolo WHERE id = '".$_GET['article']."' ";
         $result = $connect->query($sqlQuery);
@@ -244,12 +223,10 @@ class Article{
         else{
             $echoString = "Errore: Articolo non presente";
         }
-        closeConnect($connect);
         return $echoString;
     }
 
-    public static function updateArticle($idarticolo, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine, $removeImage){
-        $connect = startConnect();     
+    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine, $removeImage){
         $echoString="";
         if(
             isset($titolo) &&
@@ -295,14 +272,12 @@ class Article{
         else{
             $echoString = "Errore campi";
         }
-        closeConnect($connect);
         return $echoString;
     }
-    public static function getArticleDay(){
+    public static function getArticleDay($connect){
         
         $echoString ="";
-        $connect = startConnect(); 
-
+        
         $sqlQuery = "SELECT idarticolo, data FROM articolodelgiorno ORDER BY data DESC LIMIT 1";
         $result = $connect->query($sqlQuery);
         
@@ -364,7 +339,6 @@ class Article{
             }
         }
 
-        closeConnect($connect);
         return $echoString;
     }
                     
