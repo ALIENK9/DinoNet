@@ -56,7 +56,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> Titolo dell'articolo </h1>
+		<h1 class="text-colored"> Titolo dell'articolo </h1>
 	</div>
 </header>
 

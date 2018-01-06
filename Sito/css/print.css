@@ -50,10 +50,9 @@ a {
 
 #title-card h1 {
     font-size: 1.5em;
-    color: unset;
 }
 
-#input-area, #login {
+#input-area, #login, #breadcrumb {
     display: none;
 }
 

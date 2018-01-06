@@ -27,7 +27,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide">Errore, pagina non esistente </h1>
+		<h1 class="title wide text-colored">Errore, pagina non esistente </h1>
 	</div>
 </header>
 

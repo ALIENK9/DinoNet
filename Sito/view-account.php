@@ -71,7 +71,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1> Ciao, [Nome utente] </h1>
+			<h1 class="text-colored"> Ciao, [Nome utente] </h1>
 			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
 		

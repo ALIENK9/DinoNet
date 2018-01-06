@@ -56,14 +56,16 @@
 
 <header id="header-home" class="parallax padding-6" >
 	<div id="title-card" class="content card">
-		<h1 class="title wide"> DINO NET </h1>
+		<h1 class="title wide text-colored"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
 		<br><br>
 		<a href="#about" title="informazioni sul sito" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
 		<!--a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a-->
 		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
 	</div>
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce"><p>Scorri alle informazioni sul sito</p></a>
+	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow colored btn card bounce">
+        <p>Scorri alle informazioni sul sito</p>
+    </a>
 </header>
 
 <!-- /Header -->

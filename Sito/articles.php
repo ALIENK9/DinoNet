@@ -66,7 +66,7 @@ session_start();
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> Gli articoli </h1>
+		<h1 class="text-colored"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding center">
@@ -80,7 +80,7 @@ session_start();
 		</div-->
         <a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
 	</div>
-	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce"></a>
+	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow colored btn card bounce"></a>
 </header>
 
 <!-- Breadcrumb -->

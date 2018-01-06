@@ -71,7 +71,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1> Crea un account </h1>
+			<h1 class="text-colored"> Crea un account </h1>
 			<h2>entra a far parte del mondo dei dinosauri!</h2>
 		</div>
 		
