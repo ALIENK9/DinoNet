@@ -25,6 +25,9 @@
 }
 
 
+\newcommand{\code}[1]{\texttt{#1}}
+
+
 \renewcommand*\contentsname{Sommario}
 
 \title{\textbf{Dino Net}\\\large Relazione del progetto di Tecnologie Web a.a. 2017-18}
@@ -127,7 +130,15 @@
 	...
 	
 	\section{Compatibilità e dipendenze}
-	\subsection{Compatibilità con i browser}
+	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni.
+	\subsection{Elementi HTML5 utilizzati}
+	\begin{itemize}
+		\item \code{<header>}: questo tag è utilizzato in tutte le pagine per inserire il titolo e presentare velocemente il sito. Risulta ben supportato dai principali browser\footnote{\url{https://www.w3schools.com/tags/tag_header.asp}}.
+		\item \code{<footer>}: utilizzato in ogni pagina per dichiarare gli autori del sito e la sua natura di progetto didattico. Come nel caso precedente è ampiamente supportato;
+		\item \code{input type="..."}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"};
+		\item \code{<figure>}: questo elemento permette di segnalare un'immagine in un documento. È particolarmente utile per la possibilità di inserire al suo interno una immagine con la relativa didascalia, attraverso il tag \code{<figcaption>}. Qualunque browser attuale lo supporta, ed il vantaggio per l'accessibilità, considerando uno screen reader aggiornato e adeguato allo standard, è evidente. Questi tag risultano supportati dai principali browser\footnote{\url{https://caniuse.com/\#search=figcaption}}, in particolare da IE 9+;
+		\item \code{aria-label}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una label, ma è nascosta all'utente che utilizza un broswer stanrard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una label equivalente, talvolta nascosta dal foglio di stile.
+	\end{itemize}
 	
 	\subsection{JavaScript}
 	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite è l'impossibilità di aprire il menù laterale da mobile, e cliccando il pulsante del menù si verrà rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù, con qualche effetto in meno (non segna la scheda attiva). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.
