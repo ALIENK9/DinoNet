@@ -4,8 +4,8 @@
         <h2>Hai disabilitato JavaScript :(</h2>
         <p>Per visualizzare il menù laterale devi attivare JavaScript! In alternativa puoi continuare a navigare utilizzando questo menù</p>
     </div>
-    <nav id="nojs-menu" class="card center hide-large">
-        <a class="hidden" href="#main">Salta il menù</a>
+    <nav role="navigation" title="Barra di navigazione senza javascript" aria-label="Navigazione senza javascript" id="nojs-menu" class="card center hide-large">
+        <a class="hidden" title="Salta il menù" href="#main">Salta il menù</a>
         <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
             <span class="menu-icon icon-home"></span>
             <p xml:lang="en" lang="en">Home</p>
