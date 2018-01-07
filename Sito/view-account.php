@@ -1,20 +1,11 @@
 <?php
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/User.php");	
+	include_once ("classi/User.php");	
 
 	session_start();
 	
-	if(isset($_SESSION['user'])){	
-		session_unset();
-	}
-
-	if(isset($_POST['email']) && isset($_POST["password"])){
-		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'0')){
-			$_SESSION['user'] = new User($_POST['email']);
-			header("Location: index.php");
-		}	
-	}
+	if(!isset($_SESSION['user'])){		
+		header("Location: login.php");
+	}	
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -71,7 +62,7 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
-			<h1> Ciao, [Nome utente] </h1>
+			<h1> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>
 			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
 		
@@ -79,9 +70,9 @@
 
 		<div class="card colored wrap-padding">
 			<h1>Dati account</h1>
-			<p><strong>Nome:</strong> Mario</p>
-			<p><strong>Cognome:</strong> Rossi</p>
-			<p><strong>Email:</strong> ciaociao@gmail.com</p>
+			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
+			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
+			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
 			<br><br>
 			<a href="edit-account.php" class="btn card colored wrap-margin"><p> Modifica account </p></a>
 			<a href="delete-account.php" class="btn card colored wrap-margin"><p> Elimina account </p></a>

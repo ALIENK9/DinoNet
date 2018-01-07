@@ -42,9 +42,9 @@ if(isset($_SESSION['user'])){
 
         <?php
 			if(isset($_GET["filter"]))
-				echo Dinosaur::printListDinosaur($connectDinosaur, $_GET["filter"], "..", true);
+				echo Dinosaur::printListDinosaur($connectDinosaur, $_GET["filter"], "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&");
 			else
-				echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", true);
+				echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&");
 			break;
 		case 'formadd':
 				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);

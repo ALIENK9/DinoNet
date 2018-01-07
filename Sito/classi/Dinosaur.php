@@ -5,15 +5,15 @@ include_once (__DIR__."/../loadFile.php");
 class Dinosaur {    
                 
     //metodi
-    public static function printListDinosaur($connect, $filter, $basePathImg, $editable = false){
+    public static function printListDinosaur($connect, $filter, $basePathImg, $pathUpdate, $pathDelete){
         
         $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
        
-        return Dinosaur::printListDinosaurLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $editable);
+        return Dinosaur::printListDinosaurLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete);
     }
-    public static function printListDinosaurLimit($connect, $filter, $startNumView, $numView, $basePathImg, $editable = false){
+    public static function printListDinosaurLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete){
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -40,7 +40,6 @@ class Dinosaur {
                             </div>
                             ';
                             if(isset($row["immagine"])){
-                                global $percorsoHome;
                                 $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
                             }
                             $echoString .='
@@ -52,17 +51,9 @@ class Dinosaur {
                                     <strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'
                                 </p>
                             </div>
-                            <div class="center padding-2">';
-                            if($editable){
-                                $echoString .='
-                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=formupdate&nome='.$row["nome"].'" class="btn colored"><p> Modifica</p></a>
-                                    <a href="'.$_SERVER["PHP_SELF"].'?id=dino&sez=delete&nome='.$row["nome"].'" class="btn colored"><p> Elimina </p></a>
-                                ';
-                            }
-                            else{
-                                $echoString .='<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>';
-                            }
-                            $echoString .='    
+                            <div class="center padding-2">
+                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn colored"><p> Modifica</p></a>
+                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn colored"><p> Elimina </p></a> 
                             </div>
                         </div>
                     </div>
@@ -77,6 +68,128 @@ class Dinosaur {
         return $echoString;
     }
 
+    public static function printListDinosaurUser($connect, $filter, $basePathImg, $pathLink, $orderByInsert = false){
+        
+        $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
+		$result = $connect->query($sqlQuery);
+        $row = $result->fetch_assoc();
+       
+        return Dinosaur::printListDinosaurUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink, $orderByInsert = false);
+    }
+    
+    public static function printListDinosaurUserLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathLink, $orderByInsert = false){
+        $echoString="";
+        if(isset($connect)){
+            $sqlFilter = "";
+            if(isset($filter) && $filter!=""){
+                $words = explode(" ",$filter);
+                $sqlFilter="WHERE ";
+                foreach($words as $value){
+                    $sqlFilter .= "nome LIKE '%".$value."%' OR peso LIKE '%".$value."%' OR altezza LIKE '%".$value."%' OR lunghezza LIKE '%".$value."%'
+                    OR periodomin LIKE '%".$value."%' OR periodomax LIKE '%".$value."%' OR habitat LIKE '%".$value."%' OR alimentazione LIKE '%".$value."%' OR tipologiaalimentazione LIKE '%".$value."%'
+                    OR descrizionebreve LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR curiosita LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
+                }
+            }
+             
+            if($orderByInsert){                
+                $sqlFilter .= "ORDER BY datains DESC, nome";
+            }
+            else{
+                $sqlFilter .= "ORDER BY nome";
+            }
+            $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione, immagine, descrizionebreve FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $echoString .='
+                    <div class="third wrap-padding">
+                        <div  class="daily-dino card margin-half">
+                            <div class="padding-large colored">
+                                <h1>'.$row["nome"].'</h1>
+                            </div>
+                            ';
+                            if(isset($row["immagine"])){
+                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                            }
+                            $echoString .='
+                            <div class="padding-large">
+                                <ul>
+                                    <li><strong>Peso: </strong> '.$row["peso"].'</li>
+                                    <li><strong>Altezza: </strong> '.$row["altezza"].'</li>
+                                    <li><strong>Lunghezza: </strong> '.$row["lunghezza"].'</li>
+                                    <li><strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'</li>
+                                </ul>
+                                <p>
+                                '.html_entity_decode($row["descrizionebreve"]).'
+                                </p>
+                            </div>
+                            <div class="center padding-2">
+                                <a href="'.$pathLink.'nome='.$row["nome"].'" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+                            </div>
+                        </div>
+                    </div>
+                    ';                
+                }
+				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
+            } 
+            else {
+                $echoString = "0 risultati";
+            }
+        }
+        return $echoString;
+    }
+
+    public static function printDinosaur($connect, $id, $basePathImg){
+        $echoString="";
+        $sqlQuery = "SELECT nome, periodomin, periodomax, peso, altezza, lunghezza, alimentazione, immagine, habitat, descrizione, curiosita FROM dinosauro WHERE nome='$id'";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .='
+                    <div class="card">
+                        <div class="colored center wrap-padding">
+                            <h1 xml:lang="la" lang="la">'.$row["nome"].'</h1>
+                        </div>
+                        <div id="dino-card-head" class="wrap-padding w3-row-padding">
+
+                            ';
+                            if(isset($row["immagine"])){
+                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                            }
+                            $echoString .='
+                            <div id="caratteristiche" class="wrap-padding white">
+                                <h2>Caratteristiche</h2>
+                                <br>
+                                <ul>
+                                    <li><strong>Età:</strong> '.$row["periodomin"].'-'.$row["periodomax"].' milioni</li>
+                                    <li><strong>Habitat:</strong> '.$row["habitat"].'</li>
+                                    <li><strong>Altezza:</strong> '.$row["altezza"].' cm</li>
+                                    <li><strong>Lunghezza:</strong> '.$row["lunghezza"].' cm</li>
+                                    <li><strong>Peso:</strong> '.$row["peso"].' kg</li>
+                                    <li><strong>Alimentazione:</strong> '.$row["alimentazione"].'</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="wrap-padding white">
+                            <h2>Descrizione</h2>
+                            <br>
+                            '.html_entity_decode($row["descrizione"]).'                            
+                            <br>
+                            <h2>Una curiosità</h2>
+                            <br>
+                            '.html_entity_decode($row["curiosita"]).'
+                        </div>
+                    </div>                
+                ';
+            }
+        }
+        else {
+            $echoString = "0 risultati";
+        }
+        return $echoString; 
+    }
+
     public function deleteDinosaur($connect, $id){
         $echoString = "";
         if(isset($connect)){
@@ -86,7 +199,8 @@ class Dinosaur {
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
                     
-                    delImage(__DIR__."/../".$row["immagine"]);                   
+                    if($row["immagine"]!=NULL && $row["immagine"]!="" )
+                        delImage(__DIR__."/../".$row["immagine"]);                   
 
                     $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$id."' ";
                     if( $connect->query($sqlQuery) ){
@@ -150,13 +264,13 @@ class Dinosaur {
 						<input type="text" id="alimentazione" name="alimentazione" value="">
 						
 						<p><label for="descrizionebreve">Descrizione Breve:</label></p>
-						<input type="text" id="descrizionebreve" name="descrizionebreve" value="">
+						<textarea type="text" id="descrizionebreve" name="descrizionebreve" value=""></textarea>
 						
 						<p><label for="descrizione">Descrizione:</label></p>
-						<input type="text" id="descrizione" name="descrizione" value="">
+						<textarea type="text" id="descrizione" name="descrizione" value=""></textarea>
 						
 						<p><label for="curiosita">Curiosità:</label></p>
-                        <input type="text" id="curiosita" name="curiosita" value="">                        
+                        <textarea type="text" id="curiosita" name="curiosita" value=""></textarea>         
                
                         <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
                         <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
@@ -200,10 +314,9 @@ class Dinosaur {
             if($immagine['error'] == 0){
                 $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine);
             }
-            
             $sqlQuery = "INSERT INTO dinosauro (
                 nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
-                VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".$descrizionebreve."', '".$descrizione."', '".$curiosita."', '".date('Y-m-j')."', '".$idautore."', ";
+                VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".htmlentities($descrizionebreve, ENT_QUOTES)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($curiosita, ENT_QUOTES)."', '".date('Y-m-j')."', '".$idautore."', ";
             if( $destinazioneFileDB != NULL)
                 $sqlQuery .= "'".$destinazioneFileDB."'";
             else{
@@ -289,13 +402,13 @@ class Dinosaur {
 							<input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
 							
 							<p><label for="descrizionebreve">Descrizione breve:</label></p>
-							<input type="text" id="descrizionebreve" name="descrizionebreve" value="'.$row["descrizionebreve"].'">
+							<textarea type="text" id="descrizionebreve" name="descrizionebreve"> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
 							
 							<p><label for="descrizione">Descrizione:</label></p>
-							<input type="text" id="descrizione" name="descrizione" value="'.$row["descrizione"].'">
+							<textarea type="text" id="descrizione" name="descrizione"> '.html_entity_decode($row["descrizione"]).'</textarea>
 							
 							<p><label for="curiosita">Curiosità:</label></p>
-							<input type="text" id="curiosita" name="curiosita" value="'.$row["curiosita"].'">
+							<textarea type="text" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
                             
                             <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
@@ -357,8 +470,8 @@ class Dinosaur {
             }
 
             $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
-            periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".$descrizionebreve."',
-            descrizione='".$descrizione."', curiosita='".$curiosita."'";
+            periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".htmlentities($descrizionebreve, ENT_QUOTES)."',
+            descrizione='".htmlentities($descrizione, ENT_QUOTES)."', curiosita='".htmlentities($curiosita, ENT_QUOTES)."'";
             if( $destinazioneFileDB != NULL){
                 $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
             }
@@ -381,7 +494,7 @@ class Dinosaur {
 
         return $echoString;
     }
-    public static function getDinosaurDay($connect){
+    public static function getDinosaurDay($connect, $basePathImg, $pathLink){
         
         $echoString ="";
         
@@ -396,12 +509,12 @@ class Dinosaur {
         }
 
         
-        if($result->num_rows == 0 || $data != date('Y-m-j')){
+        if($result->num_rows == 0 || $data != date('Y-m-d')){
             $sqlQuery2 = "SELECT nome FROM dinosauro WHERE nome != '$id' ORDER BY rand() LIMIT 1";
             $result2 = $connect->query($sqlQuery2);
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['nome'];
-                $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('$id', '".date('Y-m-j')."') ";
+                $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('$id', '".date('Y-m-d')."') ";
                 if( !$connect->query($sqlQuery3) ){                
                     $echoString = "Errore: Aggiornamento impostazioni";
                 } 
@@ -417,38 +530,72 @@ class Dinosaur {
             $result4 = $connect->query($sqlQuery4);
             
             if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
-                $echoString = "
-                    <div class=\"daily-dino card\"> <!--tolto wrap-margin-->
-                        <div class=\"padding-large colored\">
-                            <h1> $row4[nome] </h1>
+                $echoString = '
+                    <div  class="daily-dino card margin-half">
+                        <div class="padding-large colored">
+                            <h1> '.$row4["nome"].' </h1>
                         </div>
-                        ";
+                        ';
                         if(isset($row4["immagine"])){
-                            global $percorsoHome;
-                            $echoString .=' <img src="'.$percorsoHome.$row4["immagine"].'" alt="Immagine di un '.$row4["nome"].'"/>';
+                            $echoString .=' <img src="'.$basePathImg.$row4["immagine"].'" alt="Immagine di un '.$row4["nome"].'"/>';
                         }
-                        $echoString .="
-                        <div class=\"padding-large\">
+                        $echoString .='
+                        <div class="padding-large">
                             <ul>
-                                <li><strong>Alimentazione:</strong> $row4[tipologiaalimentazione]</li>
-                                <li><strong>Habitat:</strong>$row4[habitat]</li>
-                                <li><strong>Peso:</strong> $row4[peso]</li>
+                                <li><strong>Alimentazione:</strong> '.$row4["tipologiaalimentazione"].'</li>
+                                <li><strong>Habitat:</strong>'.$row4["habitat"].'</li>
+                                <li><strong>Peso:</strong> '.$row4["peso"].'</li>
                             </ul>
                             <p>
-                                $row4[descrizionebreve]
+                            '.html_entity_decode($row4["descrizionebreve"]).'
                             </p>
                         </div>
-                        <div class=\"center padding-2\">
-                            <a href=\"display-specie.php\" class=\"btn colored\"><p> Visualizza la scheda del dinosauro </p></a>
+                        <div class="center padding-2">
+                            <a href="'.$pathLink.'nome='.$row4["nome"].'" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
                         </div>
-                    </div>                    
-                ";
+                    </div>             
+                ';
             }
             else{
                 $echoString = "Errore: Non ci sono dinosauri";
             }
         }
 
+        return $echoString;
+    }
+
+    public static function getComment($connect, $idDino){
+        $echoString ="";
+        
+        $sqlQuery = "SELECT nome, cognome, commento FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"$idDino\"";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .= '
+                    <div class="comment">
+                        <p>
+                            '.$row["nome"].' '.$row["cognome"].'
+                        </p>
+                        <p class="card wrap-padding-small">
+                            '.$row["commento"].'
+                        </p>
+                    </div>';
+            }
+        }
+        else{
+            $echoString = "Non sono presenti commenti";
+        }
+        return $echoString;
+    }
+    
+    public static function addComment($connect, $idDino, $idUser, $text){
+        $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$idDino."', '".$text."')";
+        if( $connect->query($sqlQuery) ){
+            $echoString = "Elemento Aggiunto";
+        } 
+        else {
+            $echoString = "Elemento NON Aggiunto";
+        }
         return $echoString;
     }
      

@@ -1,5 +1,11 @@
-<?php
-	session_start();
+<?php   
+
+    session_start(); 
+    
+    include_once ("classi/Dinosaur.php");	
+    
+	include_once ("connect.php");
+	$connectSpecies = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -84,6 +90,9 @@
         </div>
         <div class="row-padding content-large margin-top">
             <?php
+            
+				echo Dinosaur::printListDinosaurUser($connectSpecies, "", ".", "display-specie.php?");
+            /*
             for($i = 0; $i < 9; $i++) {
                 echo'
 			<div class="third wrap-padding">
@@ -112,6 +121,7 @@
 			</div>
 		';
             }
+           */ 
             ?>
         </div>
     </div>
@@ -124,3 +134,7 @@
 
 </body>
 </html>
+<?php
+
+	closeConnect($connectSpecies);
+?>

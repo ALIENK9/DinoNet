@@ -1,10 +1,11 @@
 <?php
 
-	include_once (__DIR__."/../classi/UserAdmin.php");
+	include_once ("../classi/UserAdmin.php");
 
 	session_start();
 
-	include_once (__DIR__."/../connect.php");
+	include_once ("../connect.php");
+	
 	$connectLogin = startConnect();
 	
 	if(isset($_SESSION['user'])){	
@@ -18,7 +19,8 @@
 			header("Location: panel.php");
 		}	
 	}
-
+	
+	closeConnect($connectLogin);
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +93,3 @@
 <!-- /Body -->
 
 </html>
-
-<?php
-	
-	closeConnect($connectLogin);
-	
-?>

@@ -1,6 +1,6 @@
 <?php
 	
-	include_once (__DIR__."/../classi/UserAdmin.php");
+	include_once ("../classi/UserAdmin.php");
 
 	session_start();	
 	if(isset($_SESSION['user'])){
@@ -10,7 +10,7 @@
 		}
 	
 
-		include_once (__DIR__."/../connect.php");
+		include_once ("../connect.php");
 		$connectPanel = startConnect();
 		
 ?>
@@ -64,7 +64,7 @@
 
     <!-- Topbar -->
 
-    <?php //include_once('../topbar.php') ?>
+    <?php include_once('../topbar.php') ?>
 
     <!-- /Topbar -->
 
@@ -90,7 +90,7 @@
 					if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
 						echo $_SESSION['user']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
 					else
-						echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]);
+						echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
 				break;
 
 			case 'dino':
@@ -109,7 +109,7 @@
 
 	<!-- /inclusione pagina da visualizzare -->
 
-    <?php //include_once('../footer.php') ?>
+    <?php include_once('../footer.php') ?>
 	
     </div>
 	

@@ -1,13 +1,11 @@
 <?php
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-	include_once ($homepath . "/classi/Dinosaur.php");
+	include_once ("classi/Dinosaur.php");
 	
 	session_start();
+
+	include_once ("connect.php");
+	$connectSpecies = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -100,7 +98,7 @@
 		</div>
 		<?php
 		
-			echo Dinosaur::getDinosaurDay();
+			echo Dinosaur::getDinosaurDay($connectSpecies, ".", "display-specie.php?");
 		/*
 		?>		
 		<div class="daily-dino card"> <!--tolto wrap-margin-->
@@ -163,7 +161,7 @@
 	<div class="row-padding content-large margin-top">
 	<?php
 	
-		echo Dinosaur::printListDinosaurLimit("", 0, 3, false);
+		echo Dinosaur::printListDinosaurUserLimit($connectSpecies, "", 0, 3, ".", "display-specie.php?", true);
 		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'
@@ -209,3 +207,7 @@
 <!-- /Body -->
 
 </html>
+<?php
+
+	closeConnect($connectSpecies);
+?>

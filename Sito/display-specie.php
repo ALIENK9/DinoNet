@@ -1,5 +1,10 @@
 <?php
 	session_start();
+
+	include_once ("classi/Dinosaur.php");
+	
+	include_once ("connect.php");
+	$connectSpecies = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -56,7 +61,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> Il Coelophysis </h1>
+		<h1> <?php echo $_GET["nome"]; ?> </h1>
 	</div>
 </header>
 
@@ -68,8 +73,13 @@
 
 
 <!-- Dinosauro -->
-
 <div class="content-large padding-3">
+
+	<?php 
+
+	echo Dinosaur::printDinosaur($connectSpecies, $_GET["nome"],".");
+	
+	/*
 	<div class="card">
 		<div class="colored center wrap-padding">
 			<h1 xml:lang="la" lang="la">Coelopysis</h1>
@@ -120,9 +130,37 @@
 			</p>
 		</div>
 	</div>
-	<div class="center wrap-padding">
-		<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa dei dinosauri </p></a>
+	*/
+	?>
+	
+</div>
+<div id="commentboard" class="content panel">
+	<div class="card wrap-padding">
+		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
+		<?php echo Dinosaur::getComment($connectSpecies,$_GET["nome"]) ?>
 	</div>
+	<div class="card center wrap-padding colored">			
+		<?php
+		if(isset($_SESSION['user'])){
+			echo '
+			<form action="addComment-specie.php" method="POST">				
+				<input type="hidden" name="idspecie" value="'.$_GET["nome"].'">
+				<h3><label for="casella-commento">Commenta</label></h3>
+				<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
+				<br>
+				<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
+			</form>
+			';
+		}
+		else{
+			echo "Per commentare devi effettuare l'accesso";
+		}
+		?>
+	</div>
+</div>
+
+<div class="center wrap-padding">
+	<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa dei dinosauri </p></a>
 </div>
 
 <?php include_once('footer.php') ?>
@@ -136,3 +174,6 @@
 <!-- /Body -->
 
 </html>
+<?php
+closeConnect($connectSpecies);
+?>

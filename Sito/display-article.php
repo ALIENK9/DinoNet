@@ -1,5 +1,11 @@
 <?php
-	session_start();
+	session_start();	
+
+	include_once ("classi/Article.php");
+	
+	include_once ("connect.php");
+	$connectArticle = startConnect();
+
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -56,7 +62,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> Titolo dell'articolo </h1>
+		<h1> <?php echo $_GET["titolo"]; ?></h1>
 	</div>
 </header>
 
@@ -69,6 +75,13 @@
 <!-- Articoli -->
 
 <div class="content-large padding-3">
+	
+	<?php
+
+	echo Article::printArticle($connectArticle, $_GET["id"],".");
+	
+
+	/*
 	<div class="card">
 		<div class="padding-large colored">
 			<h1> Estinzione: diverse teorie</h1>
@@ -165,9 +178,35 @@
 			</p>
 		</div>
 	</div>
+	*/?>
 </div>
 
-<?php include_once 'commentboard.php'?>
+<?php //include_once 'commentboard.php'?>
+
+<div id="commentboard" class="content panel">
+	<div class="card wrap-padding">
+		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
+		<?php echo Article::getComment($connectArticle,$_GET["id"]) ?>
+	</div>
+	<div class="card center wrap-padding colored">			
+		<?php
+		if(isset($_SESSION['user'])){
+			echo '
+			<form action="addComment-article.php" method="POST">				
+				<input type="hidden" name="idarticolo" value="'.$_GET["id"].'">
+				<h3><label for="casella-commento">Commenta</label></h3>
+				<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
+				<br>
+				<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
+			</form>
+			';
+		}
+		else{
+			echo "Per commentare devi effettuare l'accesso";
+		}
+		?>
+	</div>
+</div>
 
 <div class="padding-6 no-print">
 	<div class="colored center wrap-padding">
@@ -175,32 +214,12 @@
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
-		for($i = 0; $i < 3; $i++) {
-		echo'
-			<div class="third wrap-padding">
-				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">
-						<h1> L\'articolo del giorno </h1>
-					</div>
-					<img src="img/dailyarticle-test.jpg" alt="Resti fossili di un dinosauro">
-					<div class="padding-large">
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="" class="btn colored"><p> Leggi l\'articolo </p></a>
-					</div>
-				</div>
-			</div>
-		';
-		}
+		echo Article::printListArticleUserLimit($connectArticle, "", 0, 3, ".", "display-article.php?", true);
+		
 	?>
 	</div>
 </div>
+
 
 <?php include_once('footer.php') ?>
 
@@ -213,3 +232,9 @@
 <!-- /Body -->
 
 </html>
+
+<?php
+
+closeConnect($connectArticle);
+
+?>

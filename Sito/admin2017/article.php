@@ -44,25 +44,25 @@ if(isset($_SESSION['user'])){
 	
 		<?php
 			if(isset($_GET["filter"]))
-				echo Article::printListArticle($connectArticle, $_GET["filter"], "..", true);
+				echo Article::printListArticle($connectArticle, $_GET["filter"], "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
 			else
-				echo Article::printListArticle($connectArticle, "", "..", true);
+				echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
 			break;
 		case 'formadd':
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Article::addArticle($connectArticle, $_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
+			echo Article::addArticle($connectArticle, $_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
 			break;			
 		case 'formupdate':
-			echo Article::formUpdateArticle($coconnectArticlennect, $_SERVER["PHP_SELF"],$_GET["article"]);
+			echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"],$_GET["article"]);
 			break;
 		case 'update':		
 			$removeimg=false;
 			if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
 				$removeimg=true;
 			}
-			echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
+			echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
 			break;	
 		case 'delete':
 			if(isset($_GET["article"]))

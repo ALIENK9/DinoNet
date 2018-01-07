@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	include_once ("classi/Dinosaur.php");
+	include_once ("classi/Article.php");
+	include_once ("connect.php");
+	$connect = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -112,54 +116,25 @@
 
 <!-- Materiale del giorno -->
 
+
 <div id="daily-stuff" class="content-large padding-6 no-print">
 	<div class="row-padding">
 		<div class="half">
-			<div id="daily-dino" class="card daily-dino">
-				<div class="padding-large colored">
-					<h1> Il dinosauro del giorno </h1>
-				</div>
-				<img src="img/dailydino-test.png" alt="immagine raffigurante un triceratopo">
-				<div class="padding-large">
-					<h2 class="text-colored center"> Nome del dinosauro </h2>
-					<br>
-					<ul>
-						<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
-						<li><strong>Alimentazione:</strong> Carnivoro</li>
-						<li><strong>Peso:</strong> 100q</li>
-					</ul>
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-						sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-						consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-					</p>
-				</div>
-				<div class="center padding-2">
-					<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
-				</div>
+			<div class="card margin-half colored center wrap-padding">
+				<h1>Il dinosauro del giorno</h1>
 			</div>
+			<?php			
+				echo Dinosaur::getDinosaurDay($connect, ".", "display-specie.php?");
+			?>
 		</div>
 		<div class="half">
-			<div id="daily-article" class="card daily-article">
-				<div class="padding-large colored">
-					<h1> L'articolo del giorno </h1>
-				</div>
-				<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
-				<div class="padding-large">
-					<h2 class="text-colored center"> Titolo dell'articolo </h2>
-					<br>
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-						sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-						consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-					</p>
-				</div>
-				<div class="center padding-2">
-					<a href="display-article.php" class="btn colored"><p> Leggi l'articolo </p></a>
-				</div>
+			<div id="daily-article" class="card margin-half colored center wrap-padding">
+				<h1>L'articolo del giorno</h1>
 			</div>
+			<?php				
+				echo Article::getArticleDay($connect,".", "display-article.php?");
+			?>
+		
 		</div>
 	</div>
 </div>
@@ -180,3 +155,6 @@
 <!-- /Body -->
 
 </html>
+<?php
+	closeConnect($connect);
+?>

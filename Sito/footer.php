@@ -20,14 +20,6 @@
             Le icone utilizzate sono state prelevate dai siti <a href="https://icons8.it/">Icons8</a>,
             <a href="https://www.flaticon.com/">Flaticon</a>.
         </p>
-
-        <p id="sitemap">
-            <a href="index.php" <?php if($currentPage == $pages["index"]) echo 'class="disabled"'; ?>>Home</a> |
-            <a href="history.php" <?php if($currentPage == $pages["history"]) echo 'class="disabled"'; ?>>Storia</a> |
-            <a href="species.php" <?php if($currentPage == $pages["species"]) echo 'class="disabled"'; ?>>Specie</a> |
-            <a href="articles.php" <?php if($currentPage == $pages["articles"]) echo 'class="disabled"'; ?>>Articoli</a> |
-            <a href="login.php" <?php if($currentPage == $pages["login"]) echo 'class="disabled"'; ?>>Accesso</a>
-        </p>
 	</div>
 </footer>
 

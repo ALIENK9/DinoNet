@@ -1,5 +1,11 @@
 <?php
-	session_start();
+
+    session_start();
+
+    include_once ("classi/Article.php");	
+    
+	include_once ("connect.php");
+	$connectArticle = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -83,6 +89,8 @@
         </div>
         <div class="row-padding content-large margin-top">
             <?php
+            echo Article::printListArticleUser($connectArticle, "", ".", "display-article.php?");
+            /*
             for($i = 0; $i < 10; $i++) {
                 echo'
 			<div class="third wrap-padding">
@@ -106,6 +114,7 @@
 			</div>
 		';
             }
+            */
             ?>
         </div>
     </div>
@@ -118,3 +127,7 @@
 
 </body>
 </html>
+<?php
+
+	closeConnect($connectArtilce);
+?>

@@ -4,15 +4,15 @@ include_once (__DIR__."/../loadFile.php");
     
 class Article{
 
-    public static function printListArticle($connect, $filter, $basePathImg, $editable = false){
+    public static function printListArticle($connect, $filter, $basePathImg, $pathUpdate, $pathDelete){
         $sqlQuery = "SELECT count(id) as ntot FROM articolo";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
         
-        return Article::printListArticleLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $editable);
+        return Article::printListArticleLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete);
     }
 
-    public static function printListArticleLimit($connect, $filter, $startNumView, $numView, $basePathImg, $editable = false){
+    public static function printListArticleLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete){
         $echoString="";
         $sqlFilter = "";
 
@@ -48,17 +48,9 @@ class Article{
                                 <strong>Età: </strong> '.$row["eta"].'
                             </p>
                         </div>
-                        <div class="center padding-2">';
-                            if($editable){
-                                $echoString .='
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=formupdate&article='.$row["id"].'" class="btn colored"><p> Modifica</p></a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=article&sez=delete&article='.$row["id"].'" class="btn colored"><p> Elimina </p></a>
-                                ';
-                            }
-                            else{
-                                $echoString .='<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>';
-                            }
-                            $echoString .='
+                        <div class="center padding-2">                                
+                            <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn colored"><p> Modifica</p></a>
+                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn colored"><p> Elimina </p></a>                               
                         </div>
                     </div>
                 </div>
@@ -72,13 +64,104 @@ class Article{
         return $echoString;
     }
 
+    public static function printListArticleUser($connect, $filter, $basePathImg, $pathLink, $orderByInsert = false){
+        $sqlQuery = "SELECT count(id) as ntot FROM articolo";
+		$result = $connect->query($sqlQuery);
+        $row = $result->fetch_assoc();
+        
+        return Article::printListArticleUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink);
+    }
+
+    public static function printListArticleUserLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathLink, $orderByInsert = false){
+        $echoString="";
+        $sqlFilter = "";
+
+		if(isset($filter)){
+			$words = explode(" ",$filter);
+			$sqlFilter="WHERE ";
+			foreach($words as $value){
+				$sqlFilter .= "id LIKE '%".$value."%' OR titolo LIKE '%".$value."%' OR sottotitolo LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR eta LIKE '%".$value."%' OR descrizioneimg LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
+			}
+		}
+		
+        if($orderByInsert){                
+            $sqlFilter .= "ORDER BY id DESC, titolo, sottotitolo, eta";
+        }
+        else{
+            $sqlFilter .= "ORDER BY id, titolo, sottotitolo, eta";
+        }
+		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg, anteprima FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+		$result = $connect->query($sqlQuery);
+
+		if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+                $echoString .='
+				<div class="third wrap-padding">
+                    <div class="daily-article card margin-half">
+                        <div class="padding-large colored">
+                            <h1> '.$row["titolo"].' </h1>
+                        </div>
+                        ';
+                        if(isset($row["immagine"])){
+                            $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                        }
+                        $echoString .='
+                        <div class="padding-large">
+                            <h3 class="text-colored center"> '.$row["sottotitolo"].' </h3>
+                            <br>
+                            <p>
+                                '.$row["anteprima"].'
+                            </p>
+                        </div>
+                        <div class="center padding-2">
+                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" class="btn colored"><p> Leggi l\'articolo </p></a>
+                        </div>
+                    </div>
+                </div>
+                ';
+			}
+			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
+		} 
+		else {
+            $echoString = "0 risultati";
+		}
+        return $echoString;
+    }
+
+    public static function printArticle($connect, $id, $basePathImg){
+        $echoString="";
+        $sqlQuery = "SELECT sottotitolo, descrizione FROM articolo WHERE id='$id'";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .='
+                    <div class="card">
+                        <div class="padding-large colored">
+                            <h1> '.$row["sottotitolo"].'</h1>
+                        </div>
+
+                        <div class="wrap-padding article-content">
+                            '.html_entity_decode($row["descrizione"]).'                            
+                        </div>
+                    </div>            
+                ';
+            }
+        }
+        else {
+            $echoString = "0 risultati";
+        }
+        return $echoString; 
+    }
+
     public static function deleteArticle($connect, $id){   
         $echoString="";
         if(isset($id)){                    
             $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$id."' ";
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {  
-                delImage(__DIR__."/../".$row["immagine"]);  
+                
+                if($row["immagine"]!=NULL && $row["immagine"]!="" )
+                    delImage(__DIR__."/../".$row["immagine"]);  
 
                 $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
                 if( $connect->query($sqlQuery) ){
@@ -111,7 +194,10 @@ class Article{
 						<input type="text" id="sottotitolo" name="sottotitolo" value="">
 						
 						<p><label for="descrizione">Descrizione:</label></p>
-						<input type="text" id="descrizione" name="descrizione" value="">
+                        <textarea type="text" id="descrizione" name="descrizione" value=""></textarea>
+                        
+						<p><label for="anteprima">Anteprima:</label></p>
+						<textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
 						
 						<p><label for="eta">Età di riferimento (in milioni di anni):</label></p>
 						<input type="number" id="eta" name="eta" value="">
@@ -132,19 +218,20 @@ class Article{
         ';
         return $echoString;
     }
-    public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine){
+    public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine){
         $echoString="";
         if(
             isset($titolo) &&
             isset($sottotitolo) &&
             isset($descrizione) &&
+            isset($anteprima) &&
             isset($eta) &&
             isset($descrizioneimg) /*&&
             bisogna controllare che la data sia effettivamente una data
             */
         ){
             
-            $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, eta, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".$descrizione."', '".$eta."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
+            $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, eta, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$eta."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
             
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Aggiunto";
@@ -196,7 +283,10 @@ class Article{
 							<input type="text" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'">
 							
 							<p><label for="descrizione">Descrizione:</label></p>
-							<input type="text" id="descrizione" name="descrizione" value="'.$row["descrizione"].'">
+							<textarea type="text" id="descrizione" name="descrizione">'.$row["descrizione"].'</textarea>
+                            
+                            <p><label for="anteprima">Anteprima:</label></p>
+							<textarea type="text" id="anteprima" name="anteprima">'.$row["anteprima"].'</textarea>
 							
 							<p><label for="eta">Eta in milioni di anni:</label></p>
 							<input type="number" id="eta" name="eta" value="'.$row["eta"].'">
@@ -226,7 +316,7 @@ class Article{
         return $echoString;
     }
 
-    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $eta, $descrizioneimg, $immagine, $removeImage){
+    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine, $removeImage){
         $echoString="";
         if(
             isset($titolo) &&
@@ -253,7 +343,7 @@ class Article{
                 $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine);
             }
 
-            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".$descrizione."', eta='".$eta."', descrizioneimg='".$descrizioneimg."'";
+            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', eta='".$eta."', descrizioneimg='".$descrizioneimg."'";
             if( $destinazioneFileDB != NULL){
                 $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
             }
@@ -274,7 +364,7 @@ class Article{
         }
         return $echoString;
     }
-    public static function getArticleDay($connect){
+    public static function getArticleDay($connect, $basePathImg, $pathLink){
         
         $echoString ="";
         
@@ -288,12 +378,12 @@ class Article{
             $data = $row['data'];
         }
 
-        if($result->num_rows == 0 || $data != date('Y-m-j')){
+        if($result->num_rows == 0 || $data != date('Y-m-d')){
             $sqlQuery2 = "SELECT id FROM articolo WHERE id != '$id' ORDER BY rand() LIMIT 1";
             $result2 = $connect->query($sqlQuery2);
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['id'];
-                $sqlQuery3 = "INSERT INTO articolodelgiorno  (idarticolo,data) values ('$id', '".date('Y-m-j')."') ";
+                $sqlQuery3 = "INSERT INTO articolodelgiorno  (idarticolo,data) values ('$id', '".date('Y-m-d')."') ";
                 if( !$connect->query($sqlQuery3) ){                
                     $echoString = "Errore: Aggiornamento Articolo del giorno";
                 } 
@@ -310,29 +400,29 @@ class Article{
             $result4 = $connect->query($sqlQuery4);
             
             if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
-                $echoString = "
-                    <div id=\"daily-article\" class=\"card daily-article\">
-                        <div class=\"padding-large colored\">
-                            <h1> $row4[titolo] </h1>
+                $echoString = '
+                    <div class="daily-article card margin-half">
+                        <div class="padding-large colored">
+                            <h1> '.$row4["titolo"].' </h1>
                         </div>
-                        ";
+                        ';
                         if(isset($row4["immagine"])){
-                            global $percorsoHome;
-                            $echoString .=' <img src="'.$percorsoHome.$row4["immagine"].'" alt="'.$row4["descrizioneimg"].'"/>';
+                            $echoString .=' <img src="'.$basePathImg.$row4["immagine"].'" alt="'.$row4["descrizioneimg"].'"/>';
                         }
-                        $echoString .="
-                        <div class=\"padding-large\">
-                            <h3 class=\"text-colored center\"> $row4[sottotitolo] </h3>
+                        $echoString .='
+                        <div class="padding-large">
+                            <h3 class="text-colored center"> '.$row4["sottotitolo"].' </h3>
                             <br>
                             <p>
-                                $row4[descrizione]
+                                '.$row4["anteprima"].'
                             </p>
                         </div>
-                        <div class=\"center padding-2\">
-                            <a href=\"display-article.php\" class=\"btn colored\"><p> Leggi l'articolo </p></a>
+                        <div class="center padding-2">
+                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" class="btn colored"><p> Leggi l\'articolo </p></a>
                         </div>
-                    </div>                   
-                ";
+                    </div>       
+                                   
+                ';
             }
             else{
                 $echoString = "Errore: Non ci sono articoli";
@@ -341,7 +431,42 @@ class Article{
 
         return $echoString;
     }
-                    
+      
+    public static function getComment($connect, $idArticle){
+        $echoString ="";
+        
+        $sqlQuery = "SELECT nome, cognome, commento FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .= '
+                    <div class="comment">
+                        <p>
+                            '.$row["nome"].' '.$row["cognome"].'
+                        </p>
+                        <p class="card wrap-padding-small">
+                            '.$row["commento"].'
+                        </p>
+                    </div>';
+            }
+        }
+        else{
+            $echoString = "Non sono presenti commenti";
+        }
+        return $echoString;
+    }
+    
+    public static function addComment($connect, $idArticle, $idUser, $text){
+        $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$text."')";
+        if( $connect->query($sqlQuery) ){
+            $echoString = "Elemento Aggiunto";
+        } 
+        else {
+            $echoString = "Elemento NON Aggiunto";
+        }
+        return $echoString;
+    }
+
 }
 
 ?>

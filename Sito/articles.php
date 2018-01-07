@@ -1,15 +1,11 @@
 <?php
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
-
-	include_once ($homepath . "/classi/Article.php");
+	include_once ("classi/Article.php");
 
 session_start();
-	
+
+include_once ("connect.php");
+$connectArticles = startConnect();
+
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -101,7 +97,7 @@ session_start();
 
 	<?php
 		
-			echo Article::getArticleDay();
+			echo Article::getArticleDay($connectArticles,".", "display-article.php?");
 		/*
 		?>
 	<div id="daily-article" class="card daily-article">
@@ -133,7 +129,7 @@ session_start();
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php
-		echo Article::printListArticleLimit("", 0, 3, false);
+		echo Article::printListArticleUserLimit($connectArticles, "", 0, 3, ".", "display-article.php?", true);
 		/*
 		for($i = 0; $i < 3; $i++) {
 		echo'
@@ -174,3 +170,8 @@ session_start();
 <!-- /Body -->
 
 </html>
+
+<?php
+
+	closeConnect($connectArticles);
+?>

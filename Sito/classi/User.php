@@ -85,7 +85,7 @@ class User {
     public static function login($connect, $user, $pass, $tipologia){
         $status = false;
         if($connect != null){
-            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia='".$tipologia."'";
+            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia >='".$tipologia."'";
             $result=$connect->query($sqlQuery);
             if($result->num_rows > 0){
                 $status = true;
@@ -104,7 +104,7 @@ class User {
 					<h1>Modifica i tuoi dati utente</h1>
 				</div>
 				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=myuser&sez=update" method="POST">
+					<form action="'.$url.'" method="POST">
 						<p><label for="email">Email:</label></p>
 						<input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
 						
@@ -118,10 +118,10 @@ class User {
 						<input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
 						
 						<p><label for="password">Password:</label></p>
-						<input type="text" id="password" name="password" value="'.$this->getPassword().'">
+						<input type="password" id="password" name="password" value="'.$this->getPassword().'">
 						
 						<p><label for="passwordconf">Conferma password:</label></p>
-						<input type="text" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
+						<input type="password" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
 						
 						<br><br>
 						
@@ -156,10 +156,10 @@ class User {
                 $this->setCognome($cognome);
                 $this->setDataNascita($datanascita);
                 $this->setPassword($password);
-                echo "Elemento Modificato";
+                $echoString = "Elemento Modificato";
             } 
             else {
-                echo "Elemento NON Modificato";
+                $echoString = "Elemento NON Modificato";
             }
         }
         else{

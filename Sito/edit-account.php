@@ -1,20 +1,20 @@
 <?php
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/connect.php");
-	include_once ($_SERVER['DOCUMENT_ROOT'] ."/classi/User.php");	
+
+	include_once ("classi/User.php");	
 
 	session_start();
 	
-	if(isset($_SESSION['user'])){	
-		session_unset();
+	if(!isset($_SESSION['user'])){		
+		header("Location: login.php");
 	}
+	
+	include_once ("connect.php");
+	$connectUser = startConnect();
+	if(isset($_GET["sez"]) && $_GET["sez"]=="update"){
+		$_SESSION['user']->UpdateMyUser($connectUser, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+	}
+	closeConnect($connectUser);
 
-	if(isset($_POST['email']) && isset($_POST["password"])){
-		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'0')){
-			$_SESSION['user'] = new User($_POST['email']);
-			header("Location: index.php");
-		}	
-	}
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
@@ -68,37 +68,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
-	<div class="content">
-		<div id="title-card" class="card">
-			<h1> Modifica il tuo account </h1>
-		</div>
-		
-		<!-- Modifica -->
-
-		<div id="edit">
-			<div class="card colored wrap-padding">
-				<form action="#" method="POST">
-					<p><label for="input-nome">nome</label></p>
-					<input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>">
-					<p><label for="input-cognome">cognome</label></p>
-					<input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
-					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-					<input id="input-email" type="text" placeholder="inserisci la tua email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
-					<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
-					<input id="input-passw" type="password" placeholder="inserisci la tua password" name="password">
-					<p><label for="input-passw-again">ripeti <span xml:lang="en" lang="en">password</span></label></p>
-					<input id="input-passw" type="password" placeholder="ripeti la tua password" name="password">
-					<br><br>
-					<input type="submit" value="MODIFICA" class="card btn wide text-colored white">
-				</form>
-			</div>
-		</div>
-		
-		<!-- /Modifica -->
-	</div>
-
-</header>
+<?php echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update");?>
 
 <!-- /Header -->
 

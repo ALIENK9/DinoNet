@@ -1,12 +1,7 @@
 <?php
-	$homepath = substr( $_SERVER['SCRIPT_FILENAME'],0,-strlen($_SERVER['SCRIPT_NAME']) );
-	if (strpos($_SERVER['SCRIPT_NAME'], 'TecWeb') !== false) {
-		$homepath .= "/TecWeb";
-	}
-	//$homepath = $_SERVER["DOCUMENT_ROOT"];
 
-	include_once ($homepath . "/connect.php");
-	include_once ($homepath . "/classi/User.php");
+	include_once ("connect.php");
+	include_once ("classi/User.php");
 
 	session_start();
 	
@@ -14,13 +9,16 @@
 		session_unset();
 	}
 
+	$connectLogin = startConnect();
 	if(isset($_POST['email']) && isset($_POST["password"])){
 		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'0')){
-			$_SESSION['user'] = new User($_POST['email']);
-			header("Location: index.php");
+		if(User::login($connectLogin, $_POST["email"],$_POST["password"],'0')){
+			$_SESSION['user'] = new User($connectLogin, $_POST['email']);
+			header("Location: view-account.php");
 		}	
 	}
+	
+	closeConnect($connectLogin);
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
