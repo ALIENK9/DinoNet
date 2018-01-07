@@ -62,7 +62,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> Le specie </h1>
+		<h1 class="text-colored"> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
 	</div>
 	<div id="input-area" class="content card colored wrap-padding center">
@@ -76,7 +76,7 @@
 		</div-->
 		<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
 	</div>
-	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce"></a>
+	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow colored btn card bounce"></a>
 </header>
 
 <!-- Breadcrumb -->

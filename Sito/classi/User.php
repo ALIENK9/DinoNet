@@ -98,36 +98,39 @@ class User {
         
         $echoString ='
 		
-		<header id="header-home" class="full-screen parallax">
-			<div class="padding-12 content">						
-				<div class="card white wrap-padding">
-					<h1>Modifica i tuoi dati utente</h1>
-				</div>
-				<div class="card colored wrap-padding">
-					<form action="'.$url.'" method="POST">
-						<p><label for="email">Email:</label></p>
-						<input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
-						
-						<p><label for="nome">Nome:</label></p>
-						<input type="text" id="nome" name="nome" value="'.$this->getNome().'">
-						
-						<p><label for="cognome">Cognome:</label></p>
-						<input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
-						
-						<p><label for="datanascita">Data di nascita:</label></p>
-						<input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
-						
-						<p><label for="password">Password:</label></p>
-						<input type="password" id="password" name="password" value="'.$this->getPassword().'">
-						
-						<p><label for="passwordconf">Conferma password:</label></p>
-						<input type="password" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
-						
-						<br><br>
-						
-						<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
-					</form>
-				</div>
+		<header id="header-home" class="parallax padding-6">
+			<div class="content">						
+				<div id="title-card" class="card">
+                    <h1 class="text-colored"> Modifica il tuo account </h1>
+                </div>
+                
+		        <div id="edit">
+                    <div class="card colored wrap-padding">
+                        <form action="'.$url.'" method="POST">
+                            <p><label for="email">Email:</label></p>
+                            <input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
+                            
+                            <p><label for="nome">Nome:</label></p>
+                            <input type="text" id="nome" name="nome" value="'.$this->getNome().'">
+                            
+                            <p><label for="cognome">Cognome:</label></p>
+                            <input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
+                            
+                            <p><label for="datanascita">Data di nascita:</label></p>
+                            <input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
+                            
+                            <p><label for="password">Password:</label></p>
+                            <input type="password" id="password" name="password" value="'.$this->getPassword().'">
+                            
+                            <p><label for="passwordconf">Conferma password:</label></p>
+                            <input type="password" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
+                            
+                            <br><br>
+                            
+                            <input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+                        </form>
+                    </div>
+                </div>
 			</div>
 		</header>
         ';

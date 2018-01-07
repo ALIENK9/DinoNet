@@ -62,7 +62,11 @@
 <header id="header-home" class="parallax padding-6">
 	<div class="content">
 		<div id="title-card" class="card">
+<<<<<<< HEAD
 			<h1> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>
+=======
+			<h1 class="text-colored"> Ciao, [Nome utente] </h1>
+>>>>>>> 5472a5fa1f17352c5dada026b9ea7021b233ad79
 			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
 		

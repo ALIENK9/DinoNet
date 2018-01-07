@@ -62,7 +62,7 @@
 
     <header id="header-home" class="parallax padding-6">
         <div id="title-card" class="content card">
-            <h1> Tutte le specie </h1>
+            <h1 class="text-colored"> Tutte le specie </h1>
             <h2> scopri informazioni dettagliate su innumerevoli dinosauri</h2>
         </div>
         <!--div id="input-area" class="content card colored wrap-padding center">
@@ -72,7 +72,7 @@
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
             </div>
         </div-->
-        <a href="#content" class="down-arrow arrow btn card bounce"></a>
+        <a href="#content" class="down-arrow arrow colored btn card bounce"></a>
     </header>
 
 	<!-- Breadcrumb -->

@@ -66,7 +66,7 @@
 	<div class="content">
 
 		<div id="title-card" class="content card">
-			<h1> Accesso al pannello di amministrazione </h1>
+			<h1 class="text-colored"> Accesso al pannello di amministrazione </h1>
 		</div>
 		
 		<!-- Login -->

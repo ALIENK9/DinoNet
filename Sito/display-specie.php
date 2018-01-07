@@ -61,7 +61,7 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> <?php echo $_GET["nome"]; ?> </h1>
+		<h1 class="text-colored"> <?php echo $_GET["nome"]; ?> </h1>
 	</div>
 </header>
 

@@ -25,6 +25,9 @@
 }
 
 
+\newcommand{\code}[1]{\texttt{#1}}
+
+
 \renewcommand*\contentsname{Sommario}
 
 \title{\textbf{Dino Net}\\\large Relazione del progetto di Tecnologie Web a.a. 2017-18}
@@ -52,27 +55,57 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\section{Descrizione dei requisiti}
-	Lo scopo di questa attività di progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textbf{schede descrittive}, una per ciascun dinosauro, e gli \textbf{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è particolarmente rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
+	\section{Descrizione dei requisiti e target}
+	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è particolarmente rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
+	
+	\section{Organizzazione dell'informazione}
+	
+	\subsection{Introduzione}
+	
+	I contenuti informativi all'interno del sito sono stati strutturati secondo uno schema organizzativo ambiguo per aree tematiche, principalmente \textit{Dinosauri} e \textit{Articoli}, rispecchiate dalle voci del menù. La scelta di questa modalità organizzativa dei contenuti, che predilige l'apprendimento associativo, è giustificata dall'assunzione che il pubblico target non abbia un'idea precisa dell'obiettivo della propria ricerca. I contenuti rispettano la struttura gerarchica seguente.
 	
 	\subsection{Frontend}
 	
-	\subsubsection{Parte pubblica}
-	Descriviamo brevemente le diverse sezioni, ciascuna corrisposta da un'apposita voce del menù:
+	Consiste nell'insieme delle pagine del sito accessibile dagli utenti non amministratori. Segue una breve descrizione delle diverse sezioni, la cui struttura come lista rispecchia l'annidamento all'interno del sito web. Ciascuna voce al livello più alto della gerarchia è corrisposta da un'apposita voce del menù.
 	\begin{itemize}
-		\item \textbf{Home}: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare tra i contenuti del sito ed un sezione con i contenuti del giorno (articoli o schede descrittive);
-		\item \textbf{Storia}: una sezione introduttiva che ripercorre a grandi linee la storia dei dinosauri;
-		\item \textbf{Specie}: qui vengono messi in evidenza i contenuti giornalieri (una scheda ed un articolo), ed i link alle schede degli ultimi dinosauri aggiunti al database. È anche possibile visualizzare la lista completa delle schede descrittive di dinosauro, tramite il link sotto la barra di ricerca. Ogni scheda descrive un solo dinosauro e contiene un'immagine, la descrizione dell'animale e talvolta qualche curiosità;
-		\item \textbf{Articoli}: qui viene visualizzato immediatamente l'articolo del giorno, e sotto a questo la raccolta degli ultimi articoli aggiunti. Analogamente alla sezione \textit{Specie}, è possibile accedere alla lista completa degli articoli. Ogni articolo ha la sua sezione di commenti lasciati dagli utenti registrati al sito;
-		\item \textbf{Accedi}: qui ogni utente può registrarsi o accedere al proprio account per scrivere o modificare i propri commenti agli articoli.
-		Anche gli amministratori effettuano l'accesso da questa pagina.
+		\item \textbf{Home (index.php)}: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare tra i contenuti del sito ed un sezione con i contenuti del giorno (articoli o schede descrittive);
+		\item \textbf{Storia (history.php)}: una sezione introduttiva che ripercorre a grandi linee la storia dei dinosauri;
+		\item \textbf{Specie (specie.php)}: qui vengono messi in evidenza i contenuti giornalieri (una scheda ed un articolo), ed i link alle schede degli ultimi dinosauri aggiunti al database. È anche possibile visualizzare la lista completa delle schede descrittive di dinosauro, tramite il link sotto la barra di ricerca. Ogni scheda descrive un solo dinosauro e contiene un'immagine, la descrizione dell'animale e talvolta qualche curiosità;
+			\begin{itemize}
+				\item \textbf{Tutte le specie (all-species.php)}: contiene la lista completa delle specie di dinosauri disponibili sul sito.
+				\begin{itemize}
+					\item \textbf{Scheda dinosauro (display-specie.php)}: visualizza la scheda del dinosauro selezionato, contenente tutti i dati ad esso relativi.
+				\end{itemize}
+			\end{itemize}
+			
+		\item \textbf{Articoli (articles.php)}: qui viene visualizzato immediatamente l'articolo del giorno, e sotto a questo la raccolta degli ultimi articoli aggiunti. Analogamente alla sezione \textit{Specie}, è possibile accedere alla lista completa degli articoli. Ogni articolo ha la sua sezione di commenti lasciati dagli utenti registrati al sito;
+		\begin{itemize}
+			\item \textbf{Tutti gli articoli (all-articles.php)}: contiene la lista completa degli articoli disponibili sul sito.
+			\begin{itemize}
+				\item \textbf{Scheda articolo (display-article.php)}: visualizza la scheda dell'articolo selezionato, contenente tutti i dati ad esso relativi.
+			\end{itemize}
+		\end{itemize}
+		\item \textbf{Accedi (login.php)}: qui ogni utente può accedere al proprio account per scrivere o modificare i propri commenti agli articoli, oppure decidere di registrarne uno nuovo. Anche gli amministratori possono effettuare l'accesso da questa pagina per il loro account utente.
+		\begin{itemize}
+			\item \textbf{Registrazione (register.php)}: qui un nuovo utente può registrare il proprio account.
+		\end{itemize}
+		
+		\item \textbf{Account (view-account.php)}: qui ogni utente può visualizzare, modificare, eliminare o disconnettere il proprio account.
+		\begin{itemize}
+			\item \textbf{Modifica account (edit-account.php)}: qui un utente può modificare il proprio account.
+		\end{itemize}
+		\begin{itemize}
+			\item \textbf{Elimina account (delete-account.php)}: qui un utente può eliminare il proprio account.
+		\end{itemize}
+		\begin{itemize}
+			\item \textbf{Logout (logout.php)}: qui un utente può disconnettere il proprio account.
+		\end{itemize}
+		
 	\end{itemize}
 
-	\subsubsection{Parte privata}
-	È la sezione accessibile solamente agli utenti amministratori. Questi utenti, possono aggiungere contenuti (articoli o schede dinosauro), e rimuovere commenti degli utenti. Naturalmente possono anch'essi inserire commenti.
-	
 	\subsection{Backend}
-	
+
+	È la sezione accessibile solamente agli utenti amministratori. Questi utenti, possono aggiungere contenuti (articoli o schede dinosauro), e rimuovere commenti degli utenti. Naturalmente possono anch'essi inserire commenti.
 	Di seguito, una breve descrizione delle sezioni a cui ha accesso un amministratore del sito.
 	
 	\begin{itemize}
@@ -87,18 +120,27 @@
 		\item \textbf{Articoli:} qui l'amministratore può cercare e/o aggiungere un articolo, nonché visualizzare la lista completa degli stessi.
 	\end{itemize}
 	
+	\section{Sviluppo}
+	
+	\subsection{Note sullo sviluppo}
 	
 	\section{Usabilità}
-	Considerato l'aspettativa di utenza, abbiamo ritenuto opportuno focalizzarci sulla semplicità dei contenuti e di utilizzo del sito, ma cercando di ottenere un risultato grafico accattivante. Abbiamo fatto largo uso di immagini, perché efficaci ad attirare l'attenzione ed a intrattenere il nostro tipo di pubblico.\\
-	Abbiamo tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo abbiamo scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
-	La presenza di molte immagini e il layout grafico "a piastrelle" che abbiamo scelto, ha anche imposto l'utilizzo dello scroll, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
-	Per quanto riguarda l'utilizzo da smartphone, abbiamo tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, abbiamo scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, visto che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, si elimina anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
+	
+	\subsection{Introduzione}
+	
+	Considerato l'aspettativa di utenza, abbiamo ritenuto opportuno focalizzarci sulla semplicità dei contenuti e di utilizzo del sito, ma cercando di ottenere un risultato grafico accattivante.
+	
+	\subsection{Grafica e layout}
+	
+	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione ed a intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
+	La presenza di molte immagini e il layout grafico "a piastrelle" designato ha inoltre imposto l'utilizzo dello scroll, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
+	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, dato che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, questa scelta riduce anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
 	
 	\subsection{Media queries}
-	Abbiamo fatto uso di media queries per garantire la compatibilità con tutti i dispositivi. Alcuni problemi sono sorti con i dispositivi Apple, che non visualizzavano correttamente l'effetto parallasse inserito nella sezione \textit{Storia}. Per questo abbiamo deciso di disabilitare questo effetto su ogni dispositivo mobile di tale marca, indipendentemente dalla dimensione.\\
+	Si è fatto uso di media queries per garantire la compatibilità con tutti i dispositivi. Alcuni problemi sono sorti con i dispositivi \textit{Apple}, che non visualizzavano correttamente l'effetto parallasse inserito nella sezione \textit{Storia}. Per questo è stato deciso di disabilitare questo effetto su ogni dispositivo mobile di tale marca, indipendentemente dalla dimensione.\\
 	Il foglio di stile \textit{print.css} definisce un layout adatto per la stampa. Tutte le immagini decorative sono rimosse, il font viene inoltre impostato su \textit{Times} e quello colorato ritorna di colore nero.\\
-	Il contenuto del giorno e la sezione \textit{Ultime aggiunte} non vengono mostrati nel layout di stampa, questo perché supponiamo che l'utente sia interessato alla stampa del solo contenuto principale della pagina, quindi il testo degli articoli o delle schede. Tuttavia, nel caso in cui si voglia stampare la pagina \textit{Home} oppure la pagina principale delle sezioni \textit{Articoli} o \textit{Specie}, che sono delle raccolte di contenuti che introducono le relative sezioni, allora i contenuti suggeriti saranno stampati, uno sotto l'altro.
-	
+	Il contenuto del giorno e la sezione \textit{Ultime aggiunte} non vengono mostrati nel layout di stampa, questo perché si suppone che l'utente sia interessato alla stampa del solo contenuto principale della pagina, quindi il testo degli articoli o delle schede. Tuttavia, nel caso in cui si voglia stampare la pagina \textit{Home} oppure la pagina principale delle sezioni \textit{Articoli} o \textit{Specie}, che sono delle raccolte di contenuti che introducono le relative sezioni, allora i contenuti suggeriti saranno stampati, uno sotto l'altro.
+
 		
 	\section{Accessibilità}
 	\subsection{Introduzione}
@@ -127,9 +169,30 @@
 	...
 	
 	\section{Compatibilità e dipendenze}
-	\subsection{Compatibilità con i browser}
+	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni.
+	\subsection{Elementi HTML5 utilizzati}
+	\begin{itemize}
+		\item \code{<header>}: questo tag è utilizzato in tutte le pagine per inserire il titolo e presentare velocemente il sito. Risulta ben supportato dai principali browser\footnote{\url{https://www.w3schools.com/tags/tag_header.asp}}.
+		\item \code{<footer>}: utilizzato in ogni pagina per dichiarare gli autori del sito e la sua natura di progetto didattico. Come nel caso precedente è ampiamente supportato;
+		\item \code{<nav>}: utilizzato nel menù per raggrupparne i link di navigazione. Come nel caso precedente è ampiamente supportato;
+		\item \code{input type="..."}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"};
+		\item \code{<figure>}: questo elemento permette di segnalare un'immagine in un documento. È particolarmente utile per la possibilità di inserire al suo interno una immagine con la relativa didascalia, attraverso il tag \code{<figcaption>}. Qualunque browser attuale lo supporta, ed il vantaggio per l'accessibilità, considerando uno screen reader aggiornato e adeguato allo standard, è evidente. Questi tag risultano supportati dai principali browser\footnote{\url{https://caniuse.com/\#search=figcaption}}, in particolare da IE 9+;
+		\item \code{aria-label}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una label, ma è nascosta all'utente che utilizza un broswer stanrard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una label equivalente, talvolta nascosta dal foglio di stile.
+	\end{itemize}
+	
+	\subsection{Browser supportati}
+	
+	Il target del sito implica la necessità che il sito funzioni perfettamente sulle ultime versioni dei browser più moderni, ovvero Chrome, Firefox, Opera, Edge. Il sito è stato testato in tutte le sue componenti con esito positivo sui seguenti browser:
+	
+	\begin{itemize}
+		\item Chrome - Versione 63.0.3239.132 (Build ufficiale) (64 bit)
+		\item Firefox Quantum - Versione 57.0.4 (64 bit)
+		\item Opera - Versione 50.0.2762.45 
+		\item Microsoft Edge - Versione 41.16299.15.0
+		\item Internet Explorer - Versione 9+\footnote{tramite simulatore reperibile al link: \url{https://www.browserling.com/internet-explorer-testing}}
+	\end{itemize} 
 	
 	\subsection{JavaScript}
-	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite è l'impossibilità di aprire il menù laterale da mobile, e cliccando il pulsante del menù si verrà rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù, con qualche effetto in meno (non segna la scheda attiva). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.
+	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite è l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.
 	
 \end{document}

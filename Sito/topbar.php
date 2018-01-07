@@ -2,7 +2,7 @@
     <form id="searchbar">
         <label for="search-input" class="hidden">Ricerca nel sito</label>
         <div id="wrapper">
-            <input id="search-input" type="search" placeholder=
+            <input id="search-input" title="Barra di ricerca" aria-label="Barra di ricerca" type="search" placeholder=
                 <?php 
                 if($currentPage == $pages["articles"] or $currentPage == $pages["all-articles"]) echo '"Cerca un articolo (ex: la grande scoperta)"';
                 else if($currentPage == $pages["species"] or $currentPage == $pages["all-species"]) echo '"Cerca un dinosauro (ex: T-Rex)"';

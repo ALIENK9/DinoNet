@@ -56,7 +56,7 @@
 
 <header class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1> La storia dei dinosauri </h1>
+		<h1 class="text-colored"> La storia dei dinosauri </h1>
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
