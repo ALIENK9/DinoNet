@@ -110,6 +110,8 @@
 	<!-- /inclusione pagina da visualizzare -->
 
     <?php include_once('../footer.php') ?>
+
+    <?php include_once('nojsmenuadmin.php') ?>
 	
     </div>
 	
