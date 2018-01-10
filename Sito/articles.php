@@ -64,19 +64,16 @@ $connectArticles = startConnect();
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
+
+        <p>
+            <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
+        </p>
+
 	</div>
-	<div id="input-area" class="content card colored wrap-padding center">
-		<!--div class="content">
-            <h1> <label for="search-article"> CERCA UN ARTICOLO! </label> </h1>
-            <input id="search-article" class="margin-2" type="text" placeholder="e.g. Scoperto dinosauro in Argentina">
-			<input type="submit" value="CERCA" class="btn wide text-colored white">
-			<br><br>
-			<h1> OPPURE </h1>
-			<a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
-		</div-->
-        <a href="all-articles.php" class="btn card colored wrap-margin"><p> Vai alla lista completa degli articoli </p></a>
-	</div>
-	<a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow colored btn card bounce"></a>
+
+    <a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce">
+        <span class="hidden">Scorri all'articolo del giorno</span>
+    </a>
 </header>
 
 <!-- Breadcrumb -->
@@ -116,7 +113,7 @@ $connectArticles = startConnect();
 			</p>
 		</div>
 		<div class="center padding-2">
-			<a href="display-article.php" class="btn colored"><p> Leggi l'articolo </p></a>
+			<a href="display-article.php" class="btn"><p> Leggi l'articolo </p></a>
 		</div>
 	</div>
 	*/
@@ -148,7 +145,7 @@ $connectArticles = startConnect();
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="display-article.php" class="btn colored"><p> Leggi l\'articolo </p></a>
+						<a href="display-article.php" class="btn"> Leggi l\'articolo </a>
 					</div>
 				</div>
 			</div>

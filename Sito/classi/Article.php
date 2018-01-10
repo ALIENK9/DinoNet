@@ -49,8 +49,8 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">                                
-                            <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn colored"><p> Modifica</p></a>
-                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn colored"><p> Elimina </p></a>                               
+                            <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
+                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn">Elimina</a>                               
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" class="btn colored"><p> Leggi l\'articolo </p></a>
+                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ class Article{
 
 						<br>
 						
-						<input type="submit" value="AGGIUGI" title="Avvia l\'operazione" class="card btn wide text-colored white" />
+						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white" />
 					</form>
 				</div>
 			</div>
@@ -418,7 +418,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" class="btn colored"><p> Leggi l\'articolo </p></a>
+                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" class="btn">Leggi l\'articolo </a>
                         </div>
                     </div>       
                                    

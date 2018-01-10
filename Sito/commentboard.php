@@ -37,8 +37,7 @@
 		<form>
 			<h3><label for="casella-commento">Commenta</label></h3>
 			<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
-			<br>
-			<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
+			<input type="submit" value="PUBBLICA" class="card btn wide white text-colored">
 		</form>
 	</div>
 </div>

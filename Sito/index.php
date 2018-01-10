@@ -62,13 +62,13 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide text-colored"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
-		<br><br>
-		<a href="#about" title="informazioni sul sito" class="btn colored wrap-margin"><p> Informazioni sul sito </p></a>
-		<!--a href="#search-label" class="btn colored wrap-margin"><p> Ricerca contenuti </p></a-->
-		<a href="#daily-stuff" class="btn colored wrap-margin"><p> Contenuti del giorno </p></a>		
+		<p>
+            <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
+        </p>
 	</div>
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow colored btn card bounce">
-        <p>Scorri alle informazioni sul sito</p>
+
+	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
+        <span class="hidden">Scorri alle informazioni sul sito</span>
     </a>
 </header>
 
@@ -85,8 +85,8 @@
 <!-- About -->
 
 <div id="about" class="content padding-6">
-	<h1 class="text-colored"> COS'È <span class="wide"> DINONET </span> </h1>
-	<br>
+	<h1 class="text-colored"> COS'È DINO NET </h1>
+
 	<p class="side-padding">
 		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
         Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,

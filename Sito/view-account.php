@@ -74,9 +74,9 @@
 			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
 			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
 			<br><br>
-			<a href="edit-account.php" class="btn card colored wrap-margin"><p> Modifica account </p></a>
-			<a href="delete-account.php" class="btn card colored wrap-margin"><p> Elimina account </p></a>
-			<a href="logout.php" class="btn card colored wrap-margin"><p xml:lang="en" lang="en"> Logout </p></a>
+			<a href="edit-account.php" class="btn card colored wrap-margin"> Modifica account </a>
+			<a href="delete-account.php" class="btn card colored wrap-margin"> Elimina account </a>
+            <a href="logout.php" class="btn card colored wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
 		</div>
 		
 		<!-- /Dati account -->

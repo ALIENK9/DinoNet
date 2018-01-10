@@ -64,19 +64,14 @@
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
+        <p>
+            <a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa delle specie </a>
+        </p>
 	</div>
-	<div id="input-area" class="content card colored wrap-padding center">
-		<!--div class="content center">
-			<h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
-			<input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
-			<input type="submit" value="CERCA" class="card btn wide text-colored white">
-			<br><br>
-			<h1> OPPURE </h1>
-			...
-		</div-->
-		<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa delle specie </p></a>
-	</div>
-	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow colored btn card bounce"></a>
+
+	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce">
+        <span class="hidden">Scorri al contenuto del giorno</span>
+    </a>
 </header>
 
 <!-- Breadcrumb -->
@@ -91,7 +86,7 @@
 
 	<!--div id="daily-dino" class="half wrap-padding"-->
 
-		<div class="card margin-half colored center wrap-padding">
+		<div id="daily-dino" class="card margin-half colored center wrap-padding">
 			<h1>Il dinosauro del giorno</h1>
 			<hr>
             <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
@@ -120,7 +115,7 @@
 				</p>
 			</div>
 			<div class="center padding-2">
-				<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+				<a href="display-specie.php" class="btn"> Visualizza la scheda del dinosauro </a>
 			</div>
 		</div>
 		<?php */ ?>
@@ -147,7 +142,7 @@
 				</p>
 			</div>
 			<div class="center padding-2">
-				<a href="" class="btn colored"><p> Leggi l'articolo </p></a>
+				<a href="" class="btn"> Leggi l'articolo </a>
 			</div>
 		</div>
 	</div-->
@@ -185,7 +180,7 @@
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+						<a href="" class="btn"> Visualizza la scheda del dinosauro </a>
 					</div>
 				</div>
 			</div>
