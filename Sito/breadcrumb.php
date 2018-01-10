@@ -27,6 +27,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		echo '<p>Home</p>';
 		break;
 		
+		case 'credits.php':
+		echo '
+			<a href="index.php"><p>Home</p></a>
+			<p> &#187; </p>
+			<p>Crediti</p>';
+		break;
+		
 		case 'view-account.php':
 		echo '
 			<a href="index.php"><p>Home</p></a>

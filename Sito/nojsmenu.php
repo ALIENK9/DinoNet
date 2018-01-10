@@ -5,7 +5,7 @@
         <p>Per visualizzare il menù laterale devi attivare JavaScript! In alternativa puoi continuare a navigare utilizzando questo menù</p>
     </div>
 
-    <nav role="navigation" title="Menù di navigazione senza javascript" aria-label="Menù di navigazione senza javascript" id="nojs-menu" class="card center hide-large">
+    <nav title="Menù di navigazione senza javascript" aria-label="Menù di navigazione senza javascript" id="nojs-menu" class="card center hide-large">
         <a class="hidden" title="Salta il menù" href="#main">Salta il menù</a>
         <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
             <span class="menu-icon icon-home"></span>

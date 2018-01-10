@@ -19,7 +19,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!-- Sidebar/menu -->
-<nav role="navigation" title="Menù di navigazione" aria-label="Menù di navigazione" id="sidebar" class="sidebar bar card center">
+<nav title="Menù di navigazione" aria-label="Menù di navigazione" id="sidebar" class="sidebar bar card center">
     <a class="hidden" title="Salta il menù" href="#main">Salta il menù</a>
     <div id="close-button" class="hide-large center menu-entry">
         <span onclick="close_menu()" class="btn">x</span>
