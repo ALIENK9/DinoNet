@@ -154,20 +154,6 @@
 		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \textit{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
 	\end{itemize}
 	
-	\subsection{Test}
-	Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
-	\begin{itemize}
-		\item \textbf{Total Validator}: utilizzato anche per la validazione delle pagine e dei fogli di stile, e disponibile in versione gratuita al sito: 
-		\url{http://www.totalvalidator.com/validator/Validator};
-		\item \textbf{FireFox Web Developer Toolbar}: un plugin per il browser Firefox;
-		\item \textbf{Fangs - Screen Reader Emulator}: disponibile al sito: \url{http://sourceforge.net/projects/fangs};
-		\item \textbf{IE Accessibility Toolbar}: compatibile solo con internet Explorer ed installabile al sito\\ \url{http://webaccessibile.org/articoli/la-barra-dellaccessibilita-versione-20};
-		\item \textbf{Cynthia Says}: disponibile al sito \url{http://www.contentquality.com}.
-	\end{itemize}
-
-	\subsection{Risultati dei test}
-	...
-	
 	\section{Compatibilità e dipendenze}
 	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni.
 	\subsection{Elementi HTML5 utilizzati}
@@ -195,4 +181,78 @@
 	\subsection{JavaScript}
 	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite è l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.
 	
+	\section{Test}
+	
+	\subsection{Accessibilità}
+	
+	\subsubsection{Strumenti}
+	
+	Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
+	
+	\begin{itemize}
+		\item \textbf{Total Validator}: validatore di accessibilità e correttezza del markup disponibile in versione gratuita al sito:
+		\\ \url{http://www.totalvalidator.com/validator/Validator};
+		
+		\item \textbf{IE Accessibility Toolbar}: barra di strumenti per test di accessibilità compatibile solo con internet Explorer ed installabile al sito:
+		\\ \url{http://webaccessibile.org/articoli/la-barra-dellaccessibilita-versione-20};
+		
+		\item \textbf{Cynthia Says}: validatore di accessibilità disponibile al sito: 
+		\\ \url{http://www.contentquality.com};
+		
+		\item \textbf{Toptal Colorblind Web Page Filter}: simulatore di daltonismo utilizzato per visualizzare come il sito viene visto da un individuo affetto da Protanopia, Deutanopia, Tritanopia e Achromatopsia, disponibile gratuitamente al sito: 
+		\\ \url{https://www.toptal.com/designers/colorfilter};
+		
+		\item \textbf{WebAIM Color Contrast Checker}: validatore di contrasto del colore disponibile gratuitamente al sito: 
+		\\ \url{https://webaim.org/resources/contrastchecker/};
+	\end{itemize}
+	
+	\subsubsection{Esiti}
+	
+	\begin{itemize}
+		\item \textbf{Total Validator}: la validazione di Total Validator ha prodotto una serie di reportistiche sull'accessibilità e sulla correttezza del codice del sito. I pochi errori rilevati, principalmente legati a sottigliezze sintattiche, sono dunque stati prontamente corretti laddove possibile e la validazione ha ora esito complessivamente positivo;
+		\item \textbf{IE Accessibility Toolbar}: ;
+		\item \textbf{Cynthia Says}: la validazione Cynthia Says, a seguito di alcune correzione apportate dopo i primi tentativi di eseguire la stessa, certifica ora il sito con il livello AA di accessibilità per ogni pagina. Il livello AAA sarebbe potuto essere raggiunto inserendo un link ad una pagina di aiuto per ogni form, ma ciò è stato considerato eccessivo per le tipologie di form presenti sul sito, davvero molto semplici da compilare;
+		\item \textbf{Toptal Colorblind Web Page Filter}: il simulatore di daltonismo mostra una simulazione di come le varie pagine del sito vengono viste da un individuo affetto da Protanopia, Deutanopia, Tritanopia e Achromatopsia. Benché il test non possa essere completamente esauriente in quanto non svolto da qualcuno che riportasse effettivamente le succitate patologie, si è scelta accuratamente una combinazione di colori che permettesse quanto più possibile di distinguere il colore dei link-bottoni da quello principale del sito. Con queste premesse, la differenza tra i due colori appare a noi sufficientemente evidente (si noti inoltre che i link rimangono comunque sempre evidenziati da sottolineatura) e il daltonismo non sembrerebbe inficiare particolarmente l'accessibilità e l'usabilità;
+		\item \textbf{WebAIM Color Contrast Checker}: dati due colori, uno relativo al contenuto in primo piano e uno relativo al conteuto in secono piano, il validatore restituisce un indice di contrasto con il quale verifica l'accessibilità della combinazione di colori secondo WCAG AA e WCAG AAA. I colori del sito sono stati scelti in modo tale da essere conformi a WCAG AAA. 
+	\end{itemize}
+	
+	\subsection{Usabilità}
+	
+	\subsubsection{Strumenti}
+	
+	\begin{itemize}
+		\item \textbf{Google Mobile Friendliness Test}: suite di test per la verifica dell'usabilità del sito da dispositivi mobile, disponibile al sito:
+		\\ \url{// https://search.google.com/test/mobile-friendly};
+		
+		\item \textbf{Test umano}: test condotto da alcuni candidati senza particolari conoscenze informatiche.
+	\end{itemize}
+
+	\subsubsection{Esiti}
+	
+	\begin{itemize}
+		\item \textbf{Google Mobile Friendliness Test}: il test ha avuto esito positivo vedendo il sito valutato come "mobile friendly";
+		
+		\item \textbf{Test umano}: il sito è stato fatto provare da cinque individui di varia età e senza particolari conoscenze informatiche. L'esito del test è stato che nessuno di loro ha rilevato particolari difficoltà nel esplorazione dello stesso. 
+	\end{itemize}
+	
+	\subsection{Performance}
+	
+	\subsubsection{Strumenti}
+	
+	\begin{itemize}
+		\item \textbf{Google PageSpeed Insights}: suite di test per la verifica della velocità di caricamento del sito da dispositivi mobile e desktop, disponibile al sito:
+		\\ \url{https://developers.google.com/speed/pagespeed/insights/?hl=it};
+		
+		\item \textbf{GTmetrix}: analizzatore di performance per siti web, disponibile al sito:
+		\\ \url{https://gtmetrix.com/}.
+	\end{itemize}
+	
+	\subsubsection{Esiti}
+	
+	\begin{itemize}
+		\item \textbf{Google PageSpeed Insights}: il test ha avuto esito positivo riportando una velocità "buona" per mobile e desktop;
+		
+		\item \textbf{GTmetrix}: il test ha avuto esito positivo riportando il grado "A" di velocità delle pagine. 
+	\end{itemize}
+
 \end{document}
