@@ -52,8 +52,8 @@ class UserAdmin extends User {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn colored"><p> Modifica</p></a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn colored"><p> Elimina </p></a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn"> Modifica</a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn"> Elimina</a>
                             </div>
                         </div>
                     </div>

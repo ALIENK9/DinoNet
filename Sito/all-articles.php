@@ -72,7 +72,9 @@
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
             </div>
         </div-->
-        <a href="#content" class="down-arrow arrow colored btn card bounce"></a>
+        <a href="#content" title="Scorri alla lista" class="down-arrow arrow btn card bounce">
+            <span class="hidden">Scorri alla lista</span>
+        </a>
     </header>
 
 	<!-- Breadcrumb -->
@@ -108,7 +110,7 @@
 						</p>
 					</div>
 					<div class="center padding-2">
-						<a href="display-article.php" class="btn colored"><p> Leggi l\'articolo </p></a>
+						<a href="display-article.php" class="btn"><p> Leggi l\'articolo </p></a>
 					</div>
 				</div>
 			</div>

@@ -1,25 +1,24 @@
 <?php
-	include_once ("classi/User.php");	
-
 	session_start();
-	
-	if(!isset($_SESSION['user'])){		
-		header("Location: login.php");
-	}	
+	include_once ("classi/Dinosaur.php");
+	include_once ("classi/Article.php");
+	include_once ("connect.php");
+	$connect = startConnect();
 ?>
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Account | Dino Net</title>
-	<meta name="description" content="Pagina di visualizzazione del tuo account Dino Net">
+	<title>Crediti | Dino Net</title>
+	<meta name="description" content="Crediti per il più strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="HTML, CSS, XML, JavaScript">
 	<link rel="stylesheet" href="css/index.css">
-    <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	
+
 	<!-- Favicon -->
 	
 	<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
@@ -51,42 +50,48 @@
 
 <div id="main" class="main">
 
-    <!-- Topbar -->
+<!-- Topbar -->
 
-    <?php include_once('topbar.php') ?>
+<?php include_once('topbar.php') ?>
 
-    <!-- /Topbar -->
+<!-- /Topbar -->
 
+<!-- Header -->
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
-	<div class="content">
-		<div id="title-card" class="card">
-			<h1 class="text-colored"> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>
-			<h2>qui puoi visualizzare i dati del tuo account</h2>
-		</div>
-		
-		<!-- Dati account -->
-
-		<div class="card colored wrap-padding">
-			<h1>Dati account</h1>
-			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
-			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
-			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
-			<br><br>
-			<a href="edit-account.php" class="btn card colored wrap-margin"> Modifica account </a>
-			<a href="delete-account.php" class="btn card colored wrap-margin"> Elimina account </a>
-            <a href="logout.php" class="btn card colored wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
-		</div>
-		
-		<!-- /Dati account -->
+	<div id="title-card" class="content card">
+		<h1 class="text-colored"> Crediti per il sito DINO NET</h1>
 	</div>
-
 </header>
 
 <!-- /Header -->
 
+<!-- Breadcrumb -->
+
 <?php include_once('breadcrumb.php') ?>
+
+<!-- /Breadcrumb -->
+
+<!-- Content -->
+
+<!-- About -->
+
+<div id="about" class="content padding-6">
+        <p>
+            Questo sito è un stato realizzato per un progetto del corso di Tecnologie
+            <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova,
+            durante l'anno accademico 2017-2018.
+            I testi descrittivi di ciascun dinosauro sono stati presi prevalentemente dai libri
+            <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
+            e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati
+            fatti con informazioni prese da <a href="http://it.wikipedia.org/wiki/" target="_blank">Wikipedia</a>.
+            Le icone utilizzate sono state prelevate dai siti <a href="https://icons8.it/" target="_blank">Icons8</a>,
+            <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>.
+        </p>
+</div>
+
+<!-- /About -->
 
 <?php include_once('footer.php') ?>
 
@@ -94,21 +99,11 @@
 
 </div>
 
-<script>
-// Script to open and close sidebar
-function open_menu() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function close_menu() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
-
 </body>
 
 <!-- /Body -->
 
 </html>
+<?php
+	closeConnect($connect);
+?>

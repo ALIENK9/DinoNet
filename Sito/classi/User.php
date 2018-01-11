@@ -125,9 +125,7 @@ class User {
                             <p><label for="passwordconf">Conferma password:</label></p>
                             <input type="password" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
                             
-                            <br><br>
-                            
-                            <input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+                            <input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide white">
                         </form>
                     </div>
                 </div>

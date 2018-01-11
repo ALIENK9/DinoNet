@@ -23,7 +23,7 @@ if(isset($_SESSION['user'])){
 						<h1>Aggiungi un utente</h1>
 					</div>
 					<div class="card colored wrap-padding">
-						<a href="panel.php?id=user&sez=formadd" class="btn card colored wrap-margin"><p>Aggiungi un Utente</p></a>
+						<a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un Utente</a>
 					</div>
 				</div>
 			</header>

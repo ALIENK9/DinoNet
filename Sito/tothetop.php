@@ -1,6 +1,8 @@
 <!-- To the top btn -->
 
-<a id="toTheTop" href="#main" title="Torna su" class="up-arrow arrow btn card"><p>Torna su</p></a>
+<a id="toTheTop" href="#main" title="Torna su" class="up-arrow arrow btn card">
+    <span class="hidden"> Torna su</span>
+</a>
 
 <script>
     document.getElementById("toTheTop").style.display = "none"; //all'inizio non si vede

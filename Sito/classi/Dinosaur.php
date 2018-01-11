@@ -52,8 +52,8 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn colored"><p> Modifica</p></a>
-                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn colored"><p> Elimina </p></a> 
+                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn"> Modifica </a>
+                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn"> Elimina </a> 
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,7 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathLink.'nome='.$row["nome"].'" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+                                <a href="'.$pathLink.'nome='.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
                             </div>
                         </div>
                     </div>
@@ -551,7 +551,7 @@ class Dinosaur {
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'nome='.$row4["nome"].'" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
+                            <a href="'.$pathLink.'nome='.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
                         </div>
                     </div>             
                 ';

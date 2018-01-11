@@ -77,8 +77,7 @@
 				<input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
 				<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
 				<input id="input-passw" type="password" placeholder="password" name="password" >
-				<br><br>
-				<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
+				<input type="submit" value="ACCEDI" class="card btn wide white">
 			</form>
 		</div>
 

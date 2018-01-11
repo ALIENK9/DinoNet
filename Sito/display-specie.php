@@ -147,8 +147,7 @@
 				<input type="hidden" name="idspecie" value="'.$_GET["nome"].'">
 				<h3><label for="casella-commento">Commenta</label></h3>
 				<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
-				<br>
-				<input type="submit" value="PUBBLICA" class="card btn wide text-colored white">
+				<input type="submit" value="PUBBLICA" class="card btn wide white">
 			</form>
 			';
 		}
@@ -160,7 +159,7 @@
 </div>
 
 <div class="center wrap-padding">
-	<a href="all-species.php" class="btn card colored wrap-margin"><p> Vai alla lista completa dei dinosauri </p></a>
+	<a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa dei dinosauri </a>
 </div>
 
 <?php include_once('footer.php') ?>
