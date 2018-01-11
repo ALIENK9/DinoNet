@@ -64,7 +64,7 @@
 
     <!-- Topbar -->
 
-    <?php include_once('../topbar.php') ?>
+    <?php include_once ('topbaradmin.php') ?>
 
     <!-- /Topbar -->
 
@@ -99,6 +99,10 @@
 
 			case 'article':
 				include_once('article.php');
+				break;	
+
+			case 'search':
+				include_once('searchadmin.php');
 				break;	
 
 			case 'logout': default:		

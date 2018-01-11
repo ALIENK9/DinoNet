@@ -16,37 +16,20 @@ if(isset($_SESSION['user'])){
 
 	switch ($sezione) {
 		case 'list':
-		?>
-		<header id="header-home" class="parallax">
-			<div class="padding-6 content">						
-				<div class="card white wrap-padding">
-					<h1>Cerca un articolo</h1>
+			?>
+			<header id="header-home" class="parallax">
+				<div class="padding-6 content">						
+					<div class="card white wrap-padding">
+						<h1>Aggiungi un articolo</h1>
+					</div>
+					<div class="card colored wrap-padding">
+						<a href="panel.php?id=article&sez=formadd" class="btn card colored wrap-margin"><p>Aggiungi un Articolo</p></a>
+					</div>
 				</div>
-				<div class="card colored wrap-padding">
-					<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="GET">
-						<input type="hidden" name="id" value="article">
-						<input type="hidden" name="sez"  value="list">
-						<p><label for="filtra">Filtro:</label></p>
-						<input type="text" id="filtra" name="filter" value="<?php if(isset($_GET["filter"])) echo $_GET["filter"]; ?>">
-						<br>
-						<input type="submit" value="Cerca" title="Avvia la ricerca"  class="card btn wide text-colored white"/>
-					</form>
-				</div>
-				<br>
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un articolo</h1>
-				</div>
-				<div class="card colored wrap-padding">
-					<a href="panel.php?id=article&sez=formadd" class="btn card colored wrap-margin"><p>Aggiungi un Articolo</p></a>
-				</div>
-			</div>
-		</header>
-	
-		<?php
-			if(isset($_GET["filter"]))
-				echo Article::printListArticle($connectArticle, $_GET["filter"], "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
-			else
-				echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
+			</header>
+		
+			<?php
+			echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
 			break;
 		case 'formadd':
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);

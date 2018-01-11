@@ -84,7 +84,7 @@ class UserAdmin extends User {
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
-                            $echoString = "Element o eliminato";
+                            $echoString = "Elemento eliminato";
                         } 
                         else {
                             $echoString = "Elemento NON eliminato";
@@ -207,13 +207,13 @@ class UserAdmin extends User {
                 $sqlQuery .= "NULL";
             }
             $sqlQuery .=") ";
-            if( $connect->query($sqlQuery) ){
+            if($connect->query($sqlQuery)){
                 $echoString .= "Elemento Aggiunto";
             } 
             else {
                 $echoString = "Elemento NON Aggiunto";
-                if( $destinazioneFileDB != NULL){
-                    //ELIMINARE IMMAGINE CARICATA
+                if( $destinazioneFileDB != NULL){                           
+                    delImage(__DIR__."/../".$destinazioneFileDB); 
                 }
             }
         }

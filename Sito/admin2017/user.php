@@ -20,20 +20,6 @@ if(isset($_SESSION['user'])){
 			<header id="header-home" class="parallax">
 				<div class="padding-6 content">						
 					<div class="card white wrap-padding">
-						<h1>Cerca un utente</h1>
-					</div>
-					<div class="card colored wrap-padding">
-						<form action="<?php echo $_SERVER["PHP_SELF"]?>" method="GET">
-							<input type="hidden" name="id" value="user">
-							<input type="hidden" name="sez"  value="list">
-							<p><label for="filtra">Filtro:</label></p>
-							<input type="text" id="filtra" name="filter" value="<?php if(isset($_GET["filter"])) echo $_GET["filter"]; ?>" placeholder="ex: prova@gmail.com">
-							<br>
-							<input type="submit" value="Cerca" title="Avvia la ricerca" class="card btn wide text-colored white">
-						</form>
-					</div>
-					<br>
-					<div class="card white wrap-padding">
 						<h1>Aggiungi un utente</h1>
 					</div>
 					<div class="card colored wrap-padding">
@@ -43,23 +29,17 @@ if(isset($_SESSION['user'])){
 			</header>
 
 
-            <?php
-			if(isset($_GET["filter"]))
-				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, $_GET["filter"], "..");
-			else
-				echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, "", "..");
-			echo '</div>';
+			<?php
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, "", "..").'</div>';
 			break;
 		case 'formadd':			
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]);
-            echo '</div>';
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]).'</div>';
 			break;
 		case 'add':
-			echo $_SESSION['user']->addUser($conconnectUsernect, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
+			echo $_SESSION['user']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
 			break;
 		case 'formupdate':
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
-            echo '</div>';
+			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']).'</div>';
 			break;
 		case 'update':		
 			$removeimg=false;

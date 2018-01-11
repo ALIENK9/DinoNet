@@ -1,12 +1,13 @@
 <div id="topbar" class="center">
-<form action="search.php" method="get" id="searchbar">
+<form action="?id=search" method="get" id="searchbar">
         <label for="search-input" class="hidden">Ricerca nel sito</label>
         <div id="wrapper">
+            <input name="id" type="hidden" value="search"> 
             <input id="search-input" name="input" title="Barra di ricerca" aria-label="Barra di ricerca" type="search" 
                 <?php
                     if(isset($_GET["input"])){echo 'value="'.$_GET["input"].'"';}
                 ?>
-                placeholder="Cerca una specie o un articolo">
+                placeholder="Cerca un utente, una specie o un articolo">
             <input id="conferma" type="submit" title="Avvia la ricerca" value="">
         </div>
     </form>

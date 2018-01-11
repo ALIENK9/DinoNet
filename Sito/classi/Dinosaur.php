@@ -328,8 +328,8 @@ class Dinosaur {
             } 
             else {
                 $echoString = "Elemento NON Aggiunto";
-                if( $destinazioneFileDB != NULL){
-                    //ELIMINARE IMMAGINE CARICATA
+                if( $destinazioneFileDB != NULL){                         
+                    delImage(__DIR__."/../".$destinazioneFileDB);
                 }
             }
         }
