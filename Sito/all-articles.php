@@ -72,7 +72,7 @@
                 <input type="submit" value="CERCA" class="card btn wide text-colored white">
             </div>
         </div-->
-        <a href="#content" title="Scorri alla lista" class="down-arrow arrow btn card bounce">
+        <a href="#content" class="down-arrow arrow btn card bounce">
             <span class="hidden">Scorri alla lista</span>
         </a>
     </header>

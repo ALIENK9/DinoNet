@@ -68,7 +68,7 @@ $connectArticles = startConnect();
         <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
     </div>
 
-    <a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce">
+    <a href="#daily-article" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri all'articolo del giorno</span>
     </a>
 </header>

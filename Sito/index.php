@@ -66,7 +66,7 @@
         <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
 	</div>
 
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
+	<a href="#about" aria-label="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri alle informazioni sul sito</span>
     </a>
 </header>

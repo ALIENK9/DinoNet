@@ -7,7 +7,7 @@
                     if(isset($_GET["input"])){echo 'value="'.$_GET["input"].'"';}
                 ?>
                 placeholder="Cerca una specie o un articolo">
-            <input id="conferma" type="submit" title="Avvia la ricerca" value="">
+            <input id="conferma" type="submit" title="Avvia la ricerca" aria-label="Avvia la ricerca" value="">
         </div>
     </form>
 

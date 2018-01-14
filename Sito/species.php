@@ -68,7 +68,7 @@
         <a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa delle specie </a>
     </div>
 
-	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce">
+	<a href="#daily-dino" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri al contenuto del giorno</span>
     </a>
 </header>
