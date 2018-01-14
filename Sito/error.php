@@ -35,6 +35,8 @@
 
 <?php include_once('footer.php') ?>
 
+<?php include_once('nojsmenu.php') ?>
+
 <?php include_once('tothetop.php') ?>
 
 </div>

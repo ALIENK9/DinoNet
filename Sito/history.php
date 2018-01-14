@@ -61,11 +61,11 @@
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
 		<ul class="index">
-			<li><a href="#chi-sono-i-dino"><p>1. Chi sono i dinosauri?</p></a></li>
-			<li><a href="#scoperta"><p>2. La scoperta</p></a></li>
-			<li><a href="#dino-unici"><p>3. Perché i dinosauri sono unici?</p></a></li>
-			<li><a href="#bipedi-quadrupedi"><p>4. Bipedi e quadrupedi, erbivori e carnivori</p></a></li>
-			<li><a href="#estinzione"><p>5. L'estinzione</p></a></li>
+			<li><a href="#chi-sono-i-dino">1. Chi sono i dinosauri?</a></li>
+			<li><a href="#scoperta">2. La scoperta</a></li>
+			<li><a href="#dino-unici">3. Perché i dinosauri sono unici?</a></li>
+			<li><a href="#bipedi-quadrupedi">4. Bipedi e quadrupedi, erbivori e carnivori</a></li>
+			<li><a href="#estinzione">5. L'estinzione</a></li>
 		</ul>
 	</div>
 </header>

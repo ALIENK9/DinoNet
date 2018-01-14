@@ -64,10 +64,9 @@
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
-        <p>
-            <a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa delle specie </a>
-        </p>
-	</div>
+
+        <a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa delle specie </a>
+    </div>
 
 	<a href="#daily-dino" title="Scorri al contenuto del giorno" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri al contenuto del giorno</span>
@@ -192,6 +191,8 @@
 </div>
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

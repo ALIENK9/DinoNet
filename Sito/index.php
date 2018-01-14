@@ -62,9 +62,8 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide text-colored"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
-		<p>
-            <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
-        </p>
+
+        <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
 	</div>
 
 	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
@@ -147,6 +146,8 @@
 <!-- /Content -->
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

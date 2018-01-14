@@ -21,9 +21,7 @@ if(isset($_SESSION['user'])){
 				<div class="padding-6 content">						
 					<div class="card white wrap-padding">
 						<h1>Aggiungi un utente</h1>
-					</div>
-					<div class="card colored wrap-padding">
-						<a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un Utente</a>
+                        <a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un Utente</a>
 					</div>
 				</div>
 			</header>

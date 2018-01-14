@@ -65,11 +65,8 @@ $connectArticles = startConnect();
 		<h1 class="text-colored"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 
-        <p>
-            <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
-        </p>
-
-	</div>
+        <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
+    </div>
 
     <a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri all'articolo del giorno</span>
@@ -157,6 +154,8 @@ $connectArticles = startConnect();
 </div>
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 
