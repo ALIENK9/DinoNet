@@ -73,7 +73,8 @@
 			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
 			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
 			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
-			<br><br>
+		</div>
+		<div class="card white wrap-padding">
 			<a href="edit-account.php" class="btn card wrap-margin"> Modifica account </a>
 			<a href="#conferma1" class="btn card wrap-margin"> Elimina account </a>
             <a href="logout.php" class="btn card wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
@@ -97,6 +98,8 @@
 <?php include_once('breadcrumb.php') ?>
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

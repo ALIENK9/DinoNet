@@ -20,11 +20,13 @@
 ?>
 		
 <!-- Sidebar/menu -->
-<nav id="sidebar" class="sidebar bar card center">
-    <div id="close-button" class="hide-large center menu-entry">
-        <span onclick="close_menu()" class="btn">x</span>
-    </div>
+<nav title="Menù di navigazione" aria-label="Menù di navigazione" id="sidebar" class="sidebar bar card center">
+
     <a class="hidden" href="#content">Salta il menù</a>
+
+    <div id="close-button" class="hide-large center menu-entry">
+        <span onclick="close_menu()" aria-label="Chiudi il menù" class="btn">x</span>
+    </div>
 	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active"; ?>">
 		<span class="menu-icon icon-home"></span>
 		<p xml:lang="en" lang="en">Home admin</p>

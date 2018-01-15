@@ -186,6 +186,10 @@ form p {
 	text-align: center;
 }
 
+#header-home a.btn {
+	margin: 1em 0;
+}
+
 #breadcrumb {
 	text-align: center;
 	position: relative;
@@ -324,6 +328,12 @@ form p {
 .ghost-half img{
     width: 100%;
 }*/
+
+#history-index a {
+	font-size: 1.2em;
+	margin: 0.9em 0;
+	display: block;
+}
 
 #scoperta {
 	background-image: url('../img/dino-1.jpg');
@@ -947,9 +957,9 @@ a.disabled {
 
 #searchbar #conferma {
     float: left;
-    height: 100%;
     width: 3em;
     border: 0;
+	margin-top: 0;
     background-color: transparent;
     background-image: url("../img/icons/search-icon.svg");
     background-size: contain;

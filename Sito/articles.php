@@ -65,13 +65,10 @@ $connectArticles = startConnect();
 		<h1 class="text-colored"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
 
-        <p>
-            <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
-        </p>
+        <a href="all-articles.php" class="btn card wrap-margin">Vai alla lista completa degli articoli</a>
+    </div>
 
-	</div>
-
-    <a href="#daily-article" title="Scorri all'articolo del giorno" class="down-arrow arrow btn card bounce">
+    <a href="#daily-article" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri all'articolo del giorno</span>
     </a>
 </header>
@@ -104,7 +101,6 @@ $connectArticles = startConnect();
 		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante">
 		<div class="padding-large">
 			<h3 class="text-colored center"> Sottotitolo </h3>
-			<br>
 			<p>
 				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
@@ -157,6 +153,8 @@ $connectArticles = startConnect();
 </div>
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

@@ -62,12 +62,11 @@
 	<div id="title-card" class="content card">
 		<h1 class="title wide text-colored"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
-		<p>
-            <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
-        </p>
+
+        <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
 	</div>
 
-	<a href="#about" title="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
+	<a href="#about" aria-label="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">
         <span class="hidden">Scorri alle informazioni sul sito</span>
     </a>
 </header>
@@ -90,7 +89,7 @@
 	<p class="side-padding">
 		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
         Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
-        pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese :D. <br>
+        pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese. <br>
         Se vuoi scoprire dettagli e curiosità su questi fantastici animali morti, puoi sfogliare la sezione
         <span class="text-italic">Specie</span>, oppure se ti interessano gli articoli sulle più recenti scoperte e
         teorie riguardanti il mondo preistorico, ti consigliamo la sezione <span class="text-italic">Articoli</span>.
@@ -147,6 +146,8 @@
 <!-- /Content -->
 
 <?php include_once('footer.php') ?>
+
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

@@ -7,7 +7,7 @@
                 <h2 class="text-colored"> <?php echo $_SESSION['user']->getNome() . ' ' . $_SESSION['user']->getCognome(); ?> </h2>
             </div>
             <h3 class="content card colored wrap-padding center">
-                Tramite questo pannello amministratore puoi gestire i contenuti e gli utenti per Tirannosaurus Web!
+                Tramite questo pannello puoi gestire i contenuti e gli utenti per DINO NET!
                 Utilizza il menù per accedere ai pannelli di modifica.
             </h3>
         </header>
