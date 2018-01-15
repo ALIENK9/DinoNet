@@ -46,7 +46,6 @@
         <header id="header-home" class="parallax padding-12">
             <div id="title-card" class="content card">
                 <h1 class="title wide"> Mappa del sito </h1>
-                <br>
             </div>
         </header>
 

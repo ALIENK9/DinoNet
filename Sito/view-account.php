@@ -73,10 +73,11 @@
 			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
 			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
 			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
-			<br><br>
-			<a href="edit-account.php" class="btn card colored wrap-margin"> Modifica account </a>
-			<a href="delete-account.php" class="btn card colored wrap-margin"> Elimina account </a>
-            <a href="logout.php" class="btn card colored wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
+		</div>
+		<div class="card white wrap-padding">
+			<a href="edit-account.php" class="btn card wrap-margin"> Modifica account </a>
+			<a href="delete-account.php" class="btn card wrap-margin"> Elimina account </a>
+            <a href="logout.php" class="btn card wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
 		</div>
 		
 		<!-- /Dati account -->

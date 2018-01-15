@@ -101,7 +101,6 @@ $connectArticles = startConnect();
 		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante">
 		<div class="padding-large">
 			<h3 class="text-colored center"> Sottotitolo </h3>
-			<br>
 			<p>
 				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
