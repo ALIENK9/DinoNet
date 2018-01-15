@@ -1,7 +1,6 @@
 <?php 
 
 include_once (__DIR__."/User.php");
-include_once (__DIR__."/../loadFile.php");
 
 class UserAdmin extends User {
     
@@ -32,11 +31,12 @@ class UserAdmin extends User {
             $sqlFilter .= "ORDER BY email, nome, cognome";
             $sqlQuery = "SELECT email, nome, cognome, immagine FROM utente ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
+            $numModalConfrim = 0;
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div id="" class="daily-dino card">
+                        <div id="user'.$numModalConfrim.'" class="daily-dino card">
                             <div class="padding-large colored">
                                 <h1>'.$row["email"].'</h1>
                             </div>
@@ -53,11 +53,20 @@ class UserAdmin extends User {
                             </div>
                             <div class="center padding-2">
                                 <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn"> Modifica</a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn"> Elimina</a>
+                                <a href="#confermauser'.$numModalConfrim.'" class="btn"> Elimina</a>
                             </div>
+                            <div id="confermauser'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
+                                <div class="card colored wrap-padding">
+                                    <h2>Sei sicuro di voler eliminare l\'utente '.$row["email"].'?</h2>     
+                                    <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn card wrap-margin">Si</a>    
+                                    <a href="#user'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
+                                </div>
+                                <a class="cancel-confirm" href="#user'.$numModalConfrim.'"></a>
+                            </div> 
                         </div>
                     </div>
                     ';
+                    $numModalConfrim++;
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
@@ -79,8 +88,9 @@ class UserAdmin extends User {
                     
                     $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
                     $result = $connect->query($sqlQuery);
-                    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {       
-                        delImage(__DIR__."/../".$row["immagine"]);                   
+                    if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {   
+                        if($row["immagine"] != NULL)     
+                            delImage(__DIR__."/../".$row["immagine"]);                   
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
@@ -98,38 +108,7 @@ class UserAdmin extends User {
         }
         else{
             $echoString = "Non ti puoi eliminare";
-        }
-        
-        
-        return $echoString;
-    }
-    
-    //bisogna creare un trigger o dei controlli per le chiavi esterne
-    public static function deleteUserForce($connect, $id){
-        $echoString = "";
-         
-        if(isset($connect)){
-            if(isset($id)){ 
-                $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
-                $result = $connect->query($sqlQuery);
-                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {       
-                    delImage(__DIR__."/../".$row["immagine"]);                   
-
-                    $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
-                    if( $connect->query($sqlQuery) ){
-                        $echoString = "Elemento eliminato";
-                    } 
-                    else {
-                        $echoString = "Elemento NON eliminato";
-                    }
-                }
-                else{
-                    $echoString = "Elemento NON eliminabile";
-                }
-            }
-        }
-        
-        
+        }       
         return $echoString;
     }
 

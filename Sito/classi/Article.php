@@ -28,11 +28,12 @@ class Article{
 		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
+        $numModalConfrim = 0;
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
                 $echoString .='
 				<div class="third wrap-padding">
-                    <div id="" class="daily-dino card">
+                    <div id="article'.$numModalConfrim.'" class="daily-dino card">
                         <div class="padding-large colored">
                             <h1> '.$row["id"].' </h1>
                         </div>
@@ -50,11 +51,20 @@ class Article{
                         </div>
                         <div class="center padding-2">                                
                             <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
-                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn">Elimina</a>                               
+                            <a href="#confermaarticle'.$numModalConfrim.'" class="btn">Elimina</a>                               
+                        </div>                        
+                        <div id="confermaarticle'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
+                        <div class="card colored wrap-padding">
+                            <h2>Sei sicuro di voler eliminare l\'articolo '.$row["id"].'?</h2>     
+                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn card wrap-margin">Si</a>    
+                            <a href="#article'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
                         </div>
+                        <a class="cancel-confirm" href="#article'.$numModalConfrim.'"></a>
+                    </div> 
                     </div>
                 </div>
                 ';
+                $numModalConfrim++;
 			}
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 

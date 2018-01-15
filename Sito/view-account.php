@@ -74,11 +74,19 @@
 			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
 			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
 			<br><br>
-			<a href="edit-account.php" class="btn card colored wrap-margin"> Modifica account </a>
-			<a href="delete-account.php" class="btn card colored wrap-margin"> Elimina account </a>
-            <a href="logout.php" class="btn card colored wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
+			<a href="edit-account.php" class="btn card wrap-margin"> Modifica account </a>
+			<a href="#conferma1" class="btn card wrap-margin"> Elimina account </a>
+            <a href="logout.php" class="btn card wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
 		</div>
 		
+		<div id="conferma1" class="overlay-confirm backlight-confirm">
+            <div class="card colored wrap-padding">
+                <h2>Sei sicuro di voler eliminare l'utente?</h2>     
+                <a href="delete-account.php" class="btn card wrap-margin">Si</a>    
+                <a href="#" class="btn card wrap-margin">No</a>
+            </div>
+            <a class="cancel-confirm" href="#"></a>
+		</div> 
 		<!-- /Dati account -->
 	</div>
 

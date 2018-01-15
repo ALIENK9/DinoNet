@@ -3,17 +3,19 @@
 	include_once ("classi/User.php");
 
 	session_start();
-	
+		
 	if(isset($_SESSION['user'])){	
 		session_unset();
 	}
-
-	if(isset($_POST['email']) && isset($_POST["password"])){
-		session_unset();
-		if(User::login($_POST["email"],$_POST["password"],'0')){
-			$_SESSION['user'] = new User($_POST['email']);
-			header("Location: index.php");
-		}	
+	if(isset($_POST["submit"])){	
+		$connect = startConnect();
+		$messaggioRegistrazione = User::registerMyUser($connect,$_POST["email"],$_POST["nome"],$_POST["cognome"],$_POST["password"],$_POST["confermapassword"]);
+		if("Utente registrato" == $messaggioRegistrazione){
+				session_unset();
+				$_SESSION['user'] = new User($connect, $_POST['email']);
+				header("Location: view-account.php");
+		} 
+		closeConnect($connect);
 	}
 ?>
 <!DOCTYPE html>
@@ -76,7 +78,14 @@
 		</div>
 		
 		<!-- Registrazione -->
-
+		<?php	
+		if(isset($_POST["submit"])){
+			echo"<div id=\"title-card\" class=\"card\">
+					<h1 class=\"text-colored\"> Errori: </h1>
+					<h2>$messaggioRegistrazione</h2>
+				</div>";
+		}
+		?>
 		<div id="register">
 			<div class="card colored wrap-padding">
 				<form action="#" method="POST">
@@ -85,13 +94,13 @@
 					<p><label for="input-cognome">cognome</label></p>
 					<input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
 					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-					<input id="input-email" type="text" placeholder="inserisci la tua email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+					<input id="input-email" type="email" placeholder="inserisci la tua email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
 					<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
 					<input id="input-passw" type="password" placeholder="inserisci la tua password" name="password">
 					<p><label for="input-passw-again">ripeti <span xml:lang="en" lang="en">password</span></label></p>
-					<input id="input-passw" type="password" placeholder="ripeti la tua password" name="password">
+					<input id="input-passw-again" type="password" placeholder="ripeti la tua password" name="confermapassword">
 					<br><br>
-					<input type="submit" value="REGISTRATI" class="card btn wide text-colored white">
+					<input type="submit" name="submit" value="REGISTRATI" class="card btn wide text-colored white">
 				</form>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 <?php 
 
+include_once (__DIR__."/../loadFile.php");
+
 class User {
     
     private $email;
@@ -170,6 +172,60 @@ class User {
         
         return $echoString;
     } 
+
+    public function registerMyUser($connect, $email, $nome, $cognome, $password, $confermaPassword){
+     
+
+        $echoString ="";
+        
+        $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
+        $result = $connect->query($sqlQuery);
+        if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
+        if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
+        if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "Tutti i campi sono obbligatori";}
+
+        if($echoString == ""){
+            $sqlQuery = "INSERT INTO utente (email, nome, cognome, password) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$password."')";
+            if($connect->query($sqlQuery)){
+                $echoString .= "Utente registrato";
+            } 
+            else {
+                $echoString .= "Utente non registrato";
+            }
+        }  
+
+        
+        return $echoString;
+    } 
     
+    //bisogna creare un trigger o dei controlli per le chiavi esterne
+    public static function deleteUserForce($connect, $id){
+        $echoString = "";
+            
+        if(isset($connect)){
+            if(isset($id)){ 
+                $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$id."' ";
+                $result = $connect->query($sqlQuery);
+                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {      
+                    if($row["immagine"] != NULL) 
+                        delImage(__DIR__."/../".$row["immagine"]);                   
+
+                    $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
+                    if( $connect->query($sqlQuery) ){
+                        $echoString = "Elemento eliminato";
+                    } 
+                    else {
+                        $echoString = "Elemento NON eliminato";
+                    }
+                }
+                else{
+                    $echoString = "Elemento NON eliminabile";
+                }
+            }
+        }
+        
+        
+        return $echoString;
+    }
 }
 ?>

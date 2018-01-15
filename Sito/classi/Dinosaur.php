@@ -30,11 +30,12 @@ class Dinosaur {
             $sqlFilter .= "ORDER BY nome";
             $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione, immagine FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
+            $numModalConfrim = 0;
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div id="" class="daily-dino card">
+                        <div id="dinosaur'.$numModalConfrim.'" class="daily-dino card">
                             <div class="padding-large colored">
                                 <h1>'.$row["nome"].'</h1>
                             </div>
@@ -53,11 +54,20 @@ class Dinosaur {
                             </div>
                             <div class="center padding-2">
                                 <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn"> Elimina </a> 
-                            </div>
+                                <a href="#confermadinosaur'.$numModalConfrim.'" class="btn"> Elimina </a> 
+                            </div>                            
+                            <div id="confermadinosaur'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
+                                <div class="card colored wrap-padding">
+                                    <h2>Sei sicuro di voler eliminare il dinosauro '.$row["nome"].'?</h2>     
+                                    <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn card wrap-margin">Si</a>    
+                                    <a href="#dinosaur'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
+                                </div>
+                                <a class="cancel-confirm" href="#dinosaur'.$numModalConfrim.'"></a>
+                            </div> 
                         </div>
                     </div>
-                    ';                
+                    ';     
+                    $numModalConfrim++;           
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
