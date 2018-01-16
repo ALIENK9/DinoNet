@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>TecWeb</title>
-	<meta name="description" content="Descrizione">
+	<title>Errore! | Dino Net</title>
+	<meta name="description" content="Pagina di errore per il sito Dino Net">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,10 @@
 
 <header id="header-home" class="parallax padding-6">
 	<div id="title-card" class="content card">
-		<h1 class="title wide text-colored">Errore, pagina non esistente </h1>
+		<img src="img/sad-dino.png" alt="illustrazione di dinosauro triste">
+		<h1 class="text-colored">Errore, pagina non esistente </h1>
+		
+        <a href="all-articles.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
 	</div>
 </header>
 
