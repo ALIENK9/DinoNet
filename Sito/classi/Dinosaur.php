@@ -54,16 +54,8 @@ class Dinosaur {
                             </div>
                             <div class="center padding-2">
                                 <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="#confermadinosaur'.$numModalConfrim.'" class="btn"> Elimina </a> 
-                            </div>                            
-                            <div id="confermadinosaur'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
-                                <div class="card colored wrap-padding">
-                                    <h2>Sei sicuro di voler eliminare il dinosauro '.$row["nome"].'?</h2>     
-                                    <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn card wrap-margin">Si</a>    
-                                    <a href="#dinosaur'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
-                                </div>
-                                <a class="cancel-confirm" href="#dinosaur'.$numModalConfrim.'"></a>
-                            </div> 
+                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
+                            </div>                           
                         </div>
                     </div>
                     ';     

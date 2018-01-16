@@ -53,16 +53,8 @@ class UserAdmin extends User {
                             </div>
                             <div class="center padding-2">
                                 <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn"> Modifica</a>
-                                <a href="#confermauser'.$numModalConfrim.'" class="btn"> Elimina</a>
+                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
                             </div>
-                            <div id="confermauser'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
-                                <div class="card colored wrap-padding">
-                                    <h2>Sei sicuro di voler eliminare l\'utente '.$row["email"].'?</h2>     
-                                    <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn card wrap-margin">Si</a>    
-                                    <a href="#user'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
-                                </div>
-                                <a class="cancel-confirm" href="#user'.$numModalConfrim.'"></a>
-                            </div> 
                         </div>
                     </div>
                     ';
