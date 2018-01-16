@@ -10,6 +10,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -30,7 +31,7 @@
 		<img src="img/sad-dino.png" alt="illustrazione di dinosauro triste">
 		<h1 class="text-colored">Errore, pagina non esistente </h1>
 		
-        <a href="all-articles.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
+        <a href="index.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
 	</div>
 </header>
 
