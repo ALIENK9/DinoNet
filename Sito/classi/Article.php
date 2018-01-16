@@ -51,16 +51,8 @@ class Article{
                         </div>
                         <div class="center padding-2">                                
                             <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
-                            <a href="#confermaarticle'.$numModalConfrim.'" class="btn">Elimina</a>                               
+                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
-                        <div id="confermaarticle'.$numModalConfrim.'" class="overlay-confirm backlight-confirm">
-                        <div class="card colored wrap-padding">
-                            <h2>Sei sicuro di voler eliminare l\'articolo '.$row["id"].'?</h2>     
-                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn card wrap-margin">Si</a>    
-                            <a href="#article'.$numModalConfrim.'" class="btn card wrap-margin">No</a>
-                        </div>
-                        <a class="cancel-confirm" href="#article'.$numModalConfrim.'"></a>
-                    </div> 
                     </div>
                 </div>
                 ';
