@@ -24,7 +24,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <a class="hidden" href="#main">Salta il menù</a>
 
     <div id="close-button" class="hide-large center menu-entry">
-        <span onclick="close_menu()" aria-label="Chiudi il menù" class="">x</span>
+        <span onclick="close_menu()" title="Chiudi il menù">X</span>
     </div>
 	<a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
 		<span class="menu-icon icon-home"></span>

@@ -36,7 +36,7 @@
 
     /*Nasconde la barra di ricerca quando si scorre verso il basso*/
     var lastScrollTop = 0;
-    window.addEventListener("scroll", function(){
+    window.addEventListener("scroll", function() {
         var st = window.pageYOffset || document.documentElement.scrollTop;
         if (st > lastScrollTop && (document.documentElement.scrollTop > 150 || document.body.scrollTop > 150)) {
             document.getElementById("searchbar").classList.add("hidden");
