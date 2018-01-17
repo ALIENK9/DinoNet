@@ -87,11 +87,11 @@
 				<form action="#" method="POST" onsubmit="validateForm(this)">
 					<p>
                         <label for="input-email" xml:lang="en" lang="en">Email</label>
-                        <input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+                        <input id="input-email" type="text" placeholder="email" required name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
                     </p>
 					<p>
                         <label for="input-passw" xml:lang="en" lang="en">Password</label>
-                        <input id="input-passw" type="password" placeholder="password" name="password">
+                        <input id="input-passw" type="password" placeholder="password" required name="password">
                     </p>
 
 					<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
@@ -114,7 +114,7 @@
 
 <?php include_once('footer.php') ?>
 
-    <?php include_once('nojsmenu.php') ?>
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

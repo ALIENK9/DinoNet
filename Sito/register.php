@@ -92,23 +92,23 @@
 				<form id="reg-form" action="#" method="POST" onsubmit="validateForm(this)">
 					<p>
                         <label for="input-nome">Nome</label>
-					    <input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>">
+					    <input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" required value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>">
                     </p>
 					<p>
                         <label for="input-cognome">Cognome</label>
-					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
+					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" required value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
                     </p>
                     <p>
                         <label for="input-email" xml:lang="en" lang="en">Email</label>
-					    <input id="input-email" type="email" placeholder="inserisci la tua email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+					    <input id="input-email" type="email" placeholder="inserisci la tua email" name="email" required value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
                     </p>
                     <p>
                         <label for="input-passw" xml:lang="en" lang="en">Password</label>
-					    <input id="input-passw" type="password" placeholder="inserisci la tua password" name="password">
+					    <input id="input-passw" type="password" placeholder="inserisci la password" required name="password">
                     </p>
 					<p>
                         <label for="input-passw-again">Ripeti <span xml:lang="en" lang="en">la password</span></label>
-					    <input id="input-passw-again" type="password" placeholder="ripeti la tua password" name="confermapassword">
+					    <input id="input-passw-again" type="password" placeholder="ripeti la password" required name="confermapassword">
                     </p>
 					<input type="submit" value="REGISTRATI" class="card btn wide text-colored white">
 				</form>

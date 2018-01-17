@@ -36,7 +36,7 @@ function validateForm(nomeForm) {
         var temp = capitalizeFirstLetter(inputs[i].getAttribute('name'));
         if (temp !== null && temp !== 'Confermapassword') {
             if(temp === 'Password' && (i+1) < inputs.length && inputs[i+1].getAttribute('name') === 'confermapassword')
-                result = validatePasswordConfirm(inputs[i], inputs[i + 1]);         //se il campo password è seguito da confermapassword
+                result = validatePasswordConfirm(inputs[i], inputs[i + 1]);         //se il campo password è seguito da conferma password
             else {
                 var functionName = 'validate' + temp;                             //formato per chiamare le funzioni
                 result = window[functionName](inputs[i]);                         //chiama la funzione con nome 'functionName' con il suo input per controllarli
