@@ -32,6 +32,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -83,11 +84,15 @@
 
 		<div id="login">
 			<div class="card colored wrap-padding">
-				<form action="#" method="POST">
-					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-					<input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
-					<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
-					<input id="input-passw" type="password" placeholder="password" name="password">
+				<form action="#" method="POST" onsubmit="validateForm(this)">
+					<p>
+                        <label for="input-email" xml:lang="en" lang="en">Email</label>
+                        <input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+                    </p>
+					<p>
+                        <label for="input-passw" xml:lang="en" lang="en">Password</label>
+                        <input id="input-passw" type="password" placeholder="password" name="password">
+                    </p>
 
 					<input type="submit" value="ACCEDI" class="card btn wide text-colored white">
 				</form>

@@ -15,7 +15,7 @@
 </div>
 
 
-<script>
+<script type="text/javascript">
     function addJS() { //rende visibile il menù laterale
         document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
         document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");

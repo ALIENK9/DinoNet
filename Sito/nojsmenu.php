@@ -1,5 +1,5 @@
 
-<noscript>
+<noscript id="nojs">
     <div id="nojs-avviso" class="white center wrap-padding hide-large">
         <h2>Hai disabilitato JavaScript :(</h2>
         <p>Per visualizzare il menù laterale devi attivare JavaScript! In alternativa puoi continuare a navigare utilizzando questo menù</p>
@@ -46,3 +46,7 @@
         ?>
     </nav>
 </noscript>
+
+<script type="text/javascript" src="js/index.js">
+    hideElement(document.getElementById('nojs'));
+</script>

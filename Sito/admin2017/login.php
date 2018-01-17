@@ -32,7 +32,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../css/index.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -72,11 +73,15 @@
 		<!-- Login -->
 
 		<div id="login" class="card colored wrap-padding">
-			<form action="#" method="POST">
-				<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-				<input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
-				<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
-				<input id="input-passw" type="password" placeholder="password" name="password" >
+			<form action="#" method="POST" onsubmit="validateForm(this)">
+				<p>
+                    <label for="input-email" xml:lang="en" lang="en">Email</label>
+				    <input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+                </p>
+				<p>
+                    <label for="input-passw" xml:lang="en" lang="en">Password</label>
+				    <input id="input-passw" type="password" placeholder="password" name="password">
+                </p>
 				<input type="submit" value="ACCEDI" class="card btn wide white">
 			</form>
 		</div>

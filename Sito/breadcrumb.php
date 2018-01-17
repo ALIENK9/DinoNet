@@ -29,100 +29,100 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 		
 		case 'credits.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Crediti</p>';
 		break;
 		
 		case 'view-account.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Account</p>';
 		break;
 		
 		case 'edit-account.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="view-account.php"><p>Account</p></a>
+			<a href="view-account.php">Account</a>
 			<p> &#187; </p>
 			<p>Modifica account</p>';
 		break;
 		
 		case 'login.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Accedi</p>';
 		break;
 		
 		case 'register.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="login.php"><p>Accedi</p></a>
+			<a href="login.php">Accedi</a>
 			<p> &#187; </p>
 			<p>Registrazione</p>';
 		break;
 		
 		case 'history.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Storia</p>';
 		break;
 		
 		case 'species.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Specie</p>';
 		break;
 		
 		case 'all-species.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="species.php"><p>Specie</p></a>
+			<a href="species.php">Specie</a>
 			<p> &#187; </p>
 			<p>Tutte le specie</p>';
 		break;
 		
 		case 'display-specie.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="species.php"><p>Specie</p></a>
+			<a href="species.php">Specie</a>
 			<p> &#187; </p>
-			<a href="all-species.php"><p>Tutte le specie</p></a>
+			<a href="all-species.php">Tutte le specie</a>
 			<p> &#187; </p>
 			<p> Scheda dinosauro </p>';
 		break;
 		
 		case 'articles.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
 			<p>Articoli</p>';
 		break;
 		
 		case 'all-articles.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="articles.php"><p>Articoli</p></a>
+			<a href="articles.php">Articoli</a>
 			<p> &#187; </p>
 			<p>Tutti gli articoli</p>';
 		break;
 		
 		case 'display-article.php':
 		echo '
-			<a href="index.php"><p>Home</p></a>
+			<a href="index.php">Home</a>
 			<p> &#187; </p>
-			<a href="articles.php"><p>Articoli</p></a>
+			<a href="articles.php">Articoli</a>
 			<p> &#187; </p>
-			<a href="all-articles.php"><p>Tutti gli articoli</p></a>
+			<a href="all-articles.php">Tutti gli articoli</a>
 			<p> &#187; </p>
 			<p> Scheda articolo </p>';
 		break;
