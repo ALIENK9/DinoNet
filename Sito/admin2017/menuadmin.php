@@ -25,7 +25,7 @@
     <a class="hidden" href="#content">Salta il menù</a>
 
     <div id="close-button" class="hide-large center menu-entry">
-        <span onclick="close_menu()" aria-label="Chiudi il menù" class="btn">x</span>
+        <span onclick="close_menu()" title="Chiudi il menù">X</span>
     </div>
 	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active"; ?>">
 		<span class="menu-icon icon-home"></span>

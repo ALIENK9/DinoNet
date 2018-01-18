@@ -29,7 +29,8 @@
 	<link rel="stylesheet" href="css/index.css">
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market"> 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -88,19 +89,28 @@
 		?>
 		<div id="register">
 			<div class="card colored wrap-padding">
-				<form action="#" method="POST">
-					<p><label for="input-nome">nome</label></p>
-					<input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>">
-					<p><label for="input-cognome">cognome</label></p>
-					<input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
-					<p><label for="input-email" xml:lang="en" lang="en">email</label></p>
-					<input id="input-email" type="email" placeholder="inserisci la tua email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
-					<p><label for="input-passw" xml:lang="en" lang="en">password</label></p>
-					<input id="input-passw" type="password" placeholder="inserisci la tua password" name="password">
-					<p><label for="input-passw-again">ripeti <span xml:lang="en" lang="en">password</span></label></p>
-					<input id="input-passw-again" type="password" placeholder="ripeti la tua password" name="confermapassword">
-					<br><br>
-					<input type="submit" name="submit" value="REGISTRATI" class="card btn wide text-colored white">
+				<form id="reg-form" action="#" method="POST" onsubmit="validateForm(this)">
+					<p>
+                        <label for="input-nome">Nome</label>
+					    <input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" required value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>">
+                    </p>
+					<p>
+                        <label for="input-cognome">Cognome</label>
+					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" required value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>">
+                    </p>
+                    <p>
+                        <label for="input-email" xml:lang="en" lang="en">Email</label>
+					    <input id="input-email" type="email" placeholder="inserisci la tua email" name="email" required value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+                    </p>
+                    <p>
+                        <label for="input-passw" xml:lang="en" lang="en">Password</label>
+					    <input id="input-passw" type="password" placeholder="inserisci la password" required name="password">
+                    </p>
+					<p>
+                        <label for="input-passw-again">Ripeti <span xml:lang="en" lang="en">la password</span></label>
+					    <input id="input-passw-again" type="password" placeholder="ripeti la password" required name="confermapassword">
+                    </p>
+					<input type="submit" value="REGISTRATI" class="card btn wide text-colored white">
 				</form>
 			</div>
 		</div>

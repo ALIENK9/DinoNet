@@ -122,7 +122,13 @@
 	
 	\section{Sviluppo}
 	
+	\subsection{Fogli di stile}
+	
+	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media query, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta mostra il pregio del conseguimento di un foglio di stile facilmente utilizzabile, riutilizzabile ed estendibile, ed il difetto portato dalla necessario appesantimento in termini di leggibilità del codice HTML che vedrà \code{div} a cui saranno attribuite molte classi. 
+	
 	\subsection{Note sullo sviluppo}
+	
+	...
 	
 	\section{Usabilità}
 	
@@ -261,4 +267,16 @@
 		\item \textbf{GTmetrix}: il test ha avuto esito positivo riportando il grado "A" di velocità delle pagine. 
 	\end{itemize}
 
+\appendix
+
+	\section{Suddivisione dei ruoli}
+	
+	Premettendo che ogni componente del gruppo ha supervisionato e contribuito in qualche modo ad ogni parte dello sviluppo del sito, il lavoro è stato distribuito nel seguente modo:
+	
+	\begin{itemize}
+		\item \textbf{Alessandro Zangari}: Progettazione e sviluppo della parte pubblica, con particolare attenzione all'accessibilità e usabilità. Creazione del css per la stampa e gestione della responsiveness; 
+		\item \textbf{Cristiano Tessarolo}: Progettazione e sviluppo della parte privata, in particolare della logica. Progettazione e sviluppo del database;
+		\item \textbf{Matteo Rizzo}: Progettazione e sviluppo della parte pubblica, in particolare del layout e della grafica. Predisposizione del css principale del sito e responsabile del testing per validazione del codice e dell'accessibilità.
+	\end{itemize}
+	
 \end{document}
