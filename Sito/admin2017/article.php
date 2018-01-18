@@ -2,7 +2,7 @@
 
 include_once (__DIR__."/../classi/Article.php");
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['paneluser'])){
 
 	include_once (__DIR__."/../connect.php");
 	$connectArticle = startConnect();
@@ -33,7 +33,7 @@ if(isset($_SESSION['user'])){
 			echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Article::addArticle($connectArticle, $_SESSION['user']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
+			echo Article::addArticle($connectArticle, $_SESSION['paneluser']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["eta"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
 			break;			
 		case 'formupdate':
 			echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"],$_GET["article"]);

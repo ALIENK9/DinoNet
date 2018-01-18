@@ -103,17 +103,19 @@ class User {
    
            if(
                $result->num_rows == 0 &&
-               isset($email) &&
-               isset($nome) &&
-               isset($cognome) &&
+               isset($email) && $email!="" &&
+               isset($nome) && $nome!="" &&
+               isset($cognome) && $cognome!="" &&
                isset($datanascita) &&
-               isset($password) &&
+               isset($password) && $password!="" &&
                isset($confermaPassword) &&
                $password==$confermaPassword /*&&
                bisogna controllare che la data si effettivamente una data
                */
            ){	
                
+                if(!isset($datanascita)){ $datanascita = "";}
+                
                $destinazioneFileDB = NULL;
                if($immagine['error'] == 0){
                    $destinazioneFileDB = loadImage("userimg", $email, $immagine);
@@ -192,15 +194,17 @@ class User {
           
 
         if(
-            isset($nome) &&
-            isset($cognome) &&
-            isset($datanascita) &&
-            isset($password) &&
+            isset($nome) && $email!="" &&
+            isset($cognome) && $email!="" &&
+            isset($password) && $email!="" &&
             isset($confermaPassword) &&
             $password==$confermaPassword /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
+            
+            if(!isset($datanascita)){ $datanascita = "";}
+
             $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' WHERE email='".$this->getEmail()."'";
             if( $connect->query($sqlQuery) ){                
                 $this->setNome($nome);

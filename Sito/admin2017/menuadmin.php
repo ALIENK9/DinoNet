@@ -16,7 +16,7 @@
     $pages["delete-account"] = "delete-account.php";
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	
-	if(isset($_SESSION['user']) && $_SESSION['user']!=null) {	
+	if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null) {	
 ?>
 		
 <!-- Sidebar/menu -->

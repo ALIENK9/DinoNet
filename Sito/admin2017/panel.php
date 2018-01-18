@@ -3,7 +3,7 @@
 	include_once ("../classi/UserAdmin.php");
 
 	session_start();	
-	if(isset($_SESSION['user'])){
+	if(isset($_SESSION['paneluser'])){
 		
 		if(isset($_GET["id"]) && $_GET["id"]=='logout'){ // se effettuo il controllo dopo l'inclusione del menù mi da errore
 				include_once ("logout.php");
@@ -88,9 +88,9 @@
 
 			case 'myuser':
 					if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
-						echo $_SESSION['user']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
 					else
-						echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
+						echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
 				break;
 
 			case 'dino':

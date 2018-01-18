@@ -28,12 +28,11 @@ class Article{
 		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
-        $numModalConfrim = 0;
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
                 $echoString .='
 				<div class="third wrap-padding">
-                    <div id="article'.$numModalConfrim.'" class="daily-dino card">
+                    <div class="daily-dino card">
                         <div class="padding-large colored">
                             <h1> '.$row["id"].' </h1>
                         </div>
@@ -56,7 +55,6 @@ class Article{
                     </div>
                 </div>
                 ';
-                $numModalConfrim++;
 			}
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
@@ -223,15 +221,16 @@ class Article{
     public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine){
         $echoString="";
         if(
-            isset($titolo) &&
-            isset($sottotitolo) &&
-            isset($descrizione) &&
-            isset($anteprima) &&
-            isset($eta) &&
-            isset($descrizioneimg) /*&&
+            isset($titolo) && $titolo!="" &&
+            isset($descrizione) && $descrizione!="" /*&&
             bisogna controllare che la data sia effettivamente una data
             */
         ){
+            
+            if(!isset($sottotitolo)){ $sottotitolo = "";}
+            if(!isset($anteprima)){ $anteprima = "";}
+            if(!isset($eta)){ $eta = "";}
+            if(!isset($descrizioneimg)){ $descrizioneimg = "";}
             
             $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, eta, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$eta."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
             
@@ -321,14 +320,20 @@ class Article{
     public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine, $removeImage){
         $echoString="";
         if(
-            isset($titolo) &&
+            isset($titolo) && $titolo!="" &&
             isset($sottotitolo) &&
-            isset($descrizione) &&
-            isset($descrizioneimg) &&
-            isset($eta) /*&&
+            isset($descrizione) && $descrizione!="" &&
+            isset($anteprima) &&
+            isset($eta) &&
+            isset($descrizioneimg) /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
+            if(!isset($sottotitolo)){ $sottotitolo = "";}
+            if(!isset($anteprima)){ $anteprima = "";}
+            if(!isset($eta)){ $eta = "";}
+            if(!isset($descrizioneimg)){ $descrizioneimg = "";}
+
             if($removeImage){  
                 $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$idarticolo."' ";
                 $result = $connect->query($sqlQuery);

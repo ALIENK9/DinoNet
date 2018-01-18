@@ -8,14 +8,14 @@
 	
 	$connectLogin = startConnect();
 	
-	if(isset($_SESSION['user'])){	
+	if(isset($_SESSION['paneluser'])){	
 		session_unset();
 	}
 
 	if(isset($_POST['email']) && isset($_POST["password"])){
 		session_unset();
 		if(User::login($connectLogin, $_POST["email"], $_POST["password"],'1')){
-			$_SESSION['user'] = new UserAdmin($connectLogin, $_POST['email']);
+			$_SESSION['paneluser'] = new UserAdmin($connectLogin, $_POST['email']);
 			header("Location: panel.php");
 		}	
 	}

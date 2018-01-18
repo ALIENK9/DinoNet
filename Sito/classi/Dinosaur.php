@@ -30,12 +30,11 @@ class Dinosaur {
             $sqlFilter .= "ORDER BY nome";
             $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione, immagine FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
-            $numModalConfrim = 0;
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div id="dinosaur'.$numModalConfrim.'" class="daily-dino card">
+                        <div class="daily-dino card">
                             <div class="padding-large colored">
                                 <h1>'.$row["nome"].'</h1>
                             </div>
@@ -58,8 +57,7 @@ class Dinosaur {
                             </div>                           
                         </div>
                     </div>
-                    ';     
-                    $numModalConfrim++;           
+                    ';              
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
@@ -296,21 +294,22 @@ class Dinosaur {
         $result = $connect->query($sqlQuery);
         if(
             $result->num_rows == 0 &&
-            isset($nome) &&
-            isset($peso) &&
-            isset($altezza)  &&
-            isset($lunghezza) &&
-            isset($periodomin)  &&
-            isset($periodomax) &&
-            isset($habitat) &&
-            isset($alimentazione)  &&
-            isset($tipologiaalimentazione) &&
-            isset($descrizionebreve) &&
-            isset($descrizione) &&
-            isset($curiosita)  /*&&
+            isset($nome) && $nome!="" &&
+            isset($descrizionebreve) && $descrizionebreve!="" &&
+            isset($descrizione) && $descrizione!="" /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
+            
+            if(!isset($peso)){ $peso = "";}
+            if(!isset($altezza)){ $altezza = "";}
+            if(!isset($lunghezza)){ $lunghezza = "";}
+            if(!isset($periodomin)){ $periodomin = "";}
+            if(!isset($periodomax)){ $periodomax = "";}
+            if(!isset($habitat)){ $habitat = "";}
+            if(!isset($alimentazione)){ $alimentazione = "";}
+            if(!isset($tipologiaalimentazione)){ $tipologiaalimentazione = "";}
+            if(!isset($curiosita)){ $curiosita = "";}
 
             $destinazioneFileDB = NULL;
             if($immagine['error'] == 0){
@@ -439,22 +438,21 @@ class Dinosaur {
         $echoString ="";
         
         if(
-            isset($nome) &&
-            isset($peso) &&
-            isset($altezza) &&
-            isset($lunghezza) &&
-            isset($periodomin) &&
-            isset($periodomax) &&
-            isset($habitat) &&
-            isset($alimentazione) &&
-            isset($tipologiaalimentazione) &&
-            isset($descrizionebreve) &&
-            isset($descrizione) &&
-            isset($curiosita)/*&&
+            isset($nome) && $nome!="" &&
+            isset($descrizionebreve) && $descrizionebreve!="" &&
+            isset($descrizione) && $descrizione!="" /*&&
             bisogna controllare che la data si effettivamente una data
             */
-        ){
-
+        ){            
+            if(!isset($peso)){ $peso = "";}
+            if(!isset($altezza)){ $altezza = "";}
+            if(!isset($lunghezza)){ $lunghezza = "";}
+            if(!isset($periodomin)){ $periodomin = "";}
+            if(!isset($periodomax)){ $periodomax = "";}
+            if(!isset($habitat)){ $habitat = "";}
+            if(!isset($alimentazione)){ $alimentazione = "";}
+            if(!isset($tipologiaalimentazione)){ $tipologiaalimentazione = "";}
+            if(!isset($curiosita)){ $curiosita = "";}
             if($removeImage){  
                 $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$nome."' ";
                 $result = $connect->query($sqlQuery);

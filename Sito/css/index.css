@@ -108,7 +108,7 @@ textarea:focus {
 	height: 8em;
 }
 
-input {
+input,select {
 	padding: 0.5em;
 	display: block;
 	border: none;

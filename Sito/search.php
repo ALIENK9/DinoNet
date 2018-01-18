@@ -94,7 +94,7 @@
         <div class="row-padding content-large margin-top">
             <?php
             
-				echo Article::printListArticleUser($connect, $_GET["input"], ".", "display-specie.php?");
+				echo Article::printListArticleUser($connect, $_GET["input"], ".", "display-article.php?");
             ?>
         </div>
     </div>

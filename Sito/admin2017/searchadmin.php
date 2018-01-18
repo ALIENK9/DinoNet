@@ -1,9 +1,12 @@
 <?php   
-    
+
+session_start();	
+if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null){
+
     include_once (__DIR__."/../classi/Dinosaur.php");	
     include_once (__DIR__."/../classi/Article.php");	
     include_once (__DIR__."/../classi/UserAdmin.php");	
-    
+   
 	include_once (__DIR__."/../connect.php");
     $connect = startConnect();
     
@@ -50,5 +53,6 @@
 	
 <?php
 
-	closeConnect($connect);
+    closeConnect($connect);
+}
 ?>

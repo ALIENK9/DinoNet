@@ -3,7 +3,7 @@
 
 include_once (__DIR__."/../classi/UserAdmin.php");
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['paneluser'])){
 
 	include_once (__DIR__."/../connect.php");
 	$connectUser = startConnect();
@@ -26,29 +26,28 @@ if(isset($_SESSION['user'])){
 				</div>
 			</header>
 
-
 			<?php
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->printListUser($connectUser, "", "..").'</div>';
+			echo $_SESSION['paneluser']->printListUser($connectUser, "", "..", $_SERVER["PHP_SELF"]."?id=user&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=user&sez=delete&");
 			break;
 		case 'formadd':			
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formAddUser($_SERVER["PHP_SELF"]).'</div>';
+			echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo $_SESSION['user']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"]);
+			echo $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"]);
 			break;
 		case 'formupdate':
-			echo '<div class="content-large padding-6 no-print">' . $_SESSION['user']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']).'</div>';
+			echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
 			break;
 		case 'update':		
 			$removeimg=false;
 			if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 				$removeimg=true;			}
 
-			echo $_SESSION['user']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
+			echo $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg);
 			break;		
 		case 'delete':
 			if(isset($_GET["user"]))
-				echo $_SESSION['user']->deleteUser($connectUser, $_GET["user"]);
+				echo $_SESSION['paneluser']->deleteUser($connectUser, $_GET["user"]);
 			break;	
 		
 		default:

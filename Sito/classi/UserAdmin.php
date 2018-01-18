@@ -4,7 +4,7 @@ include_once (__DIR__."/User.php");
 
 class UserAdmin extends User {
     
-    public static function printListUser($connect, $filter, $basePathImg){
+    public static function printListUser($connect, $filter, $basePathImg, $pathUpdate, $pathDelete){
             
         
         $sqlQuery = "SELECT count(email) as ntot FROM utente";
@@ -12,10 +12,10 @@ class UserAdmin extends User {
         $row = $result->fetch_assoc();
         
 
-        return UserAdmin::printListUserLimit($connect, $filter,0,$row["ntot"], $basePathImg);        
+        return UserAdmin::printListUserLimit($connect, $filter,0,$row["ntot"], $basePathImg, $pathUpdate, $pathDelete);        
     }
 
-    public static function printListUserLimit($connect, $filter, $startNumView, $numView, $basePathImg){
+    public static function printListUserLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete){
             
         $echoString="";
         if(isset($connect)){
@@ -31,12 +31,11 @@ class UserAdmin extends User {
             $sqlFilter .= "ORDER BY email, nome, cognome";
             $sqlQuery = "SELECT email, nome, cognome, immagine FROM utente ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
-            $numModalConfrim = 0;
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div id="user'.$numModalConfrim.'" class="daily-dino card">
+                        <div class="daily-dino card">
                             <div class="padding-large colored">
                                 <h1>'.$row["email"].'</h1>
                             </div>
@@ -52,13 +51,12 @@ class UserAdmin extends User {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=formupdate&user='.$row["email"].'" class="btn"> Modifica</a>
-                                <a href="'.$_SERVER["PHP_SELF"].'?id=user&sez=delete&user='.$row["email"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
+                                <a href="'.$pathUpdate.'user='.$row["email"].'" class="btn"> Modifica</a>
+                                <a href="'.$pathDelete.'user='.$row["email"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
                             </div>
                         </div>
                     </div>
                     ';
-                    $numModalConfrim++;
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
@@ -114,6 +112,12 @@ class UserAdmin extends User {
 				</div>
 				<div class="card colored wrap-padding">
 					<form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data">
+                        <p><label for="tipologia">Tipologia utente:</label></p>
+                        <select id="tipologia" name="tipologia">                        
+                            <option value="0" selected>Standard</option>
+                            <option value="1">Administrator</option>
+                        </select>
+
 						<p><label for="email">Email:</label></p>
 						<input type="email" id="email" name="email" value="">
 						
@@ -146,7 +150,7 @@ class UserAdmin extends User {
     return $echoString;
     } 
     
-    public static function addUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine){
+    public static function addUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine){
      
         $echoString ="";
           
@@ -155,23 +159,25 @@ class UserAdmin extends User {
 
         if(
             $result->num_rows == 0 &&
-            isset($email) &&
-            isset($nome) &&
-            isset($cognome) &&
-            isset($datanascita) &&
-            isset($password) &&
+            isset($email) && $email!="" &&
+            isset($nome) && $nome!="" &&
+            isset($cognome) && $cognome!="" &&
+            isset($password) && $password!="" &&
             isset($confermaPassword) &&
             $password==$confermaPassword /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){	
             
+            if(!isset($datanascita)){ $datanascita = "";}
+            if(!isset($tipologia) || $tipologia>1){ $tipologia = 0;}
+
             $destinazioneFileDB = NULL;
             if($immagine['error'] == 0){
                 $destinazioneFileDB = loadImage("userimg", $email, $immagine);
             }
 
-            $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
+            $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, tipologia, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', '".$tipologia."', ";
             if( $destinazioneFileDB != NULL)
                 $sqlQuery .="'".$destinazioneFileDB."'";
             else{
@@ -211,6 +217,12 @@ class UserAdmin extends User {
 					</div>
 					<div class="card colored wrap-padding">
 						<form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data">
+                            <p><label for="tipologia">Tipologia utente:</label></p>
+                            <select id="tipologia" name="tipologia">                        
+                                <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
+                                <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
+                            </select>
+
 							<p><label for="email">Email:</label></p>
 							<input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
 							
@@ -251,22 +263,25 @@ class UserAdmin extends User {
         return $echoString;
     } 
     
-    public static function updateUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $removeImage){
+    public static function updateUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine, $removeImage){
      
         $echoString ="";
           
 
         if(
-            isset($email) &&
-            isset($nome) &&
-            isset($cognome) &&
-            isset($datanascita) &&
-            isset($password) &&
+            isset($email) && $email!="" &&
+            isset($nome) && $nome!="" &&
+            isset($cognome) && $cognome!="" &&
+            isset($password) && $password!="" &&
             isset($confermaPassword) &&
             $password==$confermaPassword /*&&
             bisogna controllare che la data si effettivamente una data
             */
         ){
+                        
+            if(!isset($datanascita)){ $datanascita = "";}
+            if(!isset($tipologia) || $tipologia>1){ $tipologia = 0;}
+
             if($removeImage){  
                 $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
                 $result = $connect->query($sqlQuery);
@@ -283,7 +298,7 @@ class UserAdmin extends User {
                 $destinazioneFileDB = loadImage("userimg", $email, $immagine);
             }
 
-            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
+            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' , tipologia='".$tipologia."'";
             if( $destinazioneFileDB != NULL){
                 $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
             }

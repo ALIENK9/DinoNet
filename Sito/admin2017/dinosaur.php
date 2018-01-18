@@ -2,7 +2,7 @@
 
 include_once (__DIR__."/../classi/Dinosaur.php");
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['paneluser'])){
 	include_once (__DIR__."/../connect.php");
 	$connectDinosaur = startConnect();
 	
@@ -31,7 +31,7 @@ if(isset($_SESSION['user'])){
 			echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 			break;
 		case 'add':
-			echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['user']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"]);
+			echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"]);
 			break;			
 		case 'formupdate':
 			echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"],$_GET['nome']);
