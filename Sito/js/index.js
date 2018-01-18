@@ -29,7 +29,7 @@ function capitalizeFirstLetter(stringa) {
  * @returns {boolean}, 'true' se tuttii campi del form sono stati compilati correttamente, 'false' altrimenti.
  */
 function validateForm(nomeForm) {
-    var corretto = false;
+    var corretto = true;
     var result = false;
     var inputs = nomeForm.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {

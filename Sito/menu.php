@@ -80,7 +80,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	<?php
 	if(isset($_SESSION['user'])) {
 	?>
-		<a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
+		<a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["edit-account"]) echo 'active'; if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
 			<span class="menu-icon icon-accedi"></span>
 			<p>Account</p>
 		</a>
@@ -102,6 +102,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <a href="register.php" class="menu-entry-small active disabled">
             <hr>
             <p>Registrazione</p>
+        </a>
+        ';
+    ?>
+        <!-- espande il menù con le sottosezione modifica -->
+    <?php
+    if($currentPage == $pages["edit-account"])
+        echo'
+        <a href="edit-account.php" class="menu-entry-small active disabled">
+            <hr>
+            <p>Modifica account</p>
         </a>
         ';
     ?>

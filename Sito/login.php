@@ -84,7 +84,7 @@
 
 		<div id="login">
 			<div class="card colored wrap-padding">
-				<form action="#" method="POST" onsubmit="validateForm(this)">
+				<form action="#" method="POST" onsubmit="return validateForm(this)">
 					<p>
                         <label for="input-email" xml:lang="en" lang="en">Email</label>
                         <input id="input-email" type="text" placeholder="email" required name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">

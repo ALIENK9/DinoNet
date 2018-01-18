@@ -113,15 +113,34 @@ input {
 	display: block;
 	border: none;
 	border-bottom: 1px solid #ccc;
-	width: 100%;
+	width: 75%;
 	border-radius: 4px;
 	font: inherit;
 	margin: 0;
 	overflow: visible;
+	transition: width 0.5s ease;
+}
+
+form {
+	text-align:center;
+}
+
+input:focus{
+	transition: width 0.5s ease;
+	width: 100%;
 }
 
 input[type="submit"] {
+	width:100%;
+	transition: background-color 0.5s ease;
     margin-top: 2.5em;
+}
+
+input[type="submit"]:focus, input[type="submit"]:hover{
+	transition: background-color 0.5s ease;
+    background-color: #990000;
+    color: white;
+	
 }
 
 input#conferma{
