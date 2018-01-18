@@ -1,3 +1,10 @@
+<?php
+
+if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
+    header("Location: ../error.php");
+    exit();
+}
+?>
 <div id="topbar" class="center">
 <form action="?id=search" method="get" id="searchbar">
         <label for="search-input" class="hidden">Ricerca nel sito</label>

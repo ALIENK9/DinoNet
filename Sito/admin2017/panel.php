@@ -3,15 +3,19 @@
 	include_once ("../classi/UserAdmin.php");
 
 	session_start();	
-	if(isset($_SESSION['paneluser'])){
+	if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
+		header("Location: ../error.php");
+		exit();
+	}
 		
-		if(isset($_GET["id"]) && $_GET["id"]=='logout'){ // se effettuo il controllo dopo l'inclusione del menù mi da errore
-				include_once ("logout.php");
-		}
-	
+	if(isset($_GET["id"]) && $_GET["id"]=='logout'){ // se effettuo il controllo dopo l'inclusione del menù mi da errore
+		header("Location: logout.php");
+		exit();
+	}
 
-		include_once ("../connect.php");
-		$connectPanel = startConnect();
+
+	include_once ("../connect.php");
+	$connectPanel = startConnect();
 		
 ?>
 
@@ -72,7 +76,7 @@
 
 	<?php 
 
-		if(isset($_GET["id"]))
+		if(isset($_GET["id"]) && $_GET["id"]!="")
 			$idPage=$_GET["id"];
 		else
 			$idPage = "home";
@@ -130,15 +134,5 @@
 	</html>
 
 <?php
-	
-	
-		closeConnect($connectPanel);
-	
-
-	}
-	else{
-		
-		header("Location: ../error.php");
-		exit();
-	}
+	closeConnect($connectPanel);
 ?>

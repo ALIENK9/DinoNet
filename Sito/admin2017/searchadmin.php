@@ -1,7 +1,9 @@
 <?php   
 
-session_start();	
-if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null){
+if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
+    header("Location: ../error.php");
+    exit();
+}
 
     include_once (__DIR__."/../classi/Dinosaur.php");	
     include_once (__DIR__."/../classi/Article.php");	
@@ -22,7 +24,7 @@ if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null){
         <div class="row-padding content-large margin-top">
             <?php
             
-				echo UserAdmin::printListUser($connect, $_GET["input"], ".", "display-specie.php?");
+				echo UserAdmin::printListUser($connect, $_GET["input"], "..", $_SERVER["PHP_SELF"]."?id=user&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=user&sez=delete&");
             ?>
         </div>
     </div>
@@ -54,5 +56,4 @@ if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null){
 <?php
 
     closeConnect($connect);
-}
 ?>

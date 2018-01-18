@@ -92,27 +92,6 @@ $connectArticles = startConnect();
 	<?php
 		
 			echo Article::getArticleDay($connectArticles,".", "display-article.php?");
-		/*
-		?>
-	<div id="daily-article" class="card daily-article">
-		<div class="padding-large colored">
-			<h1> Quando gli insetti dominavano la terra </h1>
-		</div>
-		<img src="img/meganeura.jpg" alt="Fossile di Meganeura, una libellula gigante">
-		<div class="padding-large">
-			<h3 class="text-colored center"> Sottotitolo </h3>
-			<p>
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-				sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-				consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			</p>
-		</div>
-		<div class="center padding-2">
-			<a href="display-article.php" class="btn"><p> Leggi l'articolo </p></a>
-		</div>
-	</div>
-	*/
 	?>
 </div>
 
@@ -123,31 +102,6 @@ $connectArticles = startConnect();
 	<div class="row-padding content-large margin-top">
 	<?php
 		echo Article::printListArticleUserLimit($connectArticles, "", 0, 3, ".", "display-article.php?", true);
-		/*
-		for($i = 0; $i < 3; $i++) {
-		echo'
-			<div class="third wrap-padding">
-				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">
-						<h1> Titolo dell\'articolo </h1>
-					</div>
-					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
-					<div class="padding-large">
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="display-article.php" class="btn"> Leggi l\'articolo </a>
-					</div>
-				</div>
-			</div>
-		';
-		}
-		*/
 	?>
 	</div>
 </div>

@@ -65,13 +65,6 @@
             <h1 class="text-colored"> Tutte le specie </h1>
             <h2> scopri informazioni dettagliate su innumerevoli dinosauri</h2>
         </div>
-        <!--div id="input-area" class="content card colored wrap-padding center">
-            <div class="content">
-                <h1> <label for="search-dino"> CERCA UN DINOSAURO! </label> </h1>
-                <input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
-                <input type="submit" value="CERCA" class="card btn wide text-colored white">
-            </div>
-        </div-->
         <a href="#content" class="down-arrow arrow btn card bounce">
             <span class="hidden">Scorri alla lista</span>
         </a>
@@ -94,36 +87,6 @@
             <?php
             
 				echo Dinosaur::printListDinosaurUser($connectSpecies, "", ".", "display-specie.php?");
-            /*
-            for($i = 0; $i < 9; $i++) {
-                echo'
-			<div class="third wrap-padding">
-				<div class="daily-dino card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">	
-					    <h1> Nome del dinosauro </h1>
-					</div>
-					<img src="img/dailydino-test.png" alt="Triceratopo">
-					<div class="padding-large">
-						<ul>
-							<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
-							<li><strong>Alimentazione:</strong> Carnivoro</li>
-							<li><strong>Peso:</strong> 100q</li>
-						</ul>
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="display-specie.php" class="btn colored"><p> Visualizza la scheda del dinosauro </p></a>
-					</div>
-				</div>
-			</div>
-		';
-            }
-           */ 
             ?>
         </div>
     </div>

@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
+	header("Location: ../error.php");
+	exit();
+}
+?>
 <noscript id="nojs">
     <div id="nojs-avviso" class="white center wrap-padding hide-large">
         <h2>Hai disabilitato JavaScript :(</h2>

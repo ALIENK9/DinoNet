@@ -103,7 +103,6 @@
 <!-- La scoperta -->
 
 <div id="scoperta" class="row parallax">
-	<!--div id="history-1" class="hide-large hide-medium history-img"></div-->
 	<div class="half right">
 		<div class="white wrap-padding">
 			<h1> La grande scoperta e <br> la corsa ai fossili</h1>
@@ -191,7 +190,6 @@
 			</p>
 		</div>
 	</div>
-	<!--div id="history-2" class="hide-large hide-medium history-img"></div-->
 </div>
 
 <!-- L'estinzione -->

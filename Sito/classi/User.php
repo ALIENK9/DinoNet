@@ -8,7 +8,7 @@ class User {
     private $datanascita;
     private $password;
     private $tipologia;
-    //protected $connect;
+    
     private $prova;
     //costruttore
     public function __construct($connect, $username)
@@ -29,11 +29,6 @@ class User {
         }
         
     }   
-    /*public function __destruct()
-    {
-        closeConnect($this->connect);     
-    } */ 
-            
     //metodi
     public function getEmail() {
         return $this->email;
@@ -56,7 +51,6 @@ class User {
     
     
     public function setEmail($value) {
-        //inserire controlli di tipo
         $this->email = $value;
     }       
     public function setNome($value) {
@@ -74,13 +68,6 @@ class User {
     public function setTipologia($value) {
         $this->tipologia = $value;
     }  
-
-    public function addCommento($article, $value){
-
-    }
-    public function updateCommento($idCommento, $value){
-
-    }
 
     public static function login($connect, $user, $pass, $tipologia){
         $status = false;
@@ -106,12 +93,9 @@ class User {
                isset($email) && $email!="" &&
                isset($nome) && $nome!="" &&
                isset($cognome) && $cognome!="" &&
-               isset($datanascita) &&
                isset($password) && $password!="" &&
                isset($confermaPassword) &&
-               $password==$confermaPassword /*&&
-               bisogna controllare che la data si effettivamente una data
-               */
+               $password==$confermaPassword 
            ){	
                
                 if(!isset($datanascita)){ $datanascita = "";}
@@ -160,22 +144,22 @@ class User {
                     <div class="card colored wrap-padding">
                         <form action="'.$url.'" method="POST">
                             <p><label for="email">Email:</label></p>
-                            <input type="email" id="email" name="email" value="'.$this->getEmail().'" readonly>
+                            <input type="email" id="email" name="email" required value="'.$this->getEmail().'" readonly>
                             
                             <p><label for="nome">Nome:</label></p>
-                            <input type="text" id="nome" name="nome" value="'.$this->getNome().'">
+                            <input type="text" id="nome" name="nome" required value="'.$this->getNome().'">
                             
                             <p><label for="cognome">Cognome:</label></p>
-                            <input type="text" id="cognome" name="cognome" value="'.$this->getCognome().'">
+                            <input type="text" id="cognome" name="cognome" required value="'.$this->getCognome().'">
                             
                             <p><label for="datanascita">Data di nascita:</label></p>
                             <input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
                             
                             <p><label for="password">Password:</label></p>
-                            <input type="password" id="password" name="password" value="'.$this->getPassword().'">
+                            <input type="password" id="password" name="password" required value="'.$this->getPassword().'">
                             
                             <p><label for="passwordconf">Conferma password:</label></p>
-                            <input type="password" id="passwordconf" name="passwordconf" value="'.$this->getPassword().'">
+                            <input type="password" id="passwordconf" name="passwordconf" required value="'.$this->getPassword().'">
                             
                             <input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide white">
                         </form>
@@ -198,9 +182,7 @@ class User {
             isset($cognome) && $email!="" &&
             isset($password) && $email!="" &&
             isset($confermaPassword) &&
-            $password==$confermaPassword /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            $password==$confermaPassword 
         ){
             
             if(!isset($datanascita)){ $datanascita = "";}

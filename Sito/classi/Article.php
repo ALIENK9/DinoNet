@@ -4,15 +4,15 @@ include_once (__DIR__."/../loadFile.php");
     
 class Article{
 
-    public static function printListArticle($connect, $filter, $basePathImg, $pathUpdate, $pathDelete){
+    public static function printListArticle($connect, $filter, $basePathImg, $pathUpdate, $pathDelete, $pathComment){
         $sqlQuery = "SELECT count(id) as ntot FROM articolo";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
         
-        return Article::printListArticleLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete);
+        return Article::printListArticleLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete, $pathComment);
     }
 
-    public static function printListArticleLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete){
+    public static function printListArticleLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete, $pathComment){
         $echoString="";
         $sqlFilter = "";
 
@@ -50,6 +50,7 @@ class Article{
                         </div>
                         <div class="center padding-2">                                
                             <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
+                            <a href="'.$pathComment.'article='.$row["id"].'" class="btn">Commenti</a>
                             <a href="'.$pathDelete.'article='.$row["id"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
                     </div>
@@ -130,16 +131,20 @@ class Article{
 
     public static function printArticle($connect, $id, $basePathImg){
         $echoString="";
-        $sqlQuery = "SELECT sottotitolo, descrizione FROM articolo WHERE id='$id'";
+        $sqlQuery = "SELECT sottotitolo, anteprima FROM articolo WHERE id='$id'";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $echoString .='
                     <div class="card">
+                    ';
+                    if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL){
+                        $echoString .='
                         <div class="padding-large colored">
                             <h1> '.$row["sottotitolo"].'</h1>
-                        </div>
-
+                        </div>';
+                    }
+                    $echoString .='
                         <div class="wrap-padding article-content">
                             '.html_entity_decode($row["descrizione"]).'                            
                         </div>
@@ -188,13 +193,13 @@ class Article{
 				<div class="card colored wrap-padding">
 					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data">
 						<p><label for="titolo">Titolo:</label></p>
-						<input type="text" id="titolo" name="titolo" value="">
+						<input type="text" id="titolo" name="titolo" required value="">
 						
 						<p><label for="sottotitolo">Sottotitolo:</label></p>
 						<input type="text" id="sottotitolo" name="sottotitolo" value="">
 						
 						<p><label for="descrizione">Descrizione:</label></p>
-                        <textarea type="text" id="descrizione" name="descrizione" value=""></textarea>
+                        <textarea type="text" id="descrizione" name="descrizione" required value=""></textarea>
                         
 						<p><label for="anteprima">Anteprima:</label></p>
 						<textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
@@ -222,9 +227,7 @@ class Article{
         $echoString="";
         if(
             isset($titolo) && $titolo!="" &&
-            isset($descrizione) && $descrizione!="" /*&&
-            bisogna controllare che la data sia effettivamente una data
-            */
+            isset($descrizione) && $descrizione!=""
         ){
             
             if(!isset($sottotitolo)){ $sottotitolo = "";}
@@ -278,13 +281,13 @@ class Article{
 							<input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
 							
 							<p><label for="titolo">Titolo:</label></p>
-							<input type="text" id="titolo" name="titolo" value="'.$row["titolo"].'">
+							<input type="text" id="titolo" name="titolo" required value="'.$row["titolo"].'">
 							
 							<p><label for="sottotitolo">Sottotitolo:</label></p>
 							<input type="text" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'">
 							
 							<p><label for="descrizione">Descrizione:</label></p>
-							<textarea type="text" id="descrizione" name="descrizione">'.$row["descrizione"].'</textarea>
+							<textarea type="text" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
                             
                             <p><label for="anteprima">Anteprima:</label></p>
 							<textarea type="text" id="anteprima" name="anteprima">'.$row["anteprima"].'</textarea>
@@ -321,13 +324,7 @@ class Article{
         $echoString="";
         if(
             isset($titolo) && $titolo!="" &&
-            isset($sottotitolo) &&
-            isset($descrizione) && $descrizione!="" &&
-            isset($anteprima) &&
-            isset($eta) &&
-            isset($descrizioneimg) /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            isset($descrizione) && $descrizione!="" 
         ){
             if(!isset($sottotitolo)){ $sottotitolo = "";}
             if(!isset($anteprima)){ $anteprima = "";}
@@ -462,7 +459,41 @@ class Article{
         }
         return $echoString;
     }
-    
+
+    public static function getCommentToDelete($connect, $idArticle, $url){
+        $echoString ='
+        <div id="commentboard" class="content panel">
+            <div class="card wrap-padding">            
+                <div class="padding-large colored">
+                    <h1>Commenti</h1>
+                </div>';
+        
+        $sqlQuery = "SELECT id, nome, cognome, commento FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .= '
+                    <div class="comment">
+                        <p>
+                            '.$row["nome"].' '.$row["cognome"].'
+                        </p>
+                        <p class="card wrap-padding-small">
+                            '.$row["commento"].'
+                        </p>
+                        <a href="'.$url.'idcommento='.$row["id"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+            
+                    </div>';
+            } 
+        }
+        else{
+            $echoString .= "Non sono presenti commenti";
+        }
+        $echoString .= '
+            </div>
+        </div>';
+        return $echoString;
+    }
+
     public static function addComment($connect, $idArticle, $idUser, $text){
         $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$text."')";
         if( $connect->query($sqlQuery) ){
@@ -470,6 +501,17 @@ class Article{
         } 
         else {
             $echoString = "Elemento NON Aggiunto";
+        }
+        return $echoString;
+    }
+
+    public static function deleteComment($connect, $idComment){        
+        $sqlQuery = "DELETE FROM commentoarticolo WHERE id = '".$idComment."' ";
+        if( $connect->query($sqlQuery) ){
+            $echoString = "Elemento eliminato";
+        } 
+        else {
+            $echoString = "Elemento NON eliminato";
         }
         return $echoString;
     }

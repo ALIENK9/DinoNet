@@ -77,115 +77,17 @@
 <div class="content-large padding-3">
 	
 	<?php
-
 	echo Article::printArticle($connectArticle, $_GET["id"],".");
-	
-
-	/*
-	<div class="card">
-		<div class="padding-large colored">
-			<h1> Estinzione: diverse teorie</h1>
-		</div>
-
-        <div class="wrap-padding article-content">
-
-            <figure class="article-image-right">
-                <img id="petrified_wood" src="img/petrified_wood.jpg"
-                     alt="Sezione pietrificata di tronco fossile nel parco nazionale della Foresta Pietrificata in Arizona">
-                <figcaption>
-                    <p>
-                        Vista aerea del Meteor Crater in Arizona. Questo cratere con diametro di circa 1200 metri è
-                        stato generato circa 50000 anni fa dall'impatto di un meteorite largo 46 metri.
-                    </p>
-                </figcaption>
-            </figure>
-
-			<p>
-				Dopo aver domiato la Terra per 170 milioni di anni, impedendo a tutte le altre forme (pesci, uccelli e soprattutto mammiferi) di affermarsi, i grandi rettili di colpo scomparvero. Sessantacinque milioni di anni fa, sulla Terra si produce un'immensa catastrofe che elimina tutti i dinosauri in ogni angolo del pianeta.<br>
-				Non solo: ma anche gran parte della vita si estingue, oltre che sulla terraferma, anche nei mari e nei cieli. Secondo alcune stime il 50-70% delle specie viventi scomparvero. In particolare si estinsero tutti gli animali di una certa taglia, ma anche moltissimi animali microscopici, e buona parte del plancton. Sulla scomparsa dei dinosauri sono state formulate più di 60 ipotesi. Troppe. Alcune del tutto bizzarre, ma altre più probabili.
-			</p>
-            <figure class="article-image-left">
-                <img id="meteor_crater" src="img/meteor_crater.jpg" alt="Il Meteor Crater in Arizona">
-                <figcaption>
-                    <p>
-                        Vista aerea del Meteor Crater in Arizona. Questo cratere con diametro di circa 1200 metri è
-                        stato generato circa 50000 anni fa dall'impatto di un meteorite largo 46 metri.
-                    </p>
-                </figcaption>
-            </figure>
-			<p>
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-				sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-				consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			</p>
-			<p>
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-				totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-				sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-				consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			</p>
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-            </p>
-
-            <figure class="article-image-right">
-                <img id="carboniferous_forest" src="img/carboniferous_forest.jpg" alt="Uno scorcio di foresta del periodo Carbonifero">
-                <figcaption>
-                    <p>
-                        Una raffigurazione di una palude del Carbonifero. Durante questo periodo si sviluppano gli
-                        insetti tra i quali la Meganeura, libellula gigante, che raggiunge 70 centimetri d'apertura
-                        alare e molte spece di aracnidi. Anche gli anfibi conoscono grande diffusione.
-                    </p>
-                </figcaption>
-            </figure>
-
-			<h2>Estinzione: e dopo?</h2>
-			<p>
-				L'era Cenozoica (che comprende l'attuale periodo Quaternario e il precedente Terziario) fece seguito
-                all'estizione di massa della fine del Cretacico, che determinò la scomparsa dei dinosauri, degli
-                pterosauri, dialcuni uccelli e mammiferi e di molte specie marine.
-			</p>
-			<p>
-				Nel corso del Terziario inferiore, i mammiferi e gli uccelli sopravissuti si diversificarono
-                rapidamente, occupando le nicchie ecologiche lasciate libere dai dinosauri. Nel Terziario superiore,
-                durante le epoche del Miocene e Pliocene, la diffusione delle praterie condusse all'evoluzione
-                di forme moderne di mammiferi erbivori.
-			</p>
-
-			<p>
-				A partire dal Quaternario (le cui epoche sono Pleistocene e Olocene), la vita animale e vegetale
-                rassomigliava genericamente alle specie moderne, sebbene alcune, che si erano adattate alla
-                sopravvivenza nel corso dei periodi glaciali, non siano sopravvissute fino ai giorni nostri.
-                Alcune famiglie invece, sono giunte fino ai nostri giorni: per esempio le pteridofite, la grande
-                famiglia delle felci, che fecero la loro apparizione durante il periodo Carbonifero, più di 300 milioni
-                di anni fa.
-			</p>
-		</div>
-	</div>
-	*/?>
+	?>
 </div>
 
-<?php //include_once 'commentboard.php'?>
-
 <div id="commentboard" class="content panel">
+	<div class="padding-large colored">
+		<h1>Commenti</h1>
+	</div>
 	<div class="card wrap-padding">
 		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
+		
 		<?php echo Article::getComment($connectArticle,$_GET["id"]) ?>
 	</div>
 	<div class="card center wrap-padding colored">			

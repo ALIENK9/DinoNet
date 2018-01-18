@@ -81,70 +81,18 @@
 
 <!-- Dinosauri -->
 
-<div class="padding-6 content side-padding"> <!-- side-padding era row-padding e content era content-large -->
+<div class="padding-6 content side-padding">
 
-	<!--div id="daily-dino" class="half wrap-padding"-->
+
 
 		<div id="daily-dino" class="card margin-half colored center wrap-padding">
 			<h1>Il dinosauro del giorno</h1>
 			<hr>
             <p>Ogni giorno qui troverai un nuovo fantastico dinosauro!</p>
 		</div>
-		<?php
-		
+		<?php		
 			echo Dinosaur::getDinosaurDay($connectSpecies, ".", "display-specie.php?");
-		/*
-		?>		
-		<div class="daily-dino card"> <!--tolto wrap-margin-->
-			<div class="padding-large colored">
-				<h1> Nome del dinosauro </h1>
-			</div>
-			<img src="img/dailydino-test.png" alt="Triceratopo">
-			<div class="padding-large">
-				<ul>
-					<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
-					<li><strong>Alimentazione:</strong> Carnivoro</li>
-					<li><strong>Peso:</strong> 100q</li>
-				</ul>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</div>
-			<div class="center padding-2">
-				<a href="display-specie.php" class="btn"> Visualizza la scheda del dinosauro </a>
-			</div>
-		</div>
-		<?php */ ?>
-	<!--/div>
-	<div class="half wrap-padding">
-
-		<div class="card margin-half colored center wrap-padding">
-			<h1 class="title">L'articolo correlato</h1>
-			<hr>
-			<p>Ecco un articolo in cui compare il dinosauro del giorno!</p>
-		</div>
-
-		<div class="daily-article card">
-			<div class="padding-large colored">
-				<h1> Titolo dell'articolo </h1>
-			</div>
-			<img src="img/dailyarticle-test.jpg" alt="Resti di dinosauro">
-			<div class="padding-large">
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</div>
-			<div class="center padding-2">
-				<a href="" class="btn"> Leggi l'articolo </a>
-			</div>
-		</div>
-	</div-->
+		?>
 </div>
 
 <div class="padding-6">
@@ -153,39 +101,8 @@
 		<p>Gli ultimi dinosauri aggiunti al nostro archivio!</p>
 	</div>
 	<div class="row-padding content-large margin-top">
-	<?php
-	
+	<?php	
 		echo Dinosaur::printListDinosaurUserLimit($connectSpecies, "", 0, 3, ".", "display-specie.php?", true);
-		/*
-		for($i = 0; $i < 3; $i++) {
-		echo'
-			<div class="third wrap-padding">
-				<div class="daily-dino card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">
-						<h1> Nome del dinosauro </h1>
-					</div>
-					<img src="img/dailydino-test.png" alt="Triceratopo">
-					<div class="padding-large">
-						<ul>
-							<li><strong>Nome scientifico:</strong> Tirannosaurus Rex</li>
-							<li><strong>Alimentazione:</strong> Carnivoro</li>
-							<li><strong>Peso:</strong> 100q</li>
-						</ul>
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="" class="btn"> Visualizza la scheda del dinosauro </a>
-					</div>
-				</div>
-			</div>
-		';
-		}
-		*/
 	?>
 	</div>
 </div>

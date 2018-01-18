@@ -5,15 +5,15 @@ include_once (__DIR__."/../loadFile.php");
 class Dinosaur {    
                 
     //metodi
-    public static function printListDinosaur($connect, $filter, $basePathImg, $pathUpdate, $pathDelete){
+    public static function printListDinosaur($connect, $filter, $basePathImg, $pathUpdate, $pathDelete, $pathComment){
         
         $sqlQuery = "SELECT count(nome) as ntot FROM dinosauro";
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
        
-        return Dinosaur::printListDinosaurLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete);
+        return Dinosaur::printListDinosaurLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathUpdate, $pathDelete, $pathComment);
     }
-    public static function printListDinosaurLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete){
+    public static function printListDinosaurLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathUpdate, $pathDelete, $pathComment){
         $echoString="";
         if(isset($connect)){
             $sqlFilter = "";
@@ -53,6 +53,7 @@ class Dinosaur {
                             </div>
                             <div class="center padding-2">
                                 <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn"> Modifica </a>
+                                <a href="'.$pathComment.'nome='.$row["nome"].'" class="btn"> Commenti </a>
                                 <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
                             </div>                           
                         </div>
@@ -160,14 +161,14 @@ class Dinosaur {
                             <div id="caratteristiche" class="wrap-padding white">
                                 <h2>Caratteristiche</h2>
                                 <br>
-                                <ul>
-                                    <li><strong>Età:</strong> '.$row["periodomin"].'-'.$row["periodomax"].' milioni</li>
-                                    <li><strong>Habitat:</strong> '.$row["habitat"].'</li>
-                                    <li><strong>Altezza:</strong> '.$row["altezza"].' cm</li>
-                                    <li><strong>Lunghezza:</strong> '.$row["lunghezza"].' cm</li>
-                                    <li><strong>Peso:</strong> '.$row["peso"].' kg</li>
-                                    <li><strong>Alimentazione:</strong> '.$row["alimentazione"].'</li>
-                                </ul>
+                                <ul>';
+                                if($row["periodomin"]!="" && $row["periodomin"]!=NULL)$echoString .='<li><strong>Età:</strong> '.$row["periodomin"].'-'.$row["periodomax"].' milioni</li>';
+                                if($row["habitat"]!="" && $row["habitat"]!=NULL)$echoString .='<li><strong>Habitat:</strong> '.$row["habitat"].'</li>';
+                                if($row["altezza"]!="" && $row["altezza"]!=NULL)$echoString .='<li><strong>Altezza:</strong> '.$row["altezza"].' cm</li>';
+                                if($row["lunghezza"]!="" && $row["lunghezza"]!=NULL)$echoString .='<li><strong>Lunghezza:</strong> '.$row["lunghezza"].' cm</li>';
+                                if($row["peso"]!="" && $row["peso"]!=NULL)$echoString .='<li><strong>Peso:</strong> '.$row["peso"].' kg</li>';
+                                if($row["alimentazione"]!="" && $row["alimentazione"]!=NULL)$echoString .='<li><strong>Alimentazione:</strong> '.$row["alimentazione"].'</li>';
+                                $echoString .='</ul>
                             </div>
 
                         </div>
@@ -175,10 +176,13 @@ class Dinosaur {
                             <h2>Descrizione</h2>
                             <br>
                             '.html_entity_decode($row["descrizione"]).'                            
-                            <br>
-                            <h2>Una curiosità</h2>
-                            <br>
-                            '.html_entity_decode($row["curiosita"]).'
+                            ';
+                            if($row["curiosita"]!="" && $row["curiosita"]!=NULL)
+                            $echoString .='<br>
+                                            <h2>Una curiosità</h2>
+                                            <br>
+                                            '.html_entity_decode($row["curiosita"]);
+                            $echoString .='
                         </div>
                     </div>                
                 ';
@@ -229,7 +233,7 @@ class Dinosaur {
 				<div class="card colored wrap-padding">
 					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data">
 						<p><label for="nome">Nome:</label></p>
-						<input type="text" id="nome" name="nome" value="">
+						<input type="text" id="nome" name="nome" required value="">
 						
 						<p><label for="peso">Peso in Kg:</label></p>
 						<input type="number" id="peso" name="peso" value="">
@@ -264,10 +268,10 @@ class Dinosaur {
 						<input type="text" id="alimentazione" name="alimentazione" value="">
 						
 						<p><label for="descrizionebreve">Descrizione Breve:</label></p>
-						<textarea type="text" id="descrizionebreve" name="descrizionebreve" value=""></textarea>
+						<textarea type="text" id="descrizionebreve" name="descrizionebreve" required value=""></textarea>
 						
 						<p><label for="descrizione">Descrizione:</label></p>
-						<textarea type="text" id="descrizione" name="descrizione" value=""></textarea>
+						<textarea type="text" id="descrizione" name="descrizione" required value=""></textarea>
 						
 						<p><label for="curiosita">Curiosità:</label></p>
                         <textarea type="text" id="curiosita" name="curiosita" value=""></textarea>         
@@ -287,7 +291,7 @@ class Dinosaur {
 
     }
 
-    //sarei quasi indeciso se istanziare il dinosauro e passarlo a questo metodo per il salvataggio nel DB
+    
     public static function addDinosaur($connect, $idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine){
         $echoString ="";
         $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
@@ -296,9 +300,7 @@ class Dinosaur {
             $result->num_rows == 0 &&
             isset($nome) && $nome!="" &&
             isset($descrizionebreve) && $descrizionebreve!="" &&
-            isset($descrizione) && $descrizione!="" /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            isset($descrizione) && $descrizione!=""
         ){
             
             if(!isset($peso)){ $peso = "";}
@@ -403,10 +405,10 @@ class Dinosaur {
 							<input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
 							
 							<p><label for="descrizionebreve">Descrizione breve:</label></p>
-							<textarea type="text" id="descrizionebreve" name="descrizionebreve"> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
+							<textarea type="text" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
 							
 							<p><label for="descrizione">Descrizione:</label></p>
-							<textarea type="text" id="descrizione" name="descrizione"> '.html_entity_decode($row["descrizione"]).'</textarea>
+							<textarea type="text" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
 							
 							<p><label for="curiosita">Curiosità:</label></p>
 							<textarea type="text" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
@@ -440,9 +442,7 @@ class Dinosaur {
         if(
             isset($nome) && $nome!="" &&
             isset($descrizionebreve) && $descrizionebreve!="" &&
-            isset($descrizione) && $descrizione!="" /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            isset($descrizione) && $descrizione!=""
         ){            
             if(!isset($peso)){ $peso = "";}
             if(!isset($altezza)){ $altezza = "";}
@@ -587,7 +587,42 @@ class Dinosaur {
         }
         return $echoString;
     }
-    
+
+    public static function getCommentToDelete($connect, $idDino, $url){
+        $echoString ='
+        <div id="commentboard" class="content panel">
+            <div class="card wrap-padding">            
+                <div class="padding-large colored">
+                    <h1>Commenti</h1>
+                </div>';
+        
+        $sqlQuery = "SELECT id, nome, cognome, commento FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"$idDino\"";
+        $result = $connect->query($sqlQuery);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $echoString .= '
+                    <div class="comment">
+                        <p>
+                            '.$row["nome"].' '.$row["cognome"].'
+                        </p>
+                        <p class="card wrap-padding-small">
+                            '.$row["commento"].'
+                        </p>
+                        <a href="'.$url.'idcommento='.$row["id"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+            
+                    </div>';
+            }      
+        }
+        else{
+            $echoString .= "Non sono presenti commenti";
+        }
+              
+        $echoString .= '
+            </div>
+        </div>';
+        return $echoString;
+    }
+
     public static function addComment($connect, $idDino, $idUser, $text){
         $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$idDino."', '".$text."')";
         if( $connect->query($sqlQuery) ){
@@ -599,5 +634,15 @@ class Dinosaur {
         return $echoString;
     }
      
+    public static function deleteComment($connect, $idComment){        
+        $sqlQuery = "DELETE FROM commentodinosauro WHERE id = '".$idComment."' ";
+        if( $connect->query($sqlQuery) ){
+            $echoString = "Elemento eliminato";
+        } 
+        else {
+            $echoString = "Elemento NON eliminato";
+        }
+        return $echoString;
+    }
 }
 ?>

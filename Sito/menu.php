@@ -117,37 +117,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     ?>
 </nav>
 
-<!-- Menù mobile per schermi piccoli: top bar -->
-<!--div id="top-menu" class="hide-large bar colored card">
-    <div id="header-menu" class="bar-item padding-large title wide">
-        <h1><a href="index.php" <!--?php if($currentPage == $pages["index"]) echo 'class="disabled"'; ?>>DINONET</a></h1>
-    </div>
-    <a id="mobile-menu-icon" href="#nojs-avviso" class="bar-item btn right" onclick="">&#9776;</a>
-</div-->
-
 <!-- Menù mobile per schermi piccoli: overlay -->
 <div id="overlay" class="hide-large overlay" onclick="close_menu()" title="Chiudi menù laterale"></div>
 
-<!-- Push down content on small screens -->
-<!--div class="hide-large push-down"></div-->
-
-
-<!--script>
-    function addJS() { //rende visibile il menù laterale
-        document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
-        document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
-    }
-    addJS();
-
-    // Script per aprire il menù
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    //Script per chiudere il menù
-    function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script-->

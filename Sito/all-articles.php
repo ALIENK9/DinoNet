@@ -65,13 +65,6 @@
             <h1 class="text-colored"> Archivio degli articoli </h1>
             <h2> Scopri informazioni dettagliate su innumerevoli dinosauri</h2>
         </div>
-        <!--div id="input-area" class="content card colored wrap-padding">
-            <div class="content">
-                <h1> <label for="search-dino"> CERCA UN ARTICOLO! </label> </h1>
-                <input id="search-dino" class="margin-2" type="text" placeholder="e.g. Brontosauro">
-                <input type="submit" value="CERCA" class="card btn wide text-colored white">
-            </div>
-        </div-->
         <a href="#content" class="down-arrow arrow btn card bounce">
             <span class="hidden">Scorri alla lista</span>
         </a>
@@ -92,31 +85,6 @@
         <div class="row-padding content-large margin-top">
             <?php
             echo Article::printListArticleUser($connectArticle, "", ".", "display-article.php?");
-            /*
-            for($i = 0; $i < 10; $i++) {
-                echo'
-			<div class="third wrap-padding">
-				<div class="daily-article card margin-half"><!--tolto wrap-margin-->
-					<div class="padding-large colored">
-						<h1> Titolo dell\'articolo </h1>
-					</div>
-					<img src="img/dailyarticle-test.jpg" alt="immagine raffigurante resti di dinosauro">
-					<div class="padding-large">
-						<p>
-							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-							sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-							consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-						</p>
-					</div>
-					<div class="center padding-2">
-						<a href="display-article.php" class="btn"><p> Leggi l\'articolo </p></a>
-					</div>
-				</div>
-			</div>
-		';
-            }
-            */
             ?>
         </div>
     </div>

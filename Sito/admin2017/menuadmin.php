@@ -14,9 +14,12 @@
     $pages["view-account"] = "view-account.php";
     $pages["edit-account"] = "edit-account.php";
     $pages["delete-account"] = "delete-account.php";
-	$currentPage = basename($_SERVER['PHP_SELF']);
-	
-	if(isset($_SESSION['paneluser']) && $_SESSION['paneluser']!=null) {	
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    
+	if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
+        header("Location: ../error.php");
+        exit();
+    }
 ?>
 		
 <!-- Sidebar/menu -->
@@ -53,31 +56,6 @@
 	</a>
 </nav>
 
-<!-- Top menu on small screens -->
-<!--div id="top-menu" class="hide-large bar colored card">
-  <div id="header-menu" class="bar-item padding-large title wide"><h1><a <!--?php if($currentPage == $pages["index"]) echo "href=\"index.php\""; ?>>DINONET</a></h1></div>
-  <a id="mobile-menu-icon" href="javascript:void(0)" class="bar-item btn right" onclick="open_menu()">&#9776;</a>
-</div-->
-
 <!-- Overlay effect when opening sidebar on small screens -->
 <div id="overlay" class="hide-large overlay" onclick="close_menu()" title="Chiudi il menù laterale"></div>
 
-<!-- Push down content on small screens -->
-<!--div class="hide-large push-down"></div-->
-
-<!--script>
-// Script to open and close sidebar
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-        function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-</script-->
-
-<?php
-
-	}
-?>

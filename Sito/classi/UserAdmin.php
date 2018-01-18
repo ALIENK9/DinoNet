@@ -119,22 +119,22 @@ class UserAdmin extends User {
                         </select>
 
 						<p><label for="email">Email:</label></p>
-						<input type="email" id="email" name="email" value="">
+						<input type="email" id="email" name="email" required value="">
 						
 						<p><label for="nome">Nome:</label></p>
-						<input type="text" id="nome" name="nome" value="">
+						<input type="text" id="nome" name="nome" required value="">
 						
 						<p><label for="cognome">Cognome:</label></p>
-						<input type="text" id="cognome" name="cognome" value="">
+						<input type="text" id="cognome" name="cognome" required value="">
 						
 						<p><label for="datanascita">Data di nascita:</label></p>
 						<input type="date" id="datanascita" name="datanascita" value="">
 						
 						<p><label for="password">Password:</label></p>
-						<input type="text" id="password" name="password" value="">
+						<input type="text" id="password" name="password" required value="">
 						
 						<p><label for="passwordconf">Conferma password:</label></p>
-                        <input type="text" id="passwordconf" name="passwordconf" value="">
+                        <input type="text" id="passwordconf" name="passwordconf" required value="">
                         
                         <p><label for="imgaccount">Nessuna immagine profilo:</label></p>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
@@ -164,9 +164,7 @@ class UserAdmin extends User {
             isset($cognome) && $cognome!="" &&
             isset($password) && $password!="" &&
             isset($confermaPassword) &&
-            $password==$confermaPassword /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            $password==$confermaPassword 
         ){	
             
             if(!isset($datanascita)){ $datanascita = "";}
@@ -224,22 +222,22 @@ class UserAdmin extends User {
                             </select>
 
 							<p><label for="email">Email:</label></p>
-							<input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
+							<input type="email" id="email" name="email" required value="'.$row["email"].'" readonly>
 							
 							<p><label for="nome">Nome:</label></p>
-							<input type="text" id="nome" name="nome" value="'.$row["nome"].'">
+							<input type="text" id="nome" name="nome" required value="'.$row["nome"].'">
 							
 							<p><label for="cognome">Cognome:</label></p>
-							<input type="text" id="cognome" name="cognome" value="'.$row["cognome"].'">
+							<input type="text" id="cognome" name="cognome" required value="'.$row["cognome"].'">
 							
 							<p><label for="datanascita">Data di nascita:</label></p>
 							<input type="date" id="datanascita" name="datanascita" value="'.$row["datanascita"].'">
 							
 							<p><label for="password">Password:</label></p>
-							<input type="text" id="password" name="password" value="'.$row["password"].'">
+							<input type="text" id="password" name="password" required value="'.$row["password"].'">
 							
 							<p><label for="passwordconf">Conferma password:</label></p>
-                            <input type="text" id="passwordconf" name="passwordconf" value="'.$row["password"].'">
+                            <input type="text" id="passwordconf" name="passwordconf" required value="'.$row["password"].'">
                             
                             <p><label for="imgaccount">Immagine profilo:</label>></p>
                             <input type="file" id="imgaccount" name="imgaccount" value="">
@@ -274,9 +272,7 @@ class UserAdmin extends User {
             isset($cognome) && $cognome!="" &&
             isset($password) && $password!="" &&
             isset($confermaPassword) &&
-            $password==$confermaPassword /*&&
-            bisogna controllare che la data si effettivamente una data
-            */
+            $password==$confermaPassword 
         ){
                         
             if(!isset($datanascita)){ $datanascita = "";}
