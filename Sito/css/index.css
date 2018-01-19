@@ -59,9 +59,16 @@ a {
 	text-decoration: underline;
 	display: inline-block;
 	color: inherit;
+	transition: all .2s ease-in-out;
 }
 
-a:active,a:hover{outline-width:0;}
+a:active,a:hover{
+	outline-width:0;
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);	
+	transition: all .2s ease-in-out;
+}
 
 abbr[title] {
     border-bottom: none;
@@ -108,17 +115,16 @@ textarea:focus {
 	height: 8em;
 }
 
-input,select {
+input {
 	padding: 0.5em;
 	display: block;
 	border: none;
 	border-bottom: 1px solid #ccc;
-	width: 75%;
+	width: 100%;
 	border-radius: 4px;
 	font: inherit;
 	margin: 0;
 	overflow: visible;
-	transition: width 0.5s ease;
 }
 
 form {
@@ -126,8 +132,7 @@ form {
 }
 
 input:focus{
-	transition: width 0.5s ease;
-	width: 100%;
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 input[type="submit"] {
@@ -818,6 +823,10 @@ a.btn {
 .menu-entry:hover, .sidebar .active {
 	background-color: #006633;
     color: white;
+	-webkit-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);	
+	transition: all .2s ease-in-out;
 }
 
 
