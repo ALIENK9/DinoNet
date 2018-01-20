@@ -84,20 +84,48 @@ class UserAdmin extends User {
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
-                            $echoString = "Elemento eliminato";
+                            $echoString = "
+								<div class='padding-6 content center'>
+									<div class='card wrap-padding'>
+										<h1>Elemento eliminato!</h1>
+										<a href='' class='btn card wrap-margin'> Riprova </a>
+									</div>
+								</div>							
+							";
                         } 
                         else {
-                            $echoString = "Elemento NON eliminato";
+                            $echoString = "
+								<div class='padding-6 content center'>
+									<div class='card wrap-padding'>
+										<h1>Elemento NON eliminato</h1>
+										<a href='' class='btn card wrap-margin'> Riprova </a>
+									</div>
+								</div>							
+							";
                         }
                     }
                     else{
-                        $echoString = "Elemento NON eliminabile";
+                        $echoString = "
+							<div class='padding-6 content center'>
+								<div class='card wrap-padding'>
+									<h1>Elemento NON eliminabile</h1>
+									<a href='' class='btn card wrap-margin'> Riprova </a>
+								</div>
+							</div>						
+						";
                     }
                 }
             }
         }
         else{
-            $echoString = "Non ti puoi eliminare";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Non ti puoi eliminare</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }       
         return $echoString;
     }
@@ -183,17 +211,38 @@ class UserAdmin extends User {
             }
             $sqlQuery .=") ";
             if($connect->query($sqlQuery)){
-                $echoString .= "Elemento Aggiunto";
+                $echoString .= "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento aggunto</h1>
+						<a href='' class='btn card wrap-margin'> Aggiungine un altro </a>
+					</div>
+				</div>
+				";
             } 
             else {
-                $echoString = "Elemento NON Aggiunto";
+                $echoString = "
+					<div class='padding-6 content'>
+						<div class='card wrap-padding'>
+							<h1>Elemento NON Aggiunto</h1>
+							<a href='' class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>
+				";
                 if( $destinazioneFileDB != NULL){                           
                     delImage(__DIR__."/../".$destinazioneFileDB); 
                 }
             }
         }
         else{
-            $echoString = "Errore campi";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }    
 
         
@@ -255,7 +304,14 @@ class UserAdmin extends User {
             ';
         }  
         else{
-            $echoString ="Errore: Utente non presente";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Utente non presente</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }  
         
         return $echoString;
@@ -304,14 +360,35 @@ class UserAdmin extends User {
             $sqlQuery .= "WHERE email='".$email."'";
             
             if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Modificato";
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento modificato!</h1>
+							<a href='' class='btn card wrap-margin'> Modificane un altro </a>
+						</div>
+					</div>							
+				";
             } 
             else {
-                $echoString = "Elemento NON Modificato";
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento non modificato</h1>
+							<a href='' class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>							
+				";
             }
         }
         else{
-            $echoString = "Errore campi";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }    
 
         
