@@ -15,8 +15,8 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-    <title>Tutte le specie | Dino Net</title>
-    <meta name="description" content="L'archivio completo delle specie di dinosauri Dino Net">
+    <title>Risultati ricerca | Dino Net</title>
+    <meta name="description" content="Risultati della ricerca di specie o articoli">
     <meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,7 +68,6 @@
     <header id="header-home" class="parallax padding-6">
         <div id="title-card" class="content card">
             <h1 class="text-colored">Risultati per la ricerca:</h1>
-            <h2> scopri informazion</h2>
         </div>
         <a href="#content" class="down-arrow arrow colored btn card bounce"></a>
     </header>
