@@ -231,55 +231,80 @@ class Dinosaur {
 					<h1>Aggiungi un dinosauro</h1>
 				</div>
 				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data">
-						<p><label for="nome">Nome:</label></p>
-						<input type="text" id="nome" name="nome" required value="">
+					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+						<p>
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+						</p>
 						
-						<p><label for="peso">Peso in Kg:</label></p>
-						<input type="number" id="peso" name="peso" value="">
+						<p>
+                            <label for="peso">Peso in Kg</label>
+                            <input type="number" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
+						</p>
 
-						<p><label for="altezza">Altezza in cm:</label></p>
-						<input type="number" id="altezza" name="altezza" value="">
+						<p>
+                            <label for="altezza">Altezza in cm</label>
+                            <input type="number" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
+						</p>
 						
-						<p><label for="lunghezza">Lunghezza in cm:</label></p>
-						<input type="number" id="lunghezza" name="lunghezza" value="">
+						<p>
+                            <label for="lunghezza">Lunghezza in cm</label>
+                            <input type="number" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
+						</p>
 						
-						<p><label for="periodomin">Periodo minimo in milioni di anni:</label></p>
-						<input type="number" id="periodomin" name="periodomin" value="">
+						<p>
+                            <label for="periodomin">Periodo minimo in milioni di anni</label>
+                            <input type="number" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
+						</p>
 						
-						<p><label for="periodomax">Periodo massimo in milioni di anni:</label></p>
-						<input type="number" id="periodomax" name="periodomax" value="">
+						<p>
+                            <label for="periodomax">Periodo massimo in milioni di anni</label>
+                            <input type="number" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
+						</p>
 						
-						<p><label for="habitat">Habitat:</label></p>
-						<input type="text" id="habitat" name="habitat" value="">
+						<p>
+                            <label for="habitat">Habitat</label>
+                            <input type="text" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
+						</p>
 						
 						<br>
 						
-						<label for="tipologiaalimentazione1">Carnivoro:</label>
-						<input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
+						<p class="center">
+                            <label for="tipologiaalimentazione1">Carnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
 						
-						<label for="tipologiaalimentazione2">Onnivoro:</label>
-						<input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
+                            <label for="tipologiaalimentazione2">Onnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
 						
-						<label for="tipologiaalimentazione3">Erbivoro:</label>
-						<input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
+                            <label for="tipologiaalimentazione3">Erbivoro</label>
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
+						</p>
 						
-						<p><label for="alimentazione">Alimentazione:</label></p>
-						<input type="text" id="alimentazione" name="alimentazione" value="">
+						<p>
+                            <label for="alimentazione">Alimentazione</label>
+                            <input type="text" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
+						</p>
 						
-						<p><label for="descrizionebreve">Descrizione Breve:</label></p>
-						<textarea type="text" id="descrizionebreve" name="descrizionebreve" required value=""></textarea>
+						<p>
+                            <label for="descrizionebreve">Descrizione Breve</label>
+                            <textarea type="text" id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
+						</p>
 						
-						<p><label for="descrizione">Descrizione:</label></p>
-						<textarea type="text" id="descrizione" name="descrizione" required value=""></textarea>
 						
-						<p><label for="curiosita">Curiosità:</label></p>
-                        <textarea type="text" id="curiosita" name="curiosita" value=""></textarea>         
+						<p>
+                            <label for="descrizione">Descrizione</label>
+                            <textarea type="text" id="descrizione" name="descrizione" value="" required></textarea>
+						</p>
+						
+						<p>
+                            <label for="curiosita">Curiosità:</label>
+                            <textarea type="text" id="curiosita" name="curiosita" value="" required></textarea>  
+                        </p>       
                
-                        <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
-                        <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
-
-						<br>
+                        <p>
+                            <label for="imgdinosaur">Immagine dinosauro:</label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="" required>
+                        </p>
 						
 						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
 					</form>
@@ -368,60 +393,92 @@ class Dinosaur {
 						<h1>Modifica un dinosauro</h1>
 					</div>
 					<div class="card colored wrap-padding">
-						<form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data">
-							<p><label for="nome">Nome:</label></p>
-							<input type="text" id="nome" name="nome" value="'.$row["nome"].'" readonly>
+						<form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+						    <p>
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" value="'.$row["nome"].'" readonly>
+                            </p>
 							
-							<p><label for="peso">Peso in Kg:</label></p>
-							<input type="number" id="peso" name="peso" value="'.$row["peso"].'">
+							<p>
+                                <label for="peso">Peso in kg</label>
+                                <input type="number" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
+                            </p>
 
-							<p><label for="altezza">Altezza in cm:</label></p>
-							<input type="number" id="altezza" name="altezza" value="'.$row["altezza"].'">
+                            <p>
+                                <label for="altezza">Altezza in cm</label>
+                                <input type="number" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
+							</p>
 							
-							<p><label for="lunghezza">Lunghezza in cm:</label></p>
-							<input type="number" id="lunghezza" name="lunghezza" value="'.$row["lunghezza"].'">
+							<p>
+                                <label for="lunghezza">Lunghezza in cm</label>
+                                <input type="number" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
+							</p>
 							
-							<p><label for="periodomin">Periodo minimo in milioni di anni:</label></p>
-							<input type="number" id="periodomin" name="periodomin" value="'.$row["periodomin"].'">
 							
-							<p><label for="periodomax">Periodo massimo in milioni di anni:</label></p>
-							<input type="number" id="periodomax" name="periodomax" value="'.$row["periodomax"].'">
+							<p>
+                                <label for="periodomin">Periodo minimo in milioni di anni</label>
+                                <input type="number" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
+							</p>
 							
-							<p><label for="habitat">Habitat:</label></p>
-							<input type="text" id="habitat" name="habitat" value="'.$row["habitat"].'">
+							<p>
+                                <label for="periodomax">Periodo massimo in milioni di anni</label>
+                                <input type="number" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
+							</p>
+							
+							<p>
+                                <label for="habitat">Habitat</label>
+                                <input type="text" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
+							</p>
 							
 							<br>
 							
-							<label for="tipologiaalimentazione1">Carnivoro:</label>
-							<input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+							<p>
+                                <label for="tipologiaalimentazione1">Carnivoro</label>
+                                <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+							</p>
 							
-							<label for="tipologiaalimentazione2">Onnivoro:</label>
-							<input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+							<p>
+                                <label for="tipologiaalimentazione2">Onnivoro</label>
+                                <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+							</p>
 							
-							<label for="tipologiaalimentazione3">Erbivoro:</label>
-							<input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
 							
-							<p><label for="alimentazione">Alimentazione:</label></p>
-							<input type="text" id="alimentazione" name="alimentazione" value="'.$row["alimentazione"].'">
+							<p>
+                                <label for="tipologiaalimentazione3">Erbivoro</label>
+                                <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+							</p>
 							
-							<p><label for="descrizionebreve">Descrizione breve:</label></p>
-							<textarea type="text" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
+							<p>
+                                <label for="alimentazione">Alimentazione</label>
+                                <input type="text" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
+							</p>
 							
-							<p><label for="descrizione">Descrizione:</label></p>
-							<textarea type="text" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
+							<p>
+                                <label for="descrizionebreve">Descrizione breve</label>
+                                <textarea type="text" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
+							</p>
 							
-							<p><label for="curiosita">Curiosità:</label></p>
-							<textarea type="text" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
+							<p>
+                                <label for="descrizione">Descrizione</label>
+                                <textarea type="text" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
+							</p>
+							
+							<p>
+                                <label for="curiosita">Curiosità</label>
+                                <textarea type="text" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
+                            </p>
                             
-                            <p><label for="imgdinosaur">Immagine dinosauro:</label></p>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+                            <p>
+                                <label for="imgdinosaur">Immagine dinosauro</label>
+                                <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+                            </p>
                 
-                            <p><label for="imgdinosaurremove">Nessuna immagine:</label></p>
-                            <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
+                            <p>
+                                <label for="imgdinosaurremove">Nessuna immagine</label>
+                                <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
+                            </p>
 
-							<br>
-							
-							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
 						</form>
 					</div>
 				</div>

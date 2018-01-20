@@ -112,12 +112,12 @@ class User {
                    $sqlQuery .= "NULL";
                }
                $sqlQuery .=") ";
-               if($connect->query($sqlQuery)){
+               if($connect->query($sqlQuery)) {
                    $echoString .= "Elemento Aggiunto";
                } 
                else {
                    $echoString = "Elemento NON Aggiunto";
-                   if( $destinazioneFileDB != NULL){                           
+                   if( $destinazioneFileDB != NULL) {
                        delImage(__DIR__."/../".$destinazioneFileDB); 
                    }
                }
@@ -142,26 +142,38 @@ class User {
                 
 		        <div id="edit">
                     <div class="card colored wrap-padding">
-                        <form action="'.$url.'" method="POST">
-                            <p><label for="email">Email:</label></p>
-                            <input type="email" id="email" name="email" required value="'.$this->getEmail().'" readonly>
+                        <form action="'.$url.'" method="POST" onsubmit="return validateForm(this)">
+                            <p>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
+                            </p>
                             
-                            <p><label for="nome">Nome:</label></p>
-                            <input type="text" id="nome" name="nome" required value="'.$this->getNome().'">
+                            <p>
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="'.$this->getNome().'" required >
+                            </p>
                             
-                            <p><label for="cognome">Cognome:</label></p>
-                            <input type="text" id="cognome" name="cognome" required value="'.$this->getCognome().'">
+                            <p>
+                                <label for="cognome">Cognome</label>
+                                <input type="text" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$this->getCognome().'" required>
+                            </p>
                             
-                            <p><label for="datanascita">Data di nascita:</label></p>
-                            <input type="date" id="datanascita" name="datanascita" value="'.$this->getDataNascita().'">
+                            <p>
+                                <label for="datanascita">Data di nascita</label>
+                                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
+                            </p>
                             
-                            <p><label for="password">Password:</label></p>
-                            <input type="password" id="password" name="password" required value="'.$this->getPassword().'">
+                            <p>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
+                            </p>
                             
-                            <p><label for="passwordconf">Conferma password:</label></p>
-                            <input type="password" id="passwordconf" name="passwordconf" required value="'.$this->getPassword().'">
+                            <p>
+                                <label for="passwordconf">Conferma password</label>
+                                <input type="password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
+                            </p>
                             
-                            <input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide white">
+                            <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn text-colored wide white">
                         </form>
                     </div>
                 </div>

@@ -73,15 +73,16 @@
 		<!-- Login -->
 
 		<div id="login" class="card colored wrap-padding">
-			<form action="#" method="POST" onsubmit="validateForm(this)">
+			<form action="#" method="POST" onsubmit="return validateForm(this)">
 				<p>
                     <label for="input-email" xml:lang="en" lang="en">Email</label>
-				    <input id="input-email" type="text" placeholder="email" name="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+				    <input id="input-email" type="text" placeholder="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
                 </p>
 				<p>
                     <label for="input-passw" xml:lang="en" lang="en">Password</label>
-				    <input id="input-passw" type="password" placeholder="password" name="password">
+				    <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
                 </p>
+
 				<input type="submit" value="ACCEDI" class="card btn wide white">
 			</form>
 		</div>
