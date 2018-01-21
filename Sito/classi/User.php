@@ -95,6 +95,7 @@ class User {
                isset($cognome) && $cognome!="" &&
                isset($password) && $password!="" &&
                isset($confermaPassword) &&
+               strlen($password) >= 4 &&
                $password==$confermaPassword 
            ){	
                
@@ -182,6 +183,7 @@ class User {
             isset($cognome) && $email!="" &&
             isset($password) && $email!="" &&
             isset($confermaPassword) &&
+            strlen($password) >= 4 &&
             $password==$confermaPassword 
         ){
             

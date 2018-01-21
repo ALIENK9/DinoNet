@@ -20,12 +20,12 @@ class Article{
 			$words = explode(" ",$filter);
 			$sqlFilter="WHERE ";
 			foreach($words as $value){
-				$sqlFilter .= "id LIKE '%".$value."%' OR titolo LIKE '%".$value."%' OR sottotitolo LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR eta LIKE '%".$value."%' OR descrizioneimg LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
+				$sqlFilter .= "id LIKE '%".$value."%' OR titolo LIKE '%".$value."%' OR sottotitolo LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR descrizioneimg LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
 			}
 		}
 		
-		$sqlFilter .= "ORDER BY id, titolo, sottotitolo, eta";
-		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+		$sqlFilter .= "ORDER BY id, titolo, sottotitolo";
+		$sqlQuery = "SELECT id, titolo, sottotitolo, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
 		if ($result->num_rows > 0) {
@@ -43,10 +43,12 @@ class Article{
                         $echoString .='
                         <div class="center padding-2">
                             <p>
-                                <strong>Titolo: </strong> '.$row["titolo"].'<br>
-                                <strong>Sottotitolo: </strong> '.$row["sottotitolo"].'<br>
-                                <strong>Età: </strong> '.$row["eta"].'
-                            </p>
+                                <strong>Titolo: </strong> '.$row["titolo"].'<br>';
+                                
+                        if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL)
+                            $echoString .='<strong>Sottotitolo: </strong> '.$row["sottotitolo"].'<br>';      
+
+                        $echoString .=' </p>
                         </div>
                         <div class="center padding-2">                                
                             <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
@@ -81,17 +83,17 @@ class Article{
 			$words = explode(" ",$filter);
 			$sqlFilter="WHERE ";
 			foreach($words as $value){
-				$sqlFilter .= "id LIKE '%".$value."%' OR titolo LIKE '%".$value."%' OR sottotitolo LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR eta LIKE '%".$value."%' OR descrizioneimg LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
+				$sqlFilter .= "id LIKE '%".$value."%' OR titolo LIKE '%".$value."%' OR sottotitolo LIKE '%".$value."%' OR descrizione LIKE '%".$value."%' OR descrizioneimg LIKE '%".$value."%' OR idautore LIKE '%".$value."%' ";
 			}
 		}
 		
         if($orderByInsert){                
-            $sqlFilter .= "ORDER BY id DESC, titolo, sottotitolo, eta";
+            $sqlFilter .= "ORDER BY id DESC, titolo, sottotitolo";
         }
         else{
-            $sqlFilter .= "ORDER BY id, titolo, sottotitolo, eta";
+            $sqlFilter .= "ORDER BY id, titolo, sottotitolo";
         }
-		$sqlQuery = "SELECT id, titolo, sottotitolo, eta, immagine, descrizioneimg, anteprima FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
+		$sqlQuery = "SELECT id, titolo, sottotitolo, immagine, descrizioneimg, anteprima FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
 		if ($result->num_rows > 0) {
@@ -107,9 +109,12 @@ class Article{
                             $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
                         }
                         $echoString .='
-                        <div class="padding-large">
-                            <h3 class="text-colored center"> '.$row["sottotitolo"].' </h3>
-                            <br>
+                        <div class="padding-large">';
+                                                        
+                        if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL)
+                            $echoString .='<h3 class="text-colored center"> '.$row["sottotitolo"].' </h3><br>';                            
+                       
+                        $echoString .='                           
                             <p>
                                 '.$row["anteprima"].'
                             </p>
@@ -204,9 +209,6 @@ class Article{
 						<p><label for="anteprima">Anteprima:</label></p>
 						<textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
 						
-						<p><label for="eta">Età di riferimento (in milioni di anni):</label></p>
-						<input type="number" id="eta" name="eta" value="">
-						
 						<p><label for="descrizioneimg">Descrizione della immagine:</label></p>
 						<input type="text" id="descrizioneimg" name="descrizioneimg" value="">
 
@@ -223,19 +225,19 @@ class Article{
         ';
         return $echoString;
     }
-    public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine){
+    public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine){
         $echoString="";
         if(
             isset($titolo) && $titolo!="" &&
-            isset($descrizione) && $descrizione!=""
+            isset($descrizione) && $descrizione!="" &&
+            ($immagine['error'] != 0 || (isset($descrizioneimg) && $descrizioneimg!=""))
         ){
             
             if(!isset($sottotitolo)){ $sottotitolo = "";}
             if(!isset($anteprima)){ $anteprima = "";}
-            if(!isset($eta)){ $eta = "";}
             if(!isset($descrizioneimg)){ $descrizioneimg = "";}
             
-            $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, eta, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$eta."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
+            $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
             
             if( $connect->query($sqlQuery) ){
                 $echoString = "Elemento Aggiunto";
@@ -292,9 +294,6 @@ class Article{
                             <p><label for="anteprima">Anteprima:</label></p>
 							<textarea type="text" id="anteprima" name="anteprima">'.$row["anteprima"].'</textarea>
 							
-							<p><label for="eta">Eta in milioni di anni:</label></p>
-							<input type="number" id="eta" name="eta" value="'.$row["eta"].'">
-							
 							<p><label for="descrizioneimg">Descrizione immagine:</label></p>
 							<input type="text" id="descrizioneimg" name="descrizioneimg" value="'.$row["descrizioneimg"].'">
 							
@@ -320,15 +319,15 @@ class Article{
         return $echoString;
     }
 
-    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $eta, $descrizioneimg, $immagine, $removeImage){
+    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine, $removeImage){
         $echoString="";
         if(
             isset($titolo) && $titolo!="" &&
-            isset($descrizione) && $descrizione!="" 
+            isset($descrizione) && $descrizione!="" &&
+            ($immagine['error'] != 0 || (isset($descrizioneimg) && $descrizioneimg!=""))
         ){
             if(!isset($sottotitolo)){ $sottotitolo = "";}
             if(!isset($anteprima)){ $anteprima = "";}
-            if(!isset($eta)){ $eta = "";}
             if(!isset($descrizioneimg)){ $descrizioneimg = "";}
 
             if($removeImage){  
@@ -347,7 +346,7 @@ class Article{
                 $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine);
             }
 
-            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', eta='".$eta."', descrizioneimg='".$descrizioneimg."'";
+            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";
             if( $destinazioneFileDB != NULL){
                 $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
             }

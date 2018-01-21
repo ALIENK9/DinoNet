@@ -45,10 +45,16 @@ class Dinosaur {
                             $echoString .='
                             <div class="center padding-2">
                                 <p>
-                                    <strong>Peso: </strong> '.$row["nome"].'<br>
-                                    <strong>Altezza: </strong> '.$row["altezza"].'<br>
-                                    <strong>Lunghezza: </strong> '.$row["lunghezza"].'<br>
-                                    <strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'
+                                    <strong>Peso: </strong> '.$row["nome"].'<br>';
+                                
+                                    if($row["altezza"]!="" && $row["altezza"]!=NULL)
+                                        $echoString .='<strong>Altezza: </strong> '.$row["altezza"].'<br>';                            
+                                    if($row["lunghezza"]!="" && $row["lunghezza"]!=NULL)
+                                        $echoString .=' <strong>Lunghezza: </strong> '.$row["lunghezza"].'<br>';                           
+                                    if($row["tipologiaalimentazione"]!="" && $row["tipologiaalimentazione"]!=NULL)
+                                        $echoString .=' <strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"];
+    
+                                    $echoString .='
                                 </p>
                             </div>
                             <div class="center padding-2">
@@ -115,10 +121,16 @@ class Dinosaur {
                             $echoString .='
                             <div class="padding-large">
                                 <ul>
-                                    <li><strong>Peso: </strong> '.$row["peso"].'</li>
-                                    <li><strong>Altezza: </strong> '.$row["altezza"].'</li>
-                                    <li><strong>Lunghezza: </strong> '.$row["lunghezza"].'</li>
-                                    <li><strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'</li>
+                                    <li><strong>Peso: </strong> '.$row["peso"].'</li>';
+                                
+                                    if($row["altezza"]!="" && $row["altezza"]!=NULL)
+                                        $echoString .='<li><strong>Altezza: </strong> '.$row["altezza"].'</li>';                            
+                                    if($row["lunghezza"]!="" && $row["lunghezza"]!=NULL)
+                                        $echoString .='<li><strong>Lunghezza: </strong> '.$row["lunghezza"].'</li>';                           
+                                    if($row["tipologiaalimentazione"]!="" && $row["tipologiaalimentazione"]!=NULL)
+                                        $echoString .='<li><strong>Alimentazione: </strong> '.$row["tipologiaalimentazione"].'</li>';
+    
+                                    $echoString .='
                                 </ul>
                                 <p>
                                 '.html_entity_decode($row["descrizionebreve"]).'

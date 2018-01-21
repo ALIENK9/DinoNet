@@ -164,6 +164,7 @@ class UserAdmin extends User {
             isset($cognome) && $cognome!="" &&
             isset($password) && $password!="" &&
             isset($confermaPassword) &&
+            strlen($password) >= 4 &&
             $password==$confermaPassword 
         ){	
             
@@ -272,6 +273,7 @@ class UserAdmin extends User {
             isset($cognome) && $cognome!="" &&
             isset($password) && $password!="" &&
             isset($confermaPassword) &&
+            strlen($password) >= 4 &&
             $password==$confermaPassword 
         ){
                         

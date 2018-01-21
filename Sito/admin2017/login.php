@@ -3,7 +3,6 @@
 	include_once ("../classi/UserAdmin.php");
 
 	session_start();
-
 	include_once ("../connect.php");
 	
 	$connectLogin = startConnect();
