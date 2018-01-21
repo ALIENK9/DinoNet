@@ -68,8 +68,14 @@ class Dinosaur {
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
-            else {
-                $echoString = "0 risultati";
+            else {                
+			$echoString = "
+                <div class='padding-6 content center'>
+                    <div class='card wrap-padding'>
+                        <h1>Nessun risultato</h1>
+                    </div>
+                </div>							
+            ";
             }
         }
         return $echoString;
@@ -145,8 +151,14 @@ class Dinosaur {
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
-            else {
-                $echoString = "0 risultati";
+            else {           
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Nessun risultato</h1>
+                        </div>
+                    </div>							
+                ";
             }
         }
         return $echoString;
@@ -200,13 +212,19 @@ class Dinosaur {
                 ';
             }
         }
-        else {
-            $echoString = "0 risultati";
+        else {           
+			$echoString = "
+                <div class='padding-6 content center'>
+                    <div class='card wrap-padding'>
+                        <h1>Nessun risultato</h1>
+                    </div>
+                </div>							
+            ";
         }
         return $echoString; 
     }
 
-    public function deleteDinosaur($connect, $id){
+    public function deleteDinosaur($connect, $id, $basePathImg){
         $echoString = "";
         if(isset($connect)){
             if(isset($id)){
@@ -216,18 +234,37 @@ class Dinosaur {
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
                     
                     if($row["immagine"]!=NULL && $row["immagine"]!="" )
-                        delImage(__DIR__."/../".$row["immagine"]);                   
+                        delImage($basePathImg.$row["immagine"]);                   
 
                     $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$id."' ";
                     if( $connect->query($sqlQuery) ){
-                        $echoString = "Elemento eliminato";
+                        $echoString = "
+                            <div class='padding-6 content center'>
+                                <div class='card wrap-padding'>
+                                    <h1>Elemento eliminato</h1>
+                                </div>
+                            </div>							
+                        ";
                     } 
                     else {
-                        $echoString = "Elemento NON eliminato";
+                        $echoString = "
+                            <div class='padding-6 content center'>
+                                <div class='card wrap-padding'>
+                                    <h1>Elemento NON eliminato</h1>
+                                    <a href=\"#\" class='btn card wrap-margin'> Riprova </a>
+                                </div>
+                            </div>							
+                        ";
                     }
                 }
                 else{
-                    $echoString = "Elemento NON eliminabile";
+                    $echoString = "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Elemento NON eliminabile</h1>
+                            </div>
+                        </div>						
+                    ";
                 }
             }
         }        
@@ -246,37 +283,37 @@ class Dinosaur {
 					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
 						<p>
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
 						</p>
 						
 						<p>
                             <label for="peso">Peso in Kg</label>
-                            <input type="number" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
 						</p>
 
 						<p>
                             <label for="altezza">Altezza in cm</label>
-                            <input type="number" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
 						</p>
 						
 						<p>
                             <label for="lunghezza">Lunghezza in cm</label>
-                            <input type="number" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
 						</p>
 						
 						<p>
                             <label for="periodomin">Periodo minimo in milioni di anni</label>
-                            <input type="number" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
+                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
 						</p>
 						
 						<p>
                             <label for="periodomax">Periodo massimo in milioni di anni</label>
-                            <input type="number" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
+                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
 						</p>
 						
 						<p>
                             <label for="habitat">Habitat</label>
-                            <input type="text" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
+                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
 						</p>
 						
 						<br>
@@ -294,23 +331,23 @@ class Dinosaur {
 						
 						<p>
                             <label for="alimentazione">Alimentazione</label>
-                            <input type="text" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
 						</p>
 						
 						<p>
                             <label for="descrizionebreve">Descrizione Breve</label>
-                            <textarea type="text" id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
+                            <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
 						</p>
 						
 						
 						<p>
                             <label for="descrizione">Descrizione</label>
-                            <textarea type="text" id="descrizione" name="descrizione" value="" required></textarea>
+                            <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" value="" required></textarea>
 						</p>
 						
 						<p>
                             <label for="curiosita">Curiosità:</label>
-                            <textarea type="text" id="curiosita" name="curiosita" value="" required></textarea>  
+                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" value="" required></textarea>  
                         </p>       
                
                         <p>
@@ -329,7 +366,7 @@ class Dinosaur {
     }
 
     
-    public static function addDinosaur($connect, $idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine){
+    public static function addDinosaur($connect, $idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $basePathImg){
         $echoString ="";
         $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
         $result = $connect->query($sqlQuery);
@@ -364,17 +401,38 @@ class Dinosaur {
             }
             $sqlQuery .=") ";
             if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Aggiunto";
+                $echoString .= "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento aggunto</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
+					</div>
+				</div>
+				";
             } 
             else {
-                $echoString = "Elemento NON Aggiunto";
+                $echoString = "
+					<div class='padding-6 content'>
+						<div class='card wrap-padding'>
+							<h1>Elemento NON Aggiunto</h1>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>
+				";
                 if( $destinazioneFileDB != NULL){                         
-                    delImage(__DIR__."/../".$destinazioneFileDB);
+                    delImage($basePathImg.$destinazioneFileDB);
                 }
             }
         }
         else{
-            $echoString = "Errore campi";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }           
         return $echoString;
     }
@@ -408,38 +466,38 @@ class Dinosaur {
 						<form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
 						    <p>
                                 <label for="nome">Nome</label>
-                                <input type="text" id="nome" name="nome" value="'.$row["nome"].'" readonly>
+                                <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$row["nome"].'" readonly>
                             </p>
 							
 							<p>
                                 <label for="peso">Peso in kg</label>
-                                <input type="number" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
+                                <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
                             </p>
 
                             <p>
                                 <label for="altezza">Altezza in cm</label>
-                                <input type="number" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
+                                <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
 							</p>
 							
 							<p>
                                 <label for="lunghezza">Lunghezza in cm</label>
-                                <input type="number" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
+                                <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
 							</p>
 							
 							
 							<p>
                                 <label for="periodomin">Periodo minimo in milioni di anni</label>
-                                <input type="number" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
+                                <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
 							</p>
 							
 							<p>
                                 <label for="periodomax">Periodo massimo in milioni di anni</label>
-                                <input type="number" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
+                                <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
 							</p>
 							
 							<p>
                                 <label for="habitat">Habitat</label>
-                                <input type="text" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
+                                <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
 							</p>
 							
 							<br>
@@ -462,22 +520,22 @@ class Dinosaur {
 							
 							<p>
                                 <label for="alimentazione">Alimentazione</label>
-                                <input type="text" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
+                                <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
 							</p>
 							
 							<p>
                                 <label for="descrizionebreve">Descrizione breve</label>
-                                <textarea type="text" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
+                                <textarea type="text" placeholder="Inserisci una breve descrizione" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
 							</p>
 							
 							<p>
                                 <label for="descrizione">Descrizione</label>
-                                <textarea type="text" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
+                                <textarea type="text" placeholder="Inserisci la descrizione completa" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
 							</p>
 							
 							<p>
                                 <label for="curiosita">Curiosità</label>
-                                <textarea type="text" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
+                                <textarea type="text" placeholder="Inserisci delle curiosità" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
                             </p>
                             
                             <p>
@@ -498,13 +556,20 @@ class Dinosaur {
             ';
         }
         else{
-            echo "Errore: Dinosauro non presente";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Dinosauro non presente</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
 
     }
 
-    public static function updateDinosaur($connect, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $removeImage){
+    public static function updateDinosaur($connect, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $removeImage, $basePathImg){
     
         $echoString ="";
         
@@ -526,9 +591,8 @@ class Dinosaur {
                 $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$nome."' ";
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
-                    if($row["immagine"]!="" && $row["immagine"]!=NULL){        
-                        global $homepath;
-                        delImage($homepath.$row["immagine"]);
+                    if($row["immagine"]!="" && $row["immagine"]!=NULL){
+                        delImage($basePathImg.$row["immagine"]);
                     }
                 }
             }
@@ -550,15 +614,35 @@ class Dinosaur {
             $sqlQuery .= "WHERE nome='".$nome."'";
 
                
-            if( $connect->query($sqlQuery) ){                
-                $echoString = "Elemento Modificato";
+            if( $connect->query($sqlQuery) ){             
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento modificato!</h1>
+						</div>
+					</div>							
+				";
             } 
             else {                
-                $echoString = "Elemento NON Modificato";
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento non modificato</h1>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>							
+				";
             }
         }
         else{            
-            $echoString = "Errore campi";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }
 
         return $echoString;
@@ -584,12 +668,26 @@ class Dinosaur {
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['nome'];
                 $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('$id', '".date('Y-m-d')."') ";
-                if( !$connect->query($sqlQuery3) ){                
-                    $echoString = "Errore: Aggiornamento impostazioni";
+                if( !$connect->query($sqlQuery3) ){      
+                    $echoString = "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Errore aggiornamento impostazioni</h1>
+                                <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+                            </div>
+                        </div>							
+                    ";          
                 } 
             }
             else{
-                $echoString = "Errore: Non ci sono dinosauri";
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Dinosauro non presente</h1>
+                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+                        </div>
+                    </div>							
+                ";
             }
             
         }
@@ -626,7 +724,14 @@ class Dinosaur {
                 ';
             }
             else{
-                $echoString = "Errore: Non ci sono dinosauri";
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Dinosauro non presente</h1>
+                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+                        </div>
+                    </div>							
+                ";
             }
         }
 
@@ -695,10 +800,22 @@ class Dinosaur {
     public static function addComment($connect, $idDino, $idUser, $text){
         $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$idDino."', '".$text."')";
         if( $connect->query($sqlQuery) ){
-            $echoString = "Elemento Aggiunto";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento Aggiunto</h1>
+					</div>
+				</div>							
+			";
         } 
         else {
-            $echoString = "Elemento NON Aggiunto";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento NON Aggiunto</h1>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }
@@ -706,10 +823,22 @@ class Dinosaur {
     public static function deleteComment($connect, $idComment){        
         $sqlQuery = "DELETE FROM commentodinosauro WHERE id = '".$idComment."' ";
         if( $connect->query($sqlQuery) ){
-            $echoString = "Elemento eliminato";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento eliminato</h1>
+					</div>
+				</div>							
+			";
         } 
         else {
-            $echoString = "Elemento NON eliminato";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento NON eliminato</h1>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }

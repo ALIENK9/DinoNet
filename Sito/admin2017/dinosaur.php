@@ -35,7 +35,7 @@ switch ($sezione ) {
 		echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
-		echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"]);
+		echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], "..");
 		break;			
 	case 'formupdate':
 		echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"],$_GET['nome']);
@@ -45,7 +45,7 @@ switch ($sezione ) {
 		if(isset($_POST['imgdinosaurremove']) && $_POST['imgdinosaurremove']=="true"){
 			$removeimg=true;
 		}
-		echo Dinosaur::updateDinosaur($connectDinosaur, $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg);
+		echo Dinosaur::updateDinosaur($connectDinosaur, $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg, "..");
 		break;	
 	case 'delete':
 		if(isset($_GET["nome"]))
@@ -57,7 +57,7 @@ switch ($sezione ) {
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))
-			echo Dinosaur::deleteComment($connectDinosaur, $_GET["idcommento"]);
+			echo Dinosaur::deleteComment($connectDinosaur, $_GET["idcommento"], "..");
 		break;
 
 	default:

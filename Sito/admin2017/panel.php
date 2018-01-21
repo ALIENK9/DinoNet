@@ -92,8 +92,13 @@
 				break;
 
 			case 'myuser':
-					if(isset($_GET["sez"]) && $_GET["sez"]=="update" )						
-						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+					if(isset($_GET["sez"]) && $_GET["sez"]=="update" ){		
+						$removeimg=false;
+						if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
+							$removeimg=true;	
+						}	
+						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
+					}
 					else
 						echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
 				break;

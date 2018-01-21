@@ -7,7 +7,7 @@
 		
     $connect = startConnect();
 	if(isset($_SESSION['user'])){	
-        User::deleteUserForce($connect,$_SESSION['user']->getEmail());        
+        $_SESSION['user']->deleteUserForce($connect, ".");        
 		session_unset();
     }
     closeConnect($connect);

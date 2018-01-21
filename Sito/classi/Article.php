@@ -61,8 +61,14 @@ class Article{
 			}
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
-		else {
-            $echoString = "0 risultati";
+		else {              
+			$echoString = "
+                <div class='padding-6 content center'>
+                    <div class='card wrap-padding'>
+                        <h1>Nessun risultato</h1>
+                    </div>
+                </div>							
+            ";
 		}
         return $echoString;
     }
@@ -128,8 +134,14 @@ class Article{
 			}
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
-		else {
-            $echoString = "0 risultati";
+		else {              
+			$echoString = "
+                <div class='padding-6 content center'>
+                    <div class='card wrap-padding'>
+                        <h1>Nessun risultato</h1>
+                    </div>
+                </div>							
+            ";
 		}
         return $echoString;
     }
@@ -157,13 +169,19 @@ class Article{
                 ';
             }
         }
-        else {
-            $echoString = "0 risultati";
+        else {              
+			$echoString = "
+                <div class='padding-6 content center'>
+                    <div class='card wrap-padding'>
+                        <h1>Nessun risultato</h1>
+                    </div>
+                </div>							
+            ";
         }
         return $echoString; 
     }
 
-    public static function deleteArticle($connect, $id){   
+    public static function deleteArticle($connect, $id, $basePathImg){   
         $echoString="";
         if(isset($id)){                    
             $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$id."' ";
@@ -171,18 +189,37 @@ class Article{
             if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {  
                 
                 if($row["immagine"]!=NULL && $row["immagine"]!="" )
-                    delImage(__DIR__."/../".$row["immagine"]);  
+                    delImage($basePathImg.$row["immagine"]);  
 
                 $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
                 if( $connect->query($sqlQuery) ){
-                    $echoString = "Elemento eliminato";
+                    $echoString = "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Elemento eliminato</h1>
+                            </div>
+                        </div>							
+                    ";
                 } 
                 else {
-                    $echoString = "Elemento NON eliminato";
+                    $echoString = "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Elemento NON eliminato</h1>
+                                <a href=\"#\" class='btn card wrap-margin'> Riprova </a>
+                            </div>
+                        </div>							
+                    ";
                 }
             }
             else{
-                $echoString = "Elemento NON eliminabile";
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Elemento NON eliminabile</h1>
+                        </div>
+                    </div>						
+                ";
             }
         }
         return $echoString;
@@ -199,27 +236,27 @@ class Article{
 					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
 						<p>
                             <label for="titolo">Titolo</label>
-                            <input type="text" id="titolo" name="titolo" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" data-validation-mode="alphanum" value="" required>
 						</p>
 						
 						<p>
                             <label for="sottotitolo">Sottotitolo</label>
-                            <input type="text" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="" required>
                         </p>
 						
 						<p>
 						    <label for="descrizione">Descrizione</label>
-                            <textarea type="text" id="descrizione" name="descrizione" value="" required></textarea>
+                            <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" value="" required></textarea>
                         </p>
                         
 						<p>
                             <label for="anteprima">Anteprima</label>
-                            <textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
+                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" value=""></textarea>
 						</p>
 												
 						<p>
                             <label for="descrizioneimg">Descrizione dell\'immagine</label>
-                            <input type="text" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
+                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
                         </p>
                         
                         <p>
@@ -250,7 +287,12 @@ class Article{
             $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
             
             if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Aggiunto";
+                $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento aggunto</h1>
+						
+				";
                 $destinazioneFileDB = NULL;
                 if($immagine['error'] == 0){
                     $idInserito = $connect->insert_id;
@@ -258,19 +300,39 @@ class Article{
                     
                     $sqlQuery2 = "UPDATE articolo SET immagine='".$destinazioneFileDB."'WHERE id='".$idInserito."'";
                     if($destinazioneFileDB != NULL && $connect->query($sqlQuery2) ){
-                        $echoString .= "<br> Immagine caricata";
+                        $echoString .= "
+						    <h2>Immagine caricata</h2>";
                     }
                     else{                        
-                        $echoString .= "<br> Immagine non caricata";
+                        $echoString .= "
+                        <h2>Immagine non caricata</h2>";
                     }
                 }
+                $echoString .= "
+                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
+                    </div>
+                </div> ";
             } 
             else {
-                $echoString = "Elemento NON Aggiunto";
+                $echoString = "
+					<div class='padding-6 content'>
+						<div class='card wrap-padding'>
+							<h1>Elemento NON Aggiunto</h1>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>
+				";
             }
         }
         else{
-            $echoString = "Errore campi";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }
         return $echoString;
     }
@@ -296,27 +358,27 @@ class Article{
 							
 							<p>
                                 <label for="titolo">Titolo</label>
-                                <input type="text" id="titolo" name="titolo" data-validation-mode="alphanum" value="'.$row["titolo"].'" required>
+                                <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" data-validation-mode="alphanum" value="'.$row["titolo"].'" required>
 							</p>
 							
 							<p>
                                 <label for="sottotitolo">Sottotitolo</label>
-                                <input type="text" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="'.$row["sottotitolo"].'" required>
+                                <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="'.$row["sottotitolo"].'" required>
 							</p>
 							
 							<p>
                                 <label for="descrizione">Descrizione</label>
-                                <textarea type="text" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
+                                <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
 							</p>
                             
                             <p>
                                 <label for="anteprima">Anteprima</label>
-                                <textarea type="text" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
+                                <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
 							</p>
 							
 							<p>
                                 <label for="descrizioneimg">Descrizione immagine</label>
-                                <input type="text" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
+                                <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
 							</p>
 							
                             <p>
@@ -338,12 +400,19 @@ class Article{
             }
         
         else{
-            $echoString = "Errore: Articolo non presente";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Articolo non presente</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }
 
-    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine, $removeImage){
+    public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine, $removeImage, $basePathImg){
         $echoString="";
         if(
             isset($titolo) && $titolo!="" &&
@@ -359,8 +428,7 @@ class Article{
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
                     if($row["immagine"]!="" && $row["immagine"]!=NULL){        
-                        global $homepath;
-                        delImage($homepath.$row["immagine"]);
+                        delImage($basePathImg.$row["immagine"]);
                     }
                 }
             }
@@ -379,15 +447,35 @@ class Article{
             }
             $sqlQuery .= "WHERE id='".$idarticolo."'";
 
-            if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Modificato";
+            if( $connect->query($sqlQuery) ){             
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento modificato!</h1>
+						</div>
+					</div>							
+				";
             } 
-            else {
-                $echoString = "Elemento NON Modificato";
+            else {            
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento non modificato</h1>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>							
+				";
             }
         }
-        else{
-            $echoString = "Errore campi";
+        else{         
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }
@@ -412,11 +500,25 @@ class Article{
                 $id = $row2['id'];
                 $sqlQuery3 = "INSERT INTO articolodelgiorno  (idarticolo,data) values ('$id', '".date('Y-m-d')."') ";
                 if( !$connect->query($sqlQuery3) ){                
-                    $echoString = "Errore: Aggiornamento Articolo del giorno";
+                    $echoString = "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Errore aggiornamento impostazioni</h1>
+                                <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+                            </div>
+                        </div>							
+                    ";  
                 } 
             }
             else{
-                $echoString = "Errore: Non ci sono articoli";
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Dinosauro non presente</h1>
+                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+                        </div>
+                    </div>							
+                ";
             }
             
         }
@@ -452,7 +554,14 @@ class Article{
                 ';
             }
             else{
-                $echoString = "Errore: Non ci sono articoli";
+                $echoString = "
+                    <div class='padding-6 content center'>
+                        <div class='card wrap-padding'>
+                            <h1>Articoli non presenti</h1>
+                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
+                        </div>
+                    </div>							
+                ";
             }
         }
 
@@ -520,10 +629,22 @@ class Article{
     public static function addComment($connect, $idArticle, $idUser, $text){
         $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$text."')";
         if( $connect->query($sqlQuery) ){
-            $echoString = "Elemento Aggiunto";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento Aggiunto</h1>
+					</div>
+				</div>							
+			";
         } 
         else {
-            $echoString = "Elemento NON Aggiunto";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento NON Aggiunto</h1>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }
@@ -531,10 +652,22 @@ class Article{
     public static function deleteComment($connect, $idComment){        
         $sqlQuery = "DELETE FROM commentoarticolo WHERE id = '".$idComment."' ";
         if( $connect->query($sqlQuery) ){
-            $echoString = "Elemento eliminato";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento eliminato</h1>
+					</div>
+				</div>							
+			";
         } 
         else {
-            $echoString = "Elemento NON eliminato";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento NON eliminato</h1>
+					</div>
+				</div>							
+			";
         }
         return $echoString;
     }

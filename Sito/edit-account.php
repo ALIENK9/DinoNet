@@ -11,7 +11,13 @@
 	include_once ("connect.php");
 	$connectUser = startConnect();
 	if(isset($_GET["sez"]) && $_GET["sez"]=="update"){
-		$_SESSION['user']->UpdateMyUser($connectUser, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf']);
+				
+		$removeimg=false;
+		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
+			$removeimg=true;			
+		}
+		$_SESSION['user']->UpdateMyUser($connectUser, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg, ".");
+		header("Location: view-account.php");
 	}
 	closeConnect($connectUser);
 

@@ -61,7 +61,13 @@ class UserAdmin extends User {
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
             else {
-                $echoString = "0 risultati";
+                $echoString = " 
+                <div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Nessun risultato</h1>
+					</div>
+                </div>
+                ";
             }
         }
         
@@ -69,7 +75,7 @@ class UserAdmin extends User {
         return $echoString;        
     }
     
-    public function deleteUser($connect, $id){
+    public function deleteUser($connect, $id, $basePathImg){
         $echoString = "";
            
         if($this->getEmail()!=$id){
@@ -80,7 +86,7 @@ class UserAdmin extends User {
                     $result = $connect->query($sqlQuery);
                     if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {   
                         if($row["immagine"] != NULL)     
-                            delImage(__DIR__."/../".$row["immagine"]);                   
+                            delImage($basePathImg.$row["immagine"]);                   
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
@@ -88,7 +94,6 @@ class UserAdmin extends User {
 								<div class='padding-6 content center'>
 									<div class='card wrap-padding'>
 										<h1>Elemento eliminato!</h1>
-										<a href='' class='btn card wrap-margin'> Riprova </a>
 									</div>
 								</div>							
 							";
@@ -98,7 +103,7 @@ class UserAdmin extends User {
 								<div class='padding-6 content center'>
 									<div class='card wrap-padding'>
 										<h1>Elemento NON eliminato</h1>
-										<a href='' class='btn card wrap-margin'> Riprova </a>
+										<a href=\"#\" class='btn card wrap-margin'> Riprova </a>
 									</div>
 								</div>							
 							";
@@ -109,7 +114,6 @@ class UserAdmin extends User {
 							<div class='padding-6 content center'>
 								<div class='card wrap-padding'>
 									<h1>Elemento NON eliminabile</h1>
-									<a href='' class='btn card wrap-margin'> Riprova </a>
 								</div>
 							</div>						
 						";
@@ -122,7 +126,6 @@ class UserAdmin extends User {
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
 						<h1>Non ti puoi eliminare</h1>
-						<a href='' class='btn card wrap-margin'> Riprova </a>
 					</div>
 				</div>
 			";
@@ -150,17 +153,17 @@ class UserAdmin extends User {
 
 						<p>
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" data-validation-mode="email" value="" required>
+                            <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" data-validation-mode="email" value="" required>
 						</p>
 						
 						<p>
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
 						</p>
 						
 						<p>
                             <label for="cognome">Cognome</label>
-                            <input type="text" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
 						</p>
 						
 						<p>
@@ -170,12 +173,12 @@ class UserAdmin extends User {
 						
 						<p>
                             <label for="password">Password</label>
-                            <input type="text" id="password" name="password" data-validation-mode="password" value="" required>
+                            <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="" required>
 						</p>
 						
 						<p>
                             <label for="passwordconf">Conferma password</label>
-                            <input type="text" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                            <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
                         </p>
                         
                         <p>
@@ -192,7 +195,7 @@ class UserAdmin extends User {
     return $echoString;
     } 
     
-    public static function addUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine){
+    public static function addUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine, $basePathImg){
      
         $echoString ="";
           
@@ -230,7 +233,7 @@ class UserAdmin extends User {
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
 						<h1>Elemento aggunto</h1>
-						<a href='' class='btn card wrap-margin'> Aggiungine un altro </a>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
 					</div>
 				</div>
 				";
@@ -240,12 +243,12 @@ class UserAdmin extends User {
 					<div class='padding-6 content'>
 						<div class='card wrap-padding'>
 							<h1>Elemento NON Aggiunto</h1>
-							<a href='' class='btn card wrap-margin'> Riprova </a>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
 						</div>
 					</div>
 				";
                 if( $destinazioneFileDB != NULL){                           
-                    delImage(__DIR__."/../".$destinazioneFileDB); 
+                    delImage($basePathImg.$destinazioneFileDB); 
                 }
             }
         }
@@ -254,7 +257,7 @@ class UserAdmin extends User {
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
 						<h1>Errore campi</h1>
-						<a href='' class='btn card wrap-margin'> Riprova </a>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
 					</div>
 				</div>
 			";
@@ -289,17 +292,17 @@ class UserAdmin extends User {
 
 							<p>
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
+                                <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" value="'.$row["email"].'" readonly>
 							</p>
 							
 							<p>
                                 <label for="nome">Nome</label>
-                                <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="'.$row["nome"].'" required>
+                                <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="alphanum" value="'.$row["nome"].'" required>
 							</p>
 							
 							<p>
                                 <label for="cognome">Cognome</label>
-                                <input type="text" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$row["cognome"].'" required>
+                                <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$row["cognome"].'" required>
 							</p>
 							
 							<p>
@@ -309,12 +312,12 @@ class UserAdmin extends User {
 							
 							<p>
                                 <label for="password">Password</label>
-                                <input type="text" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
+                                <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
 							</p>
 							
 							<p>
                                 <label for="passwordconf">Conferma password</label>
-                                <input type="text" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
+                                <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
                             </p>
                             
                             <p>
@@ -339,7 +342,7 @@ class UserAdmin extends User {
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
 						<h1>Utente non presente</h1>
-						<a href='' class='btn card wrap-margin'> Riprova </a>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
 					</div>
 				</div>							
 			";
@@ -348,7 +351,7 @@ class UserAdmin extends User {
         return $echoString;
     } 
     
-    public static function updateUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine, $removeImage){
+    public static function updateUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $tipologia, $immagine, $removeImage, $basePathImg){
      
         $echoString ="";
           
@@ -370,9 +373,8 @@ class UserAdmin extends User {
                 $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
-                    if($row["immagine"]!="" && $row["immagine"]!=NULL){        
-                        global $homepath;
-                        delImage($homepath.$row["immagine"]);
+                    if($row["immagine"]!="" && $row["immagine"]!=NULL){       
+                        delImage($basePathImg.$row["immagine"]);
                     }
                 }
             }
@@ -396,7 +398,6 @@ class UserAdmin extends User {
 					<div class='padding-6 content center'>
 						<div class='card wrap-padding'>
 							<h1>Elemento modificato!</h1>
-							<a href='' class='btn card wrap-margin'> Modificane un altro </a>
 						</div>
 					</div>							
 				";
@@ -406,7 +407,7 @@ class UserAdmin extends User {
 					<div class='padding-6 content center'>
 						<div class='card wrap-padding'>
 							<h1>Elemento non modificato</h1>
-							<a href='' class='btn card wrap-margin'> Riprova </a>
+							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
 						</div>
 					</div>							
 				";
@@ -417,7 +418,7 @@ class UserAdmin extends User {
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
 						<h1>Errore campi</h1>
-						<a href='' class='btn card wrap-margin'> Riprova </a>
+						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
 					</div>
 				</div>							
 			";

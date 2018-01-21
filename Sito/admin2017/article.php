@@ -46,7 +46,7 @@ switch ($sezione) {
 		if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
 			$removeimg=true;
 		}
-		echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg);
+		echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg, "..");
 		break;	
 	case 'delete':
 		if(isset($_GET["article"]))
@@ -58,7 +58,7 @@ switch ($sezione) {
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))
-			echo Article::deleteComment($connectArticle, $_GET["idcommento"]);
+			echo Article::deleteComment($connectArticle, $_GET["idcommento"], "..");
 		break;
 	
 	default:

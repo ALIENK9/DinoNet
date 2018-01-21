@@ -36,7 +36,7 @@ switch ($sezione) {
 		echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
-		echo $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"]);
+		echo $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], "..");
 		break;
 	case 'formupdate':
 		echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
@@ -46,11 +46,11 @@ switch ($sezione) {
 		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 			$removeimg=true;			}
 
-		echo $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg);
+		echo $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg, "..");
 		break;		
 	case 'delete':
 		if(isset($_GET["user"]))
-			echo $_SESSION['paneluser']->deleteUser($connectUser, $_GET["user"]);
+			echo $_SESSION['paneluser']->deleteUser($connectUser, $_GET["user"], "..");
 		break;	
 	
 	default:

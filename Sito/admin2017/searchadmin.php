@@ -36,7 +36,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
         <div class="row-padding content-large margin-top">
             <?php
             
-				echo Dinosaur::printListDinosaur($connect, $_GET["input"], "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&");
+				echo Dinosaur::printListDinosaur($connect, $_GET["input"], "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&", $_SERVER["PHP_SELF"]."?id=dino&sez=comment&");
             ?>
         </div>
     </div>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
         <div class="row-padding content-large margin-top">
             <?php
             
-				echo Article::printListArticle($connect, $_GET["input"], "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&");
+				echo Article::printListArticle($connect, $_GET["input"], "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&", $_SERVER["PHP_SELF"]."?id=article&sez=comment&");
             ?>
         </div>
     </div>

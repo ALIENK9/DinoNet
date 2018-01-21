@@ -7,6 +7,7 @@
 	if(isset($_SESSION['user'])){	
 		session_unset();
 	}
+	$messaggioRegistrazione = "";
 	if(isset($_POST["submit"])){	
 		$connect = startConnect();
 		$messaggioRegistrazione = User::registerMyUser($connect,$_POST["email"],$_POST["nome"],$_POST["cognome"],$_POST["password"],$_POST["passwordconf"]);
@@ -14,7 +15,7 @@
 				session_unset();
 				$_SESSION['user'] = new User($connect, $_POST['email']);
 				header("Location: view-account.php");
-		} 
+		}
 		closeConnect($connect);
 	}
 ?>
@@ -96,7 +97,7 @@
                     </p>
 					<p>
                         <label for="input-cognome">Cognome</label>
-					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" data-validation-mode="alphanum" value="<?php if(isset($_POST["cognome"])) echo $_POST["email"]; ?>" required>
+					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" data-validation-mode="alphanum" value="<?php if(isset($_POST["cognome"])) echo $_POST["cognome"]; ?>" required>
                     </p>
                     <p>
                         <label for="input-email" xml:lang="en" lang="en">Email</label>
@@ -109,7 +110,9 @@
 					<p>
                         <label for="input-passw-again">Ripeti la <span xml:lang="en" lang="en">password</span></label>
 					    <input id="input-passw-again" type="password" placeholder="ripeti la password" name="passwordconf" data-validation-mode="confermapassword" required>
-                    </p>
+                    </p>  
+					<input type="hidden" name="submit" value="1">
+                    
 					<input type="submit" value="REGISTRATI" class="card btn wide text-colored white">
 				</form>
 			</div>

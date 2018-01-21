@@ -65,11 +65,15 @@
 			<h1 class="text-colored"> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>
 			<h2>qui puoi visualizzare i dati del tuo account</h2>
 		</div>
-		
 		<!-- Dati account -->
 
 		<div class="card colored wrap-padding">
-			<h1>Dati account</h1>
+			<h1>Dati account</h1>			
+			<?php		
+			if($_SESSION['user']->getUrlImmagine()!=NULL && $_SESSION['user']->getUrlImmagine()!=""){
+				echo ' <img src="'.$_SESSION['user']->getUrlImmagine().'" alt="Immagine utente"/>';
+			}
+			?>
 			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
 			<p><strong>Cognome:</strong> <?php echo $_SESSION['user']->getCognome();?></p>
 			<p><strong>Email:</strong> <?php echo $_SESSION['user']->getEmail();?></p>
