@@ -84,20 +84,48 @@ class UserAdmin extends User {
 
                         $sqlQuery = "DELETE FROM utente WHERE email = '".$id."' ";
                         if( $connect->query($sqlQuery) ){
-                            $echoString = "Elemento eliminato";
+                            $echoString = "
+								<div class='padding-6 content center'>
+									<div class='card wrap-padding'>
+										<h1>Elemento eliminato!</h1>
+										<a href='' class='btn card wrap-margin'> Riprova </a>
+									</div>
+								</div>							
+							";
                         } 
                         else {
-                            $echoString = "Elemento NON eliminato";
+                            $echoString = "
+								<div class='padding-6 content center'>
+									<div class='card wrap-padding'>
+										<h1>Elemento NON eliminato</h1>
+										<a href='' class='btn card wrap-margin'> Riprova </a>
+									</div>
+								</div>							
+							";
                         }
                     }
                     else{
-                        $echoString = "Elemento NON eliminabile";
+                        $echoString = "
+							<div class='padding-6 content center'>
+								<div class='card wrap-padding'>
+									<h1>Elemento NON eliminabile</h1>
+									<a href='' class='btn card wrap-margin'> Riprova </a>
+								</div>
+							</div>						
+						";
                     }
                 }
             }
         }
         else{
-            $echoString = "Non ti puoi eliminare";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Non ti puoi eliminare</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }       
         return $echoString;
     }
@@ -111,37 +139,51 @@ class UserAdmin extends User {
 					<h1>Aggiungi un nuovo utente</h1>
 				</div>
 				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data">
-                        <p><label for="tipologia">Tipologia utente:</label></p>
-                        <select id="tipologia" name="tipologia">                        
-                            <option value="0" selected>Standard</option>
-                            <option value="1">Administrator</option>
-                        </select>
+					<form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+                        <p>
+                            <label for="tipologia">Tipologia utente</label>
+                            <select id="tipologia" name="tipologia">                        
+                                <option value="0" selected>Standard</option>
+                                <option value="1">Administrator</option>
+                            </select>
+                        </p>
 
-						<p><label for="email">Email:</label></p>
-						<input type="email" id="email" name="email" required value="">
+						<p>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" data-validation-mode="email" value="" required>
+						</p>
 						
-						<p><label for="nome">Nome:</label></p>
-						<input type="text" id="nome" name="nome" required value="">
+						<p>
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+						</p>
 						
-						<p><label for="cognome">Cognome:</label></p>
-						<input type="text" id="cognome" name="cognome" required value="">
+						<p>
+                            <label for="cognome">Cognome</label>
+                            <input type="text" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+						</p>
 						
-						<p><label for="datanascita">Data di nascita:</label></p>
-						<input type="date" id="datanascita" name="datanascita" value="">
+						<p>
+                            <label for="datanascita">Data di nascita</label>
+                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+						</p>
 						
-						<p><label for="password">Password:</label></p>
-						<input type="text" id="password" name="password" required value="">
+						<p>
+                            <label for="password">Password</label>
+                            <input type="text" id="password" name="password" data-validation-mode="password" value="" required>
+						</p>
 						
-						<p><label for="passwordconf">Conferma password:</label></p>
-                        <input type="text" id="passwordconf" name="passwordconf" required value="">
+						<p>
+                            <label for="passwordconf">Conferma password</label>
+                            <input type="text" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                        </p>
                         
-                        <p><label for="imgaccount">Nessuna immagine profilo:</label></p>
-                        <input type="file" id="imgaccount" name="imgaccount" value="">
-
-						<br>
+                        <p>
+                            <label for="imgaccount">Immagine profilo</label>
+                            <input type="file" id="imgaccount" name="imgaccount" value="">
+                        </p>
 						
-						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
 					</form>
 				</div>
 			</div>
@@ -184,17 +226,38 @@ class UserAdmin extends User {
             }
             $sqlQuery .=") ";
             if($connect->query($sqlQuery)){
-                $echoString .= "Elemento Aggiunto";
+                $echoString .= "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Elemento aggunto</h1>
+						<a href='' class='btn card wrap-margin'> Aggiungine un altro </a>
+					</div>
+				</div>
+				";
             } 
             else {
-                $echoString = "Elemento NON Aggiunto";
+                $echoString = "
+					<div class='padding-6 content'>
+						<div class='card wrap-padding'>
+							<h1>Elemento NON Aggiunto</h1>
+							<a href='' class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>
+				";
                 if( $destinazioneFileDB != NULL){                           
                     delImage(__DIR__."/../".$destinazioneFileDB); 
                 }
             }
         }
         else{
-            $echoString = "Errore campi";
+            $echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>
+			";
         }    
 
         
@@ -215,40 +278,56 @@ class UserAdmin extends User {
 						<h1>Modifica i dati utente</h1>
 					</div>
 					<div class="card colored wrap-padding">
-						<form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data">
-                            <p><label for="tipologia">Tipologia utente:</label></p>
-                            <select id="tipologia" name="tipologia">                        
-                                <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
-                                <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
-                            </select>
+						<form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+                            <p>
+                                <label for="tipologia">Tipologia utente</label>
+                                <select id="tipologia" name="tipologia">                        
+                                    <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
+                                    <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
+                                </select>
+                            </p>
 
-							<p><label for="email">Email:</label></p>
-							<input type="email" id="email" name="email" required value="'.$row["email"].'" readonly>
+							<p>
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" value="'.$row["email"].'" readonly>
+							</p>
 							
-							<p><label for="nome">Nome:</label></p>
-							<input type="text" id="nome" name="nome" required value="'.$row["nome"].'">
+							<p>
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" data-validation-mode="alphanum" value="'.$row["nome"].'" required>
+							</p>
 							
-							<p><label for="cognome">Cognome:</label></p>
-							<input type="text" id="cognome" name="cognome" required value="'.$row["cognome"].'">
+							<p>
+                                <label for="cognome">Cognome</label>
+                                <input type="text" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$row["cognome"].'" required>
+							</p>
 							
-							<p><label for="datanascita">Data di nascita:</label></p>
-							<input type="date" id="datanascita" name="datanascita" value="'.$row["datanascita"].'">
+							<p>
+                                <label for="datanascita">Data di nascita</label>
+                                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$row["datanascita"].'">
+							</p>
 							
-							<p><label for="password">Password:</label></p>
-							<input type="text" id="password" name="password" required value="'.$row["password"].'">
+							<p>
+                                <label for="password">Password</label>
+                                <input type="text" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
+							</p>
 							
-							<p><label for="passwordconf">Conferma password:</label></p>
-                            <input type="text" id="passwordconf" name="passwordconf" required value="'.$row["password"].'">
+							<p>
+                                <label for="passwordconf">Conferma password</label>
+                                <input type="text" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
+                            </p>
                             
-                            <p><label for="imgaccount">Immagine profilo:</label>></p>
-                            <input type="file" id="imgaccount" name="imgaccount" value="">
+                            <p>
+                                <label for="imgaccount">Immagine profilo</label>
+                                <input type="file" id="imgaccount" name="imgaccount" value="">
+                            </p>
             
-                            <p><label for="imgaccountremove">Rimuovi immagine:</label>></p>
-                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-								
-							<br>
-								
-							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" / class="card btn wide text-colored white">
+                            <p>
+                                <label for="imgaccountremove">Rimuovi immagine</label>
+                                <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                            </p>
+																
+							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
 						</form>
 					</div>
 				</div>
@@ -256,7 +335,14 @@ class UserAdmin extends User {
             ';
         }  
         else{
-            $echoString ="Errore: Utente non presente";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Utente non presente</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }  
         
         return $echoString;
@@ -306,14 +392,35 @@ class UserAdmin extends User {
             $sqlQuery .= "WHERE email='".$email."'";
             
             if( $connect->query($sqlQuery) ){
-                $echoString = "Elemento Modificato";
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento modificato!</h1>
+							<a href='' class='btn card wrap-margin'> Modificane un altro </a>
+						</div>
+					</div>							
+				";
             } 
             else {
-                $echoString = "Elemento NON Modificato";
+				$echoString = "
+					<div class='padding-6 content center'>
+						<div class='card wrap-padding'>
+							<h1>Elemento non modificato</h1>
+							<a href='' class='btn card wrap-margin'> Riprova </a>
+						</div>
+					</div>							
+				";
             }
         }
         else{
-            $echoString = "Errore campi";
+			$echoString = "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Errore campi</h1>
+						<a href='' class='btn card wrap-margin'> Riprova </a>
+					</div>
+				</div>							
+			";
         }    
 
         

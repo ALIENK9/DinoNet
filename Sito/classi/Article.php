@@ -196,28 +196,38 @@ class Article{
 					<h1>Aggiungi un articolo</h1>
 				</div>
 				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data">
-						<p><label for="titolo">Titolo:</label></p>
-						<input type="text" id="titolo" name="titolo" required value="">
+					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+						<p>
+                            <label for="titolo">Titolo</label>
+                            <input type="text" id="titolo" name="titolo" data-validation-mode="alphanum" value="" required>
+						</p>
 						
-						<p><label for="sottotitolo">Sottotitolo:</label></p>
-						<input type="text" id="sottotitolo" name="sottotitolo" value="">
+						<p>
+                            <label for="sottotitolo">Sottotitolo</label>
+                            <input type="text" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="" required>
+                        </p>
 						
-						<p><label for="descrizione">Descrizione:</label></p>
-                        <textarea type="text" id="descrizione" name="descrizione" required value=""></textarea>
+						<p>
+						    <label for="descrizione">Descrizione</label>
+                            <textarea type="text" id="descrizione" name="descrizione" value="" required></textarea>
+                        </p>
                         
-						<p><label for="anteprima">Anteprima:</label></p>
-						<textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
-						
-						<p><label for="descrizioneimg">Descrizione della immagine:</label></p>
-						<input type="text" id="descrizioneimg" name="descrizioneimg" value="">
-
-                        <p><label for="imgarticle">Immagine:</label></p>
-                        <input type="file" id="imgarticle" name="imgarticle" value="">
-
-						<br>
-						
-						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white" />
+						<p>
+                            <label for="anteprima">Anteprima</label>
+                            <textarea type="text" id="anteprima" name="anteprima" value=""></textarea>
+						</p>
+												
+						<p>
+                            <label for="descrizioneimg">Descrizione dell\'immagine</label>
+                            <input type="text" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
+                        </p>
+                        
+                        <p>
+                            <label for="imgarticle">Immagine</label>
+                            <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                        </p>
+                        					
+						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
 					</form>
 				</div>
 			</div>
@@ -278,34 +288,48 @@ class Article{
 						<h1>Modifica un articolo</h1>
 					</div>
 					<div class="card colored wrap-padding">
-						<form action="'.$url.'?id=article&sez=update" method="POST"  enctype="multipart/form-data">
-							<p><label for="article">Identificativo articolo:</label></p>
-							<input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
+						<form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+							<p>
+                                <label for="article">Identificativo articolo</label>
+                                <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
+							</p>
 							
-							<p><label for="titolo">Titolo:</label></p>
-							<input type="text" id="titolo" name="titolo" required value="'.$row["titolo"].'">
+							<p>
+                                <label for="titolo">Titolo</label>
+                                <input type="text" id="titolo" name="titolo" data-validation-mode="alphanum" value="'.$row["titolo"].'" required>
+							</p>
 							
-							<p><label for="sottotitolo">Sottotitolo:</label></p>
-							<input type="text" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'">
+							<p>
+                                <label for="sottotitolo">Sottotitolo</label>
+                                <input type="text" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="'.$row["sottotitolo"].'" required>
+							</p>
 							
-							<p><label for="descrizione">Descrizione:</label></p>
-							<textarea type="text" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
+							<p>
+                                <label for="descrizione">Descrizione</label>
+                                <textarea type="text" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
+							</p>
                             
-                            <p><label for="anteprima">Anteprima:</label></p>
-							<textarea type="text" id="anteprima" name="anteprima">'.$row["anteprima"].'</textarea>
+                            <p>
+                                <label for="anteprima">Anteprima</label>
+                                <textarea type="text" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
+							</p>
 							
-							<p><label for="descrizioneimg">Descrizione immagine:</label></p>
-							<input type="text" id="descrizioneimg" name="descrizioneimg" value="'.$row["descrizioneimg"].'">
+							<p>
+                                <label for="descrizioneimg">Descrizione immagine</label>
+                                <input type="text" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
+							</p>
 							
-                            <p><label for="imgarticle">Immagine:</label></p>
-                            <input type="file" id="imgarticle" name="imgarticle" value="">
+                            <p>
+                                <label for="imgarticle">Immagine</label>
+                                <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                            </p>
                 
-                            <p><label for="imgarticleremove">Nessuna immagine:</label></p>
-                            <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
-
-							<br>
+                            <p>
+                                <label for="imgarticleremove">Nessuna immagine</label>
+                                <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
+                            </p>
 							
-							<input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white" />
+							<input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
 						</form>
 					</div>
 				</div>

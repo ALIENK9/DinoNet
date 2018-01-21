@@ -31,6 +31,7 @@
 		<link rel="stylesheet" href="../css/index.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/index.js"></script>
 		
 		<!-- Favicon -->
 		

@@ -350,3 +350,17 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/*TRIGGER che cancella tutti i commenti postati da utenti eliminati*/
+DELIMITER $$
+DROP TRIGGER IF EXISTS cancellaCommenti;
+CREATE TRIGGER cancellaCommenti
+AFTER DELETE ON utente
+FOR EACH ROW
+BEGIN
+	DELETE FROM commentoarticolo C WHERE C.idutente = OLD.email;
+	DELETE FROM commentodinosauro D WHERE D.idutente = OLD.email; 
+END 
+$$
+DELIMITER ;

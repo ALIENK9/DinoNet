@@ -24,101 +24,167 @@ function capitalizeFirstLetter(stringa) {
 
 
 /**
- * Valida tutti i campi input del form, chiamando funzioni di validazione per ciascun tag 'input'.
- * @param nomeForm, il form da validare.
- * @returns {boolean}, 'true' se tuttii campi del form sono stati compilati correttamente, 'false' altrimenti.
+ *                              ############ COME FUNZIONA LA VALIDAZIONE ###############
+ * Per gli elementi <input>, con attributo data-validation-mode="mode" viene chiamata la funzione di validazione
+ * 'validateMode()'. In particolare:
+ *      - "generico" ==> la funzione 'validateGeneric()' fa un controllo generico per <input> che non necessitano di
+ *         controlli specifici, dunque guarda solo che non sia vuoto.
+ *      - "password" ed input successivo diverso da name="confermapassword" ==> (Caso login), verifica che la
+ *         password abbia lunghezza minima. Chiama 'validatePassword()'.
+ *      - "password" e input seguente con name="confermapassword" ==> chiama la funzione 'validatePasswordConfirm()'
+ *         e verifica prima che la password sia valida chiamando 'validatePassword()', e poi verifica che sia stata
+ *         re-inserita correttamente nel campo di conferma.
+ *      - "alphanum" ==> controlla che siano stati inseriti solo caratteri alfanumerici.
+ *      - "alpha" ==> controlla che siano stati inseriti solo lettere.
+ *      - "email" ==> controlla con una regex che sia stato inserito un indirizzo possibilmente valido.
+ *      - name="*" || attributo 'name' non presente ==> nessuna validazione.
+ *
+ * Per gli elementi <textarea>, dedicati all'inserimento di testi più lugnhi, quali corpo di articoli e schede si
+ * chiama una unica funzione 'validateTextArea()' che nel caso sia presente l'attributo 'required', controlla che sia
+ * almeno stato inserito un numero minimo di caratteri.
  */
-function validateForm(nomeForm) {
-    var corretto = true;
-    var result = false;
-    var inputs = nomeForm.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
-        var temp = capitalizeFirstLetter(inputs[i].getAttribute('name'));
-        if (temp !== null && temp !== 'Confermapassword') {
-            if(temp === 'Password' && (i+1) < inputs.length && inputs[i+1].getAttribute('name') === 'confermapassword')
-                result = validatePasswordConfirm(inputs[i], inputs[i + 1]);         //se il campo password è seguito da conferma password
-            else {
-                var functionName = 'validate' + temp;                             //formato per chiamare le funzioni
-                result = window[functionName](inputs[i]);                         //chiama la funzione con nome 'functionName' con il suo input per controllarli
-            }
-            corretto = corretto && result;
-        }
+
+
+
+
+/**
+ * Controlla che la <textarea> abbia un numero minimo di caratteri.
+ * @param texts
+ * @param i
+ * @returns {boolean}
+ */
+function validateTextArea(texts, i) {
+    var textArea = texts[i];
+    if(textArea.hasAttribute('required') && (textArea.value === undefined || textArea.value.length < 1)) {
+        showError(textArea, 'Il campo non può essere vuoto');
+        return false;
     }
-    return corretto;
+    removeError(textArea);
+    return true;
 }
 
 
 
 
 /**
- * Valida il campo nome del'utente.
- * @param nomeInput, l'elemento 'input' da validare.
+ * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri alfanumerici (almeno un numero o lettera),
+ * altrimenti 'false'.
+ * @param inputs
+ * @param i
  * @returns {boolean}, 'true' se il testo inserito è corretto, 'false' altrimenti.
  */
-function validateNome(nomeInput) {
+function validateAlphanum(inputs, i) {
+    var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = new RegExp('^[A-z0-9]+$');
+    var pattern = /^[A-z0-9]+$/i;
+    if(pattern.test(inserimento)) {
+        removeError(nomeInput);
+        return true;
+    }
+    showError(nomeInput, 'Inserisci solo caratteri alfanumerici');
+    return false;
+}
+
+
+
+
+/**
+ * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri alfabetici (almeno una lettera) e/o segni di punteggiatura,
+ * altrimenti 'false'.
+ * @param inputs
+ * @param i
+ * @returns {boolean}, 'true' se il testo inserito è corretto, 'false' altrimenti.
+ */
+function validateAlpha(inputs, i) {
+    var nomeInput = inputs[i];
+    var inserimento = nomeInput.value;
+    var pattern = /^([A-z]+[.,;\-"'()\s]*)*$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
     }
     else {
-        showError(nomeInput, 'Solo caratteri alfanumerici');
+        showError(nomeInput, 'Inserisci solo caratteri alfabetici');
         return false;
     }
 }
 
 
 
-
-/**
- * Valida il campo cognome.
- * @param nomeInput, l'elemento 'input' da validare.
- * @returns {boolean}, 'true' se il testo inserito è corretto, 'false' altrimenti.
- */
-function validateCognome(nomeInput) {
-    return validateNome(nomeInput);
+function validateUnsigned(inputs, i) {
+    var nomeInput = inputs[i];
+    var numero = nomeInput.value;
+    var pattern = nomeInput.hasAttribute('required') ? /^[0-9]+$/ : /^[0-9]*$/;
+    if(!pattern.test(numero)) {
+        showError(nomeInput, 'Inserire un decimale positivo');
+        return false;
+    }
+    removeError(nomeInput);
+    return true;
 }
 
 
 
 
-/**
- * Ritorna 'true' se la password è di almeno 4 caratteri e coincide con quella inserita nel campo di conferma password,
- * 'false', altrimenti.
- * @param inputPassword, campo con la password inserita.
- * @param confermaPassword
- * @returns {boolean}, 'true' se lunghezza >= minima e le password corrispondono, altrimenti 'false'.
- */
-function validatePasswordConfirm(inputPassword, confermaPassword) {// lunghezza minima psw
-    var minlength = 4;
-    var corretto = true;
-    removeError(inputPassword);
-    removeError(confermaPassword);
-
-    if(inputPassword.value.length < minlength) {
-        showError(inputPassword, 'La password deve contenere almeno ' + minlength + ' caratteri');
-        corretto = false;
+/*
+ * Ritorna 'true' se il 'nomeInput.value' contiene almeno 1 carattere, altrimenti 'false'.
+ * @param inputs
+ * @param i
+ * @returns {boolean}, 'true' se è stato inserito qualcosa, 'false' altrimenti.
+ *
+function validateRequired(inputs, i) {
+    var nomeInput = inputs[i];
+    if(nomeInput.value === undefined || nomeInput.value.length < 1) {
+        showError(nomeInput, 'Inserisci almeno un carattere');
+        return false;
     }
-    if(inputPassword.value !== confermaPassword.value) {
-        showError(confermaPassword, 'Le due password non corrispondono');
-        corretto = false;
-    }
-    return corretto;
-}
+    removeError(nomeInput);
+    return true;
+}*/
 
 
 
 
 /**
- * Ritorna 'true' se nomeInput.value è un indirizzo email corretto, altrimenti ritorna 'false'.
- * @param nomeInput.
+ * Ritorna 'true' se la password è di almeno 4 caratteri, altrimenti 'false'.
+ * Se nell'input seguente viene chiesto di reinserirla per conferma ritorna 'true' solo se le due passowrd coincidono.
+ * @param inputs,  NodeList di elementi <input> del form
+ * @param i, indice dell'input con il campo 'password' nella lista 'inputs'
  * @returns {boolean}
  */
-function validateEmail(nomeInput) {
+function validatePassword(inputs, i) {
+    var inputPassword = inputs[i];
+    removeError(inputPassword);
+    if(inputPassword.value === undefined || inputPassword.value.length < 4) {
+        showError(inputPassword, 'La password non può avere meno di 4 caratteri');
+        return false;
+    }
+
+    if((i+1) < inputs.length && inputs[i + 1].getAttribute('data-validation-mode') === 'confermapassword') {
+        var confermaPassword = inputs[i + 1];
+        if(inputPassword.value !== confermaPassword.value) {
+            showError(confermaPassword, 'Le due password non corrispondono');
+            return false;
+        }
+    }
+    removeError(inputPassword);
+    return true;
+}
+
+
+
+
+/**
+ * Ritorna 'true' se 'inputs.value' è un indirizzo email corretto, altrimenti ritorna 'false'.
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
+function validateEmail(inputs, i) {
+    var nomeInput = inputs[i];
     var email = nomeInput.value;
     var pattern = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-    if(pattern.test(email)) {
+    if(pattern.test(email)) {   //email undefined ==> ritorna false
         removeError(nomeInput);
         return true;
     }
@@ -132,14 +198,20 @@ function validateEmail(nomeInput) {
 
 
 /**
- * Controlla se l'input è vuoto o meno.
- * @param nomeInput
+ * Controlla che i dati inseriti circa il periodo DAL QUALE una specie visse sia nel formato corretto e sia sensato.
+ * @param inputs
+ * @param i
  * @returns {boolean}
  */
-function validatePassword(nomeInput) {
-    removeError(nomeInput);
-    if(nomeInput.value === undefined || nomeInput.value.length === 0) {
-        showError(nomeInput, 'Il campo è vuoto');
+function validatePeriodomin(inputs, i) {
+    var min = inputs[i];
+    var pattern = /'^[0-9]+$'/;
+    if (!pattern.test(min.value)) {
+        showError(min, 'Questo formato non è valido');
+        return false;
+    }
+    if(min.value > 350) {
+        showError(min, 'Non c\'erano dinosauri prima di 350 milioni di anni fa!');
         return false;
     }
     return true;
@@ -149,7 +221,149 @@ function validatePassword(nomeInput) {
 
 
 /**
- * Aggiunge al parent element di 'elem' un paragrafo con il messaggio indicato in 'message'.
+ * Controlla che il periodo FINO AL QUALE una specie visse sia nel formato corretto e sensato. Se lo è e nell'<input> precedente
+ * veniva richiesto il periodo minimo allora controlla anche che i due periodi siano coerenti fra di loro.
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
+function validatePeriodomax(inputs, i) {
+    var max = inputs[i];
+    var pattern = /'^[0-9]+$'/;
+    if (!pattern.test(max.value)) {
+        showError(max, 'Questo formato non è valido');
+        return false;
+    }
+    if(max.value < 60) {
+        showError(max, 'I dinosauri si sono estinti circa 65 milioni di anni fa!');
+        return false;
+    }
+
+    if(i > 0 && 'periodomin' === inputs[i - 1].getAttribute('data-validation-mode')) {
+        var min = inputs[i - 1];
+        if(min.value < max.value) {
+            showError(max, 'Il periodo minimo non può essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
+            return false;
+        }
+    }
+    removeError(max);
+    return true;
+}
+
+
+
+
+/**
+ * Valida la data di nascita inserita dall'utente nel formato gg/mm/aaaa.
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
+function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
+    var nomeInput = inputs[i];
+    var dataStringa = nomeInput.value;
+    var richiesto = nomeInput.hasAttribute('required');
+    if(richiesto && (dataStringa === undefined || dataStringa.length === 0)) {
+        showError(nomeInput, 'Devi inserire una data');
+        return false;
+    }
+    if(!richiesto && (dataStringa === undefined || dataStringa.length === 0))
+        return true;
+
+    var splitted = dataStringa.split('/');
+    var g = parseInt(splitted[0], 10);
+    var m = parseInt(splitted[1], 10);
+    var a = parseInt(splitted[2], 10);
+
+    if(g === 0 || g > 31 || m === 0 || m > 12 || a < 1900) {
+        showError(nomeInput, 'La data non è valida');
+        return false;
+    }
+    removeError(nomeInput);
+    return true;
+}
+
+
+/**
+ * Controlla che l'input con tipo type="file" sia stato caricato un file.
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
+function validateFilereq(inputs, i) {
+    var nomeInput = inputs[i];
+    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length === 0) {
+        showError(nomeInput, 'Deve essere selezionato un file');
+        return false;
+    }
+    removeError(nomeInput);
+    return true;
+}
+
+
+
+
+/**
+ * Ritorna 'true' se:
+ *      - è stata inserita una immagine con la descrizione;
+ *      - non è stata inserita una immagine, indipendentemente dalla presenza della descrizione.
+ *      Altrimenti segnala l'errore e ritorna 'false'.
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
+function validateDescrizioneimg(inputs, i) {
+    var alt = inputs[i];
+    var presenzaImmagine = (i+1) < inputs.length && inputs[i + 1].getAttribute('type') === 'file' &&
+        inputs[i + 1].files.length > 0 && 'immaginearticolo' === inputs[i + 1].getAttribute('data-validation-mode');
+    var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
+    if(presenzaImmagine && descrizioneVuota) {
+        showError(alt, 'È necessaria una descrizione alternativa per l\'immagine');
+        return false;
+    }
+    removeError(alt);
+    return true;
+}
+
+
+
+
+
+
+
+/**
+ * Valida tutti i campi input del form, chiamando funzioni di validazione per ciascun tag 'input'.
+ * @param nomeForm, il form da validare.
+ * @returns {boolean}, 'true' se tutti campi del form sono stati compilati correttamente, 'false' altrimenti.
+ */
+function validateForm(nomeForm) {
+    var corretto = true;
+    var result = false;
+    var inputs = nomeForm.getElementsByTagName('input');
+    var texts = nomeForm.getElementsByTagName('textarea');
+
+    for (var i = 0; i < inputs.length; i++) {
+        var mode = capitalizeFirstLetter(inputs[i].getAttribute('data-validation-mode'));
+        if (mode !== undefined && mode != null) {
+            var functionName = 'validate' + mode;
+            var fn = window[functionName];            // nome della funzione da chiamare per validare
+            if (typeof fn === 'function')             // se esiste una funzione con quel nome
+            corretto = corretto && fn(inputs, i);     // chiama la funzione con nome 'functionName'
+        }                                                                   // dandole la lista di <input> e l'indice corrente
+    }
+
+    for (var j = 0; j < texts.length; j++)  // una funzione apposita controlla le textarea
+        corretto = corretto && validateTextArea(texts, j);
+
+    return corretto;
+}
+
+
+
+
+
+/**
+ * Aggiunge al parent element di 'elem' un elemento <strong> con il messaggio indicato in 'message'.
  * @param elem
  * @param message
  */
