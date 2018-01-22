@@ -11,6 +11,7 @@
 	if(isset($_POST["submit"])){	
 		$connect = startConnect();
 		$messaggioRegistrazione = User::registerMyUser($connect,$_POST["email"],$_POST["nome"],$_POST["cognome"],$_POST["password"],$_POST["passwordconf"]);
+		echo $messaggioRegistrazione;
 		if("Utente registrato" == $messaggioRegistrazione){
 				session_unset();
 				$_SESSION['user'] = new User($connect, $_POST['email']);
@@ -90,7 +91,7 @@
 		?>
 		<div id="register">
 			<div class="card colored wrap-padding">
-				<form id="reg-form" action="#" method="POST" onsubmit="return validateForm(this)">
+				<form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)">
 					<p>
 						<label for="email">Email</label>
 						<input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
@@ -126,6 +127,7 @@
 						<input type="file" id="imgaccount" name="imgaccount" value="">
 					</p>
 					
+					<input type="hidden" name="submit" value="1">
 					<input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">
 				</form>
 			</div>
