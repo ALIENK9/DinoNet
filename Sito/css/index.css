@@ -373,7 +373,7 @@ form p {
 }
 
 #volcano-divider {
-	background: url('../img/volcano.jpg') bottom;
+	background-image: url('../img/volcano.jpg');
 }
 
 /* /History */

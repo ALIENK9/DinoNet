@@ -167,7 +167,7 @@ class UserAdmin extends User {
 						</p>
 						
 						<p>
-                            <label for="datanascita">Data di nascita</label>
+                            <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
                             <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
 						</p>
 						
@@ -182,7 +182,7 @@ class UserAdmin extends User {
                         </p>
                         
                         <p>
-                            <label for="imgaccount">Immagine profilo</label>
+                            <label for="imgaccount">Immagine profilo (opzionale)</label>
                             <input type="file" id="imgaccount" name="imgaccount" value="">
                         </p>
 						

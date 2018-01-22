@@ -92,28 +92,41 @@
 			<div class="card colored wrap-padding">
 				<form id="reg-form" action="#" method="POST" onsubmit="return validateForm(this)">
 					<p>
-                        <label for="input-nome">Nome</label>
-					    <input id="input-nome" type="text" placeholder="inserisci il tuo nome" name="nome" data-validation-mode="alphanum" value="<?php if(isset($_POST["nome"])) echo $_POST["nome"]; ?>" required>
-                    </p>
+						<label for="email">Email</label>
+						<input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
+					</p>
+					
 					<p>
-                        <label for="input-cognome">Cognome</label>
-					    <input id="input-cognome" type="text" placeholder="inserisci il tuo cognome" name="cognome" data-validation-mode="alphanum" value="<?php if(isset($_POST["cognome"])) echo $_POST["cognome"]; ?>" required>
-                    </p>
-                    <p>
-                        <label for="input-email" xml:lang="en" lang="en">Email</label>
-					    <input id="input-email" type="email" placeholder="inserisci la tua email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
-                    </p>
-                    <p>
-                        <label for="input-passw" xml:lang="en" lang="en">Password</label>
-					    <input id="input-passw" type="password" placeholder="inserisci la password" data-validation-mode="password" name="password" required>
-                    </p>
+						<label for="nome">Nome</label>
+						<input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+					</p>
+					
 					<p>
-                        <label for="input-passw-again">Ripeti la <span xml:lang="en" lang="en">password</span></label>
-					    <input id="input-passw-again" type="password" placeholder="ripeti la password" name="passwordconf" data-validation-mode="confermapassword" required>
-                    </p>  
-					<input type="hidden" name="submit" value="1">
-                    
-					<input type="submit" value="REGISTRATI" class="card btn wide text-colored white">
+						<label for="cognome">Cognome</label>
+						<input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+					</p>
+					
+					<p>
+						<label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
+						<input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+					</p>
+					
+					<p>
+						<label for="password">Password</label>
+						<input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
+					</p>
+					
+					<p>
+						<label for="passwordconf">Conferma password</label>
+						<input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+					</p>
+					
+					<p>
+						<label for="imgaccount">Immagine profilo (opzionale)</label>
+						<input type="file" id="imgaccount" name="imgaccount" value="">
+					</p>
+					
+					<input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">
 				</form>
 			</div>
 		</div>
