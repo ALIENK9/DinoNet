@@ -373,8 +373,7 @@ form p {
 }
 
 #volcano-divider {
-	background-image: url('../img/volcano.jpg');
-	background-position: bottom;
+	background: url('../img/volcano.jpg') bottom;
 }
 
 /* /History */
@@ -1057,7 +1056,7 @@ footer h2 {
 
 /*
 ======================================================================
-						FORM VALIDATION
+							ERRORI VARI
 ======================================================================
 */
 
@@ -1068,6 +1067,24 @@ footer h2 {
     padding: 0.5em;
     text-align: center;
     border-radius: 0.2em;
+}
+
+.page-not-found .wrap {
+	padding: 10% 5%;
+}
+
+.page-not-found p {
+	font-size: 1.3em;
+}
+
+#error-image {
+	background-size: contain;
+	background-image: url("../img/error.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 30% 20%;
+	max-width: 600px;
+	max-height: 768px;
 }
 
 

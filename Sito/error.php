@@ -24,14 +24,18 @@
 
 <div id="main" class="main">
 
+<?php include_once('topbar.php') ?>
+
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6">
-	<div id="title-card" class="content card">
-		<img src="img/sad-dino.png" alt="illustrazione di dinosauro triste">
-		<h1 class="text-colored">Errore, pagina non esistente </h1>
-		
-        <a href="index.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
+	<div id="title-card" class="content card page-not-found">
+        <h1> Questa pagina si è estinta :( </h1>
+        <span id="error-image" class="half"></span>
+        <div class="wrap half">
+            <p> Puoi ritornare alla Home con il pulsante qui sotto, oppure puoi utilizzare il menù </p>
+            <a href="index.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
+        </div>
 	</div>
 </header>
 

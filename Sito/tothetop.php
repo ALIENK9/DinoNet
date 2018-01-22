@@ -4,7 +4,7 @@
     <span class="hidden"> Torna su</span>
 </a>
 
-<script>
+<script type="text/javascript">
     document.getElementById("toTheTop").style.display = "none"; //all'inizio non si vede
 
     //Quando l'utente scorre almeno 200px dalla cima del documento allora viene mostrato
@@ -24,7 +24,7 @@
 
 <!-- Smooth Scrolling -->
 
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
   $("a").on('click', function(event) {
 

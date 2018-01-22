@@ -254,7 +254,8 @@ function validatePeriodomax(inputs, i) {
 
 
 /**
- * Valida la data di nascita inserita dall'utente nel formato gg/mm/aaaa.
+ * Valida la data di nascita inserita dall'utente nel formato gg/mm/aaaa, solo se presente o se non presente
+ * quando richiesta.
  * @param inputs
  * @param i
  * @returns {boolean}
@@ -270,10 +271,11 @@ function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
     if(!richiesto && (dataStringa === undefined || dataStringa.length === 0))
         return true;
 
-    var splitted = dataStringa.split('/');
-    var g = parseInt(splitted[0], 10);
+    //console.info('Stringa: ' + dataStringa);
+    var splitted = dataStringa.split('-');
+    var a = parseInt(splitted[0], 10);
     var m = parseInt(splitted[1], 10);
-    var a = parseInt(splitted[2], 10);
+    var g = parseInt(splitted[2], 10);
 
     if(g === 0 || g > 31 || m === 0 || m > 12 || a < 1900) {
         showError(nomeInput, 'La data non è valida');
@@ -282,6 +284,8 @@ function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
     removeError(nomeInput);
     return true;
 }
+
+
 
 
 /**

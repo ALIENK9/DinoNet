@@ -40,3 +40,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
         </a>
     </nav>
 </noscript>
+
+<script type="text/javascript"> //nasconde il menù senza JS a browser testuali che eseguono JS, in modo che non si trovino 2 menù
+    hideElement(document.getElementById('nojs'));
+</script>
