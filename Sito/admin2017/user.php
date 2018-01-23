@@ -24,7 +24,7 @@ switch ($sezione) {
 			<div class="padding-6 content">						
 				<div class="card white wrap-padding">
 					<h1>Aggiungi un utente</h1>
-					<a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un Utente</a>
+					<a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un utente</a>
 				</div>
 			</div>
 		</header>
