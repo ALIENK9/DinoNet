@@ -66,7 +66,7 @@
 
     <!-- Header -->
 
-    <header id="header-home" class="parallax padding-6">
+    <header id="header-home" class="parallax padding-6 header-image">
         <div id="title-card" class="content card">
             <h1 class="text-colored">Risultati per la ricerca:</h1>
         </div>

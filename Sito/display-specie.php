@@ -60,7 +60,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> <?php echo $_GET["nome"]; ?> </h1>
 	</div>

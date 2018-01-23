@@ -227,8 +227,8 @@ class Article{
     public static function formAddArticle($url){
         $echoString ='
 		
-		<header id="header-home" class="full-screen parallax">
-			<div class="padding-12 content">						
+		<header id="header-home" class="parallax padding-6 header-image">
+			<div class="content">						
 				<div class="card white wrap-padding">
 					<h1>Aggiungi un articolo</h1>
 				</div>
@@ -255,7 +255,7 @@ class Article{
 						</p>
 												
 						<p>
-                            <label for="descrizioneimg">Descrizione dell\'immagine</label>
+                            <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
                             <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
                         </p>
                         
@@ -344,8 +344,8 @@ class Article{
             $row = $result->fetch_assoc();
             $echoString ='
 			
-			<header id="header-home" class="full-screen parallax">
-				<div class="padding-12 content">						
+			<header id="header-home" class="parallax padding-6 header-image">
+				<div class="content">						
 					<div class="card white wrap-padding">
 						<h1>Modifica un articolo</h1>
 					</div>
@@ -377,7 +377,7 @@ class Article{
 							</p>
 							
 							<p>
-                                <label for="descrizioneimg">Descrizione immagine</label>
+                                <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
                                 <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
 							</p>
 							

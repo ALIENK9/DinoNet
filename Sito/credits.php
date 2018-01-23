@@ -60,7 +60,7 @@
 <!-- Header -->
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Crediti per il sito DINO NET</h1>
 	</div>

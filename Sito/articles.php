@@ -61,7 +61,7 @@ $connectArticles = startConnect();
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Gli articoli </h1>
 		<h2>scopri tutte le novità sul mondo dei dinosauri</h2>
@@ -82,7 +82,7 @@ $connectArticles = startConnect();
 
 <!-- Articoli -->
 
-<div class="padding-6 side-padding content">
+<div class="padding-6 content">
 
     <div id="daily-article" class="card margin-half colored center wrap-padding">
         <h1>L'articolo del giorno</h1>

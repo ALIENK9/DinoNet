@@ -31,6 +31,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
 	
@@ -61,32 +62,31 @@
 
 <!-- Header -->
 
-<header id="header-home" class="full-screen parallax padding-6">
+<header id="header-home" class="full-screen parallax padding-6 header-image">
 
-	<div class="content">
-
-		<div id="title-card" class="content card">
-			<h1 class="text-colored"> Accesso al pannello di amministrazione </h1>
+	<div id="title-card" class="content card center">
+		<div id="s" class="">
+			<h1> Accesso al pannello di amministrazione </h1>
 		</div>
 		
 		<!-- Login -->
+        <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+			<p>
+                <label for="input-email" xml:lang="en" lang="en">Email</label>
+                <input id="input-email" type="text" placeholder="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
+            </p>
+            <p>
+                <label for="input-passw" xml:lang="en" lang="en">Password</label>
+                <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
+            </p>
 
-		<div id="login" class="card colored wrap-padding">
-			<form action="#" method="POST" onsubmit="return validateForm(this)">
-				<p>
-                    <label for="input-email" xml:lang="en" lang="en">Email</label>
-				    <input id="input-email" type="text" placeholder="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
-                </p>
-				<p>
-                    <label for="input-passw" xml:lang="en" lang="en">Password</label>
-				    <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
-                </p>
+            <input type="submit" value="ACCEDI" class="card btn wide white">
+        </form>
+        <!-- /Login -->
 
-				<input type="submit" value="ACCEDI" class="card btn wide white">
-			</form>
-		</div>
-
-		<!-- /Login -->
+        <div class="white wrap-padding">
+            <a href="../index.php" class="btn card wrap-margin">Vai alla Home pubblica</a>
+        </div>
 	</div>
 </header>
 

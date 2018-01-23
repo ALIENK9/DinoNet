@@ -60,7 +60,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div class="content">
 		<div id="title-card" class="card">
 			<h1 class="text-colored"> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>

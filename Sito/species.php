@@ -61,7 +61,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
 		<h1 class="text-colored"> Le specie </h1>
 		<h2> Scopri informazioni dettagliate su innumerevoli dinosauri </h2>
@@ -82,9 +82,7 @@
 
 <!-- Dinosauri -->
 
-<div class="padding-6 content side-padding">
-
-
+<div class="padding-6 content"> <!-- c'era anche side-padding -->
 
 		<div id="daily-dino" class="card margin-half colored center wrap-padding">
 			<h1>Il dinosauro del giorno</h1>

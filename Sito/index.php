@@ -59,7 +59,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6" >
+<header id="header-home" class="parallax padding-6 header-image" >
 	<div id="title-card" class="content card">
 		<h1 class="title wide text-colored"> DINO NET </h1>
 		<h2> Scopri i giganti della preistoria! </h2>
@@ -87,7 +87,7 @@
 <div id="about" class="content padding-6">
 	<h1 class="text-colored"> COS'È DINO NET </h1>
 
-	<p class="side-padding">
+	<p>
 		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
         Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
         pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese. <br>

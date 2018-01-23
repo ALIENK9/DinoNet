@@ -30,23 +30,23 @@
     <div id="close-button" class="hide-large center menu-entry">
         <span onclick="close_menu()" title="Chiudi il menù">X</span>
     </div>
-	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active"; ?>">
+	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active disabled"; ?>">
 		<span class="menu-icon icon-home"></span>
 		<p xml:lang="en" lang="en">Home admin</p>
 	</a>
-	<a href="panel.php?id=myuser" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active"; ?>">
+	<a href="panel.php?id=myuser" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active disabled"; ?>">
 		<span class="menu-icon icon-account"></span>
 		<p>Dati admin</p>
 	</a>
-	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active"; ?>">
+	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active disabled"; ?>">
 		<span class="menu-icon icon-accounts"></span>
 		<p>Utenti</p>
 	</a>
-	<a href="panel.php?id=dino" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active"; ?>">
+	<a href="panel.php?id=dino" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active disabled"; ?>">
 		<span  class="menu-icon icon-specie"></span>
 		<p>Dinosauri</p>
 	</a>
-	<a href="panel.php?id=article" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "article") echo "active"; ?>">
+	<a href="panel.php?id=article" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "article") echo "active disabled"; ?>">
 		<span class="menu-icon icon-articoli"></span>
 		<p>Articoli</p>
 	</a>

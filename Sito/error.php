@@ -28,7 +28,7 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card page-not-found">
         <h1> Questa pagina si è estinta :( </h1>
         <span id="error-image" class="half"></span>

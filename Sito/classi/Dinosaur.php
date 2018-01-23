@@ -274,8 +274,8 @@ class Dinosaur {
     public static function formAddDinosaur($url){
         $echoString ='
 		
-		<header id="header-home" class="full-screen parallax">
-			<div class="padding-12 content">						
+		<header id="header-home" class="parallax padding-6 header-image">
+			<div class="content">						
 				<div class="card white wrap-padding">
 					<h1>Aggiungi un dinosauro</h1>
 				</div>
@@ -457,8 +457,8 @@ class Dinosaur {
             
             $echoString ='
 			
-			<header id="header-home" class="full-screen parallax">
-				<div class="padding-12 content">						
+			<header id="header-home" class="full-screen parallax padding-6 header-image">
+				<div class="content">						
 					<div class="card white wrap-padding">
 						<h1>Modifica un dinosauro</h1>
 					</div>
@@ -502,18 +502,13 @@ class Dinosaur {
 							
 							<br>
 							
-							<p>
+							<p class="center">
                                 <label for="tipologiaalimentazione1">Carnivoro</label>
                                 <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
-							</p>
 							
-							<p>
-                                <label for="tipologiaalimentazione2">Onnivoro</label>
+							    <label for="tipologiaalimentazione2">Onnivoro</label>
                                 <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
-							</p>
-							
-							
-							<p>
+						
                                 <label for="tipologiaalimentazione3">Erbivoro</label>
                                 <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
 							</p>

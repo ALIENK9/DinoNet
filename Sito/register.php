@@ -71,76 +71,129 @@
 
     <!-- /Topbar -->
 
+    <div id="form-page-header" class="parallax padding-6 form-image">
+		<div id="title-card" class="content card">
+            <header>
+                <h1> Crea un account </h1>
+                <h2>Entra a far parte del mondo dei dinosauri!</h2>
+            </header>
+
+            <?php
+            if(isset($_POST["submit"])){
+                echo"<div id=\"title-card\" class=\"card\">
+                        <h1> Errori: </h1>
+                        <h2>$messaggioRegistrazione</h2>
+                    </div>";
+            }
+            ?>
+            <form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                <p>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
+                </p>
+
+                <p>
+                    <label for="nome">Nome</label>
+                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                </p>
+
+                <p>
+                    <label for="cognome">Cognome</label>
+                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                </p>
+
+                <p>
+                    <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
+                    <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+                </p>
+
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
+                </p>
+
+                <p>
+                    <label for="passwordconf">Conferma password</label>
+                    <input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                </p>
+
+                <p>
+                    <label for="imgaccount">Immagine profilo (opzionale)</label>
+                    <input type="file" id="imgaccount" name="imgaccount" value="">
+                </p>
+
+                <input type="hidden" name="submit" value="1">
+                <input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">
+            </form>
+		</div>
+    </div>
+
+    <?php include_once('breadcrumb.php') ?>
+
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6">
-	<div class="content">
-		<div id="title-card" class="card">
+<!--header id="header-home" class="parallax padding-6">
+		<div id="title-card" class=" content card">
 			<h1 class="text-colored"> Crea un account </h1>
 			<h2>entra a far parte del mondo dei dinosauri!</h2>
 		</div>
-		
-		<!-- Registrazione -->
-		<?php	
-		if(isset($_POST["submit"])){
-			echo"<div id=\"title-card\" class=\"card\">
+
+</header-->
+
+<!--?php include_once('breadcrumb.php') ?-->
+
+    <!--div id="register" class="parallax padding-6 form-image"-->
+        <!--?php
+        if(isset($_POST["submit"])){
+            echo"<div id=\"title-card\" class=\"card\">
 					<h1 class=\"text-colored\"> Errori: </h1>
 					<h2>$messaggioRegistrazione</h2>
 				</div>";
-		}
-		?>
-		<div id="register">
-			<div class="card colored wrap-padding">
-				<form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)">
-					<p>
-						<label for="email">Email</label>
-						<input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
-					</p>
-					
-					<p>
-						<label for="nome">Nome</label>
-						<input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
-					</p>
-					
-					<p>
-						<label for="cognome">Cognome</label>
-						<input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
-					</p>
-					
-					<p>
-						<label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
-						<input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
-					</p>
-					
-					<p>
-						<label for="password">Password</label>
-						<input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
-					</p>
-					
-					<p>
-						<label for="passwordconf">Conferma password</label>
-						<input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
-					</p>
-					
-					<p>
-						<label for="imgaccount">Immagine profilo (opzionale)</label>
-						<input type="file" id="imgaccount" name="imgaccount" value="">
-					</p>
-					
-					<input type="hidden" name="submit" value="1">
-					<input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">
-				</form>
-			</div>
-		</div>
-		
-		<!-- /Registrazione -->
-	</div>
+        }
+        ?-->
 
-</header>
+        <!--div class="content card colored wrap-padding center">
+            <form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)">
+                <p>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
+                </p>
 
-<!-- /Header -->
+                <p>
+                    <label for="nome">Nome</label>
+                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                </p>
 
-<?php include_once('breadcrumb.php') ?>
+                <p>
+                    <label for="cognome">Cognome</label>
+                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                </p>
+
+                <p>
+                    <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
+                    <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+                </p>
+
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
+                </p>
+
+                <p>
+                    <label for="passwordconf">Conferma password</label>
+                    <input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                </p>
+
+                <p>
+                    <label for="imgaccount">Immagine profilo (opzionale)</label>
+                    <input type="file" id="imgaccount" name="imgaccount" value="">
+                </p>
+
+                <input type="hidden" name="submit" value="1">
+                <input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">
+            </form>
+        </div>
+    </div-->
 
 <?php include_once('footer.php') ?>
 

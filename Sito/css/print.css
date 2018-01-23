@@ -9,7 +9,7 @@ html, body {
     margin: auto!important;
 }
 
-button, input, form, hr {display: none;}
+button, input, hr {display: none;}
 
 h1 {
     font-size: 1.7em!important;
@@ -29,9 +29,7 @@ h3 {
     background-color: #ffffff!important;
 }
 
-a {
-    text-decoration: underline;
-}
+a {text-decoration: underline;}
 
 .sidebar, .bar, .btn {display: none;}
 
@@ -44,20 +42,13 @@ a {
     border-bottom: none;
 }
 
-.card {
-    box-shadow: none;
-}
+.card {box-shadow: none;}
 
 #title-card h1 {
     font-size: 1.5em;
 }
 
-#input-area, #login, #breadcrumb {
-    display: none;
-}
-
-.no-print {display: none;}
-
+#input-area, #breadcrumb, #topbar, .no-print {display: none;}
 
 .daily-dino img, .daily-article img {display: none;}
 

@@ -20,7 +20,7 @@ else
 switch ($sezione) {
 	case 'list':
 		?>
-		<header id="header-home" class="parallax">
+		<header id="header-home" class="parallax header-image">
 			<div class="padding-6 content">
 				<div class="card white wrap-padding">
 					<h1>Aggiungi un articolo</h1>
