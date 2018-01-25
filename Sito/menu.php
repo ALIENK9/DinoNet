@@ -63,16 +63,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["all-articles"])
         echo'
-        <a href="all-species.php" class="menu-entry-small active disabled">
+        <a href="all-articles.php" class="menu-entry-small active disabled">
             <hr>
-            <p>Tutte le specie</p>
+            <p>Tutti gli articoli</p>
         </a>
         ';
     else if($currentPage == $pages["display-article"])
         echo'
-        <a href="display-specie.php" class="menu-entry-small active disabled">
+        <a href="display-article.php" class="menu-entry-small active disabled">
             <hr>
-            <p>Scheda dinosauro</p>
+            <p>Scheda articolo</p>
         </a>
         ';
     ?>

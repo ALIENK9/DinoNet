@@ -104,7 +104,7 @@
 			';
 		}
 		else{
-			echo "Per commentare devi effettuare l'accesso";
+			echo '<a href="login.php">Per commentare devi effettuare l\'accesso</a>';
 		}
 		?>
 	</div>
@@ -112,7 +112,7 @@
 
 <div class="padding-6 no-print">
 	<div class="colored center wrap-padding">
-		<h1 class="title">Le ultime pubblicazioni</h1>
+		<h1>Le ultime pubblicazioni</h1>
 	</div>
 	<div class="row-padding content-large margin-top">
 	<?php

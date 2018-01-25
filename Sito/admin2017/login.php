@@ -15,7 +15,7 @@
 		session_unset();
 		if(User::login($connectLogin, $_POST["email"], $_POST["password"],'1')){
 			$_SESSION['paneluser'] = new UserAdmin($connectLogin, $_POST['email']);
-			header("Location: panel.php");
+			header("Location: panel.php?id=home");
 		}	
 	}
 	

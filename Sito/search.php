@@ -69,6 +69,7 @@
     <header id="header-home" class="parallax padding-6 header-image">
         <div id="title-card" class="content card">
             <h1 class="text-colored">Risultati per la ricerca:</h1>
+			<h3> <?php echo $_GET["input"] ?> </h3>
         </div>
         <a href="#content" class="down-arrow arrow colored btn card bounce"></a>
     </header>

@@ -11,8 +11,11 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
         <h1 class="wide text-colored"> Benvenuto </h1>
         <h2 class="text-colored"> <?php echo $_SESSION['paneluser']->getNome() . ' ' . $_SESSION['paneluser']->getCognome(); ?> </h2>
     </div>
-    <h3 class="content card colored wrap-padding center">
-        Tramite questo pannello puoi gestire i contenuti e gli utenti per DINO NET!
-        Utilizza il menù per accedere ai pannelli di modifica.
-    </h3>
+    <div class="content card colored wrap-padding center">
+		<p>
+			Tramite questo pannello puoi gestire i contenuti e gli utenti per DINO NET! <br>
+			Utilizza il menù per accedere ai pannelli di modifica, oppure:
+		</p>
+		<a href="../index.php" class="btn card wrap-margin"> Vai al sito pubblico </a>
+	</div>
 </header>
