@@ -110,12 +110,12 @@ class User {
                         
                         <p>
                             <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="'.$this->getNome().'" required >
+                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
                         </p>
                         
                         <p>
                             <label for="cognome">Cognome</label>
-                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$this->getCognome().'" required>
+                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
                         </p>
                         
                         <p>

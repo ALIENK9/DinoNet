@@ -94,12 +94,12 @@
 
                 <p>
                     <label for="nome">Nome</label>
-                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="" required>
                 </p>
 
                 <p>
                     <label for="cognome">Cognome</label>
-                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
                 </p>
 
                 <p>
@@ -161,12 +161,12 @@
 
                 <p>
                     <label for="nome">Nome</label>
-                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="" required>
                 </p>
 
                 <p>
                     <label for="cognome">Cognome</label>
-                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
                 </p>
 
                 <p>

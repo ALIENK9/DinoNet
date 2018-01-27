@@ -283,7 +283,7 @@ class Dinosaur {
 					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
 						<p>
                             <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="" required>
 						</p>
 						
 						<p>
@@ -316,9 +316,9 @@ class Dinosaur {
                             <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
 						</p>
 						
-						<br>
-						
+												
 						<p class="center">
+						    Tipo di alimentazione:
                             <label for="tipologiaalimentazione1">Carnivoro</label>
                             <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
 						
@@ -499,10 +499,10 @@ class Dinosaur {
                                 <label for="habitat">Habitat</label>
                                 <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
 							</p>
-							
-							<br>
+						
 							
 							<p class="center">
+							    Tipo di alimentazione: 
                                 <label for="tipologiaalimentazione1">Carnivoro</label>
                                 <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
 							

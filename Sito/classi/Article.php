@@ -236,12 +236,12 @@ class Article{
 					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
 						<p>
                             <label for="titolo">Titolo</label>
-                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="" required>
 						</p>
 						
 						<p>
                             <label for="sottotitolo">Sottotitolo</label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="" required>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="" required>
                         </p>
 						
 						<p>
@@ -358,12 +358,12 @@ class Article{
 							
 							<p>
                                 <label for="titolo">Titolo</label>
-                                <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" data-validation-mode="alphanum" value="'.$row["titolo"].'" required>
+                                <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$row["titolo"].'" required>
 							</p>
 							
 							<p>
                                 <label for="sottotitolo">Sottotitolo</label>
-                                <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" data-validation-mode="alphanum" value="'.$row["sottotitolo"].'" required>
+                                <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'" required>
 							</p>
 							
 							<p>

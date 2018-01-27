@@ -157,12 +157,12 @@ class UserAdmin extends User {
                     
                     <p>
                         <label for="nome">Nome</label>
-                        <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="alphanum" value="" required>
+                        <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="" required>
                     </p>
                     
                     <p>
                         <label for="cognome">Cognome</label>
-                        <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="alphanum" value="" required>
+                        <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
                     </p>
                     
                     <p>
@@ -294,12 +294,12 @@ class UserAdmin extends User {
                         
                         <p>
                             <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="alphanum" value="'.$row["nome"].'" required>
+                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$row["nome"].'" required>
                         </p>
                         
                         <p>
                             <label for="cognome">Cognome</label>
-                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="alphanum" value="'.$row["cognome"].'" required>
+                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$row["cognome"].'" required>
                         </p>
                         
                         <p>
@@ -330,7 +330,7 @@ class UserAdmin extends User {
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
                     </form>
 				</div>
-			</header>
+		    </header>
             ';
         }  
         else{

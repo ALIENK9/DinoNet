@@ -34,7 +34,7 @@ function capitalizeFirstLetter(stringa) {
  *      - "password" e input seguente con name="confermapassword" ==> chiama la funzione 'validatePasswordConfirm()'
  *         e verifica prima che la password sia valida chiamando 'validatePassword()', e poi verifica che sia stata
  *         re-inserita correttamente nel campo di conferma.
- *      - "alphanum" ==> controlla che siano stati inseriti solo caratteri alfanumerici.
+ *      - "nomi" ==> controlla che siano stati inseriti solo caratteri alfanumerici.
  *      - "alpha" ==> controlla che siano stati inseriti solo lettere.
  *      - "email" ==> controlla con una regex che sia stato inserito un indirizzo possibilmente valido.
  *      - name="*" || attributo 'name' non presente ==> nessuna validazione.
@@ -67,21 +67,22 @@ function validateTextArea(texts, i) {
 
 
 /**
- * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri alfanumerici (almeno un numero o lettera),
+ * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri tipicamente presenti in noomi o cognomi (almeno una lettera),
  * altrimenti 'false'.
  * @param inputs
  * @param i
  * @returns {boolean}, 'true' se il testo inserito è corretto, 'false' altrimenti.
  */
-function validateAlphanum(inputs, i) {
+function validateNomi(inputs, i) {
     var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = /^[A-z0-9]+$/i;
+    var pattern = /^([A-zèéìòùàç]+[\s\-']?)+$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
     }
-    showError(nomeInput, 'Inserisci solo caratteri alfanumerici');
+    showError(nomeInput, 'Formato non corretto: puoi inserire caratteri alfabetici anche accentati,' +
+        ' con trattini, apostrofi e spazi, ma non doppi');
     return false;
 }
 
@@ -114,7 +115,7 @@ function validateAlpha(inputs, i) {
 function validateUnsigned(inputs, i) {
     var nomeInput = inputs[i];
     var numero = nomeInput.value;
-    var pattern = nomeInput.hasAttribute('required') ? /^[0-9]+$/ : /^[0-9]*$/;
+    var pattern = /^[0-9]*$/;
     if(!pattern.test(numero)) {
         showError(nomeInput, 'Inserire un decimale positivo');
         return false;
@@ -263,13 +264,13 @@ function validatePeriodomax(inputs, i) {
 function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
     var nomeInput = inputs[i];
     var dataStringa = nomeInput.value;
-    var richiesto = nomeInput.hasAttribute('required');
+    /*var richiesto = nomeInput.hasAttribute('required');
     if(richiesto && (dataStringa === undefined || dataStringa.length === 0)) {
         showError(nomeInput, 'Devi inserire una data');
         return false;
     }
     if(!richiesto && (dataStringa === undefined || dataStringa.length === 0))
-        return true;
+        return true;*/
 
     //console.info('Stringa: ' + dataStringa);
     var splitted = dataStringa.split('-');
@@ -334,7 +335,6 @@ function validateDescrizioneimg(inputs, i) {
 
 
 
-
 /**
  * Valida tutti i campi input del form, chiamando funzioni di validazione per ciascun tag 'input'.
  * @param nomeForm, il form da validare.
@@ -342,13 +342,16 @@ function validateDescrizioneimg(inputs, i) {
  */
 function validateForm(nomeForm) {
     var corretto = true;
-    var result = false;
     var inputs = nomeForm.getElementsByTagName('input');
     var texts = nomeForm.getElementsByTagName('textarea');
 
     for (var i = 0; i < inputs.length; i++) {
         var mode = capitalizeFirstLetter(inputs[i].getAttribute('data-validation-mode'));
-        if (mode !== undefined && mode != null) {
+        if(inputs[i].hasAttribute('required') && (inputs[i].value === undefined || inputs[i].value.length === 0)) {
+            showError(inputs[i], 'Il campo non può essere vuoto!');
+            corretto = false;
+        }
+        else if (mode !== undefined && mode != null) {
             var functionName = 'validate' + mode;
             var fn = window[functionName];            // nome della funzione da chiamare per validare
             if (typeof fn === 'function')             // se esiste una funzione con quel nome
@@ -392,4 +395,32 @@ function removeError(elem) {
     var errore = parent.getElementsByClassName('errore');
     if(errore.length > 0)
         parent.removeChild(errore[0]);
+}
+
+
+/*##########################################      DISABILITA INPUT     ############################################*/
+
+function disableInputImmagine() {
+    var inputArti = document.getElementById('imgarticleremove');
+    var inputDino = document.getElementById('imgdinosaurremove');
+    if(inputArti) {
+        inputArti.addEventListener('change', function () {
+            if (inputArti.value === true) {
+                document.getElementById('imgarticle').disabled = true;
+                document.getElementById('descrizioneimg').disabled = true;
+            }
+            else {
+                document.getElementById('imgarticle').disabled = false;
+                document.getElementById('descrizioneimg').disabled = false;
+            }
+        })
+    }
+    else if(inputDino) {
+        inputDino.addEventListener('change', function () {
+            if(inputDino.value === true)
+                document.getElementById('imgdinosaur').disabled = true;
+            else
+                document.getElementById('imgdinosaur').disabled = false;
+        })
+    }
 }

@@ -67,7 +67,7 @@ switch ($sezione ) {
 }
 
 closeConnect($connectDinosaur);
-	
+
 
  ?>
 
