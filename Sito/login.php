@@ -65,22 +65,19 @@
 
 <div id="main" class="main">
 
-    <!-- Topbar -->
-
-    <?php include_once('topbar.php') ?>
-
-    <!-- /Topbar -->
-
 <!-- Header -->
+<div class="parallax padding-6 form-image">
 
-<div id="form-page-header" class="parallax padding-6 form-image">
-    <div id="title-card" class="content card">
-        <header>
+    <header id="header-form" class="content">
+        <div id="title-card" class="card">
             <h1> Accedi al tuo account </h1>
-            <h2>Entra   nel mondo dei dinosauri!</h2>
-        </header>
+            <h2>Entra nel mondo dei dinosauri!</h2>
+        </div>
+    </header>
 
-        <form action="#" method="POST" onsubmit="return validateForm(this)" class="colored wrap-padding card">
+    <div id="content-form" class="content">
+        <?php include_once('breadcrumb.php') ?>
+        <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
             <p>
                 <label for="input-email" xml:lang="en" lang="en">Email</label>
                 <input id="input-email" type="text" placeholder="email" required name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
@@ -97,7 +94,35 @@
             <a href="register.php" class="btn card wrap-margin"> Registrati </a>
         </div>
     </div>
+
 </div>
+
+
+<!--div id="header-form" class="parallax padding-6 form-image">
+    <div id="title-card" class="content card">
+        <header>
+            <h1> Accedi al tuo account </h1>
+            <h2>Entra   nel mondo dei dinosauri!</h2>
+        </header>
+
+        <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+            <p>
+                <label for="input-email" xml:lang="en" lang="en">Email</label>
+                <input id="input-email" type="text" placeholder="email" required name="email" data-validation-mode="email" value="<!--?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
+            </p>
+            <p>
+                <label for="input-passw" xml:lang="en" lang="en">Password</label>
+                <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
+            </p>
+
+            <input type="submit" value="ACCEDI" class="card btn wide text-colored white">
+        </form>
+        <div class="white wrap-padding">
+            <h3>Non hai ancora un account?</h3>
+            <a href="register.php" class="btn card wrap-margin"> Registrati </a>
+        </div>
+    </div>
+</div-->
 
 
 <!--?php include_once('breadcrumb.php') ?>
@@ -123,8 +148,6 @@
         </div>
     </div>
     < Login -->
-
-<?php include_once('breadcrumb.php') ?>
 
 <?php include_once('footer.php') ?>
 
