@@ -95,10 +95,12 @@
 		<?php
 		if(isset($_SESSION['user'])){
 			echo '
-			<form action="addComment-article.php" method="POST">				
+			<p action="addComment-article.php" method="POST">				
 				<input type="hidden" name="idarticolo" value="'.$_GET["id"].'">
-				<h3><label for="casella-commento">Commenta</label></h3>
-				<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
+				<p>
+                    <h3><label for="casella-commento">Commenta</label></h3>
+                    <textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small" required></textarea>
+				</p>
 				<input type="submit" value="PUBBLICA" class="card btn wide white text-colored">
 			</form>
 			';

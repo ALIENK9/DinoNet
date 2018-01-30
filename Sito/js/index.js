@@ -23,6 +23,17 @@ function capitalizeFirstLetter(stringa) {
 
 
 
+
+/**
+ * Ritorna true se il campo input non ha l'attributo required e non è stato compilato.
+ * @param input
+ * @returns {boolean}
+ */
+function isOpzionaleVuoto(input) {
+    return !input.hasAttribute('required') && (input.value === undefined || input.value.length === 0);
+}
+
+
 /**
  *                              ############ COME FUNZIONA LA VALIDAZIONE ###############
  * Per gli elementi <input>, con attributo data-validation-mode="mode" viene chiamata la funzione di validazione
@@ -41,6 +52,39 @@ function capitalizeFirstLetter(stringa) {
  * chiama una unica funzione 'validateTextArea()' che nel caso sia presente l'attributo 'required', controlla che sia
  * almeno stato inserito un numero minimo di caratteri.
  */
+
+
+
+
+
+/**
+ * Valida tutti i campi input del form, chiamando funzioni di validazione per ciascun tag 'input'.
+ * @param nomeForm, il form da validare.
+ * @returns {boolean}, 'true' se tutti campi del form sono stati compilati correttamente, 'false' altrimenti.
+ */
+function validateForm(nomeForm) {
+    var corretto = true;
+    var inputs = nomeForm.getElementsByTagName('input');
+    var texts = nomeForm.getElementsByTagName('textarea');
+
+    for (var i = 0; i < inputs.length; i++) {
+        var mode = capitalizeFirstLetter(inputs[i].getAttribute('data-validation-mode'));
+        if(inputs[i].hasAttribute('required') && (inputs[i].value === undefined || inputs[i].value.length === 0)) {
+            showError(inputs[i], 'Il campo non può essere vuoto!');
+            corretto = false;
+        }
+        else if (!isOpzionaleVuoto(inputs[i]) && mode !== undefined && mode != null) {
+            var functionName = 'validate' + mode;
+            var fn = window[functionName];            // nome della funzione da chiamare per validare
+            if (typeof fn === 'function')             // se esiste una funzione con quel nome
+                corretto = corretto && fn(inputs, i);     // chiama la funzione con nome 'functionName'
+        }                                                  // dandole la lista di <input> e l'indice corrente
+    }
+
+    for (var j = 0; j < texts.length; j++)           // una funzione apposita controlla le textarea
+        corretto = corretto && validateTextArea(texts, j);
+    return corretto;
+}
 
 
 
@@ -327,42 +371,6 @@ function validateDescrizioneimg(inputs, i) {
     removeError(alt);
     return true;
 }
-
-
-
-
-
-
-/**
- * Valida tutti i campi input del form, chiamando funzioni di validazione per ciascun tag 'input'.
- * @param nomeForm, il form da validare.
- * @returns {boolean}, 'true' se tutti campi del form sono stati compilati correttamente, 'false' altrimenti.
- */
-function validateForm(nomeForm) {
-    var corretto = true;
-    var inputs = nomeForm.getElementsByTagName('input');
-    var texts = nomeForm.getElementsByTagName('textarea');
-
-    for (var i = 0; i < inputs.length; i++) {
-        var mode = capitalizeFirstLetter(inputs[i].getAttribute('data-validation-mode'));
-        if(inputs[i].hasAttribute('required') && (inputs[i].value === undefined || inputs[i].value.length === 0)) {
-            showError(inputs[i], 'Il campo non può essere vuoto!');
-            corretto = false;
-        }
-        else if (mode !== undefined && mode != null) {
-            var functionName = 'validate' + mode;
-            var fn = window[functionName];            // nome della funzione da chiamare per validare
-            if (typeof fn === 'function')             // se esiste una funzione con quel nome
-            corretto = corretto && fn(inputs, i);     // chiama la funzione con nome 'functionName'
-        }                                                                   // dandole la lista di <input> e l'indice corrente
-    }
-
-    for (var j = 0; j < texts.length; j++)  // una funzione apposita controlla le textarea
-        corretto = corretto && validateTextArea(texts, j);
-
-    return corretto;
-}
-
 
 
 

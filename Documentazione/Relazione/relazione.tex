@@ -129,7 +129,7 @@
 	\subsection{Note sullo sviluppo}
 	\subsubsection{Pagine con form}
 	Le pagine del sito che contengono moduli da compilare hanno una struttura leggermente diversa da quella di tutte le altre: invece inserire un header, seguito dalla barra delle breadcrumb ed il form, abbiamo preferito compattare questi tre elementi e racchiuderli in un unico blocco, dandogli la stessa larghezza normalmente attribuita all'header. 
-	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare, visto che si tratta dell'unico contenuto.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, e riteniamo avrebbe reso meno immediato comprendere lo scopo della pagina.\\
+	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, e riteniamo avrebbe reso meno immediato comprendere lo scopo della pagina.\\
 	Le pagine interessate sono:
 	\begin{itemize}
 		\item login.php (lato pubblico e lato amministratore);
@@ -137,6 +137,23 @@
 		\item il form per la modifica dei dati utente in classi/User.php; 
 		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in classi/UserAdmin.php, classi/Article.php, classi/Dinosaur.php;
 	\end{itemize}
+
+	\subsubsection{Validazione dei form}
+	Per controllare la correttezza dei dati inseriti nei campi dei form, abbiamo scritto apposite funzioni JavaScript, contenute nel file \textit{Sito/js/index.js}. Tali controlli sono effettuati anche lato server, nel caso il browser dell'utente non consenta l'esecuzione di script.
+	\paragraph{Javascript}
+	Ogni elemento di input contenuto nei form, con la relativa \code{label} si trova all'interno di un paragrafo. Questo permette, nel caso siano rilevati errori nei dati inseriti, di aggiungere un elemento figlio al paragrafo che contiene l'input compilato in modo non corretto.
+	Ogni errore viene quindi notificato come un elemento \code{<strong>} contenente il messaggio esplicativo dell'errore con font di colore rosso.\\
+	
+	Alla conferma (submit) di un form da parte di un utente viene invocata la funzione \code{validateForm(form)} che ha come parametro il form da validare. La funzione ottiene l'elenco di tutti gli elementi \code{input} all'interno del form.
+	A questo punto compie due operazioni per ciascun input contenuto nel form:
+	\begin{itemize}
+		\item se l'input presenta l'attributo \code{required}, controlla che sia stato inserito almeno un carattere\footnote{Nei browser che lo supportano, gli input che presentano l'attributo \code{required} devono essere compilati per poter confermare il form; in caso contrario è il browser stesso a segnalare il problema, senza nemmeno la necessità di effettuare chiamate a funzioni JavaScript. Il controllo in questo caso è stato fatto per completezza e per supportare Internet Explorer 9, che non riconosce questo attributo.}. Nel caso non sia così mostra immediatamente l'errore. Se invece non è presente l'attributo e l'input è vuoto allora considera il campo come corretto (perché opzionale e lasciato vuoto). Se invece è presente dell'input, indipendentemente dall'attributo \code{required} allora procede con il passo successivo;
+		\item Ogni input da validare possiede l'attributo 	\code{data-validation-mode}. Se un input ha \code{data-validation-mode="password"}, allora questo indica che quel campo va validato secondo le regole specifiche per le password. La funzione quindi chiama \code{validatePassword()} passando come parametro l'array contenente tutti gli input del form, per rendere possibile anche controlli con gli altri dati degli altri input se necessario. In generale se \code{data-validation-mode="tipo\_validazione"} la funzione \code{validateForm} chiama la funzione \code{validateTipo\_validazione()}, se questa funzione esiste, altrimenti non effettua alcun controllo.
+	\end{itemize}
+	Il vantaggio di questo approccio è l'estensibilità. Infatti nel caso si aggiunga un \code{input} e sia necessario validarlo in maniera diversa, è sufficiente aggiungere il tipo di validazione come attributo dell'elemento e definire una funzione con il nome appropriato. Non occorre modificare la funzione principale \code{validateForm}.\\
+	Gli elementi di tipo \code{textarea} sono invece tutti validati allo stesso modo, controllando che sia stato inserito un numero minimo di caratteri.
+	
+	\paragraph{Server PHP}
 	
 	
 	\section{Usabilità}
@@ -164,10 +181,10 @@
 	\subsection{Accorgimenti}
 	I potenziali problemi di accessibilità sono di seguito listati:
 	\begin{itemize}
-		\item JavaScript: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ha con un browser che esegue gli script. \\
+		\item JavaScript: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
 		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. Pertanto la disabilitazione di JS non pregiudica l'utilizzo del sito.
 		\item Link: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
-		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \textit{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
+		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \code{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
 	\end{itemize}
 	
 	\section{Compatibilità e dipendenze}
@@ -232,9 +249,9 @@
 		\item \textbf{IE Accessibility Toolbar}: il sito è stato testato sfruttando le seguenti funzionalità dello strumento:
 		\begin{itemize}
 			\item Color Contrast Analyser: permette di controllare se i colori del sito sono conformi ai livelli di accessibilità AA o AAA; 
-			\item Juicy Studio Luminosity Analyser: anche questo strumento produce un report sull'accessibilità relativamente al contrasto dei colori che individua;Entrambi li strumenti non segnalano problemi di contrasto e il sito ha un contrasto minimo di 7.1:1 (testo bianco su verde), che è sufficiente a soddisfare i requisiti del livello AAA (che chiede contrasto di almeno 7:1);
+			\item Juicy Studio Luminosity Analyser: anche questo strumento produce un report sull'accessibilità relativamente al contrasto dei colori che individua; Entrambi li strumenti non segnalano problemi di contrasto e il sito ha un contrasto minimo di 7.1:1 (testo bianco su verde), che è sufficiente a soddisfare i requisiti del livello AAA (che chiede contrasto di almeno 7:1);
 			\item Wave Accessibility Analyser: Strumento molto completo che segnala errori e warning relativi all'accessibilità delle pagine web. Il controllo non segnala errori, solo alcuni warning relativi all'annidamento degli heading, in cui veniva saltato un livello, e alcuni consigli;
-			\item Tenon.io accessibility test: come il precedente segnala errori di accessibilità seguendo le specifiche WCAG 2.0. Anche in questo caso non si segnalano errori.
+			\item Tenon.io accessibility test: come il precedente segnala errori di accessibilità seguendo le specifiche WCAG 2.0. Anche in questo caso non sono rilevati errori.
 		\end{itemize}
 		\item \textbf{Cynthia Says}: la validazione Cynthia Says, a seguito di alcune correzione apportate dopo i primi tentativi di eseguire la stessa, certifica ora il sito con il livello AA di accessibilità per ogni pagina. Il livello AAA sarebbe potuto essere raggiunto inserendo un link ad una pagina di aiuto in ogni form, ma ciò è stato considerato superfluo considerando la tipologia dei form presenti sul sito, estremamente semplici da compilare;
 		\item \textbf{Toptal Colorblind Web Page Filter}: il simulatore di daltonismo mostra una simulazione di come le varie pagine del sito vengono viste da un individuo affetto da Protanopia, Deutanopia, Tritanopia e Achromatopsia. Benché il test non possa essere completamente esauriente in quanto non svolto da qualcuno che riportasse effettivamente le succitate patologie, si è scelta accuratamente una combinazione di colori che permettesse quanto più possibile di distinguere il colore dei link-bottoni da quello principale del sito. Con queste premesse, la differenza tra i due colori appare a noi sufficientemente evidente (si noti inoltre che i link rimangono comunque sempre evidenziati da sottolineatura) e il daltonismo non sembrerebbe inficiare particolarmente l'accessibilità e l'usabilità;
@@ -280,6 +297,7 @@
 		\item \textbf{GTmetrix}: il test ha avuto esito positivo riportando il grado "A" di velocità delle pagine. 
 	\end{itemize}
 
+\newpage
 \appendix
 
 	\section{Suddivisione dei ruoli}
@@ -287,9 +305,9 @@
 	Premettendo che ogni componente del gruppo ha supervisionato e contribuito in qualche modo ad ogni parte dello sviluppo del sito, il lavoro è stato distribuito nel seguente modo:
 	
 	\begin{itemize}
-		\item \textbf{Alessandro Zangari}: Progettazione e sviluppo della parte pubblica, con particolare attenzione all'accessibilità e usabilità. Creazione del css per la stampa e gestione della responsiveness; 
+		\item \textbf{Alessandro Zangari}: Progettazione e sviluppo della parte pubblica, con particolare attenzione all'accessibilità ed usabilità. Creazione del CSS per la stampa e gestione della responsiveness. Scrittura delle funzioni JavaScript per la validazione dei form e scrittura dei trigger impiegati nel database;
 		\item \textbf{Cristiano Tessarolo}: Progettazione e sviluppo della parte privata, in particolare della logica. Progettazione e sviluppo del database;
-		\item \textbf{Matteo Rizzo}: Progettazione e sviluppo della parte pubblica, in particolare del layout e della grafica. Predisposizione del css principale del sito e responsabile del testing per validazione del codice e dell'accessibilità.
+		\item \textbf{Matteo Rizzo}: Progettazione e sviluppo della parte pubblica, in particolare del layout e della grafica (anche della parte privata). Predisposizione del CSS principale del sito e responsabile del testing per validazione del codice e dell'accessibilità.
 	\end{itemize}
 	
 \end{document}

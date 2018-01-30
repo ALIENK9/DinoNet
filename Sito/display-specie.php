@@ -94,10 +94,12 @@
 		<?php
 		if(isset($_SESSION['user'])){
 			echo '
-			<form action="addComment-specie.php" method="POST">				
+			<form action="addComment-specie.php" method="POST" onsubmit="return validateForm(this)">				
 				<input type="hidden" name="idspecie" value="'.$_GET["nome"].'">
-				<h3><label for="casella-commento">Commenta</label></h3>
-				<textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small"></textarea>
+			    <p>
+                    <h3><label for="casella-commento">Commenta</label></h3>
+                    <textarea type="text" name="casella-commento" placeholder="Scrivi qui il tuo commento" id="casella-commento" class="fancy-border wrap-padding-small" required></textarea>
+				</p>
 				<input type="submit" value="PUBBLICA" class="card btn wide white">
 			</form>
 			';
