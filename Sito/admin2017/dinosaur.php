@@ -19,14 +19,17 @@ switch ($sezione ) {
 	case 'list':
 			?>
 			
-			<header id="header-home" class="parallax header-image">
-				<div class="padding-6 content">
-					<div class="card white wrap-padding">
-						<h1>Aggiungi un dinosauro</h1>
-						<a href="panel.php?id=dino&sez=formadd" class="btn card wrap-margin">Aggiungi un Dinosauro</a>
+			<header id="header-home" class="parallax padding-6 header-image">
+				<div class="content">
+					<div id="title-card" class="card wrap-padding">
+						<h1>Elenco dei dinosauri</h1>
+                        <h2>Da qui puoi aggiungere e modificare dinosauri e gestire i commenti associati</h2>
+						<a href="panel.php?id=dino&sez=formadd" class="btn card wrap-margin">Aggiungi un dinosauro</a>
 					</div>
 				</div>
 			</header>
+
+        <?php include_once('../breadcrumb.php') ?>
 
 		<?php
 		echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&", $_SERVER["PHP_SELF"]."?id=dino&sez=comment&");

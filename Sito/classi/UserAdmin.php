@@ -136,11 +136,15 @@ class UserAdmin extends User {
     public static function formAddUser($url){
         $echoString ='
 		
-		<header id="header-home" class="parallax padding-6 header-image">
-			<div class="content">						
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un nuovo utente</h1>
-				</div>
+		<div class="parallax padding-6 form-image">
+            <header id="header-form" class="content card white wrap-padding">			
+                <div id="title-card" class="card">
+                    <h1> Aggiungi un utente </h1>
+                </div>
+            </header>
+            
+            <div id="content-form" class="content">
+                <?php include_once(\'../breadcrumb.php\') ?>
                 <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>
                         <label for="tipologia">Tipologia utente</label>
@@ -187,8 +191,8 @@ class UserAdmin extends User {
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
                 </form>
-			</div>
-		</header>
+            </div>
+		</div>
     ';
     return $echoString;
     } 
@@ -273,12 +277,17 @@ class UserAdmin extends User {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $echoString ='
-			<header id="header-home" class="parallax padding-6 header-image">
-				<div class="content">						
-					<div class="card white wrap-padding">
-						<h1>Modifica i dati utente</h1>
-					</div>
-                    <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
+			<div class="parallax padding-6 form-image">
+                
+                <header id="header-form" class="content card white wrap-padding">			
+                    <div id="title-card" class="card">
+                        <h1> Aggiungi un utente </h1>
+                    </div>
+                </header>
+                
+                <div id="content-form" class="content">
+                    <?php include_once(\'../breadcrumb.php\') ?>
+                    <form action="\'.$url.\'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                         <p>
                             <label for="tipologia">Tipologia utente</label>
                             <select id="tipologia" name="tipologia">                        
@@ -311,27 +320,27 @@ class UserAdmin extends User {
                             <label for="password">Password</label>
                             <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
                         </p>
-                        
+
                         <p>
                             <label for="passwordconf">Conferma password</label>
                             <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
                         </p>
-                        
+
                         <p>
                             <label for="imgaccount">Immagine profilo</label>
                             <input type="file" id="imgaccount" name="imgaccount" value="">
                         </p>
-        
+
                         <p>
                             <label for="imgaccountremove">Rimuovi immagine</label>
                             <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
                         </p>
-                                                            
+
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
                     </form>
-				</div>
-		    </header>
-            ';
+                </div>
+            </div>
+        ';
         }  
         else{
 			$echoString = "

@@ -221,16 +221,24 @@ a.btn {
   min-width: calc(100% - 150px);
 }
 
-#header-home, #form-page-header {
+#header-home, #header-form, #content-form {
   text-align: center;
 }
 
-#header-home a.btn. #form-page-header a.btn {
+#header-home a.btn, #header-form a.btn {
   margin: 1em 0;
 }
 
-#form-page-header #title-card {
+#header-form {
   padding-bottom: 0;
+}
+
+#content-form.content, #header-form.content {
+  padding: 0.01em 0;
+}
+
+#content-form {
+  padding-top: 0;
 }
 
 #breadcrumb {
@@ -277,6 +285,7 @@ a.btn {
   padding: 1.5em 0;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 #title-card h1 {
@@ -401,6 +410,7 @@ a.btn {
 
 .full-screen {
   min-height: 100vh;
+  min-width: 100vw; 
 }
 
 .display-middle {
@@ -421,7 +431,7 @@ a.btn {
 .content-large {
   max-width: 1500px;
   margin: auto;
-  padding: 0.01em 1em;
+  /*padding: 0.01em 1em;*/
   overflow: hidden;
 }
 
@@ -765,6 +775,10 @@ a.btn {
   overflow: hidden!important;
 }
 
+.display-none {
+  display: none;
+}
+
 /*
 ======================================================================
 								MENU'
@@ -848,15 +862,6 @@ a.disabled {
 	display: inline-block;
 	width: 100%;
 	height: 100%;
-}
-
-#mobile-menu-icon {
-  margin-top: 2%;
-  display: block;
-  margin-right: 15px;
-  padding: 15px 20px;
-  border-radius: 10px;
-  text-decoration: none;
 }
 
 .menu-icon {
@@ -953,8 +958,10 @@ a.disabled {
   color: black;
   display: block;
   position: fixed;
-  z-index: 1;
-  width: 100%;
+  z-index: 2;
+  max-width: calc(100% - 110px);
+  width: 90%;
+  min-width: calc(100% - 150px);
 }
 
 #searchbar {
@@ -992,6 +999,16 @@ a.disabled {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+
+#mobile-menu-icon, #show-searchbar {
+  margin-top: 2%;
+  display: block;
+  margin-right: 15px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-decoration: none;
 }
 
 /*
@@ -1044,6 +1061,10 @@ footer h2 {
   display: none;
 }
 
+#show-searchbar {
+  display: none;
+}
+
 /*
 ======================================================================
 							MESSAGGI DI ERRORE
@@ -1086,7 +1107,7 @@ footer h2 {
 
 @media (max-width: 600px), (max-width: 812px) and (orientation: landscape) {
 	.hide-small {
-		display: none;
+		display: none!important;
 	}
 
 	.main {
@@ -1129,12 +1150,12 @@ footer h2 {
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
 	.hide-medium {
-		display: none;
+		display: none!important;
 	}
 }
 
 @media only screen and (max-width: 1023px) {
-	.main {
+	.main, #topbar {
 		margin-left: 0;
 		margin-right: 0;
 		min-width: 100%;
@@ -1214,7 +1235,7 @@ footer h2 {
 }
 
 @media (min-width: 1024px) {			                                    
-    .hide-large {display: none;}
+    .hide-large {display: none!important;}
     .sidebar {display: block;}
 }
 

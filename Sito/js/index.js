@@ -27,8 +27,6 @@ function capitalizeFirstLetter(stringa) {
  *                              ############ COME FUNZIONA LA VALIDAZIONE ###############
  * Per gli elementi <input>, con attributo data-validation-mode="mode" viene chiamata la funzione di validazione
  * 'validateMode()'. In particolare:
- *      - "generico" ==> la funzione 'validateGeneric()' fa un controllo generico per <input> che non necessitano di
- *         controlli specifici, dunque guarda solo che non sia vuoto.
  *      - "password" ed input successivo diverso da name="confermapassword" ==> (Caso login), verifica che la
  *         password abbia lunghezza minima. Chiama 'validatePassword()'.
  *      - "password" e input seguente con name="confermapassword" ==> chiama la funzione 'validatePasswordConfirm()'

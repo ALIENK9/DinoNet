@@ -274,92 +274,94 @@ class Dinosaur {
     public static function formAddDinosaur($url){
         $echoString ='
 		
-		<header id="header-home" class="parallax padding-6 header-image">
-			<div class="content">						
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un dinosauro</h1>
-				</div>
-				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
-						<p>
-                            <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="" required>
-						</p>
-						
-						<p>
-                            <label for="peso">Peso in Kg</label>
-                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
-						</p>
-
-						<p>
-                            <label for="altezza">Altezza in cm</label>
-                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
-						</p>
-						
-						<p>
-                            <label for="lunghezza">Lunghezza in cm</label>
-                            <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
-						</p>
-						
-						<p>
-                            <label for="periodomin">Periodo minimo in milioni di anni</label>
-                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
-						</p>
-						
-						<p>
-                            <label for="periodomax">Periodo massimo in milioni di anni</label>
-                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
-						</p>
-						
-						<p>
-                            <label for="habitat">Habitat</label>
-                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
-						</p>
-						
-												
-						<p class="center">
-						    Tipo di alimentazione:
-                            <label for="tipologiaalimentazione1">Carnivoro</label>
-                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
-						
-                            <label for="tipologiaalimentazione2">Onnivoro</label>
-                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
-						
-                            <label for="tipologiaalimentazione3">Erbivoro</label>
-                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
-						</p>
-						
-						<p>
-                            <label for="alimentazione">Alimentazione</label>
-                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
-						</p>
-						
-						<p>
-                            <label for="descrizionebreve">Descrizione Breve</label>
-                            <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
-						</p>
-						
-						
-						<p>
-                            <label for="descrizione">Descrizione</label>
-                            <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" value="" required></textarea>
-						</p>
-						
-						<p>
-                            <label for="curiosita">Curiosità:</label>
-                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" value="" required></textarea>  
-                        </p>       
-               
-                        <p>
-                            <label for="imgdinosaur">Immagine dinosauro:</label>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="" required>
-                        </p>
-						
-						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
-					</form>
-				</div>
-			</div>
-		</header>
+		<div class="parallax padding-6 form-image">
+		
+            <header id="header-form" class="content card white wrap-padding">			
+                    <div id="title-card" class="card">
+                        <h1> Aggiungi un dinosauro </h1>
+                    </div>
+            </header>
+            <div id="content-form" class="content">
+                <?php include_once(\'../breadcrumb.php\') ?>
+                <form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                    <p>
+                        <label for="nome">Nome</label>
+                        <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="peso">Peso in Kg</label>
+                        <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
+                    </p>
+    
+                    <p>
+                        <label for="altezza">Altezza in cm</label>
+                        <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="lunghezza">Lunghezza in cm</label>
+                        <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="periodomin">Periodo minimo in milioni di anni</label>
+                        <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="periodomax">Periodo massimo in milioni di anni</label>
+                        <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="habitat">Habitat</label>
+                        <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
+                    </p>
+                    
+                                            
+                    <p class="center">
+                        <p>Seleziona il tipo di alimentazione</p>
+                        <label for="tipologiaalimentazione1">Carnivoro</label>
+                        <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
+                    
+                        <label for="tipologiaalimentazione2">Onnivoro</label>
+                        <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
+                    
+                        <label for="tipologiaalimentazione3">Erbivoro</label>
+                        <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
+                    </p>
+                    
+                    <p>
+                        <label for="alimentazione">Alimentazione</label>
+                        <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="descrizionebreve">Descrizione Breve</label>
+                        <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
+                    </p>
+                    
+                    
+                    <p>
+                        <label for="descrizione">Descrizione</label>
+                        <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" value="" required></textarea>
+                    </p>
+                    
+                    <p>
+                        <label for="curiosita">Curiosità:</label>
+                        <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" value="" required></textarea>  
+                    </p>       
+           
+                    <p>
+                        <label for="imgdinosaur">Immagine dinosauro:</label>
+                        <input type="file" id="imgdinosaur" name="imgdinosaur" value="" required>
+                    </p>
+                    
+                    <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
+                </form>
+            </div>
+        </div>
         ';
         return $echoString;
 
@@ -457,97 +459,100 @@ class Dinosaur {
             
             $echoString ='
 			
-			<header id="header-home" class="full-screen parallax padding-6 header-image">
-				<div class="content">						
-					<div class="card white wrap-padding">
-						<h1>Modifica un dinosauro</h1>
-					</div>
-					<div class="card colored wrap-padding">
-						<form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
-						    <p>
-                                <label for="nome">Nome</label>
-                                <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$row["nome"].'" readonly>
-                            </p>
-							
-							<p>
-                                <label for="peso">Peso in kg</label>
-                                <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
-                            </p>
-
-                            <p>
-                                <label for="altezza">Altezza in cm</label>
-                                <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
-							</p>
-							
-							<p>
-                                <label for="lunghezza">Lunghezza in cm</label>
-                                <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
-							</p>
-							
-							
-							<p>
-                                <label for="periodomin">Periodo minimo in milioni di anni</label>
-                                <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
-							</p>
-							
-							<p>
-                                <label for="periodomax">Periodo massimo in milioni di anni</label>
-                                <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
-							</p>
-							
-							<p>
-                                <label for="habitat">Habitat</label>
-                                <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
-							</p>
-						
-							
-							<p class="center">
-							    Tipo di alimentazione: 
-                                <label for="tipologiaalimentazione1">Carnivoro</label>
-                                <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
-							
-							    <label for="tipologiaalimentazione2">Onnivoro</label>
-                                <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
-						
-                                <label for="tipologiaalimentazione3">Erbivoro</label>
-                                <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
-							</p>
-							
-							<p>
-                                <label for="alimentazione">Alimentazione</label>
-                                <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
-							</p>
-							
-							<p>
-                                <label for="descrizionebreve">Descrizione breve</label>
-                                <textarea type="text" placeholder="Inserisci una breve descrizione" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
-							</p>
-							
-							<p>
-                                <label for="descrizione">Descrizione</label>
-                                <textarea type="text" placeholder="Inserisci la descrizione completa" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
-							</p>
-							
-							<p>
-                                <label for="curiosita">Curiosità</label>
-                                <textarea type="text" placeholder="Inserisci delle curiosità" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
-                            </p>
-                            
-                            <p>
-                                <label for="imgdinosaur">Immagine dinosauro</label>
-                                <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
-                            </p>
+			<div class="parallax padding-6 form-image">
+			
+                <header id="header-form" class="content card white wrap-padding">			
+                    <div id="title-card" class="card">
+                        <h1> Modifica il dinosauro </h1>
+                    </div>
+                </header>
                 
-                            <p>
-                                <label for="imgdinosaurremove">Nessuna immagine</label>
-                                <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
-                            </p>
+                <div id="content-form" class="content">
+                    <?php include_once(\'../breadcrumb.php\') ?>
+                    <form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                        <p>
+                            <label for="nome">Nome</label>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$row["nome"].'" readonly>
+                        </p>
+                        
+                        <p>
+                            <label for="peso">Peso in kg</label>
+                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
+                        </p>
 
-							<input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
-						</form>
-					</div>
+                        <p>
+                            <label for="altezza">Altezza in cm</label>
+                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
+                        </p>
+                        
+                        <p>
+                            <label for="lunghezza">Lunghezza in cm</label>
+                            <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
+                        </p>
+                        
+                        
+                        <p>
+                            <label for="periodomin">Periodo minimo in milioni di anni</label>
+                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="periodomax">Periodo massimo in milioni di anni</label>
+                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="habitat">Habitat</label>
+                            <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
+                        </p>
+                    
+                        
+                        <p class="center">
+                            <p>Seleziona il tipo di alimentazione</p> 
+                            <label for="tipologiaalimentazione1">Carnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+                        
+                            <label for="tipologiaalimentazione2">Onnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+                    
+                            <label for="tipologiaalimentazione3">Erbivoro</label>
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+                        </p>
+                        
+                        <p>
+                            <label for="alimentazione">Alimentazione</label>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="descrizionebreve">Descrizione breve</label>
+                            <textarea type="text" placeholder="Inserisci una breve descrizione" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="descrizione">Descrizione</label>
+                            <textarea type="text" placeholder="Inserisci la descrizione completa" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="curiosita">Curiosità</label>
+                            <textarea type="text" placeholder="Inserisci delle curiosità" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="imgdinosaur">Immagine dinosauro</label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+                        </p>
+            
+                        <p>
+                            <label for="imgdinosaurremove">Nessuna immagine</label>
+                            <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
+                        </p>
+
+                        <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                    </form>
 				</div>
-			</header>
+			</div>
             ';
         }
         else{

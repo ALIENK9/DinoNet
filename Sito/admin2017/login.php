@@ -61,34 +61,42 @@
 <body>
 
 <!-- Header -->
+<div id="main" class="full-screen">
 
-<header id="header-home" class="full-screen parallax padding-6 header-image">
+    <div class="parallax padding-6 form-image">
 
-	<div id="title-card" class="content card center">
-		<div id="s" class="">
-			<h1> Accesso al pannello di amministrazione </h1>
-		</div>
-		
-		<!-- Login -->
-        <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
-			<p>
-                <label for="input-email" xml:lang="en" lang="en">Email</label>
-                <input id="input-email" type="text" placeholder="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
-            </p>
-            <p>
-                <label for="input-passw" xml:lang="en" lang="en">Password</label>
-                <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
-            </p>
+        <header id="header-form" class="content">
+            <div id="title-card" class="card">
+                <h1> Accesso al pannello di amministrazione </h1>
+            </div>
+        </header>
 
-            <input type="submit" value="ACCEDI" class="card btn wide white">
-        </form>
-        <!-- /Login -->
+        <div id="content-form" class="content">
+            <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                <p>
+                    <label for="input-email" xml:lang="en" lang="en">Email</label>
+                    <input id="input-email" type="text" placeholder="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>" required>
+                </p>
+                <p>
+                    <label for="input-passw" xml:lang="en" lang="en">Password</label>
+                    <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
+                </p>
 
-        <div class="white wrap-padding">
-            <a href="../index.php" class="btn card wrap-margin">Vai alla Home pubblica</a>
+                <input type="submit" value="ACCEDI" class="card btn wide white">
+            </form>
+            <div class="white wrap-padding">
+                <p>oppure</p>
+                <a href="../index.php" class="btn card wrap-margin">Vai alla Home pubblica</a>
+            </div>
         </div>
-	</div>
-</header>
+
+    </div>
+
+    <?php include_once('../footer.php') ?>
+
+    <?php include_once('../tothetop.php') ?>
+
+</div>
 
 <!-- /Header -->
 

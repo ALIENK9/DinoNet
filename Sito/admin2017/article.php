@@ -20,15 +20,16 @@ else
 switch ($sezione) {
 	case 'list':
 		?>
-		<header id="header-home" class="parallax header-image">
-			<div class="padding-6 content">
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un articolo</h1>
-					<a href="panel.php?id=article&sez=formadd" class="btn card wrap-margin">Aggiungi un Articolo</a>
-				</div>
-			</div>
-		</header>
-	
+		<header id="header-home" class="parallax padding-6 header-image">
+            <div id="title-card" class="content card wrap-padding">
+                <h1>Elenco degli articoli</h1>
+                <h2>Da qui puoi aggiungere e modificare articoli e gestire i commenti degli utenti</h2>
+                <a href="panel.php?id=article&sez=formadd" class="btn card wrap-margin">Aggiungi un articolo</a>
+            </div>
+        </header>
+
+        <?php include_once('../breadcrumb.php') ?>
+
 		<?php
 		echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&", $_SERVER["PHP_SELF"]."?id=article&sez=comment&");
 		break;

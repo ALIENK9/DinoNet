@@ -95,59 +95,62 @@ class User {
         
         $echoString ='
 		
-		<header id="header-home" class="parallax padding-6 form-image">
-			<div class="content">				
+		<div class="parallax padding-6 form-image">
+		
+		    <header id="header-form" class="content card white wrap-padding">			
 				<div id="title-card" class="card">
                     <h1> Modifica il tuo account </h1>
                 </div>
+            </header>
                 
-		        <div id="edit">
-                    <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
-                        <p>
-                            <label for="email">Email</label>
-                            <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
-                        </p>
-                        
-                        <p>
-                            <label for="nome">Nome</label>
-                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
-                        </p>
-                        
-                        <p>
-                            <label for="cognome">Cognome</label>
-                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
-                        </p>
-                        
-                        <p>
-                            <label for="datanascita">Data di nascita</label>
-                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
-                        </p>
-                        
-                        <p>
-                            <label for="password">Password</label>
-                            <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
-                        </p>
-                        
-                        <p>
-                            <label for="passwordconf">Conferma password</label>
-                            <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
-                        </p>
+            <div id="content-form" class="content"> <!-id="edit"-->
+                <?php include_once(\'../breadcrumb.php\') ?>
+                <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
+                    </p>
+                    
+                    <p>
+                        <label for="nome">Nome</label>
+                        <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
+                    </p>
+                    
+                    <p>
+                        <label for="cognome">Cognome</label>
+                        <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
+                    </p>
+                    
+                    <p>
+                        <label for="datanascita">Data di nascita</label>
+                        <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
+                    </p>
+                    
+                    <p>
+                        <label for="password">Password</label>
+                        <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
+                    </p>
+                    
+                    <p>
+                        <label for="passwordconf">Conferma password</label>
+                        <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
+                    </p>
 
-                        <p>
-                            <label for="imgaccount">Immagine profilo</label>
-                            <input type="file" id="imgaccount" name="imgaccount" value="">
-                        </p>
-        
-                        <p>
-                            <label for="imgaccountremove">Rimuovi immagine</label>
-                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-                        </p>
-                        
-                        <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn text-colored wide white">
-                    </form>
-                </div>
-			</div>
-		</header>
+                    <p>
+                        <label for="imgaccount">Immagine profilo</label>
+                        <input type="file" id="imgaccount" name="imgaccount" value="">
+                    </p>
+    
+                    <p>
+                        <label for="imgaccountremove">Rimuovi immagine</label>
+                        <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                    </p>
+                    
+                    <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn text-colored wide white">
+                </form>
+            </div>
+            
+        </div>
         ';
 
         return $echoString;

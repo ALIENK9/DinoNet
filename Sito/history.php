@@ -55,7 +55,7 @@
 
 <!-- Header -->
 
-<header class="parallax padding-6 header-image">
+<header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
 		<h1> La storia dei dinosauri </h1>
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>

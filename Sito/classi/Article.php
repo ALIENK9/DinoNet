@@ -227,48 +227,52 @@ class Article{
     public static function formAddArticle($url){
         $echoString ='
 		
-		<header id="header-home" class="parallax padding-6 header-image">
-			<div class="content">						
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un articolo</h1>
-				</div>
-				<div class="card colored wrap-padding">
-					<form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
-						<p>
-                            <label for="titolo">Titolo</label>
-                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="" required>
-						</p>
-						
-						<p>
-                            <label for="sottotitolo">Sottotitolo</label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="" required>
-                        </p>
-						
-						<p>
-						    <label for="descrizione">Descrizione</label>
-                            <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" value="" required></textarea>
-                        </p>
-                        
-						<p>
-                            <label for="anteprima">Anteprima</label>
-                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" value=""></textarea>
-						</p>
-												
-						<p>
-                            <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
-                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
-                        </p>
-                        
-                        <p>
-                            <label for="imgarticle">Immagine</label>
-                            <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
-                        </p>
-                        					
-						<input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
-					</form>
-				</div>
-			</div>
-		</header>
+		<div class="parallax padding-6 form-image">
+			
+            <header id="header-form" class="content card white wrap-padding">			
+                <div id="title-card" class="card">
+                    <h1> Aggiungi un dinosauro </h1>
+                </div>
+            </header>
+            
+            <div id="content-form" class="content">
+                <?php include_once(\'../breadcrumb.php\') ?>
+                <form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                    <p>
+                        <label for="titolo">Titolo</label>
+                        <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="sottotitolo">Sottotitolo</label>
+                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="" required>
+                    </p>
+                    
+                    <p>
+                        <label for="descrizione">Descrizione</label>
+                        <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" value="" required></textarea>
+                    </p>
+                    
+                    <p>
+                        <label for="anteprima">Anteprima</label>
+                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" value=""></textarea>
+                    </p>
+                                            
+                    <p>
+                        <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
+                        <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
+                    </p>
+                    
+                    <p>
+                        <label for="imgarticle">Immagine</label>
+                        <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                    </p>
+                                        
+                    <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                </form>
+            </div>
+            
+        </div>
         ';
         return $echoString;
     }
@@ -344,60 +348,63 @@ class Article{
             $row = $result->fetch_assoc();
             $echoString ='
 			
-			<header id="header-home" class="parallax padding-6 header-image">
-				<div class="content">						
-					<div class="card white wrap-padding">
-						<h1>Modifica un articolo</h1>
-					</div>
-					<div class="card colored wrap-padding">
-						<form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
-							<p>
-                                <label for="article">Identificativo articolo</label>
-                                <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
-							</p>
-							
-							<p>
-                                <label for="titolo">Titolo</label>
-                                <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$row["titolo"].'" required>
-							</p>
-							
-							<p>
-                                <label for="sottotitolo">Sottotitolo</label>
-                                <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'" required>
-							</p>
-							
-							<p>
-                                <label for="descrizione">Descrizione</label>
-                                <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
-							</p>
-                            
-                            <p>
-                                <label for="anteprima">Anteprima</label>
-                                <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
-							</p>
-							
-							<p>
-                                <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
-                                <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
-							</p>
-							
-                            <p>
-                                <label for="imgarticle">Immagine</label>
-                                <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
-                            </p>
+			<div class="parallax padding-6 form-image">
+			
+                <header id="header-form" class="content card white wrap-padding">			
+                    <div id="title-card" class="card">
+                        <h1> Modifica l\'articolo </h1>
+                    </div>
+                </header>
                 
-                            <p>
-                                <label for="imgarticleremove">Nessuna immagine</label>
-                                <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
-                            </p>
-							
-							<input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
-						</form>
-					</div>
-				</div>
-			</header>
-                ';
-            }
+                <div id="content-form" class="content">
+                    <form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                        <p>
+                            <label for="article">Identificativo articolo</label>
+                            <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
+                        </p>
+                        
+                        <p>
+                            <label for="titolo">Titolo</label>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$row["titolo"].'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="sottotitolo">Sottotitolo</label>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="descrizione">Descrizione</label>
+                            <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="anteprima">Anteprima</label>
+                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
+                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
+                        </p>
+                        
+                        <p>
+                            <label for="imgarticle">Immagine</label>
+                            <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                        </p>
+            
+                        <p>
+                            <label for="imgarticleremove">Nessuna immagine</label>
+                            <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
+                        </p>
+                        
+                        <input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
+                    </form>
+                </div>
+                
+            </div>
+        ';
+        }
         
         else{
 			$echoString = "

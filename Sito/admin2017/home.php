@@ -19,3 +19,5 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 		<a href="../index.php" class="btn card wrap-margin"> Vai al sito pubblico </a>
 	</div>
 </header>
+
+<?php include_once('../breadcrumb.php') ?>

@@ -70,7 +70,7 @@
 	\begin{itemize}
 		\item \textbf{Home (index.php)}: contiene una sezione introduttiva che spiega in che tipo di sito ci si trova e che tipo di informazioni contiene. È inoltre presente una barra di ricerca che permette di cercare tra i contenuti del sito ed un sezione con i contenuti del giorno (articoli o schede descrittive);
 		\item \textbf{Storia (history.php)}: una sezione introduttiva che ripercorre a grandi linee la storia dei dinosauri;
-		\item \textbf{Specie (specie.php)}: qui vengono messi in evidenza i contenuti giornalieri (una scheda ed un articolo), ed i link alle schede degli ultimi dinosauri aggiunti al database. È anche possibile visualizzare la lista completa delle schede descrittive di dinosauro, tramite il link sotto la barra di ricerca. Ogni scheda descrive un solo dinosauro e contiene un'immagine, la descrizione dell'animale e talvolta qualche curiosità;
+		\item \textbf{Specie (specie.php)}: qui viene messo in evidenza l'articolo del giorno ed i link alle schede degli ultimi dinosauri aggiunti al database. È anche possibile visualizzare la lista completa delle schede descrittive di dinosauro, tramite il link sotto la barra di ricerca. Ogni scheda descrive un solo dinosauro e contiene un'immagine, la descrizione dell'animale e talvolta qualche curiosità;
 			\begin{itemize}
 				\item \textbf{Tutte le specie (all-species.php)}: contiene la lista completa delle specie di dinosauri disponibili sul sito.
 				\begin{itemize}
@@ -115,7 +115,7 @@
 		
 		\item \textbf{Utenti:} qui l'amministratore può cercare e/o aggiungere un utente, nonché visualizzare la lista completa degli stessi;
 		
-		\item \textbf{Dinosauri:} qui l'amministratore può cercare e/o aggiungere una specie di dinosauro, nonché visualizzare la lista completa delle stesse;
+		\item \textbf{Dinosauri:} qui l'amministratore può cercare e/o aggiungere una specie di dinosauro, nonché visualizzare la lista completa delle stesse; Può inoltre visualizzare un elenco dei commenti associati ad ogni scheda ed eliminarli.
 		
 		\item \textbf{Articoli:} qui l'amministratore può cercare e/o aggiungere un articolo, nonché visualizzare la lista completa degli stessi.
 	\end{itemize}
@@ -124,11 +124,20 @@
 	
 	\subsection{Fogli di stile}
 	
-	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media query, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta mostra il pregio del conseguimento di un foglio di stile facilmente utilizzabile, riutilizzabile ed estendibile, ed il difetto portato dalla necessario appesantimento in termini di leggibilità del codice HTML che vedrà \code{div} a cui saranno attribuite molte classi. 
+	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media query, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta permette di avere un foglio di stile semplice, riutilizzabile ed estendibile, ma d'altro canto rende necessario aggiungere diverse classi agli elementi HTML, portando ad un appesantimento in termini di leggibilità del codice.
 	
 	\subsection{Note sullo sviluppo}
+	\subsubsection{Pagine con form}
+	Le pagine del sito che contengono moduli da compilare hanno una struttura leggermente diversa da quella di tutte le altre: invece inserire un header, seguito dalla barra delle breadcrumb ed il form, abbiamo preferito compattare questi tre elementi e racchiuderli in un unico blocco, dandogli la stessa larghezza normalmente attribuita all'header. 
+	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare, visto che si tratta dell'unico contenuto.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, e riteniamo avrebbe reso meno immediato comprendere lo scopo della pagina.\\
+	Le pagine interessate sono:
+	\begin{itemize}
+		\item login.php (lato pubblico e lato amministratore);
+		\item register.php;
+		\item il form per la modifica dei dati utente in classi/User.php; 
+		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in classi/UserAdmin.php, classi/Article.php, classi/Dinosaur.php;
+	\end{itemize}
 	
-	...
 	
 	\section{Usabilità}
 	
@@ -139,11 +148,11 @@
 	\subsection{Grafica e layout}
 	
 	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione ed a intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
-	La presenza di molte immagini e il layout grafico "a piastrelle" designato ha inoltre imposto l'utilizzo dello scroll, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
+	La presenza di molte immagini e il layout grafico "a piastrelle" designato ha inoltre imposto l'utilizzo dello \textit{scroll}, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, dato che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, questa scelta riduce anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
 	
 	\subsection{Media queries}
-	Si è fatto uso di media queries per garantire la compatibilità con tutti i dispositivi. Alcuni problemi sono sorti con i dispositivi \textit{Apple}, che non visualizzavano correttamente l'effetto parallasse inserito nella sezione \textit{Storia}. Per questo è stato deciso di disabilitare questo effetto su ogni dispositivo mobile di tale marca, indipendentemente dalla dimensione.\\
+	Si è fatto uso di media queries per garantire la compatibilità con tutti i dispositivi. Alcuni problemi sono sorti con i dispositivi \textit{Apple}, che non visualizzavano correttamente le immagini con l'effetto parallasse inserito nella sezione \textit{Storia}. Inoltre alcuni browser di smartphone con sistema operativo Android bloccano automaticamente questo effetto. È stato quindi deciso di disabilitare questo effetto su ogni dispositivo con le dimensioni di un tablet o più piccolo.\\
 	Il foglio di stile \textit{print.css} definisce un layout adatto per la stampa. Tutte le immagini decorative sono rimosse, il font viene inoltre impostato su \textit{Times} e quello colorato ritorna di colore nero.\\
 	Il contenuto del giorno e la sezione \textit{Ultime aggiunte} non vengono mostrati nel layout di stampa, questo perché si suppone che l'utente sia interessato alla stampa del solo contenuto principale della pagina, quindi il testo degli articoli o delle schede. Tuttavia, nel caso in cui si voglia stampare la pagina \textit{Home} oppure la pagina principale delle sezioni \textit{Articoli} o \textit{Specie}, che sono delle raccolte di contenuti che introducono le relative sezioni, allora i contenuti suggeriti saranno stampati, uno sotto l'altro.
 
@@ -155,7 +164,8 @@
 	\subsection{Accorgimenti}
 	I potenziali problemi di accessibilità sono di seguito listati:
 	\begin{itemize}
-		\item JavaScript: i browser utilizzati dagli screen reader non eseguono gli script, pertanto  JavaScript è utilizzato nel sito solo per rendere più accattivante l'interfaccia, ma senza compromettere l'accessibilità;
+		\item JavaScript: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ha con un browser che esegue gli script. \\
+		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. Pertanto la disabilitazione di JS non pregiudica l'utilizzo del sito.
 		\item Link: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
 		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \textit{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
 	\end{itemize}
@@ -183,9 +193,12 @@
 		\item Microsoft Edge - Versione 41.16299.15.0
 		\item Internet Explorer - Versione 9+\footnote{tramite simulatore reperibile al link: \url{https://www.browserling.com/internet-explorer-testing}}
 	\end{itemize} 
-	
+
 	\subsection{JavaScript}
-	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite è l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.
+	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite per un utente della parte pubblica del sito, sarebbe l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.\\ 
+	Nella sezione dedicata all'amministratore talvolta è utile, dopo una richiesta dell'amministratore, chiedere di confermare l'azione, in modo da prevenire errori dovuti a click accidentali (ad esempio se ha chiesto di eliminare un account o un articolo). Per fare questo utilizziamo degli \textit{alert box}, richiamati con la funzione \code{alert("Messaggio")} di JavaScript. Nel caso l'esecuzione di script sia disabilitata, semplicemente non verrà chiesta tale conferma.
+	
+	
 	
 	\section{Test}
 	
