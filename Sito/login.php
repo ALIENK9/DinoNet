@@ -65,6 +65,8 @@
 
 <div id="main" class="main">
 
+    <?php include_once('topbar.php') ?>
+
 <!-- Header -->
 <div class="parallax padding-6 form-image">
 

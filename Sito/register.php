@@ -123,6 +123,7 @@
     </div-->
 
     <!--?php include_once('breadcrumb.php') ?-->
+    <?php include_once('topbar.php') ?>
 
 <!-- Header -->
 <div class="parallax padding-6 form-image">
