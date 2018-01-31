@@ -964,8 +964,8 @@ a.disabled {
   color: black;
   display: block;
   position: fixed;
-  top: 1.3em;
-  right: 1.7em;
+  margin-top: .5em;
+  padding-right: 1.7em;
   z-index: 2;
   max-width: calc(100% - 110px);
   width: 90%;
@@ -973,7 +973,7 @@ a.disabled {
 }
 
 #searchbar {
-  margin-top: 0.5em;
+  margin: 1.5em;
   position: relative;
   display: inline-block;
   background-color: white;
@@ -1014,6 +1014,9 @@ a.disabled {
   display: block;
   border-radius: 10px;
   text-decoration: none;
+  margin-top: 2%;
+  margin-right: 15px;
+  padding: 15px 20px;
 }
 
 /*
@@ -1182,9 +1185,12 @@ footer h2 {
 		padding-bottom: 3em;
 	}
 
-	#topbar {text-align: left;}
+	#topbar {
+		text-align: left;
+		padding-right:0;
+	}
 
-	#searchbar {width: 70%;}
+	#searchbar {width: 85%;}
 }
 
 @media only screen and (max-width: 812px) and (orientation: landscape) {     
