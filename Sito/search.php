@@ -71,7 +71,9 @@
             <h1 class="text-colored">Risultati per la ricerca:</h1>
 			<h3> <?php echo $_GET["input"] ?> </h3>
         </div>
-        <a href="#content" class="down-arrow arrow colored btn card bounce"></a>
+		<a href="#content" aria-label="Scorri ai risultati della ricerca" class="down-arrow arrow btn card bounce">
+			<span class="hidden">Scorri ai risultati della ricerca</span>
+		</a>
     </header>
 
     <!-- Dinosauri -->

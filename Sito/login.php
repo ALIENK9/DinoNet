@@ -70,14 +70,14 @@
 <!-- Header -->
 <div class="parallax padding-6 form-image">
 
-    <header id="header-form" class="content">
-        <div id="title-card" class="card">
+    <header id="header-form" class="content card">
+        <div id="title-card">
             <h1> Accedi al tuo account </h1>
             <h2>Entra nel mondo dei dinosauri!</h2>
         </div>
     </header>
 
-    <div id="content-form" class="content">
+    <div id="content-form" class="content card">
         <?php include_once('breadcrumb.php') ?>
         <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
             <p>
