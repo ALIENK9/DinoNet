@@ -148,12 +148,12 @@ class Article{
 
     public static function printArticle($connect, $id, $basePathImg){
         $echoString="";
-        $sqlQuery = "SELECT sottotitolo, anteprima FROM articolo WHERE id='$id'";
+        $sqlQuery = "SELECT sottotitolo, descrizione, anteprima, immagine, descrizioneimg FROM articolo WHERE id='$id'";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $echoString .='
-                    <div class="card">
+                $echoString .='                
+                    <div class="daily-dino card">
                     ';
                     if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL){
                         $echoString .='
@@ -161,11 +161,15 @@ class Article{
                             <h1> '.$row["sottotitolo"].'</h1>
                         </div>';
                     }
+                    if(isset($row["immagine"])){
+                        $echoString .='<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                    }
                     $echoString .='
                         <div class="wrap-padding article-content">
                             '.html_entity_decode($row["descrizione"]).'                            
                         </div>
-                    </div>            
+                    </div>                         
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a>       
                 ';
             }
         }
@@ -174,6 +178,7 @@ class Article{
                 <div class='padding-6 content center'>
                     <div class='card wrap-padding'>
                         <h1>Nessun risultato</h1>
+                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'>Torna alla pagina precedente</a> 
                     </div>
                 </div>							
             ";
@@ -264,11 +269,13 @@ class Article{
                     </p>
                     
                     <p>
-                        <label for="imgarticle">Immagine</label>
+                        <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg)</label>
                         <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
                     </p>
                                         
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                    
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
             
@@ -300,7 +307,7 @@ class Article{
                 $destinazioneFileDB = NULL;
                 if($immagine['error'] == 0){
                     $idInserito = $connect->insert_id;
-                    $destinazioneFileDB = loadImage("articleimg", $idInserito, $immagine);
+                    $destinazioneFileDB = loadImage("articleimg", $idInserito, $immagine, 450, 450);
                     
                     $sqlQuery2 = "UPDATE articolo SET immagine='".$destinazioneFileDB."'WHERE id='".$idInserito."'";
                     if($destinazioneFileDB != NULL && $connect->query($sqlQuery2) ){
@@ -389,16 +396,17 @@ class Article{
                         </p>
                         
                         <p>
-                            <label for="imgarticle">Immagine</label>
+                            <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg)</label>
                             <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
                         </p>
             
                         <p>
-                            <label for="imgarticleremove">Nessuna immagine</label>
+                            <label for="imgarticleremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
                             <input type="checkbox" id="imgarticleremove" name="imgarticleremove" value="true">
                         </p>
                         
                         <input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
+                        <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                     </form>
                 </div>
                 
@@ -442,7 +450,16 @@ class Article{
 
             $destinazioneFileDB = NULL;
             if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine);
+                $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine, 450, 450);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
 
             $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";

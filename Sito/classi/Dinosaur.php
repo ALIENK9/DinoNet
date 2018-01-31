@@ -208,7 +208,9 @@ class Dinosaur {
                                             '.html_entity_decode($row["curiosita"]);
                             $echoString .='
                         </div>
-                    </div>                
+                    </div>    
+                    
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a>               
                 ';
             }
         }
@@ -217,6 +219,7 @@ class Dinosaur {
                 <div class='padding-6 content center'>
                     <div class='card wrap-padding'>
                         <h1>Nessun risultato</h1>
+                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'>Torna alla pagina precedente</a> 
                     </div>
                 </div>							
             ";
@@ -354,11 +357,12 @@ class Dinosaur {
                     </p>       
            
                     <p>
-                        <label for="imgdinosaur">Immagine dinosauro:</label>
+                        <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
                         <input type="file" id="imgdinosaur" name="imgdinosaur" value="" required>
                     </p>
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
         </div>
@@ -391,7 +395,16 @@ class Dinosaur {
 
             $destinazioneFileDB = NULL;
             if($immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine);
+                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
             $sqlQuery = "INSERT INTO dinosauro (
                 nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
@@ -540,16 +553,17 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="imgdinosaur">Immagine dinosauro</label>
+                            <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
                         </p>
             
                         <p>
-                            <label for="imgdinosaurremove">Nessuna immagine</label>
+                            <label for="imgdinosaurremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
                             <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
                         </p>
 
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                        <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                     </form>
 				</div>
 			</div>
@@ -599,7 +613,16 @@ class Dinosaur {
 
             $destinazioneFileDB = NULL;
             if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine);
+                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
 
             $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 

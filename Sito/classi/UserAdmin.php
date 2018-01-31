@@ -185,11 +185,12 @@ class UserAdmin extends User {
                     </p>
                     
                     <p>
-                        <label for="imgaccount">Immagine profilo (opzionale)</label>
+                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
                     </p>
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
 		</div>
@@ -220,7 +221,16 @@ class UserAdmin extends User {
 
             $destinazioneFileDB = NULL;
             if($immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("userimg", $email, $immagine);
+                $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
 
             $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, tipologia, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', '".$tipologia."', ";
@@ -281,13 +291,13 @@ class UserAdmin extends User {
                 
                 <header id="header-form" class="content card white wrap-padding">			
                     <div id="title-card" class="card">
-                        <h1> Aggiungi un utente </h1>
+                        <h1> Modifica un utente </h1>
                     </div>
                 </header>
                 
                 <div id="content-form" class="content">
                     <?php include_once(\'../breadcrumb.php\') ?>
-                    <form action="\'.$url.\'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
+                    <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                         <p>
                             <label for="tipologia">Tipologia utente</label>
                             <select id="tipologia" name="tipologia">                        
@@ -327,16 +337,17 @@ class UserAdmin extends User {
                         </p>
 
                         <p>
-                            <label for="imgaccount">Immagine profilo</label>
+                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
                             <input type="file" id="imgaccount" name="imgaccount" value="">
                         </p>
 
                         <p>
-                            <label for="imgaccountremove">Rimuovi immagine</label>
+                            <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
                             <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
                         </p>
 
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                        <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                     </form>
                 </div>
             </div>
@@ -386,7 +397,16 @@ class UserAdmin extends User {
 
             $destinazioneFileDB = NULL;
             if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("userimg", $email, $immagine);
+                $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
 
             $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' , tipologia='".$tipologia."'";
@@ -399,7 +419,7 @@ class UserAdmin extends User {
             $sqlQuery .= "WHERE email='".$email."'";
             
             if( $connect->query($sqlQuery) ){
-				$echoString = "
+				$echoString .= "
 					<div class='padding-6 content center'>
 						<div class='card wrap-padding'>
 							<h1>Elemento modificato!</h1>

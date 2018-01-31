@@ -137,16 +137,17 @@ class User {
                     </p>
 
                     <p>
-                        <label for="imgaccount">Immagine profilo</label>
+                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
                     </p>
     
                     <p>
-                        <label for="imgaccountremove">Rimuovi immagine</label>
+                        <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
                         <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
                     </p>
                     
                     <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn text-colored wide white">
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
             
@@ -184,7 +185,16 @@ class User {
 
             $destinazioneFileDB = $this->getUrlImmagine();
             if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("userimg", $this->getEmail(), $immagine);
+                $destinazioneFileDB = loadImage("userimg", $this->getEmail(), $immagine, 250, 250);
+                if($destinazioneFileDB==NULL){
+                    $echoString .= "
+                        <div class='padding-6 content center'>
+                            <div class='card wrap-padding'>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                            </div>
+                        </div>
+                        ";
+                }
             }
 
             $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
@@ -201,7 +211,7 @@ class User {
                 $this->setDataNascita($datanascita);
                 $this->setPassword($password);
                 $this->setUrlImmagine($destinazioneFileDB);
-				$echoString = "
+				$echoString .= "
 					<div class='padding-6 content center'>
 						<div class='card wrap-padding'>
 							<h1>Elemento modificato!</h1>

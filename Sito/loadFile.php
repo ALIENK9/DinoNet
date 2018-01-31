@@ -1,6 +1,6 @@
 <?php
 
-    function loadImage($cartella, $nome, $immagine){
+    function loadImage($cartella, $nome, $immagine, $sizeWidth, $sizeHeight){
 
         $estensioneFile = strtolower(pathinfo($immagine["name"],PATHINFO_EXTENSION));
         $destinazioneFileDB = "/img/".$cartella."/".$nome.".".$estensioneFile; 
@@ -29,6 +29,12 @@
             $echoString = "Sono consentiti solo file JPG, JPEG, PNG e GIF";
             $statoCaricamento = 0;
         }
+
+        if($stato[0]!=$sizeWidth || $stato[1]!=$sizeHeight){
+            $echoString = "l'immagine non rispetta le dimensioni consentite";
+            $statoCaricamento = 0;
+        }
+
         if ($statoCaricamento != 0) {
             if (!move_uploaded_file($immagine["tmp_name"], $destinazioneFile)) {
                 $echoString = "Errore caricamento immagine";
