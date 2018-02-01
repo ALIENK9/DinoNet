@@ -357,12 +357,17 @@ a.btn {
 
 /* Daily stuff */
 
-.daily-dino h1, .daily-article h1 {
+.daily h1 {
   text-align: center;
 }
 
-.daily-dino img, .daily-article img {
+.daily-wrapper {
+  text-align: center;
+}
+
+.daily-wrapper img {
   width: 100%;
+  margin: auto;
   margin-bottom: 2em;
 }
 

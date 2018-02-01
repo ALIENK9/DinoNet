@@ -35,13 +35,16 @@ class UserAdmin extends User {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div class="daily-dino card">
-                            <div class="padding-large colored">
+                        <div class="daily card">
+                            <div class="padding-large colored card">
                                 <h1>'.$row["email"].'</h1>
                             </div>
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="immagine profilo utente">';
+                                $echoString .='  
+								<div class="daily-wrapper wrap-padding colored">
+									<img class="profile-pic" src="'.$basePathImg.$row["immagine"].'" alt="immagine profilo utente">
+								</div>';
                             }
                             $echoString .='
                             <div class="center padding-2">
@@ -226,7 +229,7 @@ class UserAdmin extends User {
                     $echoString .= "
                         <div class='padding-6 content center'>
                             <div class='card wrap-padding'>
-                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
+                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine, ma potrai modificarla dal tuo profilo.</h1>
                             </div>
                         </div>
                         ";

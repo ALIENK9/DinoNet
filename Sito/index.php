@@ -130,7 +130,7 @@
 			?>
 		</div>
 		<div class="half">
-			<div id="daily-article" class="card margin-half colored center wrap-padding">
+			<div id="daily" class="card margin-half colored center wrap-padding">
 				<h1>L'articolo del giorno</h1>
 			</div>
 			<?php				

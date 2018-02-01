@@ -32,13 +32,16 @@ class Article{
 			while($row = $result->fetch_assoc()) {
                 $echoString .='
 				<div class="third wrap-padding">
-                    <div class="daily-dino card">
+                    <div class="daily card">
                         <div class="padding-large colored">
                             <h1> '.$row["id"].' </h1>
                         </div>
                         ';
                         if(isset($row["immagine"])){
-                            $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                            $echoString .='  
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>
+								</div>';
                         }
                         $echoString .='
                         <div class="center padding-2">
@@ -106,13 +109,16 @@ class Article{
 			while($row = $result->fetch_assoc()) {
                 $echoString .='
 				<div class="third wrap-padding">
-                    <div class="daily-article card margin-half">
+                    <div class="daily card margin-half">
                         <div class="padding-large colored">
                             <h1> '.$row["titolo"].' </h1>
                         </div>
                         ';
                         if(isset($row["immagine"])){
-                            $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                            $echoString .='  
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>
+								</div>';
                         }
                         $echoString .='
                         <div class="padding-large">';
@@ -153,7 +159,7 @@ class Article{
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $echoString .='                
-                    <div class="daily-dino card">
+                    <div class="daily card">
                     ';
                     if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL){
                         $echoString .='
@@ -162,7 +168,10 @@ class Article{
                         </div>';
                     }
                     if(isset($row["immagine"])){
-                        $echoString .='<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>';
+                        $echoString .='
+							<div class="daily-wrapper">
+								<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["descrizioneimg"].'"/>
+							</div>';
                     }
                     $echoString .='
                         <div class="wrap-padding article-content">
@@ -553,13 +562,17 @@ class Article{
             
             if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
                 $echoString = '
-                    <div class="daily-article card margin-half">
+                    <div class="daily card margin-half">
                         <div class="padding-large colored">
                             <h1> '.$row4["titolo"].' </h1>
                         </div>
                         ';
                         if(isset($row4["immagine"])){
-                            $echoString .=' <img src="'.$basePathImg.$row4["immagine"].'" alt="'.$row4["descrizioneimg"].'"/>';
+                            $echoString .=' 
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row4["immagine"].'" alt="'.$row4["descrizioneimg"].'"/>
+								</div>
+							';
                         }
                         $echoString .='
                         <div class="padding-large">
@@ -618,7 +631,7 @@ class Article{
     public static function getCommentToDelete($connect, $idArticle, $url){
         $echoString ='
         <div id="commentboard" class="content panel">
-            <div class="card wrap-padding">            
+            <div class="wrap-margin card">            
                 <div class="padding-large colored">
                     <h1>Commenti</h1>
                 </div>';
@@ -641,7 +654,13 @@ class Article{
             } 
         }
         else{
-            $echoString .= "Non sono presenti commenti";
+            $echoString .= "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Non sono presenti commenti</h1>
+					</div>
+				</div>
+			";
         }
         $echoString .= '
             </div>

@@ -34,13 +34,16 @@ class Dinosaur {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div class="daily-dino card">
+                        <div class="daily card">
                             <div class="padding-large colored">
                                 <h1>'.$row["nome"].'</h1>
                             </div>
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                                $echoString .='  
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>
+								</div>';
                             }
                             $echoString .='
                             <div class="center padding-2">
@@ -116,13 +119,16 @@ class Dinosaur {
                 while($row = $result->fetch_assoc()) {
                     $echoString .='
                     <div class="third wrap-padding">
-                        <div  class="daily-dino card margin-half">
+                        <div  class="daily card margin-half">
                             <div class="padding-large colored">
                                 <h1>'.$row["nome"].'</h1>
                             </div>
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                                $echoString .='  
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>
+								</div>';
                             }
                             $echoString .='
                             <div class="padding-large">
@@ -719,13 +725,16 @@ class Dinosaur {
             
             if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
                 $echoString = '
-                    <div  class="daily-dino card margin-half">
+                    <div  class="daily card margin-half">
                         <div class="padding-large colored">
                             <h1> '.$row4["nome"].' </h1>
                         </div>
                         ';
                         if(isset($row4["immagine"])){
-                            $echoString .=' <img src="'.$basePathImg.$row4["immagine"].'" alt="Immagine di un '.$row4["nome"].'"/>';
+                            $echoString .=' 
+								<div class="daily-wrapper">
+									<img src="'.$basePathImg.$row4["immagine"].'" alt="Immagine di un '.$row4["nome"].'"/>
+								</div>';
                         }
                         $echoString .='
                         <div class="padding-large">

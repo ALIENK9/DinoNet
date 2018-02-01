@@ -146,7 +146,7 @@ class User {
                         <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
                     </p>
                     
-                    <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn text-colored wide white">
+                    <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="wrap-margin card btn text-colored wide white">
                     <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
@@ -276,10 +276,24 @@ class User {
                 $sqlQuery .=") ";
 
                 if($connect->query($sqlQuery)){
-                   $echoString .= "Utente registrato";
+                   $echoString .= "							
+						<div class='padding-6 content center'>
+							<div class='card wrap-padding'>
+								<h1>Utente registrato!</h1>
+								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Torna indietro </a>
+							</div>
+						</div>
+				   ";
                } 
                else {
-                    $echoString .= "Utente non registrato";
+                   $echoString .= "							
+						<div class='padding-6 content center'>
+							<div class='card wrap-padding'>
+								<h1>Utente NON registrato!</h1>
+								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
+							</div>
+						</div>
+				   ";
 
                     if( $destinazioneFileDB != NULL){                           
                         delImage($basePathImg.$destinazioneFileDB); 
@@ -304,6 +318,7 @@ class User {
                         <div class='padding-6 content center'>
                             <div class='card wrap-padding'>
                                 <h1>Elemento eliminato!</h1>
+								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Torna indietro </a>
                             </div>
                         </div>							
                     ";

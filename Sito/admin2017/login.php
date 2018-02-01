@@ -66,13 +66,13 @@
 
     <div class="parallax padding-6 form-image">
 
-        <header id="header-form" class="content">
-            <div id="title-card" class="card">
+        <header id="header-form" class="content card">
+            <div id="title-card">
                 <h1> Accesso al pannello di amministrazione </h1>
             </div>
         </header>
 
-        <div id="content-form" class="content">
+        <div id="content-form" class="content card">
             <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                 <p>
                     <label for="input-email" xml:lang="en" lang="en">Email</label>
@@ -83,7 +83,7 @@
                     <input id="input-passw" type="password" placeholder="password" name="password" data-validation-mode="password" required>
                 </p>
 
-                <input type="submit" value="ACCEDI" class="card btn wide white">
+                <input type="submit" value="ACCEDI" class="card btn wide text-colored">
             </form>
             <div class="white wrap-padding">
                 <p>oppure</p>
