@@ -22,7 +22,127 @@
 	<!DOCTYPE html>
 	<html xml:lang="it-IT" lang="it-IT">
 	<head>
-		<title>TecWeb</title>
+		<title>
+		<?php
+		if(isset($_GET["id"]) && $_GET["id"]!="")
+			$idPage=$_GET["id"];
+		else
+			$idPage = "home";
+
+		if(isset($_GET["sez"]) && $_GET["sez"]!="")
+			$sezione=$_GET["sez"];
+		else
+			$sezione = "list";
+
+		switch ($idPage) {
+			case 'home':
+				echo "Home | Dino Net";
+				break;
+
+			case 'user':
+				switch ($sezione) {
+					case 'list':
+					echo "Elenco utenti | Dino Net";
+					break;
+					case 'formadd':			
+						echo "Aggiunti utente | Dino Net";
+						break;
+					case 'add':
+						echo "Aggiunti utente | Dino Net";
+						break;
+					case 'formupdate':
+						echo "Modifica utente | Dino Net";
+						break;
+					case 'update':
+						echo "Modifica utente | Dino Net";		
+						break;		
+					case 'delete':
+						echo "Elimina utente | Dino Net";
+						break;					
+					default:
+						echo "Area utenti | Dino Net";
+					break;
+				}
+				break;
+
+			case 'myuser':					
+				echo "Modifica profilo | Dino Net";
+				break;
+
+			case 'dino':
+				switch ($sezione) {
+					case 'list':
+						echo "Elenco dinosauri | Dino Net";
+						break;
+					case 'formadd':	
+						echo "Aggiunti dinosauro | Dino Net";		
+						break;
+					case 'add':
+						echo "Aggiunti dinosauro | Dino Net";		
+						break;
+					case 'formupdate':
+						echo "Modifica dinosauro | Dino Net";
+						break;
+					case 'update':	
+						echo "Modifica dinosauro | Dino Net";	
+						break;		
+					case 'delete':
+						echo "Elimina dinosauro | Dino Net";
+						break;	
+					case 'comment':
+						echo "Elenco commenti dinosauro | Dino Net";
+						break;	
+					case 'deletecomment':	
+						echo "Elimina commenti dinosauro | Dino Net";
+						break;				
+					default:
+						echo "Area dinosauri | Dino Net";
+						break;
+				}
+				break;
+
+			case 'article':
+				switch ($sezione) {
+					case 'list':
+						echo "Elenco articoli | Dino Net";
+						break;
+					case 'formadd':	
+						echo "Aggiunti articolo | Dino Net";		
+						break;
+					case 'add':
+						echo "Aggiunti articolo | Dino Net";		
+						break;
+					case 'formupdate':
+						echo "Modifica articolo | Dino Net";
+						break;
+					case 'update':	
+						echo "Modifica articolo | Dino Net";	
+						break;		
+					case 'delete':
+						echo "Elimina articolo | Dino Net";
+						break;	
+					case 'comment':
+						echo "Elenco commenti articolo | Dino Net";
+						break;	
+					case 'deletecomment':	
+						echo "Elimina commenti articolo | Dino Net";
+						break;				
+					default:
+						echo "Area articoli | Dino Net";
+						break;
+				}
+				break;	
+
+			case 'search':
+					echo "Ricerca | Dino Net";
+				break;	
+
+			default:	
+				echo "Pannello amministratore | Dino Net";	
+				break;
+			}
+		?>		
+		</title>
 		<meta name="description" content="Descrizione">
 		<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 		<meta charset="UTF-8">
@@ -77,11 +197,6 @@
 	<!-- inclusione pagina da visualizzare -->
 
 	<?php 
-
-		if(isset($_GET["id"]) && $_GET["id"]!="")
-			$idPage=$_GET["id"];
-		else
-			$idPage = "home";
 
 		switch ($idPage) {
 			case 'home':
