@@ -210,7 +210,7 @@ class Dinosaur {
                         </div>
                     </div>    
                     
-                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a>               
+                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a>        
                 ';
             }
         }
@@ -285,7 +285,7 @@ class Dinosaur {
                     </div>
             </header>
             <div id="content-form" class="content">
-                <?php include_once(\'../breadcrumb.php\') ?>
+                '."<?php include_once('../breadcrumb.php'); ?>".'
                 <form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                     <p>
                         <label for="nome">Nome</label>

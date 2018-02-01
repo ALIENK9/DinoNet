@@ -75,7 +75,7 @@
 
 <!-- Articoli -->
 
-<div class="content-large padding-3">
+<div class="content padding-3">
 	
 	<?php
 	echo Article::printArticle($connectArticle, $_GET["id"],".");

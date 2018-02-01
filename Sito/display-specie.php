@@ -62,7 +62,7 @@
 
 <header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
-		<h1 class="text-colored"> <?php echo $_GET["nome"]; ?> </h1>
+		<h1> <?php echo $_GET["nome"]; ?> </h1>
 	</div>
 </header>
 
@@ -74,7 +74,7 @@
 
 
 <!-- Dinosauro -->
-<div class="content-large padding-3">
+<div class="content padding-3">
 
 	<?php 
 	echo Dinosaur::printDinosaur($connectSpecies, $_GET["nome"],".");
