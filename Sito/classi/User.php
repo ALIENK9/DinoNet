@@ -245,22 +245,45 @@ class User {
         return $echoString;
     } 
     
-    public function registerMyUser($connect, $email, $nome, $cognome, $password, $confermaPassword){ 
+    public function registerMyUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $basePathImg){ 
            $echoString ="";
            
            $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
            $result = $connect->query($sqlQuery);
            if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
+
            if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
            if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "Tutti i campi sono obbligatori";}
-   
+
+           if(!isset($datanascita)){ $datanascita = "";}
+
            if($echoString == ""){
-               $sqlQuery = "INSERT INTO utente (email, nome, cognome, password) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$password."')";
-               if($connect->query($sqlQuery)){
+
+                $destinazioneFileDB = NULL;
+                if($immagine['error'] == 0){
+                    $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
+                    if($destinazioneFileDB==NULL){
+                        $echoString .= "Errore immagine ";
+                    }
+                } 
+
+                $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
+                if( $destinazioneFileDB != NULL)
+                    $sqlQuery .="'".$destinazioneFileDB."'";
+                else{
+                    $sqlQuery .= "NULL";
+                }
+                $sqlQuery .=") ";
+
+                if($connect->query($sqlQuery)){
                    $echoString .= "Utente registrato";
                } 
                else {
-                   $echoString .= "Utente non registrato";
+                    $echoString .= "Utente non registrato";
+
+                    if( $destinazioneFileDB != NULL){                           
+                        delImage($basePathImg.$destinazioneFileDB); 
+                    }
                }
            }  
    

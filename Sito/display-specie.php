@@ -112,7 +112,8 @@
 </div>
 
 <div class="center wrap-padding">
-	<a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa dei dinosauri </a>
+	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+	<a href="all-species.php" class="btn card wrap-margin"> Vai alla lista completa dei dinosauri </a>	
 </div>
 
 <?php include_once('footer.php') ?>

@@ -61,6 +61,20 @@
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6 header-image">
+	<?php
+
+	if(isset($_GET['error']) && $_GET['error']=='1'){	
+
+		echo "
+		<div class='padding-6 content center'>
+			<div class='card white wrap-padding'>
+				<h1>Immagine non confrome alle richieste. La registrazione dell'utente è avvenuta senza considerare l'immagine.</h1>
+			</div>
+		</div>
+		";
+	}
+
+	?>
 	<div class="content">
 		<div id="title-card" class="card">
 			<h1 class="text-colored"> Ciao, <?php echo $_SESSION['user']->getNome();?> </h1>

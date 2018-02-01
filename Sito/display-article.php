@@ -112,6 +112,11 @@
 	</div>
 </div>
 
+<div class="center wrap-padding">
+	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+	<a href="all-articles.php" class="btn card wrap-margin"> Vai alla lista completa degli articoli </a>	
+</div>
+
 <div class="padding-6 no-print">
 	<div class="colored center wrap-padding">
 		<h1>Le ultime pubblicazioni</h1>

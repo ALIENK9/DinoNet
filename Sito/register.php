@@ -10,13 +10,18 @@
 	$messaggioRegistrazione = "";
 	if(isset($_POST["submit"])){	
 		$connect = startConnect();
-		$messaggioRegistrazione = User::registerMyUser($connect,$_POST["email"],$_POST["nome"],$_POST["cognome"],$_POST["password"],$_POST["passwordconf"]);
+		$messaggioRegistrazione = User::registerMyUser($connect,$_POST["email"],$_POST["nome"],$_POST["cognome"],$_POST["datanascita"],$_POST["password"],$_POST["passwordconf"],$_POST["imgaccount"], "..");
 		echo $messaggioRegistrazione;
 		if("Utente registrato" == $messaggioRegistrazione){
 				session_unset();
 				$_SESSION['user'] = new User($connect, $_POST['email']);
 				header("Location: view-account.php");
-		}
+        }
+        if("Errore immagine Utente registrato" == $messaggioRegistrazione){
+            session_unset();
+            $_SESSION['user'] = new User($connect, $_POST['email']);
+            header("Location: view-account.php?error=1");
+        }
 		closeConnect($connect);
 	}
 ?>

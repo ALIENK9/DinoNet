@@ -208,9 +208,7 @@ class Dinosaur {
                                             '.html_entity_decode($row["curiosita"]);
                             $echoString .='
                         </div>
-                    </div>    
-                    
-                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a>        
+                    </div>          
                 ';
             }
         }
