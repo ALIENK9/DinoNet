@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 31, 2018 alle 22:55
+-- Creato il: Gen 07, 2018 alle 23:20
 -- Versione del server: 10.1.29-MariaDB
 -- Versione PHP: 7.2.0
 
@@ -38,7 +38,7 @@ CREATE TABLE `articolo` (
   `eta` int(11) DEFAULT NULL,
   `descrizioneimg` text,
   `datains` date DEFAULT NULL,
-  `idautore` varchar(150) NOT NULL
+  `idautore` varchar(150)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `dinosauro` (
   `curiosita` text,
   `immagine` varchar(255) DEFAULT NULL,
   `datains` date DEFAULT NULL,
-  `idautore` varchar(150) NOT NULL
+  `idautore` varchar(150)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -172,6 +172,7 @@ INSERT INTO `dinosauro` (`nome`, `peso`, `altezza`, `lunghezza`, `periodomin`, `
 ('Coelophysis', 46, 90, 280, 200, 208, 'Pianure desertiche', 'Rettili, pesci', 'carnivoro', '&lt;p&gt;Lungo fino a tre metri e alto in media poco pi&ugrave; di un metro, il &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; aveva una struttura leggera e agile, che gli consentiva di catturare luce', '&lt;p&gt;Stando ai ritrovamenti effettuati fin&rsquo;ora, uno dei primi dinosauri a popolare la regione sudoccidentale degli Stati Uniti verso la fine del Triassico (circa 215 milioni di anni fa) &egrave; il &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; (nome completo &quot;&lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis Bauri&lt;/em&gt;&lt;/span&gt;&quot;). Il suo nome deriva dal greco e significa &quot;forma cava&quot; in riferimento alle sue ossa cave, in particolare a quelle del cranio, che sono dotate di piccole cavit&agrave; per ridurre il peso dell&rsquo;animale. Questa caratteristica lo distingue da altre specie di dinosauri pi&ugrave; primitive come gli herrerasauridi vissuti  met&agrave; del Triassico. Una specializzazione molto particolare del &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; riguarda la coda, le cui vertebre erano stranamente dotate di strutture allungate che probabilmente limitavano molto il movimento verticale. Infatti si ritiene che servisse per controbilanciare il peso corporeo. Questa semirigidit&agrave; pu&ograve; essere paragonata a quella dei successivi tetanuri, nei quali la coda &egrave; irrigidita dai tendini ossificati.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Lungo fino a tre metri e alto in media poco pi&ugrave; di un metro, il &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; aveva una struttura leggera e agile, che gli consentiva di catturare lucertole, anfibi e insetti alati per cibarsene. Per individuare e catturare la preda, si ritiene che il &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; si servisse dei grandi occhi e del collo lungo e serpentiforme, sufficientemente flessibile per girarsi con rapidit&agrave;; la testa era lunga e stretta e le mascelle contenevano denti piccoli, aguzzi e aghiformi, dai bordi seghettati.&lt;br&gt;L&rsquo;analisi dello scheletro suggerisce che il &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; si spostasse velocemente sulle due agili e magre zampe posteriori. Ciascuno degli arti anteriori, piuttosto corti (misuravano un terzo degli arti posteriori), terminava con quattro dita, tre delle quali funzionali e artigliate. Sono state rinvenute due forme di &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt;: una pi&ugrave; gracile, l&#039;altra pi&ugrave; robusta, e si ritiene che queste differenze rappresentano un caso di dimorfismo sessuale nella stessa specie.&lt;/p&gt;', '&lt;p&gt;&lt;strong&gt; Lo sapevi che... &lt;/strong&gt; nel 1947 una spedizione nel Nuovo Messico (&lt;abbr xml:lang=&quot;en&quot; lang=&quot;en&quot; title=&quot;United States of America&quot;&gt;USA&lt;/abbr&gt;), capitanata da &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;Edwin Colbert&lt;/span&gt;, fece una sensazionale scoperta. In una propriet&agrave; nota col nome di &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;Ghost Ranch&lt;/span&gt; (&ldquo;ranch fantasma&rdquo;) vennero trovati centinaia di scheletri di &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt;, che giacevano gli uni sugli altri. La scoperta era particolarmente eccitante, perch&eacute; riguardava &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; di et&agrave; e dimensioni differenti. Sembra che l&#039;intero branco fosse andato incontro alla morte nel medesimo tempo. Ci&ograve; fa supporre che il decesso sia stato causato da un&#039;improvvisa calamit&agrave;, per esempio da una violenta inondazione che fece annegare gli animali, sommergendoli.&lt;/p&gt;&lt;br&gt;&lt;p&gt;Nella cassa toracica di alcuni adulti si sono ritrovati resti di piccoli della stessa specie: all&#039;inizio gli esperti pensarono che si trattasse di figli vicini alla nascita, ma non ancora venuti alla luce. Ma i dinosauri deponevano uova e non erano vivipari, perci&ograve; forse si trattava piuttosto degli avanzi di un ultimo pasto. Quegli scheletri, inoltre, erano davvero troppo grandi per poter essere contenuti in un uovo o per passare attraverso le ossa del bacino. Per quanto possa essere stata sorprendente, l&#039;ipotesi che i &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt; non si nutrissero solo di piccole lucertole ma anche dei membri giovanissimi della loro stessa specie sembr&ograve; decisamente realistica.&lt;br&gt;Tuttavia, nonostante questa teoria sia stata pi&ugrave; volte acclamata dalla maggior parte dei paleontologi, di recente &egrave; stata messa in discussione. L&#039;accatastarsi delle ossa le une sulle altre, infatti, potrebbe aver portato &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;Edwin Colbert&lt;/span&gt; e i suoi colleghi a ritenere di aver individuato resti di giovani esemplari nella cavit&agrave; addominale degli adulti, quando essi potevano semplicemente essere stati &quot;schiacciati&quot; sotto un individuo pi&ugrave; grande. In particolare, nel 2005 sono state rinvenute ulteriori prove che derivano dai contenuti dello stomaco fossilizzati in alcuni esemplari di &lt;span xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;&lt;em&gt;Coelophysis&lt;/em&gt;&lt;/span&gt;: i resti dei presunti &quot;giovani&quot; sarebbero da attribuire ad un&rsquo;altro rettile, il crocodilomorfo Dromomeron.&lt;/p&gt;', '/img/dinosaurimg/Coelophysis.jpg', '2018-01-07', 'admin@admin.it'),
 ('dfstr', 563423, 4532, 4567, 5678, 678, 'ghjk', 'brytui', 'carnivoro', 'ytuij', 'yji', 'yuh', NULL, '2017-12-12', 'admin@admin.it'),
 ('eee', 123, 123, 12312, 12345, 3456, '3efghe', 'ewfgdf', 'erbivoro', 'sdfg', 'sdfg', 'sdfg', '/img/dinosaurimg/eee.jpg', '2017-12-17', 'admin@admin.it'),
+('fgbjhknl', 346, 789, 6568798, 4756879, 4756879, '68579', 'ery', 'onnivoro', 'tryuh', 'trfyu', 'trfgyu', NULL, '2017-12-12', 'admin@admin.it'),
 ('n', 345, 3456, 3456, 345, 3456, '34dfgndfg', 'dfh', 'onnivoro', 'dfgh', 'hdfgh', 'dfgh', NULL, '2017-12-17', 'admin@admin.it'),
 ('prova', 12, 123, 1234, 2345, 3456, 'aaa', 'asdf', 'onnivoro', 'zcvbn', 'sdgwer', 'sdgdfgndf', '/img/dinosaurimg/prova.png', '2017-11-26', 'dino@dinosauro.it'),
 ('prova boooo', 12343, 234, 234234, 3245, 2345, 'xcfgsdfg', 'weqrqw', 'carnivoro', ' qwerqwer', ' qwerqwer', ' qwerqwer', NULL, '2018-01-31', 'admin@admin.it'),
@@ -316,13 +317,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT per la tabella `articolodelgiorno`
 --
 ALTER TABLE `articolodelgiorno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT per la tabella `commentoarticolo`
@@ -334,13 +335,13 @@ ALTER TABLE `commentoarticolo`
 -- AUTO_INCREMENT per la tabella `commentodinosauro`
 --
 ALTER TABLE `commentodinosauro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `dinosaurodelgiorno`
 --
 ALTER TABLE `dinosaurodelgiorno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Limiti per le tabelle scaricate
@@ -350,46 +351,47 @@ ALTER TABLE `dinosaurodelgiorno`
 -- Limiti per la tabella `articolo`
 --
 ALTER TABLE `articolo`
-  ADD CONSTRAINT `pubblicazione` FOREIGN KEY (`idautore`) REFERENCES `utente` (`email`);
+  ADD CONSTRAINT `pubblicazione` FOREIGN KEY (`idautore`) REFERENCES `utente` (`email`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `articolodelgiorno`
 --
 ALTER TABLE `articolodelgiorno`
-  ADD CONSTRAINT `presenzaarticolodg` FOREIGN KEY (`idarticolo`) REFERENCES `articolo` (`id`);
+  ADD CONSTRAINT `presenzaarticolodg` FOREIGN KEY (`idarticolo`) REFERENCES `articolo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `commentoarticolo`
 --
 ALTER TABLE `commentoarticolo`
-  ADD CONSTRAINT `idcommentoarticolotente` FOREIGN KEY (`idutente`) REFERENCES `utente` (`email`),
-  ADD CONSTRAINT `idcommnentoarticolo` FOREIGN KEY (`idarticolo`) REFERENCES `articolo` (`id`);
+  ADD CONSTRAINT `idcommentoarticolotente` FOREIGN KEY (`idutente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idcommnentoarticolo` FOREIGN KEY (`idarticolo`) REFERENCES `articolo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `commentodinosauro`
 --
 ALTER TABLE `commentodinosauro`
-  ADD CONSTRAINT `idcommentodinosauro` FOREIGN KEY (`iddinosauro`) REFERENCES `dinosauro` (`nome`),
-  ADD CONSTRAINT `idcommentodinosaurotente` FOREIGN KEY (`idutente`) REFERENCES `utente` (`email`);
+  ADD CONSTRAINT `idcommentodinosauro` FOREIGN KEY (`iddinosauro`) REFERENCES `dinosauro` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `idcommentodinosaurotente` FOREIGN KEY (`idutente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `dinosauro`
 --
 ALTER TABLE `dinosauro`
-  ADD CONSTRAINT `pubblica` FOREIGN KEY (`idautore`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pubblica` FOREIGN KEY (`idautore`) REFERENCES `utente` (`email`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `dinosaurodelgiorno`
 --
 ALTER TABLE `dinosaurodelgiorno`
-  ADD CONSTRAINT `presenza` FOREIGN KEY (`nome`) REFERENCES `dinosauro` (`nome`);
+  ADD CONSTRAINT `presenza` FOREIGN KEY (`nome`) REFERENCES `dinosauro` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-/*TRIGGER che cancella tutti i commenti postati da utenti eliminati*/
+
+/*TRIGGER che cancella tutti i commenti postati da utenti eliminati
 DELIMITER $$
 DROP TRIGGER IF EXISTS cancellaCommenti;
 CREATE TRIGGER cancellaCommenti
