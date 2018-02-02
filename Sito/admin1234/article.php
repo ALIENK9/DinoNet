@@ -51,7 +51,7 @@ switch ($sezione) {
 		break;	
 	case 'delete':
 		if(isset($_GET["article"]))
-			echo Article::deleteArticle($connectArticle, $_GET["article"]);
+			echo Article::deleteArticle($connectArticle, $_GET["article"], "..");
 		break;
 	case 'comment':
 		if(isset($_GET["article"]))

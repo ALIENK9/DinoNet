@@ -244,7 +244,7 @@ class Article{
 			
             <header id="header-form" class="content card white wrap-padding">			
                 <div id="title-card" class="card">
-                    <h1> Aggiungi un dinosauro </h1>
+                    <h1> Aggiungi un articolo </h1>
                 </div>
             </header>
             
@@ -309,7 +309,7 @@ class Article{
                 $echoString = "
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
-						<h1>Elemento aggunto</h1>
+						<h1>Elemento aggiunto</h1>
 						
 				";
                 $destinazioneFileDB = NULL;
@@ -546,7 +546,7 @@ class Article{
                 $echoString = "
                     <div class='padding-6 content center'>
                         <div class='card wrap-padding'>
-                            <h1>Dinosauro non presente</h1>
+                            <h1>Articolo non presente</h1>
                             <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
                         </div>
                     </div>							

@@ -52,7 +52,7 @@ switch ($sezione ) {
 		break;	
 	case 'delete':
 		if(isset($_GET["nome"]))
-			echo Dinosaur::deleteDinosaur($connectDinosaur, $_GET["nome"]);
+			echo Dinosaur::deleteDinosaur($connectDinosaur, $_GET["nome"], "..");
 		break;	
 	case 'comment':
 		if(isset($_GET["nome"]))

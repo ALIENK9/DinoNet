@@ -182,7 +182,7 @@
             </p>
 
             <p>
-                <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg)</label>
+                <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
                 <input type="file" id="imgaccount" name="imgaccount" value="">
             </p>
 

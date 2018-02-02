@@ -95,7 +95,7 @@
 		<?php
 		if(isset($_SESSION['user'])){
 			echo '
-			<p action="addComment-article.php" method="POST">				
+			<form action="addComment-article.php" method="POST">				
 				<input type="hidden" name="idarticolo" value="'.$_GET["id"].'">
 				<p>
                     <h3><label for="casella-commento">Commenta</label></h3>
