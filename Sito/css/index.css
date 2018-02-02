@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0.4em;
 }
 
-p {margin: 10px 0;}
+p {margin: 0.6em 0;}
 
 h1 {
 	font-size: 2em;
@@ -1016,7 +1016,7 @@ a.disabled {
 }
 
 
-#mobile-menu-icon, #show-searchbar {
+#mobile-menu-icon, #toggle-searchbar {
   display: block;
   border-radius: 10px;
   text-decoration: none;
@@ -1027,13 +1027,28 @@ a.disabled {
 
 /*
 ======================================================================
-							FOOTER
+						FOOTER E CREDITI
 ======================================================================
 */
 
 footer h2 {
   font-family: 'Chelsea Market', cursive;
-  font-size: 2em !important;
+  font-size: 2em;
+}
+
+#credits ul {
+  list-style: circle;
+  padding: 1em 0;
+  margin-left: 1em;
+}
+
+#credits li {
+  list-style: circle;
+  padding: 0.5em 0;
+}
+
+#credits h2 {
+  margin: 1em 0 0.5em 0;
 }
 
 /*
@@ -1075,7 +1090,7 @@ footer h2 {
   display: none;
 }
 
-#show-searchbar {
+#toggle-searchbar {
   display: none;
 }
 
@@ -1196,11 +1211,10 @@ footer h2 {
 		padding-right:0;
 	}
 
-	#searchbar {width: 85%;}
+	#searchbar {width: 66%;}
 }
 
-@media only screen and (max-width: 812px) and (orientation: landscape) {     
-
+@media only screen and (max-width: 812px) and (orientation: landscape) {
 	.sidebar {
 		max-width: 100%;
 		width: 100%;

@@ -4,10 +4,10 @@
     <span class="hidden"> Torna su</span>
 </a>
 
-<?php if (strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 'admin') !== false)
-        echo '<script type="text/javascript" src="../js/buttons.js"></script>';
+<?php if (strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 'admin1234') !== false)
+        echo '<script type="text/javascript" src="../js/buttons.js"></script>'; //lato admin
     else
-        echo '<script type="text/javascript" src="js/buttons.js"></script>';
+        echo '<script type="text/javascript" src="js/buttons.js"></script>';    //lato pubblico
 ?>
 
 

@@ -2,7 +2,7 @@ function addJS() { //rende visibile il menù laterale, nasconde la barra di rice
     document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
     document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
     document.getElementById("searchbar").classList.add("hidden");
-    document.getElementById("show-searchbar").style.display="block";
+    document.getElementById("toggle-searchbar").style.display="block";
 }
 
 
