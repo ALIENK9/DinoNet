@@ -255,9 +255,14 @@ class User {
            if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
 
            if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
-           if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "Tutti i campi sono obbligatori";}
-
-           if(!isset($datanascita)){ $datanascita = "";}
+           if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "I campi email, nome, cognome e password sono obbligatori";}
+           if(!preg_match("/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i", $email)){$echoString .= "Formato email non valido <br>";}
+           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $nome)){$echoString .= "Formato nome non valido <br>";}
+           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $cognome)){$echoString .= "Formato cognome non valido <br>";}
+           $anno=0;
+           if(isset($datanascita) && !(false === strtotime($datanascita)))
+                list($anno, $mese, $giorno) = explode('-', $datanascita); 
+           if(!isset($datanascita) || $anno<1900){ $datanascita = "";}
 
            if($echoString == ""){
 
