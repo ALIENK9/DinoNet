@@ -196,6 +196,7 @@ class User {
                         ";
                 }
             }
+            
 
             $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
             if( $destinazioneFileDB != NULL){
@@ -262,7 +263,7 @@ class User {
                 $destinazioneFileDB = NULL;
                 if($immagine['error'] == 0){
                     $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
-                    if($destinazioneFileDB==NULL){
+                    if($destinazioneFileDB == NULL){
                         $echoString .= "Errore immagine ";
                     }
                 } 
