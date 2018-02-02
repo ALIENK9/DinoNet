@@ -366,8 +366,9 @@ a.btn {
 }
 
 .daily-wrapper img {
-  width: 100%;
+  width: 70%;
   margin: auto;
+  margin-top: 2em;
   margin-bottom: 2em;
 }
 
