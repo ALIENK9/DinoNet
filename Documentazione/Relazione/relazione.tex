@@ -6,6 +6,7 @@
 \usepackage{lastpage}
 \usepackage{url}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\hypersetup{colorlinks, linkcolor=black, urlcolor=blue}
 %\usepackage{geometry}
 %\usepackage{makeidx}
 %\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
@@ -83,10 +84,11 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\section{Descrizione dei requisiti e target}
+	\section{Descrizione dei requisiti e degli utenti target}
 	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
 	
-	\section{Organizzazione dell'informazione}
+	\newpage
+	\section{Organizzazione delle informazioni}
 	
 	\subsection{Introduzione}
 	
@@ -148,6 +150,7 @@
 		\item \textbf{Articoli:} qui l'amministratore può cercare e/o aggiungere un articolo, nonché visualizzare la lista completa degli stessi.
 	\end{itemize}
 	
+	\newpage
 	\section{Sviluppo}
 	
 	\subsection{Fogli di stile}
@@ -160,14 +163,14 @@
 	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, rendendo meno immediato comprendere lo scopo della pagina.\\
 	Le pagine interessate sono:
 	\begin{itemize}
-		\item login.php (lato pubblico e lato amministratore);
-		\item register.php;
-		\item il form per la modifica dei dati utente in classi/User.php; 
-		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in classi/UserAdmin.php, classi/Article.php, classi/Dinosaur.php;
+		\item \code{login.php} (lato pubblico e lato amministratore);
+		\item \code{register.php};
+		\item il form per la modifica dei dati utente in \code{classi/User.php}; 
+		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in \code{classi/UserAdmin.php}, \code{classi/Article.php}, \\\code{classi/Dinosaur.php};
 	\end{itemize}
 
 	\subsubsection{Validazione dei form}
-	Per controllare la correttezza dei dati inseriti nei campi dei form, abbiamo scritto apposite funzioni JavaScript, contenute nel file \textit{Sito/js/index.js}. Tali controlli sono effettuati anche lato server, nel caso il browser dell'utente non consenta l'esecuzione di script.
+	Per controllare la correttezza dei dati inseriti nei campi dei form, abbiamo scritto apposite funzioni JavaScript, contenute nel file \code{js/index.js}. Tali controlli sono effettuati anche lato server, nel caso il browser dell'utente non consenta l'esecuzione di script.
 	\paragraph{Javascript}
 	Ogni elemento di input contenuto nei form, con la relativa \code{label} si trova all'interno di un paragrafo. Questo permette, nel caso siano rilevati errori nei dati inseriti, di aggiungere un elemento figlio al paragrafo che contiene l'input compilato in modo non corretto.
 	Ogni errore viene quindi notificato come un elemento \code{<strong>} contenente il messaggio esplicativo dell'errore con font di colore rosso.\\
@@ -182,8 +185,23 @@
 	Gli elementi di tipo \code{textarea} sono invece tutti validati allo stesso modo, controllando che sia stato inserito un numero minimo di caratteri.
 	
 	\paragraph{Server PHP}
+	Validazione lato server PHP.
+	
+	\subsection{Separazione fra parte privata e parte pubblica}
+	Concettualmente tutti i file relativi alla parte di amministrazione sono contenuti all'interno della cartella \textit{admin1234/}, mentre i file relativi alla parte pubblica sono nella cartella principale \textit{Sito/}. 
+	Tuttavia alcuni file sono necessari per entrambi le parti, ed in questo caso vi erano due alternative, ovvero duplicare i file ma mantenere la massima indipendenza fra le parti, oppure tenere un unico file che si adatta a seconda del percorso da cui è incluso (ad esempio con un \code{<?php if ... ?>}). Abbiamo scelto di utilizzare l'una oppure l'altra strategia a seconda di quanto riteniamo probabile che una particolare funzionalità possa differire a seconda che sia utilizzata dall'\textit{amministratore}, oppure da un \textit{utente standard}. 
+	\begin{itemize}
+		\item \textbf{Menù di navigazione}: considerando che il menù di amministrazione è completamente diverso da quello utilizzabile da un visitatore del sito abbiamo scelto di separarli. Questa è una soluzione semplice che ha il vantaggio di semplificare entrambi i file \code{menu.php} e \code{menuadmin.php}, invece di avere un unico file gestito con statement condizionali a cascata. Inoltre vi è rischio minore che estensioni ai menù portino ad avere un singolo file molto lungo e più difficilmente mantenibile;
+		\item \textbf{Ricerca e visualizzazione dei risultati}: anche in questo caso riteniamo possibile che vengano implementate funzionalità non utili ad entrambe le parti. Ad esempio sicuramente l'amministratore ha bisogno di funzionalità di ricerca diverse da quelle di un utente visitatore. Per questo abbiamo preferito mantenere distinti i due file \code{topbar.php} e \code{topbaradmin.php}. Le stesse considerazioni valgono per le pagine che visualizzano i risultati di una ricerca, nello specifico \code{search.php} e \code{searchadmin.php};
+		\item \textbf{Pagina di accesso}: la pagina di accesso al pannello di amministrazione è volutamente non raggiungibile dal sito pubblico. Questa scelta è stata fatta per ragioni di sicurezza e rende necessario navigare all'indirizzo preciso per visualizzarla.
+	\end{itemize}
+	
+	\subsection{Menu senza JavaScript}
+	Durante la navigazione da dispositivi con schermi di larghezza minore di 1024 pixel il menù laterale scompare e diventa visualizzabile solo premendo l'apposito pulsante sul lato destro delle pagine. Questa è una soluzione che richiede la possibilità di esecuzione di codice JavaScript.\\Per rendere possibile la navigazione anche a browser che non supportano JavaScript abbiamo inserito un secondo menù all'interno di un blocco \code{<noscript>} che è un duplicato della versione normale, con la differenza che questo non indica la scheda attiva, non si espande mostrando la sottosezione corrente e mostra anche un messaggio che segnala l'impossibilità di eseguire JavaScript. Per far in modo che questo secondo menù non sia mostrato dai browser testuali utilizzati con gli screen reader, viene aggiunto un \code{display: none} con un apposito script che si trova sotto il menù.\\
+	Anche in questo caso abbiamo scelto di utilizzare due file separati per il menù dell'amministratore (\code{nojsmenuadmin.php}) e per quello standard (\code{nojsmenu.php}). 	
 	
 	
+	\newpage
 	\section{Usabilità}
 	
 	\subsection{Introduzione}
@@ -192,7 +210,7 @@
 	
 	\subsection{Grafica e layout}
 	
-	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione e nell'intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
+	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione e nell'intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024 pixel, che è la tipica dimensione di uno schermo di un tablet.
 	La presenza di molte immagini e il layout grafico "a piastrelle" designato ha inoltre imposto l'utilizzo dello \textit{scroll}, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, dato che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, questa scelta riduce anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
 	
@@ -201,21 +219,10 @@
 	Il foglio di stile \textit{print.css} definisce un layout adatto per la stampa. Tutte le immagini decorative sono rimosse, il font viene inoltre impostato su \textit{Times} e quello colorato ritorna di colore nero.\\
 	Il contenuto del giorno e la sezione \textit{Ultime aggiunte} non vengono mostrati nel layout di stampa, questo perché si suppone che l'utente sia interessato alla stampa del solo contenuto principale della pagina, quindi il testo degli articoli o delle schede. Tuttavia, nel caso in cui si voglia stampare la pagina \textit{Home} oppure la pagina principale delle sezioni \textit{Articoli} o \textit{Specie}, che sono delle raccolte di contenuti che introducono le relative sezioni, allora i contenuti suggeriti saranno stampati, uno sotto l'altro.
 
-		
+	\newpage
 	\section{Accessibilità}
 	\subsection{Introduzione}
 	Nella progettazione e nello sviluppo del sito è stata posta molta attenzione sull'accessibilità dei contenuti. Oltre a uno sviluppo auspicabilmente coerente con le norme WCAG (supportato dai test di accessibilità documentati nel relativo capitolo di questo documento), si sono applicati gli accorgimenti di seguito descritti.
-	
-	\subsection{Accorgimenti}
-	I potenziali problemi di accessibilità e relative soluzioni proposte sono di seguito listati:
-	\begin{itemize}
-		\item \textbf{JavaScript}: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
-		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. JavaScript non è utilizzato per alterare pesantemente la struttura della pagina, se non nel caso della validazione dei form, in cui aggiunge opportuni messaggi d'errore. La disabilitazione di JS non pregiudica comunque l'utilizzo del sito.
-		\item \textbf{Link}: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
-		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \code{title}, che viene letto dagli screen reader più recenti, come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}.
-		\item \textbf{Link nascosti}: nel menù sono presenti dei link nascosti che permettono di saltare al contenuto nella pagina. Questi link sono stati inseriti anche nell'indice dei contenuti nella pagina \textit{Storia}, e prima dell'elenco di commenti agli articoli. Hanno lo scopo di velocizzare la navigazione del sito agli utenti non vedenti, nel caso la lettura di certe sezioni non gli interessi;
-		\item \textbf{Breadcrumb}: in ciascuna pagina è inserita una barra che ricorda all'utente in che pagina si trova, da dove viene, e permette anche di tornare rapidamente alle pagine precedenti;
-	\end{itemize}
 	
 	\section{Compatibilità e dipendenze}
 	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni.
@@ -224,9 +231,10 @@
 		\item \code{<header>}: questo tag è utilizzato in tutte le pagine per inserire il titolo e presentare velocemente il sito. Risulta ben supportato dai principali browser\footnote{\url{https://www.w3schools.com/tags/tag_header.asp}}.
 		\item \code{<footer>}: utilizzato in ogni pagina per dichiarare gli autori del sito e la sua natura di progetto didattico. Come nel caso precedente è ampiamente supportato;
 		\item \code{<nav>}: utilizzato nel menù per raggrupparne i link di navigazione. Come nel caso precedente è ampiamente supportato;
-		\item \code{input type="..."}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"};
-		\item \code{<figure>}: questo elemento permette di segnalare un'immagine in un documento. È particolarmente utile per la possibilità di inserire al suo interno una immagine con la relativa didascalia, attraverso il tag \code{<figcaption>}. Qualunque browser attuale lo supporta, ed il vantaggio per l'accessibilità, considerando uno screen reader aggiornato e adeguato allo standard, è evidente. Questi tag risultano supportati dai principali browser\footnote{\url{https://caniuse.com/\#search=figcaption}}, in particolare da IE 9+;
-		\item \code{aria-label}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una label, ma è nascosta all'utente che utilizza un broswer stanrard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una label equivalente, talvolta nascosta dal foglio di stile.
+		\item \code{input type="..."}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"}, mentre nei form di registrazione è presente il valore \code{type="email"}. I browser che non riconoscono questi valori li considerano come dei semplici \code{type="text"};
+		\item \code{<figure>}: questo elemento permette di segnalare un'immagine in un documento. È particolarmente utile per la possibilità di inserire al suo interno una immagine con la relativa didascalia, attraverso il tag \code{<figcaption>}. Il vantaggio per l'accessibilità, considerando uno screen reader aggiornato e adeguato allo standard, è evidente. Questi tag risultano supportati dai principali browser\footnote{\url{https://caniuse.com/\#search=figcaption}}, in particolare da IE 9+;
+		\item \code{attributi ARIA}: abbiamo fatto uso di alcuni attributi della specifica WAI-ARIA 1.0 per migliorare l'accessibilità tramite browser compatibili\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}};
+		\item \code{<cite>}: questo elemento è presente anche fra i tag di HTML 4.01 ma in HTML5 ha un significato diverso: mentre prima indicava una \textit{citazione}, ora indica un titolo di un'opera, come un libro, un dipinto, una scultura ecc. È utilizzato solamente nella pagina \textit{Crediti} per citare certi libri dai quali abbiamo tratto alcuni contenuti.
 	\end{itemize}
 	
 	\subsection{Browser supportati}
@@ -245,8 +253,22 @@
 	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite per un utente della parte pubblica del sito, sarebbe l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.\\ 
 	Nella sezione dedicata all'amministratore talvolta è utile, dopo una richiesta dell'amministratore, chiedere di confermare l'azione, in modo da prevenire errori dovuti a click accidentali (ad esempio se ha chiesto di eliminare un account o un articolo). Per fare questo utilizziamo degli \textit{alert box}, richiamati con la funzione \code{alert("Messaggio")} di JavaScript. Nel caso l'esecuzione di script sia disabilitata, semplicemente non verrà chiesta tale conferma.
 	
+	\subsection{Accorgimenti adottati}
+	Listiamo di seguito le strategie utilizzate per garantire una buona accessibilità del sito.
+	\begin{itemize}
+		\item \textbf{JavaScript}: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
+		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. JavaScript non è utilizzato per alterare pesantemente la struttura della pagina, se non nel caso della validazione dei form, in cui aggiunge opportuni messaggi d'errore. La disabilitazione di JS non pregiudica comunque l'utilizzo del sito;
+		\item \textbf{Link}: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
+		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \code{title}, che viene letto dagli screen reader più recenti\footnote{Come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}};
+		\item \textbf{Link nascosti}: nel menù sono presenti dei link nascosti che permettono di saltare al contenuto nella pagina. Questi link sono stati inseriti anche nell'indice dei contenuti nella pagina \textit{Storia}, e prima dell'elenco di commenti agli articoli. Hanno lo scopo di velocizzare la navigazione del sito agli utenti non vedenti, nel caso la lettura di certe sezioni non gli interessi;
+		\item \textbf{Breadcrumb}: in ciascuna pagina è inserita una barra che ricorda all'utente in che pagina si trova, da dove viene, e permette anche di tornare rapidamente alle pagine precedenti;
+		\item \textbf{\code{aria-hidden}}: la barra di ricerca può essere mostrata oppure nascosta per mezzo di un pulsante posizionato in alto a destra di ogni pagina del sito. Questo pulsante è però privo di utilità dal punto di vista di un browser testuale, che non considerando il foglio di stile, non vedrebbe alcun cambiamento. La stessa considerazione vale per il pulsante utile ad aprire il menù laterale su dispositivi mobili. In realtà in questo caso se il browser utilizzato in congiunzione con lo screen reader supporta ed esegue JavaScript sarebbe possibile aprire e chiudere il menù normalmente. Tuttavia questa funzione è inutile per un utente non vedente, visto che è una scelta che migliora l'esperienza visuale con il sito. Pertanto su questi pulsanti abbiamo inserito \code{aria-hidden="true"}, che nei browser che lo supportano\footnote{Le specifiche ARIA sono relativamente recenti, ed il supporto sta crescendo, ma è ancora parziale in quasi tutti i browser. Non siamo riusciti a reperire informazioni specifiche sul supporto all'attributo \code{aria-hidden}, tuttavia come è chiaro dall'articolo al seguente link: \url{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Web_applications_and_ARIA_FAQ}, il supporto dipende non solo dal browser, ma anche dallo screen reader.}, permette di non presentare il contenuto agli utenti che usano \textit{assistive tecnologies}. Nel caso questo attributo non sia supportato allora il sito resterà utilizzabile, ma questi pulsanti saranno visibili, pur non avendo un utilità. Non è infatti possibile sapere se si sta navigando con il supporto di un screen reader oppure da un browser normale;
+		\item \textbf{\code{aria-label}}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una \code{label}, ma è nascosta all'utente che utilizza un browser standard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una \code{label} equivalente, talvolta nascosta dal foglio di stile;
+		\item .
+		
+	\end{itemize}
 	
-	
+	\newpage
 	\section{Test}
 	
 	\subsection{Accessibilità}
@@ -335,7 +357,7 @@
 	Premettendo che ogni componente del gruppo ha supervisionato e contribuito in qualche modo ad ogni parte dello sviluppo del sito, il lavoro è stato distribuito nel seguente modo:
 	
 	\begin{itemize}
-		\item \textbf{Alessandro Zangari}: Progettazione e sviluppo della parte pubblica, con particolare attenzione all'accessibilità ed usabilità. Creazione del CSS per la stampa e gestione della responsiveness. Scrittura delle funzioni JavaScript per la validazione dei form e scrittura dei trigger impiegati nel database;
+		\item \textbf{Alessandro Zangari}: Progettazione e sviluppo della parte pubblica, con particolare attenzione all'accessibilità ed usabilità. Creazione del CSS per la stampa e gestione della responsiveness. Scrittura delle funzioni JavaScript per la validazione dei form e scrittura dei vincoli referenziali nel database;
 		\item \textbf{Cristiano Tessarolo}: Progettazione e sviluppo della parte privata, in particolare della logica. Progettazione e sviluppo del database;
 		\item \textbf{Matteo Rizzo}: Progettazione e sviluppo della parte pubblica, in particolare del layout e della grafica (anche della parte privata). Predisposizione del CSS principale del sito e responsabile del testing per validazione del codice e dell'accessibilità.
 	\end{itemize}

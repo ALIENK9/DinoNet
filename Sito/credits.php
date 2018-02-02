@@ -81,18 +81,37 @@
 
 <!-- About -->
 
-<div id="about" class="content padding-6">
-        <p>
-            Questo sito è un stato realizzato per un progetto del corso di Tecnologie
-            <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova,
-            durante l'anno accademico 2017-2018.
-            I testi descrittivi di ciascun dinosauro sono stati presi prevalentemente dai libri
-            <em>Dinosauri la vita nella preistoria</em> di <span xml:lang="en" lang="en">Hazel Richardson</span>,
-            e <em>Il pianeta dei Dinosauri</em> curato da Piero e Alberto Angela. Alcuni aggiustamenti sono stati
-            fatti con informazioni prese da <a href="http://it.wikipedia.org/wiki/" target="_blank">Wikipedia</a>.
-            Le icone utilizzate sono state prelevate dai siti <a href="https://icons8.it/" target="_blank">Icons8</a>,
-            <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>.
-        </p>
+<div id="credits" class="content padding-6">
+    <h2>Elenco delle fonti</h2>
+    <p>
+        Questo sito è un stato realizzato per un progetto del corso di Tecnologie
+        <span xml:lang="en" lang="en">Web</span> del Corso di Laurea in Informatica dell'Università di Padova,
+        durante l'anno accademico 2017-2018.
+        I testi descrittivi di ciascun dinosauro sono stati presi prevalentemente dalle seguenti fonti:
+    </p>
+    <ul>
+        <li><cite>Dinosauri la vita nella preistoria</cite> di <span xml:lang="en" lang="en">Hazel Richardson</span></li>
+        <li><cite>Il pianeta dei Dinosauri</cite> curato da Piero e Alberto Angela</li>
+        <li><a href="http://www.dinosauro.eu/" target="_blank"> www.dinosauro.eu </a></li>
+    </ul>
+    <p>
+        Alcuni aggiustamenti sono stati fatti con informazioni prese da <a href="http://it.wikipedia.org/wiki/" target="_blank">Wikipedia</a>.
+    </p>
+
+
+    <h2>Ringraziamenti per le immagini utilizzate</h2>
+    <p>
+        Nel sito viene fatto largo uso di immagini ed icone. Di seguito indichiamo dove abbiamo trovato alcune di esse.
+    </p>
+    <ul>
+        <li>Le icone a forma di dinosauro nel menù sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+        <li>Le icone per le pagine di modifica dei dati utente sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+        <li>Tutte le altre icone nel menù e dei pulsanti sono prese da <a href="https://icons8.it/" target="_blank">Icons8</a></li>
+        <li>L'immagine dell'header è disponibile dul sito <a href="https://www.freepik.com/" target="_blank">freepik.com</a></li>
+        <li>L'immagine di sfondo utilizzata nelle pagine con i form è creata da Kerem Beyit e disponibile sul sito <a href="https://wall.alphacoders.com/big.php?i=150198" target="_blank">alphacoders.com</a></li>
+        <li>L'immagine visibile durante il caricamento è disponibile su <a href="https://pixabay.com/it/dinosauro-dino-la-silhouette-2833643/" target="_blank">pixabay.com</a></li>
+        <li>Le favicons sono state generate utilizzando lo strumento <a href="https://www.favicon-generator.org/" target="_blank">favicon-generator</a></li>
+    </ul>
 </div>
 
 <!-- /About -->

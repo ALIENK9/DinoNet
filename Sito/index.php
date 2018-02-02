@@ -59,12 +59,15 @@
 
 <!-- Header -->
 
-<header id="header-home" class="parallax padding-6 header-image" >
-	<div id="title-card" class="content card">
-		<h1 class="title wide text-colored"> DINO NET </h1>
-		<h2> Scopri i giganti della preistoria! </h2>
-
-        <a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
+<header id="header-home" class="parallax padding-6 header-image">
+	<div class="content">
+		<div class="wrap-padding colored card">
+			<h1 class="title"> DINO NET </h1>
+			<h2> Scopri i giganti della preistoria! </h2>
+		</div>
+		<div class="wrap-padding white card">
+			<a href="#daily-stuff" class="btn card wrap-margin"> Contenuti del giorno </a>
+		</div>
 	</div>
 
 	<a href="#about" aria-label="Scorri alle informazioni sul sito" class="down-arrow arrow btn card bounce">

@@ -9,9 +9,12 @@
         <p>Matteo Rizzo</p>
         <p>Cristiano Tessarolo</p>
         <p>Alessandro Zangari</p>
-		
 		<p>
-            <a href="credits.php" title="Crediti">Crediti</a>
+            <?php if (strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 'admin1234') !== false)
+                echo '<a href="../credits.php" title="Crediti">Crediti</a>'; //lato admin
+            else
+                echo '<a href="credits.php" title="Crediti">Crediti</a>';   //lato pubblico
+            ?>
         </p>
 	</div>
 </footer>

@@ -799,7 +799,7 @@ class Dinosaur {
     public static function getCommentToDelete($connect, $idDino, $url){
         $echoString ='
         <div id="commentboard" class="content panel">
-            <div class="card wrap-padding">            
+            <div class="wrap-padding card">            
                 <div class="padding-large colored">
                     <h1>Commenti</h1>
                 </div>';

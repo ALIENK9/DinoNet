@@ -11,8 +11,8 @@
         </div>
     </form>
 
-    <a id="mobile-menu-icon" href="#nojs-avviso" class="hide-large bar-item btn card right" onclick="">&#9776;</a>
-    <a id="show-searchbar" title="Mostra o nascondi la barra di ricerca" href="javascript:void(0)" class="btn card right" onclick="toggle_searchbar()">&#x1F50D;</a>
+    <a id="mobile-menu-icon" aria-hidden="true" href="#nojs-avviso" class="hide-large bar-item btn card right" onclick="">&#9776;</a>
+    <a id="toggle-searchbar" aria-hidden="true" title="Mostra o nascondi la barra di ricerca" href="javascript:void(0)" class="btn card right" onclick="toggle_searchbar()">&#x1F50D;</a>
 </div>
 
 
