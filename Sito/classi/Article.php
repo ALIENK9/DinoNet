@@ -631,7 +631,7 @@ class Article{
     public static function getCommentToDelete($connect, $idArticle, $url){
         $echoString ='
         <div id="commentboard" class="content panel">
-            <div class="wrap-margin card">            
+            <div class="wrap-padding card">          
                 <div class="padding-large colored">
                     <h1>Commenti</h1>
                 </div>';

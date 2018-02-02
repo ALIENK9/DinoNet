@@ -53,7 +53,7 @@
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <a href="panel.php?id=user&sez=formupdate'.$_GET["user"].'" class="menu-entry-small active disabled">
+            <a href="panel.php?id=user&sez=formupdate&user='.$_GET["user"].'" class="menu-entry-small active disabled">
                 <hr>
                 <p>Modifica utente</p>
             </a>
@@ -75,14 +75,14 @@
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <a href="panel.php?id=dino&sez=formupdate'.$_GET["nome"].'" class="menu-entry-small active disabled">
+            <a href="panel.php?id=dino&sez=formupdate&nome='.$_GET["nome"].'" class="menu-entry-small active disabled">
                 <hr>
                 <p>Modifica dinosauro</p>
             </a>
             ';
         else if($_GET["sez"] == "comment")
             echo'    
-            <a href="panel.php?id=dino&sez=comment'.$_GET["nome"].'" class="menu-entry-small active disabled">
+            <a href="panel.php?id=dino&sez=comment&nome='.$_GET["nome"].'" class="menu-entry-small active disabled">
                 <hr>
                 <p>Gestione commenti</p>
             </a>
@@ -104,14 +104,14 @@
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <a href="panel.php?id=article&sez=formupdate'.$_GET["article"].'" class="menu-entry-small active disabled">
+            <a href="panel.php?id=article&sez=formupdate&article='.$_GET["article"].'" class="menu-entry-small active disabled">
                 <hr>
                 <p>Modifica articolo</p>
             </a>
             ';
         else if($_GET["sez"] == "comment")
             echo'    
-            <a href="panel.php?id=article&sez=comment'.$_GET["article "].'" class="menu-entry-small active disabled">
+            <a href="panel.php?id=article&sez=comment&article='.$_GET["article "].'" class="menu-entry-small active disabled">
                 <hr>
                 <p>Gestione commenti</p>
             </a>
