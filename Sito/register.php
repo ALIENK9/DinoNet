@@ -156,22 +156,22 @@
         <form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
             <p>
                 <label for="email">Email</label>
-                <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="" required>
+                <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["submit"])) echo $_POST["email"]  ?>" required>
             </p>
 
             <p>
                 <label for="nome">Nome</label>
-                <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="" required>
+                <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["nome"]  ?>" required>
             </p>
 
             <p>
                 <label for="cognome">Cognome</label>
-                <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
+                <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["cognome"]  ?>" required>
             </p>
 
             <p>
                 <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
-                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="<?php if(isset($_POST["submit"])) echo $_POST["datanascita"]  ?>">
             </p>
 
             <p>
@@ -186,7 +186,7 @@
 
             <p>
                 <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
-                <input type="file" id="imgaccount" name="imgaccount" value="">
+                <input type="file" id="imgaccount" name="imgaccount" value="<?php if(isset($_POST["submit"])) echo $_FILES["imgaccount"]  ?>">
             </p>
 
             <input type="hidden" name="submit" value="1">
