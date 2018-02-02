@@ -278,8 +278,10 @@ a.btn {
 }
 
 .title {
+  margin: auto;
   font-family: 'Chelsea Market', cursive;
-  font-size: 5em !important;
+  font-size: 4em !important;
+  letter-spacing: .2em;
 }
 
 #title-card {
