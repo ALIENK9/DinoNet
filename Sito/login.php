@@ -9,13 +9,17 @@
 		session_unset();
 	}
 
+    $error_login = 0;
 	$connectLogin = startConnect();
 	if(isset($_POST['email']) && isset($_POST["password"])){
 		session_unset();
 		if(User::login($connectLogin, $_POST["email"],$_POST["password"],'0')){
 			$_SESSION['user'] = new User($connectLogin, $_POST['email']);
 			header("Location: view-account.php");
-		}	
+        }	
+        else{
+            $error_login = 1;
+        }
 	}
 	
 	closeConnect($connectLogin);
@@ -79,7 +83,16 @@
 
     <div id="content-form" class="content card">
         <?php include_once('breadcrumb.php') ?>
+        
+        
         <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+            <?php
+            if( $error_login == 1){
+                echo "
+                    <h1>Nome utente o password errati</h1>                     
+                ";
+            }
+            ?>
             <p>
                 <label for="input-email" xml:lang="en" lang="en">Email</label>
                 <input id="input-email" type="text" placeholder="email" required name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">

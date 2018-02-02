@@ -249,7 +249,7 @@ class User {
            $echoString ="";
            
            $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
-           $result = $connect->query($sqlQuery);
+           $result = $connect->query($sqlQuery); 
            if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
 
            if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
@@ -276,24 +276,10 @@ class User {
                 $sqlQuery .=") ";
 
                 if($connect->query($sqlQuery)){
-                   $echoString .= "							
-						<div class='padding-6 content center'>
-							<div class='card wrap-padding'>
-								<h1>Utente registrato!</h1>
-								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Torna indietro </a>
-							</div>
-						</div>
-				   ";
+                    $echoString .= "Utente registrato";
                } 
                else {
-                   $echoString .= "							
-						<div class='padding-6 content center'>
-							<div class='card wrap-padding'>
-								<h1>Utente NON registrato!</h1>
-								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-							</div>
-						</div>
-				   ";
+                   $echoString .= "Utente non registrato";
 
                     if( $destinazioneFileDB != NULL){                           
                         delImage($basePathImg.$destinazioneFileDB); 
