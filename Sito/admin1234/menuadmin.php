@@ -38,7 +38,7 @@
 		<span class="menu-icon icon-account"></span>
 		<p>I tuoi dati</p>
 	</a>
-	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active".(!$_GET["sez"] ? "disabled" : "")?>">
+	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
 		<span class="menu-icon icon-accounts"></span>
 		<p>Utenti</p>
 	</a>
