@@ -4,7 +4,12 @@
     <span class="hidden"> Torna su</span>
 </a>
 
-<script type="text/javascript" src="js/buttons.js"></script>
+<?php if (strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 'admin') !== false)
+        echo '<script type="text/javascript" src="../js/buttons.js"></script>';
+    else
+        echo '<script type="text/javascript" src="js/buttons.js"></script>';
+?>
+
 
 <script type="text/javascript">
     document.getElementById("toTheTop").style.display = "none"; //all'inizio non si vede

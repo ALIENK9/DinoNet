@@ -154,6 +154,13 @@ function validateAlpha(inputs, i) {
 
 
 
+
+/**
+ * Ritorna 'true' se l'input contiene solo numeri senza segno
+ * @param inputs
+ * @param i
+ * @returns {boolean}
+ */
 function validateUnsigned(inputs, i) {
     var nomeInput = inputs[i];
     var numero = nomeInput.value;
@@ -248,7 +255,7 @@ function validateEmail(inputs, i) {
  */
 function validatePeriodomin(inputs, i) {
     var min = inputs[i];
-    var pattern = /'^[0-9]+$'/;
+    var pattern = /^[0-9]*$/;
     if (!pattern.test(min.value)) {
         showError(min, 'Questo formato non è valido');
         return false;
@@ -272,7 +279,7 @@ function validatePeriodomin(inputs, i) {
  */
 function validatePeriodomax(inputs, i) {
     var max = inputs[i];
-    var pattern = /'^[0-9]+$'/;
+    var pattern = /^[0-9]*$/;
     if (!pattern.test(max.value)) {
         showError(max, 'Questo formato non è valido');
         return false;
