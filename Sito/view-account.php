@@ -86,7 +86,7 @@
 			<h1>Dati account</h1>			
 			<?php		
 			if($_SESSION['user']->getUrlImmagine()!=NULL && $_SESSION['user']->getUrlImmagine()!=""){
-				echo ' <img class="profile-pic" src="'.$_SESSION['user']->getUrlImmagine().'" alt="Immagine utente"/>';
+				echo ' <img class="profile-pic" src=".'.$_SESSION['user']->getUrlImmagine().'" alt="Immagine utente"/>';
 			}
 			?>
 			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
