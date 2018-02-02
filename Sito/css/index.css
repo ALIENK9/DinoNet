@@ -366,7 +366,7 @@ a.btn {
 }
 
 .daily-wrapper img {
-  width: 70%;
+  width: 55%;
   margin: auto;
   margin-top: 2em;
   margin-bottom: 2em;
@@ -948,7 +948,7 @@ a.disabled {
 
 #dino-immagine {
   display: inline-block;
-  width: 65%;
+  width: 45%;
 }
 
 #caratteristiche {
