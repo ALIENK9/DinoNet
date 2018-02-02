@@ -29,9 +29,9 @@ switch ($sezione ) {
 				</div>
 			</header>
 
-        <?php include_once('../breadcrumb.php') ?>
-
 		<?php
+		include_once (__DIR__."/../breadcrumb.php");
+		echo breadcrumbAdmin();
 		echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&", $_SERVER["PHP_SELF"]."?id=dino&sez=comment&");
 		break;
 	case 'formadd':
@@ -57,6 +57,8 @@ switch ($sezione ) {
 	case 'comment':
 		if(isset($_GET["nome"]))
 			echo Dinosaur::getCommentToDelete($connectDinosaur, $_GET["nome"], $_SERVER["PHP_SELF"]."?id=dino&sez=deletecomment&");
+			include_once (__DIR__."/../breadcrumb.php");
+			echo breadcrumbAdmin();
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))

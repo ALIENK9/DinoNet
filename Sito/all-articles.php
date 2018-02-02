@@ -73,7 +73,9 @@
 
 	<!-- Breadcrumb -->
 
-	<?php include_once('breadcrumb.php') ?>
+    <?php include_once('breadcrumb.php');
+            echo breadcrumbUser();
+    ?>
 
 	<!-- /Breadcrumb -->
 

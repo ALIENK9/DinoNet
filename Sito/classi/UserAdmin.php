@@ -146,7 +146,10 @@ class UserAdmin extends User {
                 </div>
             </header>
             
-            <div id="content-form" class="content">
+            <div id="content-form" class="content">';            
+            include_once (__DIR__."/../breadcrumb.php");
+            $echoString .= breadcrumbAdmin();
+            $echoString .='
                 <?php include_once(\'../breadcrumb.php\') ?>
                 <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>
@@ -298,8 +301,10 @@ class UserAdmin extends User {
                     </div>
                 </header>
                 
-                <div id="content-form" class="content">
-                    <?php include_once(\'../breadcrumb.php\') ?>
+                <div id="content-form" class="content">';            
+                include_once (__DIR__."/../breadcrumb.php");
+                $echoString .= breadcrumbAdmin();
+                $echoString .='
                     <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                         <p>
                             <label for="tipologia">Tipologia utente</label>

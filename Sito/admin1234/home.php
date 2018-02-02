@@ -11,7 +11,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
         <h1 class="wide text-colored"> Benvenuto </h1>
         <h2 class="text-colored"> <?php echo $_SESSION['paneluser']->getNome() . ' ' . $_SESSION['paneluser']->getCognome(); ?> </h2>
     </div>
-    <div class="content card colored wrap-padding center">
+	<div class="content card colored wrap-padding center">
 		<p>
 			Tramite questo pannello puoi gestire i contenuti e gli utenti per DINO NET! <br>
 			Utilizza il menù per accedere ai pannelli di modifica, oppure:
@@ -20,4 +20,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 	</div>
 </header>
 
-<?php include_once('../breadcrumb.php') ?>
+<?php 
+	include_once (__DIR__."/../breadcrumb.php");
+	echo breadcrumbAdmin();
+ ?>

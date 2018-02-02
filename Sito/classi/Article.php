@@ -248,8 +248,10 @@ class Article{
                 </div>
             </header>
             
-            <div id="content-form" class="content">
-                <?php include_once(\'../breadcrumb.php\') ?>
+            <div id="content-form" class="content">';            
+            include_once (__DIR__."/../breadcrumb.php");
+            $echoString .= breadcrumbAdmin();
+            $echoString .='
                 <form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                     <p>
                         <label for="titolo">Titolo</label>
@@ -370,8 +372,11 @@ class Article{
                         <h1> Modifica l\'articolo </h1>
                     </div>
                 </header>
-                
                 <div id="content-form" class="content">
+                    ';            
+                    include_once (__DIR__."/../breadcrumb.php");
+                    $echoString .= breadcrumbAdmin();
+                    $echoString .='
                     <form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                         <p>
                             <label for="article">Identificativo articolo</label>

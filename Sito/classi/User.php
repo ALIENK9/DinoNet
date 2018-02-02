@@ -103,8 +103,10 @@ class User {
                 </div>
             </header>
                 
-            <div id="content-form" class="content"> <!-id="edit"-->
-                <?php include_once(\'../breadcrumb.php\') ?>
+            <div id="content-form" class="content"> <!-id="edit"-->';            
+            include_once (__DIR__."/../breadcrumb.php");
+            $echoString .= breadcrumbAdmin();
+            $echoString .='
                 <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>
                         <label for="email">Email</label>

@@ -17,6 +17,8 @@ if(isset($_GET["sez"]) && $_GET["sez"]!="")
 else
 	$sezione = "list";
 
+
+
 switch ($sezione) {
 	case 'list':
 		?>
@@ -30,6 +32,9 @@ switch ($sezione) {
 		</header>
 
 		<?php
+		include_once (__DIR__."/../breadcrumb.php");
+		echo breadcrumbAdmin();
+		
 		echo $_SESSION['paneluser']->printListUser($connectUser, "", "..", $_SERVER["PHP_SELF"]."?id=user&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=user&sez=delete&");
 		break;
 	case 'formadd':			

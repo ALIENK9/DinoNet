@@ -288,8 +288,10 @@ class Dinosaur {
                         <h1> Aggiungi un dinosauro </h1>
                     </div>
             </header>
-            <div id="content-form" class="content">
-                '."<?php include_once('../breadcrumb.php'); ?>".'
+            <div id="content-form" class="content">';            
+            include_once (__DIR__."/../breadcrumb.php");
+            $echoString .= breadcrumbAdmin();
+            $echoString .='
                 <form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                     <p>
                         <label for="nome">Nome</label>
@@ -484,8 +486,10 @@ class Dinosaur {
                     </div>
                 </header>
                 
-                <div id="content-form" class="content">
-                    <?php include_once(\'../breadcrumb.php\') ?>
+                <div id="content-form" class="content">';            
+                include_once (__DIR__."/../breadcrumb.php");
+                $echoString .= breadcrumbAdmin();
+                $echoString .='
                     <form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                         <p>
                             <label for="nome">Nome</label>
@@ -818,7 +822,13 @@ class Dinosaur {
             }      
         }
         else{
-            $echoString .= "Non sono presenti commenti";
+            $echoString .= "
+				<div class='padding-6 content center'>
+					<div class='card wrap-padding'>
+						<h1>Non sono presenti commenti</h1>
+					</div>
+				</div>
+			";
         }
               
         $echoString .= '
