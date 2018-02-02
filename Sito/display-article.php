@@ -92,7 +92,7 @@
 	<div class="card wrap-padding">
 		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
 		
-		<?php echo Article::getComment($connectArticle,$_GET["id"]) ?>
+		<?php echo Article::getComment($connectArticle,$_GET["id"], ".") ?>
 	</div>
 	<div class="card center wrap-padding colored">			
 		<?php

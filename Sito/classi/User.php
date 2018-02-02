@@ -149,7 +149,6 @@ class User {
                     </p>
                     
                     <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="wrap-margin card btn text-colored wide white">
-                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
             

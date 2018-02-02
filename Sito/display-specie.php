@@ -91,7 +91,7 @@
 	<div class="card wrap-padding">
 		<a class="hidden" href="#casella-commento">Salta a inserisci un commento</a>
 		
-		<?php echo Dinosaur::getComment($connectSpecies,$_GET["nome"]) ?>
+		<?php echo Dinosaur::getComment($connectSpecies,$_GET["nome"], ".") ?>
 	</div>
 	<div class="card center wrap-padding colored">			
 		<?php

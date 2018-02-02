@@ -285,7 +285,6 @@ class Article{
                                         
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
                     
-                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
             
@@ -419,7 +418,6 @@ class Article{
                         </p>
                         
                         <input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
-                        <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                     </form>
                 </div>
                 
@@ -609,17 +607,22 @@ class Article{
         return $echoString;
     }
       
-    public static function getComment($connect, $idArticle){
+    public static function getComment($connect, $idArticle, $basePathImg){
         $echoString ="";
         
-        $sqlQuery = "SELECT nome, cognome, commento FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
+        $sqlQuery = "SELECT nome, cognome, commento, immagine FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $echoString .= '
                     <div class="comment">
                         <p>
-                            '.$row["nome"].' '.$row["cognome"].'
+                        ';
+                        if($row["immagine"]!=NULL && $row["immagine"]!=""){
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                        }
+                        
+                        $echoString .= $row["nome"].' '.$row["cognome"].'
                         </p>
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
@@ -633,7 +636,7 @@ class Article{
         return $echoString;
     }
 
-    public static function getCommentToDelete($connect, $idArticle, $url){
+    public static function getCommentToDelete($connect, $idArticle, $url, $basePathImg){
         $echoString ='
         <div id="commentboard" class="content panel">
             <div class="wrap-padding card">          
@@ -641,14 +644,19 @@ class Article{
                     <h1>Commenti</h1>
                 </div>';
         
-        $sqlQuery = "SELECT id, nome, cognome, commento FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
+        $sqlQuery = "SELECT id, nome, cognome, commento, immagine FROM commentoarticolo INNER JOIN utente ON commentoarticolo.idutente=utente.email WHERE idarticolo=\"$idArticle\"";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $echoString .= '
                     <div class="comment">
                         <p>
-                            '.$row["nome"].' '.$row["cognome"].'
+                        ';
+                        if($row["immagine"]!=NULL && $row["immagine"]!=""){
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                        }
+                        
+                        $echoString .= $row["nome"].' '.$row["cognome"].'
                         </p>
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'

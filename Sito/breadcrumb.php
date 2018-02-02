@@ -150,10 +150,10 @@ function breadcrumbAdmin(){
 		$sezione = "list";
 
 	$echoString = '<div id="breadcrumb" class="wrap-padding ';
-	//if( ($idPage == "" && $sezione=="") || ($idPage == "" && $sezione=="") ) 
+	if( ($idPage == "home") || ($idPage == "myuser") || ($sezione=="formupdate") || ($sezione=="formadd") || ($sezione=="comment") ) 
+		$echoString .= 'text-colored';
+	else 
 		$echoString .= 'colored'; 
-	//else 
-	//	$echoString .= 'text-colored';
 	$echoString .= ' card">
 	<p>Ti trovi in: </p>';
 

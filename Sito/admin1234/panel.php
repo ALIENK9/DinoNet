@@ -213,10 +213,17 @@
 						if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 							$removeimg=true;	
 						}	
-						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg);
+						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg,"..");
 					}
 					else
 						echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
+					
+					?>
+					<div class="center wrap-padding">
+						<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+					</div>	
+					<?php
 				break;
 
 			case 'dino':
@@ -229,6 +236,13 @@
 
 			case 'search':
 				include_once('searchadmin.php');
+				
+				?>
+				<div class="center wrap-padding">
+					<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+					<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+				</div>	
+				<?php
 				break;	
 
 			case 'logout': default:		

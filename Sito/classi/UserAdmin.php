@@ -196,7 +196,6 @@ class UserAdmin extends User {
                     </p>
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
-                    <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                 </form>
             </div>
 		</div>
@@ -355,7 +354,6 @@ class UserAdmin extends User {
                         </p>
 
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
-                        <a href="'.$_SERVER["HTTP_REFERER"].'" class=\'btn card wrap-margin\'>Torna alla pagina precedente</a> 
                     </form>
                 </div>
             </div>

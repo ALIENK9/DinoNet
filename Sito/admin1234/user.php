@@ -49,8 +49,8 @@ switch ($sezione) {
 	case 'update':		
 		$removeimg=false;
 		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
-			$removeimg=true;			}
-
+			$removeimg=true;			
+		}
 		echo $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg, "..");
 		break;		
 	case 'delete':
@@ -63,6 +63,16 @@ switch ($sezione) {
 		exit();
 		break;
 }
+
+?>
+<div class="center wrap-padding">
+	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+	<?php
+	if($sezione!="list")
+		echo '<a href="panel.php?id=user" class="btn card wrap-margin"> Vai alla lista degli utenti</a>';
+	?>
+</div>	
+<?php
 
 closeConnect($connectUser);
 ?>

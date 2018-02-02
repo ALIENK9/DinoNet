@@ -77,6 +77,11 @@
 <?php 
 	echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update");
 ?>
+	<div class="center wrap-padding">
+		<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+		<a href="index.php" class="btn card wrap-margin"> Vai alla Home </a>	
+	</div>	
+				
 <!-- /Header -->
 
 <?php 

@@ -56,7 +56,7 @@ switch ($sezione) {
 		break;
 	case 'comment':
 		if(isset($_GET["article"]))
-			echo Article::getCommentToDelete($connectArticle, $_GET["article"], $_SERVER["PHP_SELF"]."?id=article&sez=deletecomment&");
+			echo Article::getCommentToDelete($connectArticle, $_GET["article"], $_SERVER["PHP_SELF"]."?id=article&sez=deletecomment&", "..");
 			include_once (__DIR__."/../breadcrumb.php");
 			echo breadcrumbAdmin();
 		break;		
@@ -70,6 +70,16 @@ switch ($sezione) {
 		exit();
 		break;
 }
+
+?>
+<div class="center wrap-padding">
+	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+	<?php
+	if($sezione!="list")
+		echo '<a href="panel.php?id=article" class="btn card wrap-margin"> Vai alla lista degli articoli</a>';
+	?>
+</div>	
+<?php
 
 closeConnect($connectArticle);
 
