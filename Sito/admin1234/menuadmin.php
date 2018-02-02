@@ -32,11 +32,11 @@
     </div>
 	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active disabled"; ?>">
 		<span class="menu-icon icon-home"></span>
-		<p xml:lang="en" lang="en">Home admin</p>
+		<p xml:lang="en" lang="en">Home</p>
 	</a>
 	<a href="panel.php?id=myuser" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active disabled"; ?>">
 		<span class="menu-icon icon-account"></span>
-		<p>Dati admin</p>
+		<p>I tuoi dati</p>
 	</a>
 	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user" && !$_GET["sez"]) echo "active disabled"; ?>">
 		<span class="menu-icon icon-accounts"></span>
