@@ -23,35 +23,8 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 </div>
 
 
-<script>
-    function addJS() { //rende visibile il menù laterale
-        document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
-        document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
-    }
-    addJS();
+<script src="../js/buttons.js"></script>
 
-    // Script per aprire il menù
-    function open_menu() {
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("overlay").style.display = "block";
-    }
-
-    //Script per chiudere il menù
-    function close_menu() {
-        document.getElementById("sidebar").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-    }
-
-    /*Nasconde la barra di ricerca quando si scorre verso il basso*/
-    var lastScrollTop = 0;
-    window.addEventListener("scroll", function(){
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        if (st > lastScrollTop && (document.documentElement.scrollTop > 150 || document.body.scrollTop > 150)) {
-            document.getElementById("searchbar").classList.add("hidden");
-        }
-        else {
-            document.getElementById("searchbar").classList.remove("hidden");
-        }
-        lastScrollTop = st;
-    }, false);
+<script type="text/javascript">
+    addJS(); //nasconde alcuni plocchi, mostrando invece pulsanti per visualizzarli
 </script>
