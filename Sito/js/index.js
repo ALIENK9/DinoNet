@@ -40,13 +40,13 @@ function isOpzionaleVuoto(input) {
  * 'validateMode()'. In particolare:
  *      - "password" ed input successivo diverso da name="confermapassword" ==> (Caso login), verifica che la
  *         password abbia lunghezza minima. Chiama 'validatePassword()'.
- *      - "password" e input seguente con name="confermapassword" ==> chiama la funzione 'validatePasswordConfirm()'
- *         e verifica prima che la password sia valida chiamando 'validatePassword()', e poi verifica che sia stata
- *         re-inserita correttamente nel campo di conferma.
- *      - "nomi" ==> controlla che siano stati inseriti solo caratteri alfanumerici.
- *      - "alpha" ==> controlla che siano stati inseriti solo lettere.
+ *      - "password" e input seguente con "confermapassword" ==> verifica prima che la password sia valida,
+ *         e poi verifica che sia stata re-inserita correttamente nel campo di conferma.
+ *      - "nomi" ==> controlla che siano stati inseriti solo caratteri alfabetici e lettere accentate.
+ *      - "alpha" ==> controlla che siano stati inseriti solo lettere e segni di punteggiatura e parentesi.
  *      - "email" ==> controlla con una regex che sia stato inserito un indirizzo possibilmente valido.
- *      - name="*" || attributo 'name' non presente ==> nessuna validazione.
+ *      - "unsigned" ==> controlla che siano inseriti solamente numeri interi positivi.
+ *      - data-validation-mode="" || attributo non presente ==> nessuna validazione.
  *
  * Per gli elementi <textarea>, dedicati all'inserimento di testi più lugnhi, quali corpo di articoli e schede si
  * chiama una unica funzione 'validateTextArea()' che nel caso sia presente l'attributo 'required', controlla che sia
@@ -109,7 +109,7 @@ function validateTextArea(texts, i) {
 
 
 /**
- * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri tipicamente presenti in noomi o cognomi (almeno una lettera),
+ * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri tipicamente presenti in nomi o cognomi (almeno una lettera),
  * altrimenti 'false'.
  * @param inputs
  * @param i
@@ -118,7 +118,7 @@ function validateTextArea(texts, i) {
 function validateNomi(inputs, i) {
     var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = /^([A-zèéìòùàç]+[\s\-']?)+$/i;
+    var pattern = /^([A-zèéìòùàç]+[\s\-']?)*$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
@@ -141,7 +141,7 @@ function validateNomi(inputs, i) {
 function validateAlpha(inputs, i) {
     var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = /^([A-z]+[.,;\-"'()\s]*)*$/i;
+    var pattern = /^([A-zèéìòùàç]+[.,;\-"'()\s]*)*$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
@@ -408,32 +408,4 @@ function removeError(elem) {
     var errore = parent.getElementsByClassName('errore');
     if(errore.length > 0)
         parent.removeChild(errore[0]);
-}
-
-
-/*##########################################      DISABILITA INPUT     ############################################*/
-
-function disableInputImmagine() {
-    var inputArti = document.getElementById('imgarticleremove');
-    var inputDino = document.getElementById('imgdinosaurremove');
-    if(inputArti) {
-        inputArti.addEventListener('change', function () {
-            if (inputArti.value === true) {
-                document.getElementById('imgarticle').disabled = true;
-                document.getElementById('descrizioneimg').disabled = true;
-            }
-            else {
-                document.getElementById('imgarticle').disabled = false;
-                document.getElementById('descrizioneimg').disabled = false;
-            }
-        })
-    }
-    else if(inputDino) {
-        inputDino.addEventListener('change', function () {
-            if(inputDino.value === true)
-                document.getElementById('imgdinosaur').disabled = true;
-            else
-                document.getElementById('imgdinosaur').disabled = false;
-        })
-    }
 }
