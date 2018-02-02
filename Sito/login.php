@@ -84,15 +84,17 @@
     <div id="content-form" class="content card">
         <?php include_once('breadcrumb.php') ?>
         
-        
+        <?php
+        if( $error_login == 1){
+            echo "
+                        <div class='card errore wrap-padding'>
+                            <h1>Nome utente o password errati</h1>
+                        </div>
+            ";
+        }
+        ?>
         <form action="#" method="POST" onsubmit="return validateForm(this)" class="card colored wrap-padding">
-            <?php
-            if( $error_login == 1){
-                echo "
-                    <h1>Nome utente o password errati</h1>                     
-                ";
-            }
-            ?>
+        
             <p>
                 <label for="input-email" xml:lang="en" lang="en">Email</label>
                 <input id="input-email" type="text" placeholder="email" required name="email" data-validation-mode="email" value="<?php if(isset($_POST["email"])) echo $_POST["email"]; ?>">
