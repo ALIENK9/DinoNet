@@ -63,8 +63,17 @@
 	\section{Introduzione}
 	
 	\begin{itemize}
-		\item Il sito è accessibile al seguente link:	\url{www.ciaociao.it};
-		\item La parte amministratore del sito è invece accessibile al seguente link: \url{www.ciaoadmin.it}
+		\item Il sito è accessibile al seguente link:
+		
+		\begin{center}
+			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito};
+		\end{center}
+			
+		\item La parte amministratore del sito è invece accessibile al seguente link:
+		
+		\begin{center}
+			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito/admin2017/login.php}
+		\end{center}
 		
 		Tramite le seguenti credenziali:
 		
@@ -75,7 +84,7 @@
 	\end{itemize}
 	
 	\section{Descrizione dei requisiti e target}
-	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è particolarmente rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
+	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
 	
 	\section{Organizzazione dell'informazione}
 	
@@ -143,12 +152,12 @@
 	
 	\subsection{Fogli di stile}
 	
-	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media query, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta permette di avere un foglio di stile semplice, riutilizzabile ed estendibile, ma d'altro canto rende necessario aggiungere diverse classi agli elementi HTML, portando ad un appesantimento in termini di leggibilità del codice.
+	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media query, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta permette di avere un foglio di stile semplice, riutilizzabile ed estendibile, ma d'altro canto rende necessario aggiungere diverse classi e contenitori agli elementi HTML strutturali.
 	
-	\subsection{Note sullo sviluppo}
+	\subsection{Form}
 	\subsubsection{Pagine con form}
-	Le pagine del sito che contengono moduli da compilare hanno una struttura leggermente diversa da quella di tutte le altre: invece inserire un header, seguito dalla barra delle breadcrumb ed il form, abbiamo preferito compattare questi tre elementi e racchiuderli in un unico blocco, dandogli la stessa larghezza normalmente attribuita all'header. 
-	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, e riteniamo avrebbe reso meno immediato comprendere lo scopo della pagina.\\
+	Le pagine del sito che contengono moduli da compilare hanno una struttura leggermente diversa da quella di tutte le altre: invece di inserire un header, seguito dalla barra delle breadcrumb ed il form, si è preferito compattare questi tre elementi e racchiuderli in un unico blocco, dandogli la stessa larghezza normalmente attribuita all'header. 
+	In questo modo il contenuto della pagina, ovvero il form, è immediatamente visibile e risulta più pratico da utilizzare.\\Facendo uso di tre blocchi separati il contenuto sarebbe stato spinto troppo in basso, rendendo meno immediato comprendere lo scopo della pagina.\\
 	Le pagine interessate sono:
 	\begin{itemize}
 		\item login.php (lato pubblico e lato amministratore);
@@ -183,7 +192,7 @@
 	
 	\subsection{Grafica e layout}
 	
-	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione ed a intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
+	Per soddisfare adeguatamente il target, è stato fatto largo uso di immagini, perché efficaci nell'attirare l'attenzione e nell'intrattenere un pubblico giovane. È stato tenuto in considerazione il fatto che spesso ragazzi e bambini usufruiscono di contenuti web da tablet, più che da desktop. Per questo è stato scelto di rendere la navigazione da tablet equivalente a quella da desktop. Le immagini decorative sono quindi visualizzate anche su schermi da 1024px, che è la tipica dimensione di uno schermo di un tablet.
 	La presenza di molte immagini e il layout grafico "a piastrelle" designato ha inoltre imposto l'utilizzo dello \textit{scroll}, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia abbiamo considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che, in particolare gli utenti giovani, siano familiari con questa organizzazione dei contenuti. \\
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare diversi elementi puramente decorativi. Inoltre, dato che schermi molto piccoli visualizzerebbero ogni elemento uno sotto l'altro, e non più di uno affiancati, questa scelta riduce anche il problema di scorrimenti interminabili per reperire un contenuto in fondo alla pagina.\\
 	
@@ -195,10 +204,10 @@
 		
 	\section{Accessibilità}
 	\subsection{Introduzione}
-	...
+	Nella progettazione e nello sviluppo del sito è stata posta molta attenzione sull'accessibilità dei contenuti. Oltre a uno sviluppo auspicabilmente coerente con le norme WCAG (supportato dai test di accessibilità documentati nel relativo capitolo di questo documento), si sono applicati gli accorgimenti di seguito descritti.
 	
 	\subsection{Accorgimenti}
-	I potenziali problemi di accessibilità sono di seguito listati:
+	I potenziali problemi di accessibilità e relative soluzioni proposte sono di seguito listati:
 	\begin{itemize}
 		\item JavaScript: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
 		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. Pertanto la disabilitazione di JS non pregiudica l'utilizzo del sito.
@@ -285,15 +294,15 @@
 		\item \textbf{Google Mobile Friendliness Test}: suite di test per la verifica dell'usabilità del sito da dispositivi mobile, disponibile al sito:
 		\\ \url{// https://search.google.com/test/mobile-friendly};
 		
-		\item \textbf{Test umano}: test condotto da alcuni candidati senza particolari conoscenze informatiche.
+		\item \textbf{Test umano}: test condotto da alcuni candidati senza particolari conoscenze informatiche a cui è stato richiesto di reperire determinati contenuti all'interno del sito.
 	\end{itemize}
 
 	\subsubsection{Esiti}
 	
 	\begin{itemize}
-		\item \textbf{Google Mobile Friendliness Test}: il test ha avuto esito positivo vedendo il sito valutato come "mobile friendly";
+		\item \textbf{Google Mobile Friendliness Test}: il test ha avuto esito positivo vedendo il sito valutato come "mobile friendly". Si noti che due esecuzioni ravvicinate del test possono dare esiti leggermente diversi in termini di punteggio;
 		
-		\item \textbf{Test umano}: il sito è stato fatto provare da cinque individui di varia età e senza particolari conoscenze informatiche. L'esito del test è stato che nessuno di loro ha rilevato particolari difficoltà nel esplorazione dello stesso. 
+		\item \textbf{Test umano}: il sito è stato fatto provare a cinque individui di varie età e senza particolari conoscenze informatiche. L'esito del test ha evidenziato come nessuno di loro abbia rilevato particolari difficoltà nel esplorazione dello stesso e nel reperimento dei contenuti richiesti. 
 	\end{itemize}
 	
 	\subsection{Performance}
