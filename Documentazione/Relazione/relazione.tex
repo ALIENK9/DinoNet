@@ -67,7 +67,7 @@
 		\item Il sito è accessibile al seguente link:
 		
 		\begin{center}
-			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito};
+			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito}
 		\end{center}
 			
 		\item La parte amministratore del sito è invece accessibile al seguente link:
@@ -84,8 +84,15 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\section{Descrizione dei requisiti e degli utenti target}
-	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Il sito è rivolto ad un pubblico giovane, in particolare vogliamo favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni. Nel sito è inoltre possibile registrarsi per lasciare commenti agli articoli.
+	\section{Requisiti e target}
+	
+	\subsection{Requisiti}
+	
+	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Un utente non registrato potrà visitare liberamente ogni sezione del sito e ricercarne contenuti mentre un utente registrato potrà fare altrettanto con la possibilità ulteriore di commentare articoli e dinosauri.
+	
+	\subsection{Target}
+	
+	Il sito è rivolto ad un pubblico giovane, in particolare si vuole favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni.
 	
 	\newpage
 	\section{Organizzazione delle informazioni}
@@ -223,6 +230,20 @@
 	\section{Accessibilità}
 	\subsection{Introduzione}
 	Nella progettazione e nello sviluppo del sito è stata posta molta attenzione sull'accessibilità dei contenuti. Oltre a uno sviluppo auspicabilmente coerente con le norme WCAG (supportato dai test di accessibilità documentati nel relativo capitolo di questo documento), si sono applicati gli accorgimenti di seguito descritti.
+		
+	\subsection{Accorgimenti adottati}
+	Listiamo di seguito le strategie utilizzate per garantire una buona accessibilità del sito.
+	\begin{itemize}
+		\item \textbf{JavaScript}: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
+		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. JavaScript non è utilizzato per alterare pesantemente la struttura della pagina, se non nel caso della validazione dei form, in cui aggiunge opportuni messaggi d'errore. La disabilitazione di JS non pregiudica comunque l'utilizzo del sito;
+		\item \textbf{Link}: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
+		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \code{title}, che viene letto dagli screen reader più recenti\footnote{Come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}};
+		\item \textbf{Link nascosti}: nel menù sono presenti dei link nascosti che permettono di saltare al contenuto nella pagina. Questi link sono stati inseriti anche nell'indice dei contenuti nella pagina \textit{Storia}, e prima dell'elenco di commenti agli articoli. Hanno lo scopo di velocizzare la navigazione del sito agli utenti non vedenti, nel caso la lettura di certe sezioni non gli interessi;
+		\item \textbf{Breadcrumb}: in ciascuna pagina è inserita una barra che ricorda all'utente in che pagina si trova, da dove viene, e permette anche di tornare rapidamente alle pagine precedenti;
+		\item \textbf{\code{aria-hidden}}: la barra di ricerca può essere mostrata oppure nascosta per mezzo di un pulsante posizionato in alto a destra di ogni pagina del sito. Questo pulsante è però privo di utilità dal punto di vista di un browser testuale, che non considerando il foglio di stile, non vedrebbe alcun cambiamento. La stessa considerazione vale per il pulsante utile ad aprire il menù laterale su dispositivi mobili. In realtà in questo caso se il browser utilizzato in congiunzione con lo screen reader supporta ed esegue JavaScript sarebbe possibile aprire e chiudere il menù normalmente. Tuttavia questa funzione è inutile per un utente non vedente, visto che è una scelta che migliora l'esperienza visuale con il sito. Pertanto su questi pulsanti abbiamo inserito \code{aria-hidden="true"}, che nei browser che lo supportano\footnote{Le specifiche ARIA sono relativamente recenti, ed il supporto sta crescendo, ma è ancora parziale in quasi tutti i browser. Non siamo riusciti a reperire informazioni specifiche sul supporto all'attributo \code{aria-hidden}, tuttavia come è chiaro dall'articolo al seguente link: \url{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Web_applications_and_ARIA_FAQ}, il supporto dipende non solo dal browser, ma anche dallo screen reader.}, permette di non presentare il contenuto agli utenti che usano \textit{assistive tecnologies}. Nel caso questo attributo non sia supportato allora il sito resterà utilizzabile, ma questi pulsanti saranno visibili, pur non avendo un utilità. Non è infatti possibile sapere se si sta navigando con il supporto di un screen reader oppure da un browser normale;
+		\item \textbf{\code{aria-label}}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una \code{label}, ma è nascosta all'utente che utilizza un browser standard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una \code{label} equivalente, talvolta nascosta dal foglio di stile.
+		
+	\end{itemize}
 	
 	\section{Compatibilità e dipendenze}
 	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni.
@@ -252,22 +273,7 @@
 	\subsection{JavaScript}
 	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite per un utente della parte pubblica del sito, sarebbe l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.\\ 
 	Nella sezione dedicata all'amministratore talvolta è utile, dopo una richiesta dell'amministratore, chiedere di confermare l'azione, in modo da prevenire errori dovuti a click accidentali (ad esempio se ha chiesto di eliminare un account o un articolo). Per fare questo utilizziamo degli \textit{alert box}, richiamati con la funzione \code{alert("Messaggio")} di JavaScript. Nel caso l'esecuzione di script sia disabilitata, semplicemente non verrà chiesta tale conferma.
-	
-	\subsection{Accorgimenti adottati}
-	Listiamo di seguito le strategie utilizzate per garantire una buona accessibilità del sito.
-	\begin{itemize}
-		\item \textbf{JavaScript}: il sito degrada correttamente nel caso il browser non permetta l'esecuzione di JavaScript. Tuttavia la migliore esperienza, soprattutto lato amministratore, si ottiene con un browser che esegue gli script. \\
-		Nella parte pubblica del sito JavaScript è utilizzato per rendere più funzionale l'interfaccia, e per la validazione dei form. Nel caso non sia possibile controllare i campi compilati con JavaScript, allora saranno controllati dal server una volta che siano stati confermati dall'utente. JavaScript non è utilizzato per alterare pesantemente la struttura della pagina, se non nel caso della validazione dei form, in cui aggiunge opportuni messaggi d'errore. La disabilitazione di JS non pregiudica comunque l'utilizzo del sito;
-		\item \textbf{Link}: gli elenchi di articoli, oppure di schede di dinosauri, sono presentati ciascuno con il proprio riquadro con una immagine, un estratto di testo ed un link per visualizzare la pagina completa. I lettori di schermi utilizzati per la navigazione da persone non vedenti, spesso, all'apertura di una pagina leggono immediatamente tutti i link presenti, quindi inclusi i collegamenti alle pagine degli articoli e schede.
-		Per ragioni di spazio, non è però possibile inserire come testo del collegamento il titolo dell'articolo. Quello che abbiamo fatto, invece, è stato aggiungere questa informazione nell'attributo \code{title}, che viene letto dagli screen reader più recenti\footnote{Come risulta dal seguente articolo: \url{https://www.powermapper.com/tests/screen-readers/labelling/a-title/}};
-		\item \textbf{Link nascosti}: nel menù sono presenti dei link nascosti che permettono di saltare al contenuto nella pagina. Questi link sono stati inseriti anche nell'indice dei contenuti nella pagina \textit{Storia}, e prima dell'elenco di commenti agli articoli. Hanno lo scopo di velocizzare la navigazione del sito agli utenti non vedenti, nel caso la lettura di certe sezioni non gli interessi;
-		\item \textbf{Breadcrumb}: in ciascuna pagina è inserita una barra che ricorda all'utente in che pagina si trova, da dove viene, e permette anche di tornare rapidamente alle pagine precedenti;
-		\item \textbf{\code{aria-hidden}}: la barra di ricerca può essere mostrata oppure nascosta per mezzo di un pulsante posizionato in alto a destra di ogni pagina del sito. Questo pulsante è però privo di utilità dal punto di vista di un browser testuale, che non considerando il foglio di stile, non vedrebbe alcun cambiamento. La stessa considerazione vale per il pulsante utile ad aprire il menù laterale su dispositivi mobili. In realtà in questo caso se il browser utilizzato in congiunzione con lo screen reader supporta ed esegue JavaScript sarebbe possibile aprire e chiudere il menù normalmente. Tuttavia questa funzione è inutile per un utente non vedente, visto che è una scelta che migliora l'esperienza visuale con il sito. Pertanto su questi pulsanti abbiamo inserito \code{aria-hidden="true"}, che nei browser che lo supportano\footnote{Le specifiche ARIA sono relativamente recenti, ed il supporto sta crescendo, ma è ancora parziale in quasi tutti i browser. Non siamo riusciti a reperire informazioni specifiche sul supporto all'attributo \code{aria-hidden}, tuttavia come è chiaro dall'articolo al seguente link: \url{https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Web_applications_and_ARIA_FAQ}, il supporto dipende non solo dal browser, ma anche dallo screen reader.}, permette di non presentare il contenuto agli utenti che usano \textit{assistive tecnologies}. Nel caso questo attributo non sia supportato allora il sito resterà utilizzabile, ma questi pulsanti saranno visibili, pur non avendo un utilità. Non è infatti possibile sapere se si sta navigando con il supporto di un screen reader oppure da un browser normale;
-		\item \textbf{\code{aria-label}}: questo attributo è aggiunto agli elementi \code{<input>} e \code{<button>} per spiegare la loro funzione. In sostanza agisce come una \code{label}, ma è nascosta all'utente che utilizza un browser standard e viene letta solo dai browser utilizzati dagli screen reader. Nella pratica non tutti gli screen reader la gestiscono correttamente\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}}, quindi abbiamo preferito lasciare in ogni caso una \code{label} equivalente, talvolta nascosta dal foglio di stile;
-		\item .
-		
-	\end{itemize}
-	
+
 	\newpage
 	\section{Test}
 	
@@ -275,7 +281,10 @@
 	
 	\subsubsection{Strumenti}
 	
-	Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
+	\textbf{Premessa}: si fa presente che il risultato di alcuni test potrebbe variare leggermente a seconda dei contenuti caricati dagli utenti. 
+	\\ 
+	
+	\noindent Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
 	
 	\begin{itemize}
 		\item \textbf{Total Validator}: validatore di accessibilità e correttezza del markup disponibile in versione gratuita al sito:
