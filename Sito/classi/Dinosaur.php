@@ -348,18 +348,18 @@ class Dinosaur {
                     
                     <p>
                         <label for="descrizionebreve">Descrizione Breve</label>
-                        <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" value="" required></textarea>
+                        <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" required></textarea>
                     </p>
                     
                     
                     <p>
                         <label for="descrizione">Descrizione</label>
-                        <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" value="" required></textarea>
+                        <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" required></textarea>
                     </p>
                     
                     <p>
                         <label for="curiosita">Curiosità:</label>
-                        <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" value="" required></textarea>  
+                        <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" required></textarea>  
                     </p>       
            
                     <p>

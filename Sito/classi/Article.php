@@ -265,12 +265,12 @@ class Article{
                     
                     <p>
                         <label for="descrizione">Descrizione</label>
-                        <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" value="" required></textarea>
+                        <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required></textarea>
                     </p>
                     
                     <p>
                         <label for="anteprima">Anteprima</label>
-                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" value=""></textarea>
+                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima"></textarea>
                     </p>
                                             
                     <p>

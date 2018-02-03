@@ -249,7 +249,7 @@ class UserAdmin extends User {
                 $echoString .= "
 				<div class='padding-6 content center'>
 					<div class='card wrap-padding'>
-						<h1>Elemento aggunto</h1>
+						<h1>Elemento aggiunto</h1>
 						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
 					</div>
 				</div>
@@ -259,7 +259,7 @@ class UserAdmin extends User {
                 $echoString = "
 					<div class='padding-6 content'>
 						<div class='card wrap-padding'>
-							<h1>Elemento NON Aggiunto</h1>
+							<h1>Elemento NON aggiunto</h1>
 							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
 						</div>
 					</div>

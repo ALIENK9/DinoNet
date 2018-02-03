@@ -260,7 +260,8 @@ function validatePeriodomin(inputs, i) {
         showError(min, 'Questo formato non è valido');
         return false;
     }
-    if(min.value > 350) {
+    var permin = parseInt(min.value, 10);
+    if(permin > 350) {
         showError(min, 'Non c\'erano dinosauri prima di 350 milioni di anni fa!');
         return false;
     }
@@ -284,15 +285,18 @@ function validatePeriodomax(inputs, i) {
         showError(max, 'Questo formato non è valido');
         return false;
     }
-    if(max.value < 60) {
+    var permax = parseInt(max.value, 10);
+    if(permax < 60) {
         showError(max, 'I dinosauri si sono estinti circa 65 milioni di anni fa!');
         return false;
     }
 
     if(i > 0 && 'periodomin' === inputs[i - 1].getAttribute('data-validation-mode')) {
         var min = inputs[i - 1];
-        if(min.value < max.value) {
-            showError(max, 'Il periodo minimo non può essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
+        var permin = parseInt(min.value, 10);
+        if(permin < permax) {
+            console.log("Periodo min = " + permin + " < Periodo max = " + permax);
+            showError(max, 'Il periodo minimo deve essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
             return false;
         }
     }
