@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Crediti | Dino Net</title>
+	<title>Crediti &#124; Dino Net</title>
 	<meta name="description" content="Crediti per il più strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Home | Dino Net</title>
+	<title>Home &#124; Dino Net</title>
 	<meta name="description" content="Uno strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

@@ -10,7 +10,7 @@ $connectArticles = startConnect();
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Articoli | Dino Net</title>
+	<title>Articoli &#124; Dino Net</title>
 	<meta name="description" content="Una moltitudine di articoli informativi sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

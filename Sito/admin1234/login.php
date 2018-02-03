@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Login | Amministrazione</title>
+	<title>Login &#124; Amministrazione</title>
 	<meta name="description" content="Descrizione">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-    <title>Risultati ricerca | Dino Net</title>
+    <title>Risultati ricerca &#124; Dino Net</title>
     <meta name="description" content="Risultati della ricerca di specie o articoli">
     <meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
     <meta charset="UTF-8">

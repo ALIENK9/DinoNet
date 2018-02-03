@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Scheda articolo | Dino Net</title>
+	<title>Scheda articolo &#124; Dino Net</title>
 	<meta name="description" content="Pagina di visualizzazione dell'articolo">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

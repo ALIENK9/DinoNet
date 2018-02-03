@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>La storia dei dinosauri | Dino Net</title>
+	<title>La storia dei dinosauri &#124; Dino Net</title>
 	<meta name="description" content="La storia dei dinosauri, spiegata semplicemente">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

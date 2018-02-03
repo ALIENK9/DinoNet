@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Modifica account | Dino Net</title>
+	<title>Modifica account &#124; Dino Net</title>
 	<meta name="description" content="Pagina di modifica del tuo account Dino Net">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

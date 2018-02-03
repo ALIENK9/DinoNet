@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Scheda dinosauro | Dino Net</title>
+	<title>Scheda dinosauro &#124; Dino Net</title>
 	<meta name="description" content="Pagina di visualizzazione del dinosauro">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">

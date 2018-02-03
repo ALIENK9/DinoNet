@@ -27,7 +27,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Registrazione | Dino Net</title>
+	<title>Registrazione &#124; Dino Net</title>
 	<meta name="description" content="Descrizione">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
