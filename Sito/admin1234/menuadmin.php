@@ -30,15 +30,15 @@
     <div id="close-button" class="hide-large center menu-entry" aria-hidden="true">
         <span onclick="close_menu()" title="Chiudi il menù">X</span>
     </div>
-	<a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active disabled"; ?>">
+	<a href="panel.php?id=home" title="Home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active disabled"; ?>">
 		<span class="menu-icon icon-home"></span>
 		<p xml:lang="en" lang="en">Home</p>
 	</a>
-	<a href="panel.php?id=myuser" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active disabled"; ?>">
+	<a href="panel.php?id=myuser" title="Dati account" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active disabled"; ?>">
 		<span class="menu-icon icon-account"></span>
 		<p>I tuoi dati</p>
 	</a>
-	<a href="panel.php?id=user" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
+	<a href="panel.php?id=user" title="Gestione utenti" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active".(!$_GET["sez"] ? " disabled" : ""); ?>">
 		<span class="menu-icon icon-accounts"></span>
 		<p>Utenti</p>
 	</a>
@@ -58,9 +58,24 @@
                 <p>Modifica utente</p>
             </a>
             ';
+        else if($_GET["sez"] == "update")
+            echo'    
+            <a href="panel.php?id=user&sez=update" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito modifica</p>
+            </a>
+            ';
+        else if($_GET["sez"] == "add")
+            echo'    
+            <a href="panel.php?id=user&sez=add" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito modifica</p>
+            </a>
+            ';
+
     ?>
 
-	<a href="panel.php?id=dino" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
+	<a href="panel.php?id=dino" title="Gestione dinosauri" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
 		<span  class="menu-icon icon-specie"></span>
 		<p>Dinosauri</p>
 	</a>
@@ -84,12 +99,26 @@
             echo'    
             <a href="panel.php?id=dino&sez=comment&nome='.$_GET["nome"].'" class="menu-entry-small active disabled">
                 <hr>
-                <p>Gestione commenti</p>
+                <p>Eliminazione commenti</p>
+            </a>
+            ';
+        else if($_GET["sez"] == "add")
+            echo'    
+            <a href="panel.php?id=dino&sez=add" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito aggiunta</p>
+            </a>
+            ';
+        else if($_GET["sez"] == "update")
+            echo'    
+            <a href="panel.php?id=dino&sez=update" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito modifica</p>
             </a>
             ';
     ?>
 
-	<a href="panel.php?id=article" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "article") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
+	<a href="panel.php?id=article" title="Gestione articoli" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "article") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
 		<span class="menu-icon icon-articoli"></span>
 		<p>Articoli</p>
 	</a>
@@ -113,12 +142,26 @@
             echo'    
             <a href="panel.php?id=article&sez=comment&article='.$_GET["article "].'" class="menu-entry-small active disabled">
                 <hr>
-                <p>Gestione commenti</p>
+                <p>Eliminazione commenti</p>
+            </a>
+            ';
+        else if($_GET["sez"] == "add")
+            echo'    
+            <a href="panel.php?id=article&sez=add" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito aggiunta</p>
+            </a>
+            ';
+        else if($_GET["sez"] == "update")
+            echo'    
+            <a href="panel.php?id=article&sez=update" class="menu-entry-small active disabled">
+                <hr>
+                <p>Esito modifica</p>
             </a>
             ';
     ?>
 
-	<a href="panel.php?id=logout" class="menu-entry">
+	<a href="panel.php?id=logout" title="Logout" class="menu-entry">
 		<span class="menu-icon icon-accedi"></span>
 		<p xml:lang="en" lang="en">Logout</p>
 	</a>

@@ -95,7 +95,7 @@
 			La parola dinosauro deriva dal greco <em lang="el" xml:lang="el">deinos</em>, <strong>terribile</strong>, e <em lang="el" xml:lang="el">sauros</em>,
 			<strong>lucertola</strong>, e venne utilizzata per la prima volta da <strong>Richard Owen</strong>, un biologo e paleontologo britannico, <strong>nel 1842</strong>.
 			
-			<br><br>
+			<br>
 			
 			I dinosauri sono un gruppo di <strong>rettili</strong>, appartenenti alla sottoclasse degli arcosauri, che <strong>vissero sulla terra 200 milioni
 			di anni fa</strong> (durante l'era del <em>Triassico</em>), per circa 160 milioni di anni, con un momento di <strong>massimo splendore durante il 
@@ -155,7 +155,7 @@
 			è fermo, il suo ventre e la sua coda non toccano il terreno, cosa che non avviene in nessun altro rettile. Inoltre 
 			erano tutti creature terrestri, non volavano e non vivevano nei mari. 
 			
-			<br><br>
+			<br>
 			
 			Erano tuttavia erano capaci di attraversare piccoli specchi di acqua e di nuotare. I rettili volanti, come gli 
 			Pterosauri e i rettili marini, come i Plesiosauri, in realtà erano dei cugini dei dinosauri , così come lo sono, 

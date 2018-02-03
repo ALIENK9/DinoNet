@@ -67,7 +67,7 @@ switch ($sezione) {
 		if(isset($_GET["idcommento"]))
 			echo Article::deleteComment($connectArticle, $_GET["idcommento"], "..");
 		break;
-	
+
 	default:
 		header("Location: ../error.php");
 		exit();
