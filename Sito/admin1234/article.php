@@ -32,6 +32,9 @@ switch ($sezione) {
 		<?php
 		include_once (__DIR__."/../breadcrumb.php");
 		echo breadcrumbAdmin();
+
+        echo alertMessageNoJs();
+
 		echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&", $_SERVER["PHP_SELF"]."?id=article&sez=comment&");
 		break;
 	case 'formadd':

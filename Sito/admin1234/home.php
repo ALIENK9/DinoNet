@@ -28,4 +28,6 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 <?php 
 	include_once (__DIR__."/../breadcrumb.php");
 	echo breadcrumbAdmin();
+
+    echo alertMessageNoJs();
  ?>

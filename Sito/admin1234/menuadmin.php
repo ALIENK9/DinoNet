@@ -25,7 +25,7 @@
 <!-- Sidebar/menu -->
 <nav title="Menù di navigazione" aria-label="Menù di navigazione" id="sidebar" class="sidebar bar card center">
 
-    <a class="hidden" href="#content">Salta il menù</a>
+    <a class="hidden" href="#main">Salta il menù</a>
 
     <div id="close-button" class="hide-large center menu-entry" aria-hidden="true">
         <span onclick="close_menu()" title="Chiudi il menù">X</span>

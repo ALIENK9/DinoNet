@@ -61,6 +61,7 @@
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
+        <a class="hidden" href="#chi-sono-i-dino">Salta l'indice dei contenuti</a>
 		<ul class="index">
 			<li><a href="#chi-sono-i-dino">1. Chi sono i dinosauri?</a></li>
 			<li><a href="#scoperta">2. La scoperta</a></li>
@@ -275,7 +276,7 @@
 
 <?php include_once('footer.php') ?>
 
-    <?php include_once('nojsmenu.php') ?>
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

@@ -6,13 +6,13 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 ?>
 <noscript id="nojs">
     <div id="nojs-avviso" class="white center wrap-padding hide-large">
-        <h2>Hai disabilitato JavaScript :(</h2>
+        <strong>Hai disabilitato JavaScript!</strong>
         <p>Per visualizzare il menù laterale devi attivare JavaScript! In alternativa puoi continuare a navigare utilizzando questo menù</p>
     </div>
 
     <nav title="Menù di navigazione senza javascript" aria-label="Menù di navigazione senza javascript" id="nojs-menu" class="card center hide-large">
 
-        <a class="hidden" href="#content">Salta il menù</a>
+        <a class="hidden" href="#main">Salta il menù</a>
 
         <a href="panel.php?id=home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active"; ?>">
             <span class="menu-icon icon-home"></span>

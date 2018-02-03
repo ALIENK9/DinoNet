@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Stampa le breadcrumb lato utente standard
+ * @return string
+ */
 function breadcrumbUser(){
 	$pages = array();
 	$pages["index"] = "index.php";
@@ -138,6 +142,11 @@ function breadcrumbUser(){
 	return $echoString;
 }
 
+
+/**
+ * Ritorna le breadcrumb per l'utente amministratore
+ * @return string
+ */
 function breadcrumbAdmin(){
 	if(isset($_GET["id"]) && $_GET["id"]!="")
 		$idPage=$_GET["id"];
@@ -359,6 +368,24 @@ function breadcrumbAdmin(){
 
 	$echoString .= '</div>';
 	return $echoString;
+}
+
+
+/**
+ * Ritorna un messaggio di allerta per l'amministratore nel caso JS sia disabilitato.
+ * @return string
+ */
+function alertMessageNoJs() {
+    return $echoString = '
+        <noscript id="alert-no-js" class="white center wrap-padding">
+            <strong class="errore">Attenzione! L\'esecuzione di JavaScript è disabilitata!</strong>
+            <p> Puoi utilizzare il pannello di amministrazione anche così, ma se elimini qualcosa NON ti sarà chiesta conferma!</p>
+        </noscript>
+        
+        <script type="text/javascript"> //nasconde elemento noscript (utile per screen reader)
+            document.getElementById(\'alert-no-js\').style.display = \'none\';
+        </script>
+    ';
 }
 
 ?>
