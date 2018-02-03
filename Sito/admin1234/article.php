@@ -59,9 +59,9 @@ switch ($sezione) {
 		break;
 	case 'comment':
 		if(isset($_GET["article"]))
+            include_once (__DIR__."/../breadcrumb.php");
+            echo breadcrumbAdmin();
 			echo Article::getCommentToDelete($connectArticle, $_GET["article"], $_SERVER["PHP_SELF"]."?id=article&sez=deletecomment&", "..");
-			include_once (__DIR__."/../breadcrumb.php");
-			echo breadcrumbAdmin();
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))

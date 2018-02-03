@@ -87,7 +87,7 @@
             </form>
             <div class="white wrap-padding">
                 <p>oppure</p>
-                <a href="../index.php" class="btn card wrap-margin">Vai alla Home pubblica</a>
+                <a href="../index.php" class="btn card wrap-margin">Vai alla <span xml:lang="en" lang="en">Home</span> pubblica</a>
             </div>
         </div>
 

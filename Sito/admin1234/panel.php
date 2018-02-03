@@ -221,7 +221,7 @@
 					?>
 					<div class="center wrap-padding">
 						<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
 					</div>	
 					<?php
 				break;
@@ -240,7 +240,7 @@
 				?>
 				<div class="center wrap-padding">
 					<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-					<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+                    <a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
 				</div>	
 				<?php
 				break;	

@@ -57,9 +57,9 @@ switch ($sezione ) {
 		break;	
 	case 'comment':
 		if(isset($_GET["nome"]))
+            include_once (__DIR__."/../breadcrumb.php");
+            echo breadcrumbAdmin();
 			echo Dinosaur::getCommentToDelete($connectDinosaur, $_GET["nome"], $_SERVER["PHP_SELF"]."?id=dino&sez=deletecomment&", "..");
-			include_once (__DIR__."/../breadcrumb.php");
-			echo breadcrumbAdmin();
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))
