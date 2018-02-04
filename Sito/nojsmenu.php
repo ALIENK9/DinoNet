@@ -30,8 +30,8 @@
         if(isset($_SESSION['user'])) {
         ?>
             <a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
-            <span class="menu-icon icon-accedi"></span>
-            <p>Account</p>
+                <span class="menu-icon icon-accedi"></span>
+                <p>Account</p>
             </a>
         <?php
         }

@@ -515,7 +515,7 @@ a.btn {
   background-color: #fff;
 }
 
-.white h1, .white h2, .white h3, .white strong {
+.white h1, .white h2, .white h3 {
   color: #006633;
   text-align: center;
 }
@@ -850,7 +850,8 @@ a.btn {
 }
 
 .menu-entry p {
-	margin: 0.2em;
+  display: block;
+  margin: 0.2em;
 }
 
 .menu-entry:hover, .sidebar .active {
@@ -1104,6 +1105,8 @@ footer h2 {
 
 #alert-no-js strong, #nojs-avviso strong {
   font-size: 1.7em;
+  color: #006633;
+  background-color: white;
 }
 
 #alert-no-js {

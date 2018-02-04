@@ -60,17 +60,17 @@
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <a href="panel.php?id=user&sez=update" class="menu-entry-small active disabled">
+            <div class="menu-entry-small active"> <!--href="panel.php?id=user&sez=update" -->
                 <hr>
                 <p>Esito modifica</p>
-            </a>
+            </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <a href="panel.php?id=user&sez=add" class="menu-entry-small active disabled">
+            <div class="menu-entry-small active"> <!--href="panel.php?id=user&sez=add" -->
                 <hr>
-                <p>Esito modifica</p>
-            </a>
+                <p>Esito aggiunta</p>
+            </div>
             ';
 
     ?>
