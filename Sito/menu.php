@@ -36,7 +36,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	</a>
 	<a href="species.php" title="Le specie" class="menu-entry <?php if($currentPage == $pages["all-species"] || $currentPage == $pages["display-specie"]) echo 'active'; else if($currentPage == $pages["species"]) echo 'active disabled'; ?>">
 		<span class="menu-icon icon-specie"></span>
-		<p>Specie</p>
+        <p>Specie</p>
 	</a>
         <!-- espande il menù con le sottosezioni all-species e display-specie -->
 	<?php
