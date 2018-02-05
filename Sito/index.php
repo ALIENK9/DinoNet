@@ -104,7 +104,7 @@
         pagina <span class="text-italic">Storia</span>. Invece nel caso tu stia solo curiosando, potresti cominciare dai
         <a href="#daily-stuff">contenuti del giorno</a>. Buona lettura!
 	</p>
-	<div class="row-padding hide-small">
+	<div id="home-shapes" class="row-padding hide-small">
 		<div class="padding-large center floating-element">
 			<span id="shape1" class="small-shape"></span> <!-- icona -->
 			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>

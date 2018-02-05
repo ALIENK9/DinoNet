@@ -14,7 +14,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 
         <a class="hidden" href="#main">Salta il menù</a>
 
-        <a href="panel.php?id=home" title="Home" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "home") echo "active".(!$_GET["sez"] ? " disabled" : ""); ?>">
+        <a href="panel.php?id=home" title="Home" class="menu-entry <?php if(isset($_GET["id"]) && ($_GET["id"] == "home" || $_GET["id"] == "search")) echo "active".($_GET["id"] == "home" ? " disabled" : ""); ?>">
             <span class="menu-icon icon-home"></span>
             <p xml:lang="en" lang="en">Home admin</p>
         </a>

@@ -9,7 +9,7 @@
 
         <a class="hidden" title="Salta il menù" href="#main">Salta il menù</a>
 
-        <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
+        <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; else if($currentPage == $pages["credits"] || $currentPage == $pages["search"]) echo 'active'; ?>">
             <span class="menu-icon icon-home"></span>
             <p xml:lang="en" lang="en">Home</p>
         </a>

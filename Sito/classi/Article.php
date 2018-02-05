@@ -253,33 +253,34 @@ class Article{
             $echoString .= breadcrumbAdmin();
             $echoString .='
                 <form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                    <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                     <p>
-                        <label for="titolo">Titolo</label>
+                        <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="" required>
                     </p>
                     
                     <p>
-                        <label for="sottotitolo">Sottotitolo</label>
+                        <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="" required>
                     </p>
                     
                     <p>
-                        <label for="descrizione">Descrizione</label>
+                        <label for="descrizione">Testo dell\'articolo: <abbr title="richiesto">*</abbr></label>
                         <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required></textarea>
                     </p>
                     
                     <p>
-                        <label for="anteprima">Anteprima</label>
+                        <label for="anteprima">Anteprima:</label>
                         <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima"></textarea>
                     </p>
                                             
                     <p>
-                        <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
+                        <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
                         <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
                     </p>
                     
                     <p>
-                        <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg)</label>
+                        <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
                         <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
                     </p>
                                         
@@ -377,38 +378,39 @@ class Article{
                     $echoString .= breadcrumbAdmin();
                     $echoString .='
                     <form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                        <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                         <p>
-                            <label for="article">Identificativo articolo</label>
+                            <label for="article">Identificativo articolo (non modificabile)</label>
                             <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
                         </p>
                         
                         <p>
-                            <label for="titolo">Titolo</label>
+                            <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$row["titolo"].'" required>
                         </p>
                         
                         <p>
-                            <label for="sottotitolo">Sottotitolo</label>
+                            <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'" required>
                         </p>
                         
                         <p>
-                            <label for="descrizione">Descrizione</label>
+                            <label for="descrizione">Testo dell\'articolo:  <abbr title="richiesto">*</abbr></label>
                             <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
                         </p>
                         
                         <p>
-                            <label for="anteprima">Anteprima</label>
+                            <label for="anteprima">Anteprima:</label>
                             <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
                         </p>
                         
                         <p>
-                            <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\')</label>
+                            <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
                             <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
                         </p>
                         
                         <p>
-                            <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg)</label>
+                            <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
                             <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
                         </p>
             

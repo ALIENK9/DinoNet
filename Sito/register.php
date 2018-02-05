@@ -154,18 +154,19 @@
         }
         ?>
         <form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+            <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
             <p>
-                <label for="email">Email</label>
+                <label for="email">Email <abbr title="richiesto">*</abbr></label>
                 <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["submit"])) echo $_POST["email"]  ?>" required>
             </p>
 
             <p>
-                <label for="nome">Nome</label>
+                <label for="nome">Nome <abbr title="richiesto">*</abbr></label>
                 <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["nome"]  ?>" required>
             </p>
 
             <p>
-                <label for="cognome">Cognome</label>
+                <label for="cognome">Cognome <abbr title="richiesto">*</abbr></label>
                 <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["cognome"]  ?>" required>
             </p>
 
@@ -175,12 +176,12 @@
             </p>
 
             <p>
-                <label for="password">Password</label>
+                <label for="password">Password <abbr title="richiesto">*</abbr></label>
                 <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
             </p>
 
             <p>
-                <label for="passwordconf">Conferma password</label>
+                <label for="passwordconf">Conferma password <abbr title="richiesto">*</abbr></label>
                 <input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
             </p>
 

@@ -108,18 +108,19 @@ class User {
             $echoString .= breadcrumbAdmin();
             $echoString .='
                 <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
+                    <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                     <p>
-                        <label for="email">Email</label>
+                        <label for="email">Email (non modificabile)</label>
                         <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
                     </p>
                     
                     <p>
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
                     </p>
                     
                     <p>
-                        <label for="cognome">Cognome</label>
+                        <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
                     </p>
                     
@@ -129,17 +130,17 @@ class User {
                     </p>
                     
                     <p>
-                        <label for="password">Password</label>
+                        <label for="password">Password: <abbr title="richiesto">*</abbr></label>
                         <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
                     </p>
                     
                     <p>
-                        <label for="passwordconf">Conferma password</label>
+                        <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
                         <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
                     </p>
 
                     <p>
-                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
+                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
                     </p>
     

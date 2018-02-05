@@ -152,8 +152,9 @@ class UserAdmin extends User {
             $echoString .='
                 <?php include_once(\'../breadcrumb.php\') ?>
                 <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
-                    <p>
-                        <label for="tipologia">Tipologia utente</label>
+                    <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
+                    <p> 
+                        <label for="tipologia">Tipologia utente: <abbr title="richiesto">*</abbr></label>
                         <select id="tipologia" name="tipologia">                        
                             <option value="0" selected>Standard</option>
                             <option value="1">Administrator</option>
@@ -161,17 +162,17 @@ class UserAdmin extends User {
                     </p>
 
                     <p>
-                        <label for="email">Email</label>
+                        <label for="email">Email: <abbr title="richiesto">*</abbr></label>
                         <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" data-validation-mode="email" value="" required>
                     </p>
                     
                     <p>
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="" required>
                     </p>
                     
                     <p>
-                        <label for="cognome">Cognome</label>
+                        <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
                     </p>
                     
@@ -181,17 +182,17 @@ class UserAdmin extends User {
                     </p>
                     
                     <p>
-                        <label for="password">Password</label>
+                        <label for="password">Password: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="" required>
                     </p>
                     
                     <p>
-                        <label for="passwordconf">Conferma password</label>
+                        <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
                         <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
                     </p>
                     
                     <p>
-                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
+                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
                         <input type="file" id="imgaccount" name="imgaccount" value="">
                     </p>
                     
@@ -305,8 +306,9 @@ class UserAdmin extends User {
                 $echoString .= breadcrumbAdmin();
                 $echoString .='
                     <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
+                        <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                         <p>
-                            <label for="tipologia">Tipologia utente</label>
+                            <label for="tipologia">Tipologia utente: <abbr title="richiesto">*</abbr></label>
                             <select id="tipologia" name="tipologia">                        
                                 <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
                                 <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
@@ -314,17 +316,17 @@ class UserAdmin extends User {
                         </p>
 
                         <p>
-                            <label for="email">Email</label>
+                            <label for="email">Email (non modificabile)</label>
                             <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" value="'.$row["email"].'" readonly>
                         </p>
                         
                         <p>
-                            <label for="nome">Nome</label>
+                            <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$row["nome"].'" required>
                         </p>
                         
                         <p>
-                            <label for="cognome">Cognome</label>
+                            <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$row["cognome"].'" required>
                         </p>
                         
@@ -334,17 +336,17 @@ class UserAdmin extends User {
                         </p>
                         
                         <p>
-                            <label for="password">Password</label>
+                            <label for="password">Password: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
                         </p>
 
                         <p>
-                            <label for="passwordconf">Conferma password</label>
+                            <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
                         </p>
 
                         <p>
-                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
+                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
                             <input type="file" id="imgaccount" name="imgaccount" value="">
                         </p>
 
