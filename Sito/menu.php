@@ -35,14 +35,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["credits"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Crediti</p>
         </div>
         ';
     else if($currentPage == $pages["search"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Risultati ricerca</p>
         </div>
@@ -60,14 +60,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	<?php
 	if($currentPage == $pages["all-species"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Tutte le specie</p>
         </div>
         ';
 	else if($currentPage == $pages["display-specie"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Scheda dinosauro</p>
         </div>
@@ -81,14 +81,14 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["all-articles"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Tutti gli articoli</p>
         </div>
         ';
     else if($currentPage == $pages["display-article"])
         echo'
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Scheda articolo</p>
         </div>
@@ -117,7 +117,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["register"])
         echo'
-        <div title="Registrati" class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Registrazione</p>
         </div>
@@ -127,7 +127,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["edit-account"])
         echo'
-        <div title="Modifica i dati" class="menu-entry-small active"> <!-- href="edit-account.php"  ->
+        <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="edit-account.php" -->
             <hr>
             <p>Modifica account</p>
         </div>

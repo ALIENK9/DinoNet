@@ -36,7 +36,7 @@
 	</a>
     <?php if(isset($_GET["id"]) && $_GET["id"] == "search" )
         echo'    
-        <div class="menu-entry-small active">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Risultati ricerca</p>
         </div>
@@ -54,28 +54,28 @@
     <?php if(isset($_GET["id"]) && $_GET["id"] == "user" && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formadd" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formadd" -->
                 <hr>
                 <p>Aggiunta utente</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formupdate&user='.$_GET["user"].'" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formupdate&user='.$_GET["user"].'" -->
                 <hr>
                 <p>Modifica utente</p>
             </div>
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <div class="menu-entry-small active"> <!--href="panel.php?id=user&sez=update" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!--href="panel.php?id=user&sez=update" -->
                 <hr>
                 <p>Esito modifica</p>
             </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <div class="menu-entry-small active"> <!--href="panel.php?id=user&sez=add" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!--href="panel.php?id=user&sez=add" -->
                 <hr>
                 <p>Esito aggiunta</p>
             </div>
@@ -84,42 +84,42 @@
     ?>
 
 	<a href="panel.php?id=dino" title="Gestione dinosauri" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "dino") echo "active".(!$_GET["sez"] ? " disabled" : "")?>">
-		<span  class="menu-icon icon-specie"></span>
+		<span class="menu-icon icon-specie"></span>
 		<p>Dinosauri</p>
 	</a>
 
     <?php if(isset($_GET["id"]) && $_GET["id"] == "dino" && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formadd"  -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formadd"  -->
                 <hr>
                 <p>Aggiunta dinosauro</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formupdate&nome='.'$_GET["nome"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formupdate&nome='.'$_GET["nome"]'.'" -->
                 <hr>
                 <p>Modifica dinosauro</p>
             </div>
             ';
         else if($_GET["sez"] == "comment")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=comment&nome='.'$_GET["nome"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=comment&nome='.'$_GET["nome"]'.'" -->
                 <hr>
                 <p>Eliminazione commenti</p>
             </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=add" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=add" -->
                 <hr>
                 <p>Esito aggiunta</p>
             </div>
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=update" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=update" -->
                 <hr>
                 <p>Esito modifica</p>
             </div>
@@ -134,35 +134,35 @@
     <?php if(isset($_GET["id"]) && $_GET["id"] == "article" && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formadd" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formadd" -->
                 <hr>
                 <p>Aggiunta articolo</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formupdate&article='.'$_GET["article"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formupdate&article='.'$_GET["article"]'.'" -->
                 <hr>
                 <p>Modifica articolo</p>
             </div>
             ';
         else if($_GET["sez"] == "comment")
             echo'    
-            <div class="menu-entry-small active">
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Eliminazione commenti</p>
             </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <div class="menu-entry-small active">
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito aggiunta</p>
             </div>
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <div class="menu-entry-small active">
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito modifica</p>
             </div>
