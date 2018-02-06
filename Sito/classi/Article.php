@@ -281,7 +281,7 @@ class Article{
                     
                     <p>
                         <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
-                        <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                        <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="image" value="">
                     </p>
                                         
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
@@ -411,7 +411,7 @@ class Article{
                         
                         <p>
                             <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
-                            <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="immaginearticolo" value="">
+                            <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="image" value="">
                         </p>
             
                         <p>

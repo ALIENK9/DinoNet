@@ -375,7 +375,7 @@ class Dinosaur {
                
                         <p>
                             <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" value="" required>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="" required>
                         </p>
                     </fieldset>                    
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
@@ -582,7 +582,7 @@ class Dinosaur {
                             
                             <p>
                                 <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
-                                <input type="file" id="imgdinosaur" name="imgdinosaur" value="">
+                                <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
                             </p>
                 
                             <p>

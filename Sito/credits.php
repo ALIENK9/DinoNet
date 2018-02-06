@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
 
 	<!-- Favicon -->
 	

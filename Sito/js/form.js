@@ -176,25 +176,6 @@ function validateUnsigned(inputs, i) {
 
 
 
-/*
- * Ritorna 'true' se il 'nomeInput.value' contiene almeno 1 carattere, altrimenti 'false'.
- * @param inputs
- * @param i
- * @returns {boolean}, 'true' se è stato inserito qualcosa, 'false' altrimenti.
- *
-function validateRequired(inputs, i) {
-    var nomeInput = inputs[i];
-    if(nomeInput.value === undefined || nomeInput.value.length < 1) {
-        showError(nomeInput, 'Inserisci almeno un carattere');
-        return false;
-    }
-    removeError(nomeInput);
-    return true;
-}*/
-
-
-
-
 /**
  * Ritorna 'true' se la password è di almeno 4 caratteri, altrimenti 'false'.
  * Se nell'input seguente viene chiesto di reinserirla per conferma ritorna 'true' solo se le due passowrd coincidono.
@@ -343,16 +324,19 @@ function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
 
 
 /**
- * Controlla che l'input con tipo type="file" sia stato caricato un file.
+ * Controlla che nell'input con tipo type="file" sia stato caricato una immagine valida.
  * @param inputs
  * @param i
  * @returns {boolean}
  */
-function validateFilereq(inputs, i) {
+function validateImage(inputs, i) {
     var nomeInput = inputs[i];
-    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length === 0) {
-        showError(nomeInput, 'Deve essere selezionato un file');
-        return false;
+    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length !== 0) {
+        var ext = nomeInput.value.split('.').pop();
+        if(ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
+            showError(nomeInput, 'Questa immagine non ha un estensione valida: sono consentiti solo jpg, jpeg, png');
+            return false;
+        }
     }
     removeError(nomeInput);
     return true;
@@ -373,7 +357,7 @@ function validateFilereq(inputs, i) {
 function validateDescrizioneimg(inputs, i) {
     var alt = inputs[i];
     var presenzaImmagine = (i+1) < inputs.length && inputs[i + 1].getAttribute('type') === 'file' &&
-        inputs[i + 1].files.length > 0 && 'immaginearticolo' === inputs[i + 1].getAttribute('data-validation-mode');
+        inputs[i + 1].files.length > 0 && 'image' === inputs[i + 1].getAttribute('data-validation-mode');
     var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
     if(presenzaImmagine && descrizioneVuota) {
         showError(alt, 'È necessaria una descrizione alternativa per l\'immagine');

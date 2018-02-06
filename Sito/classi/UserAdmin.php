@@ -193,7 +193,7 @@ class UserAdmin extends User {
                     
                     <p>
                         <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
-                        <input type="file" id="imgaccount" name="imgaccount" value="">
+                        <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
                     </p>
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
@@ -347,7 +347,7 @@ class UserAdmin extends User {
 
                         <p>
                             <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
-                            <input type="file" id="imgaccount" name="imgaccount" value="">
+                            <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
                         </p>
 
                         <p>
