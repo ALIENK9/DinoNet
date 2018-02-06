@@ -8,6 +8,8 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{footnote}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
 %\usepackage[hidelinks]{hyperref}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \hypersetup{colorlinks, linkcolor=black, urlcolor=blue}
@@ -36,42 +38,15 @@
 \interfootnotelinepenalty=10000
 \DeclareTextFontCommand{\code}{\ttfamily\hyphenchar\font=45\relax}
 
-%\renewcommand*\contentsname{Sommario}
+\title{Dino Net}
 
-\title{\textbf{Dino Net}\\\vspace{1em}\Large Relazione del progetto di Tecnologie Web a.a. 2017-18}
-\author{Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo}
-%\date{\today}
-
-
-\makeatletter
-\renewcommand{\maketitle}{
-	\begin{titlepage}
-		\begin{center}
-			\large
-			{\huge\@title}
-			\par\vspace{1em}
-			\begin{tabular}[t]{c}
-				{\large\@author}
-			\end{tabular}
-			\vfill
-			\@date
-		\end{center}
-		\@thanks
-		
-		\begin{center}
-			Il sito è accessibile al seguente link:
-			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito}
-		\end{center}
-	\end{titlepage}
-}
-\makeatother
+\include{titlepage} % include il file con la copertina bella
 
 \begin{document}
 	\maketitle
 	\newpage
 	\tableofcontents
 	\clearpage
-	%\cornice{Relazione del progetto}
 	
 	\section{Introduzione}
 	
@@ -102,7 +77,7 @@
 	
 	Lo scopo del progetto è creare un sito Web che riporti informazioni e articoli sul tema dei dinosauri. I contenuti informativi del sito sono di due tipi: le \textit{schede descrittive}, una per ciascun dinosauro, e gli \textit{articoli} su scoperte e teorie che riguardano il mondo preistorico. Un utente non registrato potrà visitare liberamente ogni sezione del sito e ricercarne contenuti mentre un utente registrato potrà fare altrettanto con la possibilità ulteriore di commentare articoli e dinosauri.
 	
-	\subsection{Target}
+	\subsection{Target di utenza}
 	
 	Il sito è rivolto ad un pubblico giovane, in particolare si vuole favorire la fruibilità dei contenuti a ragazzi di età nell'intorno dei 10 anni.
 	
@@ -302,7 +277,7 @@
 		\item Firefox Quantum - Versione 57.0.4 (64 bit)
 		\item Opera - Versione 50.0.2762.45 
 		\item Microsoft Edge - Versione 41.16299.15.0
-		\item Internet Explorer - Versione 9+\footnote{tramite simulatore reperibile al link:\\ \url{https://www.browserling.com/internet-explorer-testing} ed emulatore presente in Internet Explorer 12}
+		\item Internet Explorer - Versione 9 e versioni successive\footnote{Tramite simulatore reperibile al link:\\ \url{https://www.browserling.com/internet-explorer-testing} ed emulatore presente in Internet Explorer 11}
 	\end{itemize} 
 
 	\subsection{JavaScript}
