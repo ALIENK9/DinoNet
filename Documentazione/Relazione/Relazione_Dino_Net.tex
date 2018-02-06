@@ -1,34 +1,42 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
 \usepackage{graphicx}
+\usepackage{geometry}
 \usepackage{url}
-\usepackage[htt]{hyphenat}
 \usepackage[hang,flushmargin]{footmisc}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage[hidelinks]{hyperref}
+\usepackage{footnote}
+%\usepackage[hidelinks]{hyperref}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \hypersetup{colorlinks, linkcolor=black, urlcolor=blue}
 
-%Per Fancy
-\newcommand{\cornice}[1] %come parametro richiede il nome del file
-{
-	\pagestyle{fancy}
-	\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
-	\fancyhf{}
-	\fancyhead[L]{\nouppercase{\leftmark}}
-	\fancyhead[R]{Dino Net}
-	\fancyfoot[L]{#1}
-	\fancyfoot[R]{Pagina \thepage\ di \pageref{LastPage}}
-	\setlength{\headheight}{13.6pt} % come chiede fancyhdr
+%Layout di pagina
+\geometry{
+	a4paper,
+	total={160mm,225mm},
+	left=25mm,
+	top=25mm
 }
+
+%intestazione e piè di pagina
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength\headheight{57pt}
+\lhead{Relazione del progetto}
+\rhead{\nouppercase{\leftmark}}
+\lfoot{Dino Net}
+\rfoot{Pagina \thepage\ di \pageref{LastPage}}
 
 
 %\newcommand{\code}[1]{\texttt{#1}}
-%\interfootnotelinepenalty=10000
+\interfootnotelinepenalty=10000
 \DeclareTextFontCommand{\code}{\ttfamily\hyphenchar\font=45\relax}
 
-\renewcommand*\contentsname{Sommario}
+%\renewcommand*\contentsname{Sommario}
 
 \title{\textbf{Dino Net}\\\vspace{1em}\Large Relazione del progetto di Tecnologie Web a.a. 2017-18}
 \author{Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo}
@@ -63,7 +71,7 @@
 	\newpage
 	\tableofcontents
 	\clearpage
-	\cornice{Relazione del progetto di Tecnologie Web}
+	%\cornice{Relazione del progetto}
 	
 	\section{Introduzione}
 	
@@ -219,25 +227,28 @@
 		\item \code{login.php} (lato pubblico e lato amministratore);
 		\item \code{register.php};
 		\item il form per la modifica dei dati utente in \code{classi/User.php}; 
-		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in \code{classi/UserAdmin.php}, \code{classi/Article.php}, \\\code{classi/Dinosaur.php};
+		\item i form per aggiunta e modifica di utenti, articoli, dinosauri rispettivamente in \code{classi/UserAdmin.php}, \code{classi/Article.php}, \code{classi/Dinosaur.php};
 	\end{itemize}
 	
 	\subsubsection{Validazione dei form} \label{ssec:validazioneform}
 	Per controllare la correttezza dei dati inseriti nei campi dei form, abbiamo scritto apposite funzioni JavaScript, contenute nel file \code{js/index.js}. Tali controlli sono effettuati anche lato server, nel caso il browser dell'utente non consenta l'esecuzione di script.
-	\paragraph{JavaScript}
+	
+	\subsubsection*{Validazione client-side tramite JavaScript}
 	Ogni elemento di input contenuto nei form, con la relativa \code{label} si trova all'interno di un paragrafo. Questo permette, nel caso siano rilevati errori nei dati inseriti, di aggiungere un elemento figlio al paragrafo che contiene l'input compilato in modo non corretto.
 	Ogni errore viene quindi notificato come un elemento \code{<strong>} contenente il messaggio esplicativo dell'errore con font di colore rosso.\\
 	
 	Alla conferma (submit) di un form da parte di un utente viene invocata la funzione \code{validateForm(form)} che ha come parametro il form da validare. La funzione ottiene una lista di tutti gli elementi \code{input} all'interno del form.
 	A questo punto compie due operazioni per ciascun input contenuto nel form:
 	\begin{itemize}
-		\item se il tag input presenta l'attributo \code{required}, controlla che sia stato inserito almeno un carattere\footnote{Nei browser che lo supportano, se un input presenta l'attributo \code{required} è il browser stesso a segnalare all'utente che il campo non può essere omesso. Il controllo con JavaScript in questo caso è stato fatto per completezza e per supportare Internet Explorer 9, che non riconosce questo attributo.}. Nel caso non sia così mostra immediatamente l'errore. Se invece non è presente l'attributo e l'input è vuoto allora considera il campo come corretto (perché opzionale e lasciato vuoto). Se invece è presente dell'input, indipendentemente dall'attributo \code{required} allora procede con il passo successivo;
-		\item Ogni input da validare possiede l'attributo \code{data-validation-mode}\footnote{HTML5 permette l'aggiunta di nuovi attributi, i quali devono cominciare con il prefisso \code{data-}.}. Se un input ha \code{data-validation-mode="password"}, allora questo indica che quel campo va validato secondo le regole specifiche per le password. La funzione quindi chiama \code{validatePassword()} passando come parametro l'array contenente tutti gli input del form, per rendere possibile anche controlli con gli altri dati degli altri input se necessario. In generale se \code{data-validation-mode="tipo\_validazione"} la funzione \code{validateForm} chiama la funzione \code{validateTipo\_validazione()}, se questa funzione esiste, altrimenti non effettua alcun controllo.
+		\item se il tag input presenta l'attributo \code{required}, controlla che sia stato inserito almeno un carattere\footnote{Nei browser che lo supportano, se un input presenta l'attributo \code{required} è il browser stesso a segnalare all'utente che il campo non può essere omesso. Il controllo con JavaScript in questo caso è stato fatto per completezza e per supportare Internet Explorer 9, che non riconosce questo attributo}. Nel caso non sia così mostra immediatamente l'errore. Se invece non è presente l'attributo e l'input è vuoto allora considera il campo come corretto (perché opzionale e lasciato vuoto). Se invece è presente dell'input, indipendentemente dall'attributo \code{required} allora procede con il passo successivo;
+		\item Ogni input da validare possiede l'attributo \code{data-validation-mode}\footnote{HTML5 permette l'aggiunta di nuovi attributi, i quali devono cominciare con il prefisso \code{data-}}. Se un input ha \code{data-validation-mode="password"}, allora questo indica che quel campo va validato secondo le regole specifiche per le password. La funzione quindi chiama \code{validatePassword()} passando come parametro l'array contenente tutti gli input del form, per rendere possibile anche controlli con gli altri dati degli altri input se necessario. In generale se \code{data-validation-mode="tipo\_validazione"} la funzione \code{validateForm()} chiama la funzione \code{validateTipo\_validazione()}, se questa funzione esiste, altrimenti non effettua alcun controllo.
 	\end{itemize}
-	Il vantaggio di questo approccio è l'estensibilità. Infatti nel caso si aggiunga un \code{input} e sia necessario validarlo in maniera diversa, è sufficiente aggiungere il tipo di validazione come attributo dell'elemento e definire una funzione con il nome appropriato. Non occorre modificare la funzione principale \code{validateForm}.\\ L'ovvio svantaggio è che la validazione dipende da un attributo inserito nel codice HTML della pagina, che può essere modificato da qualunque utente del sito: si potrebbe, ad esempio, rimuovere tutti gli attributi sopra citati rendendo inutili le funzioni di validazione. Tuttavia anche senza modificare la pagina, è sufficiente che l'utente disabiliti l'esecuzione di JavaScript per saltare tutti i controlli, pertanto abbiamo preferito la flessibilità della soluzione adottata, rispetto ad una validazione ad hoc per ogni campo.
-	Gli elementi di tipo \code{textarea} sono invece tutti validati allo stesso modo, controllando che sia stato inserito un numero minimo di caratteri.
+	Il vantaggio di questo approccio è l'estensibilità. Infatti nel caso si aggiunga un \code{input} e sia necessario validarlo in maniera diversa, è sufficiente aggiungere il tipo di validazione come attributo dell'elemento e definire una funzione con il nome appropriato. Non occorre modificare la funzione principale \code{validateForm()}.\\ L'ovvio svantaggio è che la validazione dipende da un attributo inserito nel codice HTML della pagina, che può essere modificato da qualunque utente del sito: si potrebbe, ad esempio, rimuovere tutti gli attributi sopra citati rendendo inutili le funzioni di validazione. Tuttavia anche senza modificare la pagina, è sufficiente che l'utente disabiliti l'esecuzione di JavaScript per saltare tutti i controlli, pertanto abbiamo preferito la flessibilità della soluzione adottata, rispetto ad una validazione ad hoc per ogni campo.
+	Gli elementi di tipo \code{textarea} sono invece tutti validati allo stesso modo, controllando che sia stato inserito un numero minimo di caratteri. \\
 	
-	\paragraph{Server PHP}
+	La funzione \code{validateForm()} utilizza l'oggetto \code{Window} del BOM (Browser Object Model) per invocare funzioni diverse a seconda dell'elemento da validare. Sebbene BOM non sia standardizzato, questo approccio è risultato funzionante su tutti i browser in cui l'abbiamo testato. Una strada alternativa, che non richiede \code{Window} sarebbe utilizzare uno \code{switch} su ciascun possibile valore dell'attributo \code{data-validation-mode} e per ogni caso chiamare la funzione adeguata.\\ L'unica ragione per cui non abbiamo preferito questo metodo è che, contrariamente al primo, richiede modifiche alla funzione principale \code{validateForm()} nel caso si voglia estendere un form con nuovi elementi \code{input}. 
+	
+	\subsubsection*{Validazione server-side con PHP}
 	Validazione lato server PHP. 
 	
 	\subsubsection{Inserimento dei contenuti} \label{sssec:inserimentocontenuti}
@@ -258,7 +269,7 @@
 	\paragraph{Link}
 	I link inseriti all'interno del menù laterale contengono dei tag \code{<p>}, quindi elementi di blocco. Questo non era possibile in HTML 4 e XHTML, perchè \code{<a>} è un elemento \textit{inline} e non potrebbe contenere elementi di blocco. HTML5 tuttavia permette di annidare all'interno qualunque elemento di flusso (\textit{flow content}), purché non interattivo, e quindi anche un paragrafo\footnote{Con riferimento a quanto indicato al link \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a}}.
 	\paragraph{Espansioni}
-	Le sottosezioni che espandono il menù laterale, di cui si è discussa la funzione nel §\ref{ssec:menuusab}, sono realizzate come dei \code{<div>} e non come dei link. Questo perché se fossero realizzati come link non potrebbero essere cliccabili, rappresentando la pagina attiva, e dovrebbero essere disabilitati dal foglio di stile. In questo modo, tuttavia resterebbero cliccabili da un browser testuale, creando confusione all'utente. Rappresentandoli come dei blocchi contenenti solo testo si risolve invece questo problema.\\
+	Le sottosezioni che espandono il menù laterale, di cui si è discussa la funzione nel paragrafo §\ref{ssec:menuusab}, sono realizzate come dei \code{<div>} e non come dei link. Questo perché se fossero realizzati come link non potrebbero essere cliccabili, rappresentando la pagina attiva, e dovrebbero essere disabilitati dal foglio di stile. In questo modo, tuttavia resterebbero cliccabili da un browser testuale, creando confusione all'utente. Rappresentandoli come dei blocchi contenenti solo testo si risolve invece questo problema.\\
 	Resta però che per un browser utilizzato con uno screen reader, che non scarica il foglio di stile, risultano sempre cliccabili i collegamenti alle schede principali del menù, indipendentemente da quale sia la scheda attiva. Considerando il numero esiguo di voci del menù, non abbiamo previsto una soluzione, anche se si potrebbero disabilitare i link via JavaScript.
 	
 	\subsection{Menù senza JavaScript}
@@ -275,16 +286,16 @@
 		\item \code{<header>}: questo tag è utilizzato in tutte le pagine per inserire il titolo e presentare velocemente il sito. Risulta ben supportato dai principali browser\footnote{\url{https://www.w3schools.com/tags/tag_header.asp}}.
 		\item \code{<footer>}: utilizzato in ogni pagina per dichiarare gli autori del sito e la sua natura di progetto didattico. Come nel caso precedente è ampiamente supportato;
 		\item \code{<nav>}: utilizzato nel menù per raggrupparne i link di navigazione. Come nel caso precedente è ampiamente supportato;
-		\item \code{input type="..."}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"}, mentre nei form di registrazione è presente il valore \code{type="email"}. I browser che non riconoscono questi valori li considerano come dei semplici \code{type="text"};
+		\item \textbf{attributo} \code{type} \textbf{per} \code{<input>}: abbiamo utilizzato alcuni valori introdotti con HTML5 per dichiarare lo scopo di un elemento \code{<input>}. Ad esempio la barra di ricerca ha \code{type="search"}, mentre nei form di registrazione è presente il valore \code{type="email"}. I browser che non riconoscono questi valori li considerano come dei semplici \code{type="text"};
 		\item \code{<figure>}: questo elemento permette di segnalare un'immagine in un documento. È particolarmente utile per la possibilità di inserire al suo interno una immagine con la relativa didascalia, attraverso il tag \code{<figcaption>}. Il vantaggio per l'accessibilità, considerando uno screen reader aggiornato e adeguato allo standard, è evidente. Questi tag risultano supportati dai principali browser\footnote{\url{https://caniuse.com/\#search=figcaption}}, in particolare da IE 9+;
-		\item \code{attributi ARIA}: abbiamo fatto uso di alcuni attributi della specifica WAI-ARIA 1.0 per migliorare l'accessibilità tramite browser compatibili\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}};
-		\item \code{attributi data-*}: HTML5 permette di inserire attributi personalizzati in qualunque elemento, senza invalidare le pagine. Questi attributi devono comiciare con il prefisso \code{data-}. Lo abbiamo utilizzato come strategia per la validazione dei form, come indicato nel §\ref{ssec:validazioneform}.
+		\item \textbf{attributi ARIA}: abbiamo fatto uso di alcuni attributi della specifica WAI-ARIA 1.0 per migliorare l'accessibilità tramite browser compatibili\footnote{\url{https://www.powermapper.com/tests/screen-readers/aria/}};
+		\item \textbf{attributi} \code{data-*}: HTML5 permette di inserire attributi personalizzati in qualunque elemento, senza invalidare le pagine. Questi attributi devono comiciare con il prefisso \code{data-}. Lo abbiamo utilizzato come strategia per la validazione dei form, come indicato nel paragrafo §\ref{ssec:validazioneform}.
 		\item \code{<cite>}: questo elemento è presente anche fra i tag di HTML 4.01 ma in HTML5 ha un significato diverso: mentre prima indicava una \textit{citazione}, ora indica un titolo di un'opera, come un libro, un dipinto, una scultura ecc. È utilizzato solamente nella pagina \textit{Crediti} per citare certi libri dai quali abbiamo tratto alcuni contenuti.
 	\end{itemize}
 	
 	\subsection{Browser supportati}
 	
-	Il target del sito implica la necessità che il sito funzioni perfettamente sulle ultime versioni dei browser più moderni, ovvero Chrome, Firefox, Opera, Edge. Il sito è stato testato in tutte le sue componenti con esito positivo sui seguenti browser:
+	Considerando gli utenti target del sito è necessario che funzioni perfettamente sulle ultime versioni dei browser più moderni, ovvero Chrome, Firefox, Opera, Microsoft Edge. Il sito è stato testato in tutte le sue componenti con esito positivo sui seguenti browser:
 	
 	\begin{itemize}
 		\item Chrome - Versione 63.0.3239.132 (Build ufficiale) (64 bit)
@@ -303,7 +314,7 @@
 	
 	\section{Test}
 	\subsection{Introduzione}
-	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non vuol dire che lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}.
+	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza, la velocità di caricamento e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non vuol dire che lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}.
 	
 	\subsection{Accessibilità}
 	
