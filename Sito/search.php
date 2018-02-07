@@ -69,7 +69,7 @@
     <header id="header-home" class="parallax padding-6 header-image">
         <div id="title-card" class="content card">
             <h1 class="text-colored">Risultati per la ricerca:</h1>
-			<h3> <?php echo $_GET["input"] ?> </h3>
+			<h2> <?php echo $_GET["input"] ?> </h2>
         </div>
 		<a href="#content" aria-label="Scorri ai risultati della ricerca" class="down-arrow arrow btn card bounce">
 			<span class="hidden">Scorri ai risultati della ricerca</span>
@@ -80,7 +80,7 @@
 
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri</h1>
+            <h1>Elenco riferito alla ricerca di dinosauri per "<?php $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php
@@ -89,10 +89,9 @@
             ?>
         </div>
     </div>
-    
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di articoli</h1>   
+            <h1>Elenco riferito alla ricerca di articoli per "<?php $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php
