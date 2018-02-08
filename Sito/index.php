@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Home | Dino Net</title>
+	<title>Home &#124; Dino Net</title>
 	<meta name="description" content="Uno strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
 
 	<!-- Favicon -->
 	
@@ -104,7 +104,7 @@
         pagina <span class="text-italic">Storia</span>. Invece nel caso tu stia solo curiosando, potresti cominciare dai
         <a href="#daily-stuff">contenuti del giorno</a>. Buona lettura!
 	</p>
-	<div class="row-padding hide-small">
+	<div id="home-shapes" class="row-padding hide-small">
 		<div class="padding-large center floating-element">
 			<span id="shape1" class="small-shape"></span> <!-- icona -->
 			<p class="caption"> Scopri un sacco di dinosauri misteriosi </p>

@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Login | Amministrazione</title>
+	<title>Login &#124; Amministrazione</title>
 	<meta name="description" content="Descrizione">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/form.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -87,7 +87,7 @@
             </form>
             <div class="white wrap-padding">
                 <p>oppure</p>
-                <a href="../index.php" class="btn card wrap-margin">Vai alla Home pubblica</a>
+                <a href="../index.php" class="btn card wrap-margin">Vai alla <span xml:lang="en" lang="en">Home</span> pubblica</a>
             </div>
         </div>
 

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Scheda dinosauro | Dino Net</title>
+	<title>Scheda dinosauro &#124; Dino Net</title>
 	<meta name="description" content="Pagina di visualizzazione del dinosauro">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
 	
 	<!-- Favicon -->
 	

@@ -14,6 +14,8 @@ $pages["register"] = "register.php";
 $pages["view-account"] = "view-account.php";
 $pages["edit-account"] = "edit-account.php";
 $pages["delete-account"] = "delete-account.php";
+$pages["credits"] = "credits.php";
+$pages["search"] = "search.php";
 
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
@@ -26,36 +28,52 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <div id="close-button" class="hide-large center menu-entry" aria-hidden="true">
         <span onclick="close_menu()" title="Chiudi il menù">X</span>
     </div>
-	<a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
+	<a href="index.php" title="Home" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; else if($currentPage == $pages["credits"] || $currentPage == $pages["search"]) echo 'active'; ?>">
 		<span class="menu-icon icon-home"></span>
 		<p xml:lang="en" lang="en">Home</p>
 	</a>
-	<a href="history.php" class="menu-entry <?php if($currentPage == $pages["history"]) echo 'active disabled'; ?>">
+    <?php
+    if($currentPage == $pages["credits"])
+        echo'
+        <div title="Sezione corrente" class="menu-entry-small active">
+            <hr>
+            <p>Crediti</p>
+        </div>
+        ';
+    else if($currentPage == $pages["search"])
+        echo'
+        <div title="Sezione corrente" class="menu-entry-small active">
+            <hr>
+            <p>Risultati ricerca</p>
+        </div>
+        ';
+    ?>
+	<a href="history.php" title="La storia dei dinosauri" class="menu-entry <?php if($currentPage == $pages["history"]) echo 'active disabled'; ?>">
 		<span class="menu-icon icon-storia"></span>
 		<p>Storia</p>
 	</a>
-	<a href="species.php" class="menu-entry <?php if($currentPage == $pages["all-species"] || $currentPage == $pages["display-specie"]) echo 'active'; else if($currentPage == $pages["species"]) echo 'active disabled'; ?>">
+	<a href="species.php" title="Le specie" class="menu-entry <?php if($currentPage == $pages["all-species"] || $currentPage == $pages["display-specie"]) echo 'active'; else if($currentPage == $pages["species"]) echo 'active disabled'; ?>">
 		<span class="menu-icon icon-specie"></span>
-		<p>Specie</p>
+        <p>Specie</p>
 	</a>
         <!-- espande il menù con le sottosezioni all-species e display-specie -->
 	<?php
 	if($currentPage == $pages["all-species"])
         echo'
-        <a href="all-species.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Tutte le specie</p>
-        </a>
+        </div>
         ';
 	else if($currentPage == $pages["display-specie"])
         echo'
-        <a href="display-specie.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Scheda dinosauro</p>
-        </a>
+        </div>
         ';
 	?>
-	<a href="articles.php" class="menu-entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["articles"]) echo 'active disabled'; ?>">
+	<a href="articles.php" title="Articoli" class="menu-entry <?php if($currentPage == $pages["all-articles"] || $currentPage == $pages["display-article"]) echo 'active'; else if($currentPage == $pages["articles"]) echo 'active disabled'; ?>">
 		<span class="menu-icon icon-articoli"></span>
 		<p>Articoli</p>
 	</a>
@@ -63,24 +81,24 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["all-articles"])
         echo'
-        <a href="all-articles.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Tutti gli articoli</p>
-        </a>
+        </div>
         ';
     else if($currentPage == $pages["display-article"])
         echo'
-        <a href="display-article.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Scheda articolo</p>
-        </a>
+        </div>
         ';
     ?>
         <!-- se l'utente è loggato mostra pagina profilo, altrimenti mostra quella di login -->
 	<?php
 	if(isset($_SESSION['user'])) {
 	?>
-		<a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["edit-account"]) echo 'active'; if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
+		<a href="view-account.php" title="Visualizza il tuo account" class="menu-entry <?php if($currentPage == $pages["edit-account"]) echo 'active'; if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
 			<span class="menu-icon icon-accedi"></span>
 			<p>Account</p>
 		</a>
@@ -88,7 +106,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	}
 	else {
 		?>
-		<a href="login.php" class="menu-entry <?php if($currentPage == $pages["register"]) echo 'active'; else if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
+		<a href="login.php" title="Accedi al tuo account" class="menu-entry <?php if($currentPage == $pages["register"]) echo 'active'; else if($currentPage == $pages["login"]) echo 'active disabled'; ?>">
 			<span class="menu-icon icon-accedi"></span>
 			<p>Accedi</p>
 		</a>
@@ -99,20 +117,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["register"])
         echo'
-        <a href="register.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Registrazione</p>
-        </a>
+        </div>
         ';
     ?>
         <!-- espande il menù con le sottosezione modifica -->
     <?php
     if($currentPage == $pages["edit-account"])
         echo'
-        <a href="edit-account.php" class="menu-entry-small active disabled">
+        <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="edit-account.php" -->
             <hr>
             <p>Modifica account</p>
-        </a>
+        </div>
         ';
     ?>
 </nav>

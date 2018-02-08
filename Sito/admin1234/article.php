@@ -32,6 +32,9 @@ switch ($sezione) {
 		<?php
 		include_once (__DIR__."/../breadcrumb.php");
 		echo breadcrumbAdmin();
+
+        echo alertMessageNoJs();
+
 		echo Article::printListArticle($connectArticle, "", "..", $_SERVER["PHP_SELF"]."?id=article&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=article&sez=delete&", $_SERVER["PHP_SELF"]."?id=article&sez=comment&");
 		break;
 	case 'formadd':
@@ -56,15 +59,15 @@ switch ($sezione) {
 		break;
 	case 'comment':
 		if(isset($_GET["article"]))
+            include_once (__DIR__."/../breadcrumb.php");
+            echo breadcrumbAdmin();
 			echo Article::getCommentToDelete($connectArticle, $_GET["article"], $_SERVER["PHP_SELF"]."?id=article&sez=deletecomment&", "..");
-			include_once (__DIR__."/../breadcrumb.php");
-			echo breadcrumbAdmin();
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))
 			echo Article::deleteComment($connectArticle, $_GET["idcommento"]);
 		break;
-	
+
 	default:
 		header("Location: ../error.php");
 		exit();

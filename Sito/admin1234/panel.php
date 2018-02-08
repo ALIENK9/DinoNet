@@ -16,7 +16,7 @@
 
 	include_once ("../connect.php");
 	$connectPanel = startConnect();
-		
+
 ?>
 
 	<!DOCTYPE html>
@@ -36,67 +36,67 @@
 
 		switch ($idPage) {
 			case 'home':
-				echo "Home | Dino Net";
+				echo "Home &#124; Dino Net";
 				break;
 
 			case 'user':
 				switch ($sezione) {
 					case 'list':
-					echo "Elenco utenti | Dino Net";
+					echo "Elenco utenti &#124; Dino Net";
 					break;
-					case 'formadd':			
-						echo "Aggiunti utente | Dino Net";
+					case 'formadd':
+						echo "Aggiunti utente &#124; Dino Net";
 						break;
 					case 'add':
-						echo "Aggiunti utente | Dino Net";
+						echo "Aggiunti utente &#124; Dino Net";
 						break;
 					case 'formupdate':
-						echo "Modifica utente | Dino Net";
+						echo "Modifica utente &#124; Dino Net";
 						break;
 					case 'update':
-						echo "Modifica utente | Dino Net";		
-						break;		
+						echo "Modifica utente &#124; Dino Net";
+						break;
 					case 'delete':
-						echo "Elimina utente | Dino Net";
-						break;					
+						echo "Elimina utente &#124; Dino Net";
+						break;
 					default:
-						echo "Area utenti | Dino Net";
+						echo "Area utenti &#124; Dino Net";
 					break;
 				}
 				break;
 
-			case 'myuser':					
-				echo "Modifica profilo | Dino Net";
+			case 'myuser':
+				echo "Modifica profilo &#124; Dino Net";
 				break;
 
 			case 'dino':
 				switch ($sezione) {
 					case 'list':
-						echo "Elenco dinosauri | Dino Net";
+						echo "Elenco dinosauri &#124; Dino Net";
 						break;
-					case 'formadd':	
-						echo "Aggiunti dinosauro | Dino Net";		
+					case 'formadd':
+						echo "Aggiunti dinosauro &#124; Dino Net";
 						break;
 					case 'add':
-						echo "Aggiunti dinosauro | Dino Net";		
+						echo "Aggiunti dinosauro &#124; Dino Net";
 						break;
 					case 'formupdate':
-						echo "Modifica dinosauro | Dino Net";
+						echo "Modifica dinosauro &#124; Dino Net";
 						break;
-					case 'update':	
-						echo "Modifica dinosauro | Dino Net";	
-						break;		
+					case 'update':
+						echo "Modifica dinosauro &#124; Dino Net";
+						break;
 					case 'delete':
-						echo "Elimina dinosauro | Dino Net";
-						break;	
+						echo "Elimina dinosauro &#124; Dino Net";
+						break;
 					case 'comment':
-						echo "Elenco commenti dinosauro | Dino Net";
-						break;	
-					case 'deletecomment':	
-						echo "Elimina commenti dinosauro | Dino Net";
-						break;				
+						echo "Elenco commenti dinosauro &#124; Dino Net";
+						break;
+					case 'deletecomment':
+						echo "Elimina commenti dinosauro &#124; Dino Net";
+						break;
 					default:
-						echo "Area dinosauri | Dino Net";
+						echo "Area dinosauri &#124; Dino Net";
 						break;
 				}
 				break;
@@ -104,44 +104,44 @@
 			case 'article':
 				switch ($sezione) {
 					case 'list':
-						echo "Elenco articoli | Dino Net";
+						echo "Elenco articoli &#124; Dino Net";
 						break;
-					case 'formadd':	
-						echo "Aggiunti articolo | Dino Net";		
+					case 'formadd':
+						echo "Aggiunti articolo &#124; Dino Net";
 						break;
 					case 'add':
-						echo "Aggiunti articolo | Dino Net";		
+						echo "Aggiunti articolo &#124; Dino Net";
 						break;
 					case 'formupdate':
-						echo "Modifica articolo | Dino Net";
+						echo "Modifica articolo &#124; Dino Net";
 						break;
-					case 'update':	
-						echo "Modifica articolo | Dino Net";	
-						break;		
+					case 'update':
+						echo "Modifica articolo &#124; Dino Net";
+						break;
 					case 'delete':
-						echo "Elimina articolo | Dino Net";
-						break;	
+						echo "Elimina articolo &#124; Dino Net";
+						break;
 					case 'comment':
-						echo "Elenco commenti articolo | Dino Net";
-						break;	
-					case 'deletecomment':	
-						echo "Elimina commenti articolo | Dino Net";
-						break;				
+						echo "Elenco commenti articolo &#124; Dino Net";
+						break;
+					case 'deletecomment':
+						echo "Elimina commenti articolo &#124; Dino Net";
+						break;
 					default:
-						echo "Area articoli | Dino Net";
+						echo "Area articoli &#124; Dino Net";
 						break;
 				}
-				break;	
+				break;
 
 			case 'search':
-					echo "Ricerca | Dino Net";
-				break;	
+					echo "Ricerca &#124; Dino Net";
+				break;
 
-			default:	
-				echo "Pannello amministratore | Dino Net";	
+			default:
+				echo "Pannello amministratore &#124; Dino Net";
 				break;
 			}
-		?>		
+		?>
 		</title>
 		<meta name="description" content="Descrizione">
 		<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
@@ -152,7 +152,7 @@
         <link rel="stylesheet" type="text/css" href="../css/print.css" media="print">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../js/index.js"></script>
+        <script type="text/javascript" src="../js/form.js"></script>
 		
 		<!-- Favicon -->
 		
@@ -221,7 +221,7 @@
 					?>
 					<div class="center wrap-padding">
 						<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
 					</div>	
 					<?php
 				break;
@@ -240,7 +240,7 @@
 				?>
 				<div class="center wrap-padding">
 					<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-					<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla Home </a>	
+                    <a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
 				</div>	
 				<?php
 				break;	

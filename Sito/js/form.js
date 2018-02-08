@@ -6,7 +6,7 @@ function showElement(elem, mode) {
     elem.style.display = mode;
 }
 
-
+/*##########################################      VALIDAZIONE DEI FORM     ############################################*/
 
 
 /**
@@ -23,7 +23,6 @@ function capitalizeFirstLetter(stringa) {
 
 
 
-
 /**
  * Ritorna true se il campo input non ha l'attributo required e non è stato compilato.
  * @param input
@@ -34,21 +33,27 @@ function isOpzionaleVuoto(input) {
 }
 
 
+
+
+
 /**
  *                              ############ COME FUNZIONA LA VALIDAZIONE ###############
  * Per gli elementi <input>, con attributo data-validation-mode="mode" viene chiamata la funzione di validazione
  * 'validateMode()'. In particolare:
  *      - "password" ed input successivo diverso da name="confermapassword" ==> (Caso login), verifica che la
  *         password abbia lunghezza minima. Chiama 'validatePassword()'.
- *      - "password" e input seguente con name="confermapassword" ==> chiama la funzione 'validatePasswordConfirm()'
- *         e verifica prima che la password sia valida chiamando 'validatePassword()', e poi verifica che sia stata
- *         re-inserita correttamente nel campo di conferma.
- *      - "nomi" ==> controlla che siano stati inseriti solo caratteri alfanumerici.
- *      - "alpha" ==> controlla che siano stati inseriti solo lettere.
+ *      - "password" e input seguente con "confermapassword" ==> verifica prima che la password sia valida,
+ *         e poi verifica che sia stata re-inserita correttamente nel campo di conferma.
+ *      - "nomi" ==> controlla che siano stati inseriti solo caratteri alfabetici e lettere accentate.
+ *      - "alpha" ==> controlla che siano stati inseriti solo lettere e segni di punteggiatura e parentesi.
  *      - "email" ==> controlla con una regex che sia stato inserito un indirizzo possibilmente valido.
- *      - name="*" || attributo 'name' non presente ==> nessuna validazione.
+ *      - "unsigned" ==> controlla che siano inseriti solamente numeri interi positivi.
+ *      - "image" ==> controlla che l'immagine caricata abbia il formato appropriato.
+ *      - "periodomin" e "periodomax" ==> controlla che i campi siano coerenti fra loro e contengano periodi sensati.
+ *      - "datanascita" ==> controlla che la data di nascita dell'utente sia valida.
+ *      - data-validation-mode="" || attributo non presente ==> nessuna validazione.
  *
- * Per gli elementi <textarea>, dedicati all'inserimento di testi più lugnhi, quali corpo di articoli e schede si
+ * Per gli elementi <textarea>, dedicati all'inserimento di testi più lunghi, quali corpo di articoli e schede si
  * chiama una unica funzione 'validateTextArea()' che nel caso sia presente l'attributo 'required', controlla che sia
  * almeno stato inserito un numero minimo di caratteri.
  */
@@ -109,7 +114,7 @@ function validateTextArea(texts, i) {
 
 
 /**
- * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri tipicamente presenti in noomi o cognomi (almeno una lettera),
+ * Ritorna 'true' se il 'nomeInput.value' contiene solo carrateri tipicamente presenti in nomi o cognomi (almeno una lettera),
  * altrimenti 'false'.
  * @param inputs
  * @param i
@@ -118,7 +123,7 @@ function validateTextArea(texts, i) {
 function validateNomi(inputs, i) {
     var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = /^([A-zèéìòùàç]+[\s\-']?)+$/i;
+    var pattern = /^([A-zèéìòùàç]+[\s\-']?)*$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
@@ -141,7 +146,7 @@ function validateNomi(inputs, i) {
 function validateAlpha(inputs, i) {
     var nomeInput = inputs[i];
     var inserimento = nomeInput.value;
-    var pattern = /^([A-z]+[.,;\-"'()\s]*)*$/i;
+    var pattern = /^([A-zèéìòùàç]+[.,;\-"'()\s]*)*$/i;
     if(pattern.test(inserimento)) {
         removeError(nomeInput);
         return true;
@@ -172,25 +177,6 @@ function validateUnsigned(inputs, i) {
     removeError(nomeInput);
     return true;
 }
-
-
-
-
-/*
- * Ritorna 'true' se il 'nomeInput.value' contiene almeno 1 carattere, altrimenti 'false'.
- * @param inputs
- * @param i
- * @returns {boolean}, 'true' se è stato inserito qualcosa, 'false' altrimenti.
- *
-function validateRequired(inputs, i) {
-    var nomeInput = inputs[i];
-    if(nomeInput.value === undefined || nomeInput.value.length < 1) {
-        showError(nomeInput, 'Inserisci almeno un carattere');
-        return false;
-    }
-    removeError(nomeInput);
-    return true;
-}*/
 
 
 
@@ -260,7 +246,8 @@ function validatePeriodomin(inputs, i) {
         showError(min, 'Questo formato non è valido');
         return false;
     }
-    if(min.value > 350) {
+    var permin = parseInt(min.value, 10);
+    if(permin > 350) {
         showError(min, 'Non c\'erano dinosauri prima di 350 milioni di anni fa!');
         return false;
     }
@@ -284,15 +271,18 @@ function validatePeriodomax(inputs, i) {
         showError(max, 'Questo formato non è valido');
         return false;
     }
-    if(max.value < 60) {
+    var permax = parseInt(max.value, 10);
+    if(permax < 60) {
         showError(max, 'I dinosauri si sono estinti circa 65 milioni di anni fa!');
         return false;
     }
 
     if(i > 0 && 'periodomin' === inputs[i - 1].getAttribute('data-validation-mode')) {
         var min = inputs[i - 1];
-        if(min.value < max.value) {
-            showError(max, 'Il periodo minimo non può essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
+        var permin = parseInt(min.value, 10);
+        if(permin < permax) {
+            console.log("Periodo min = " + permin + " < Periodo max = " + permax);
+            showError(max, 'Il periodo minimo deve essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
             return false;
         }
     }
@@ -339,16 +329,19 @@ function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
 
 
 /**
- * Controlla che l'input con tipo type="file" sia stato caricato un file.
+ * Controlla che nell'input con tipo type="file" sia stato caricato una immagine valida.
  * @param inputs
  * @param i
  * @returns {boolean}
  */
-function validateFilereq(inputs, i) {
+function validateImage(inputs, i) {
     var nomeInput = inputs[i];
-    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length === 0) {
-        showError(nomeInput, 'Deve essere selezionato un file');
-        return false;
+    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length !== 0) {
+        var ext = nomeInput.value.split('.').pop();
+        if(ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
+            showError(nomeInput, 'Questa immagine non ha un estensione valida: sono consentiti solo jpg, jpeg, png');
+            return false;
+        }
     }
     removeError(nomeInput);
     return true;
@@ -369,7 +362,7 @@ function validateFilereq(inputs, i) {
 function validateDescrizioneimg(inputs, i) {
     var alt = inputs[i];
     var presenzaImmagine = (i+1) < inputs.length && inputs[i + 1].getAttribute('type') === 'file' &&
-        inputs[i + 1].files.length > 0 && 'immaginearticolo' === inputs[i + 1].getAttribute('data-validation-mode');
+        inputs[i + 1].files.length > 0 && 'image' === inputs[i + 1].getAttribute('data-validation-mode');
     var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
     if(presenzaImmagine && descrizioneVuota) {
         showError(alt, 'È necessaria una descrizione alternativa per l\'immagine');
@@ -411,29 +404,42 @@ function removeError(elem) {
 }
 
 
-/*##########################################      DISABILITA INPUT     ############################################*/
 
+/*##########################################      DISABILITA INPUT     ############################################*/
+/**
+ * Aggiunge un eventListener sul checkbox per rimuovere le immagini. La funzione è disabilitare/abilitare l'input di
+ * upload di una immagine nel caso si selezioni/deselezioni la casella 'nessuna immagine'.
+ */
 function disableInputImmagine() {
     var inputArti = document.getElementById('imgarticleremove');
     var inputDino = document.getElementById('imgdinosaurremove');
-    if(inputArti) {
+    var inputUser = document.getElementById('imgaccountremove');
+    if(inputArti !== null) {
         inputArti.addEventListener('change', function () {
-            if (inputArti.value === true) {
-                document.getElementById('imgarticle').disabled = true;
-                document.getElementById('descrizioneimg').disabled = true;
+            if (inputArti.checked === true) {
+                document.getElementById('imgarticle').setAttribute('disabled', 'disabled');
+                document.getElementById('descrizioneimg').setAttribute('disabled', 'disabled');
             }
             else {
-                document.getElementById('imgarticle').disabled = false;
-                document.getElementById('descrizioneimg').disabled = false;
+                document.getElementById('imgarticle').removeAttribute('disabled');
+                document.getElementById('descrizioneimg').removeAttribute('disabled');
             }
         })
     }
-    else if(inputDino) {
+    else if(inputDino !== null) {
         inputDino.addEventListener('change', function () {
-            if(inputDino.value === true)
-                document.getElementById('imgdinosaur').disabled = true;
+            if(inputDino.checked === true)
+                document.getElementById('imgdinosaur').setAttribute('disabled', 'disabled');
             else
-                document.getElementById('imgdinosaur').disabled = false;
+                document.getElementById('imgdinosaur').removeAttribute('disabled');
+        })
+    }
+    else if(inputUser !== null) {
+        inputUser.addEventListener('change', function () {
+            if (inputUser.checked === true)
+                document.getElementById('imgaccount').setAttribute('disabled', 'disabled');
+            else
+                document.getElementById('imgaccount').removeAttribute('disabled');
         })
     }
 }

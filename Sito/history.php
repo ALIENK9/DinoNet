@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>La storia dei dinosauri | Dino Net</title>
+	<title>La storia dei dinosauri &#124; Dino Net</title>
 	<meta name="description" content="La storia dei dinosauri, spiegata semplicemente">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -61,6 +61,7 @@
 		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
 	</div>
 	<div id="history-index" class="content card colored wrap-padding">
+        <a class="hidden" href="#chi-sono-i-dino">Salta l'indice dei contenuti</a>
 		<ul class="index">
 			<li><a href="#chi-sono-i-dino">1. Chi sono i dinosauri?</a></li>
 			<li><a href="#scoperta">2. La scoperta</a></li>
@@ -94,7 +95,7 @@
 			La parola dinosauro deriva dal greco <em lang="el" xml:lang="el">deinos</em>, <strong>terribile</strong>, e <em lang="el" xml:lang="el">sauros</em>,
 			<strong>lucertola</strong>, e venne utilizzata per la prima volta da <strong>Richard Owen</strong>, un biologo e paleontologo britannico, <strong>nel 1842</strong>.
 			
-			<br><br>
+			<br>
 			
 			I dinosauri sono un gruppo di <strong>rettili</strong>, appartenenti alla sottoclasse degli arcosauri, che <strong>vissero sulla terra 200 milioni
 			di anni fa</strong> (durante l'era del <em>Triassico</em>), per circa 160 milioni di anni, con un momento di <strong>massimo splendore durante il 
@@ -154,7 +155,7 @@
 			è fermo, il suo ventre e la sua coda non toccano il terreno, cosa che non avviene in nessun altro rettile. Inoltre 
 			erano tutti creature terrestri, non volavano e non vivevano nei mari. 
 			
-			<br><br>
+			<br>
 			
 			Erano tuttavia erano capaci di attraversare piccoli specchi di acqua e di nuotare. I rettili volanti, come gli 
 			Pterosauri e i rettili marini, come i Plesiosauri, in realtà erano dei cugini dei dinosauri , così come lo sono, 
@@ -275,7 +276,7 @@
 
 <?php include_once('footer.php') ?>
 
-    <?php include_once('nojsmenu.php') ?>
+<?php include_once('nojsmenu.php') ?>
 
 <?php include_once('tothetop.php') ?>
 

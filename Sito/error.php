@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Errore! | Dino Net</title>
+	<title>Errore! &#124; Dino Net</title>
 	<meta name="description" content="Pagina di errore per il sito Dino Net">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -34,7 +34,7 @@
         <span id="error-image" class="half"></span>
         <div class="wrap half">
             <p> Puoi ritornare alla Home con il pulsante qui sotto, oppure puoi utilizzare il menù </p>
-            <a href="index.php" class="btn card wrap-margin">Torna alla <span xml:lang="en">Home</span></a>
+            <a href="index.php" class="btn card wrap-margin">Torna alla <span xml:lang="en" lang="en">Home</span></a>
         </div>
 	</div>
 </header>

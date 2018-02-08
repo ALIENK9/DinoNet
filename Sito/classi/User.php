@@ -108,51 +108,59 @@ class User {
             $echoString .= breadcrumbAdmin();
             $echoString .='
                 <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
-                    <p>
-                        <label for="email">Email</label>
-                        <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
-                    </p>
+                    <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
+                    <fieldset>
+                        <legend>Dati personali</legend>
+                        <p>
+                            <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
+                        </p>
+                        
+                        <p>
+                            <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="datanascita">Data di nascita (formato: gg/mm/aaaa):</label>
+                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
+                        </p>  
+                    </fieldset>    
                     
-                    <p>
-                        <label for="nome">Nome</label>
-                        <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
-                    </p>
-                    
-                    <p>
-                        <label for="cognome">Cognome</label>
-                        <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
-                    </p>
-                    
-                    <p>
-                        <label for="datanascita">Data di nascita</label>
-                        <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
-                    </p>
-                    
-                    <p>
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
-                    </p>
-                    
-                    <p>
-                        <label for="passwordconf">Conferma password</label>
-                        <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
-                    </p>
-
-                    <p>
-                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
-                        <input type="file" id="imgaccount" name="imgaccount" value="">
-                    </p>
+                    <fieldset>
+                        <legend>Dati di accesso</legend>
+                        <p>
+                            <label for="email">Email (non modificabile)</label>
+                            <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
+                        </p>
+                        
+                        <p>
+                            <label for="password">Password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
+                        </p>
     
-                    <p>
-                        <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
-                        <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-                    </p>
+                        <p>
+                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                            <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
+                        </p>
+        
+                        <p>
+                            <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
+                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                        </p>
                     
+                    </fieldset>
+                                        
                     <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="wrap-margin card btn text-colored wide white">
                 </form>
             </div>
-            
         </div>
+        <script type="text/javascript">disableInputImmagine();</script>
         ';
 
         return $echoString;
@@ -254,15 +262,16 @@ class User {
            $result = $connect->query($sqlQuery); 
            if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
 
+           if(!isset($password) || strlen($password) < 4) { $echoString .= "La password deve essere lunga almeno 4 caratteri <br>";}
            if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
            if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "I campi email, nome, cognome e password sono obbligatori";}
            if(!preg_match("/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i", $email)){$echoString .= "Formato email non valido <br>";}
-           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $nome)){$echoString .= "Formato nome non valido <br>";}
-           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $cognome)){$echoString .= "Formato cognome non valido <br>";}
+           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $nome)){$echoString .= "Formato nome errato: può contenere solo lettere <br>";}
+           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $cognome)){$echoString .= "Formato cognome errato: può contenere solo lettere <br>";}
            $anno=0;
            if(isset($datanascita) && !(false === strtotime($datanascita)))
                 list($anno, $mese, $giorno) = explode('-', $datanascita); 
-           if(!isset($datanascita) || $anno<1900){ $datanascita = "";}
+           if(!isset($datanascita) || $anno<1900 || $mese==0 || $mese>12 || $giorno==0 || $giorno>31){ $datanascita = "";}
 
            if($echoString == ""){
 

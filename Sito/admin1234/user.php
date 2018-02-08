@@ -22,18 +22,19 @@ else
 switch ($sezione) {
 	case 'list':
 		?>
-		<header id="header-home" class="parallax header-image">
-			<div class="padding-6 content">						
-				<div class="card white wrap-padding">
-					<h1>Aggiungi un utente</h1>
-					<a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un utente</a>
-				</div>
-			</div>
+		<header id="header-home" class="parallax padding-6 header-image">
+            <div id="title-card" class="content card wrap-padding">
+                <h1>Elenco degli utenti</h1>
+                <h2>Da qui puoi aggiungere e modificare gli account degli utenti</h2>
+                <a href="panel.php?id=user&sez=formadd" class="btn card wrap-margin">Aggiungi un utente</a>
+            </div>
 		</header>
 
 		<?php
 		include_once (__DIR__."/../breadcrumb.php");
 		echo breadcrumbAdmin();
+
+        echo alertMessageNoJs();
 		
 		echo $_SESSION['paneluser']->printListUser($connectUser, "", "..", $_SERVER["PHP_SELF"]."?id=user&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=user&sez=delete&");
 		break;

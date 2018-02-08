@@ -20,18 +20,19 @@ switch ($sezione ) {
 			?>
 			
 			<header id="header-home" class="parallax padding-6 header-image">
-				<div class="content">
-					<div id="title-card" class="card wrap-padding">
-						<h1>Elenco dei dinosauri</h1>
-                        <h2>Da qui puoi aggiungere e modificare dinosauri e gestire i commenti associati</h2>
-						<a href="panel.php?id=dino&sez=formadd" class="btn card wrap-margin">Aggiungi un dinosauro</a>
-					</div>
-				</div>
+                <div id="title-card" class="content card wrap-padding">
+                    <h1>Elenco dei dinosauri</h1>
+                    <h2>Da qui puoi aggiungere e modificare dinosauri e gestire i commenti associati</h2>
+                    <a href="panel.php?id=dino&sez=formadd" class="btn card wrap-margin">Aggiungi un dinosauro</a>
+                </div>
 			</header>
 
 		<?php
 		include_once (__DIR__."/../breadcrumb.php");
 		echo breadcrumbAdmin();
+
+        echo alertMessageNoJs();
+
 		echo Dinosaur::printListDinosaur($connectDinosaur, "", "..", $_SERVER["PHP_SELF"]."?id=dino&sez=formupdate&", $_SERVER["PHP_SELF"]."?id=dino&sez=delete&", $_SERVER["PHP_SELF"]."?id=dino&sez=comment&");
 		break;
 	case 'formadd':
@@ -56,9 +57,9 @@ switch ($sezione ) {
 		break;	
 	case 'comment':
 		if(isset($_GET["nome"]))
+            include_once (__DIR__."/../breadcrumb.php");
+            echo breadcrumbAdmin();
 			echo Dinosaur::getCommentToDelete($connectDinosaur, $_GET["nome"], $_SERVER["PHP_SELF"]."?id=dino&sez=deletecomment&", "..");
-			include_once (__DIR__."/../breadcrumb.php");
-			echo breadcrumbAdmin();
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))

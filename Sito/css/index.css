@@ -173,6 +173,13 @@ form p {
   text-align: left;
 }
 
+fieldset {
+  padding: 1em;
+  margin: 1em 0;
+}
+
+noscript {display: block;}
+
 .index {
   text-align: left;
   margin-left: 20%;
@@ -199,6 +206,7 @@ form p {
 }
 
 a.btn {
+  margin: 0.1em;
   padding: 1em 1.5em;
 }
 
@@ -327,17 +335,21 @@ a.btn {
 ======================================================================
 */
 
+#about {padding-bottom: 0;}
+
+#home-shapes {height: 30vh;}
+
 .floating-element {
   float: left;
   width: 33.33333%;
-  height: 20vw;
+  height: 100%;
 }
 
 .small-shape {
   display: inline-block;
   max-width: 250px;
   width: 80%;
-  height: 80%;
+  height: 55%;
   background-image: none;
   background-repeat: no-repeat;
   background-size: contain;
@@ -660,12 +672,13 @@ a.btn {
 }
 
 .profile-pic {
-	border-radius: 50%;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  background-color: white;
 }
 
 .profile-pic-comment {
-	border-radius: 50%;
+  border-radius: 50%;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   width: 40px;
   height: 40px;
@@ -823,7 +836,7 @@ a.btn {
 	display: inline-block;
 	white-space: normal;
 	background-color: white;
-	color: white;
+	color: black;
 	border: 0;
     vertical-align: middle;
 }
@@ -847,10 +860,11 @@ a.btn {
 }
 
 .menu-entry p {
-	margin: 0.2em;
+  display: block;
+  margin: 0.2em;
 }
 
-.menu-entry:hover, .sidebar .active {
+.menu-entry:hover, .menu-entry.active, .menu-entry-small.active {
 	background-color: #006633;
     color: white;
 	-webkit-transform: scale(1.0);
@@ -860,7 +874,7 @@ a.btn {
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
-.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .menu-entry.active > .menu-icon {
     filter: invert(100%);
 }
 
@@ -1086,17 +1100,14 @@ footer h2 {
   padding: 16%;
 }
 
-#nojs-menu.sidebar .active {
+#alert-no-js strong, #nojs-avviso strong {
+  font-size: 1.7em;
+  color: #006633;
   background-color: white;
-  color: black;
 }
 
-#nojs-menu.sidebar .active > .menu-icon {
-  filter: invert(0%);
-}
-
-#nojs-menu .menu-entry-small {
-  display: none;
+#alert-no-js {
+  border: 2px solid red;
 }
 
 #toggle-searchbar {
@@ -1110,12 +1121,12 @@ footer h2 {
 */
 
 .errore {
-  display: block;
-  color: red;
-  background-color: whitesmoke;
-  padding: 0.5em;
-  text-align: center;
-  border-radius: 0.2em;
+  display: block!important;
+  color: red!important;
+  background-color: whitesmoke!important;
+  padding: 0.5em!important;
+  text-align: center!important;
+  border-radius: 0.2em!important;
 }
 
 .page-not-found .wrap {
@@ -1135,7 +1146,6 @@ footer h2 {
   max-width: 600px;
   max-height: 768px;
 }
-
 
 /*
 ======================================================================
@@ -1197,18 +1207,18 @@ footer h2 {
 		margin-left: 0;
 		margin-right: 0;
 		min-width: 100%;
-	  }
+	}
 
 	.sidebar {
 		display: none;
 		width: 100%;
-	  }
+    }
 
 	.article-image-left, .article-image-right {
 		width: 100%;
 		float: none;
 		margin: 0;
-	  }
+    }
 
 	.padding-6.content {
 		padding-top: 3em;

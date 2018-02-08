@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-    <title>Risultati ricerca | Dino Net</title>
+    <title>Risultati ricerca &#124; Dino Net</title>
     <meta name="description" content="Risultati della ricerca di specie o articoli">
     <meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
 
     <!-- Favicon -->
 
@@ -69,7 +69,7 @@
     <header id="header-home" class="parallax padding-6 header-image">
         <div id="title-card" class="content card">
             <h1 class="text-colored">Risultati per la ricerca:</h1>
-			<h3> <?php echo $_GET["input"] ?> </h3>
+			<h2> <?php echo $_GET["input"] ?> </h2>
         </div>
 		<a href="#content" aria-label="Scorri ai risultati della ricerca" class="down-arrow arrow btn card bounce">
 			<span class="hidden">Scorri ai risultati della ricerca</span>
@@ -80,7 +80,7 @@
 
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri</h1>
+            <h1>Elenco riferito alla ricerca di dinosauri per "<?php echo $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php
@@ -89,10 +89,9 @@
             ?>
         </div>
     </div>
-    
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di articoli</h1>   
+            <h1>Elenco riferito alla ricerca di articoli per "<?php echo $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php

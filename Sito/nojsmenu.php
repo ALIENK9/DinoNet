@@ -1,7 +1,7 @@
 
 <noscript id="nojs">
     <div id="nojs-avviso" class="white center wrap-padding hide-large">
-        <h2>Hai disabilitato JavaScript :(</h2>
+        <strong>Hai disabilitato JavaScript!</strong>
         <p>Per visualizzare il menù laterale devi attivare JavaScript! In alternativa puoi continuare a navigare utilizzando questo menù</p>
     </div>
 
@@ -9,7 +9,7 @@
 
         <a class="hidden" title="Salta il menù" href="#main">Salta il menù</a>
 
-        <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; ?>">
+        <a href="index.php" class="menu-entry <?php if($currentPage == $pages["index"]) echo 'active disabled'; else if($currentPage == $pages["credits"] || $currentPage == $pages["search"]) echo 'active'; ?>">
             <span class="menu-icon icon-home"></span>
             <p xml:lang="en" lang="en">Home</p>
         </a>
@@ -29,9 +29,9 @@
         <?php
         if(isset($_SESSION['user'])) {
         ?>
-            <a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
-            <span class="menu-icon icon-accedi"></span>
-            <p>Account</p>
+            <a href="view-account.php" class="menu-entry <?php if($currentPage == $pages["edit-account"]) echo 'active'; else if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
+                <span class="menu-icon icon-accedi"></span>
+                <p>Account</p>
             </a>
         <?php
         }

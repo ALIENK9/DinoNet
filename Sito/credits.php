@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html xml:lang="it-IT" lang="it-IT">
 <head>
-	<title>Crediti | Dino Net</title>
+	<title>Crediti &#124; Dino Net</title>
 	<meta name="description" content="Crediti per il più strepitoso sito d'informazione sui dinosauri">
 	<meta name="author" content="Alessandro Zangari, Cristiano Tessarolo, Matteo Rizzo">
 	<meta charset="UTF-8">
@@ -18,7 +18,6 @@
     <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
 
 	<!-- Favicon -->
 	
@@ -62,7 +61,7 @@
 
 <header id="header-home" class="parallax padding-6 header-image">
 	<div id="title-card" class="content card">
-		<h1 class="text-colored"> Crediti per il sito DINO NET</h1>
+		<h1 class="text-colored"> Crediti per DINO NET</h1>
 	</div>
 </header>
 
