@@ -1,3 +1,23 @@
+// Smooth Scrolling
+
+$(document).ready(function(){
+  $("a").on('click', function(event) {
+
+    if (this.hash !== "") {
+      event.preventDefault();
+
+      var hash = this.hash;
+
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        window.location.hash = hash;
+      });
+    }
+  });
+});
+
 function addJS() { //rende visibile il menù laterale, nasconde la barra di ricerca e mostra il pulsante per aprirla
     document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
     document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");
