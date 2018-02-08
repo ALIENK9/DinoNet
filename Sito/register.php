@@ -155,40 +155,47 @@
         ?>
         <form id="reg-form" action="#" method="POST"  enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
             <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
-            <p>
-                <label for="email">Email <abbr title="richiesto">*</abbr></label>
-                <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["submit"])) echo $_POST["email"]  ?>" required>
-            </p>
 
-            <p>
-                <label for="nome">Nome <abbr title="richiesto">*</abbr></label>
-                <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["nome"]  ?>" required>
-            </p>
+            <fieldset>
+                <legend>Dati personali</legend>
+                <p>
+                    <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                    <input type="text" placeholder="Il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["nome"]  ?>" required>
+                </p>
 
-            <p>
-                <label for="cognome">Cognome <abbr title="richiesto">*</abbr></label>
-                <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["cognome"]  ?>" required>
-            </p>
+                <p>
+                    <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                    <input type="text" placeholder="Il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="<?php if(isset($_POST["submit"])) echo $_POST["cognome"]  ?>" required>
+                </p>
 
-            <p>
-                <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
-                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="<?php if(isset($_POST["submit"])) echo $_POST["datanascita"]  ?>">
-            </p>
+                <p>
+                    <label for="datanascita">Data di nascita (formato: gg/mm/aaaa): </label>
+                    <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="<?php if(isset($_POST["submit"])) echo $_POST["datanascita"]  ?>">
+                </p>
+            </fieldset>
 
-            <p>
-                <label for="password">Password <abbr title="richiesto">*</abbr></label>
-                <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
-            </p>
+            <fieldset>
+                <legend>Dati di accesso</legend>
+                <p>
+                    <label for="email">Email: <abbr title="richiesto">*</abbr></label>
+                    <input type="email" placeholder="Il tuo indirizzo email" id="email" name="email" data-validation-mode="email" value="<?php if(isset($_POST["submit"])) echo $_POST["email"]  ?>" required>
+                </p>
 
-            <p>
-                <label for="passwordconf">Conferma password <abbr title="richiesto">*</abbr></label>
-                <input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
-            </p>
+                <p>
+                    <label for="password">Password: <abbr title="richiesto">*</abbr></label>
+                    <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="" required>
+                </p>
 
-            <p>
-                <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg)</label>
-                <input type="file" id="imgaccount" name="imgaccount" value="<?php if(isset($_POST["submit"])) echo $_FILES["imgaccount"]  ?>">
-            </p>
+                <p>
+                    <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
+                    <input type="password" placeholder="Ripeti la password inserita" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                </p>
+
+                <p>
+                    <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                    <input type="file" id="imgaccount" name="imgaccount" value="<?php if(isset($_POST["submit"])) echo $_FILES["imgaccount"]  ?>">
+                </p>
+            </fieldset>
 
             <input type="hidden" name="submit" value="1">
             <input type="submit" value="REGISTRATI" title="Avvia l'operazione" class="card btn wide text-colored white">

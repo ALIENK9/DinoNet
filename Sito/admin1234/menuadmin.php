@@ -42,10 +42,18 @@
         </div>
         ';
     ?>
-	<a href="panel.php?id=myuser" title="Dati account" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active disabled"; ?>">
+	<a href="panel.php?id=myuser" title="Dati account" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser") echo "active".(!$_GET["sez"] ? " disabled" : ""); ?>">
 		<span class="menu-icon icon-account"></span>
 		<p>I tuoi dati</p>
 	</a>
+    <?php if($_GET["sez"] == "update")
+        echo'
+        <div title="Sezione corrente" class="menu-entry-small active">
+            <hr>
+            <p>Esito modifica</p>
+        </div>
+        ';
+    ?>
 	<a href="panel.php?id=user" title="Gestione utenti" class="menu-entry <?php if(isset($_GET["id"]) && $_GET["id"] == "user") echo "active".(!$_GET["sez"] ? " disabled" : ""); ?>">
 		<span class="menu-icon icon-accounts"></span>
 		<p>Utenti</p>

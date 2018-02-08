@@ -109,51 +109,58 @@ class User {
             $echoString .='
                 <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
-                    <p>
-                        <label for="email">Email (non modificabile)</label>
-                        <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
-                    </p>
+                    <fieldset>
+                        <legend>Dati personali</legend>
+                        <p>
+                            <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
+                        </p>
+                        
+                        <p>
+                            <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="datanascita">Data di nascita (formato: gg/mm/aaaa):</label>
+                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
+                        </p>  
+                    </fieldset>    
                     
-                    <p>
-                        <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
-                    </p>
-                    
-                    <p>
-                        <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
-                    </p>
-                    
-                    <p>
-                        <label for="datanascita">Data di nascita</label>
-                        <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
-                    </p>
-                    
-                    <p>
-                        <label for="password">Password: <abbr title="richiesto">*</abbr></label>
-                        <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
-                    </p>
-                    
-                    <p>
-                        <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
-                        <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
-                    </p>
-
-                    <p>
-                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
-                        <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
-                    </p>
+                    <fieldset>
+                        <legend>Dati di accesso</legend>
+                        <p>
+                            <label for="email">Email (non modificabile)</label>
+                            <input type="email" placeholder="Inserisci la tua email" id="email" name="email" data-validation-mode="email" value="'.$this->getEmail().'" readonly>
+                        </p>
+                        
+                        <p>
+                            <label for="password">Password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
+                        </p>
     
-                    <p>
-                        <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
-                        <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-                    </p>
+                        <p>
+                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                            <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
+                        </p>
+        
+                        <p>
+                            <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
+                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                        </p>
                     
+                    </fieldset>
+                                        
                     <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="wrap-margin card btn text-colored wide white">
                 </form>
             </div>
-            
         </div>
+        <script type="text/javascript">disableInputImmagine();</script>
         ';
 
         return $echoString;

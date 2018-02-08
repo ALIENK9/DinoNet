@@ -153,48 +153,57 @@ class UserAdmin extends User {
                 <?php include_once(\'../breadcrumb.php\') ?>
                 <form action="'.$url.'?id=user&sez=add" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
-                    <p> 
-                        <label for="tipologia">Tipologia utente: <abbr title="richiesto">*</abbr></label>
-                        <select id="tipologia" name="tipologia">                        
-                            <option value="0" selected>Standard</option>
-                            <option value="1">Administrator</option>
-                        </select>
-                    </p>
-
-                    <p>
-                        <label for="email">Email: <abbr title="richiesto">*</abbr></label>
-                        <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" data-validation-mode="email" value="" required>
-                    </p>
                     
-                    <p>
-                        <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="" required>
-                    </p>
+                    <fieldset>
+                        <legend>Dati personali</legend>
+                        <p>
+                            <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="" required>
+                        </p>
+                        
+                        <p>
+                            <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
+                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
+                        </p>
+                        
+                        <p>
+                            <label for="datanascita">Data di nascita (formato: gg/mm/aaaa):</label>
+                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
+                        </p>
+                    </fieldset>  
                     
-                    <p>
-                        <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="" required>
-                    </p>
-                    
-                    <p>
-                        <label for="datanascita">Data di nascita (formato: gg/mm/aaaa)</label>
-                        <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="">
-                    </p>
-                    
-                    <p>
-                        <label for="password">Password: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="" required>
-                    </p>
-                    
-                    <p>
-                        <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
-                    </p>
-                    
-                    <p>
-                        <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
-                        <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
-                    </p>
+                    <fieldset>
+                        <legend>Dati dell\'account</legend>
+                                          
+                        <p> 
+                            <label for="tipologia">Tipologia di account: <abbr title="richiesto">*</abbr></label>
+                            <select id="tipologia" name="tipologia">                        
+                                <option value="0" selected>Standard</option>
+                                <option value="1">Administrator</option>
+                            </select>
+                        </p>
+    
+                        <p>
+                            <label for="email">Email: <abbr title="richiesto">*</abbr></label>
+                            <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" data-validation-mode="email" value="" required>
+                        </p>
+                               
+                        <p>
+                            <label for="password">Password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="" required>
+                        </p>
+                        
+                        <p>
+                            <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
+                            <input type="password" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="" required>
+                        </p>
+                        
+                        <p>
+                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                            <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
+                        </p>
+                        
+                    </fieldset>
                     
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white">
                 </form>
@@ -307,58 +316,65 @@ class UserAdmin extends User {
                 $echoString .='
                     <form action="'.$url.'?id=user&sez=update" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                         <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
-                        <p>
-                            <label for="tipologia">Tipologia utente: <abbr title="richiesto">*</abbr></label>
-                            <select id="tipologia" name="tipologia">                        
-                                <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
-                                <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
-                            </select>
-                        </p>
-
-                        <p>
-                            <label for="email">Email (non modificabile)</label>
-                            <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" value="'.$row["email"].'" readonly>
-                        </p>
                         
-                        <p>
-                            <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$row["nome"].'" required>
-                        </p>
+                        <fieldset>
+                            <legend>Dati personali</legend>
+                            <p>
+                                <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
+                                <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$row["nome"].'" required>
+                            </p>
+                            
+                            <p>
+                                <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
+                                <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$row["cognome"].'" required>
+                            </p>
+                            
+                            <p>
+                                <label for="datanascita">Data di nascita</label>
+                                <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$row["datanascita"].'">
+                            </p>                            
+                        </fieldset>
+                                                
+                        <fieldset>
+                            <legend>Dati dell\'account</legend>
+                            <p>
+                                <label for="tipologia">Tipologia di account: <abbr title="richiesto">*</abbr></label>
+                                <select id="tipologia" name="tipologia">                        
+                                    <option value="0" '; if($row["tipologia"]==0){$echoString .='selected';} $echoString .='>Standard</option>
+                                    <option value="1" '; if($row["tipologia"]==1){$echoString .='selected';} $echoString .='>Administrator</option>
+                                </select>
+                            </p>
+    
+                            <p>
+                                <label for="email">Email (non modificabile)</label>
+                                <input type="email" placeholder="Inserisci l\'indirizzo email dell\'utente" id="email" name="email" value="'.$row["email"].'" readonly>
+                            </p>
+                            <p>
+                                <label for="password">Password: <abbr title="richiesto">*</abbr></label>
+                                <input type="password" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
+                            </p>
+    
+                            <p>
+                                <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
+                                <input type="password" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
+                            </p>
+    
+                            <p>
+                                <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                                <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
+                            </p>
+    
+                            <p>
+                                <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
+                                <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
+                            </p>                            
+                        </fieldset>
                         
-                        <p>
-                            <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$row["cognome"].'" required>
-                        </p>
-                        
-                        <p>
-                            <label for="datanascita">Data di nascita</label>
-                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$row["datanascita"].'">
-                        </p>
-                        
-                        <p>
-                            <label for="password">Password: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$row["password"].'" required>
-                        </p>
-
-                        <p>
-                            <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$row["password"].'" required>
-                        </p>
-
-                        <p>
-                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
-                            <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
-                        </p>
-
-                        <p>
-                            <label for="imgaccountremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
-                            <input type="checkbox" id="imgaccountremove" name="imgaccountremove" value="true">
-                        </p>
-
                         <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
                     </form>
                 </div>
             </div>
+            <script type="text/javascript">disableInputImmagine();</script>
         ';
         }  
         else{

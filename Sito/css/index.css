@@ -836,7 +836,7 @@ a.btn {
 	display: inline-block;
 	white-space: normal;
 	background-color: white;
-	color: white;
+	color: black;
 	border: 0;
     vertical-align: middle;
 }
@@ -864,7 +864,7 @@ a.btn {
   margin: 0.2em;
 }
 
-.menu-entry:hover, .sidebar .active {
+.menu-entry:hover, .menu-entry.active, .menu-entry-small.active {
 	background-color: #006633;
     color: white;
 	-webkit-transform: scale(1.0);
@@ -874,7 +874,7 @@ a.btn {
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
-.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .sidebar .active > .menu-icon {
+.menu-entry:hover > .menu-icon, .menu-entry:active > .menu-icon, .menu-entry.active > .menu-icon {
     filter: invert(100%);
 }
 
@@ -1098,19 +1098,6 @@ footer h2 {
 
 #nojs-menu .menu-icon {
   padding: 16%;
-}
-
-#nojs-menu.sidebar .active {
-  background-color: white;
-  color: black;
-}
-
-#nojs-menu.sidebar .active > .menu-icon {
-  filter: invert(0%);
-}
-
-#nojs-menu .menu-entry-small {
-  display: none;
 }
 
 #alert-no-js strong, #nojs-avviso strong {

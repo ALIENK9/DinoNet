@@ -288,7 +288,7 @@ class Article{
                     
                 </form>
             </div>
-            
+                    
         </div>
         ';
         return $echoString;
@@ -421,9 +421,9 @@ class Article{
                         
                         <input type="submit" value="MODIFICA" title="Avvia la modifica" class="card btn wide text-colored white">
                     </form>
-                </div>
-                
+                </div>    
             </div>
+            <script type="text/javascript">disableInputImmagine();</script>
         ';
         }
         

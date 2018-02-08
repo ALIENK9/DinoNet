@@ -381,6 +381,7 @@ class Dinosaur {
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
                 </form>
             </div>
+            
         </div>
         ';
         return $echoString;
@@ -595,6 +596,7 @@ class Dinosaur {
                     </form>
 				</div>
 			</div>
+			<script type="text/javascript">disableInputImmagine();</script>
             ';
         }
         else{

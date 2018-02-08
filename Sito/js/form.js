@@ -6,7 +6,7 @@ function showElement(elem, mode) {
     elem.style.display = mode;
 }
 
-
+/*##########################################      VALIDAZIONE DEI FORM     ############################################*/
 
 
 /**
@@ -23,7 +23,6 @@ function capitalizeFirstLetter(stringa) {
 
 
 
-
 /**
  * Ritorna true se il campo input non ha l'attributo required e non è stato compilato.
  * @param input
@@ -32,6 +31,9 @@ function capitalizeFirstLetter(stringa) {
 function isOpzionaleVuoto(input) {
     return !input.hasAttribute('required') && (input.value === undefined || input.value.length === 0);
 }
+
+
+
 
 
 /**
@@ -46,9 +48,12 @@ function isOpzionaleVuoto(input) {
  *      - "alpha" ==> controlla che siano stati inseriti solo lettere e segni di punteggiatura e parentesi.
  *      - "email" ==> controlla con una regex che sia stato inserito un indirizzo possibilmente valido.
  *      - "unsigned" ==> controlla che siano inseriti solamente numeri interi positivi.
+ *      - "image" ==> controlla che l'immagine caricata abbia il formato appropriato.
+ *      - "periodomin" e "periodomax" ==> controlla che i campi siano coerenti fra loro e contengano periodi sensati.
+ *      - "datanascita" ==> controlla che la data di nascita dell'utente sia valida.
  *      - data-validation-mode="" || attributo non presente ==> nessuna validazione.
  *
- * Per gli elementi <textarea>, dedicati all'inserimento di testi più lugnhi, quali corpo di articoli e schede si
+ * Per gli elementi <textarea>, dedicati all'inserimento di testi più lunghi, quali corpo di articoli e schede si
  * chiama una unica funzione 'validateTextArea()' che nel caso sia presente l'attributo 'required', controlla che sia
  * almeno stato inserito un numero minimo di caratteri.
  */
@@ -396,4 +401,45 @@ function removeError(elem) {
     var errore = parent.getElementsByClassName('errore');
     if(errore.length > 0)
         parent.removeChild(errore[0]);
+}
+
+
+
+/*##########################################      DISABILITA INPUT     ############################################*/
+/**
+ * Aggiunge un eventListener sul checkbox per rimuovere le immagini. La funzione è disabilitare/abilitare l'input di
+ * upload di una immagine nel caso si selezioni/deselezioni la casella 'nessuna immagine'.
+ */
+function disableInputImmagine() {
+    var inputArti = document.getElementById('imgarticleremove');
+    var inputDino = document.getElementById('imgdinosaurremove');
+    var inputUser = document.getElementById('imgaccountremove');
+    if(inputArti !== null) {
+        inputArti.addEventListener('change', function () {
+            if (inputArti.checked === true) {
+                document.getElementById('imgarticle').setAttribute('disabled', 'disabled');
+                document.getElementById('descrizioneimg').setAttribute('disabled', 'disabled');
+            }
+            else {
+                document.getElementById('imgarticle').removeAttribute('disabled');
+                document.getElementById('descrizioneimg').removeAttribute('disabled');
+            }
+        })
+    }
+    else if(inputDino !== null) {
+        inputDino.addEventListener('change', function () {
+            if(inputDino.checked === true)
+                document.getElementById('imgdinosaur').setAttribute('disabled', 'disabled');
+            else
+                document.getElementById('imgdinosaur').removeAttribute('disabled');
+        })
+    }
+    else if(inputUser !== null) {
+        inputUser.addEventListener('change', function () {
+            if (inputUser.checked === true)
+                document.getElementById('imgaccount').setAttribute('disabled', 'disabled');
+            else
+                document.getElementById('imgaccount').removeAttribute('disabled');
+        })
+    }
 }

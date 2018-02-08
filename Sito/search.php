@@ -80,7 +80,7 @@
 
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri per "<?php $_GET["input"] ?>"</h1>
+            <h1>Elenco riferito alla ricerca di dinosauri per "<?php echo $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php
@@ -91,7 +91,7 @@
     </div>
     <div id="content" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di articoli per "<?php $_GET["input"] ?>"</h1>
+            <h1>Elenco riferito alla ricerca di articoli per "<?php echo $_GET["input"] ?>"</h1>
         </div>
         <div class="row-padding content-large margin-top">
             <?php

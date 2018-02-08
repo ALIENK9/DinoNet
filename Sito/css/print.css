@@ -9,7 +9,7 @@ html, body {
     margin: auto!important;
 }
 
-button, input, hr {display: none;}
+button, input, hr, noscript {display: none;}
 
 h1 {
     font-size: 1.7em!important;
