@@ -231,7 +231,7 @@ class Dinosaur {
         return $echoString; 
     }
 
-    public function deleteDinosaur($connect, $id, $basePathImg){
+    public static function deleteDinosaur($connect, $id, $basePathImg){
         $echoString = "";
         if(isset($connect)){
             if(isset($id)){

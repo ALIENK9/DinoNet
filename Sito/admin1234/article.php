@@ -62,7 +62,7 @@ switch ($sezione) {
 		break;		
 	case 'deletecomment':
 		if(isset($_GET["idcommento"]))
-			echo Article::deleteComment($connectArticle, $_GET["idcommento"], "..");
+			echo Article::deleteComment($connectArticle, $_GET["idcommento"]);
 		break;
 	
 	default:
