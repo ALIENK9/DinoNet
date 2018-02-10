@@ -46,7 +46,7 @@
 		<span class="menu-icon icon-account"></span>
 		<p>I tuoi dati</p>
 	</a>
-    <?php if($_GET["sez"] == "update")
+    <?php if(isset($_GET["id"]) && $_GET["id"] == "myuser" && isset($_GET["sez"]) && $_GET["sez"] == "update")
         echo'
         <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
@@ -59,7 +59,7 @@
 		<p>Utenti</p>
 	</a>
 
-    <?php if(isset($_GET["id"]) && $_GET["id"] == "user" && isset($_GET["sez"]))
+    <?php if(isset($_GET["id"]) && $_GET["id"] == "user" && isset($_GET["sez"]) && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
             <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formadd" -->
@@ -177,7 +177,7 @@
             ';
     ?>
 
-	<a href="panel.php?id=logout" title="Logout" class="menu-entry">
+	<a href="panel.php?id=logout" title="Logout" class="menu-entry" onclick="return confirm('Sei sicuro di volerti disconnettere?')">
 		<span class="menu-icon icon-accedi"></span>
 		<p xml:lang="en" lang="en">Logout</p>
 	</a>

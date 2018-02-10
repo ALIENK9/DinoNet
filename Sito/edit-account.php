@@ -1,9 +1,11 @@
 <?php
 
 	include_once ("classi/User.php");	
+    include_once ("errormessage.php");
+    include_once ("validate.php");
 
 	session_start();
-	
+	$error = array();
 	if(!isset($_SESSION['user'])){		
 		header("Location: login.php");
 	}
@@ -16,8 +18,11 @@
 		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 			$removeimg=true;			
 		}
-		$_SESSION['user']->UpdateMyUser($connectUser, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg, ".");
-		header("Location: view-account.php");
+		$error = $_SESSION['user']->UpdateMyUser($connectUser, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg, ".");
+		if($error[0] == 0){
+			header("Location: view-account.php");
+		}
+		
 	}
 	closeConnect($connectUser);
 
@@ -75,7 +80,18 @@
 
 <!-- Header -->
 <?php 
-	echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update");
+
+	if(isset($error[3]) && $error[3] != ""){
+		echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update",$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $error[3]);
+	}
+	else{	
+		if(isset($error[1]) && $error[1] != ""){
+			echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update",$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $error[1]);
+		}
+		else{
+			echo $_SESSION['user']->formUpdateMyUser($_SERVER["PHP_SELF"]."?sez=update");
+		}
+	}
 ?>
 	<div class="center wrap-padding">
 		<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  

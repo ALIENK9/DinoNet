@@ -68,19 +68,22 @@
 
     <header id="header-home" class="parallax padding-6 header-image">
         <div id="title-card" class="content card">
-            <h1 class="text-colored">Risultati per la ricerca:</h1>
-			<h2> <?php echo $_GET["input"] ?> </h2>
+            <h1 class="text-colored">Risultati per la ricerca: <?php echo $_GET["input"] ?> </h1>
         </div>
 		<a href="#dinosauri" aria-label="Scorri ai risultati della ricerca" class="down-arrow arrow btn card bounce">
 			<span class="hidden">Scorri ai risultati della ricerca</span>
 		</a>
     </header>
-
+    <?php 
+        include_once('breadcrumb.php');
+        echo breadcrumbUser();
+    ?>
     <!-- Dinosauri -->
 
     <div id="dinosauri" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri per "<?php echo $_GET["input"] ?>"</h1>
+            <h1>Elenco riferito alla ricerca di dinosauri per </h1>
+			<h2> "<?php echo $_GET["input"] ?>"</h2>
             <a href="#articoli">Vai ai risultati per gli articoli</a>
         </div>
         <div class="row-padding content-large margin-top">
@@ -91,7 +94,8 @@
     </div>
     <div id="articoli" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di articoli per "<?php echo $_GET["input"] ?>"</h1>
+            <h1>Elenco riferito alla ricerca di articoli per </h1>
+			<h2> "<?php echo $_GET["input"] ?>"</h2>
             <a href="#dinosauri">Vai ai risultati per i dinosauri</a>
         </div>
         <div class="row-padding content-large margin-top">

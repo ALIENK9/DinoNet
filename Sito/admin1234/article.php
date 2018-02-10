@@ -1,6 +1,7 @@
 <?php
 
 include_once (__DIR__."/../classi/Article.php");
+include_once (__DIR__."/../errormessage.php");
 
 if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 	header("Location: ../error.php");
@@ -41,7 +42,18 @@ switch ($sezione) {
 		echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
-		echo Article::addArticle($connectArticle, $_SESSION['paneluser']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
+		$error =  Article::addArticle($connectArticle, $_SESSION['paneluser']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
+		if($error[0] == 0){
+			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=article&sez=formadd");
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo Article::formAddArticle($_SERVER["PHP_SELF"],$_POST['titolo'],$_POST['sottotitolo'],$_POST['descrizione'],$_POST['anteprima'], $error[3]);
+			}
+			else{				
+				echo Article::formAddArticle($_SERVER["PHP_SELF"],$_POST['titolo'],$_POST['sottotitolo'],$_POST['descrizione'],$_POST['anteprima'], $error[1]);
+			}
+		}
 		break;			
 	case 'formupdate':
 		echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"],$_GET["article"]);
@@ -51,7 +63,19 @@ switch ($sezione) {
 		if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
 			$removeimg=true;
 		}
-		echo Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg, "..");
+		$error = Article::updateArticle($connectArticle, $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"], $removeimg, "..");
+		if($error[0] == 0){
+			echo message($error[2]);
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"], $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $error[3]);
+			}
+			else{				
+				echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"], $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $error[1]);
+			}
+		}
+		
 		break;	
 	case 'delete':
 		if(isset($_GET["article"]))

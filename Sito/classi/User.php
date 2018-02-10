@@ -1,6 +1,8 @@
 <?php 
 
 include_once (__DIR__."/../loadFile.php");
+include_once (__DIR__."/../errormessage.php");
+include_once (__DIR__."/../validate.php");
 
 class User {
     
@@ -91,8 +93,23 @@ class User {
         return $status;
     }
 
-    public function formUpdateMyUser($url){
+    public function formUpdateMyUser($url, $nome = "", $cognome = "", $datanascita = "", $password = "", $passwordconf = "", $error=""){
         
+        if(!isset($nome)){ $nome = ""; }
+        if(!isset($cognome)){ $cognome = ""; }
+        if(!isset($datanascita)){ $datanascita = ""; }
+        if(!isset($password)){ $password = ""; }
+        if(!isset($passwordconf)){ $passwordconf = ""; }
+        if(!isset($error)){ $error = ""; }
+
+        if( $error == ""){
+            $nome =$this->getNome();
+            $cognome = $this->getCognome();
+            $datanascita = $this->getDataNascita();
+            $password = $this->getPassword();
+            $passwordconf = $this->getPassword();            
+        }
+
         $echoString ='
 		
 		<div class="parallax padding-6 form-image">
@@ -106,6 +123,9 @@ class User {
             <div id="content-form" class="content"> <!-id="edit"-->';            
             include_once (__DIR__."/../breadcrumb.php");
             $echoString .= breadcrumbAdmin();
+            if($error != ""){
+                $echoString .= messageErrorForm($error);
+            }
             $echoString .='
                 <form action="'.$url.'" method="POST" enctype="multipart/form-data" class="card colored wrap-padding" onsubmit="return validateForm(this)">
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
@@ -113,17 +133,17 @@ class User {
                         <legend>Dati personali</legend>
                         <p>
                             <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$this->getNome().'" required >
+                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'. $nome.'" required >
                         </p>
                         
                         <p>
                             <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$this->getCognome().'" required>
+                            <input type="text" placeholder="Inserisci il tuo cognome" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$cognome.'" required>
                         </p>
                         
                         <p>
                             <label for="datanascita">Data di nascita (formato: gg/mm/aaaa):</label>
-                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$this->getDataNascita().'">
+                            <input type="date" id="datanascita" name="datanascita" data-validation-mode="datanascita" value="'.$datanascita.'">
                         </p>  
                     </fieldset>    
                     
@@ -136,12 +156,12 @@ class User {
                         
                         <p>
                             <label for="password">Password: <abbr title="richiesto">*</abbr></label>
-                            <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$this->getPassword().'" required>
+                            <input type="password" placeholder="Inserisci una password" id="password" name="password" data-validation-mode="password" value="'.$password.'" required>
                         </p>
                         
                         <p>
                             <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
-                            <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$this->getPassword().'" required>
+                            <input type="password" placeholder="Per conferma inserisci la password" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$passwordconf.'" required>
                         </p>
     
                         <p>
@@ -168,144 +188,176 @@ class User {
     
     public function updateMyUser($connect, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $removeImage, $basePathImg){
      
-        $echoString ="";
-          
+        $returnArray[0] = 0;
+        $returnArray[1] = array();
+        
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($nome,$cognome,$password,$confermaPassword));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
+        }
 
-        if(
-            isset($nome) && $nome!="" &&
-            isset($cognome) && $cognome!="" &&
-            isset($password) && $password!="" &&
-            isset($confermaPassword) &&
-            strlen($password) >= 4 &&
-            $password==$confermaPassword 
-        ){
-            
-            if(!isset($datanascita)){ $datanascita = "";}
+        $error = checkPassword($password,$confermaPassword);
+        if($error[1] == 1 || $error[2] == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPasswordShort());
+        }
+        if($error[3] == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPasswordConfirm());
+        }
 
-            if($removeImage){  
-                $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
-                $result = $connect->query($sqlQuery);
-                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
-                    if($row["immagine"]!="" && $row["immagine"]!=NULL){     
-                        delImage($basePathImg.$row["immagine"]);
-                    }
+        if(checkName($nome) == 1 || checkName($cognome) == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorNameSurname());
+        }
+
+        $error = checkData($datanascita);
+        if($error[2] == 1 || $error[3] == 1){ 
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorData());
+        }
+        if($error[1] == 1){
+            $datanascita = "";
+        }
+
+        $error = checkImageProfile($immagine);
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+        //Fine Controlli campi
+
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+        if($removeImage){  
+            $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
+                if($row["immagine"]!="" && $row["immagine"]!=NULL){     
+                    delImage($basePathImg.$row["immagine"]);
                 }
-            }
-
-            $destinazioneFileDB = $this->getUrlImmagine();
-            if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("userimg", $this->getEmail(), $immagine, 250, 250);
-                if($destinazioneFileDB==NULL){
-                    $echoString .= "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
-                            </div>
-                        </div>
-                        ";
-                }
-            }
-            
-
-            $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
-            if( $destinazioneFileDB != NULL){
-                $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
-            }
-            if($removeImage){
-                $sqlQuery .= ", immagine=NULL ";
-            }
-            $sqlQuery .= "WHERE email='".$this->getEmail()."'";
-            if( $connect->query($sqlQuery) ){                
-                $this->setNome($nome);
-                $this->setCognome($cognome);
-                $this->setDataNascita($datanascita);
-                $this->setPassword($password);
-                $this->setUrlImmagine($destinazioneFileDB);
-				$echoString .= "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento modificato!</h1>
-						</div>
-					</div>							
-				";
-            } 
-            else {
-				$echoString = "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento non modificato</h1>
-							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-						</div>
-					</div>							
-				";
             }
         }
-        else{
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Errore campi</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-					</div>
-				</div>							
-			";
-        }    
 
-        
-        return $echoString;
+        $destinazioneFileDB = $this->getUrlImmagine();
+        if(!$removeImage && $immagine['error'] == 0){
+            $destinazioneFileDB = loadImage("userimg", $this->getEmail(), $immagine, 250, 250);
+        }
+            
+
+        $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
+        if( $destinazioneFileDB != NULL){
+            $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+        }
+        if($removeImage || $destinazioneFileDB == NULL){
+            $sqlQuery .= ", immagine=NULL ";
+        }
+        $sqlQuery .= "WHERE email='".$this->getEmail()."'";
+        if( $connect->query($sqlQuery) ){                
+            $this->setNome($nome);
+            $this->setCognome($cognome);
+            $this->setDataNascita($datanascita);
+            $this->setPassword($password);
+            $this->setUrlImmagine($destinazioneFileDB);
+            $returnArray[2] = messageUserUpdateConfirm();
+        } 
+        else {            
+            $returnArray[0] = 1;
+            $returnArray[3] = messageUserErrorUpdate();
+        }
+                
+        return $returnArray;
     } 
     
     public function registerMyUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $basePathImg){ 
-           $echoString ="";
            
-           $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
-           $result = $connect->query($sqlQuery); 
-           if($result->num_rows > 0){ $echoString .= "Email non disponibile <br>";}
+        $returnArray[0] = 0;
+        $returnArray[1] = array();
+        
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($email,$nome,$cognome,$password,$confermaPassword));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
+        }
+  
+        if(checkEmailAvailable($connect, $email) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorEmailAvailable());
+        }
+           
+        if(checkEmail($email) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorEmail());
+        }
 
-           if(!isset($password) || strlen($password) < 4) { $echoString .= "La password deve essere lunga almeno 4 caratteri <br>";}
-           if(!isset($password) || !isset($confermaPassword) || $password!=$confermaPassword){ $echoString .= "Le password non coincidono <br>";}
-           if(!isset($email) || $email=="" || !isset($nome) || $nome=="" || !isset($cognome) || $cognome=="" || $password == ""){    $echoString .= "I campi email, nome, cognome e password sono obbligatori";}
-           if(!preg_match("/^[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i", $email)){$echoString .= "Formato email non valido <br>";}
-           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $nome)){$echoString .= "Formato nome errato: può contenere solo lettere <br>";}
-           if(!preg_match("/^([A-z]+[.,;\-\"'()\s]*)*$/i", $cognome)){$echoString .= "Formato cognome errato: può contenere solo lettere <br>";}
-           $anno=0;
-           if(isset($datanascita) && !(false === strtotime($datanascita)))
-                list($anno, $mese, $giorno) = explode('-', $datanascita); 
-           if(!isset($datanascita) || $anno<1900 || $mese==0 || $mese>12 || $giorno==0 || $giorno>31){ $datanascita = "";}
+        $error = checkPassword($password,$confermaPassword);
+        if($error[1] == 1 || $error[2] == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPasswordShort());
+        }
+        if($error[3] == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPasswordConfirm());
+        }
 
-           if($echoString == ""){
+        if(checkName($nome) == 1 || checkName($cognome) == 1 ){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorNameSurname());
+        }
 
-                $destinazioneFileDB = NULL;
-                if($immagine['error'] == 0){
-                    $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
-                    if($destinazioneFileDB == NULL){
-                        $echoString .= "Errore immagine ";
-                    }
-                } 
+        $error = checkData($datanascita);
+        if($error[2] == 1 || $error[3] == 1){ 
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorData());
+        }
+        if($error[1] == 1){
+            $datanascita = "";
+        }
 
-                $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
-                if( $destinazioneFileDB != NULL)
-                    $sqlQuery .="'".$destinazioneFileDB."'";
-                else{
-                    $sqlQuery .= "NULL";
-                }
-                $sqlQuery .=") ";
+        $error = checkImageProfile($immagine);
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+        //Fine Controlli campi
 
-                if($connect->query($sqlQuery)){
-                    $echoString .= "Utente registrato";
-               } 
-               else {
-                   $echoString .= "Utente non registrato";
 
-                    if( $destinazioneFileDB != NULL){                           
-                        delImage($basePathImg.$destinazioneFileDB); 
-                    }
-               }
-           }  
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+
+        $destinazioneFileDB = NULL;
+        if($immagine['error'] == 0){
+            $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
+        } 
+
+        $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
+        if( $destinazioneFileDB != NULL)
+            $sqlQuery .="'".$destinazioneFileDB."'";
+        else{
+            $sqlQuery .= "NULL";
+        }
+        $sqlQuery .=") ";
+
+        if($connect->query($sqlQuery)){
+            $returnArray[2] = messageUserAddConfirm();
+        } 
+        else {
+            $returnArray[0] = 1;
+            $returnArray[3] = messageErrorUserAdd();
+
+            if( $destinazioneFileDB != NULL){                           
+                delImage($basePathImg.$destinazioneFileDB); 
+            }
+        }
+            
    
-           
-           return $echoString;
-       } 
+        return $returnArray;
+    } 
        
        public function deleteUserForce($connect, $basePathImg){
            $echoString = "";
@@ -316,24 +368,10 @@ class User {
 
                 $sqlQuery = "DELETE FROM utente WHERE email = '".$this->getEmail()."' ";
                 if( $connect->query($sqlQuery) ){
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Elemento eliminato!</h1>
-								<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Torna indietro </a>
-                            </div>
-                        </div>							
-                    ";
+                    $echoString = messageBack(messageDeleteConfirm()); 
                 } 
                 else {
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Elemento NON eliminato</h1>
-                            <a href=\"#\" class='btn card wrap-margin'> Riprova </a>
-                        </div>
-                    </div>							
-                ";
+                    $echoString = messageTryAgain(messageErrorDelete()); 
                 }
            }           
            return $echoString;

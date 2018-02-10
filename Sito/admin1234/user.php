@@ -2,6 +2,7 @@
 
 
 include_once (__DIR__."/../classi/UserAdmin.php");
+include_once (__DIR__."/../errormessage.php");
 
 if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 	header("Location: ../error.php");
@@ -42,7 +43,18 @@ switch ($sezione) {
 		echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
-		echo $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], "..");
+		$error = $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], "..");
+		if($error[0] == 0){
+			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=user&sez=formadd");
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['tipologia'], $error[3]);
+			}
+			else{				
+				echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['tipologia'], $error[1]);
+			}
+		}
 		break;
 	case 'formupdate':
 		echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
@@ -52,7 +64,18 @@ switch ($sezione) {
 		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 			$removeimg=true;			
 		}
-		echo $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg, "..");
+		$error = $_SESSION['paneluser']->updateUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], $removeimg, "..");
+		if($error[0] == 0){
+			echo message($error[2]);
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $error[3]);
+			}
+			else{				
+				echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $error[1]);
+			}
+		}
 		break;		
 	case 'delete':
 		if(isset($_GET["user"]))

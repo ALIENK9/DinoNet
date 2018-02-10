@@ -1,6 +1,8 @@
 <?php 
 
 include_once (__DIR__."/../loadFile.php");
+include_once (__DIR__."/../errormessage.php");
+include_once (__DIR__."/../validate.php");
 
 class Dinosaur {    
                 
@@ -71,14 +73,8 @@ class Dinosaur {
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
-            else {                
-			$echoString = "
-                <div class='padding-6 content center'>
-                    <div class='card wrap-padding'>
-                        <h1>Nessun risultato</h1>
-                    </div>
-                </div>							
-            ";
+            else {    
+                $echoString = message(messageEmpty()); 
             }
         }
         return $echoString;
@@ -157,14 +153,8 @@ class Dinosaur {
                 }
 				$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
             } 
-            else {           
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Nessun risultato</h1>
-                        </div>
-                    </div>							
-                ";
+            else { 
+                $echoString = message(messageEmpty()); 
             }
         }
         return $echoString;
@@ -218,15 +208,8 @@ class Dinosaur {
                 ';
             }
         }
-        else {           
-			$echoString = "
-                <div class='padding-6 content center'>
-                    <div class='card wrap-padding'>
-                        <h1>Nessun risultato</h1>
-                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'>Torna alla pagina precedente</a> 
-                    </div>
-                </div>							
-            ";
+        else {       
+            $echoString = messageBackPage(messageEmpty()); 
         }
         return $echoString; 
     }
@@ -245,40 +228,48 @@ class Dinosaur {
 
                     $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$id."' ";
                     if( $connect->query($sqlQuery) ){
-                        $echoString = "
-                            <div class='padding-6 content center'>
-                                <div class='card wrap-padding'>
-                                    <h1>Elemento eliminato</h1>
-                                </div>
-                            </div>							
-                        ";
+                        $echoString = message(messageDeleteConfirm()); 
                     } 
                     else {
-                        $echoString = "
-                            <div class='padding-6 content center'>
-                                <div class='card wrap-padding'>
-                                    <h1>Elemento NON eliminato</h1>
-                                    <a href=\"#\" class='btn card wrap-margin'> Riprova </a>
-                                </div>
-                            </div>							
-                        ";
+                        $echoString = messageTryAgain(messageErrorDelete()); 
                     }
                 }
                 else{
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Elemento NON eliminabile</h1>
-                            </div>
-                        </div>						
-                    ";
+                    $echoString = message(messageErrorDeleteStrong()); 
                 }
             }
         }        
         return $echoString;
     }
 
-    public static function formAddDinosaur($url){
+    public static function formAddDinosaur($url, $nome = "", $peso = "", $altezza = "", $lunghezza = "", $periodomin = "", $periodomax = "", $habitat = "", $alimentazione = "", $tipologiaalimentazione = "", $descrizionebreve = "", $descrizione = "", $curiosita = "", $error = ""){
+        if(!isset($nome)){ $nome = ""; }
+        if(!isset($peso)){ $peso = ""; }
+        if(!isset($altezza)){ $altezza = ""; }
+        if(!isset($lunghezza)){ $lunghezza = ""; }
+        if(!isset($periodomin)){ $periodomin = ""; }
+        if(!isset($periodomax)){ $periodomax = ""; }
+        if(!isset($habitat)){ $habitat = ""; }
+        if(!isset($alimentazione)){ $alimentazione = ""; }
+        if(!isset($tipologiaalimentazione) || $tipologiaalimentazione==""){ $tipologiaalimentazione = "carnivoro"; }
+        if(!isset($descrizionebreve)){ $descrizionebreve = ""; }
+        if(!isset($descrizione)){ $descrizione = ""; }
+        if(!isset($curiosita)){ $curiosita = ""; }
+        if(!isset($error)){ $error = ""; }
+
+        $alimentazionecarnivora = "";
+        $alimentazioneonnivora = "";
+        $alimentazioneerbivora = "";
+        if($tipologiaalimentazione=="carnivoro"){
+            $alimentazionecarnivora = "checked";
+        }
+        if($tipologiaalimentazione=="onnivoro"){
+            $alimentazioneonnivora = "checked";                
+        }
+        if($tipologiaalimentazione=="erbivoro"){
+            $alimentazioneerbivora = "checked";                
+        }
+
         $echoString ='
 		
 		<div class="parallax padding-6 form-image">
@@ -291,6 +282,9 @@ class Dinosaur {
             <div id="content-form" class="content">';            
             include_once (__DIR__."/../breadcrumb.php");
             $echoString .= breadcrumbAdmin();
+            if($error != ""){
+                $echoString .= messageErrorForm($error);
+            }
             $echoString .='
                 <form action="'.$url.'?id=dino&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
@@ -298,32 +292,32 @@ class Dinosaur {
                         <legend>Nome, dimensioni ed epoca</legend>
                         <p>
                             <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="" required>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="'.$nome.'" required>
                         </p>
                         
                         <p>
                             <label for="peso">Peso in Kg: </label>
-                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$peso.'" required>
                         </p>
         
                         <p>
                             <label for="altezza">Altezza in cm:</label>
-                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$altezza.'" required>
                         </p>
                         
                         <p>
                             <label for="lunghezza">Lunghezza in cm:</label>
-                            <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="" required>
+                            <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$lunghezza.'" required>
                         </p>
                         
                         <p>
                             <label for="periodomin">Periodo minimo in milioni di anni (da che periodo visse): <abbr title="richiesto">*</abbr></label>
-                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="" required>
+                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$periodomin.'" required>
                         </p>
                         
                         <p>
                             <label for="periodomax">Periodo massimo in milioni di anni: <abbr title="richiesto">*</abbr></label>
-                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="" required>
+                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$periodomax.'" required>
                         </p>
                         
                     </fieldset>
@@ -333,23 +327,23 @@ class Dinosaur {
                         <p>Inserisci la categoria a cui appartiene: <abbr title="richiesto">*</abbr></p>
                         <p class="center">
                             <label for="tipologiaalimentazione1">Carnivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" checked>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
                         
                             <label for="tipologiaalimentazione2">Onnivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro">
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
                         
                             <label for="tipologiaalimentazione3">Erbivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro">
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
                         </p>
                         
                         <p>
                             <label for="alimentazione">Di cosa si nutriva?</label>
-                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="" required>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
                         </p>
                         
                         <p>
                             <label for="habitat">Habitat:</label>
-                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="" required>
+                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
                         </p>
                                                
                     </fieldset>                   
@@ -359,18 +353,18 @@ class Dinosaur {
                         <legend>Corpo dell\'articolo</legend>
                          <p>
                             <label for="descrizionebreve">Descrizione breve: <abbr title="richiesto">*</abbr></label>
-                            <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" required></textarea>
+                            <textarea type="text" placeholder="Inserisci una breve descrizione " id="descrizionebreve" name="descrizionebreve" required>'.$descrizionebreve.'</textarea>
                         </p>
                         
                         
                         <p>
                             <label for="descrizione">Descrizione: <abbr title="richiesto">*</abbr></label>
-                            <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" required></textarea>
+                            <textarea type="text" placeholder="Inserisci la descrizione completa " id="descrizione" name="descrizione" required>'.$descrizione.'</textarea>
                         </p>
                         
                         <p>
                             <label for="curiosita">Curiosità:</label>
-                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" required></textarea>  
+                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" required>'.$curiosita.'</textarea>  
                         </p>       
                
                         <p>
@@ -390,315 +384,401 @@ class Dinosaur {
 
     
     public static function addDinosaur($connect, $idautore, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $basePathImg){
-        $echoString ="";
-        $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
-        $result = $connect->query($sqlQuery);
-        if(
-            $result->num_rows == 0 &&
-            isset($nome) && $nome!="" &&
-            isset($descrizionebreve) && $descrizionebreve!="" &&
-            isset($descrizione) && $descrizione!=""
-        ){
-            
-            if(!isset($peso)){ $peso = "";}
-            if(!isset($altezza)){ $altezza = "";}
-            if(!isset($lunghezza)){ $lunghezza = "";}
-            if(!isset($periodomin)){ $periodomin = "";}
-            if(!isset($periodomax)){ $periodomax = "";}
-            if(!isset($habitat)){ $habitat = "";}
-            if(!isset($alimentazione)){ $alimentazione = "";}
-            if(!isset($tipologiaalimentazione)){ $tipologiaalimentazione = "";}
-            if(!isset($curiosita)){ $curiosita = "";}
+        
+        $returnArray[0] = 0;   
+        $returnArray[1] = array();
 
-            $destinazioneFileDB = NULL;
-            if($immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
-                if($destinazioneFileDB==NULL){
-                    $echoString .= "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
-                            </div>
-                        </div>
-                        ";
-                }
-            }
-            $sqlQuery = "INSERT INTO dinosauro (
-                nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
-                VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".htmlentities($descrizionebreve, ENT_QUOTES)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($curiosita, ENT_QUOTES)."', '".date('Y-m-j')."', '".$idautore."', ";
-            if( $destinazioneFileDB != NULL)
-                $sqlQuery .= "'".$destinazioneFileDB."'";
-            else{
-                $sqlQuery .= "NULL";
-            }
-            $sqlQuery .=") ";
-            if( $connect->query($sqlQuery) ){
-                $echoString .= "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento aggiunto</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
-					</div>
-				</div>
-				";
-            } 
-            else {
-                $echoString = "
-					<div class='padding-6 content'>
-						<div class='card wrap-padding'>
-							<h1>Elemento NON Aggiunto</h1>
-							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-						</div>
-					</div>
-				";
-                if( $destinazioneFileDB != NULL){                         
-                    delImage($basePathImg.$destinazioneFileDB);
-                }
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
+        }
+
+        if(checkNameDinoAvailable($connect, $nome) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDinoNameAvailable());
+        }
+        
+        if(checkName($nome) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDinoNome());
+        }
+
+        $error = checkPeriodoDino($periodomin, $periodomax);
+        if( $error[3] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMin());
+        }
+        if( $error[4] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMax());
+        }
+        if( $error[5] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMinMax());
+        }
+        
+        if(checkPositiveInteger($peso) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("peso"));
+        }
+
+        if(checkPositiveInteger($altezza) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("altezza"));
+        }
+
+        if(checkPositiveInteger($lunghezza) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("lunghezza"));
+        }
+        
+        if(checkAlpha($alimentazione) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorAlpha("alimentazione"));
+        }
+
+        if(checkAlpha($habitat) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorAlpha("habitat"));
+        }
+           
+        $error = checkImageContent($immagine,"");
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+
+        if(!isset($tipologiaalimentazione)){ 
+            $tipologiaalimentazione = "";
+        }
+
+        if(!isset($curiosita)){ 
+            $curiosita = "";
+        }
+
+        //Fine Controlli campi
+                    
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+        $destinazioneFileDB = NULL;
+        if($immagine['error'] == 0){
+            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+        }
+        $sqlQuery = "INSERT INTO dinosauro (
+            nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
+            VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".htmlentities($descrizionebreve, ENT_QUOTES)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($curiosita, ENT_QUOTES)."', '".date('Y-m-j')."', '".$idautore."', ";
+        if( $destinazioneFileDB != NULL)
+            $sqlQuery .= "'".$destinazioneFileDB."'";
+        else{
+            $sqlQuery .= "NULL";
+        }
+        $sqlQuery .=") ";
+        if( $connect->query($sqlQuery) ){
+            $returnArray[2] = messageAddConfirm();
+        } 
+        else {
+            $returnArray[0] = 1;
+            $returnArray[3] = messageErrorAdd();
+            if( $destinazioneFileDB != NULL){                         
+                delImage($basePathImg.$destinazioneFileDB);
             }
         }
-        else{
-            $echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Errore campi</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-					</div>
-				</div>
-			";
-        }           
-        return $echoString;
-    }
-    public static function formUpdateDinosaur($connect, $url, $id){
-        $echoString ="";
-        $sqlQuery = "SELECT * FROM dinosauro WHERE nome = '".$id."' ";
-        $result = $connect->query($sqlQuery);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();   
-            $alimentazionecarnivora = "";
-            $alimentazioneonnivora = "";
-            $alimentazioneerbivora = "";
-            if($row["tipologiaalimentazione"]=="carnivoro"){
-                $alimentazionecarnivora = "checked";
-            }
-            if($row["tipologiaalimentazione"]=="onnivoro"){
-                $alimentazioneonnivora = "checked";                
-            }
-            if($row["tipologiaalimentazione"]=="erbivoro"){
-                $alimentazioneerbivora = "checked";                
-            }
-            
-            $echoString ='
-			
-			<div class="parallax padding-6 form-image">
-			
-                <header id="header-form" class="content card white wrap-padding">			
-                    <div id="title-card" class="card">
-                        <h1> Modifica il dinosauro </h1>
-                    </div>
-                </header>
-                
-                <div id="content-form" class="content">';            
-                include_once (__DIR__."/../breadcrumb.php");
-                $echoString .= breadcrumbAdmin();
-                $echoString .='
-                    <form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
-                        <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
-                        <fieldset>
-                            <legend>Nome, dimensioni ed epoca</legend>
-                            <p>
-                                <label for="nome">Nome (non modificabile)</label>
-                                <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$row["nome"].'" readonly>
-                            </p>
-                            
-                            <p>
-                                <label for="peso">Peso in kg:</label>
-                                <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$row["peso"].'">
-                            </p>
     
-                            <p>
-                                <label for="altezza">Altezza in cm:</label>
-                                <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$row["altezza"].'">
-                            </p>
-                            
-                            <p>
-                                <label for="lunghezza">Lunghezza in cm:</label>
-                                <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$row["lunghezza"].'">
-                            </p>
-                                                       
-                            <p>
-                                <label for="periodomin">Periodo minimo in milioni di anni: <abbr title="richiesto">*</abbr></label>
-                                <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$row["periodomin"].'" required>
-                            </p>
-                            
-                            <p>
-                                <label for="periodomax">Periodo massimo in milioni di anni: <abbr title="richiesto">*</abbr></label>
-                                <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$row["periodomax"].'" required>
-                            </p>
-                        </fieldset>
-                        
-                        <fieldset>
-                            <legend>Alimentazione e habitat</legend>
-                            
-                            <p>Seleziona la categoria a cui appartiene: <abbr title="richiesto">*</abbr></p> 
-                            <p class="center">
-                                <label for="tipologiaalimentazione1">Carnivoro</label>
-                                <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
-                            
-                                <label for="tipologiaalimentazione2">Onnivoro</label>
-                                <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
-                        
-                                <label for="tipologiaalimentazione3">Erbivoro</label>
-                                <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
-                            </p>
-                            
-                            <p>
-                                <label for="alimentazione">Di cosa si nutriva?</label>
-                                <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$row["alimentazione"].'" required>
-                            </p>
-                            
-                            <p>
-                                <label for="habitat">Habitat:</label>
-                                <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$row["habitat"].'" required>
-                            </p>
-                             
-                        </fieldset>
-                        
-                        <fieldset>
-                            <legend>Corpo dell\'articolo</legend>
-                        
-                            <p>
-                                <label for="descrizionebreve">Descrizione breve: <abbr title="richiesto">*</abbr></label>
-                                <textarea type="text" placeholder="Inserisci una breve descrizione" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($row["descrizionebreve"]).'</textarea>
-                            </p>
-                            
-                            <p>
-                                <label for="descrizione">Descrizione: <abbr title="richiesto">*</abbr></label>
-                                <textarea type="text" placeholder="Inserisci la descrizione completa" id="descrizione" name="descrizione" required> '.html_entity_decode($row["descrizione"]).'</textarea>
-                            </p>
-                            
-                            <p>
-                                <label for="curiosita">Curiosità:</label>
-                                <textarea type="text" placeholder="Inserisci delle curiosità" id="curiosita" name="curiosita"> '.html_entity_decode($row["curiosita"]).'</textarea>
-                            </p>
-                            
-                            <p>
-                                <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
-                                <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
-                            </p>
-                
-                            <p>
-                                <label for="imgdinosaurremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
-                                <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
-                            </p>
-                        </fieldset>
+        return $returnArray;
+    }
+    public static function formUpdateDinosaur($connect, $url, $id, $peso = "", $altezza = "", $lunghezza = "", $periodomin = "", $periodomax = "", $habitat = "", $alimentazione = "", $tipologiaalimentazione = "", $descrizionebreve = "", $descrizione = "", $curiosita = "", $error = ""){
+        
+        $echoString ="";
 
-                        <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
-                    </form>
-				</div>
-			</div>
-			<script type="text/javascript">disableInputImmagine();</script>
-            ';
+        if(!isset($peso)){ $peso = ""; }
+        if(!isset($altezza)){ $altezza = ""; }
+        if(!isset($lunghezza)){ $lunghezza = ""; }
+        if(!isset($periodomin)){ $periodomin = ""; }
+        if(!isset($periodomax)){ $periodomax = ""; }
+        if(!isset($habitat)){ $habitat = ""; }
+        if(!isset($alimentazione)){ $alimentazione = ""; }
+        if(!isset($tipologiaalimentazione) || $tipologiaalimentazione==""){ $tipologiaalimentazione = "carnivoro"; }
+        if(!isset($descrizionebreve)){ $descrizionebreve = ""; }
+        if(!isset($descrizione)){ $descrizione = ""; }
+        if(!isset($curiosita)){ $curiosita = ""; }
+        if(!isset($error)){ $error = ""; }
+
+        if( $error == ""){
+            $sqlQuery = "SELECT * FROM dinosauro WHERE nome = '".$id."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $peso = $row["peso"];
+                $altezza = $row["altezza"];
+                $lunghezza = $row["lunghezza"];
+                $periodomin = $row["periodomin"];
+                $periodomax = $row["periodomax"];
+                $habitat = $row["habitat"];
+                $alimentazione = $row["alimentazione"];
+                $tipologiaalimentazione = $row["tipologiaalimentazione"];
+                $descrizionebreve = $row["descrizionebreve"];
+                $descrizione = $row["descrizione"];
+                $curiosita = $row["curiosita"];
+            }
         }
-        else{
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Dinosauro non presente</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-					</div>
-				</div>							
-			";
+
+        $alimentazionecarnivora = "";
+        $alimentazioneonnivora = "";
+        $alimentazioneerbivora = "";
+        if($tipologiaalimentazione=="carnivoro"){
+            $alimentazionecarnivora = "checked";
         }
+        if($tipologiaalimentazione=="onnivoro"){
+            $alimentazioneonnivora = "checked";                
+        }
+        if($tipologiaalimentazione=="erbivoro"){
+            $alimentazioneerbivora = "checked";                
+        }
+
+            
+        $echoString ='
+        
+        <div class="parallax padding-6 form-image">
+        
+            <header id="header-form" class="content card white wrap-padding">			
+                <div id="title-card" class="card">
+                    <h1> Modifica il dinosauro </h1>
+                </div>
+            </header>
+            
+            <div id="content-form" class="content">';            
+            include_once (__DIR__."/../breadcrumb.php");
+            $echoString .= breadcrumbAdmin();
+            if($error != ""){
+                $echoString .= messageErrorForm($error);
+            }
+            $echoString .='
+                <form action="'.$url.'?id=dino&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
+                    <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
+                    <fieldset>
+                        <legend>Nome, dimensioni ed epoca</legend>
+                        <p>
+                            <label for="nome">Nome (non modificabile)</label>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$id.'" readonly>
+                        </p>
+                        
+                        <p>
+                            <label for="peso">Peso in kg:</label>
+                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$peso.'">
+                        </p>
+
+                        <p>
+                            <label for="altezza">Altezza in cm:</label>
+                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$altezza.'">
+                        </p>
+                        
+                        <p>
+                            <label for="lunghezza">Lunghezza in cm:</label>
+                            <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$lunghezza.'">
+                        </p>
+                                                    
+                        <p>
+                            <label for="periodomin">Periodo minimo in milioni di anni: <abbr title="richiesto">*</abbr></label>
+                            <input type="number" placeholder="Inserisci il periodo minimo di appartenenza" id="periodomin" name="periodomin" data-validation-mode="periodomin" value="'.$periodomin.'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="periodomax">Periodo massimo in milioni di anni: <abbr title="richiesto">*</abbr></label>
+                            <input type="number" placeholder="Inserisci il periodo massimo di appartenenza" id="periodomax" name="periodomax" data-validation-mode="periodomax" value="'.$periodomax.'" required>
+                        </p>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Alimentazione e habitat</legend>
+                        
+                        <p>Seleziona la categoria a cui appartiene: <abbr title="richiesto">*</abbr></p> 
+                        <p class="center">
+                            <label for="tipologiaalimentazione1">Carnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+                        
+                            <label for="tipologiaalimentazione2">Onnivoro</label>
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+                    
+                            <label for="tipologiaalimentazione3">Erbivoro</label>
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+                        </p>
+                        
+                        <p>
+                            <label for="alimentazione">Di cosa si nutriva?</label>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
+                        </p>
+                        
+                        <p>
+                            <label for="habitat">Habitat:</label>
+                            <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
+                        </p>
+                            
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Corpo dell\'articolo</legend>
+                    
+                        <p>
+                            <label for="descrizionebreve">Descrizione breve: <abbr title="richiesto">*</abbr></label>
+                            <textarea type="text" placeholder="Inserisci una breve descrizione" id="descrizionebreve" name="descrizionebreve" required> '.html_entity_decode($descrizionebreve).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="descrizione">Descrizione: <abbr title="richiesto">*</abbr></label>
+                            <textarea type="text" placeholder="Inserisci la descrizione completa" id="descrizione" name="descrizione" required> '.html_entity_decode($descrizione).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="curiosita">Curiosità:</label>
+                            <textarea type="text" placeholder="Inserisci delle curiosità" id="curiosita" name="curiosita"> '.html_entity_decode($curiosita).'</textarea>
+                        </p>
+                        
+                        <p>
+                            <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
+                        </p>
+            
+                        <p>
+                            <label for="imgdinosaurremove">Rimozione immagine (non verrà caricata nessuna immagine e l\'immagine attuale verrà rimossa)</label>
+                            <input type="checkbox" id="imgdinosaurremove" name="imgdinosaurremove" value="true">
+                        </p>
+                    </fieldset>
+
+                    <input type="submit" value="MODIFICA" title="Avvia l\'operazione" class="card btn wide text-colored white">
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">disableInputImmagine();</script>
+        ';
+        
+        
         return $echoString;
 
     }
 
     public static function updateDinosaur($connect, $nome, $peso, $altezza, $lunghezza, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $descrizionebreve, $descrizione, $curiosita, $immagine, $removeImage, $basePathImg){
     
-        $echoString ="";
         
-        if(
-            isset($nome) && $nome!="" &&
-            isset($descrizionebreve) && $descrizionebreve!="" &&
-            isset($descrizione) && $descrizione!=""
-        ){            
-            if(!isset($peso)){ $peso = "";}
-            if(!isset($altezza)){ $altezza = "";}
-            if(!isset($lunghezza)){ $lunghezza = "";}
-            if(!isset($periodomin)){ $periodomin = "";}
-            if(!isset($periodomax)){ $periodomax = "";}
-            if(!isset($habitat)){ $habitat = "";}
-            if(!isset($alimentazione)){ $alimentazione = "";}
-            if(!isset($tipologiaalimentazione)){ $tipologiaalimentazione = "";}
-            if(!isset($curiosita)){ $curiosita = "";}
-            if($removeImage){  
-                $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$nome."' ";
-                $result = $connect->query($sqlQuery);
-                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
-                    if($row["immagine"]!="" && $row["immagine"]!=NULL){
-                        delImage($basePathImg.$row["immagine"]);
-                    }
-                }
-            }
+        $returnArray[0] = 0;   
+        $returnArray[1] = array();
 
-            $destinazioneFileDB = NULL;
-            if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
-                if($destinazioneFileDB==NULL){
-                    $echoString .= "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
-                            </div>
-                        </div>
-                        ";
-                }
-            }
-
-            $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
-            periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".htmlentities($descrizionebreve, ENT_QUOTES)."',
-            descrizione='".htmlentities($descrizione, ENT_QUOTES)."', curiosita='".htmlentities($curiosita, ENT_QUOTES)."'";
-            if( $destinazioneFileDB != NULL){
-                $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
-            }
-            if($removeImage){
-                $sqlQuery .= ", immagine=NULL ";
-            }
-            $sqlQuery .= "WHERE nome='".$nome."'";
-
-               
-            if( $connect->query($sqlQuery) ){             
-				$echoString = "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento modificato!</h1>
-						</div>
-					</div>							
-				";
-            } 
-            else {                
-				$echoString = "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento non modificato</h1>
-							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-						</div>
-					</div>							
-				";
-            }
-        }
-        else{            
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Errore campi</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-					</div>
-				</div>							
-			";
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
         }
 
-        return $echoString;
+        if(checkNameDinoAvailable($connect, $nome) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDinoNameAvailable());
+        }
+        
+        if(checkName($nome) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDinoNome());
+        }
+
+        $error = checkPeriodoDino($periodomin, $periodomax);
+        if( $error[3] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMin());
+        }
+        if( $error[4] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMax());
+        }
+        if( $error[5] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPeriodoMinMax());
+        }
+        
+        if(checkPositiveInteger($peso) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("peso"));
+        }
+
+        if(checkPositiveInteger($altezza) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("altezza"));
+        }
+
+        if(checkPositiveInteger($lunghezza) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorPosInteger("lunghezza"));
+        }
+        
+        if(checkAlpha($alimentazione) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorAlpha("alimentazione"));
+        }
+
+        if(checkAlpha($habitat) == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorAlpha("habitat"));
+        }
+           
+        $error = checkImageContent($immagine,"");
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+
+        if(!isset($tipologiaalimentazione)){ 
+            $tipologiaalimentazione = "";
+        }
+
+        if(!isset($curiosita)){ 
+            $curiosita = "";
+        }
+
+        //Fine Controlli campi
+                    
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+
+
+        if($removeImage){  
+            $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$nome."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
+                if($row["immagine"]!="" && $row["immagine"]!=NULL){
+                    delImage($basePathImg.$row["immagine"]);
+                }
+            }
+        }
+
+        $destinazioneFileDB = NULL;
+        if(!$removeImage && $immagine['error'] == 0){
+            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+        }
+
+        $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
+        periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".htmlentities($descrizionebreve, ENT_QUOTES)."',
+        descrizione='".htmlentities($descrizione, ENT_QUOTES)."', curiosita='".htmlentities($curiosita, ENT_QUOTES)."'";
+        if( $destinazioneFileDB != NULL){
+            $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+        }
+        if($removeImage){
+            $sqlQuery .= ", immagine=NULL ";
+        }
+        $sqlQuery .= "WHERE nome='".$nome."'";
+
+            
+        if( $connect->query($sqlQuery) ){    
+            $returnArray[2] = messageUpdateConfirm();
+        } 
+        else {   
+            $returnArray[0] = 1;
+            $returnArray[3] = messageErrorUpdate();
+        }
+        
+        return $returnArray;
+      
     }
     public static function getDinosaurDay($connect, $basePathImg, $pathLink){
         
@@ -721,26 +801,12 @@ class Dinosaur {
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['nome'];
                 $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('$id', '".date('Y-m-d')."') ";
-                if( !$connect->query($sqlQuery3) ){      
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Errore aggiornamento impostazioni</h1>
-                                <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-                            </div>
-                        </div>							
-                    ";          
+                if( !$connect->query($sqlQuery3) ){
+                    $echoString = messageReload(messageErrorUpdateSettings());     
                 } 
             }
             else{
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Dinosauro non presente</h1>
-                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-                        </div>
-                    </div>							
-                ";
+                $echoString = messageReload(messageErrorNoDino());  
             }
             
         }
@@ -780,14 +846,7 @@ class Dinosaur {
                 ';
             }
             else{
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Dinosauro non presente</h1>
-                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-                        </div>
-                    </div>							
-                ";
+                $echoString = messageReload(messageErrorNoDino()); 
             }
         }
 
@@ -806,7 +865,7 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -840,7 +899,7 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -854,13 +913,7 @@ class Dinosaur {
             }      
         }
         else{
-            $echoString .= "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Non sono presenti commenti</h1>
-					</div>
-				</div>
-			";
+            $echoString = message(messageErrorNoComments()); 
         }
               
         $echoString .= '
@@ -872,22 +925,10 @@ class Dinosaur {
     public static function addComment($connect, $idDino, $idUser, $text){
         $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$idDino."', '".$text."')";
         if( $connect->query($sqlQuery) ){
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento Aggiunto</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageAddConfirm()); 
         } 
         else {
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento NON Aggiunto</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageErrorAdd()); 
         }
         return $echoString;
     }
@@ -895,22 +936,10 @@ class Dinosaur {
     public static function deleteComment($connect, $idComment){        
         $sqlQuery = "DELETE FROM commentodinosauro WHERE id = '".$idComment."' ";
         if( $connect->query($sqlQuery) ){
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento eliminato</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageDeleteConfirm()); 
         } 
         else {
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento NON eliminato</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageErrorDelete()); 
         }
         return $echoString;
     }

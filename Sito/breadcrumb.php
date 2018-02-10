@@ -7,6 +7,7 @@
 function breadcrumbUser(){
 	$pages = array();
 	$pages["index"] = "index.php";
+	$pages["search"] = "search.php";
 	$pages["history"] = "history.php";
 	$pages["species"] = "species.php";
 	$pages["all-species"] = "all-species.php";
@@ -34,6 +35,13 @@ function breadcrumbUser(){
 	switch ($currentPage) {
 		case 'index.php':
 		$echoString .=  '<p>Home</p>';
+		break;
+
+		case 'search.php':
+		$echoString .=  '
+			<a href="index.php">Home</a>
+			<p> &#187; </p>
+			<p>Ricerca</p>';
 		break;
 		
 		case 'credits.php':

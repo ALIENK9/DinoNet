@@ -86,7 +86,7 @@
 			<h1>Dati account</h1>			
 			<?php		
 			if($_SESSION['user']->getUrlImmagine()!=NULL && $_SESSION['user']->getUrlImmagine()!=""){
-				echo ' <img class="profile-pic" src=".'.$_SESSION['user']->getUrlImmagine().'" alt="Immagine utente"/>';
+				echo ' <img class="profile-pic" src=".'.$_SESSION['user']->getUrlImmagine().'" alt="Profilo utente '.$_SESSION['user']->getNome().' '.$_SESSION['user']->getCognome().'"/>';
 			}
 			?>
 			<p><strong>Nome:</strong> <?php echo $_SESSION['user']->getNome();?></p>
@@ -96,7 +96,7 @@
 		<div class="card white wrap-padding">
 			<a href="edit-account.php" class="btn card wrap-margin"> Modifica account </a>
 			<a href="delete-account.php" class="btn card wrap-margin" onclick="return confirm('Sei Sicuro di voler eliminare l\'utente?')"> Elimina account </a>
-            <a href="logout.php" class="btn card wrap-margin"><span xml:lang="en" lang="en"> Logout </span></a>
+            <a href="logout.php" class="btn card wrap-margin"  onclick="return confirm('Sei sicuro di volerti disconnettere?')"><span xml:lang="en" lang="en"> Logout </span></a>
 		</div>
 		<!-- /Dati account -->
 	</div>

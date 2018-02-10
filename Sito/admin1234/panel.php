@@ -1,6 +1,7 @@
 <?php
 	
 	include_once ("../classi/UserAdmin.php");
+	include_once ("../errormessage.php");
 
 	session_start();	
 	if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
@@ -34,113 +35,8 @@
 		else
 			$sezione = "list";
 
-		switch ($idPage) {
-			case 'home':
-				echo "Home &#124; Dino Net";
-				break;
-
-			case 'user':
-				switch ($sezione) {
-					case 'list':
-					echo "Elenco utenti &#124; Dino Net";
-					break;
-					case 'formadd':
-						echo "Aggiunti utente &#124; Dino Net";
-						break;
-					case 'add':
-						echo "Aggiunti utente &#124; Dino Net";
-						break;
-					case 'formupdate':
-						echo "Modifica utente &#124; Dino Net";
-						break;
-					case 'update':
-						echo "Modifica utente &#124; Dino Net";
-						break;
-					case 'delete':
-						echo "Elimina utente &#124; Dino Net";
-						break;
-					default:
-						echo "Area utenti &#124; Dino Net";
-					break;
-				}
-				break;
-
-			case 'myuser':
-				echo "Modifica profilo &#124; Dino Net";
-				break;
-
-			case 'dino':
-				switch ($sezione) {
-					case 'list':
-						echo "Elenco dinosauri &#124; Dino Net";
-						break;
-					case 'formadd':
-						echo "Aggiunti dinosauro &#124; Dino Net";
-						break;
-					case 'add':
-						echo "Aggiunti dinosauro &#124; Dino Net";
-						break;
-					case 'formupdate':
-						echo "Modifica dinosauro &#124; Dino Net";
-						break;
-					case 'update':
-						echo "Modifica dinosauro &#124; Dino Net";
-						break;
-					case 'delete':
-						echo "Elimina dinosauro &#124; Dino Net";
-						break;
-					case 'comment':
-						echo "Elenco commenti dinosauro &#124; Dino Net";
-						break;
-					case 'deletecomment':
-						echo "Elimina commenti dinosauro &#124; Dino Net";
-						break;
-					default:
-						echo "Area dinosauri &#124; Dino Net";
-						break;
-				}
-				break;
-
-			case 'article':
-				switch ($sezione) {
-					case 'list':
-						echo "Elenco articoli &#124; Dino Net";
-						break;
-					case 'formadd':
-						echo "Aggiunti articolo &#124; Dino Net";
-						break;
-					case 'add':
-						echo "Aggiunti articolo &#124; Dino Net";
-						break;
-					case 'formupdate':
-						echo "Modifica articolo &#124; Dino Net";
-						break;
-					case 'update':
-						echo "Modifica articolo &#124; Dino Net";
-						break;
-					case 'delete':
-						echo "Elimina articolo &#124; Dino Net";
-						break;
-					case 'comment':
-						echo "Elenco commenti articolo &#124; Dino Net";
-						break;
-					case 'deletecomment':
-						echo "Elimina commenti articolo &#124; Dino Net";
-						break;
-					default:
-						echo "Area articoli &#124; Dino Net";
-						break;
-				}
-				break;
-
-			case 'search':
-					echo "Ricerca &#124; Dino Net";
-				break;
-
-			default:
-				echo "Pannello amministratore &#124; Dino Net";
-				break;
-			}
+		include_once ("titles.php");
+		echo printTitleAdmin($idPage,$sezione);
 		?>
 		</title>
 		<meta name="description" content="Descrizione">
@@ -213,17 +109,23 @@
 						if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 							$removeimg=true;	
 						}	
-						echo $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg,"..");
+						$error = $_SESSION['paneluser']->UpdateMyUser($connectPanel, $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $_FILES["imgaccount"], $removeimg,"..");
+						if($error[0] == 0){
+							echo message($error[2]);
+						}
+						else{
+							if(isset($error[3]) && $error[3] != ""){
+								echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update",$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $error[3]);
+							}
+							else{				
+								echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update", $_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'], $error[1]);
+							}
+						}
 					}
 					else
 						echo $_SESSION['paneluser']->formUpdateMyUser($_SERVER["PHP_SELF"]."?id=myuser&sez=update");
 					
-					?>
-					<div class="center wrap-padding">
-						<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-						<a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
-					</div>	
-					<?php
+					echo messageLinkDoubleBack("panel.php?id=home","Home");
 				break;
 
 			case 'dino':
@@ -237,12 +139,8 @@
 			case 'search':
 				include_once('searchadmin.php');
 				
-				?>
-				<div class="center wrap-padding">
-					<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-                    <a href="panel.php?id=home" class="btn card wrap-margin"> Vai alla <span xml:lang="en" lang="en">Home</span></a>
-				</div>	
-				<?php
+				
+				echo messageLinkDoubleBack("panel.php?id=home","Home");
 				break;	
 
 			case 'logout': default:		

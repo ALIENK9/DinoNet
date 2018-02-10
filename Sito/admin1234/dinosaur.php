@@ -1,6 +1,7 @@
 <?php
 
 include_once (__DIR__."/../classi/Dinosaur.php");
+include_once (__DIR__."/../errormessage.php");
 
 if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 	header("Location: ../error.php");
@@ -39,7 +40,18 @@ switch ($sezione ) {
 		echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
-		echo Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], "..");
+		$error = Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], "..");
+		if($error[0] == 0){
+			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=dino&sez=formadd");
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"], $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[3]);
+			}
+			else{				
+				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"], $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[1]);
+			}
+		}
 		break;			
 	case 'formupdate':
 		echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"],$_GET['nome']);
@@ -49,7 +61,18 @@ switch ($sezione ) {
 		if(isset($_POST['imgdinosaurremove']) && $_POST['imgdinosaurremove']=="true"){
 			$removeimg=true;
 		}
-		echo Dinosaur::updateDinosaur($connectDinosaur, $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg, "..");
+		$error = Dinosaur::updateDinosaur($connectDinosaur, $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], $removeimg, "..");
+		if($error[0] == 0){
+			echo message($error[2]);
+		}
+		else{
+			if(isset($error[3]) && $error[3] != ""){
+				echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"], $_POST['nome'], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[3]);
+			}
+			else{				
+				echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"], $_POST['nome'], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[1]);
+			}
+		}
 		break;	
 	case 'delete':
 		if(isset($_GET["nome"]))

@@ -10,7 +10,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
     <div id="title-card" class="content card">
 	<?php
 		if($_SESSION['paneluser']->getUrlImmagine()!=NULL && $_SESSION['paneluser']->getUrlImmagine()!=""){
-					echo ' <img class="profile-pic" src="..'.$_SESSION['paneluser']->getUrlImmagine().'" alt="Immagine utente"/>';
+					echo ' <img class="profile-pic" src="..'.$_SESSION['paneluser']->getUrlImmagine().'" alt="Profilo di '.$_SESSION['paneluser']->getNome().' '.$_SESSION['paneluser']->getCognome().'"/>';
 		}
 	?>
         <h1 class="wide text-colored"> Benvenuto </h1>

@@ -1,6 +1,8 @@
 <?php
 
 include_once (__DIR__."/../loadFile.php");
+include_once (__DIR__."/../errormessage.php");
+include_once (__DIR__."/../validate.php");
     
 class Article{
 
@@ -65,13 +67,7 @@ class Article{
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
 		else {              
-			$echoString = "
-                <div class='padding-6 content center'>
-                    <div class='card wrap-padding'>
-                        <h1>Nessun risultato</h1>
-                    </div>
-                </div>							
-            ";
+			$echoString = message(messageEmpty());
 		}
         return $echoString;
     }
@@ -140,14 +136,8 @@ class Article{
 			}
 			$echoString = '<div class="row wrap-padding">'.$echoString.'</div>';
 		} 
-		else {              
-			$echoString = "
-                <div class='padding-6 content center'>
-                    <div class='card wrap-padding'>
-                        <h1>Nessun risultato</h1>
-                    </div>
-                </div>							
-            ";
+		else { 
+			$echoString = message(messageEmpty());
 		}
         return $echoString;
     }
@@ -181,15 +171,8 @@ class Article{
                 ';
             }
         }
-        else {              
-			$echoString = "
-                <div class='padding-6 content center'>
-                    <div class='card wrap-padding'>
-                        <h1>Nessun risultato</h1>
-                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'>Torna alla pagina precedente</a> 
-                    </div>
-                </div>							
-            ";
+        else {                
+			$echoString = messageBackPage(messageEmpty());
         }
         return $echoString; 
     }
@@ -206,38 +189,26 @@ class Article{
 
                 $sqlQuery = "DELETE FROM articolo WHERE id = '".$id."' ";
                 if( $connect->query($sqlQuery) ){
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Elemento eliminato</h1>
-                            </div>
-                        </div>							
-                    ";
+                    $echoString = message(messageDeleteConfirm());
                 } 
                 else {
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Elemento NON eliminato</h1>
-                                <a href=\"#\" class='btn card wrap-margin'> Riprova </a>
-                            </div>
-                        </div>							
-                    ";
+                    $echoString = messageTryAgain(messageErrorDelete());
                 }
             }
             else{
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Elemento NON eliminabile</h1>
-                        </div>
-                    </div>						
-                ";
+                $echoString = message(messageErrorDelete());
             }
         }
         return $echoString;
     }             
-    public static function formAddArticle($url){
+    public static function formAddArticle($url, $titolo = "", $sottotitolo = "", $descrizione = "", $anteprima = "", $error = ""){
+        if(!isset($titolo)){ $titolo = ""; }
+        if(!isset($sottotitolo)){ $sottotitolo = ""; }
+        if(!isset($descrizione)){ $descrizione = ""; }
+        if(!isset($anteprima)){ $anteprima = ""; }
+        if(!isset($error)){ $error = ""; }
+
+
         $echoString ='
 		
 		<div class="parallax padding-6 form-image">
@@ -251,27 +222,30 @@ class Article{
             <div id="content-form" class="content">';            
             include_once (__DIR__."/../breadcrumb.php");
             $echoString .= breadcrumbAdmin();
+            if($error != ""){
+                $echoString .= messageErrorForm($error);
+            }
             $echoString .='
                 <form action="'.$url.'?id=article&sez=add" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                     <p>
                         <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="" required>
+                        <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$titolo.'" required>
                     </p>
                     
                     <p>
                         <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="" required>
+                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
                     </p>
                     
                     <p>
                         <label for="descrizione">Testo dell\'articolo: <abbr title="richiesto">*</abbr></label>
-                        <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required></textarea>
+                        <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$descrizione.'</textarea>
                     </p>
                     
                     <p>
                         <label for="anteprima">Anteprima:</label>
-                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima"></textarea>
+                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" >'.$anteprima.'</textarea>
                     </p>
                                             
                     <p>
@@ -294,75 +268,86 @@ class Article{
         return $echoString;
     }
     public static function addArticle($connect, $idautore, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine){
-        $echoString="";
-        if(
-            isset($titolo) && $titolo!="" &&
-            isset($descrizione) && $descrizione!="" &&
-            ($immagine['error'] != 0 || (isset($descrizioneimg) && $descrizioneimg!=""))
-        ){
-            
-            if(!isset($sottotitolo)){ $sottotitolo = "";}
-            if(!isset($anteprima)){ $anteprima = "";}
-            if(!isset($descrizioneimg)){ $descrizioneimg = "";}
-            
-            $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
-            
-            if( $connect->query($sqlQuery) ){
-                $echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento aggiunto</h1>
-						
-				";
-                $destinazioneFileDB = NULL;
-                if($immagine['error'] == 0){
-                    $idInserito = $connect->insert_id;
-                    $destinazioneFileDB = loadImage("articleimg", $idInserito, $immagine, 450, 450);
+
+        $returnArray[0] = 0; 
+        $returnArray[1] = array();  
+
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($titolo, $descrizione));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
+        }
+  
+        $error = checkImageContent($immagine,$descrizioneimg);
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+        if($error[3] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDescImage());
+        }
+
+        if(!isset($sottotitolo)){ 
+            $sottotitolo = "";
+        }
+
+        if(!isset($anteprima)){ 
+            $anteprima = "";
+        }
+
+       //Fine Controlli campi
                     
-                    $sqlQuery2 = "UPDATE articolo SET immagine='".$destinazioneFileDB."'WHERE id='".$idInserito."'";
-                    if($destinazioneFileDB != NULL && $connect->query($sqlQuery2) ){
-                        $echoString .= "
-						    <h2>Immagine caricata</h2>";
-                    }
-                    else{                        
-                        $echoString .= "
-                        <h2>Immagine non caricata</h2>";
-                    }
-                }
-                $echoString .= "
-                        <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Aggiungine un altro </a>
-                    </div>
-                </div> ";
-            } 
-            else {
-                $echoString = "
-					<div class='padding-6 content'>
-						<div class='card wrap-padding'>
-							<h1>Elemento NON Aggiunto</h1>
-							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-						</div>
-					</div>
-				";
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+            
+        $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
+        
+        if( $connect->query($sqlQuery) ){            
+            $destinazioneFileDB = NULL;
+            if($immagine['error'] == 0){
+                $idInserito = $connect->insert_id;
+                $destinazioneFileDB = loadImage("articleimg", $idInserito, $immagine, 450, 450);
+                
+                $sqlQuery2 = "UPDATE articolo SET immagine='".$destinazioneFileDB."'WHERE id='".$idInserito."'";
+                $connect->query($sqlQuery2);
+            }
+            $returnArray[2] = messageAddConfirm();
+        } 
+        else {
+            $returnArray[0] = 1;
+            $returnArray[3] = messageErrorAdd();
+        }
+        
+        return $returnArray;
+    }
+    public static function formUpdateArticle($connect, $url, $id, $titolo = "", $sottotitolo = "", $descrizione = "", $anteprima = "", $error = ""){
+        $echoString="";
+
+        if(!isset($id)){ $id = ""; }
+        if(!isset($titolo)){ $titolo = ""; }
+        if(!isset($sottotitolo)){ $sottotitolo = ""; }
+        if(!isset($descrizione)){ $descrizione = ""; }
+        if(!isset($anteprima)){ $anteprima = ""; }
+        if(!isset($descrizioneimg)){ $descrizioneimg = ""; }
+        if(!isset($error)){ $error = ""; }
+
+        if( $error == ""){
+            $sqlQuery = "SELECT * FROM articolo WHERE id = '".$_GET['article']."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $titolo = $row["titolo"];
+                $sottotitolo = $row["sottotitolo"];
+                $descrizione = $row["descrizione"];
+                $anteprima = $row["anteprima"];
+                $descrizioneimg = $row["descrizioneimg"];
             }
         }
-        else{
-            $echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Errore campi</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-					</div>
-				</div>
-			";
-        }
-        return $echoString;
-    }
-    public static function formUpdateArticle($connect, $url, $id){
-        $echoString="";
-        $sqlQuery = "SELECT * FROM articolo WHERE id = '".$_GET['article']."' ";
-        $result = $connect->query($sqlQuery);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
+
+        
             $echoString ='
 			
 			<div class="parallax padding-6 form-image">
@@ -376,37 +361,40 @@ class Article{
                     ';            
                     include_once (__DIR__."/../breadcrumb.php");
                     $echoString .= breadcrumbAdmin();
+                    if($error != ""){
+                        $echoString .= messageErrorForm($error);
+                    }
                     $echoString .='
                     <form action="'.$url.'?id=article&sez=update" method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)" class="card colored wrap-padding">
                         <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                         <p>
                             <label for="article">Identificativo articolo (non modificabile)</label>
-                            <input type="number" id="article" name="article" value="'.$row["id"].'" readonly>
+                            <input type="number" id="article" name="article" value="'.$id.'" readonly>
                         </p>
                         
                         <p>
                             <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$row["titolo"].'" required>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$titolo.'" required>
                         </p>
                         
                         <p>
                             <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$row["sottotitolo"].'" required>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
                         </p>
                         
                         <p>
                             <label for="descrizione">Testo dell\'articolo:  <abbr title="richiesto">*</abbr></label>
-                            <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$row["descrizione"].'</textarea>
+                            <textarea type="text" placeholder="Inserisci il testo dell\'articolo" id="descrizione" name="descrizione" required>'.$descrizione.'</textarea>
                         </p>
                         
                         <p>
                             <label for="anteprima">Anteprima:</label>
-                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$row["anteprima"].'</textarea>
+                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$anteprima.'</textarea>
                         </p>
                         
                         <p>
                             <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
-                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$row["descrizioneimg"].'">
+                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$descrizioneimg.'">
                         </p>
                         
                         <p>
@@ -425,96 +413,77 @@ class Article{
             </div>
             <script type="text/javascript">disableInputImmagine();</script>
         ';
-        }
         
-        else{
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Articolo non presente</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-					</div>
-				</div>							
-			";
-        }
         return $echoString;
     }
 
     public static function updateArticle($connect, $idarticolo, $titolo, $sottotitolo, $descrizione, $anteprima, $descrizioneimg, $immagine, $removeImage, $basePathImg){
-        $echoString="";
-        if(
-            isset($titolo) && $titolo!="" &&
-            isset($descrizione) && $descrizione!="" &&
-            ($immagine['error'] != 0 || (isset($descrizioneimg) && $descrizioneimg!=""))
-        ){
-            if(!isset($sottotitolo)){ $sottotitolo = "";}
-            if(!isset($anteprima)){ $anteprima = "";}
-            if(!isset($descrizioneimg)){ $descrizioneimg = "";}
+        $returnArray[0] = 0;   
+        $returnArray[1] = array();
 
-            if($removeImage){  
-                $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$idarticolo."' ";
-                $result = $connect->query($sqlQuery);
-                if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
-                    if($row["immagine"]!="" && $row["immagine"]!=NULL){        
-                        delImage($basePathImg.$row["immagine"]);
-                    }
+        //Inizio Controlli campi
+        $error = checkRequireArray(array($titolo, $descrizione));
+        if($error[0] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorRequire());
+        }
+  
+        $error = checkImageContent($immagine,$descrizioneimg);
+        if($error[2] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorImage());
+        }
+        if($error[3] == 1){
+            $returnArray[0] = 1;
+            array_push($returnArray[1],messageErrorDescImage());
+        }
+
+        if(!isset($sottotitolo)){ 
+            $sottotitolo = "";
+        }
+
+        if(!isset($anteprima)){ 
+            $anteprima = "";
+        }
+
+       //Fine Controlli campi
+                    
+        if($returnArray[0] == 1)    //Ritorna se sono presenti errori nei campi
+            return $returnArray;
+
+        if($removeImage){  
+            $sqlQuery = "SELECT immagine FROM articolo WHERE id = '".$idarticolo."' ";
+            $result = $connect->query($sqlQuery);
+            if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
+                if($row["immagine"]!="" && $row["immagine"]!=NULL){        
+                    delImage($basePathImg.$row["immagine"]);
                 }
             }
-
-            $destinazioneFileDB = NULL;
-            if(!$removeImage && $immagine['error'] == 0){
-                $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine, 450, 450);
-                if($destinazioneFileDB==NULL){
-                    $echoString .= "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Immagine non confrome alle richieste. L'operazione proseguirà senza immagine.</h1>
-                            </div>
-                        </div>
-                        ";
-                }
-            }
-
-            $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";
-            if( $destinazioneFileDB != NULL){
-                $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
-            }
-            if($removeImage){
-                $sqlQuery .= ", immagine=NULL ";
-            }
-            $sqlQuery .= "WHERE id='".$idarticolo."'";
-
-            if( $connect->query($sqlQuery) ){             
-				$echoString = "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento modificato!</h1>
-						</div>
-					</div>							
-				";
-            } 
-            else {            
-				$echoString = "
-					<div class='padding-6 content center'>
-						<div class='card wrap-padding'>
-							<h1>Elemento non modificato</h1>
-							<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-						</div>
-					</div>							
-				";
-            }
         }
-        else{         
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Errore campi</h1>
-						<a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-					</div>
-				</div>							
-			";
+
+        $destinazioneFileDB = NULL;
+        if(!$removeImage && $immagine['error'] == 0){
+            $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine, 450, 450);
         }
-        return $echoString;
+
+        $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";
+        if( $destinazioneFileDB != NULL){
+            $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+        }
+        if($removeImage){
+            $sqlQuery .= ", immagine=NULL ";
+        }
+        $sqlQuery .= "WHERE id='".$idarticolo."'";
+
+        if( $connect->query($sqlQuery) ){          
+            $returnArray[2] = messageUpdateConfirm();
+        } 
+        else {    
+            $returnArray[0] = 1;
+            $returnArray[3] = messageErrorUpdate();
+        }
+        
+        return $returnArray;
     }
     public static function getArticleDay($connect, $basePathImg, $pathLink){
         
@@ -536,26 +505,12 @@ class Article{
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['id'];
                 $sqlQuery3 = "INSERT INTO articolodelgiorno  (idarticolo,data) values ('$id', '".date('Y-m-d')."') ";
-                if( !$connect->query($sqlQuery3) ){                
-                    $echoString = "
-                        <div class='padding-6 content center'>
-                            <div class='card wrap-padding'>
-                                <h1>Errore aggiornamento impostazioni</h1>
-                                <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Riprova </a>
-                            </div>
-                        </div>							
-                    ";  
+                if( !$connect->query($sqlQuery3) ){    
+                    $echoString = messageReload(messageErrorUpdateSettings()); 
                 } 
             }
             else{
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Articolo non presente</h1>
-                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-                        </div>
-                    </div>							
-                ";
+                $echoString = messageReload(messageErrorNoArticle()); 
             }
             
         }
@@ -595,14 +550,7 @@ class Article{
                 ';
             }
             else{
-                $echoString = "
-                    <div class='padding-6 content center'>
-                        <div class='card wrap-padding'>
-                            <h1>Articoli non presenti</h1>
-                            <a href=\"".$_SERVER["HTTP_REFERER"]."\" class='btn card wrap-margin'> Indietro </a>
-                        </div>
-                    </div>							
-                ";
+                $echoString = messageReload(messageErrorNoArticles()); 
             }
         }
 
@@ -621,7 +569,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -655,7 +603,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine utente"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -669,13 +617,7 @@ class Article{
             } 
         }
         else{
-            $echoString .= "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Non sono presenti commenti</h1>
-					</div>
-				</div>
-			";
+            $echoString = message(messageErrorNoComments()); 
         }
         $echoString .= '
             </div>
@@ -686,22 +628,10 @@ class Article{
     public static function addComment($connect, $idArticle, $idUser, $text){
         $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$text."')";
         if( $connect->query($sqlQuery) ){
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento Aggiunto</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageAddConfirm()); 
         } 
         else {
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento NON Aggiunto</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageErrorAdd()); 
         }
         return $echoString;
     }
@@ -709,22 +639,10 @@ class Article{
     public static function deleteComment($connect, $idComment){        
         $sqlQuery = "DELETE FROM commentoarticolo WHERE id = '".$idComment."' ";
         if( $connect->query($sqlQuery) ){
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento eliminato</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageDeleteConfirm()); 
         } 
         else {
-			$echoString = "
-				<div class='padding-6 content center'>
-					<div class='card wrap-padding'>
-						<h1>Elemento NON eliminato</h1>
-					</div>
-				</div>							
-			";
+            $echoString = message(messageErrorDelete()); 
         }
         return $echoString;
     }
