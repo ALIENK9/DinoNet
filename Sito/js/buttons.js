@@ -18,6 +18,21 @@ $(document).ready(function(){
   });
 });
 
+// Loading
+
+function loading() {
+    document.getElementById("loading").classList.remove("require-js"); //rende visibile l'animazione di loading
+    $(document).ready(
+        function() {
+            $(window).load(
+                function() {
+                    $(".loading").fadeOut("slow");
+                }
+            );
+        }
+    );
+}
+
 function addJS() { //rende visibile il menù laterale, nasconde la barra di ricerca e mostra il pulsante per aprirla
     document.getElementById("mobile-menu-icon").setAttribute("href", "javascript:void(0)");
     document.getElementById("mobile-menu-icon").setAttribute("onclick", "open_menu()");

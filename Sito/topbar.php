@@ -16,21 +16,6 @@
 </div>
 
 
-<script src="js/buttons.js"></script>
-
 <script type="text/javascript">
-    addJS(); //nasconde alcuni plocchi, mostrando invece pulsanti per visualizzarli
-
-    /*Nasconde la barra di ricerca quando si scorre verso il basso*/
-    /*var lastScrollTop = 0;
-    window.addEventListener("scroll", function() {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-        if (st > lastScrollTop && (document.documentElement.scrollTop > 150 || document.body.scrollTop > 150)) {
-            document.getElementById("searchbar").classList.add("hidden");
-        }
-        else {
-            document.getElementById("searchbar").classList.remove("hidden");
-        }
-        lastScrollTop = st;
-    }, false);*/
+    addJS(); //nasconde alcuni blocchi, mostrando invece pulsanti per visualizzarli
 </script>
