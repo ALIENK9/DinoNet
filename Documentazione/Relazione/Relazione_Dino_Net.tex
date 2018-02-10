@@ -273,8 +273,8 @@
 	Le sottosezioni che espandono il menù laterale, di cui si è discussa la funzione nel paragrafo §\ref{ssec:menuusab}, sono realizzate come dei \code{<div>} e non come dei link. Questo perché se fossero realizzati come link non potrebbero essere cliccabili, rappresentando la pagina attiva, e dovrebbero essere disabilitati dal foglio di stile. In questo modo, tuttavia, resterebbero cliccabili da un browser testuale, creando confusione all'utente. Rappresentandoli come dei blocchi contenenti solo testo si risolve invece questo problema.\\
 	Resta però che per un browser utilizzato con uno screen reader, che non scarica il foglio di stile, risultano sempre cliccabili i collegamenti alle schede principali del menù, indipendentemente da quale sia la scheda attiva. Considerando il numero esiguo di voci del menù, non abbiamo previsto una soluzione, anche se si potrebbero disabilitare i link via JavaScript.
 	
-	\subsection{Menù senza JavaScript}
-	Durante la navigazione da dispositivi con schermi di larghezza minore di 1024 pixel il menù laterale scompare e diventa visualizzabile solo premendo l'apposito pulsante sul lato destro delle pagine. Questa è una soluzione che richiede l'esecuzione di codice JavaScript.\\Per rendere possibile la navigazione anche a browser che non supportano JavaScript abbiamo inserito un secondo menù all'interno di un blocco \code{<noscript>} che è un duplicato della versione normale, con la differenza che questo non si espande mostrando la sottosezione corrente e mostra un messaggio che segnala l'impossibilità di eseguire JavaScript. Per far in modo che questo secondo menù non sia mostrato dai browser testuali utilizzati con gli screen reader, viene aggiunto un \code{display: none} con un apposito script che si trova sotto il menù.\\
+	\subsection{Menù senza JavaScript} \label{ssec:menusenzajs}
+	Durante la navigazione da dispositivi con schermi di larghezza minore di 1024 pixel il menù laterale scompare e diventa visualizzabile solo premendo l'apposito pulsante sul lato destro delle pagine. Questa è una soluzione che richiede l'esecuzione di codice JavaScript.\\Per rendere possibile la navigazione anche a browser che non supportano JavaScript abbiamo inserito un secondo menù all'interno di un blocco \code{<noscript>} che è un duplicato della versione normale, con la differenza che questo non si espande mostrando la sottosezione corrente e mostra un messaggio che segnala l'impossibilità di eseguire JavaScript.\\
 	Anche in questo caso abbiamo scelto di utilizzare due file separati per il menù dell'amministratore (\code{nojsmenuadmin.php}) e per quello standard (\code{nojsmenu.php}). 
 	
 	\subsection{Ricerca dei contenuti}
@@ -282,7 +282,7 @@
 	
 	\section{Compatibilità e dipendenze}
 	\subsection{Introduzione}
-	Il sito è stato sviluppato seguendo le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni sulla retro-compatibilità.
+	Il sito è stato sviluppato seguendo in parte le specifiche HTML5, e di conseguenza abbiamo utilizzato alcuni tag o attributi specifici di questa versione. Elenchiamo di seguito ciascuno di essi, riportando inoltre alcune considerazioni sulla retro-compatibilità.
 	
 	\subsection{Elementi HTML5 utilizzati}
 	\begin{itemize}
@@ -295,6 +295,7 @@
 		\item \textbf{attributi} \code{data-*}: HTML5 permette di inserire attributi personalizzati in qualunque elemento, senza invalidare le pagine. Questi attributi devono cominciare con il prefisso \code{data-}.\\Li abbiamo utilizzati per la validazione dei form, come indicato nel paragrafo §\ref{ssec:validazioneform}. I browser testati non riscontrano problemi con questi attributi e il supporto complessivo è ottimo\footnote{\url{https://caniuse.com/\#search=data-}};
 		\item \code{<cite>}: questo elemento è presente anche fra i tag di HTML 4.01 ma in HTML5 ha un significato diverso: mentre prima indicava una \textit{citazione}, ora indica un titolo di un'opera, come un libro, un dipinto, una scultura ecc. È utilizzato solamente nella pagina \textit{Crediti} per citare certi libri dai quali abbiamo tratto alcuni contenuti.
 	\end{itemize}
+	Il tag \code{<main>} non è stato utilizzato perchè non riconosciuto da Internet Explorer 9.
 	
 	\subsection{Browser supportati}
 	
@@ -311,7 +312,7 @@
 	\noindent Si noti che alcune proprietà di minimo impatto sull'usabilità e sulla grafica del sito (ex: \code{filter: invert}) non sono garantite per i browser più datati (principalmente Internet Explorer di versione inferiore alla 10). Si garantisce comunque che il sito degradi in maniera elegante sui browser più vecchi.
 
 	\subsection{JavaScript}
-	Abbiamo utilizzato JavaScript per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite per un utente della parte pubblica del sito sarebbe l'impossibilità di aprire il menù laterale da mobile, dove cliccando il pulsante del menù si verrà quindi rimandati (con un ancora) al fondo della pagina dove è posizionata una replica del menù con limitati effetti visivi (la pagina attiva non è per esempio evidenziata). Da desktop, invece, si percepisce ancora meno la necessità di JavaScript.\\ 
+	Abbiamo utilizzato JavaScript e JQuery per rifinire alcuni aspetti grafici. Tuttavia JavaScript non è necessario per un corretto utilizzo del sito. Il più grosso limite per un utente della parte pubblica sarebbe l'impossibilità di aprire il menù laterale da mobile, per cui dovrà utilizzare la replica del menù di cui abbiamo parlato nella sezione §\ref{ssec:menusenzajs};\\
 	Nella sezione dedicata all'amministratore talvolta è utile, dopo una richiesta dell'utente, chiedere di confermare l'azione, in modo da prevenire errori dovuti a click accidentali (ad esempio se ha chiesto di eliminare un account o un articolo). Per fare questo utilizziamo degli \textit{alert box}, richiamati con la funzione \code{alert()} di JavaScript. Nel caso l'esecuzione di script sia disabilitata, semplicemente non verrà chiesta tale conferma.
 
 	\newpage
