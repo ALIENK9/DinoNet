@@ -103,13 +103,13 @@
         Nel sito viene fatto largo uso di immagini ed icone. Di seguito indichiamo dove abbiamo trovato alcune di esse.
     </p>
     <ul>
-        <li>Le icone a forma di dinosauro nel menù sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
-        <li>Le icone per le pagine di modifica dei dati utente sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+        <li>Le icone a forma di dinosauro nel menù sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank" xml:lang="en" lang="en">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank" xml:lang="en" lang="en">Flaticon</a></li>
+        <li>Le icone per le pagine di modifica dei dati utente sono create da <a href="https://www.flaticon.com/authors/freepik" target="_blank" xml:lang="en" lang="en">Freepik</a> e disponibili sul sito <a href="https://www.flaticon.com/" target="_blank" xml:lang="en" lang="en">Flaticon</a></li>
         <li>Tutte le altre icone nel menù e dei pulsanti sono prese da <a href="https://icons8.it/" target="_blank">Icons8</a></li>
         <li>L'immagine dell'header è disponibile dul sito <a href="https://www.freepik.com/" target="_blank">freepik.com</a></li>
-        <li>L'immagine di sfondo utilizzata nelle pagine con i form è creata da Kerem Beyit e disponibile sul sito <a href="https://wall.alphacoders.com/big.php?i=150198" target="_blank">alphacoders.com</a></li>
-        <li>L'immagine visibile durante il caricamento è disponibile su <a href="https://pixabay.com/it/dinosauro-dino-la-silhouette-2833643/" target="_blank">pixabay.com</a></li>
-        <li>Le favicons sono state generate utilizzando lo strumento <a href="https://www.favicon-generator.org/" target="_blank">favicon-generator</a></li>
+        <li>L'immagine di sfondo utilizzata nelle pagine con i form è creata da Kerem Beyit e disponibile sul sito <a href="https://wall.alphacoders.com/big.php?i=150198" target="_blank" xml:lang="en" lang="en">alphacoders.com</a></li>
+        <li>L'immagine visibile durante il caricamento è disponibile su <a href="https://pixabay.com/it/dinosauro-dino-la-silhouette-2833643/" target="_blank" xml:lang="en" lang="en">pixabay.com</a></li>
+        <li>Le <span xml:lang="en" lang="en">favicons</span> sono state generate utilizzando lo strumento <a href="https://www.favicon-generator.org/" target="_blank" xml:lang="en" lang="en">favicon-generator</a></li>
     </ul>
 </div>
 
