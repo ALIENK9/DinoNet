@@ -161,8 +161,17 @@
 		\subsubsection{Gestione dello scroll verticale}
 		La presenza di molte immagini e il layout grafico designato ha imposto l'utilizzo dello \textit{scroll}, soprattutto da mobile. Abbiamo valutato attentamente la bontà di questa scelta, ben sapendo che scroll troppo lunghi possono peggiorare l'esperienza utente. Tuttavia si è considerato che oggi moltissimi contenuti su mobile, anche non web, sono presentati con layout simili e fanno ampio utilizzo di scorrimento verticale. Pertanto, riteniamo che agli utenti, in particolare quelli giovani, risulti plausibilmente familiare e di semplice utilizzo questa organizzazione dei contenuti.
 		
-		\subsection{Ottimizzazioni per dispositivi mobili}
-		Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare alcuni elementi puramente decorativi. Il layout scelto si sposa bene con la variabilità delle dimensioni dello schermo caratteristica della visualizzazione da mobile, in particolare si è scelto di rendere grandi ed evidenti i link-bottoni per favorire la navigazione. 
+		\subsubsection{Animazioni}
+		Il sito fa uso di alcune animazioni ad auspicabili fini di miglioramento dell'usabilità,  discussi di seguito. Si premette inoltre che le animazioni incontrano il target di utenza giovane previsto.
+		
+		\begin{itemize}
+			\item \textbf{Page loading:} Si è scelto di inserire un'animazione di caricamento affinché la pagina richiesta dall'utente gli sia mostrata soltanto una volta che questa è pronta. Benché sia noto che gli utenti non apprezzino i caricamenti, ci sembra corretto permettere loro di accedere alla pagina solamente quando questa è completamente caricata al fine di evitare utilizzi scorretti della stessa (ex: click involontari a causa dello spostamento di elementi in caricamento);
+			\item \textbf{Bottone scroll down:} Nell'header delle pagine in cui il contenuto risultasse fuori dalla zona \textit{above the fold}, è stato inserito un bottone denotato dall'icona di una freccia orientata verso il basso che se cliccato effettua uno scroll fino ai contenuti principali della pagina. Tale bottone è contraddistinto dall'animazione bounce che lo rende più visibile;
+			\item \textbf{Page scroll:} Qualora venisse cliccato un link che si riferisse ad un'ancora interna, la pagina effettuerà uno scroll animato fino alla stessa. Questa animazione permette all'utente di comprendere lo spostamento che sta eseguendo contribuendo a diminuirne il disorientamento. 
+		\end{itemize}
+		
+	\subsection{Ottimizzazioni per dispositivi mobili}
+	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare alcuni elementi puramente decorativi. Il layout scelto si sposa bene con la variabilità delle dimensioni dello schermo caratteristica della visualizzazione da mobile, in particolare si è scelto di rendere grandi ed evidenti i link-bottoni per favorire la navigazione. 
 	
 	\subsection{Menù laterale} \label{ssec:menuusab}
 	Il menù laterale mostra evidenziata in verde la scheda attiva, che indica la sezione del sito in cui ci si trova. Il link alla scheda attiva, è disabilitato dal foglio di stile. Accedendo ad una sottosezione di una sezione del sito, sotto la scheda del menù corrispondente, compare un nuovo blocco che indica in quale sottosezione ci si trova. Sebbene questa informazione sia indicata anche nella barra delle \textit{breadcrumb}, riteniamo queste espansioni del menù utili per orientarsi rapidamente e capire da qualunque punto della pagina quale sezione si sta consultando.
