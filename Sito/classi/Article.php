@@ -56,9 +56,9 @@ class Article{
                         $echoString .=' </p>
                         </div>
                         <div class="center padding-2">                                
-                            <a href="'.$pathUpdate.'article='.$row["id"].'" class="btn">Modifica</a>
-                            <a href="'.$pathComment.'article='.$row["id"].'" class="btn">Commenti</a>
-                            <a href="'.$pathDelete.'article='.$row["id"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
+                            <a href="'.$pathUpdate.'article='.$row["id"].'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
+                            <a href="'.$pathComment.'article='.$row["id"].'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
+                            <a href="'.$pathDelete.'article='.$row["id"].'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
                     </div>
                 </div>
@@ -128,7 +128,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
+                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
                         </div>
                     </div>
                 </div>
@@ -543,7 +543,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" class="btn">Leggi l\'articolo </a>
+                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" title="Lettura l\'articolo '.$row4["titolo"].'" class="btn">Leggi l\'articolo </a>
                         </div>
                     </div>       
                                    
@@ -611,7 +611,7 @@ class Article{
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
                         </p>
-                        <a href="'.$url.'idcommento='.$row["id"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.$row["nome"].' '.$row["cognome"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
             
                     </div>';
             } 

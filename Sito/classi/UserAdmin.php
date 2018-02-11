@@ -56,8 +56,8 @@ class UserAdmin extends User {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'user='.$row["email"].'" class="btn"> Modifica</a>
-                                <a href="'.$pathDelete.'user='.$row["email"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
+                                <a href="'.$pathUpdate.'user='.$row["email"].'" title="Modifica l\'utente '.$row["nome"].' '.$row["cognome"].'" class="btn"> Modifica</a>
+                                <a href="'.$pathDelete.'user='.$row["email"].'" title="Elimina l\'utente '.$row["nome"].' '.$row["cognome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
                             </div>
                         </div>
                     </div>
