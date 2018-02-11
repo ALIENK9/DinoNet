@@ -212,35 +212,38 @@ function checkData($value){
  * @return int
  */
 function checkImageProfile($img){
-    return checkImage($img, "Immagine utente", 250, 250);
+    return checkImage($img, "Profilo utente");
 }  
 /**
  * Funzione che controlla se il parameto img è una immagine valida per gli articoli o per i dinosauri e se il campo desc è inizializzato
  * @return int
  */
 function checkImageContent($img, $desc){
-    return checkImage($img, $desc, 450, 450);
+    return checkImage($img, $desc);
 }   
 
 /**
- * Funzione che controlla se il parameto img è una immagine valida e se il campo desc è inizializzato
+ * Funzione che controlla se il parametro img è una immagine valida e se il campo desc è inizializzato
  * @return int
  */
-function checkImage($img, $desc, $sizeWidth, $sizeHeight){
+function checkImage($img, $desc){
 
     $error[0] = 0;  //Rilevato errore
     $error[1] = 0;  //Errore immagine non presente
     $error[2] = 0;  //Errore immagine non rispetta i vincoli
     $error[3] = 0;  //Errore descrizione assente
+    $error[4] = 0;  //Array di messaggi di errore
 
     if($img['error'] != 0){
         $error[0] = 1;
         $error[1] = 1;
     }
 
-    if($error[1] == 0 && validateImage($img, $sizeWidth, $sizeHeight)){
+    $validazione = validateImage($img);
+    if($error[1] === 0 && $validazione[0] === 1){
         $error[0] = 1;
         $error[2] = 1;
+        $error[4] = $validazione[1];
     }
 
     if($error[1] == 0 && (!isset($desc) || $desc=="") ){

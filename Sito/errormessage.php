@@ -86,147 +86,153 @@ function messageLinkDoubleBack($url, $textButton){
 
 //Messaggi Generali
 function messageErrorRequire(){
-    return "<h2>Compilare tutti i campi obbligatori</h2>";
+    return "<strong class=\"alert\">Compilare tutti i campi obbligatori</strong>";
 }
 
-function messageErrorImage(){
-    return "<h2>Immagine non confrome ai vincoli</h2>";
+function messageErrorImage($list){
+    $string = "";
+    foreach ($list as $msg) {
+        $string .= "<strong class=\"alert\">";
+        $string .= $msg;
+        $string .= "</strong>";
+    }
+    return $string;
 }
 
 function messageErrorUpdate(){
-    return "<h2>Elemento non modificato</h2>";
+    return "<strong class=\"alert\">Elemento non modificato</strong>";
 }
 
 function messageUpdateConfirm(){
-    return "<h2>Elemento modificato!</h2>";
+    return "<strong class=\"alert\">Elemento modificato!</strong>";
 }
 
 function messageDeleteConfirm(){
-    return "<h2>Elemento eliminato</h2>";
+    return "<strong class=\"alert\">Elemento eliminato</strong>";
 }
 
 function messageErrorDelete(){
-    return "<h2>Elemento non eliminato</h2>";
+    return "<strong class=\"alert\">Elemento non eliminato</strong>";
 }
 
 function messageErrorDeleteStrong(){
-    return "<h2>Elemento non eliminabile</h2>";
+    return "<strong class=\"alert\">Elemento non eliminabile</strong>";
 }
 
 function messageErrorUpdateSettings(){
-    return "<h2>Errore aggiornamento impostazioni</h2>";
+    return "<strong class=\"alert\">Errore aggiornamento impostazioni</strong>";
 }
 
 function messageErrorAdd(){
-    return "<h2>Elemento NON aggiunto</h2>";
+    return "<strong class=\"alert\">Elemento NON aggiunto</strong>";
 }
 
 function messageAddConfirm(){
-    return "<h2>Elemento aggiunto</h2>";
+    return "<strong class=\"alert\">Elemento aggiunto</strong>";
 }
 
 function messageErrorPosInteger($value){
-    return "<h2>Il campo $value non &#233; valido</h2>";
+    return "<strong class=\"alert\">Il campo $value non &#233; valido</strong>";
 }
 
 function messageErrorAlpha($value){
-    return "<h2>Il campo $value pu&#242; contenere solo caratteri alfabetici</h2>";
+    return "<strong class=\"alert\">Il campo $value pu&#242; contenere solo caratteri alfabetici</strong>";
 }
 
 function messageErrorDescImage(){
-    return "<h2>&#201; richiesta una descrizione per l'immagine</h2>";
+    return "<strong class=\"alert\">&#201; richiesta una descrizione per l'immagine</strong>";
 }
 
 function messageEmpty(){
-    return "<h2>Nessun risultato</h2>";
+    return "<strong class=\"alert\">Nessun risultato</strong>";
 }
 
 function messageErrorNoComments(){
-    return "<h2>Non sono presenti commenti</h2>";
+    return "<strong class=\"alert\">Non sono presenti commenti</strong>";
 }
 
 //Messaggi Utenti
 function messageErrorEmailAvailable(){
-    return "<h2>L'email inserita non &#233; disponibile</h2>";
+    return "<strong class=\"alert\">L'email inserita non &#233; disponibile</strong>";
 }
 
 function messageErrorEmail(){
-    return "<h2>L'indirizzo email non &#233; valido</h2>";
+    return "<strong class=\"alert\">L'indirizzo email non &#233; valido</strong>";
 }
 
 function messageErrorPasswordShort(){
-    return "<h2>La password deve essere formata da almeno 4 caratteri</h2>";
+    return "<strong class=\"alert\">La password deve essere formata da almeno 4 caratteri</strong>";
 }
 
 function messageErrorPasswordConfirm(){
-    return "<h2>La password e la conferma non coincidono</h2>";
+    return "<strong class=\"alert\">La password e la conferma non coincidono</strong>";
 }
 
 function messageErrorNameSurname(){
-    return "<h2>Nome o cognome non sono scritti con caratteri consentiti</h2>";
+    return "<strong class=\"alert\">Nome o cognome non sono scritti con caratteri consentiti</strong>";
 }
 
 function messageErrorData(){
-    return "<h2>Data non conforme ai vincoli</h2>";
+    return "<strong class=\"alert\">Data non conforme ai vincoli</strong>";
 }
 
 function messageUserAddConfirm(){
-    return "<h2>Utente registrato</h2>";
+    return "<strong class=\"alert\">Utente registrato</strong>";
 }
 
 function messageErrorUserAdd(){
-    return "<h2>Utente non registrato</h2>";
+    return "<strong class=\"alert\">Utente non registrato</strong>";
 }
 
 function messageUserUpdateConfirm(){
-    return "<h2>Utente modificato!</h2>";
+    return "<strong class=\"alert\">Utente modificato!</strong>";
 }
 
 function messageUserErrorUpdate(){
-    return "<h2>Utente non modificato</h2>";
+    return "<strong class=\"alert\">Utente non modificato</strong>";
 }
 
 function messageUserDeleteMySelfAdmin(){
-    return "<h2>Non ti puoi eliminare</h2>";
+    return "<strong class=\"alert\">Non ti puoi eliminare</strong>";
 }
 
 
 //Messaggi Dinosauri
 function messageErrorNoDino(){
-    return "<h2>Dinosauro non presente</h2>";
+    return "<strong class=\"alert\">Dinosauro non presente</strong>";
 }
 
 function messageErrorNoDinos(){
-    return "<h2>Dinosauri non presenti</h2>";
+    return "<strong class=\"alert\">Dinosauri non presenti</strong>";
 }
 
 function messageErrorDinoNameAvailable(){
-    return "<h2>Il nome del dinosauro non &#233; disponibile</h2>";
+    return "<strong class=\"alert\">Il nome del dinosauro non &#233; disponibile</strong>";
 }
 
 function messageErrorPeriodoMin(){
-    return "<h2>Il periodo minimo riportato non &#233; valido</h2>";
+    return "<strong class=\"alert\">Il periodo minimo riportato non &#233; valido</strong>";
 }
 
 function messageErrorPeriodoMax(){
-    return "<h2>Il periodo massimo riportato non &#233; valido</h2>";
+    return "<strong class=\"alert\">Il periodo massimo riportato non &#233; valido</strong>";
 }
 
 function messageErrorPeriodoMinMax(){
-    return "<h2>Il periodo riportato non &#233; valido</h2>";
+    return "<strong class=\"alert\">Il periodo riportato non &#233; valido</strong>";
 }
 
 function messageErrorDinoNome(){
-    return "<h2>Il nome non &#233; scritto con caratteri consentiti</h2>";
+    return "<strong class=\"alert\">Il nome non &#233; scritto con caratteri consentiti</strong>";
 }
 
 //Messaggi Articoli
 function messageErrorNoArticle(){
-    return "<h2>Articolo non presente</h2>";
+    return "<strong class=\"alert\">Articolo non presente</strong>";
 }
 
 function messageErrorNoArticles(){
-    return "<h2>Articoli non presenti</h2>";
+    return "<strong class=\"alert\">Articoli non presenti</strong>";
 }
 
 

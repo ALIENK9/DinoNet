@@ -233,7 +233,7 @@ class User {
             return $returnArray;
 
         if($removeImage){  
-            $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$email."' ";
+            $sqlQuery = "SELECT immagine FROM utente WHERE email = '".$this->getEmail()."' ";
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
                 if($row["immagine"]!="" && $row["immagine"]!=NULL){     
@@ -272,7 +272,7 @@ class User {
         return $returnArray;
     } 
     
-    public function registerMyUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $basePathImg){ 
+    public static function registerMyUser($connect, $email, $nome, $cognome, $datanascita, $password, $confermaPassword, $immagine, $basePathImg){
            
         $returnArray[0] = 0;
         $returnArray[1] = array();

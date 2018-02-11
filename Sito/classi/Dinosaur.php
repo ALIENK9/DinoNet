@@ -671,11 +671,6 @@ class Dinosaur {
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
         }
-
-        if(checkNameDinoAvailable($connect, $nome) == 1){
-            $returnArray[0] = 1;
-            array_push($returnArray[1],messageErrorDinoNameAvailable());
-        }
         
         if(checkName($nome) == 1){
             $returnArray[0] = 1;
@@ -724,7 +719,7 @@ class Dinosaur {
         $error = checkImageContent($immagine,"");
         if($error[2] == 1){
             $returnArray[0] = 1;
-            array_push($returnArray[1],messageErrorImage());
+            array_push($returnArray[1],messageErrorImage($error[4]));
         }
 
         if(!isset($tipologiaalimentazione)){ 

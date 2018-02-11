@@ -6,21 +6,19 @@
         $destinazioneFileDB = "/img/".$cartella."/".$nome.".".$estensioneFile; 
         $destinazioneFile = __DIR__."/img/".$cartella."/".$nome.".".$estensioneFile;
 
-        $error = resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile);
-
-        if($error == 0)
-            $error = validateImage($immagine);
+        $error = validateImage($immagine);
         
         // Controlla se il file esiste
         if (file_exists($destinazioneFile) && delImage($destinazioneFile)) {
-            $echoString = "Il File è gia presente e non sostituibile";
-            $error = 1;
+            echo "Il File è gia presente e non sostituibile";
+            $error = true;
         }
 
         if ($error == 0) {
+            $error = resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile);
             if (!move_uploaded_file($immagine["tmp_name"], $destinazioneFile)) {
-                $echoString = "Errore caricamento immagine";
-                $error = 1;
+                echo "Errore caricamento immagine";
+                $error = true;
             }
         }
         if ($error == 0) {            
@@ -38,26 +36,27 @@
      * @return int
      */
     function validateImage($immagine){
+        $error[0] = 0;          // se c'è stato un errore è 1
+        $error[1] = array();    // contiene i messaggi di errore da stampare
         
         $estensioneFile = strtolower(pathinfo($immagine["name"],PATHINFO_EXTENSION));
-        $error = 0;
         
         $stato = getimagesize($immagine["tmp_name"]);
         if($stato === false) {
-            $echoString = "Il File non è una immagine";
-            $error = 1;
+            $error[0] = 1;
+            array_push($error[1], "Il File non è una immagine");
         }
         
         // Controlla la dimensione del file
         if ($immagine["size"] > 500000) {
-            $echoString = "Il File è troppo grande";
-            $error = 1;
+            $error[0] = 1;
+            array_push($error[1], "Il File è troppo grande");
         }
         // Controlla se il file è nei formati JPG, JPEG, PNG e GIF
         if($estensioneFile != "jpg" && $estensioneFile != "png" && $estensioneFile != "jpeg"
         && $estensioneFile != "gif" ) {
-            $echoString = "Sono consentiti solo file JPG, JPEG, PNG e GIF";
-            $error = 1;
+            $error[0] = 1;
+            array_push($error[1], "Sono consentiti solo file JPG, JPEG, PNG e GIF");
         }
 
         return $error;
@@ -73,7 +72,7 @@
      * @return int, 0 se non ci sono stati errori, 1 se ci sono stati
      */
     function resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile) {
-        $error = 0;
+        $error = false;
         $resourceImage = false;
         switch($estensioneFile) {
             case 'jpg':
@@ -87,7 +86,7 @@
                 $resourceImage = imagecreatefromgif($immagine["tmp_name"]);
                 break;
             default:
-                $error = 1;
+                $error = true;
                 break;
         }
         if ($resourceImage !== false) {
@@ -108,13 +107,13 @@
                         break;
                 }
                 if ($ok === false)
-                    $error = 1;
+                    $error = true;
             }
             else
-                $error = 1;
+                $error = true;
         }
         else
-            $error = 1;
+            $error = true;
 
         return $error;
     }
