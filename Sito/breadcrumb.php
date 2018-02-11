@@ -151,6 +151,9 @@ function breadcrumbUser(){
 }
 
 
+
+
+
 /**
  * Ritorna le breadcrumb per l'utente amministratore
  * @return string
@@ -379,6 +382,9 @@ function breadcrumbAdmin(){
 }
 
 
+
+
+
 /**
  * Ritorna un messaggio di allerta per l'amministratore nel caso JS sia disabilitato.
  * @return string
@@ -386,7 +392,7 @@ function breadcrumbAdmin(){
 function alertMessageNoJs() {
     return $echoString = '
         <noscript id="alert-no-js" class="white center wrap-padding">
-            <strong class="errore">Attenzione! L\'esecuzione di JavaScript è disabilitata!</strong>
+            <strong class="errore alert">Attenzione! L\'esecuzione di JavaScript è disabilitata!</strong>
             <p> Puoi utilizzare il pannello di amministrazione anche così, ma se elimini qualcosa NON ti sarà chiesta conferma!</p>
         </noscript>
         

@@ -1107,7 +1107,6 @@ footer h2 {
 }
 
 #alert-no-js strong, #nojs-avviso strong {
-  font-size: 1.7em;
   color: #006633;
   background-color: white;
 }
@@ -1133,6 +1132,10 @@ footer h2 {
   padding: 0.5em!important;
   text-align: center!important;
   border-radius: 0.2em!important;
+}
+
+.alert {
+  font-size: 1.6em;
 }
 
 .page-not-found .wrap {
