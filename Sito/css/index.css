@@ -373,6 +373,11 @@ a.btn {
 
 /* Daily stuff */
 
+#daily-stuff {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
 .daily h1 {
   text-align: center;
 }
@@ -911,6 +916,10 @@ a.disabled {
 ======================================================================
 */
 
+#dino-immagine {
+	width: 49.999%;
+}
+
 .article-content {
   overflow: hidden;
 }
@@ -921,7 +930,7 @@ a.disabled {
 
 #caratteristiche {
   display: inline-block;
-  width: 33%;
+  width: 39.999%;
   overflow: hidden;
   vertical-align: bottom;
   text-align: left;
@@ -1142,6 +1151,14 @@ strong.alert {
       padding-bottom: 65vw;
       background-size: contain;
       background-position: bottom;
+  }
+  
+  #dino-immagine {
+	  width: 100%;
+  }
+	
+  #caratteristiche {
+	  width: 100%;
   }
 }
 
