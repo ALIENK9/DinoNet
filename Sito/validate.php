@@ -208,14 +208,14 @@ function checkData($value){
 } 
 
 /**
- * Funzione che controlla se il parameto img è una immagine valida per l'utente e se il campo desc è inizializzato
+ * Funzione che controlla se il parametro img è una immagine valida per l'utente e se il campo desc è inizializzato
  * @return int
  */
 function checkImageProfile($img){
     return checkImage($img, "Profilo utente");
 }  
 /**
- * Funzione che controlla se il parameto img è una immagine valida per gli articoli o per i dinosauri e se il campo desc è inizializzato
+ * Funzione che controlla se il parametro img è una immagine valida per gli articoli o per i dinosauri e se il campo desc è inizializzato
  * @return int
  */
 function checkImageContent($img, $desc){

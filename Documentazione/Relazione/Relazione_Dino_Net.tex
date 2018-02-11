@@ -313,8 +313,8 @@
 	 Spesso alcuni errori sono relativi all'accesso o alla modifica della base di dati.\\
 	 In altri casi uno specifico componente dell'array potrebbe non rappresentare un errore ma un output da mostrare all'utente in caso di esito corretto delle operazioni.
 
-	 \subsubsection{Gestione degli errori}
-	 Per dividere la presentazione degli errori dal resto della
+	 \subsubsection{Gestione dei messaggi ed errori}
+	 Per separare la visualizzazione di messaggi ed errori dalla logica del sito, sono state scritte alcune funzioni dedicate a questo compito, tutte raccolte nel file \code{message.php}. Questo agevola la modifica del codice HTML relativo al messaggio da mostrare all'utente, e non rende necessario la modifica delle classi che li utilizzano.\\In questo file sono state inserite anche alcuni metodi che ritornano il codice per visualizzare alcuni link utilizzati frequentemente nelle pagine del sito, come il link per tornare indietro o per tornare alla Home.
 
 
 	\subsection{Menù laterale}
