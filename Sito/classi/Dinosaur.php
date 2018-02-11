@@ -63,9 +63,9 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.urlencode($pathUpdate.'nome='.$row["nome"]).'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="'.urlencode($pathComment.'nome='.$row["nome"]).'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
-                                <a href="'.urlencode($pathDelete.'nome='.$row["nome"]).'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
+                                <a href="'.$pathUpdate.'nome='.urlencode($row["nome"]).'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
+                                <a href="'.$pathComment.'nome='.urlencode($row["nome"]).'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
+                                <a href="'.$pathDelete.'nome='.urlencode($row["nome"]).'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
                             </div>                           
                         </div>
                     </div>
@@ -145,7 +145,7 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.urlencode($pathLink.'nome='.$row["nome"].'" title="Leggi la scheda su '.$row["nome"]).'" class="btn">Visualizza la scheda del dinosauro </a>
+                                <a href="'.$pathLink.'nome='.urlencode($row["nome"]).'" title="Leggi la scheda su '.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
                             </div>
                         </div>
                     </div>
@@ -835,7 +835,7 @@ class Dinosaur {
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.urlencode($pathLink.'nome='.$row4["nome"].'" title="Le la scheda su '.$row4["nome"]).'" class="btn"> Visualizza la scheda del dinosauro </a>
+                            <a href="'.$pathLink.'nome='.urlencode($row4["nome"]).'" title="Le la scheda su '.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
                         </div>
                     </div>             
                 ';
