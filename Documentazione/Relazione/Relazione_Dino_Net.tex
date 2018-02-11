@@ -266,6 +266,33 @@
 		\item \textbf{Pagina di accesso}: la pagina di accesso al pannello di amministrazione è una pagina a parte perché è volutamente non raggiungibile direttamente dal sito pubblico. Questa scelta è stata fatta per ragioni di sicurezza e rende necessario navigare all'indirizzo preciso per visualizzarla.
 	\end{itemize}
 	
+	\subsection{Gestione e utilizzo delle classi}
+	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute all'interno della cartella \code{classi/}.
+	 \begin{itemize} 
+	 	\item \code{Article.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative agli articoli;
+	 	\item \code{Dinosaur.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative ai dinosauri;
+	 	\item \code{User.php}: classe che permette di gestire il profilo degli utenti che visitano il sito;
+	 	\item \code{UserAdmin.php}: classe derivata da \code{User} che viene istanziata all'accesso al pannello di amministrazione. Attraverso questa classe sono possibili tutte le operazioni rivolte all'amministratore riguardanti la gestione degli utenti.
+ 	 \end{itemize}
+  
+     La progettazione delle classi è avvenuta cercando di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare lo sviluppo futuro.
+     
+     I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi, le chiamate che modificano i dati e quelle che richiedono esclusivamente informazioni. La maggior parte di chiamate a metodi che eseguono operazioni di modifica ai contenuti ritornano un \code{array} di quattro dimensioni, dove la prima cella indica se si sono verificati errori durante l'operazione, il secondo campo contiene una lista di errori relativi ai parametri passati, il terzo contiene un messaggio di conferma, scritto in HTML, che può essere utilizzato come stampa informativa per l'utente e in fine l'ultimo campo contiene gli errori relativi all'accesso o modifica della base di dati. Gli altri metodi ritornano una stringa HTML con la relativa richiesta, in caso di errori viene ritornato un messaggio informativo. 
+     
+     \subsection{Struttura pannello di amministrazione}
+     Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare tutto il pannello di amministrazione mediante una singola pagina dinamica. L'unico metodo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php} .Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]}  viene individuata la macro area richiesta dall'utente e si delega il lavoro al file specifico.
+     
+     Elenco file specifici:
+      \begin{itemize} 
+     	\item \code{admin1234/article.php}: analizza nello specifico le azioni riguardanti gli articoli e risolve le richieste;
+     	\item \code{admin1234/dinosaur.php}: analizza nello specifico le azioni riguardanti i dinosauri e risolve le richieste;
+     	\item \code{admin1234/home.php}: file che si occupa di visualizzare le informazioni della pagina di Home;
+     	\item \code{admin1234/user.php}: analizza nello specifico le azioni riguardanti gli utenti e risolve le richieste.
+     	\item \code{admin1234/user.php}: effettua il logout e reindirizza l'utente alla pagina di login.
+     \end{itemize}
+ 	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}. 
+	
+	
 	\subsection{Menù laterale}
 	\paragraph{Link}
 	I link inseriti all'interno del menù laterale contengono dei tag \code{<p>}, quindi elementi di blocco. Questo non era possibile in HTML 4 e XHTML, perchè \code{<a>} è un elemento \textit{inline} e non potrebbe contenere elementi di blocco. Ciononostante HTML5 permette di annidare all'interno qualunque elemento di flusso (\textit{flow content}), purché non interattivo, e quindi anche un paragrafo\footnote{Con riferimento a quanto indicato al link: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a}}.
