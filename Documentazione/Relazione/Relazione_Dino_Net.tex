@@ -165,10 +165,20 @@
 		Il sito fa uso di alcune animazioni ad auspicabili fini di miglioramento dell'usabilità,  discussi di seguito. Si premette inoltre che le animazioni incontrano il target di utenza giovane previsto.
 		
 		\begin{itemize}
-			\item \textbf{Page loading:} Si è scelto di inserire un'animazione di caricamento affinché la pagina richiesta dall'utente gli sia mostrata soltanto una volta che questa è pronta. Benché sia noto che gli utenti non apprezzino i caricamenti, ci sembra corretto permettere loro di accedere alla pagina solamente quando questa è completamente caricata al fine di evitare utilizzi scorretti della stessa (ex: click involontari a causa dello spostamento di elementi in caricamento);
+			\item \textbf{Page loading:} Si è scelto di inserire un'animazione di caricamento per tenere viva l'attenzione dell'utente durante la preparazione della pagina, affinché essa gli sia mostrata soltanto una volta pronta. Benché sia noto che gli utenti non apprezzino i caricamenti, ci sembra corretto permettere loro di accedere alla pagina solamente quando questa è completamente caricata al fine di evitare utilizzi scorretti della stessa (ex: click involontari a causa dello spostamento di elementi in caricamento);
 			\item \textbf{Bottone scroll down:} Nell'header delle pagine in cui il contenuto risultasse fuori dalla zona \textit{above the fold}, è stato inserito un bottone denotato dall'icona di una freccia orientata verso il basso che se cliccato effettua uno scroll fino ai contenuti principali della pagina. Tale bottone è contraddistinto dall'animazione bounce che lo rende più visibile;
 			\item \textbf{Page scroll:} Qualora venisse cliccato un link che si riferisse ad un'ancora interna, la pagina effettuerà uno scroll animato fino alla stessa. Questa animazione permette all'utente di comprendere lo spostamento che sta eseguendo contribuendo a diminuirne il disorientamento. 
 		\end{itemize}
+		
+	\subsection{Favicon}
+	In ogni pagina del sito web è inserito l'insieme di favicon che ne permettono una facile identificazione tra le schede aperte nel browser o tra i preferiti. Le favicon sono state generate in vari formati con il tool reperibile al seguente link:
+	
+	\begin{center}
+		\url{https://www.favicon-generator.org/}
+	\end{center}
+	
+	\subsection{Gestione dell'errore 404}
+	Nonostante vi fosse l'intento di modificare il file \code{.htaccess} del server per un corretto reindirizzamento in caso di mancato reperimento di una pagina richiesta dall'utente, ciò non è stato possibile a causa di limitazioni imposte dal server stesso. 
 		
 	\subsection{Ottimizzazioni per dispositivi mobili}
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare alcuni elementi puramente decorativi. Il layout scelto si sposa bene con la variabilità delle dimensioni dello schermo caratteristica della visualizzazione da mobile, in particolare si è scelto di rendere grandi ed evidenti i link-bottoni per favorire la navigazione. 
@@ -266,8 +276,8 @@
 		\item \textbf{Pagina di accesso}: la pagina di accesso al pannello di amministrazione è una pagina a parte perché è volutamente non raggiungibile direttamente dal sito pubblico. Questa scelta è stata fatta per ragioni di sicurezza e rende necessario navigare all'indirizzo preciso per visualizzarla.
 	\end{itemize}
 	
-	\subsection{Gestione e utilizzo delle classi}
-	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute all'interno della cartella \code{classi/}.
+	\subsection{Progettazione e utilizzo delle classi}
+	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute nei file omonimi all'interno della cartella \code{classi/}.
 	 \begin{itemize} 
 	 	\item \code{Article.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative agli articoli;
 	 	\item \code{Dinosaur.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative ai dinosauri;
@@ -275,22 +285,27 @@
 	 	\item \code{UserAdmin.php}: classe derivata da \code{User} che viene istanziata all'accesso al pannello di amministrazione. Attraverso questa classe sono possibili tutte le operazioni rivolte all'amministratore riguardanti la gestione degli utenti.
  	 \end{itemize}
   
-     La progettazione delle classi è avvenuta cercando di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare lo sviluppo futuro.
+     La progettazione delle classi è stata effettuata nell'ottica di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare un possibile sviluppo futuro. \\
      
-     I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi, le chiamate che modificano i dati e quelle che richiedono esclusivamente informazioni. La maggior parte di chiamate a metodi che eseguono operazioni di modifica ai contenuti ritornano un \code{array} di quattro dimensioni, dove la prima cella indica se si sono verificati errori durante l'operazione, il secondo campo contiene una lista di errori relativi ai parametri passati, il terzo contiene un messaggio di conferma, scritto in HTML, che può essere utilizzato come stampa informativa per l'utente e in fine l'ultimo campo contiene gli errori relativi all'accesso o modifica della base di dati. Gli altri metodi ritornano una stringa HTML con la relativa richiesta, in caso di errori viene ritornato un messaggio informativo. 
+     \noindent I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi:
+     
+     \begin{itemize}
+     	\item Metodi che modificano i dati;
+     	\item Metodi che richiedono esclusivamente informazioni.
+     \end{itemize}
+ 
+      La maggior parte delle chiamate a metodi che eseguono operazioni di modifica ai contenuti ritornano un \code{array} di quattro dimensioni, dove il primo campo indica se si sono verificati errori durante l'operazione, il secondo campo contiene una lista di errori relativi ai parametri passati, il terzo contiene un messaggio di conferma in HTML, che può essere utilizzato come stampa informativa per l'utente, e infine l'ultimo campo contiene gli errori relativi all'accesso o modifica della base di dati. Gli altri metodi ritornano una stringa HTML con la relativa richiesta e in caso di errori viene ritornato un messaggio informativo. 
      
      \subsection{Struttura pannello di amministrazione}
-     Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare tutto il pannello di amministrazione mediante una singola pagina dinamica. L'unico metodo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php} .Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]}  viene individuata la macro area richiesta dall'utente e si delega il lavoro al file specifico.
-     
-     Elenco file specifici:
+     Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare il pannello di amministrazione mediante una singola pagina dinamica. L'unico modo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php}. Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]} viene individuata la macro area richiesta dall'utente e si include il file specifico che la rappresenta. Segue l'elenco di tali file.
       \begin{itemize} 
      	\item \code{admin1234/article.php}: analizza nello specifico le azioni riguardanti gli articoli e risolve le richieste;
      	\item \code{admin1234/dinosaur.php}: analizza nello specifico le azioni riguardanti i dinosauri e risolve le richieste;
      	\item \code{admin1234/home.php}: file che si occupa di visualizzare le informazioni della pagina di Home;
      	\item \code{admin1234/user.php}: analizza nello specifico le azioni riguardanti gli utenti e risolve le richieste.
-     	\item \code{admin1234/user.php}: effettua il logout e reindirizza l'utente alla pagina di login.
+     	\item \code{admin1234/logout.php}: effettua il logout e reindirizza l'utente alla pagina di login.
      \end{itemize}
- 	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}. 
+ 	Per individuare le azioni specifiche che devono essere effettuate viene utilizzata la variabile \code{\$\_GET["sez"]} (per esempio \code{panel.php?id=dino\&sez=formadd} rappresenta il form di aggiunta di un dinosauro). 
 	
 	
 	\subsection{Menù laterale}
@@ -347,13 +362,12 @@
 	
 	\section{Test}
 	\subsection{Introduzione}
-	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza, la velocità di caricamento e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non è condizione sufficiente affinché lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}.
+	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza, la velocità di caricamento e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non è condizione sufficiente affinché lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}. \\ \\ 
+	\textbf{Premessa}: si fa presente che il risultato di alcuni test potrebbe variare leggermente a seconda dei contenuti caricati dagli utenti, a causa delle scelte fatte riguardanti l'aggiunta di articoli e discusse nella sezione §\ref{sssec:inserimentocontenuti}. L'esito dei test è garantito al netto dei contenuti.
 	
 	\subsection{Accessibilità} \label{ssec:testaccessibilita}
 	
 	\subsubsection{Strumenti}
-	
-	\textbf{Premessa}: si fa presente che il risultato di alcuni test potrebbe variare a seconda dei contenuti caricati dagli utenti, a causa delle scelte fatte riguardanti l'aggiunta di articoli e discusse nella sezione §\ref{sssec:inserimentocontenuti}.\\
 	
 	\noindent Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
 	
