@@ -26,7 +26,7 @@ class Article{
 			}
 		}
 		
-		$sqlFilter .= "ORDER BY id, titolo, sottotitolo";
+		$sqlFilter .= "ORDER BY id DESC, titolo, sottotitolo";
 		$sqlQuery = "SELECT id, titolo, sottotitolo, immagine, descrizioneimg FROM articolo ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
 		$result = $connect->query($sqlQuery);
 
@@ -77,7 +77,7 @@ class Article{
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
         
-        return Article::printListArticleUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink);
+        return Article::printListArticleUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink, $orderByInsert);
     }
 
     public static function printListArticleUserLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathLink, $orderByInsert = false){
