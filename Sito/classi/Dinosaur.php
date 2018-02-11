@@ -63,9 +63,9 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="'.$pathComment.'nome='.$row["nome"].'" class="btn"> Commenti </a>
-                                <a href="'.$pathDelete.'nome='.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
+                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
+                                <a href="'.$pathComment.'nome='.$row["nome"].'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
+                                <a href="'.$pathDelete.'nome='.$row["nome"].'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
                             </div>                           
                         </div>
                     </div>
@@ -145,7 +145,7 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathLink.'nome='.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
+                                <a href="'.$pathLink.'nome='.$row["nome"].'" title="Leggi la scheda su '.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
                             </div>
                         </div>
                     </div>
@@ -835,7 +835,7 @@ class Dinosaur {
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'nome='.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
+                            <a href="'.$pathLink.'nome='.$row4["nome"].'" title="Le la scheda su '.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
                         </div>
                     </div>             
                 ';
@@ -902,7 +902,7 @@ class Dinosaur {
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
                         </p>
-                        <a href="'.$url.'idcommento='.$row["id"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.$row["nome"].' '.$row["cognome"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
             
                     </div>';
             }      
