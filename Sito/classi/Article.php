@@ -235,7 +235,7 @@ class Article{
                     
                     <p>
                         <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
+                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
                     </p>
                     
                     <p>
@@ -244,8 +244,8 @@ class Article{
                     </p>
                     
                     <p>
-                        <label for="anteprima">Anteprima:</label>
-                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" >'.$anteprima.'</textarea>
+                        <label for="anteprima">Anteprima da visualizzare:</label>
+                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima">'.$anteprima.'</textarea>
                     </p>
                                             
                     <p>
@@ -379,7 +379,7 @@ class Article{
                         
                         <p>
                             <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
                         </p>
                         
                         <p>
@@ -388,8 +388,8 @@ class Article{
                         </p>
                         
                         <p>
-                            <label for="anteprima">Anteprima:</label>
-                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$anteprima.'</textarea>
+                            <label for="anteprima">Anteprima da visualizzare:</label>
+                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima">'.$anteprima.'</textarea>
                         </p>
                         
                         <p>
