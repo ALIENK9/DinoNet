@@ -42,6 +42,14 @@ switch ($sezione) {
 		echo Article::formAddArticle($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
+	
+		if(!isset($_POST['titolo'])){ $_POST['titolo'] = ""; }
+		if(!isset($_POST['sottotitolo'])){ $_POST['sottotitolo'] = ""; }
+		if(!isset($_POST['descrizione'])){ $_POST['descrizione'] = ""; }
+		if(!isset($_POST['anteprima'])){ $_POST['anteprima'] = ""; }
+		if(!isset($_POST['descrizioneimg'])){ $_POST['descrizioneimg'] = ""; }
+		if(!isset($_FILES['imgarticle'])){ $_FILES['imgarticle'] = NULL; }
+
 		$error =  Article::addArticle($connectArticle, $_SESSION['paneluser']->getEmail(), $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $_POST["descrizioneimg"], $_FILES["imgarticle"]);
 		if($error[0] == 0){
 			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=article&sez=formadd");
@@ -58,7 +66,15 @@ switch ($sezione) {
 	case 'formupdate':
 		echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"],$_GET["article"]);
 		break;
-	case 'update':		
+	case 'update':	
+		if(!isset($_POST['article'])){ $_POST['article'] = ""; }
+		if(!isset($_POST['titolo'])){ $_POST['titolo'] = ""; }
+		if(!isset($_POST['sottotitolo'])){ $_POST['sottotitolo'] = ""; }
+		if(!isset($_POST['descrizione'])){ $_POST['descrizione'] = ""; }
+		if(!isset($_POST['anteprima'])){ $_POST['anteprima'] = ""; }
+		if(!isset($_POST['descrizioneimg'])){ $_POST['descrizioneimg'] = ""; }
+		if(!isset($_FILES['imgarticle'])){ $_FILES['imgarticle'] = NULL; }	
+
 		$removeimg=false;
 		if(isset($_POST['imgarticleremove']) && $_POST['imgarticleremove']=="true"){
 			$removeimg=true;
@@ -102,7 +118,7 @@ switch ($sezione) {
 if($sezione!="list"){
 	?>
 	<div class="center wrap-padding">
-		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete" && $sezione!="deletecomment"){	?>
+		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete"){	?>
 			<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a> 
 		<?php }	?> 	
 		<a href="panel.php?id=article" class="btn card wrap-margin"> Vai alla lista degli articoli</a>	

@@ -43,6 +43,15 @@ switch ($sezione) {
 		echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
+		if(!isset($_POST['email'])){ $_POST['email'] = ""; }
+		if(!isset($_POST['nome'])){ $_POST['nome'] = ""; }
+		if(!isset($_POST['cognome'])){ $_POST['cognome'] = ""; }
+		if(!isset($_POST['datanascita'])){ $_POST['datanascita'] = ""; }
+		if(!isset($_POST['password'])){ $_POST['password'] = ""; }
+		if(!isset($_POST['passwordconf'])){ $_POST['passwordconf'] = ""; }
+		if(!isset($_POST['tipologia'])){ $_POST['tipologia'] = ""; }
+		if(!isset($_FILES['imgaccount'])){ $_FILES['imgaccount'] = NULL; }
+		
 		$error = $_SESSION['paneluser']->addUser($connectUser, $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $_FILES["imgaccount"], "..");
 		if($error[0] == 0){
 			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=user&sez=formadd");
@@ -59,7 +68,16 @@ switch ($sezione) {
 	case 'formupdate':
 		echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"],$_GET['user']);
 		break;
-	case 'update':		
+	case 'update':	
+		if(!isset($_POST['email'])){ $_POST['email'] = ""; }
+		if(!isset($_POST['nome'])){ $_POST['nome'] = ""; }
+		if(!isset($_POST['cognome'])){ $_POST['cognome'] = ""; }
+		if(!isset($_POST['datanascita'])){ $_POST['datanascita'] = ""; }
+		if(!isset($_POST['password'])){ $_POST['password'] = ""; }
+		if(!isset($_POST['passwordconf'])){ $_POST['passwordconf'] = ""; }
+		if(!isset($_POST['tipologia'])){ $_POST['tipologia'] = ""; }
+		if(!isset($_FILES['imgaccount'])){ $_FILES['imgaccount'] = NULL; }
+	
 		$removeimg=false;
 		if(isset($_POST['imgaccountremove']) && $_POST['imgaccountremove']=="true"){
 			$removeimg=true;			

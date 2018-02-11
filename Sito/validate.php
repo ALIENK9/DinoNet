@@ -234,12 +234,13 @@ function checkImage($img, $desc){
     $error[3] = 0;        //Errore descrizione assente
     $error[4] = array();  //Array di messaggi di errore
 
-    if($img['error'] != 0){
+    if(!isset($img['error']) || $img['error'] != 0){
         $error[0] = 1;
         $error[1] = 1;
     }
-
-    $validazione = validateImage($img);
+    
+    if($error[1] === 0)
+        $validazione = validateImage($img);
     if($error[1] === 0 && $validazione[0] === 1){
         $error[0] = 1;
         $error[2] = 1;
