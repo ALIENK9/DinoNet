@@ -44,7 +44,7 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>
 								</div>';
                             }
                             $echoString .='
@@ -123,7 +123,7 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>
 								</div>';
                             }
                             $echoString .='
@@ -175,7 +175,7 @@ class Dinosaur {
 
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>';
+                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>';
                             }
                             $echoString .='
                             <div id="caratteristiche" class="wrap-padding white">
@@ -820,7 +820,7 @@ class Dinosaur {
                         if(isset($row4["immagine"])){
                             $echoString .=' 
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row4["immagine"].'" alt="'.$row4["nome"].'"/>
+									<img src="'.$basePathImg.$row4["immagine"].'" alt="Ricostruzione di un '.$row4["nome"].'"/>
 								</div>';
                         }
                         $echoString .='
