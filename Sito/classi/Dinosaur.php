@@ -666,7 +666,7 @@ class Dinosaur {
         $returnArray[1] = array();
 
         //Inizio Controlli campi
-        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione,));
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione));
         if($error[0] == 1){
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
