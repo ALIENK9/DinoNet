@@ -165,11 +165,21 @@
 		Il sito fa uso di alcune animazioni ad auspicabili fini di miglioramento dell'usabilità,  discussi di seguito. Si premette inoltre che le animazioni incontrano il target di utenza giovane previsto.
 		
 		\begin{itemize}
-			\item \textbf{Page loading:} Si è scelto di inserire un'animazione di caricamento affinché la pagina richiesta dall'utente gli sia mostrata soltanto una volta che questa è pronta. Benché sia noto che gli utenti non apprezzino i caricamenti, ci sembra corretto permettere loro di accedere alla pagina solamente quando questa è completamente caricata al fine di evitare utilizzi scorretti della stessa (ex: click involontari a causa dello spostamento di elementi in caricamento);
+			\item \textbf{Page loading:} Si è scelto di inserire un'animazione di caricamento per tenere viva l'attenzione dell'utente durante la preparazione della pagina, affinché essa gli sia mostrata soltanto una volta pronta. Benché sia noto che gli utenti non apprezzino i caricamenti, ci sembra corretto permettere loro di accedere alla pagina solamente quando questa è completamente caricata al fine di evitare utilizzi scorretti della stessa (ex: click involontari a causa dello spostamento di elementi in caricamento);
 			\item \textbf{Bottone scroll down:} Nell'header delle pagine in cui il contenuto risultasse fuori dalla zona \textit{above the fold}, è stato inserito un bottone denotato dall'icona di una freccia orientata verso il basso che se cliccato effettua uno scroll fino ai contenuti principali della pagina. Tale bottone è contraddistinto dall'animazione bounce che lo rende più visibile;
 			\item \textbf{Page scroll:} Qualora venisse cliccato un link che si riferisse ad un'ancora interna, la pagina effettuerà uno scroll animato fino alla stessa. Questa animazione permette all'utente di comprendere lo spostamento che sta eseguendo contribuendo a diminuirne il disorientamento. 
 		\end{itemize}
 		
+	\subsection{Favicon}
+	In ogni pagina del sito web è inserito l'insieme di favicon che ne permettono una facile identificazione tra le schede aperte nel browser o tra i preferiti. Le favicon sono state generate in vari formati con il tool reperibile al seguente link:
+
+	\begin{center}
+		\url{https://www.favicon-generator.org/}
+	\end{center}
+
+	\subsection{Gestione dell'errore 404}
+	Nonostante vi fosse l'intento di modificare il file \code{.htaccess} del server per un corretto reindirizzamento in caso di mancato reperimento di una pagina richiesta dall'utente, ciò non è stato possibile a causa di limitazioni imposte dal server stesso.
+
 	\subsection{Ottimizzazioni per dispositivi mobili}
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare alcuni elementi puramente decorativi. Il layout scelto si sposa bene con la variabilità delle dimensioni dello schermo caratteristica della visualizzazione da mobile, in particolare si è scelto di rendere grandi ed evidenti i link-bottoni per favorire la navigazione. 
 	
@@ -253,7 +263,7 @@
 	Tutti i controlli sui dati inseriti sono naturalmente effettuati anche dal server: dopo il \textit{submit} dei dati del form e prima di inserirli nella base di dati, vengono raccolti i dati inseriti in ogni \code{<input>} e vengono controllati tramite le funzioni del file \code{validate.php}. \\
 	La validazione non fa affidamento agli attributi inseriti negli elementi dei form, per le ragioni già esposte nel paragrafo precedente.\\
 	Eventuali errori nella compilazione sono segnalati chiamando le apposite funzioni inserite in \code{message.php}.
-	
+
 	
 	\subsubsection{Inserimento dei contenuti} \label{sssec:inserimentocontenuti}
 	Nei form per l'inserimento di articoli e schede di dinosauri, il testo dell'articolo è inserito in una \code{<textarea>}. Per semplicità e per rimanere nei tempi a disposizione per completare il progetto, non abbiamo inserito plugin esterni che consentissero di gestire con una interfaccia grafica i tag HTML (ad esempio per aggiungere immagini o per inserire font in corsivo). Di conseguenza nella casella di testo andrà inserito tutto il codice HTML, tag inclusi, necessario per rendere in maniera corretta l'articolo. \\
@@ -272,26 +282,26 @@
 	\subsection{Struttura pannello di amministrazione}
 	Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare tutto il pannello di amministrazione mediante una singola pagina dinamica. L'unico metodo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php} .Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]}  viene individuata la macro area richiesta dall'utente e si delega il lavoro al file specifico.\\
 	Elenco file specifici:
-	\begin{itemize} 
+	\begin{itemize}
 		\item \code{admin1234/article.php}: analizza nello specifico le azioni riguardanti gli articoli e risolve le richieste;
 		\item \code{admin1234/dinosaur.php}: analizza nello specifico le azioni riguardanti i dinosauri e risolve le richieste;
 		\item \code{admin1234/home.php}: file che si occupa di visualizzare le informazioni della pagina di Home;
 		\item \code{admin1234/user.php}: analizza nello specifico le azioni riguardanti gli utenti e risolve le richieste.
 		\item \code{admin1234/user.php}: effettua il logout e reindirizza l'utente alla pagina di login.
 	\end{itemize}
-	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}. 
+	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}.
 	
 	\subsection{Gestione e utilizzo delle classi}
 	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute all'interno della cartella \code{classi/}.
-	 \begin{itemize} 
+	 \begin{itemize}
 	 	\item \code{Article.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative agli articoli;
 	 	\item \code{Dinosaur.php}: attraverso i metodi contenuti al proprio interno è possibile eseguire tutte le operazione relative ai dinosauri;
 	 	\item \code{User.php}: classe che permette di gestire il profilo degli utenti che visitano il sito;
 	 	\item \code{UserAdmin.php}: classe derivata da \code{User} che viene istanziata all'accesso al pannello di amministrazione. Attraverso questa classe sono possibili tutte le operazioni rivolte all'amministratore riguardanti la gestione degli utenti.
  	 \end{itemize}
-  
+
      Durante la progettazione delle classi abbiamo cercato di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare lo sviluppo futuro.
-     
+
      I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi, le chiamate che modificano i dati e quelle che richiedono esclusivamente informazioni. La maggior parte di chiamate a metodi che eseguono operazioni di modifica ai contenuti comunicano l'esito dell'operazione ritornando un \textit{array}. Come esempio, descriviamo di seguito ciascun componente dell'array \code{\$error} ritornato dalla funzione \code{checkImage()} nel file \code{validate.php}. La funzione controlla che le immagini caricate (ad esempio immagini profilo) siano conformi alle richieste.\\
      \begin{itemize}
      	\item \code{\$error[0]}: se  vale \code{1} segnala che l'operazione è stata completata con uno o più errori, altrimenti vale \code{0};
@@ -302,11 +312,11 @@
      \end{itemize}
 	 Spesso alcuni errori sono relativi all'accesso o alla modifica della base di dati.\\
 	 In altri casi uno specifico componente dell'array potrebbe non rappresentare un errore ma un output da mostrare all'utente in caso di esito corretto delle operazioni.
-	 
+
 	 \subsubsection{Gestione degli errori}
 	 Per dividere la presentazione degli errori dal resto della
-	 	
-		
+
+
 	\subsection{Menù laterale}
 	\paragraph{Link}
 	I link inseriti all'interno del menù laterale contengono dei tag \code{<p>}, quindi elementi di blocco. Questo non era possibile in HTML 4 e XHTML, perchè \code{<a>} è un elemento \textit{inline} e non potrebbe contenere elementi di blocco. Ciononostante HTML5 permette di annidare all'interno qualunque elemento di flusso (\textit{flow content}), purché non interattivo, e quindi anche un paragrafo\footnote{Con riferimento a quanto indicato al link: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a}}.
@@ -361,14 +371,13 @@
 	
 	\section{Test}
 	\subsection{Introduzione}
-	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza, la velocità di caricamento e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non è condizione sufficiente affinché lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}.
+	In questa sezione saranno descritti gli strumenti utilizzati per effettuare test sulla correttezza, la velocità di caricamento e sull'accessibilità delle pagine del sito. \\Riguardo all'accessibilità, il fatto che un validatore automatico dichiari un sito accessibile non è condizione sufficiente affinché lo sia veramente, ma indica solamente che è conforme a delle linee guida che aiutano a raggiungere l'obiettivo. Pertanto questi test sono da considerarsi complementari alle considerazioni e scelte descritte nella sezione §\ref{sec:accessibilita}. \\ \\
+	\textbf{Premessa}: si fa presente che il risultato di alcuni test potrebbe variare leggermente a seconda dei contenuti caricati dagli utenti, a causa delle scelte fatte riguardanti l'aggiunta di articoli e discusse nella sezione §\ref{sssec:inserimentocontenuti}. L'esito dei test è garantito al netto dei contenuti.
 	
 	\subsection{Accessibilità} \label{ssec:testaccessibilita}
 	
 	\subsubsection{Strumenti}
-	
-	\textbf{Premessa}: si fa presente che il risultato di alcuni test potrebbe variare a seconda dei contenuti caricati dagli utenti, a causa delle scelte fatte riguardanti l'aggiunta di articoli e discusse nella sezione §\ref{sssec:inserimentocontenuti}.\\
-	
+
 	\noindent Per verificare l'accessibilità, tutte le pagine del sito sono state testate con i seguenti tool:
 	
 	\begin{itemize}
