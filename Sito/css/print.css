@@ -48,15 +48,11 @@ a {text-decoration: underline;}
     font-size: 1.5em;
 }
 
-#input-area, #breadcrumb, #topbar, .no-print {display: none;}
-
 .daily-dino img, .daily-article img {display: none;}
 
 .hide-large, .hide-medium {display: none;}
 
 #commentboard {display: none;}
-
-.article-image-head {display: none;}
 
 .loading {display: none;}
 
@@ -65,14 +61,6 @@ a {text-decoration: underline;}
  */
 
 .wide {letter-spacing: 0;}
-
-.margin-top, .margin-2, .margin-3, .margin-half, .margin-half, .wrap-margin, .side-margin {
-    margin: 0;
-}
-
-.padding-15, .padding-12, .padding-6, .padding-3, .padding-2, .padding-1, .side-padding, .content, .content-large, .padding-large {
-    padding: 0;
-}
 
 .wrap-padding, .wrap-padding-small {
     padding: 0.5em!important;

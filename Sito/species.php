@@ -85,7 +85,7 @@
 
 <!-- Dinosauri -->
 
-<div class="padding-6 content"> <!-- c'era anche side-padding -->
+<div class="padding-6 content">
 
 		<div id="daily-dino" class="card margin-half colored center wrap-padding">
 			<h1>Il dinosauro del giorno</h1>
