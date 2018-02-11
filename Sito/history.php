@@ -56,19 +56,21 @@
 <!-- Header -->
 
 <header id="header-home" class="parallax padding-6 header-image">
-	<div id="title-card" class="content card">
-		<h1> La storia dei dinosauri </h1>
-		<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
-	</div>
-	<div id="history-index" class="content card colored wrap-padding">
-        <a class="hidden" href="#chi-sono-i-dino">Salta l'indice dei contenuti</a>
-		<ul class="index">
-			<li><a href="#chi-sono-i-dino">1. Chi sono i dinosauri?</a></li>
-			<li><a href="#scoperta">2. La scoperta</a></li>
-			<li><a href="#dino-unici">3. Perché i dinosauri sono unici?</a></li>
-			<li><a href="#bipedi-quadrupedi">4. Bipedi e quadrupedi, erbivori e carnivori</a></li>
-			<li><a href="#estinzione">5. L'estinzione</a></li>
-		</ul>
+	<div class="wrap-margin">
+		<div id="title-card" class="content card">
+			<h1> La storia dei dinosauri </h1>
+			<h2>scopri l'affascinante storia di creature vissute milioni di anni fa</h2>
+		</div>
+		<div id="history-index" class="content card colored wrap-padding">
+			<a class="hidden" href="#chi-sono-i-dino">Salta l'indice dei contenuti</a>
+			<ul class="index">
+				<li><a href="#chi-sono-i-dino">1. Chi sono i dinosauri?</a></li>
+				<li><a href="#scoperta">2. La scoperta</a></li>
+				<li><a href="#dino-unici">3. Perché i dinosauri sono unici?</a></li>
+				<li><a href="#bipedi-quadrupedi">4. Bipedi e quadrupedi, erbivori e carnivori</a></li>
+				<li><a href="#estinzione">5. L'estinzione</a></li>
+			</ul>
+		</div>
 	</div>
 </header>
 
