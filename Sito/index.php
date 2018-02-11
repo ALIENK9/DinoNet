@@ -127,7 +127,7 @@
 
 <div id="daily-stuff" class="content-large padding-6 no-print">
 	<div class="row-padding">
-		<div class="half">
+		<div class="wrap-margin half">
 			<div class="card margin-half colored center wrap-padding">
 				<h1>Il dinosauro del giorno</h1>
 			</div>
@@ -135,7 +135,7 @@
 				echo Dinosaur::getDinosaurDay($connect, ".", "display-specie.php?");
 			?>
 		</div>
-		<div class="half">
+		<div class="wrap-margin half">
 			<div id="daily" class="card margin-half colored center wrap-padding">
 				<h1>L'articolo del giorno</h1>
 			</div>
