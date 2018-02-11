@@ -1,7 +1,7 @@
 <?php
 
 include_once (__DIR__."/../classi/Dinosaur.php");
-include_once (__DIR__."/../errormessage.php");
+include_once (__DIR__ . "/../message.php");
 
 if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
 	header("Location: ../error.php");

@@ -250,7 +250,10 @@
 	La funzione \code{validateForm()} utilizza l'oggetto \code{Window} del BOM (Browser Object Model) per invocare funzioni diverse a seconda dell'elemento da validare. Sebbene BOM non sia standardizzato, questo approccio è risultato funzionante su tutti i browser in cui l'abbiamo testato. Una strada alternativa, che non richiede \code{Window} sarebbe utilizzare uno \code{switch} su ciascun possibile valore dell'attributo \code{data-validation-mode} e per ogni caso chiamare la funzione adeguata.\\ L'unica ragione per cui non abbiamo preferito questo metodo è che, contrariamente al primo, richiede modifiche alla funzione principale \code{validateForm()} nel caso si voglia estendere un form con nuovi elementi \code{<input>}. 
 	
 	\subsubsection*{Validazione server-side con PHP}
-	Validazione lato server PHP. 
+	Tutti i controlli sui dati inseriti sono naturalmente effettuati anche dal server: dopo il \textit{submit} dei dati del form e prima di inserirli nella base di dati, vengono raccolti i dati inseriti in ogni \code{<input>} e vengono controllati tramite le funzioni del file \code{validate.php}. \\
+	La validazione non fa affidamento agli attributi inseriti negli elementi dei form, per le ragioni già esposte nel paragrafo precedente.\\
+	Eventuali errori nella compilazione sono segnalati chiamando le apposite funzioni inserite in \code{message.php}.
+	
 	
 	\subsubsection{Inserimento dei contenuti} \label{sssec:inserimentocontenuti}
 	Nei form per l'inserimento di articoli e schede di dinosauri, il testo dell'articolo è inserito in una \code{<textarea>}. Per semplicità e per rimanere nei tempi a disposizione per completare il progetto, non abbiamo inserito plugin esterni che consentissero di gestire con una interfaccia grafica i tag HTML (ad esempio per aggiungere immagini o per inserire font in corsivo). Di conseguenza nella casella di testo andrà inserito tutto il codice HTML, tag inclusi, necessario per rendere in maniera corretta l'articolo. \\
@@ -265,6 +268,18 @@
 		\item \textbf{Ricerca e visualizzazione dei risultati}: anche in questo caso riteniamo possibile che vengano implementate funzionalità non utili ad entrambe le parti, ma solo ad una delle due. Ad esempio, sicuramente l'amministratore necessita di funzionalità di ricerca diverse da quelle di un utente visitatore. Per questo abbiamo preferito mantenere distinti i due file \code{topbar.php} e \code{topbaradmin.php}. Le stesse considerazioni valgono per le pagine che visualizzano i risultati di una ricerca, nello specifico \code{search.php} e \code{searchadmin.php};
 		\item \textbf{Pagina di accesso}: la pagina di accesso al pannello di amministrazione è una pagina a parte perché è volutamente non raggiungibile direttamente dal sito pubblico. Questa scelta è stata fatta per ragioni di sicurezza e rende necessario navigare all'indirizzo preciso per visualizzarla.
 	\end{itemize}
+
+	\subsection{Struttura pannello di amministrazione}
+	Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare tutto il pannello di amministrazione mediante una singola pagina dinamica. L'unico metodo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php} .Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]}  viene individuata la macro area richiesta dall'utente e si delega il lavoro al file specifico.\\
+	Elenco file specifici:
+	\begin{itemize} 
+		\item \code{admin1234/article.php}: analizza nello specifico le azioni riguardanti gli articoli e risolve le richieste;
+		\item \code{admin1234/dinosaur.php}: analizza nello specifico le azioni riguardanti i dinosauri e risolve le richieste;
+		\item \code{admin1234/home.php}: file che si occupa di visualizzare le informazioni della pagina di Home;
+		\item \code{admin1234/user.php}: analizza nello specifico le azioni riguardanti gli utenti e risolve le richieste.
+		\item \code{admin1234/user.php}: effettua il logout e reindirizza l'utente alla pagina di login.
+	\end{itemize}
+	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}. 
 	
 	\subsection{Gestione e utilizzo delle classi}
 	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute all'interno della cartella \code{classi/}.
@@ -275,24 +290,23 @@
 	 	\item \code{UserAdmin.php}: classe derivata da \code{User} che viene istanziata all'accesso al pannello di amministrazione. Attraverso questa classe sono possibili tutte le operazioni rivolte all'amministratore riguardanti la gestione degli utenti.
  	 \end{itemize}
   
-     La progettazione delle classi è avvenuta cercando di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare lo sviluppo futuro.
+     Durante la progettazione delle classi abbiamo cercato di costruire del codice estendibile e facilmente mantenibile. Le classi \code{Article} e \code{Dinosaur} contengono esclusivamente metodi statici e non devono essere istanziate. È stata scelta questa struttura a differenza di un file contente le relative funzioni per dare un namespace ai metodi e per semplificare lo sviluppo futuro.
      
-     I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi, le chiamate che modificano i dati e quelle che richiedono esclusivamente informazioni. La maggior parte di chiamate a metodi che eseguono operazioni di modifica ai contenuti ritornano un \code{array} di quattro dimensioni, dove la prima cella indica se si sono verificati errori durante l'operazione, il secondo campo contiene una lista di errori relativi ai parametri passati, il terzo contiene un messaggio di conferma, scritto in HTML, che può essere utilizzato come stampa informativa per l'utente e in fine l'ultimo campo contiene gli errori relativi all'accesso o modifica della base di dati. Gli altri metodi ritornano una stringa HTML con la relativa richiesta, in caso di errori viene ritornato un messaggio informativo. 
-     
-     \subsection{Struttura pannello di amministrazione}
-     Per dimostrare la padronanza di un maggior numero di tecniche di progettazione, abbiamo deciso di organizzare tutto il pannello di amministrazione mediante una singola pagina dinamica. L'unico metodo per accedere al pannello di amministrazione consiste nell'effettuare l'accesso mediante il file \code{admin1234/login.php}. Se si cerca di accedere al pannello evitando l'autenticazione si viene reindirizzati alla pagina di errore \code{error.php} .Il file di gestione principale del pannello è \code{admin1234/panel.php}. Inizialmente viene crea la struttura della pagina HTML e in seguito, attraverso la varibile \code{\$\_GET["id"]}  viene individuata la macro area richiesta dall'utente e si delega il lavoro al file specifico.
-     
-     Elenco file specifici:
-      \begin{itemize} 
-     	\item \code{admin1234/article.php}: analizza nello specifico le azioni riguardanti gli articoli e risolve le richieste;
-     	\item \code{admin1234/dinosaur.php}: analizza nello specifico le azioni riguardanti i dinosauri e risolve le richieste;
-     	\item \code{admin1234/home.php}: file che si occupa di visualizzare le informazioni della pagina di Home;
-     	\item \code{admin1234/user.php}: analizza nello specifico le azioni riguardanti gli utenti e risolve le richieste.
-     	\item \code{admin1234/user.php}: effettua il logout e reindirizza l'utente alla pagina di login.
+     I metodi delle classi contenute nella cartella \code{classi/} si possono dividere in due gruppi, le chiamate che modificano i dati e quelle che richiedono esclusivamente informazioni. La maggior parte di chiamate a metodi che eseguono operazioni di modifica ai contenuti comunicano l'esito dell'operazione ritornando un \textit{array}. Come esempio, descriviamo di seguito ciascun componente dell'array \code{\$error} ritornato dalla funzione \code{checkImage()} nel file \code{validate.php}. La funzione controlla che le immagini caricate (ad esempio immagini profilo) siano conformi alle richieste.\\
+     \begin{itemize}
+     	\item \code{\$error[0]}: se  vale \code{1} segnala che l'operazione è stata completata con uno o più errori, altrimenti vale \code{0};
+     	\item \code{\$error[1]}: vale \code{1} se non è stata caricata un'immagine, altrimenti vale \code{0};
+     	\item \code{\$error[2]}: se impostato ad \code{1} indica che l'immagine caricata non risponde ai vincoli, ad esempio potrebbe non essere nel formato corretto, oppure il file potrebbe avere una dimensione troppo elevata;
+     	\item \code{\$error[3]}: vale \code{1} se l'immagine è stata caricata ma non è stata inserita una descrizione alternativa, e in tutti gli altri casi vale \code{0};
+     	\item \code{\$error[4]}: se \code{\$error[2] = 1} allora contiene una stringa per ogni errore rilevato, altrimenti è un array vuoto. Queste stringhe saranno mostrate all'utente come testo dei messaggi di errore.
      \end{itemize}
- 	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}. 
-	
-	
+	 Spesso alcuni errori sono relativi all'accesso o alla modifica della base di dati.\\
+	 In altri casi uno specifico componente dell'array potrebbe non rappresentare un errore ma un output da mostrare all'utente in caso di esito corretto delle operazioni.
+	 
+	 \subsubsection{Gestione degli errori}
+	 Per dividere la presentazione degli errori dal resto della
+	 	
+		
 	\subsection{Menù laterale}
 	\paragraph{Link}
 	I link inseriti all'interno del menù laterale contengono dei tag \code{<p>}, quindi elementi di blocco. Questo non era possibile in HTML 4 e XHTML, perchè \code{<a>} è un elemento \textit{inline} e non potrebbe contenere elementi di blocco. Ciononostante HTML5 permette di annidare all'interno qualunque elemento di flusso (\textit{flow content}), purché non interattivo, e quindi anche un paragrafo\footnote{Con riferimento a quanto indicato al link: \url{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a}}.
