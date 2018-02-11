@@ -232,7 +232,7 @@ function messageErrorDinoNome(){
 }
 
 function messageDinoFormLabelImage(){
-    return "Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):";
+    return "Immagine dinosauro (il file deve avere una dimensione di 600px (larghezza) per 450px (altezza) e il formato deve essere png, jpg o jpeg):";
 }
 
 //Messaggi Articoli

@@ -228,11 +228,11 @@ function checkImageContent($img, $desc){
  */
 function checkImage($img, $desc){
 
-    $error[0] = 0;  //Rilevato errore
-    $error[1] = 0;  //Errore immagine non presente
-    $error[2] = 0;  //Errore immagine non rispetta i vincoli
-    $error[3] = 0;  //Errore descrizione assente
-    $error[4] = 0;  //Array di messaggi di errore
+    $error[0] = 0;        //Rilevato errore
+    $error[1] = 0;        //Errore immagine non presente
+    $error[2] = 0;        //Errore immagine non rispetta i vincoli
+    $error[3] = 0;        //Errore descrizione assente
+    $error[4] = array();  //Array di messaggi di errore
 
     if($img['error'] != 0){
         $error[0] = 1;
@@ -246,7 +246,7 @@ function checkImage($img, $desc){
         $error[4] = $validazione[1];
     }
 
-    if($error[1] == 0 && (!isset($desc) || $desc=="") ){
+    if($error[1] === 0 && (!isset($desc) || $desc === "") ){
         $error[0] = 1;
         $error[3] = 1;
     }

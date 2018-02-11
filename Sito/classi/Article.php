@@ -1,7 +1,7 @@
 <?php
 
 include_once (__DIR__."/../loadFile.php");
-include_once (__DIR__."/../errormessage.php");
+include_once (__DIR__ . "/../message.php");
 include_once (__DIR__."/../validate.php");
     
 class Article{
@@ -282,7 +282,7 @@ class Article{
         $error = checkImageContent($immagine,$descrizioneimg);
         if($error[2] == 1){
             $returnArray[0] = 1;
-            array_push($returnArray[1],messageErrorImage());
+            array_push($returnArray[1],messageErrorImage($error[4]));
         }
         if($error[3] == 1){
             $returnArray[0] = 1;
@@ -431,7 +431,7 @@ class Article{
         $error = checkImageContent($immagine,$descrizioneimg);
         if($error[2] == 1){
             $returnArray[0] = 1;
-            array_push($returnArray[1],messageErrorImage());
+            array_push($returnArray[1],messageErrorImage($error[4]));
         }
         if($error[3] == 1){
             $returnArray[0] = 1;

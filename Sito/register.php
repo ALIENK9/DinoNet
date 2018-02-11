@@ -1,7 +1,7 @@
 <?php
 	include_once ("connect.php");
 	include_once ("classi/User.php");
-    include_once ("errormessage.php");
+    include_once("message.php");
     include_once ("validate.php");
 
 	session_start();

@@ -1,7 +1,7 @@
 <?php
 	
 	include_once ("../classi/UserAdmin.php");
-	include_once ("../errormessage.php");
+	include_once("../message.php");
 
 	session_start();	
 	if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
