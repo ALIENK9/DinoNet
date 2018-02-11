@@ -40,6 +40,20 @@ switch ($sezione ) {
 		echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"]);
 		break;
 	case 'add':
+		if(!isset($_POST['nome'])){ $_POST['nome'] = ""; }
+		if(!isset($_POST['peso'])){ $_POST['peso'] = ""; }
+		if(!isset($_POST['altezza'])){ $_POST['altezza'] = ""; }
+		if(!isset($_POST['lunghezza'])){ $_POST['lunghezza'] = ""; }
+		if(!isset($_POST['periodomin'])){ $_POST['periodomin'] = ""; }
+		if(!isset($_POST['periodomax'])){ $_POST['periodomax'] = ""; }
+		if(!isset($_POST['habitat'])){ $_POST['habitat'] = ""; }
+		if(!isset($_POST['alimentazione'])){ $_POST['alimentazione'] = ""; }
+		if(!isset($_POST['tipologiaalimentazione'])){ $_POST['tipologiaalimentazione'] = ""; }
+		if(!isset($_POST['descrizionebreve'])){ $_POST['descrizionebreve'] = ""; }
+		if(!isset($_POST['descrizione'])){ $_POST['descrizione'] = ""; }
+		if(!isset($_POST['curiosita'])){ $_POST['curiosita'] = ""; }
+		if(!isset($_FILES['imgdinosaur'])){ $_FILES['imgdinosaur'] = NULL; }	
+
 		$error = Dinosaur::addDinosaur($connectDinosaur, $_SESSION['paneluser']->getEmail(), $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $_FILES["imgdinosaur"], "..");
 		if($error[0] == 0){
 			echo messageAddAnother($error[2],$_SERVER["PHP_SELF"]."?id=dino&sez=formadd");
@@ -57,6 +71,20 @@ switch ($sezione ) {
 		echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"],$_GET['nome']);
 		break;
 	case 'update':
+		if(!isset($_POST['nome'])){ $_POST['nome'] = ""; }
+		if(!isset($_POST['peso'])){ $_POST['peso'] = ""; }
+		if(!isset($_POST['altezza'])){ $_POST['altezza'] = ""; }
+		if(!isset($_POST['lunghezza'])){ $_POST['lunghezza'] = ""; }
+		if(!isset($_POST['periodomin'])){ $_POST['periodomin'] = ""; }
+		if(!isset($_POST['periodomax'])){ $_POST['periodomax'] = ""; }
+		if(!isset($_POST['habitat'])){ $_POST['habitat'] = ""; }
+		if(!isset($_POST['alimentazione'])){ $_POST['alimentazione'] = ""; }
+		if(!isset($_POST['tipologiaalimentazione'])){ $_POST['tipologiaalimentazione'] = ""; }
+		if(!isset($_POST['descrizionebreve'])){ $_POST['descrizionebreve'] = ""; }
+		if(!isset($_POST['descrizione'])){ $_POST['descrizione'] = ""; }
+		if(!isset($_POST['curiosita'])){ $_POST['curiosita'] = ""; }
+		if(!isset($_FILES['imgdinosaur'])){ $_FILES['imgdinosaur'] = NULL; }
+			
 		$removeimg=false;
 		if(isset($_POST['imgdinosaurremove']) && $_POST['imgdinosaurremove']=="true"){
 			$removeimg=true;
@@ -98,7 +126,7 @@ switch ($sezione ) {
 if($sezione!="list"){
 	?>
 	<div class="center wrap-padding">
-		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete" && $sezione!="deletecomment"){	?>
+		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete"){	?>
 			<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
 		<?php }	?> 	
 		<a href="panel.php?id=dino" class="btn card wrap-margin"> Vai alla lista dei dinosauri</a>
