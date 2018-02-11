@@ -9,7 +9,7 @@
 		exit();
 	}
 		
-	if(isset($_GET["id"]) && $_GET["id"]=='logout'){ // se effettuo il controllo dopo l'inclusione del menù mi da errore
+	if(isset($_GET["id"]) && $_GET["id"]=='logout'){
 		header("Location: logout.php");
 		exit();
 	}
