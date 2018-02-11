@@ -63,9 +63,9 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'nome='.$row["nome"].'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="'.$pathComment.'nome='.$row["nome"].'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
-                                <a href="'.$pathDelete.'nome='.$row["nome"].'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
+                                <a href="'.urlencode($pathUpdate.'nome='.$row["nome"]).'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
+                                <a href="'.urlencode($pathComment.'nome='.$row["nome"]).'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
+                                <a href="'.urlencode($pathDelete.'nome='.$row["nome"]).'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
                             </div>                           
                         </div>
                     </div>
@@ -145,7 +145,7 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathLink.'nome='.$row["nome"].'" title="Leggi la scheda su '.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
+                                <a href="'.urlencode($pathLink.'nome='.$row["nome"].'" title="Leggi la scheda su '.$row["nome"]).'" class="btn">Visualizza la scheda del dinosauro </a>
                             </div>
                         </div>
                     </div>
@@ -296,17 +296,17 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="peso">Peso in Kg: </label>
+                            <label for="peso">Peso in Kg: <abbr title="richiesto">*</abbr></label>
                             <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$peso.'" required>
                         </p>
         
                         <p>
-                            <label for="altezza">Altezza in cm:</label>
+                            <label for="altezza">Altezza in cm: <abbr title="richiesto">*</abbr></label>
                             <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$altezza.'" required>
                         </p>
                         
                         <p>
-                            <label for="lunghezza">Lunghezza in cm:</label>
+                            <label for="lunghezza">Lunghezza in cm: <abbr title="richiesto">*</abbr></label>
                             <input type="number" placeholder="Inserisci la sua lunghezza " id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$lunghezza.'" required>
                         </p>
                         
@@ -327,22 +327,22 @@ class Dinosaur {
                         <p>Inserisci la categoria a cui appartiene: <abbr title="richiesto">*</abbr></p>
                         <p class="center">
                             <label for="tipologiaalimentazione1">Carnivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.' required>
                         
                             <label for="tipologiaalimentazione2">Onnivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.' required>
                         
                             <label for="tipologiaalimentazione3">Erbivoro:</label>
-                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.' required>
                         </p>
                         
                         <p>
-                            <label for="alimentazione">Di cosa si nutriva?</label>
+                            <label for="alimentazione">Di cosa si nutriva? <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
                         </p>
                         
                         <p>
-                            <label for="habitat">Habitat:</label>
+                            <label for="habitat">Habitat: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
                         </p>
                                                
@@ -364,11 +364,11 @@ class Dinosaur {
                         
                         <p>
                             <label for="curiosita">Curiosità:</label>
-                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita" required>'.$curiosita.'</textarea>  
+                            <textarea type="text" placeholder="Inserisci delle curiosità " id="curiosita" name="curiosita">'.$curiosita.'</textarea>  
                         </p>       
                
                         <p>
-                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().' <abbr title="richiesto">*</abbr></label>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="" required>
                         </p>
                     </fieldset>                    
@@ -389,7 +389,7 @@ class Dinosaur {
         $returnArray[1] = array();
 
         //Inizio Controlli campi
-        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione));
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $immagine));
         if($error[0] == 1){
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
@@ -566,18 +566,18 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="peso">Peso in kg:</label>
-                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$peso.'">
+                            <label for="peso">Peso in kg: <abbr title="richiesto">*</abbr></label>
+                            <input type="number" placeholder="Inserisci il suo peso" id="peso" name="peso" data-validation-mode="unsigned" value="'.$peso.'" required>
                         </p>
 
                         <p>
-                            <label for="altezza">Altezza in cm:</label>
-                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$altezza.'">
+                            <label for="altezza">Altezza in cm: <abbr title="richiesto">*</abbr></label>
+                            <input type="number" placeholder="Inserisci la sua altezza" id="altezza" name="altezza" data-validation-mode="unsigned" value="'.$altezza.'" required>
                         </p>
                         
                         <p>
-                            <label for="lunghezza">Lunghezza in cm:</label>
-                            <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$lunghezza.'">
+                            <label for="lunghezza">Lunghezza in cm: <abbr title="richiesto">*</abbr></label>
+                            <input type="number" placeholder="Inserisci la sua lunghezza" id="lunghezza" name="lunghezza" data-validation-mode="unsigned" value="'.$lunghezza.'" required>
                         </p>
                                                     
                         <p>
@@ -597,22 +597,22 @@ class Dinosaur {
                         <p>Seleziona la categoria a cui appartiene: <abbr title="richiesto">*</abbr></p> 
                         <p class="center">
                             <label for="tipologiaalimentazione1">Carnivoro</label>
-                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.'>
+                            <input type="radio" id="tipologiaalimentazione1" name="tipologiaalimentazione" value="carnivoro" '.$alimentazionecarnivora.' required>
                         
                             <label for="tipologiaalimentazione2">Onnivoro</label>
-                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.'>
+                            <input type="radio" id="tipologiaalimentazione2" name="tipologiaalimentazione" value="onnivoro" '.$alimentazioneonnivora.' required>
                     
                             <label for="tipologiaalimentazione3">Erbivoro</label>
-                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.'>
+                            <input type="radio" id="tipologiaalimentazione3" name="tipologiaalimentazione" value="erbivoro" '.$alimentazioneerbivora.' required>
                         </p>
                         
                         <p>
-                            <label for="alimentazione">Di cosa si nutriva?</label>
+                            <label for="alimentazione">Di cosa si nutriva? <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
                         </p>
                         
                         <p>
-                            <label for="habitat">Habitat:</label>
+                            <label for="habitat">Habitat: <abbr title="richiesto">*</abbr></label>
                             <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
                         </p>
                             
@@ -637,8 +637,8 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().' <abbr title="richiesto">*</abbr></label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value=""  required>
                         </p>
             
                         <p>
@@ -666,7 +666,7 @@ class Dinosaur {
         $returnArray[1] = array();
 
         //Inizio Controlli campi
-        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione));
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $immagine));
         if($error[0] == 1){
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
@@ -835,7 +835,7 @@ class Dinosaur {
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'nome='.$row4["nome"].'" title="Le la scheda su '.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
+                            <a href="'.urlencode($pathLink.'nome='.$row4["nome"].'" title="Le la scheda su '.$row4["nome"]).'" class="btn"> Visualizza la scheda del dinosauro </a>
                         </div>
                     </div>             
                 ';

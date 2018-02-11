@@ -56,9 +56,9 @@ class Article{
                         $echoString .=' </p>
                         </div>
                         <div class="center padding-2">                                
-                            <a href="'.$pathUpdate.'article='.$row["id"].'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
-                            <a href="'.$pathComment.'article='.$row["id"].'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
-                            <a href="'.$pathDelete.'article='.$row["id"].'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
+                            <a href="'.urlencode($pathUpdate.'article='.$row["id"]).'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
+                            <a href="'.urlencode($pathComment.'article='.$row["id"]).'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
+                            <a href="'.urlencode($pathDelete.'article='.$row["id"]).'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
                     </div>
                 </div>
@@ -128,7 +128,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row["id"].'&titolo='.$row["titolo"].'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
+                            <a href="'.urlencode($pathLink.'id='.$row["id"].'&titolo='.$row["titolo"]).'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
                         </div>
                     </div>
                 </div>
@@ -235,7 +235,7 @@ class Article{
                     
                     <p>
                         <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
+                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
                     </p>
                     
                     <p>
@@ -244,8 +244,8 @@ class Article{
                     </p>
                     
                     <p>
-                        <label for="anteprima">Anteprima:</label>
-                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" >'.$anteprima.'</textarea>
+                        <label for="anteprima">Anteprima da visualizzare:</label>
+                        <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima">'.$anteprima.'</textarea>
                     </p>
                                             
                     <p>
@@ -379,7 +379,7 @@ class Article{
                         
                         <p>
                             <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'" required>
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
                         </p>
                         
                         <p>
@@ -388,8 +388,8 @@ class Article{
                         </p>
                         
                         <p>
-                            <label for="anteprima">Anteprima:</label>
-                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima" required>'.$anteprima.'</textarea>
+                            <label for="anteprima">Anteprima da visualizzare:</label>
+                            <textarea type="text" placeholder="Inserisci il testo di anteprima dell\'articolo" id="anteprima" name="anteprima">'.$anteprima.'</textarea>
                         </p>
                         
                         <p>
@@ -543,7 +543,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" title="Lettura l\'articolo '.$row4["titolo"].'" class="btn">Leggi l\'articolo </a>
+                            <a href="'.urlencode($pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" title="Lettura l\'articolo '.$row4["titolo"]).'" class="btn">Leggi l\'articolo </a>
                         </div>
                     </div>       
                                    
