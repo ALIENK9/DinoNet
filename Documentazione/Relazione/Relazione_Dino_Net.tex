@@ -183,6 +183,9 @@
 	\subsection{Ottimizzazioni per dispositivi mobili}
 	Per quanto riguarda l'utilizzo da smartphone, si è tenuto in considerazione che la navigazione avviene spesso da connessione dati cellulare. Al fine di non provocare un consumo massiccio di dati per la fruizione del sito, si è quindi scelto di non visualizzare alcuni elementi puramente decorativi. Il layout scelto si sposa bene con la variabilità delle dimensioni dello schermo caratteristica della visualizzazione da mobile, in particolare si è scelto di rendere grandi ed evidenti i link-bottoni per favorire la navigazione. 
 	
+	\subsection{Minificazioni}
+	Nonostante vi fosse l'intento di minificare i file con estensione .js e .css, ciò non è stato fatto per permettere una maggiore leggibilità in fase di correzione.
+	
 	\subsection{Menù laterale} \label{ssec:menuusab}
 	Il menù laterale mostra evidenziata in verde la scheda attiva, che indica la sezione del sito in cui ci si trova. Il link alla scheda attiva, è disabilitato dal foglio di stile. Accedendo ad una sottosezione di una sezione del sito, sotto la scheda del menù corrispondente, compare un nuovo blocco che indica in quale sottosezione ci si trova. Sebbene questa informazione sia indicata anche nella barra delle \textit{breadcrumb}, riteniamo queste espansioni del menù utili per orientarsi rapidamente e capire da qualunque punto della pagina quale sezione si sta consultando.
 	
@@ -226,7 +229,6 @@
 	\end{itemize}
 	
 	\subsection{Fogli di stile}
-	
 	Il sito utilizza un foglio di stile principale (denominato \code{index.css}), che gestisce anche la responsiveness del sito per quanto riguarda i dispositivi mobile tramite media queries, e uno per la stampa (denominato \code{print.css}). Nello sviluppo del foglio di stile si è cercato di progettare le classi in modo tale da minimizzarne il numero e massimizzarne il riutilizzo. Questa scelta permette di avere un foglio di stile semplice, riutilizzabile ed estendibile, ma d'altro canto rende necessario aggiungere diverse classi ai tag, ed incapsulare gli elementi HTML strutturali in contenitori non semantici come \code{<div>}. 
 	
 	\subsection{Form}
@@ -259,10 +261,10 @@
 	
 	La funzione \code{validateForm()} utilizza l'oggetto \code{Window} del BOM (Browser Object Model) per invocare funzioni diverse a seconda dell'elemento da validare. Sebbene BOM non sia standardizzato, questo approccio è risultato funzionante su tutti i browser in cui l'abbiamo testato. Una strada alternativa, che non richiede \code{Window} sarebbe utilizzare uno \code{switch} su ciascun possibile valore dell'attributo \code{data-validation-mode} e per ogni caso chiamare la funzione adeguata.\\ L'unica ragione per cui non abbiamo preferito questo metodo è che, contrariamente al primo, richiede modifiche alla funzione principale \code{validateForm()} nel caso si voglia estendere un form con nuovi elementi \code{<input>}. 
 	
-	\subsubsection*{Validazione server-side con PHP}
+	\subsubsection*{Validazione server-side tramite PHP}
 	Tutti i controlli sui dati inseriti sono naturalmente effettuati anche dal server: dopo il \textit{submit} dei dati del form e prima di inserirli nella base di dati, vengono raccolti i dati inseriti in ogni \code{<input>} e vengono controllati tramite le funzioni del file \code{validate.php}. \\
-	La validazione non fa affidamento agli attributi inseriti negli elementi dei form, per le ragioni già esposte nel paragrafo precedente.\\
-	Eventuali errori nella compilazione sono segnalati chiamando le apposite funzioni inserite in \code{message.php}.
+	La validazione non fa affidamento sugli attributi inseriti negli elementi dei form, per le ragioni già esposte nel paragrafo precedente.\\
+	Eventuali errori nella compilazione sono segnalati chiamando le apposite funzioni inserite in \code{message.php}. Per motivi estetici le immagini devono avere le dimensioni specificate nella label del relativo input, se così non fosse la funzione \code{imagescale()} le scalerà automaticamente alle dimensioni corrette.
 
 	
 	\subsubsection{Inserimento dei contenuti} \label{sssec:inserimentocontenuti}
