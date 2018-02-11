@@ -88,15 +88,13 @@ switch ($sezione) {
 		break;
 }
 
+if($sezione!="list"){
 ?>
 <div class="center wrap-padding">
 	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-	<?php
-	if($sezione!="list")
-		echo '<a href="panel.php?id=user" class="btn card wrap-margin"> Vai alla lista degli utenti</a>';
-	?>
+	<a href="panel.php?id=user" class="btn card wrap-margin"> Vai alla lista degli utenti</a>
 </div>	
 <?php
-
+}
 closeConnect($connectUser);
 ?>

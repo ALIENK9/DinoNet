@@ -196,6 +196,11 @@ function messageUserDeleteMySelfAdmin(){
     return "<strong class=\"alert\">Non ti puoi eliminare</strong>";
 }
 
+function messageUserFormLabelImage(){
+    return "Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):";
+}
+
+
 
 //Messaggi Dinosauri
 function messageErrorNoDino(){
@@ -226,6 +231,10 @@ function messageErrorDinoNome(){
     return "<strong class=\"alert\">Il nome non &#233; scritto con caratteri consentiti</strong>";
 }
 
+function messageDinoFormLabelImage(){
+    return "Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):";
+}
+
 //Messaggi Articoli
 function messageErrorNoArticle(){
     return "<strong class=\"alert\">Articolo non presente</strong>";
@@ -233,6 +242,10 @@ function messageErrorNoArticle(){
 
 function messageErrorNoArticles(){
     return "<strong class=\"alert\">Articoli non presenti</strong>";
+}
+
+function messageArticleFormLabelImage(){
+    return "Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):";
 }
 
 
