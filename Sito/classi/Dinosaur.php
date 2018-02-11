@@ -44,7 +44,7 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>
 								</div>';
                             }
                             $echoString .='
@@ -123,7 +123,7 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>
 								</div>';
                             }
                             $echoString .='
@@ -175,7 +175,7 @@ class Dinosaur {
 
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="Immagine di un '.$row["nome"].'"/>';
+                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="'.$row["nome"].'"/>';
                             }
                             $echoString .='
                             <div id="caratteristiche" class="wrap-padding white">
@@ -820,7 +820,7 @@ class Dinosaur {
                         if(isset($row4["immagine"])){
                             $echoString .=' 
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row4["immagine"].'" alt="Immagine di un '.$row4["nome"].'"/>
+									<img src="'.$basePathImg.$row4["immagine"].'" alt="'.$row4["nome"].'"/>
 								</div>';
                         }
                         $echoString .='
@@ -860,7 +860,7 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -894,7 +894,7 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'

@@ -569,7 +569,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -603,7 +603,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Immagine profilo utente '.$row["nome"].' '.row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.row["cognome"].'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'

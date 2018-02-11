@@ -88,13 +88,16 @@ switch ($sezione) {
 		break;
 }
 
+
 if($sezione!="list"){
-?>
-<div class="center wrap-padding">
-	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
-	<a href="panel.php?id=user" class="btn card wrap-margin"> Vai alla lista degli utenti</a>
-</div>	
-<?php
-}
+	?>
+	<div class="center wrap-padding">
+		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete"){	?>
+			<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  
+		<?php }	?> 	
+		<a href="panel.php?id=user" class="btn card wrap-margin"> Vai alla lista degli utenti</a>
+	</div>	
+	<?php
+	}
 closeConnect($connectUser);
 ?>

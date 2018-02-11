@@ -100,14 +100,15 @@ switch ($sezione) {
 
 
 if($sezione!="list"){
-?>
-<div class="center wrap-padding">
-	<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a>  	
-	<a href="panel.php?id=article" class="btn card wrap-margin"> Vai alla lista degli articoli</a>	
-</div>	
-<?php
+	?>
+	<div class="center wrap-padding">
+		<?php if($sezione!="list" && $sezione!="add" && $sezione!="update" && $sezione!="delete" && $sezione!="deletecomment"){	?>
+			<a href="<?php echo $_SERVER["HTTP_REFERER"];?>" class="btn card wrap-margin">Torna alla pagina precedente</a> 
+		<?php }	?> 	
+		<a href="panel.php?id=article" class="btn card wrap-margin"> Vai alla lista degli articoli</a>	
+	</div>	
+	<?php
 }
-
 closeConnect($connectArticle);
 
  ?>
