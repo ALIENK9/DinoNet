@@ -56,9 +56,9 @@ class Article{
                         $echoString .=' </p>
                         </div>
                         <div class="center padding-2">                                
-                            <a href="'.urlencode($pathUpdate.'article='.$row["id"]).'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
-                            <a href="'.urlencode($pathComment.'article='.$row["id"]).'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
-                            <a href="'.urlencode($pathDelete.'article='.$row["id"]).'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
+                            <a href="'.$pathUpdate.'article='.urlencode($row["id"]).'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
+                            <a href="'.$pathComment.'article='.urlencode($row["id"]).'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
+                            <a href="'.$pathDelete.'article='.urlencode($row["id"]).'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
                     </div>
                 </div>
@@ -128,7 +128,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.urlencode($pathLink.'id='.$row["id"].'&titolo='.$row["titolo"]).'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
+                            <a href="'.$pathLink.'id='.urlencode($row["id"]).'&titolo='.urlencode($row["titolo"]).'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
                         </div>
                     </div>
                 </div>
@@ -543,7 +543,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.urlencode($pathLink.'id='.$row4["id"].'&titolo='.$row4["titolo"].'" title="Lettura l\'articolo '.$row4["titolo"]).'" class="btn">Leggi l\'articolo </a>
+                            <a href="'.$pathLink.'id='.urlencode($row4["id"]).'&titolo='.urlencode($row4["titolo"]).'" title="Lettura l\'articolo '.$row4["titolo"].'" class="btn">Leggi l\'articolo </a>
                         </div>
                     </div>       
                                    
