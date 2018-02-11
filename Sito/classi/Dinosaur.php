@@ -368,8 +368,8 @@ class Dinosaur {
                         </p>       
                
                         <p>
-                            <label for="imgdinosaur">'.messageDinoFormLabelImage().' <abbr title="richiesto">*</abbr></label>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="" required>
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
                         </p>
                     </fieldset>                    
                     <input type="submit" value="AGGIUNGI" title="Avvia l\'operazione" class="card btn wide text-colored white"/>
@@ -389,7 +389,7 @@ class Dinosaur {
         $returnArray[1] = array();
 
         //Inizio Controlli campi
-        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $immagine));
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione));
         if($error[0] == 1){
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
@@ -637,8 +637,8 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="imgdinosaur">'.messageDinoFormLabelImage().' <abbr title="richiesto">*</abbr></label>
-                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value=""  required>
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
+                            <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
                         </p>
             
                         <p>
@@ -666,7 +666,7 @@ class Dinosaur {
         $returnArray[1] = array();
 
         //Inizio Controlli campi
-        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione, $immagine));
+        $error = checkRequireArray(array($nome, $peso, $altezza, $lunghezza, $descrizionebreve, $descrizione, $periodomin, $periodomax, $habitat, $alimentazione, $tipologiaalimentazione,));
         if($error[0] == 1){
             $returnArray[0] = 1;
             array_push($returnArray[1],messageErrorRequire());
