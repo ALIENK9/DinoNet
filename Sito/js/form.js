@@ -243,7 +243,7 @@ function validatePeriodomin(inputs, i) {
     var min = inputs[i];
     var pattern = /^[0-9]*$/;
     if (!pattern.test(min.value)) {
-        showError(min, 'Questo formato non è valido');
+        showError(min, 'Questo formato non è valido: puoi inserire solamente numeri interi');
         return false;
     }
     var permin = parseInt(min.value, 10);
@@ -268,7 +268,7 @@ function validatePeriodomax(inputs, i) {
     var max = inputs[i];
     var pattern = /^[0-9]*$/;
     if (!pattern.test(max.value)) {
-        showError(max, 'Questo formato non è valido');
+        showError(max, 'Questo formato non è valido: puoi inserire solamente numeri interi');
         return false;
     }
     var permax = parseInt(max.value, 10);
