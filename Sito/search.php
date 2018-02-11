@@ -25,7 +25,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/form.js"></script>
+    <script type="text/javascript" src="js/buttons.js"></script>
 
     <!-- Favicon -->
 
@@ -82,8 +82,7 @@
 
     <div id="dinosauri" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri per </h1>
-			<h2> "<?php echo $_GET["input"] ?>"</h2>
+            <h2>Elenco riferito alla ricerca di dinosauri per "<?php echo $_GET["input"] ?>" </h2>
             <a href="#articoli">Vai ai risultati per gli articoli</a>
         </div>
         <div class="row-padding content-large margin-top">
@@ -94,8 +93,7 @@
     </div>
     <div id="articoli" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di articoli per </h1>
-			<h2> "<?php echo $_GET["input"] ?>"</h2>
+            <h2>Elenco riferito alla ricerca di articoli per "<?php echo $_GET["input"] ?>" </h2>
             <a href="#dinosauri">Vai ai risultati per i dinosauri</a>
         </div>
         <div class="row-padding content-large margin-top">

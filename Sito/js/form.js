@@ -1,10 +1,3 @@
-function hideElement(elem) {
-    elem.style.display = 'none';
-}
-
-function showElement(elem, mode) {
-    elem.style.display = mode;
-}
 
 /*##########################################      VALIDAZIONE DEI FORM     ############################################*/
 
@@ -243,7 +236,7 @@ function validatePeriodomin(inputs, i) {
     var min = inputs[i];
     var pattern = /^[0-9]*$/;
     if (!pattern.test(min.value)) {
-        showError(min, 'Questo formato non è valido');
+        showError(min, 'Questo formato non è valido: puoi inserire solamente numeri interi');
         return false;
     }
     var permin = parseInt(min.value, 10);
@@ -268,7 +261,7 @@ function validatePeriodomax(inputs, i) {
     var max = inputs[i];
     var pattern = /^[0-9]*$/;
     if (!pattern.test(max.value)) {
-        showError(max, 'Questo formato non è valido');
+        showError(max, 'Questo formato non è valido: puoi inserire solamente numeri interi');
         return false;
     }
     var permax = parseInt(max.value, 10);
@@ -303,15 +296,6 @@ function validatePeriodomax(inputs, i) {
 function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
     var nomeInput = inputs[i];
     var dataStringa = nomeInput.value;
-    /*var richiesto = nomeInput.hasAttribute('required');
-    if(richiesto && (dataStringa === undefined || dataStringa.length === 0)) {
-        showError(nomeInput, 'Devi inserire una data');
-        return false;
-    }
-    if(!richiesto && (dataStringa === undefined || dataStringa.length === 0))
-        return true;*/
-
-    //console.info('Stringa: ' + dataStringa);
     var splitted = dataStringa.split('-');
     var a = parseInt(splitted[0], 10);
     var m = parseInt(splitted[1], 10);

@@ -20,7 +20,7 @@
     <link type="text/css" rel="stylesheet" href="css/print.css" media="print">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chelsea+Market">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/form.js"></script>
+    <script type="text/javascript" src="js/buttons.js"></script>
 	
 	<!-- Favicon -->
 	
@@ -53,11 +53,11 @@
 
 <div id="main" class="main">
 
-    <!-- Topbar -->
+<!-- Topbar -->
 
-    <?php include_once('topbar.php') ?>
+<?php include_once('topbar.php') ?>
 
-    <!-- /Topbar -->
+<!-- /Topbar -->
 
 <!-- Header -->
 

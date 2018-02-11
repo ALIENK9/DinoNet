@@ -6,7 +6,10 @@
         $destinazioneFileDB = "/img/".$cartella."/".$nome.".".$estensioneFile; 
         $destinazioneFile = __DIR__."/img/".$cartella."/".$nome.".".$estensioneFile;
 
-        $error = validateImage($immagine, $sizeWidth, $sizeHeight);
+        $error = resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile);
+
+        if($error == 0)
+            $error = validateImage($immagine);
         
         // Controlla se il file esiste
         if (file_exists($destinazioneFile) && delImage($destinazioneFile)) {
@@ -28,7 +31,13 @@
         }
     }
 
-    function validateImage($immagine, $sizeWidth, $sizeHeight){
+
+    /**
+     * Controlla che l'immagine sia di un formato supportato e che non sia troppo grande
+     * @param $immagine
+     * @return int
+     */
+    function validateImage($immagine){
         
         $estensioneFile = strtolower(pathinfo($immagine["name"],PATHINFO_EXTENSION));
         $error = 0;
@@ -51,13 +60,70 @@
             $error = 1;
         }
 
-        if($stato[0]!=$sizeWidth || $stato[1]!=$sizeHeight){
-            $echoString = "l'immagine non rispetta le dimensioni consentite";
-            $error = 1;
-        }
         return $error;
     }
 
+
+    /**
+     * Ridimensiona l'immagine caricata.
+     * @param $immagine
+     * @param $sizeWidth
+     * @param $sizeHeight
+     * @param $estensioneFile
+     * @return int, 0 se non ci sono stati errori, 1 se ci sono stati
+     */
+    function resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile) {
+        $error = 0;
+        $resourceImage = false;
+        switch($estensioneFile) {
+            case 'jpg':
+            case 'jpeg':
+                $resourceImage = imagecreatefromjpeg($immagine["tmp_name"]);
+                break;
+            case 'png':
+                $resourceImage = imagecreatefrompng($immagine["tmp_name"]);
+                break;
+            case 'gif':
+                $resourceImage = imagecreatefromgif($immagine["tmp_name"]);
+                break;
+            default:
+                $error = 1;
+                break;
+        }
+        if ($resourceImage !== false) {
+            $scaledImage = imagescale($resourceImage, $sizeWidth, $sizeHeight);
+            if ($scaledImage !== false) {
+                $ok = false;
+                delImage($immagine["tmp_name"]);
+                switch ($estensioneFile) {
+                    case 'jpg':
+                    case 'jpeg':
+                        $ok = imagejpeg($scaledImage, $immagine["tmp_name"]);
+                        break;
+                    case 'png':
+                        $ok = imagepng($scaledImage, $immagine["tmp_name"]);
+                        break;
+                    case 'gif':
+                        $ok = imagegif($scaledImage, $immagine["tmp_name"]);
+                        break;
+                }
+                if ($ok === false)
+                    $error = 1;
+            }
+            else
+                $error = 1;
+        }
+        else
+            $error = 1;
+
+        return $error;
+    }
+
+    /**
+     * Elimina il file con percorso $path, se esiste
+     * @param $path
+     * @return string
+     */
     function delImage($path){
         $echoString = "";
 
@@ -65,7 +131,7 @@
             unlink($path);
         } 
         else{
-            $echoString = "Errore elemanto non presente";
+            $echoString = "Errore elemento non presente";
         }
         return $echoString;
     }

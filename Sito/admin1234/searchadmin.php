@@ -31,8 +31,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
     ?>
     <div id="utenti" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di utenti per </h1>
-			<h2> "<?php echo $_GET["input"] ?>"</h2>
+            <h2>Elenco riferito alla ricerca di utenti per "<?php echo $_GET["input"] ?>" </h2>
             <a href="#dinosauri">Vai ai risultati per gli dinosauri</a>
         </div>
         <div class="row-padding content-large margin-top">
@@ -45,8 +44,7 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
     
     <div id="dinosauri" class="padding-6">
         <div class="colored center wrap-padding">
-            <h1>Elenco riferito alla ricerca di dinosauri per </h1>
-			<h2> "<?php echo $_GET["input"] ?>"</h2>
+            <h2>Elenco riferito alla ricerca di dinosauri per "<?php echo $_GET["input"] ?>"</h2>
             <a href="#articoli">Vai ai risultati per gli articoli</a>
         </div>
         <div class="row-padding content-large margin-top">
@@ -59,9 +57,8 @@ if(!isset($_SESSION['paneluser']) || $_SESSION['paneluser']==""){
     
     <div id="articoli" class="padding-6">
         <div class="colored center wrap-padding"> 
-            <h1>Elenco riferito alla ricerca di articoli per </h1>
-			<h2> "<?php echo $_GET["input"] ?>"</h2>
-            <a href="#utenti">Vai ai risultati per gli utenti</a>
+            <h2>Elenco riferito alla ricerca di articoli per "<?php echo $_GET["input"] ?>" </h2>
+			<a href="#utenti">Vai ai risultati per gli utenti</a>
         </div>
         <div class="row-padding content-large margin-top">
             <?php

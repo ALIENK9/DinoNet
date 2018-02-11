@@ -127,6 +127,17 @@ form {
   text-align: center;
 }
 
+fieldset {
+  padding: 1em;
+  margin: 1em 0;
+  border: 2px solid white;
+}
+
+fieldset legend {
+	font-size: 1.3em;
+	padding: .5em;
+}
+
 input:focus {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
@@ -171,11 +182,6 @@ form, input, textarea, button {
 
 form p {
   text-align: left;
-}
-
-fieldset {
-  padding: 1em;
-  margin: 1em 0;
 }
 
 noscript {display: block;}
@@ -1101,7 +1107,6 @@ footer h2 {
 }
 
 #alert-no-js strong, #nojs-avviso strong {
-  font-size: 1.7em;
   color: #006633;
   background-color: white;
 }
@@ -1127,6 +1132,10 @@ footer h2 {
   padding: 0.5em!important;
   text-align: center!important;
   border-radius: 0.2em!important;
+}
+
+.alert {
+  font-size: 1.6em;
 }
 
 .page-not-found .wrap {
