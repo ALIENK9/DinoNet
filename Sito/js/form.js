@@ -71,7 +71,7 @@ function validateForm(nomeForm) {
             showError(inputs[i], 'Il campo non può essere vuoto!');
             corretto = false;
         }
-        else if (!isOpzionaleVuoto(inputs[i]) && mode !== undefined && mode != null) {
+        else if (!isOpzionaleVuoto(inputs[i]) && mode !== null && mode !== undefined) {
             var functionName = 'validate' + mode;
             var fn = window[functionName];            // nome della funzione da chiamare per validare
             if (typeof fn === 'function')             // se esiste una funzione con quel nome
@@ -275,7 +275,7 @@ function validatePeriodomax(inputs, i) {
         var permin = parseInt(min.value, 10);
         if(permin < permax) {
             console.log("Periodo min = " + permin + " < Periodo max = " + permax);
-            showError(max, 'Il periodo minimo deve essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
+            showError(max, 'Errore: il periodo minimo deve essere maggiore del periodo massimo. Per esempio: da min=260 (milioni di anni fa) a max=100 (milioni)');
             return false;
         }
     }
@@ -319,42 +319,36 @@ function validateDatanascita(inputs, i) { //  Formato:   gg/mm/aaaa
  * @returns {boolean}
  */
 function validateImage(inputs, i) {
+    var ok = true;
     var nomeInput = inputs[i];
-    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length !== 0) {
-        var ext = nomeInput.value.split('.').pop();
-        if(ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png') {
-            showError(nomeInput, 'Questa immagine non ha un estensione valida: sono consentiti solo jpg, jpeg, png');
-            return false;
+    if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length !== 0) { //se c'è un'immagine
+        var ext = nomeInput.value.split('.').pop();                                 //controlla sia nel formato valido
+        if(ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png' && ext !== 'gif') {
+            showError(nomeInput, 'Questa immagine non ha un estensione valida: sono consentiti solo jpg, jpeg, png e gif');
+            ok = false;
+        }
+
+                                                                                //deve esserci anche una descrizione alt
+        var alt = (i > 0 && 'descrizioneimg' === inputs[i - 1].getAttribute('data-validation-mode')) ? inputs[i - 1] : null;
+        if(alt !== null) {
+            var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
+            var pattern = /^([A-zèéìòùàç\d]+[.,;\-"'()\s]*)*$/i;
+            if(descrizioneVuota) {
+                showError(alt, 'Errore: è necessaria una descrizione alternativa per l\'immagine')
+                ok = false;
+            }
+            else if(!pattern.test(alt.value)) {
+                showError(alt, 'Formato non valido: puoi inserire lettere, numeri e [.,;-=\'()]');
+                ok = false;
+            }
+            else
+                removeError(alt);
         }
     }
     removeError(nomeInput);
-    return true;
+    return ok;
 }
 
-
-
-
-/**
- * Ritorna 'true' se:
- *      - è stata inserita una immagine con la descrizione;
- *      - non è stata inserita una immagine, indipendentemente dalla presenza della descrizione.
- *      Altrimenti segnala l'errore e ritorna 'false'.
- * @param inputs
- * @param i
- * @returns {boolean}
- */
-function validateDescrizioneimg(inputs, i) {
-    var alt = inputs[i];
-    var presenzaImmagine = (i+1) < inputs.length && inputs[i + 1].getAttribute('type') === 'file' &&
-        inputs[i + 1].files.length > 0 && 'image' === inputs[i + 1].getAttribute('data-validation-mode');
-    var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
-    if(presenzaImmagine && descrizioneVuota) {
-        showError(alt, 'È necessaria una descrizione alternativa per l\'immagine');
-        return false;
-    }
-    removeError(alt);
-    return true;
-}
 
 
 
@@ -401,7 +395,9 @@ function disableInputImmagine() {
     if(inputArti !== null) {
         inputArti.addEventListener('change', function () {
             if (inputArti.checked === true) {
-                document.getElementById('imgarticle').setAttribute('disabled', 'disabled');
+                var img = document.getElementById('imgarticle');
+                img.setAttribute('disabled', 'disabled');
+                img.value = '';
                 document.getElementById('descrizioneimg').setAttribute('disabled', 'disabled');
             }
             else {

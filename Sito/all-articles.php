@@ -51,7 +51,7 @@
 
 <?php include_once('menu.php') ?>
 
-<div id="main" class="main"
+<div id="main" class="main">
 
 <!-- Topbar -->
 
