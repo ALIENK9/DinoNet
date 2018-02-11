@@ -127,7 +127,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <?php
     if($currentPage == $pages["edit-account"])
         echo'
-        <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="edit-account.php" -->
+        <div title="Sezione corrente" class="menu-entry-small active">
             <hr>
             <p>Modifica account</p>
         </div>

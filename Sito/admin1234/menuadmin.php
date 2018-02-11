@@ -62,28 +62,28 @@
     <?php if(isset($_GET["id"]) && $_GET["id"] == "user" && isset($_GET["sez"]) && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formadd" -->
+            <div title="Sezione corrente" class="menu-entry-small active"> 
                 <hr>
                 <p>Aggiunta utente</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=user&sez=formupdate&user='.$_GET["user"].'" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Modifica utente</p>
             </div>
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!--href="panel.php?id=user&sez=update" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito modifica</p>
             </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!--href="panel.php?id=user&sez=add" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito aggiunta</p>
             </div>
@@ -99,35 +99,35 @@
     <?php if(isset($_GET["id"]) && $_GET["id"] == "dino" && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formadd"  -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Aggiunta dinosauro</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=formupdate&nome='.'$_GET["nome"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Modifica dinosauro</p>
             </div>
             ';
         else if($_GET["sez"] == "comment")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=comment&nome='.'$_GET["nome"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Eliminazione commenti</p>
             </div>
             ';
         else if($_GET["sez"] == "add")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=add" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito aggiunta</p>
             </div>
             ';
         else if($_GET["sez"] == "update")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=dino&sez=update" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Esito modifica</p>
             </div>
@@ -142,14 +142,14 @@
     <?php if(isset($_GET["id"]) && $_GET["id"] == "article" && isset($_GET["sez"]))
         if($_GET["sez"] == "formadd")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formadd" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Aggiunta articolo</p>
             </div>
             ';
         else if($_GET["sez"] == "formupdate")
             echo'    
-            <div title="Sezione corrente" class="menu-entry-small active"> <!-- href="panel.php?id=article&sez=formupdate&article='.'$_GET["article"]'.'" -->
+            <div title="Sezione corrente" class="menu-entry-small active">
                 <hr>
                 <p>Modifica articolo</p>
             </div>
