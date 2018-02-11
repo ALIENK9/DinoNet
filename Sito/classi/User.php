@@ -165,7 +165,7 @@ class User {
                         </p>
     
                         <p>
-                            <label for="imgaccount">Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):</label>
+                            <label for="imgaccount">'.messageUserFormLabelImage().'</label>
                             <input type="file" id="imgaccount" name="imgaccount" data-validation-mode="image" value="">
                         </p>
         

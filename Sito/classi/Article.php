@@ -249,7 +249,7 @@ class Article{
                     </p>
                                             
                     <p>
-                        <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
+                        <label for="descrizioneimg">'.messageArticleFormLabelImage().'</label>
                         <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
                     </p>
                     
@@ -398,7 +398,7 @@ class Article{
                         </p>
                         
                         <p>
-                            <label for="imgarticle">Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
+                            <label for="imgarticle">'.messageArticleFormLabelImage().'</label>
                             <input type="file" id="imgarticle" name="imgarticle" data-validation-mode="image" value="">
                         </p>
             

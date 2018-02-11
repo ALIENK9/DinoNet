@@ -368,7 +368,7 @@ class Dinosaur {
                         </p>       
                
                         <p>
-                            <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="" required>
                         </p>
                     </fieldset>                    
@@ -637,7 +637,7 @@ class Dinosaur {
                         </p>
                         
                         <p>
-                            <label for="imgdinosaur">Immagine dinosauro (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):</label>
+                            <label for="imgdinosaur">'.messageDinoFormLabelImage().'</label>
                             <input type="file" id="imgdinosaur" name="imgdinosaur" data-validation-mode="image" value="">
                         </p>
             
