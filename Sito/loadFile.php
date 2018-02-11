@@ -9,19 +9,19 @@
         $error = validateImage($immagine);
         
         // Controlla se il file esiste
-        if (file_exists($destinazioneFile) && delImage($destinazioneFile)) {
-            echo "Il File è gia presente e non sostituibile";
-            $error = true;
+        if ($error[0] == 0 && file_exists($destinazioneFile) && delImage($destinazioneFile)) {
+            $echostring = "Il File è gia presente e non sostituibile";
+            $error[0] = 1;
         }
 
-        if ($error == 0) {
+        if ($error[0] == 0) {
             $error = resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile);
             if (!move_uploaded_file($immagine["tmp_name"], $destinazioneFile)) {
-                echo "Errore caricamento immagine";
-                $error = true;
+                $echostring = "Errore caricamento immagine";
+                $error[0] = 1;
             }
         }
-        if ($error == 0) {            
+        if ($error[0] == 0) {            
             return $destinazioneFileDB;
         }
         else{
@@ -72,7 +72,7 @@
      * @return int, 0 se non ci sono stati errori, 1 se ci sono stati
      */
     function resizeImage($immagine, $sizeWidth, $sizeHeight, $estensioneFile) {
-        $error = false;
+        $error[0] = 0;
         $resourceImage = false;
         switch($estensioneFile) {
             case 'jpg':
@@ -86,7 +86,7 @@
                 $resourceImage = imagecreatefromgif($immagine["tmp_name"]);
                 break;
             default:
-                $error = true;
+                $error[0] = 1;
                 break;
         }
         if ($resourceImage !== false) {
@@ -107,13 +107,13 @@
                         break;
                 }
                 if ($ok === false)
-                    $error = true;
+                    $error[0] = 1;
             }
             else
-                $error = true;
+                $error[0] =1;
         }
         else
-            $error = true;
+            $error[0] = 1;
 
         return $error;
     }
