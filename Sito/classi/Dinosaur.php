@@ -465,7 +465,7 @@ class Dinosaur {
 
         $destinazioneFileDB = NULL;
         if($immagine['error'] == 0){
-            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 650, 450);
         }
         $sqlQuery = "INSERT INTO dinosauro (
             nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
@@ -749,7 +749,7 @@ class Dinosaur {
 
         $destinazioneFileDB = NULL;
         if(!$removeImage && $immagine['error'] == 0){
-            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 450, 450);
+            $destinazioneFileDB = loadImage("dinosaurimg", $nome, $immagine, 650, 450);
         }
 
         $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
