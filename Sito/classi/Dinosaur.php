@@ -29,7 +29,7 @@ class Dinosaur {
                 }
             }
             
-            $sqlFilter .= "ORDER BY nome";
+            $sqlFilter .= "ORDER BY datains DESC, nome";
             $sqlQuery = "SELECT nome, peso, altezza, lunghezza, tipologiaalimentazione, immagine FROM dinosauro ".$sqlFilter." LIMIT ".$startNumView.", ".$numView;
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0) {
@@ -86,7 +86,7 @@ class Dinosaur {
 		$result = $connect->query($sqlQuery);
         $row = $result->fetch_assoc();
        
-        return Dinosaur::printListDinosaurUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink, $orderByInsert = false);
+        return Dinosaur::printListDinosaurUserLimit($connect, $filter, 0, $row["ntot"], $basePathImg, $pathLink, $orderByInsert);
     }
     
     public static function printListDinosaurUserLimit($connect, $filter, $startNumView, $numView, $basePathImg, $pathLink, $orderByInsert = false){

@@ -89,7 +89,7 @@
         <div class="row-padding content-large margin-top">
             <?php
             
-				echo Dinosaur::printListDinosaurUser($connectSpecies, "", ".", "display-specie.php?");
+				echo Dinosaur::printListDinosaurUser($connectSpecies, "", ".", "display-specie.php?", true);
             ?>
         </div>
     </div>

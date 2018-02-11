@@ -87,7 +87,7 @@
         </div>
         <div class="row-padding content-large margin-top">
             <?php
-            echo Article::printListArticleUser($connectArticle, "", ".", "display-article.php?");
+            echo Article::printListArticleUser($connectArticle, "", ".", "display-article.php?", true);
             ?>
         </div>
     </div>
