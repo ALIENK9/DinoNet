@@ -44,13 +44,13 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.htmlspecialchars($row["nome"], ENT_QUOTES).'"/>
 								</div>';
                             }
                             $echoString .='
                             <div class="center padding-2">
                                 <p>
-                                    <strong>Peso: </strong> '.$row["nome"].'<br>';
+                                    <strong>Peso: </strong> '.$row["peso"].'<br>';
                                 
                                     if($row["altezza"]!="" && $row["altezza"]!=NULL)
                                         $echoString .='<strong>Altezza: </strong> '.$row["altezza"].'<br>';                            
@@ -63,9 +63,9 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'nome='.urlencode($row["nome"]).'" title="Modifica la scheda di '.$row["nome"].'" class="btn"> Modifica </a>
-                                <a href="'.$pathComment.'nome='.urlencode($row["nome"]).'" title="Visualizza i commenti su '.$row["nome"].'" class="btn"> Commenti </a>
-                                <a href="'.$pathDelete.'nome='.urlencode($row["nome"]).'" title="Elimina la scheda di '.$row["nome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
+                                <a href="'.$pathUpdate.'nome='.urlencode($row["nome"]).'" title="Modifica la scheda di '.htmlspecialchars($row["nome"], ENT_QUOTES).'" class="btn"> Modifica </a>
+                                <a href="'.$pathComment.'nome='.urlencode($row["nome"]).'" title="Visualizza i commenti su '.htmlspecialchars($row["nome"], ENT_QUOTES).'" class="btn"> Commenti </a>
+                                <a href="'.$pathDelete.'nome='.urlencode($row["nome"]).'" title="Elimina la scheda di '.htmlspecialchars($row["nome"], ENT_QUOTES).'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare il dinosauro?\')"> Elimina </a> 
                             </div>                           
                         </div>
                     </div>
@@ -123,7 +123,7 @@ class Dinosaur {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>
+									<img src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.htmlspecialchars($row["nome"], ENT_QUOTES).'"/>
 								</div>';
                             }
                             $echoString .='
@@ -145,7 +145,7 @@ class Dinosaur {
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathLink.'nome='.urlencode($row["nome"]).'" title="Leggi la scheda su '.$row["nome"].'" class="btn">Visualizza la scheda del dinosauro </a>
+                                <a href="'.$pathLink.'nome='.urlencode($row["nome"]).'" title="Leggi la scheda su '.htmlspecialchars($row["nome"], ENT_QUOTES).'" class="btn">Visualizza la scheda del dinosauro </a>
                             </div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@ class Dinosaur {
 
     public static function printDinosaur($connect, $id, $basePathImg){
         $echoString="";
-        $sqlQuery = "SELECT nome, periodomin, periodomax, peso, altezza, lunghezza, alimentazione, immagine, habitat, descrizione, curiosita FROM dinosauro WHERE nome='$id'";
+        $sqlQuery = "SELECT nome, periodomin, periodomax, peso, altezza, lunghezza, alimentazione, immagine, habitat, descrizione, curiosita FROM dinosauro WHERE nome='".$connect->real_escape_string($id)."'";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -175,7 +175,7 @@ class Dinosaur {
 
                             ';
                             if(isset($row["immagine"])){
-                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.$row["nome"].'"/>';
+                                $echoString .=' <img id="dino-immagine" src="'.$basePathImg.$row["immagine"].'" alt="Ricostruzione di un '.htmlspecialchars($row["nome"], ENT_QUOTES).'"/>';
                             }
                             $echoString .='
                             <div id="caratteristiche" class="wrap-padding white">
@@ -219,14 +219,14 @@ class Dinosaur {
         if(isset($connect)){
             if(isset($id)){
 
-                $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$id."' ";
+                $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$connect->real_escape_string($id)."' ";
                 $result = $connect->query($sqlQuery);
                 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {                    
                     
                     if($row["immagine"]!=NULL && $row["immagine"]!="" )
                         delImage($basePathImg.$row["immagine"]);                   
 
-                    $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$id."' ";
+                    $sqlQuery = "DELETE FROM dinosauro WHERE nome = '".$connect->real_escape_string($id)."' ";
                     if( $connect->query($sqlQuery) ){
                         $echoString = message(messageDeleteConfirm()); 
                     } 
@@ -292,7 +292,7 @@ class Dinosaur {
                         <legend>Nome, dimensioni ed epoca</legend>
                         <p>
                             <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="'.$nome.'" required>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" data-validation-mode="nomi" value="'.htmlspecialchars($nome, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
@@ -338,12 +338,12 @@ class Dinosaur {
                         
                         <p>
                             <label for="alimentazione">Di cosa si nutriva? <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.htmlspecialchars($alimentazione, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="habitat">Habitat: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
+                            <input type="text" placeholder="Inserisci il habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.htmlspecialchars($habitat, ENT_QUOTES).'" required>
                         </p>
                                                
                     </fieldset>                   
@@ -469,9 +469,9 @@ class Dinosaur {
         }
         $sqlQuery = "INSERT INTO dinosauro (
             nome, peso, altezza, lunghezza, periodomin, periodomax, habitat, alimentazione, tipologiaalimentazione, descrizionebreve, descrizione, curiosita, datains, idautore, immagine)
-            VALUES ('".$nome."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$habitat."', '".$alimentazione."', '".$tipologiaalimentazione."', '".htmlentities($descrizionebreve, ENT_QUOTES)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($curiosita, ENT_QUOTES)."', '".date('Y-m-j')."', '".$idautore."', ";
+            VALUES ('".$connect->real_escape_string($nome)."', '".$peso."', '".$altezza."', '".$lunghezza."', '".$periodomin."', '".$periodomax."', '".$connect->real_escape_string($habitat)."', '".$connect->real_escape_string($alimentazione)."', '".$tipologiaalimentazione."', '".htmlentities($descrizionebreve, ENT_QUOTES)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($curiosita, ENT_QUOTES)."', '".date('Y-m-j')."', '".$idautore."', ";
         if( $destinazioneFileDB != NULL)
-            $sqlQuery .= "'".$destinazioneFileDB."'";
+            $sqlQuery .= "'".$connect->real_escape_string($destinazioneFileDB)."'";
         else{
             $sqlQuery .= "NULL";
         }
@@ -507,7 +507,7 @@ class Dinosaur {
         if(!isset($error)){ $error = ""; }
 
         if( $error == ""){
-            $sqlQuery = "SELECT * FROM dinosauro WHERE nome = '".$id."' ";
+            $sqlQuery = "SELECT * FROM dinosauro WHERE nome = '".$connect->real_escape_string($id)."' ";
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
@@ -562,7 +562,7 @@ class Dinosaur {
                         <legend>Nome, dimensioni ed epoca</legend>
                         <p>
                             <label for="nome">Nome (non modificabile)</label>
-                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.$id.'" readonly>
+                            <input type="text" placeholder="Inserisci il nome del dinosauro" id="nome" name="nome" value="'.htmlspecialchars($id, ENT_QUOTES).'" readonly>
                         </p>
                         
                         <p>
@@ -608,12 +608,12 @@ class Dinosaur {
                         
                         <p>
                             <label for="alimentazione">Di cosa si nutriva? <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.$alimentazione.'" required>
+                            <input type="text" placeholder="Inserisci la sua dieta" id="alimentazione" name="alimentazione" data-validation-mode="alpha" value="'.htmlspecialchars($alimentazione, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="habitat">Habitat: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.$habitat.'" required>
+                            <input type="text" placeholder="Inserisci il suo habitat" id="habitat" name="habitat" data-validation-mode="alpha" value="'.htmlspecialchars($habitat, ENT_QUOTES).'" required>
                         </p>
                             
                     </fieldset>
@@ -738,7 +738,7 @@ class Dinosaur {
 
 
         if($removeImage){  
-            $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$nome."' ";
+            $sqlQuery = "SELECT immagine FROM dinosauro WHERE nome = '".$connect->real_escape_string($nome)."' ";
             $result = $connect->query($sqlQuery);
             if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {         
                 if($row["immagine"]!="" && $row["immagine"]!=NULL){
@@ -753,17 +753,16 @@ class Dinosaur {
         }
 
         $sqlQuery = "UPDATE dinosauro SET peso='".$peso."', altezza='".$altezza."', lunghezza='".$lunghezza."', 
-        periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$habitat."', alimentazione='".$alimentazione."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".htmlentities($descrizionebreve, ENT_QUOTES)."',
+        periodomin='".$periodomin."', periodomax='".$periodomax."', habitat='".$connect->real_escape_string($habitat)."', alimentazione='".$connect->real_escape_string($alimentazione)."', tipologiaalimentazione='".$tipologiaalimentazione."', descrizionebreve='".htmlentities($descrizionebreve, ENT_QUOTES)."',
         descrizione='".htmlentities($descrizione, ENT_QUOTES)."', curiosita='".htmlentities($curiosita, ENT_QUOTES)."'";
         if( $destinazioneFileDB != NULL){
-            $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
+            $sqlQuery .= ", immagine='". $connect->real_escape_string($destinazioneFileDB)."'";
         }
         if($removeImage){
             $sqlQuery .= ", immagine=NULL ";
         }
-        $sqlQuery .= "WHERE nome='".$nome."'";
-
-            
+        $sqlQuery .= "WHERE nome='".$connect->real_escape_string($nome)."'";
+        
         if( $connect->query($sqlQuery) ){    
             $returnArray[2] = messageUpdateConfirm();
         } 
@@ -791,11 +790,11 @@ class Dinosaur {
 
         
         if($result->num_rows == 0 || $data != date('Y-m-d')){
-            $sqlQuery2 = "SELECT nome FROM dinosauro WHERE nome != '$id' ORDER BY rand() LIMIT 1";
+            $sqlQuery2 = "SELECT nome FROM dinosauro WHERE nome != '".$connect->real_escape_string($id)."' ORDER BY rand() LIMIT 1";
             $result2 = $connect->query($sqlQuery2);
             if ($result2->num_rows > 0 && $row2 = $result2->fetch_assoc()) {
                 $id = $row2['nome'];
-                $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('$id', '".date('Y-m-d')."') ";
+                $sqlQuery3 = "INSERT INTO dinosaurodelgiorno  (nome,data) values ('".$connect->real_escape_string($id)."', '".date('Y-m-d')."') ";
                 if( !$connect->query($sqlQuery3) ){
                     $echoString = messageReload(messageErrorUpdateSettings());     
                 } 
@@ -807,7 +806,7 @@ class Dinosaur {
         }
         if($echoString == ""){
             
-            $sqlQuery4 = "SELECT * FROM dinosauro WHERE nome = '$id'"; 
+            $sqlQuery4 = "SELECT * FROM dinosauro WHERE nome = '".$connect->real_escape_string($id)."'"; 
             $result4 = $connect->query($sqlQuery4);
             
             if ($result4->num_rows > 0 && $row4 = $result4->fetch_assoc()) {
@@ -820,14 +819,14 @@ class Dinosaur {
                         if(isset($row4["immagine"])){
                             $echoString .=' 
 								<div class="daily-wrapper">
-									<img src="'.$basePathImg.$row4["immagine"].'" alt="Ricostruzione di un '.$row4["nome"].'"/>
+									<img src="'.$basePathImg.$row4["immagine"].'" alt="Ricostruzione di un '.htmlspecialchars($row4["nome"], ENT_QUOTES).'"/>
 								</div>';
                         }
                         $echoString .='
                         <div class="padding-large">
                             <ul>
                                 <li><strong>Alimentazione:</strong> '.$row4["tipologiaalimentazione"].'</li>
-                                <li><strong>Habitat:</strong>'.$row4["habitat"].'</li>
+                                <li><strong>Habitat:</strong>'.htmlspecialchars($row4["habitat"], ENT_QUOTES).'</li>
                                 <li><strong>Peso:</strong> '.$row4["peso"].'</li>
                             </ul>
                             <p>
@@ -835,7 +834,7 @@ class Dinosaur {
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'nome='.urlencode($row4["nome"]).'" title="Le la scheda su '.$row4["nome"].'" class="btn"> Visualizza la scheda del dinosauro </a>
+                            <a href="'.$pathLink.'nome='.urlencode($row4["nome"]).'" title="Le la scheda su '.htmlspecialchars($row4["nome"], ENT_QUOTES).'" class="btn"> Visualizza la scheda del dinosauro </a>
                         </div>
                     </div>             
                 ';
@@ -851,7 +850,7 @@ class Dinosaur {
     public static function getComment($connect, $idDino, $basePathImg){
         $echoString ="";
         
-        $sqlQuery = "SELECT nome, cognome, commento, immagine FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"$idDino\"";
+        $sqlQuery = "SELECT nome, cognome, commento, immagine FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"".$connect->real_escape_string($idDino)."\"";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -860,10 +859,10 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.$row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'"/> ';
                         }
                         
-                        $echoString .= $row["nome"].' '.$row["cognome"].'
+                        $echoString .= htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'
                         </p>
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
@@ -885,7 +884,7 @@ class Dinosaur {
                     <h1>Commenti</h1>
                 </div>';
         
-        $sqlQuery = "SELECT id, nome, cognome, commento, immagine FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"$idDino\"";
+        $sqlQuery = "SELECT id, nome, cognome, commento, immagine FROM commentodinosauro INNER JOIN utente ON commentodinosauro.idutente=utente.email WHERE iddinosauro=\"".$connect->real_escape_string($idDino)."\"";
         $result = $connect->query($sqlQuery);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -894,7 +893,7 @@ class Dinosaur {
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.$row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -902,7 +901,7 @@ class Dinosaur {
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
                         </p>
-                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.$row["nome"].' '.$row["cognome"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
             
                     </div>';
             }      
@@ -918,7 +917,7 @@ class Dinosaur {
     }
 
     public static function addComment($connect, $idDino, $idUser, $text){
-        $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$idDino."', '".$text."')";
+        $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$connect->real_escape_string($idDino)."', '".$text."')";
         if( $connect->query($sqlQuery) ){
             $echoString = message(messageAddConfirm()); 
         } 

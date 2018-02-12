@@ -45,19 +45,19 @@ class UserAdmin extends User {
                             if(isset($row["immagine"])){
                                 $echoString .='  
 								<div class="daily-wrapper wrap-padding colored">
-									<img class="profile-pic" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.$row["cognome"].'">
+									<img class="profile-pic" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'">
 								</div>';
                             }
                             $echoString .='
                             <div class="center padding-2">
                                 <p>
-                                    <strong>Nome: </strong>'.$row["nome"].'<br>
-                                    <strong>Cognome: </strong>'.$row["cognome"].'
+                                    <strong>Nome: </strong>'.htmlspecialchars($row["nome"], ENT_QUOTES).'<br>
+                                    <strong>Cognome: </strong>'.htmlspecialchars($row["cognome"], ENT_QUOTES).'
                                 </p>
                             </div>
                             <div class="center padding-2">
-                                <a href="'.$pathUpdate.'user='.urlencode($row["email"]).'" title="Modifica l\'utente '.$row["nome"].' '.$row["cognome"].'" class="btn"> Modifica</a>
-                                <a href="'.$pathDelete.'user='.urlencode($row["email"]).'" title="Elimina l\'utente '.$row["nome"].' '.$row["cognome"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
+                                <a href="'.$pathUpdate.'user='.urlencode($row["email"]).'" title="Modifica l\'utente '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'" class="btn"> Modifica</a>
+                                <a href="'.$pathDelete.'user='.urlencode($row["email"]).'" title="Elimina l\'utente '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'utente?\')"> Elimina</a>
                             </div>
                         </div>
                     </div>
@@ -138,12 +138,12 @@ class UserAdmin extends User {
                         <legend>Dati personali</legend>
                         <p>
                             <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$nome.'" required>
+                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.htmlspecialchars($nome, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="cognome">Cognome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$cognome.'" required>
+                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.htmlspecialchars($cognome, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
@@ -260,7 +260,7 @@ class UserAdmin extends User {
             $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
         }
 
-        $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, tipologia, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', '".$tipologia."', ";
+        $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, tipologia, immagine) VALUES ('".$email."', '".$connect->real_escape_string($nome)."', '".$connect->real_escape_string($cognome)."', '".$datanascita."', '".$connect->real_escape_string($password)."', '".$tipologia."', ";
         if( $destinazioneFileDB != NULL)
             $sqlQuery .="'".$destinazioneFileDB."'";
         else{
@@ -331,12 +331,12 @@ class UserAdmin extends User {
                         <legend>Dati personali</legend>
                         <p>
                             <label for="nome">Nome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.$nome.'" required>
+                            <input type="text" placeholder="Inserisci il nome dell\'utente" id="nome" name="nome" data-validation-mode="nomi" value="'.htmlspecialchars($nome, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="cognome">Cognome: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.$cognome.'" required>
+                            <input type="text" placeholder="Inserisci il cognome dell\'utente" id="cognome" name="cognome" data-validation-mode="nomi" value="'.htmlspecialchars($cognome, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
@@ -361,12 +361,12 @@ class UserAdmin extends User {
                         </p>
                         <p>
                             <label for="password">Password: <abbr title="richiesto">*</abbr></label>
-                            <input type="password" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.$password.'" required>
+                            <input type="password" placeholder="Inserisci la password da assegnare all\'utente" id="password" name="password" data-validation-mode="password" value="'.htmlspecialchars($password, ENT_QUOTES).'" required>
                         </p>
 
                         <p>
                             <label for="passwordconf">Conferma password: <abbr title="richiesto">*</abbr></label>
-                            <input type="password" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.$passwordconf.'" required>
+                            <input type="password" placeholder="Per conferma inserisci la password da assegnare all\'utente" id="passwordconf" name="passwordconf" data-validation-mode="confermapassword" value="'.htmlspecialchars($passwordconf, ENT_QUOTES).'" required>
                         </p>
 
                         <p>
@@ -456,7 +456,7 @@ class UserAdmin extends User {
             $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
         }
 
-        $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."' , tipologia='".$tipologia."'";
+        $sqlQuery = "UPDATE utente SET nome='".$connect->real_escape_string($nome)."', cognome='".$connect->real_escape_string($cognome)."', datanascita='".$datanascita."', password='".$connect->real_escape_string($password)."' , tipologia='".$tipologia."'";
         if( $destinazioneFileDB != NULL){
             $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
         }

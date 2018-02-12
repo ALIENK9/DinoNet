@@ -48,17 +48,17 @@ class Article{
                         $echoString .='
                         <div class="center padding-2">
                             <p>
-                                <strong>Titolo: </strong> '.$row["titolo"].'<br>';
+                                <strong>Titolo: </strong> '.htmlspecialchars($row["titolo"], ENT_QUOTES).'<br>';
                                 
                         if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL)
-                            $echoString .='<strong>Sottotitolo: </strong> '.$row["sottotitolo"].'<br>';      
+                            $echoString .='<strong>Sottotitolo: </strong> '.htmlspecialchars($row["sottotitolo"], ENT_QUOTES).'<br>';      
 
                         $echoString .=' </p>
                         </div>
                         <div class="center padding-2">                                
-                            <a href="'.$pathUpdate.'article='.urlencode($row["id"]).'" title="Modifica l\'articolo '.$row["titolo"].'" class="btn">Modifica</a>
-                            <a href="'.$pathComment.'article='.urlencode($row["id"]).'" title="Visualizza i commenti dell\'articolo '.$row["titolo"].'" class="btn">Commenti</a>
-                            <a href="'.$pathDelete.'article='.urlencode($row["id"]).'" title="Elimina l\'articolo '.$row["titolo"].'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
+                            <a href="'.$pathUpdate.'article='.urlencode($row["id"]).'" title="Modifica l\'articolo '.htmlspecialchars($row["titolo"], ENT_QUOTES).'" class="btn">Modifica</a>
+                            <a href="'.$pathComment.'article='.urlencode($row["id"]).'" title="Visualizza i commenti dell\'articolo '.htmlspecialchars($row["titolo"], ENT_QUOTES).'" class="btn">Commenti</a>
+                            <a href="'.$pathDelete.'article='.urlencode($row["id"]).'" title="Elimina l\'articolo '.htmlspecialchars($row["titolo"], ENT_QUOTES).'" class="btn" onclick="return confirm(\'Sei sicuro di voler eliminare l\\\'articolo?\')">Elimina</a>                               
                         </div>                        
                     </div>
                 </div>
@@ -107,7 +107,7 @@ class Article{
 				<div class="third wrap-padding">
                     <div class="daily card margin-half">
                         <div class="padding-large colored">
-                            <h1> '.$row["titolo"].' </h1>
+                            <h1> '.htmlspecialchars($row["titolo"], ENT_QUOTES).' </h1>
                         </div>
                         ';
                         if(isset($row["immagine"])){
@@ -120,7 +120,7 @@ class Article{
                         <div class="padding-large">';
                                                         
                         if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL)
-                            $echoString .='<h3 class="text-colored center"> '.$row["sottotitolo"].' </h3><br>';                            
+                            $echoString .='<h3 class="text-colored center"> '.htmlspecialchars($row["sottotitolo"], ENT_QUOTES).' </h3><br>';                            
                        
                         $echoString .='                           
                             <p>
@@ -128,7 +128,7 @@ class Article{
                             </p>
                         </div>
                         <div class="center padding-2">
-                            <a href="'.$pathLink.'id='.urlencode($row["id"]).'&titolo='.urlencode($row["titolo"]).'" title="Lettura l\'articolo '.$row["titolo"].'" class="btn">Leggi l\'articolo</a>
+                            <a href="'.$pathLink.'id='.urlencode($row["id"]).'&titolo='.urlencode($row["titolo"]).'" title="Lettura l\'articolo '.htmlspecialchars($row["titolo"], ENT_QUOTES).'" class="btn">Leggi l\'articolo</a>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ class Article{
                     if($row["sottotitolo"]!="" && $row["sottotitolo"]!=NULL){
                         $echoString .='
                         <div class="padding-large colored">
-                            <h1> '.$row["sottotitolo"].'</h1>
+                            <h1> '.htmlspecialchars($row["sottotitolo"], ENT_QUOTES).'</h1>
                         </div>';
                     }
                     if(isset($row["immagine"])){
@@ -230,12 +230,12 @@ class Article{
                     <p>I campi obbligatori sono contrassegnati con <abbr title="richiesto">*</abbr></p>
                     <p>
                         <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$titolo.'" required>
+                        <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.htmlspecialchars($titolo, ENT_QUOTES).'" required>
                     </p>
                     
                     <p>
                         <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
+                        <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.htmlspecialchars($sottotitolo, ENT_QUOTES).'">
                     </p>
                     
                     <p>
@@ -303,7 +303,7 @@ class Article{
             return $returnArray;
 
             
-        $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$titolo."', '".$sottotitolo."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
+        $sqlQuery = "INSERT INTO articolo (titolo, sottotitolo, descrizione, anteprima, descrizioneimg, datains, idautore) VALUES ('".$connect->real_escape_string($titolo)."', '".$connect->real_escape_string($sottotitolo)."', '".htmlentities($descrizione, ENT_QUOTES)."', '".htmlentities($anteprima, ENT_QUOTES)."', '".$descrizioneimg."', '".date('Y-m-j')."', '".$idautore."') ";
         
         if( $connect->query($sqlQuery) ){            
             $destinazioneFileDB = NULL;
@@ -374,12 +374,12 @@ class Article{
                         
                         <p>
                             <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.$titolo.'" required>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.htmlspecialchars($titolo, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.$sottotitolo.'">
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.htmlspecialchars($sottotitolo, ENT_QUOTES).'">
                         </p>
                         
                         <p>
@@ -466,7 +466,7 @@ class Article{
             $destinazioneFileDB = loadImage("articleimg", $idarticolo, $immagine, 450, 450);
         }
 
-        $sqlQuery = "UPDATE articolo SET titolo='".$titolo."', sottotitolo='".$sottotitolo."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";
+        $sqlQuery = "UPDATE articolo SET titolo='".$connect->real_escape_string($titolo)."', sottotitolo='".$connect->real_escape_string($sottotitolo)."', descrizione='".htmlentities($descrizione, ENT_QUOTES)."', anteprima='".htmlentities($anteprima, ENT_QUOTES)."', descrizioneimg='".$descrizioneimg."'";
         if( $destinazioneFileDB != NULL){
             $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
         }
@@ -524,7 +524,7 @@ class Article{
                 $echoString = '
                     <div class="daily card margin-half">
                         <div class="padding-large colored">
-                            <h1> '.$row4["titolo"].' </h1>
+                            <h1> '.htmlspecialchars($row4["titolo"], ENT_QUOTES).' </h1>
                         </div>
                         ';
                         if(isset($row4["immagine"])){
@@ -536,7 +536,7 @@ class Article{
                         }
                         $echoString .='
                         <div class="padding-large">
-                            <h3 class="text-colored center"> '.$row4["sottotitolo"].' </h3>
+                            <h3 class="text-colored center"> '.htmlspecialchars($row4["sottotitolo"], ENT_QUOTES).' </h3>
                             <br>
                             <p>
                                 '.$row4["anteprima"].'
@@ -569,7 +569,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.$row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -603,7 +603,7 @@ class Article{
                         <p>
                         ';
                         if($row["immagine"]!=NULL && $row["immagine"]!=""){
-                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.$row["nome"].' '.$row["cognome"].'"/> ';
+                            $echoString .= ' <img class="profile-pic-comment" src="'.$basePathImg.$row["immagine"].'" alt="Profilo di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'"/> ';
                         }
                         
                         $echoString .= $row["nome"].' '.$row["cognome"].'
@@ -611,7 +611,7 @@ class Article{
                         <p class="card wrap-padding-small">
                             '.$row["commento"].'
                         </p>
-                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.$row["nome"].' '.$row["cognome"].'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
+                        <a href="'.$url.'idcommento='.$row["id"].'" title="Elimina il commento di '.htmlspecialchars($row["nome"], ENT_QUOTES).' '.htmlspecialchars($row["cognome"], ENT_QUOTES).'" class="btn card wrap-margin" onclick="return confirm(\'Sei Sicuro di voler eliminare il commento?\')">Elimina</a>
             
                     </div>';
             } 
