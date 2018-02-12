@@ -122,7 +122,10 @@ class User {
                 
             <div id="content-form" class="content"> <!-id="edit"-->';            
             include_once (__DIR__."/../breadcrumb.php");
-            $echoString .= breadcrumbAdmin();
+            if (strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), 'admin1234') === false)
+                $echoString .= breadcrumbUser();  //solo lato pubblico
+            else
+                $echoString .= breadcrumbAdmin();   //solo lato amministrazione
             if($error != ""){
                 $echoString .= messageErrorForm($error);
             }

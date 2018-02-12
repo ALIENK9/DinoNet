@@ -197,7 +197,7 @@ function messageUserDeleteMySelfAdmin(){
 }
 
 function messageUserFormLabelImage(){
-    return "Immagine profilo (il file deve avere una dimensione di 250px per 250px e il formato deve essere png, jpg o jpeg):";
+    return "Immagine profilo (il file sarà ridimensionato ad una dimensione di 250px per 250px e il formato deve essere png, jpg, jpeg o gif):";
 }
 
 
@@ -232,7 +232,7 @@ function messageErrorDinoNome(){
 }
 
 function messageDinoFormLabelImage(){
-    return "Immagine dinosauro (il file deve avere una dimensione di 600px (larghezza) per 450px (altezza) e il formato deve essere png, jpg o jpeg):";
+    return "Immagine dinosauro (il file sarà ridimensionato ad una dimensione di 600px (larghezza) per 450px (altezza) e il formato deve essere png, jpg, jpeg o gif):";
 }
 
 //Messaggi Articoli
@@ -245,7 +245,7 @@ function messageErrorNoArticles(){
 }
 
 function messageArticleFormLabelImage(){
-    return "Immagine (il file deve avere una dimensione di 450px per 450px e il formato deve essere png, jpg o jpeg):";
+    return "Immagine (il file sarà ridimensionato ad una dimensione di 450px per 450px e il formato deve essere png, jpg, jpeg o gif):";
 }
 
 

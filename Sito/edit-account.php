@@ -101,11 +101,6 @@
 				
 <!-- /Header -->
 
-<?php 
-	include_once('breadcrumb.php');
-    echo breadcrumbUser();
-?>
-
 <?php include_once('footer.php') ?>
 
 <?php include_once('nojsmenu.php') ?>

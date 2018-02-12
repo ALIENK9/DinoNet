@@ -108,7 +108,7 @@
 			';
 		}
 		else{
-			echo "Per commentare devi effettuare l'accesso";
+			echo '<a href="login.php">Per commentare devi effettuare l\'accesso</a>';
 		}
 		?>
 	</div>
