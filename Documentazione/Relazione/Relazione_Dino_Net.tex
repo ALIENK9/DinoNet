@@ -113,7 +113,7 @@
 			\item \textbf{Registrazione (register.php)}: qui un nuovo utente può registrare il proprio account.
 		\end{itemize}
 		
-		\item \textbf{Account (view-account.php)}: qui ogni utente può visualizzare, modificare, eliminare o disconnettere il proprio account.
+		\item \textbf{Account (view-account.php)}: qui ogni utente può visualizzare, modificare, eliminare o disconnettere il proprio account;
 		\begin{itemize}
 			\item \textbf{Modifica account (edit-account.php)}: qui un utente può modificare il proprio account.
 		\end{itemize}
@@ -123,6 +123,7 @@
 		\begin{itemize}
 			\item \textbf{Logout (logout.php)}: qui un utente può disconnettere il proprio account.
 		\end{itemize}
+	\item \textbf{Crediti (credits.php)}: in questa pagina sono indicate le fonti dalle quali abbiamo tratto contenuti inseriti nelle pagine del sito, incluse immagini ed icone.
 		
 	\end{itemize}
 	Si noti che da qualunque pagina è possibile cercare specie o articoli, tramite la barra di ricerca visualizzabile premendo il pulsante con il simbolo della lente in alto a destra, nonché visualizzare i crediti per la realizzazione del sito mediante link apposito nel footer.
@@ -419,7 +420,7 @@
 			\item Tenon.io accessibility test: come il precedente segnala errori di accessibilità seguendo le specifiche WCAG 2.0. Anche in questo caso non sono rilevati errori.
 		\end{itemize}
 		
-		\item \textbf{NVDA}: pur con la consapevolezza che la prova non sia esauriente, il sito è stato testato con lo screen reader NVDA e gli aiuti alla navigazione inseriti sono risultati propriamente funzionanti;
+		\item \textbf{NVDA}: pur con la consapevolezza che la prova non sia esauriente, il sito è stato testato con lo screen reader NVDA e gli aiuti alla navigazione inseriti sono risultati propriamente funzionanti, tranne nel caso dell'attributo \code{aria-hidden}, il quale viene ignorato su Microsoft Edge e Firefox;
 		
 		\item \textbf{Cynthia Says}: la validazione Cynthia Says, a seguito di alcune correzione apportate dopo i primi tentativi di eseguire la stessa, certifica ora il sito con il livello AA di accessibilità per ogni pagina. Il livello AAA sarebbe potuto essere raggiunto inserendo un link ad una pagina di aiuto in ogni form, ma ciò è stato considerato superfluo considerando la tipologia dei form presenti sul sito, estremamente semplici da compilare;
 		\item \textbf{Toptal Colorblind Web Page Filter}: il simulatore di daltonismo mostra una simulazione di come le varie pagine del sito vengono viste da un individuo affetto da Protanopia, Deutanopia, Tritanopia e Achromatopsia. Benché il test non possa essere completamente esauriente in quanto non svolto da qualcuno che riportasse effettivamente le succitate patologie, si è scelta accuratamente una combinazione di colori che permettesse quanto più possibile di distinguere il colore dei link-bottoni da quello principale del sito. Con queste premesse, la differenza tra i due colori appare a noi sufficientemente evidente (si noti inoltre che i link rimangono comunque sempre evidenziati da sottolineatura) e il daltonismo non sembrerebbe inficiare particolarmente l'accessibilità e l'usabilità;
