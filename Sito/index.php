@@ -126,7 +126,7 @@
 
 
 <div id="daily-stuff" class="content-large padding-6 no-print">
-	<div class="row-padding">
+	<div class="row-padding center">
 		<div class="wrap-padding half">
 			<div class="card margin-half colored center wrap-padding">
 				<h1>Il dinosauro del giorno</h1>
