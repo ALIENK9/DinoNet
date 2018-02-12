@@ -58,7 +58,7 @@ switch ($sezione) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['tipologia'], $error[3]);
+				echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['tipologia'], array($error[3]));
 			}
 			else{				
 				echo $_SESSION['paneluser']->formAddUser($_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['tipologia'], $error[1]);
@@ -88,7 +88,7 @@ switch ($sezione) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $error[3]);
+				echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], array($error[3]));
 			}
 			else{				
 				echo $_SESSION['paneluser']->formUpdateUser($connectUser, $_SERVER["PHP_SELF"], $_POST['email'],$_POST['nome'],$_POST['cognome'],$_POST['datanascita'],$_POST['password'],$_POST['passwordconf'],$_POST['tipologia'], $error[1]);

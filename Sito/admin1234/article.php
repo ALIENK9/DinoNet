@@ -56,7 +56,7 @@ switch ($sezione) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo Article::formAddArticle($_SERVER["PHP_SELF"],$_POST['titolo'],$_POST['sottotitolo'],$_POST['descrizione'],$_POST['anteprima'], $error[3]);
+				echo Article::formAddArticle($_SERVER["PHP_SELF"],$_POST['titolo'],$_POST['sottotitolo'],$_POST['descrizione'],$_POST['anteprima'], array($error[3]));
 			}
 			else{				
 				echo Article::formAddArticle($_SERVER["PHP_SELF"],$_POST['titolo'],$_POST['sottotitolo'],$_POST['descrizione'],$_POST['anteprima'], $error[1]);
@@ -85,7 +85,7 @@ switch ($sezione) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"], $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $error[3]);
+				echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"], $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], array($error[3]));
 			}
 			else{				
 				echo Article::formUpdateArticle($connectArticle, $_SERVER["PHP_SELF"], $_POST["article"], $_POST["titolo"], $_POST["sottotitolo"], $_POST["descrizione"], $_POST["anteprima"], $error[1]);

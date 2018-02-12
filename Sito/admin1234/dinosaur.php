@@ -60,7 +60,7 @@ switch ($sezione ) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"], $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[3]);
+				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"], $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"],array($error[3]));
 			}
 			else{				
 				echo Dinosaur::formAddDinosaur($_SERVER["PHP_SELF"], $_POST["nome"], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[1]);
@@ -95,7 +95,7 @@ switch ($sezione ) {
 		}
 		else{
 			if(isset($error[3]) && $error[3] != ""){
-				echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"], $_POST['nome'], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[3]);
+				echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"], $_POST['nome'], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"],array( $error[3]));
 			}
 			else{				
 				echo Dinosaur::formUpdateDinosaur($connectDinosaur, $_SERVER["PHP_SELF"], $_POST['nome'], $_POST["peso"], $_POST["altezza"], $_POST["lunghezza"], $_POST["periodomin"], $_POST["periodomax"], $_POST["habitat"], $_POST["alimentazione"], $_POST["tipologiaalimentazione"], $_POST["descrizionebreve"], $_POST["descrizione"], $_POST["curiosita"], $error[1]);
