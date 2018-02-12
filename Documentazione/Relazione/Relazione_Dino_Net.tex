@@ -294,6 +294,18 @@
 	\end{itemize}
 	Per individuare le azioni che devono essere effettuate nel specifico viene utilizzata la variabile \code{\$\_GET["sez"]}.
 	
+	\subsection{Struttura del database}
+	Il sito si appoggia su database realizzato con \textit{MySQL}, di cui segue lo schema della struttura.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\linewidth]{db.jpeg}
+		\caption{Schema del database del sito}
+		\label{fig:schemadb}
+	\end{figure}\\
+	Nello sviluppo del sito alcune scelte fatte per la realizzazione del database sono risultate non ottimali e hanno creato alcuni problemi. Ad esempio l'utilizzo del nome del dinosauro come chiave primaria dell'entità \textit{dinosauro} ha portato ad alcuni problemi con la codifica dei caratteri speciali presenti nella stringa del nome. Li abbiamo risolti attraverso l'utilizzo di alcune funzioni PHP come \code{htmlspecialchars()} e \code{mysqli::real\_escape\_string()}. In aggiunta in alcuni casi, la scelta di una chiave primaria diversa (ad esempio un intero) avrebbe reso più semplice implementare certe funzionalità aggiuntive. \\Una conseguenza di questa scelta è, ad esempio, l'impossibilità di modificare il nome di un dinosauro già inserito, oppure di modificare l'indirizzo email di un utente iscritto.
+	
+	
+	
 	\subsection{Gestione e utilizzo delle classi}
 	 La gestione degli utenti, articoli e dinosauri è delegata alle classi contenute all'interno della cartella \code{classi/}.
 	 \begin{itemize}
