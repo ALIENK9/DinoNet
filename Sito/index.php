@@ -95,9 +95,9 @@
 
 	<p>
 		<span class="waytoobigtext">HEY TU</span>, cerchi dinosauri? Beh li hai trovati, GRRRRRR <br>
-        Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus rex</span> mordeva con una forza di oltre 5800 Kg,
+        Lo sapevi che il <span xml:lang="en" lang="en">Tyrannosaurus Rex</span> mordeva con una forza di oltre 5800 Kg,
         pari alla massa di 13 pianoforti e ... aspetta! Non vorremmo rovinarti tutte le sorprese. <br>
-        Se vuoi scoprire dettagli e curiosità su questi fantastici animali morti, puoi sfogliare la sezione
+        Se vuoi scoprire dettagli e curiosità su questi fantastici animali, puoi sfogliare la sezione
         <span class="text-italic">Specie</span>, oppure se ti interessano gli articoli sulle più recenti scoperte e
         teorie riguardanti il mondo preistorico, ti consigliamo la sezione <span class="text-italic">Articoli</span>.
         Se vuoi leggere un'introduzione sulla storia dei dinosauri, dalla comparsa all'estinzione, fai un salto alla
