@@ -4,7 +4,7 @@ function startConnect() {
 	//$connect=new mysqli("http://tecweb.altervista.org","tecweb","","my_tecweb");//DB di Cristiano
 	//$connect=new mysqli("127.0.0.1","root","","tecweb");//DB di cristiano
 	//$connect=new mysqli("localhost","root","","my_matteorizzo");//DB di Matteo
-    //$connect=new mysqli("localhost","marizzo","hu3Faeghah4ohnOb","marizzo"); //DB UFFICIALE PER LA CONSEGNA
+    //$connect=new mysqli("localhost","marizzo","hu3Faeghah4ohn0b","marizzo"); //DB UFFICIALE PER LA CONSEGNA
 
 	if($connect->connect_error){
 		echo "Errore di connessione: " . $connect->connect_error;
