@@ -99,7 +99,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 	if(isset($_SESSION['user'])) {
 	?>
 		<a href="view-account.php" title="Visualizza il tuo account" class="menu-entry <?php if($currentPage == $pages["edit-account"]) echo 'active'; if($currentPage == $pages["view-account"]) echo 'active disabled'; ?>">
-			<span class="menu-icon icon-accedi"></span>
+			<span class="menu-icon icon-account"></span>
 			<p>Account</p>
 		</a>
 	<?php

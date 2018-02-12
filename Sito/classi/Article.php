@@ -626,7 +626,7 @@ class Article{
     }
 
     public static function addComment($connect, $idArticle, $idUser, $text){
-        $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$text."')";
+        $sqlQuery = "INSERT INTO commentoarticolo (idutente, idarticolo, commento) VALUES ('".$idUser."', '".$idArticle."', '".$connect->real_escape_string($text)."')";
         if( $connect->query($sqlQuery) ){
             $echoString = message(messageAddConfirm()); 
         } 

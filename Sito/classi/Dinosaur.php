@@ -917,7 +917,7 @@ class Dinosaur {
     }
 
     public static function addComment($connect, $idDino, $idUser, $text){
-        $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$connect->real_escape_string($idDino)."', '".$text."')";
+        $sqlQuery = "INSERT INTO commentodinosauro (idutente, iddinosauro, commento) VALUES ('".$idUser."', '".$connect->real_escape_string($idDino)."', '".$connect->real_escape_string($text)."')";
         if( $connect->query($sqlQuery) ){
             $echoString = message(messageAddConfirm()); 
         } 

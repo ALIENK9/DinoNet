@@ -56,6 +56,12 @@
 		\begin{center}
 			\url{http://tecweb2016.studenti.math.unipd.it/marizzo/Sito}
 		\end{center}
+	
+		Un possibile account non amministratore da utilizzare è il seguente:
+		\begin{itemize}
+			\item \textbf{Username:} piero@angela.it
+			\item \textbf{Password:} password
+		\end{itemize}
 			
 		\item La parte amministratore del sito è invece accessibile al seguente link:
 		
@@ -69,7 +75,11 @@
 			\item \textbf{Username:} admin@admin.it
 			\item \textbf{Password:} admin
 		\end{itemize}
+	
+		
 	\end{itemize}
+	È inoltre sempre possibile aggiungere altri account dal pannello di amministrazione.\\
+	È opportuno segnalare che non è possibile essere connessi contemporaneamente con due account, perché all'accesso di un utente vengono ripulite le variabili di sessione.	
 	
 	\section{Requisiti e target}
 	
@@ -108,7 +118,7 @@
 				\item \textbf{Scheda articolo (display-article.php)}: visualizza la scheda dell'articolo selezionato, contenente tutti i dati ad esso relativi e la sezione dei commenti.
 			\end{itemize}
 		\end{itemize}
-		\item \textbf{Accedi (login.php)}: qui ogni utente può accedere al proprio account per scrivere i propri commenti agli articoli, oppure decidere di registrarne uno nuovo. Anche gli amministratori possono effettuare l'accesso da questa pagina per il loro account utente.
+		\item \textbf{Accedi (login.php)}: qui ogni utente può accedere al proprio account per scrivere i propri commenti agli articoli, oppure decidere di registrarne uno nuovo. Anche gli amministratori possono effettuare l'accesso da questa pagina per il loro account utente (non accederanno però al pannello di amministrazione, raggiungibile solo accedendo dalla pagina indicata all'inizio della relazione).
 		\begin{itemize}
 			\item \textbf{Registrazione (register.php)}: qui un nuovo utente può registrare il proprio account.
 		\end{itemize}
@@ -144,7 +154,7 @@
 		
 		\item \textbf{Articoli:} qui l'amministratore può aggiungere, rimuovere o modificare un articolo, nonché visualizzare la lista completa degli stessi.; Può inoltre visualizzare un elenco dei commenti associati ad ogni articolo ed eliminarne.
 	\end{itemize}
-	Si noti che tutti i contenuti sono ordinati per ultima modifica o per data di inserimento.
+	Si noti che tutti i contenuti sono ordinati per data di inserimento.
 		
 	\newpage
 	\section{Usabilità}
@@ -302,8 +312,7 @@
 		\caption{Schema del database del sito}
 		\label{fig:schemadb}
 	\end{figure}\\
-	Nello sviluppo del sito alcune scelte fatte per la realizzazione del database sono risultate non ottimali e hanno creato alcuni problemi. Ad esempio l'utilizzo del nome del dinosauro come chiave primaria dell'entità \textit{dinosauro} ha portato ad alcuni problemi con la codifica dei caratteri speciali presenti nella stringa del nome. Li abbiamo risolti attraverso l'utilizzo di alcune funzioni PHP come \code{htmlspecialchars()} e \code{mysqli::real\_escape\_string()}. In aggiunta in alcuni casi, la scelta di una chiave primaria diversa (ad esempio un intero) avrebbe reso più semplice implementare certe funzionalità aggiuntive. \\Una conseguenza di questa scelta è, ad esempio, l'impossibilità di modificare il nome di un dinosauro già inserito, oppure di modificare l'indirizzo email di un utente iscritto.
-	
+	Nello sviluppo del sito alcune scelte fatte per la realizzazione del database sono risultate non ottimali e hanno creato alcuni problemi. Ad esempio l'utilizzo del nome del dinosauro come chiave primaria dell'entità \textit{dinosauro} ha portato ad alcuni problemi con la codifica dei caratteri speciali presenti nella stringa del nome. Li abbiamo risolti attraverso l'utilizzo di alcune funzioni PHP come \code{htmlspecialchars()} e \code{mysqli::real\_escape\_string()}. In aggiunta in alcuni casi, la scelta di una chiave primaria diversa (ad esempio un intero) avrebbe reso più semplice implementare certe funzionalità aggiuntive. \\Una conseguenza di questa scelta è, ad esempio, l'impossibilità di modificare il nome di un dinosauro già inserito, oppure di modificare l'indirizzo email di un utente iscritto.\\	
 	
 	
 	\subsection{Gestione e utilizzo delle classi}
