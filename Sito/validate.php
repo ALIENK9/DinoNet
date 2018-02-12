@@ -115,7 +115,7 @@ function checkEmail($value){
  * @return int
  */
 function checkEmailAvailable($connect, $email){
-    $sqlQuery = "SELECT email FROM utente WHERE email = '".$email."' ";
+    $sqlQuery = "SELECT email FROM utente WHERE email = '".htmlentities($email, ENT_QUOTES)."' ";
     $result = $connect->query($sqlQuery); 
     if($result->num_rows > 0){
         return 1;
@@ -128,7 +128,7 @@ function checkEmailAvailable($connect, $email){
  * @return int
  */
 function checkNameDinoAvailable($connect, $nome){
-    $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".$nome."' ";
+    $sqlQuery = "SELECT nome FROM dinosauro WHERE nome = '".htmlentities($nome, ENT_QUOTES)."' ";
     $result = $connect->query($sqlQuery); 
     if($result->num_rows > 0){
         return 1;
@@ -239,12 +239,13 @@ function checkImage($img, $desc){
         $error[1] = 1;
     }
     
-    if($error[1] === 0)
+    if($error[1] === 0){
         $validazione = validateImage($img);
-    if($error[1] === 0 && $validazione[0] === 1){
-        $error[0] = 1;
-        $error[2] = 1;
-        $error[4] = $validazione[1];
+        if($validazione[0] === 1){
+            $error[0] = 1;
+            $error[2] = 1;
+            $error[4] = $validazione[1];
+        }
     }
 
     if($error[1] === 0 && (!isset($desc) || $desc === "") ){

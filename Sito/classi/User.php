@@ -24,10 +24,10 @@ class User {
             $result=$connect->query($sqlQuery);
             if($result->num_rows > 0){
                 if($row = $result->fetch_assoc()) {
-                    $this->nome = $row['nome'];
-                    $this->cognome = $row['cognome'];
+                    $this->nome = htmlspecialchars($row['nome'], ENT_QUOTES);
+                    $this->cognome = htmlspecialchars($row['cognome'], ENT_QUOTES);
                     $this->datanascita = $row['datanascita'];
-                    $this->password = $row['password'];
+                    $this->password = htmlspecialchars($row['password'], ENT_QUOTES);
                     $this->tipologia = $row['tipologia'];
                     $this->urlImmagine = $row['immagine'];
                 }
@@ -84,7 +84,7 @@ class User {
     public static function login($connect, $user, $pass, $tipologia){
         $status = false;
         if($connect != null){
-            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$pass."' AND tipologia >='".$tipologia."'";
+            $sqlQuery="SELECT * FROM utente WHERE email='".$user."' AND password='".$connect->real_escape_string($pass)."' AND tipologia >='".$tipologia."'";
             $result=$connect->query($sqlQuery);
             if($result->num_rows > 0){
                 $status = true;
@@ -133,7 +133,7 @@ class User {
                         <legend>Dati personali</legend>
                         <p>
                             <label for="nome">Nome (non sono consentiti numeri): <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'. $nome.'" required >
+                            <input type="text" placeholder="Inserisci il tuo nome" id="nome" name="nome" data-validation-mode="nomi" value="'.$nome.'" required >
                         </p>
                         
                         <p>
@@ -248,7 +248,7 @@ class User {
         }
             
 
-        $sqlQuery = "UPDATE utente SET nome='".$nome."', cognome='".$cognome."', datanascita='".$datanascita."', password='".$password."'";
+        $sqlQuery = "UPDATE utente SET nome='".$connect->real_escape_string($nome)."', cognome='".$connect->real_escape_string($cognome)."', datanascita='".$datanascita."', password='".$connect->real_escape_string($password)."'";
         if( $destinazioneFileDB != NULL){
             $sqlQuery .= ", immagine='". $destinazioneFileDB."'";
         }
@@ -335,7 +335,7 @@ class User {
             $destinazioneFileDB = loadImage("userimg", $email, $immagine, 250, 250);
         } 
 
-        $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$nome."', '".$cognome."', '".$datanascita."', '".$password."', ";
+        $sqlQuery = "INSERT INTO utente (email, nome, cognome, datanascita, password, immagine) VALUES ('".$email."', '".$connect->real_escape_string($nome)."', '".$connect->real_escape_string($cognome)."', '".$datanascita."', '".$connect->real_escape_string($password)."', ";
         if( $destinazioneFileDB != NULL)
             $sqlQuery .="'".$destinazioneFileDB."'";
         else{
