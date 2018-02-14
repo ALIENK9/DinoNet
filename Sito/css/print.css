@@ -31,7 +31,7 @@ h3 {
 
 a {text-decoration: underline;}
 
-.sidebar, .bar, .btn, #topbar {display: none;}
+.sidebar, .bar, .btn, #topbar, #breadcrumb, #commentboard {display: none;}
 
 .colored, .text-colored {
     color: #000000!important;
@@ -51,8 +51,6 @@ a {text-decoration: underline;}
 .daily-dino img, .daily-article img {display: none;}
 
 .hide-large, .hide-medium {display: none;}
-
-#commentboard {display: none;}
 
 .loading {display: none;}
 

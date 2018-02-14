@@ -324,13 +324,18 @@ function validateImage(inputs, i) {
     if(nomeInput.getAttribute('type') === 'file' && nomeInput.files.length !== 0) { //se c'è un'immagine
         var ext = nomeInput.value.split('.').pop();                                 //controlla sia nel formato valido
         if(ext !== 'jpg' && ext !== 'jpeg' && ext !== 'png' && ext !== 'gif') {
+            console.log('Formato non valido');
             showError(nomeInput, 'Questa immagine non ha un estensione valida: sono consentiti solo jpg, jpeg, png e gif');
             ok = false;
         }
+        else
+            removeError(nomeInput);
 
+        console.log('Formato valido');
                                                                                 //deve esserci anche una descrizione alt
         var alt = (i > 0 && 'descrizioneimg' === inputs[i - 1].getAttribute('data-validation-mode')) ? inputs[i - 1] : null;
         if(alt !== null) {
+            console.log('descrizioneimg trovata');
             var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
             var pattern = /^([A-zèéìòùàç\d]+[.,;\-"'()\s]*)*$/i;
             if(descrizioneVuota) {
@@ -344,8 +349,9 @@ function validateImage(inputs, i) {
             else
                 removeError(alt);
         }
+        console.log('Fine funzione');
     }
-    removeError(nomeInput);
+    console.log('end');
     return ok;
 }
 
@@ -359,12 +365,15 @@ function validateImage(inputs, i) {
  * @param message
  */
 function showError(elem, message) {
+    console.log('showerrror');
     removeError(elem);
+    console.log('showerrror2');
     var parent = elem.parentNode;
     var e = document.createElement('strong');
     e.className = 'errore';
     e.appendChild(document.createTextNode(message));
     parent.appendChild(e);
+    console.log('showerrrorend');
 }
 
 
