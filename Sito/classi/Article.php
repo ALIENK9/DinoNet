@@ -250,7 +250,7 @@ class Article{
                                             
                     <p>
                         <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
-                        <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" value="">
+                        <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="">
                     </p>
                     
                     <p>
@@ -374,12 +374,12 @@ class Article{
                         
                         <p>
                             <label for="titolo">Titolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" value="'.htmlspecialchars($titolo, ENT_QUOTES).'" required>
+                            <input type="text" placeholder="Inserisci il titolo dell\'articolo" id="titolo" name="titolo" data-validation-mode="nomi" value="'.htmlspecialchars($titolo, ENT_QUOTES).'" required>
                         </p>
                         
                         <p>
                             <label for="sottotitolo">Sottotitolo: <abbr title="richiesto">*</abbr></label>
-                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" value="'.htmlspecialchars($sottotitolo, ENT_QUOTES).'">
+                            <input type="text" placeholder="Inserisci il sottotitolo" id="sottotitolo" name="sottotitolo" data-validation-mode="nomi" value="'.htmlspecialchars($sottotitolo, ENT_QUOTES).'">
                         </p>
                         
                         <p>
@@ -394,7 +394,7 @@ class Article{
                         
                         <p>
                             <label for="descrizioneimg">Descrizione alternativa dell\'immagine (per l\'attributo \'alt\'):</label>
-                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" value="'.$descrizioneimg.'">
+                            <input type="text" placeholder="Se carichi un\'immagine scrivi cosa rappresenta" id="descrizioneimg" name="descrizioneimg" data-validation-mode="descrizioneimg" value="'.$descrizioneimg.'">
                         </p>
                         
                         <p>

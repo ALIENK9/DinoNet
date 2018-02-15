@@ -330,28 +330,23 @@ function validateImage(inputs, i) {
         }
         else
             removeError(nomeInput);
-
-        console.log('Formato valido');
                                                                                 //deve esserci anche una descrizione alt
         var alt = (i > 0 && 'descrizioneimg' === inputs[i - 1].getAttribute('data-validation-mode')) ? inputs[i - 1] : null;
         if(alt !== null) {
-            console.log('descrizioneimg trovata');
             var descrizioneVuota = alt.value === undefined || alt.value.length === 0;
             var pattern = /^([A-zèéìòùàç\d]+[.,;\-"'()\s]*)*$/i;
             if(descrizioneVuota) {
-                showError(alt, 'Errore: è necessaria una descrizione alternativa per l\'immagine')
+                showError(alt, 'Errore: è necessaria una descrizione alternativa per l\'immagine');
                 ok = false;
             }
             else if(!pattern.test(alt.value)) {
-                showError(alt, 'Formato non valido: puoi inserire lettere, numeri e [.,;-=\'()]');
+                showError(alt, 'Formato non valido: puoi inserire lettere, numeri e [.,;-()]');
                 ok = false;
             }
             else
                 removeError(alt);
         }
-        console.log('Fine funzione');
     }
-    console.log('end');
     return ok;
 }
 
@@ -403,32 +398,38 @@ function disableInputImmagine() {
     var inputUser = document.getElementById('imgaccountremove');
     if(inputArti !== null) {
         inputArti.addEventListener('change', function () {
+            var img = document.getElementById('imgarticle');
             if (inputArti.checked === true) {
-                var img = document.getElementById('imgarticle');
                 img.setAttribute('disabled', 'disabled');
                 img.value = '';
                 document.getElementById('descrizioneimg').setAttribute('disabled', 'disabled');
             }
             else {
-                document.getElementById('imgarticle').removeAttribute('disabled');
+                img.removeAttribute('disabled');
                 document.getElementById('descrizioneimg').removeAttribute('disabled');
             }
         })
     }
     else if(inputDino !== null) {
         inputDino.addEventListener('change', function () {
-            if(inputDino.checked === true)
-                document.getElementById('imgdinosaur').setAttribute('disabled', 'disabled');
+            var img = document.getElementById('imgdinosaur');
+            if(inputDino.checked === true) {
+                img.setAttribute('disabled', 'disabled');
+                img.value = '';
+            }
             else
-                document.getElementById('imgdinosaur').removeAttribute('disabled');
+                img.removeAttribute('disabled');
         })
     }
     else if(inputUser !== null) {
         inputUser.addEventListener('change', function () {
-            if (inputUser.checked === true)
-                document.getElementById('imgaccount').setAttribute('disabled', 'disabled');
+            var img = document.getElementById('imgaccount');
+            if (inputUser.checked === true) {
+                img.setAttribute('disabled', 'disabled');
+                img.value = '';
+            }
             else
-                document.getElementById('imgaccount').removeAttribute('disabled');
+                img.removeAttribute('disabled');
         })
     }
 }
